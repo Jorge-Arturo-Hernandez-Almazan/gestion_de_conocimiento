@@ -1,0 +1,39 @@
+body {
+    background-color: #eeeeee;
+}
+
+.grid {
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 10px 50px 50px 50px;
+
+}
+
+
+.grid h1 {
+    text-align: center;
+    color: #000000;
+    padding: 2px 0px;
+    border-radius: 50px;
+}
+
+#score {
+    color: #5A6772;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+.buttons {
+    margin-top: 30px;
+}
+
+#btn0, #btn1, #btn2, #btn3 {
+
+    width: 250px;
+    font-size: 20px;
+    margin: 10px 40px 10px 0px;
+    padding: 10px 10px;
+}
