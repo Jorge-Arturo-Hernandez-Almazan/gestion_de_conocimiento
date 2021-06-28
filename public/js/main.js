@@ -4327,7 +4327,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       text: "Contacte al administrador",
                       icon: 'warning',
                       confirmButtonColor: '#3085d6',
-                      confirmButtonText: 'Aceptar'
+                      confirmButtonText: 'Aceptar',
+                      cancelButtonText: 'Cancelar'
                     }).then(
                     /*#__PURE__*/
                     function () {
@@ -4381,7 +4382,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si'
+        confirmButtonText: 'Si',
+        cancelButtonText: 'Cancelar'
       }).then(
       /*#__PURE__*/
       function () {

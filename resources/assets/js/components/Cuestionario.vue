@@ -279,7 +279,8 @@ export default {
 						text: "Contacte al administrador",
 						icon: 'warning',
 						confirmButtonColor: '#3085d6',
-						confirmButtonText: 'Aceptar'
+						confirmButtonText: 'Aceptar',
+						cancelButtonText: 'Cancelar',
 					  }).then( async (result) => {        
 						window.location.href = "/tablero";
 					  })
@@ -297,7 +298,8 @@ export default {
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Si'
+			confirmButtonText: 'Si',
+			  cancelButtonText: 'Cancelar',
 		  }).then( async (result) => {        
 			if (result.value) {
 				await this.getopic();
