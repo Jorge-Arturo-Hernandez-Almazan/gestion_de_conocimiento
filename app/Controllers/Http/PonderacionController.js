@@ -380,8 +380,6 @@ class PonderacionController {
 		var i = 0;
 		var j = 0;
 		var k = 0;
-		
-
 		let temas = await Database.raw('select temas.id as id, temas.nombre_tema as nombre, temas.nivel as nivel from temas order by nivel desc;');
 		temas = temas[0];
 		const relaciones =  await Database.select('id_padre','id_hijo').from('relacion_primarias');
@@ -423,11 +421,6 @@ class PonderacionController {
 			}
 		}
 		
-		
-		
-		//for(var i = 0; i < caminoss.length; i++){
-		//	caminoss[i] = caminoss[i].slice(1, caminoss[i].length);
-		//}
 		
 		var solo_arreglo = []
 		for( j=0; j < caminos_primera_rama.length; j++){
