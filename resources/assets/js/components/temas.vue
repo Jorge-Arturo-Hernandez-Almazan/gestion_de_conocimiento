@@ -149,6 +149,7 @@ export default{
 			temas_hijos: [],
 			filters: {
 			  nombre_tema: { value: '', keys: ['nombre_tema'] }
+				//nombre_tema: { value: '', keys: ['padre'] }
 			},
 			currentPage: 1,
 			totalPages: 0,

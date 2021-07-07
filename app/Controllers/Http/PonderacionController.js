@@ -328,8 +328,13 @@ class PonderacionController {
 
 		let temas = await Database.raw('select temas.id as id, temas.nombre_tema as nombre, temas.nivel as nivel from temas order by nivel desc;');
 		temas = temas[0];
-		const relaciones =  await Database.select('id_padre','id_hijo').from('relacion_primarias');
-
+		const relaciones =  await Database.select('id_padre','id_hijo')
+		.from('relacion_primarias')
+		.innerJoin('temas as t1', 'relacion_primarias.id_padre', 't1.id')
+		.innerJoin('temas as t2', 'relacion_primarias.id_hijo', 't2.id')
+		.whereRaw('not(t1.nivel = 1 and t2.nivel = 1)');
+		//	const relaciones =  await Database.raw('select id_hijo, t2.nombre_tema, id_padre, t1.nombre_tema, t1.nivel as nivel_padre, t2.nivel as nivel_hijo  from relacion_primarias inner join temas  as t1 on relacion_primarias.id_padre = t1.id inner join temas as t2 on  relacion_primarias.id_hijo = t2.id where not(t1.nivel = 1 and t2.nivel = 1)');
+		
 		let total_relaciones = relaciones.length;
 		let total_temas = temas.length;
 		var texto = "nodos\n";

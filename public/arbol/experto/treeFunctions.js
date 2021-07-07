@@ -279,7 +279,6 @@ function deleteParent() {
     for (var x = 0; x < multiParents.length; x++) {
         let child = multiParents[x].child;
         let parent = multiParents[x].parent;
-
         if (child['id'] == create_node_parent['id']) {
             if (parent['id'] == op[i].value) {
                 //deleteParentDB(child, parent)
@@ -1091,10 +1090,8 @@ async function getSizeNode(){
 
 
 
-var total_excelente = 0
 var total_bueno = 0
 var total_regular = 0
-var total_ineficiente = 0
 var total_bajo = 0
 var total = 0
 
@@ -1124,7 +1121,6 @@ function loadQuestions(d) {
 		document.getElementById("btn_anterior_tema").disabled = false;
 	}
 	
-	
 	if(numero_nodo_ordenado == (nodos_ordenados.length-1) ){
 	   	document.getElementById("btn_siguiente_tema").disabled = true;
 	}else{
@@ -1150,33 +1146,27 @@ function loadQuestions(d) {
 		//console.log("Numero de evidencias "+ response.data.porcentajes.length );
 		if( response.data.porcentajes.length > 0 ){
 		   	evidencia = true
-			total_excelente = response.data.porcentajes[0].excelente
 			total_bueno = response.data.porcentajes[0].bueno
 			total_regular = response.data.porcentajes[0].regular
-			total_ineficiente = response.data.porcentajes[0].insuficiente
 			total_bajo = response.data.porcentajes[0].bajo
 			
 			$("#questionList").append('<p style="font-size:20px;"> Estado: <b> <span style="color:green"> Evaluado </span> </b> </p>');
 			nodo_evaluado = true;
 			
 		}else{
-		 	total_excelente = 0
 		 	total_bueno = 0
 		 	total_regular = 0
-		 	total_ineficiente = 0
 		 	total_bajo = 0
 			
 			$("#questionList").append('<p style="font-size:20px;"> Estado: <b> <span style="color:red"> No evaluado </span> </b> </p>');
 			nodo_evaluado = false;
 		}
 		
-		//document.getElementById("inp_excelente").value = total_excelente;
-		//document.getElementById("inp_bueno").value = total_bueno;
+		document.getElementById("inp_bueno").value = total_bueno;
 		document.getElementById("inp_regular").value = total_regular;
-		document.getElementById("inp_ineficinete").value = total_ineficiente;
-		document.getElementById("inp_malo").value = total_bajo;
+		document.getElementById("inp_bajo").value = total_bajo;
 		
-		total = Number(total_excelente) + Number(total_bueno) + Number(total_regular) + Number(total_ineficiente) + Number(total_bajo)
+		total = Number(total_bueno) + Number(total_regular) + Number(total_bajo);
 
 		document.getElementById("lbl_total_porcentaje").innerHTML = total
 		
@@ -1187,7 +1177,7 @@ function loadQuestions(d) {
 			swal({
 			  position: 'top-end',
 			  icon: 'warning',
-			  title: "No es necesario llenar las probabilidades para este tema",
+			  title: "No es necesario registrar las evidencias para este tema",
 			  showConfirmButton: false,
 			  timer: 1500
 			})
@@ -1215,20 +1205,15 @@ async function cambioInput(id){
     document.getElementById(id).value =document.getElementById(id).value.charAt(0)+document.getElementById(id).value.charAt(1);
  
 	
-	/*if(id=="inp_excelente"){
-		total_excelente = document.getElementById("inp_excelente").value;
-	}else if(id=="inp_bueno"){
-		total_bueno =  document.getElementById("inp_bueno").value;
-	}else*/ 
-	if(id=="inp_regular"){
-		total_regular = document.getElementById("inp_regular").value;
-	}else if(id=="inp_ineficinete"){
-		total_ineficiente = document.getElementById("inp_ineficinete").value;
+	if(id=="inp_bueno"){
+		total_bueno = document.getElementById("inp_bueno").value;
+	}else if(id=="inp_regular"){
+		total_regular= document.getElementById("inp_regular").value;
 	}else{
-		total_bajo = document.getElementById("inp_malo").value;
+		total_bajo = document.getElementById("inp_bajo").value;
 	}
 
-	total = Number(total_excelente) + Number(total_bueno) + Number(total_regular) + Number(total_ineficiente) + Number(total_bajo)
+	total = Number(total_bueno) + Number(total_regular) + Number(total_bajo)
 
 	document.getElementById("lbl_total_porcentaje").innerHTML = total
 
@@ -1248,7 +1233,7 @@ async function guardarPorcentajes(){
 	
 	document.getElementById("btn_guardar_porcentajes").disabled = true;
 	
-	porcentaje_total = Number(total_bueno) + Number(total_excelente) + Number(total_ineficiente) + Number(total_bajo) + Number(total_regular)
+	porcentaje_total = Number(total_bueno) + Number(total_bajo) + Number(total_regular)
 	
 	if( porcentaje_total == 100){
 		
@@ -1256,10 +1241,8 @@ async function guardarPorcentajes(){
 			method: 'post',
 			url: "http://67.205.132.145/temas/guardarProbabilidades",
 			data: {
-				excelente:total_excelente,
 				bueno:total_bueno,
 				regular:total_regular,
-				ineficiente:total_ineficiente,
 				bajo:total_bajo,
 				id_tema:id_tema,
 				evidencia:evidencia
@@ -1312,7 +1295,9 @@ async function guardarPorcentajes(){
 				
 			}else{
 				numero_nodo_ordenado = numero_nodo_ordenado + 1;
-				comenzarRegistroEvidencia()
+				siguienteNodoNoRegistrado();
+				//comenzarRegistroEvidencia();
+
 			}
 			
 			
@@ -1329,6 +1314,22 @@ async function guardarPorcentajes(){
 	
 }
 
+async function siguienteNodoNoRegistrado(){
+	axios({
+		method: 'get',
+		url: "http://67.205.132.145/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
+		headers: { 'content-type': 'application/x-www-form-urlencoded' },
+	}).then(function (response) {
+		if( response.data.porcentajes.length > 0 ){
+			numero_nodo_ordenado = numero_nodo_ordenado + 1;
+			siguienteNodoNoRegistrado();
+		}else{
+			comenzarRegistroEvidencia();
+		}
+	}).catch(function (error) {
+		console.log('Error: ' + error)
+	});
+}
 
 async function obtenerEvidenciaExpertos(){
 	
@@ -1354,18 +1355,15 @@ async function obtenerEvidenciaExpertos(){
 var numero_nodo_ordenado = 0
 
 function resetearFormulario(){
-	//document.getElementById("inp_excelente").value = 0;
-	//document.getElementById("inp_bueno").value = 0;
+
+	document.getElementById("inp_bueno").value = 0;
 	document.getElementById("inp_regular").value = 0;
-	document.getElementById("inp_ineficinete").value = 0;
-	document.getElementById("inp_malo").value = 0;
-	total_excelente = 0
+	document.getElementById("inp_bajo").value = 0;
 	total_bueno = 0
 	total_regular = 0
-	total_ineficiente = 0
 	total_bajo = 0
 	
-	total = Number(total_excelente) + Number(total_bueno) + Number(total_regular) + Number(total_ineficiente) + Number(total_bajo)
+	total = Number(total_bueno) + Number(total_regular) + Number(total_bajo)
 	
 
 	
@@ -1420,7 +1418,9 @@ async function encontrarPrimero(){
 		url: "http://67.205.132.145/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
 		headers: { 'content-type': 'application/x-www-form-urlencoded' },
 	}).then(function (response) {
-
+		
+		//console.log("Nivel del tema " + response.data.banco_preguntas.nivlel);
+		
 		if( response.data.porcentajes.length > 0 ){
 			//console.log("Ya esta evaluado");
 			numero_nodo_ordenado = numero_nodo_ordenado + 1;
@@ -1488,6 +1488,7 @@ async function siguienteRegistroEvidencia(){
 		}).then((result) => {
 			//console.log(result);
 		  if (result && numero_nodo_ordenado < (nodos_ordenados.length-1)) {
+			  haCambiadoInput = false;
 			  numero_nodo_ordenado = numero_nodo_ordenado + 1;
 			  comenzarRegistroEvidencia()
 		  }
@@ -1530,6 +1531,7 @@ async function anteriorRegistroEvidencia(){
 			buttons: ["Cancelar", "Aceptar"],
 		}).then((result) => {
 			  if (result && numero_nodo_ordenado > 0) {
+				  haCambiadoInput = false;
 					numero_nodo_ordenado = numero_nodo_ordenado -  1;
 				  	comenzarRegistroEvidencia()
 			  }
@@ -1625,23 +1627,23 @@ async function obtenerCaminos(){
 			}
 		}
 		
-		/*var uniqueArray = arreglo_nodos.filter(function(item, pos) {
-			return arreglo_nodos.indexOf(item.id) == pos;
-		})*/
-		
 		let uniqueArray = arreglo_nodos.filter((c, index) => {
 			return arreglo_nodos.indexOf(c) === index;
 		});
 		
+		//console.log("ramas");
+		//console.log(ramas);
+		//Quitar esto para considerar las ramas del area diciplinar
+		for(var i=0; i < ramas.length; i++){
+			for(var j=0; j < uniqueArray.length; j++){
+				if(ramas[i].id == uniqueArray[j] ){
+					uniqueArray.splice(j, 1);
+				   	break;
+				}
+			}
+		}
 		
-		/*var uniqueArrayVoleatdo = [] 
-		for(var i = uniqueArray.length; i > 0; i--){
-			uniqueArrayVoleatdo.push( uniqueArray[i-1] );
-		}*/
 		caminos = uniqueArray;
-		
-		
-		//$("#modalDeCarga").foundation('reveal', 'close');
 		
 		closeModal();
 		
@@ -1649,11 +1651,6 @@ async function obtenerCaminos(){
     }).catch(function (error) {
         console.log('Error: ' + error)
     });
-	
-	//closeModal();
-	//$('#modalDeCarga').modal('hide');
-	//closeOneModal("modalDeCarga")
-	//openOneModal("modalDeCarga")
 	
 	console.log(caminos);
 	

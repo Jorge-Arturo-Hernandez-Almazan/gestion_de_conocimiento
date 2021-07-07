@@ -163,7 +163,7 @@ async function draw_tree(error, treeData) {
                 let padres = [];
                 await axios({
                     method: 'get',
-                    url: "http://159.65.223.220/temas/obtenerPadresConNombre/" + d.id,
+                    url: "http://67.205.132.145/temas/obtenerPadresConNombre/" + d.id,
                     headers: { 'content-type': 'application/x-www-form-urlencoded' },
                 }).then(function (response) {
                     padres = response.data[0];
@@ -609,7 +609,7 @@ async function draw_tree(error, treeData) {
             });
 
         // Enter any new nodes at the parent's previous position.
-        var nodeEnter = node.enter().append("g")
+       var nodeEnter = node.enter().append("g")
             .call(dragListener)
             .attr("class", "node")
             .attr("transform", function (d) {
@@ -713,17 +713,19 @@ async function draw_tree(error, treeData) {
 					var palabra_corta = false;
 					var palabra_c = "";
 					var palabras = nodoss[i].split(" ");
-					
 					for(var j=0; j < palabras.length; j++)
-			  		{
-						if(palabras[j].length < 5){
+			  	{
+						if(palabras[j].length < 5)
+            {
 						   palabra_c = palabra_c + palabras[j] + " ";
-						}else{
+						}
+            else
+            {
 							var combinacion = palabra_c + " " + palabras[j]
-							
-							if(combinacion.length > 14){
-								
-								if(j>0){
+							if(combinacion.length > 14)
+              {
+								if(j>0)
+                {
 									
 								   node.select("#"+nodoss[i].replace(/\s/g, '_'))
 									  .append('svg:tspan')
@@ -734,8 +736,9 @@ async function draw_tree(error, treeData) {
 									y = y + ( ratio*0.25);
 									palabra_c = "";
 									
-								}else{
-									
+								}
+                else
+                {
 									node.select("#"+nodoss[i].replace(/\s/g, '_'))
 									  .append('svg:tspan')
 									  .attr('x', -ratio + 30)
@@ -744,45 +747,39 @@ async function draw_tree(error, treeData) {
 									  .text(palabra_c)
 									y = y + ( ratio*0.25);
 									palabra_c = "";
-									
 								}
+							}
+							if(j>0)
+              {
+								
+							  node.select("#"+nodoss[i].replace(/\s/g, '_'))
+							    .append('svg:tspan')
+							    .attr('x', -ratio + 30)
+							    .attr('y', y)
+							    .attr('style', 'font-size: ' + (18 * ratio ) / 80 + ";")
+							    .text(palabra_c + " " + palabras[j])
+						    y = y + (ratio*0.25);
+							  palabra_c = "";
 								
 							}
-							   
-							
-							if(j>0){
-								
-							   node.select("#"+nodoss[i].replace(/\s/g, '_'))
-							  .append('svg:tspan')
-							  .attr('x', -ratio + 30)
-							  .attr('y', y)
-							  .attr('style', 'font-size: ' + (18 * ratio ) / 80 + ";")
-							  .text(palabra_c + " " + palabras[j])
-							y = y + (ratio*0.25);
-							palabra_c = "";
-								
-							   }else{
-								   
-								   node.select("#"+nodoss[i].replace(/\s/g, '_'))
+              else
+              { 
+								node.select("#"+nodoss[i].replace(/\s/g, '_'))
 							  .append('svg:tspan')
 							  .attr('x', -ratio + 30)
 							  .attr('y', y-(ratio*0.10))
 							  .attr('style', 'font-size: ' + (18 * ratio ) / 80 + ";")
 							  .text(palabra_c + " " + palabras[j])
-							y = y + (ratio*0.25);
-							palabra_c = "";
-								   
-								   
-							   }
-							
+							  y = y + (ratio*0.25);
+							  palabra_c = "";						     
+							}
 						}
-						
-						
-						
 					}
 					
 
-				}else{
+				}
+        else
+        {
 					
 					/*node.select("#"+nodoss[i].replace(/\s/g, '_'))
 					  .append('svg:tspan')
@@ -854,7 +851,7 @@ async function draw_tree(error, treeData) {
 
 					if( d.id == clasificacion_colores_nodos[j].id_tema ){
 
-						var total_evidencia = Number(clasificacion_colores_nodos[j].bajo) + Number(clasificacion_colores_nodos[j].bueno) + Number(clasificacion_colores_nodos[j].excelente) + Number(clasificacion_colores_nodos[j].insuficiente) + Number(clasificacion_colores_nodos[j].regular)
+						var total_evidencia = Number(clasificacion_colores_nodos[j].bajo) + Number(clasificacion_colores_nodos[j].bueno) + Number(clasificacion_colores_nodos[j].regular)
 
 						if(total_evidencia == 100){
 						   return "#0ec472"

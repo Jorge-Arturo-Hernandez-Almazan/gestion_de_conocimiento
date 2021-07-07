@@ -10,17 +10,9 @@ class EvidenciaExpertoSchema extends Schema {
       table.timestamps()
 	  table.integer('id_usuario').unsigned().references('id').inTable('users')
 	  table.integer('id_tema').unsigned().references('id').inTable('temas')
-		
-		// 1 - Bajo
-		// 2 - Insuficiente
-		// 3 - Regular
-		// 4 - Bueno
-		// 5 - Exclente
-		table.integer('bajo')
-		table.integer('insuficiente')
-		table.integer('regular')
 		table.integer('bueno')
-		table.integer('excelente')
+		table.integer('regular')
+		table.integer('malo')
     })
   }
 

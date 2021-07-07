@@ -139,7 +139,7 @@ async function draw_tree(error, treeData) {
                 let padres = [];
                 await axios({
                     method: 'get',
-                    url: "http://159.65.223.220/temas/obtenerPadresConNombre/" + d.id,
+                    url: "http://67.205.132.145//temas/obtenerPadresConNombre/" + d.id,
                     headers: { 'content-type': 'application/x-www-form-urlencoded' },
                 }).then(function (response) {
                     padres = response.data[0];

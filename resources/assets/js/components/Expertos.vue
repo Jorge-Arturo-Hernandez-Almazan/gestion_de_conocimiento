@@ -77,7 +77,6 @@
 							  <button v-else  class="btn btn-success" @click="eliminar(experto.id, experto.eliminado)"> 
 								 Activar
 							  </button>
-							  |
 	
 						  </td>
 							

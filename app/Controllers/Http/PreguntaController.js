@@ -314,7 +314,7 @@ class PreguntaController {
 		const{id} = request.only(['id'])
 		const banco_preguntas = await Database.select('id','nombre_tema', 'nivel').from('temas').where('id',id)
 		
-		const porcentajes = await Database.select('id','id_usuario','id_tema', 'bajo','insuficiente','regular','bueno','excelente').from('evidencia_expertos').where('id_tema',id).where('id_usuario',id_usuario)
+		const porcentajes = await Database.select('id','id_usuario','id_tema', 'bajo','regular','bueno').from('evidencia_expertos').where('id_tema',id).where('id_usuario',id_usuario)
 		
 		return response.json({banco_preguntas:banco_preguntas, porcentajes:porcentajes})
 		

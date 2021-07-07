@@ -6021,7 +6021,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -12326,7 +12325,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         nombre_tema: {
           value: '',
           keys: ['nombre_tema']
-        }
+        } //nombre_tema: { value: '', keys: ['padre'] }
+
       },
       currentPage: 1,
       totalPages: 0,
@@ -51152,10 +51152,7 @@ var render = function() {
                                             " \n\t\t\t\t\t\t\t\t Activar\n\t\t\t\t\t\t\t  "
                                           )
                                         ]
-                                      ),
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t  |\n\t\n\t\t\t\t\t\t  "
-                                  )
+                                      )
                                 ])
                               ])
                             }),

@@ -447,7 +447,7 @@ async actualizar({request,response}){
   
     async obtenerPadresConNombre({response, params})
   {
-        const padres = await Database.raw("select relacion_primarias.tipo, relacion_primarias.id_hijo, relacion_primarias.id_padre, th.nombre_tema as nombreHijo, tp.nombre_tema as nombrePadre FROM relacion_primarias  INNER JOIN temas as th ON relacion_primarias.id_hijo  = th.id  INNER JOIN temas as tp ON relacion_primarias.id_padre  = tp.id  WHERE relacion_primarias.id_hijo = ?;", [params.id])
+        const padres = await Database.raw("select relacion_primarias.tipo, relacion_primarias.id_hijo, relacion_primarias.id_padre, th.nombre_tema as nombreHijo, tp.nombre_tema as nombrePadre FROM relacion_primarias  INNER JOIN temas as th ON relacion_primarias.id_hijo  = th.id INNER JOIN temas as tp ON relacion_primarias.id_padre = tp.id  WHERE relacion_primarias.id_hijo = ?;", [params.id])
         return response.json(padres);
   }
   
@@ -513,10 +513,8 @@ async actualizar({request,response}){
 			//const{id_tema,bajo_req,insuficiente_req,regular_req,bueno_req,excelente_req} = request.only(['excelente','bueno','regular','ineficiente','malo','id_tema']) 
 
 			var id_tema = datos.id_tema;
-			var excelente = datos.excelente;
 			var bueno = datos.bueno;
 			var regular = datos.regular;
-			var ineficiente = datos.ineficiente;
 			var bajo = datos.bajo;
 			var evidencia = datos.evidencia;
 			var id_usuario = auth.user.id;
@@ -525,25 +523,9 @@ async actualizar({request,response}){
 			var existe_tema = await Database.raw('SELECT id_usuario, id_tema FROM evidencia_expertos where id_usuario = ? and id_tema = ?;', [id_usuario, id_tema])
 			
 			
-			//return {"Id tema" : id_tema, "Id usuario " : id_usuario, existe_tema : existe_tema[0].length}
-			/*if(existe_tema){
-			   return "Existe";
-			}else{
-			   return "No existe";
-			}*/
-			
-			
-		
 			if( existe_tema[0].length == 0 ){
 				
-			   /*if(evidencia){
-				   const evidencia_actualizada = await Database.raw("UPDATE evidencia_expertos SET bajo = '" + bajo + "', insuficiente = '" + ineficiente + "', regular = '" + regular + "', bueno = '" + bueno + "', excelente = '" + excelente +  "' WHERE id_tema = '"+id_tema+"' and id_usuario = '" + id_usuario + "'");
-
-				}else{
-					var evidencia_almacenada = await Database.insert({id_tema:id_tema,bajo:bajo,insuficiente:ineficiente, regular:regular, bueno:bueno, excelente:excelente,id_usuario:id_usuario}).into('evidencia_expertos')
-				}*/
-				
-				var evidencia_almacenada = await Database.insert({id_tema:id_tema,bajo:bajo,insuficiente:ineficiente, regular:regular, bueno:bueno, excelente:excelente,id_usuario:id_usuario}).into('evidencia_expertos')
+				var evidencia_almacenada = await Database.insert({id_tema:id_tema,bajo:bajo, regular:regular, bueno:bueno, id_usuario:id_usuario}).into('evidencia_expertos')
 				
 				
 				return response.json({message:'Se ha guardado el porcentaje del tema'})
@@ -551,7 +533,7 @@ async actualizar({request,response}){
 			}else{
 				
 				
-				const evidencia_actualizada = await Database.raw("UPDATE evidencia_expertos SET bajo = '" + bajo + "', insuficiente = '" + ineficiente + "', regular = '" + regular + "', bueno = '" + bueno + "', excelente = '" + excelente +  "' WHERE id_tema = '"+id_tema+"' and id_usuario = '" + id_usuario + "'");
+				const evidencia_actualizada = await Database.raw("UPDATE evidencia_expertos SET bajo = '" + bajo + "', regular = '" + regular + "', bueno = '" + bueno + "' WHERE id_tema = '"+id_tema+"' and id_usuario = '" + id_usuario + "'");
 				
 				return response.json({message:'Se ha actualizado el porcentaje del tema'})
 			}
@@ -571,7 +553,7 @@ async actualizar({request,response}){
 	{
 		var id_usuario = auth.user.id;
 		
-		const evidencia = await Database.raw('SELECT bajo, insuficiente, regular, bueno, excelente, id_usuario, id_tema FROM evidencia_expertos where id_usuario = ?;', id_usuario);
+		const evidencia = await Database.raw('SELECT bajo, regular, bueno, id_usuario, id_tema FROM evidencia_expertos where id_usuario = ?;', id_usuario);
 		
 		return response.json(evidencia);
 	}

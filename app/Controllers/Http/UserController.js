@@ -212,11 +212,6 @@ class UserController {
   }
   //eliminar usuario
   async delete({request,response}){
-    /*const{id} = request.only(
-        [
-          'id'
-         
-        ])*/
 	  
 	  const{id, estado} = request.only(
         [
@@ -225,7 +220,7 @@ class UserController {
         ])
 
 		var estadoo;
-		if(estado == 0){
+		if(estado == 0 || estado == null){
 			estadoo = 1;
 		}else{
 			estadoo = 0;
@@ -236,8 +231,6 @@ class UserController {
 	  	.where('id', id)
 	  	.update({	eliminado:estadoo})
 	
-    //const user = await Database.raw('DELETE FROM users WHERE id = ?',[id])
-   
     return response.json({message:'Se ha eliminado el usuario'})
   }
   

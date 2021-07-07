@@ -73,7 +73,7 @@
 								
 
 								
-								<p class="font-weight-light text-muted mb-0">{{ auth.user.matricula}}@upv.edu.mx</p>
+								<p class="font-weight-light text-muted mb-0">{{ auth.user.matricula}}</p>
 							</div>
 							
 							<a class="dropdown-item" href="/perfil"> <i class="fas fa-user fa-xs"></i> Mi Perfil <i class="dropdown-item-icon ti-dashboard"></i></a>
@@ -95,8 +95,6 @@
 		<!-- partial -->
 			
 		<div class="main-panel">
-
-			
 
 				<div class="col-md-12 grid-margin">
 						
@@ -376,19 +374,19 @@
 									  <tr>
 									  	<td style="font-size:20px;">Bueno</td>
 										<td style="font-size:20px;">Mayor a 83 - Menor o igual a 100</td>
-										<td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_regular"> </td>
+										<td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_bueno"> </td>
 									  </tr>
 									  
 									  <tr>
-									  	<td style="font-size:20px;">Suficiente</td>
+									  	<td style="font-size:20px;">Regular</td>
 										  <td style="font-size:20px;"> Mayor a 66 -  Menor  o igual a 83 </td>
-										 <td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_ineficinete"> </td>
+										 <td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_regular"> </td>
 									  </tr>
 									  
 									  <tr>
-									  	<td style="font-size:20px;">Insuficiente</td>
+									  	<td style="font-size:20px;">Bajo</td>
 										<td style="font-size:20px;"> 0 - Menor o igual a 66 </td>
-										<td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_malo"> </td>
+										<td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_bajo"> </td>
 									  </tr>
 									  
 									  <tr>
