@@ -27,16 +27,16 @@
 					  
 					  <div class="row" style="padding: 0 !important; margin: 0 !important; ">
 						<div class="col-md-6">
-							<h3> Lista de expertos </h3>
+							<h3> Lista de expertos registrados en el sistema</h3>
 						</div>
 						<div class="col-md-6">
-							<button  type="button" class="btn btn-success float-right"@click="btnGuardar"> <i class="fas fa-user-plus"></i> Registrar Experto</button>
+							<button  type="button" class="btn btn-primary float-right"@click="btnGuardar"> <i class="fas fa-user-plus"></i> Registrar nuevo experto</button>
 							
 						</div>	
 					</div>
 					  
 					  <label>Busqueda por nombre: </label>
-      				<input class="form-control mb-2" v-model="filters.nombre.value"/>
+      				<input placeholder="Ej. Juan Perez" class="form-control mb-2" v-model="filters.nombre.value"/>
 					  
 					<div class="table-responsive">
 						
@@ -162,14 +162,31 @@ export default{
 		},
 		btnGuardar: async function(){
 				const { value: formValues } = await this.$swal({
-					title: 'Registrar Experto',
+					//title: 'Registrar Experto',
+					showClass: {
+						backdrop: 'swal2-noanimation', // disable backdrop animation
+						popup: '',                     // disable popup animation
+						icon: ''                       // disable icon animation
+					},
+					hideClass: {
+						popup: '',                     // disable popup fade-out animation
+					},
+					//customClass: 'slow-animation',
+					showCancelButton: true,
 					html:
-						`<input id="nombre" class="swal2-input" placeholder="Nombre">
-            <input id="apellido_paterno" class="swal2-input" placeholder="Apellido Paterno">
-            <input id="apellido_materno" class="swal2-input" placeholder="Apellido Materno">
-            <input id="matricula" class="swal2-input" placeholder="Matricula">
-            <input id="password" class="swal2-input" placeholder="Contraseña">
-						<br> 
+						`
+			<h3 class="text-left"> Registrar experto </h3>
+			<p class="text-left mt-0 mb-0"> Nombre: </p>
+			<input id="nombre" type="text" class="swal2-input" placeholder="Juan">
+			<p class="text-left mt-0 mb-0"> Apellido paterno: </p>
+            <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Perez">
+			<p class="text-left mt-0 mb-0"> Apellido materno: </p>
+            <input id="apellido_materno" type="text" class="swal2-input" placeholder="Sanchez">
+			<p class="text-left mt-0 mb-0"> Matricula: </p>
+            <input id="matricula" type="text" class="swal2-input" placeholder="1234567">
+			<p class="text-left mt-0 mb-0"> Contraseña: </p>
+            <input id="password" type="password" class="swal2-input " placeholder="Contraseña">
+						<hr> 
             `,
 					focusConfirm: false,
 					showCancelButton: true,
@@ -187,10 +204,10 @@ export default{
 						]
 					}})
 					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == ""){
-							this.$swal({
+							/*this.$swal({
 								type: 'info',
 								title: 'Datos incompletos',
-							})
+							})*/
 					}
 					else{
 						this.guardarExperto(this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);//funcion guardarAdmin
@@ -200,10 +217,12 @@ export default{
 							showConfirmButton: false,
 							timer: 3000
 						});
+						
 						this.$swal.fire({
 							type: 'success',
 							title: '¡Experto Registrado!'
 						})
+					
 					}
 				
 
@@ -214,12 +233,21 @@ export default{
      btnEditar:async function(id,nombre,apellido_paterno,apellido_materno,matricula){
           const { value: formValues } = await this.$swal({
 					title: 'Editar experto',
+			  		showClass: {
+						backdrop: 'swal2-noanimation', // disable backdrop animation
+						popup: '',                     // disable popup animation
+						icon: ''                       // disable icon animation
+					},
+					hideClass: {
+						popup: '',                     // disable popup fade-out animation
+					},
+			  
 					html:
-						`<input id="nombre" class="swal2-input" placeholder="Nombre" value="`+nombre+`">
-            <input id="apellido_paterno" class="swal2-input" placeholder="Apellido Paterno" value="`+apellido_paterno+`">
-            <input id="apellido_materno" class="swal2-input" placeholder="Apellido Materno" value="`+apellido_materno+`">
-            <input id="matricula" class="swal2-input" placeholder="Matricula" value="`+matricula+`">
-            <input id="password" class="swal2-input" placeholder="Contraseña" value="secret">
+						`<input id="nombre" type="text" class="swal2-input" placeholder="Nombre" value="`+nombre+`">
+            <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Apellido Paterno" value="`+apellido_paterno+`">
+            <input id="apellido_materno" type="text" class="swal2-input" placeholder="Apellido Materno" value="`+apellido_materno+`">
+            <input id="matricula" type="text" class="swal2-input" placeholder="Matricula" value="`+matricula+`">
+            <input id="password" type="password" class="swal2-input" placeholder="Contraseña" value="secret">
 						<br> 
             `,
 					focusConfirm: false,
@@ -239,10 +267,10 @@ export default{
 						]
 					}})
 					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == ""){
-							this.$swal({
+							/*this.$swal({
 								type: 'info',
 								title: 'Datos incompletos',
-							})
+							})*/
 					}
 					else{
 						this.editar(this.id,this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);//funcion guardarAdmin
@@ -267,11 +295,11 @@ export default{
 			.then((res)=>{
 				this.nombre=''
 				this.id_rol=''
-        this.apellido_materno=''
-        this.apellido_paterno=''
-        this.matricula=''
-        this.password=''
-        this.id = ''
+				this.apellido_materno=''
+				this.apellido_paterno=''
+				this.matricula=''
+				this.password=''
+				this.id = ''
 				this.getexperto()
 				//console.log(res)
 			})

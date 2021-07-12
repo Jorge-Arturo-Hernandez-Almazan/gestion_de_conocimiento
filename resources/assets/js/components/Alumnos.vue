@@ -4,9 +4,9 @@
               <div class="col-lg-12">
 				  
 				  <!-- Breadcrumb -->
-				<div class="col-12 mt-2">
+				<div class="col-12 mt-4">
 					<div class="page-header">
-						<h3 class="page-title"> Alumnos </h3>
+						<h1 class="page-title"> <b> Alumnos </b> </h1>
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
 							<ul class="quick-links ml-auto">
 							<li>
@@ -28,31 +28,37 @@
 					</button>-->
                     
 					  
-					<div class="row" style="padding: 0 !important; margin: 0 !important; ">
+					<!-- <div class="row" style="padding: 0 !important; margin: 0 !important; ">
 						<div class="col-md-6">
 							<h3> Lista de Alumnos </h3>
 						</div>
-
 						<div class="col-md-6">
-							
-					
-							
-							<button  type="button" class="btn btn-success float-right" @click="btnGuardar">
-						<i class="fas fa-user-plus"></i> Registrar Alumno
-					</button>
-							
-							
-
-
+							<button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar">
+								<i class="fas fa-user-plus"></i> Registrar Alumno
+							</button>
 						</div>	
+					</div> -->
+					  
+					  
+					
+					<div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h3 class="page-title"> Lista de alumnos </h3>
+							
+							<ul class="quick-links ml-auto">
+								<li>
+									<button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar">
+										<i class="fas fa-user-plus"></i> Registrar Alumno
+									</button>
+								</li>
+							</ul>
+						</div>
 					</div>
 					  
-					  
-					  
-					  
-					  
-					  <label>Busqueda por nombre: </label>
-      				<input class="form-control mb-2" v-model="filters.nombre.value"/>
+					 <!-- <label>Busqueda por nombre: </label> -->
+
+					<b> Busqueda por nombre: </b>
+								<input class="form-control mb-2" placeholder="Ej. Juan Francisco" v-model="filters.nombre.value" style="padding: 0 0 0; margin: 0 0 0;"/>
 					  
 					<div class="table-responsive">
 						
@@ -108,14 +114,17 @@
 					</tbody>
 				  </v-table>
 						
+					
 					</div>
 					
+					  
+					  
 					  <smart-pagination
 						:currentPage.sync="currentPage"
 						:totalPages="totalPages"
 					  />
 					  
-					  
+					
 					  
 					  
                   </div>

@@ -68,7 +68,7 @@ class UserController {
 
 		if(validator.fails()){
 			session.withErrors(validator.messages()).flashExcept(['password']);
-			return response.redirect('/');
+			return response.redirect('/?error=1');
 		}
 
 		///VALIDAR SI EL NOMBRE DEL USUARIO ES CORRECTO
@@ -83,10 +83,9 @@ class UserController {
 			estaActivo = false
 		}
 		
-		
 		if(!userFound ||  !estaActivo ){
 			session.withErrors(validator.messages()).flashExcept(['matricula']);
-			return response.redirect('/');
+			return response.redirect('/?error=2');
 		}
 
 		const {matricula, password} = request.only(['matricula','password'])
@@ -96,7 +95,7 @@ class UserController {
 		const isSame = await Hash.verify(password, user.password); 
 
 		if(!isSame){
-			return response.redirect('/');
+			return response.redirect('/?error=2');
 		}
 
 		//codicionar el rol para asiganr la ruta correcta
@@ -111,13 +110,10 @@ class UserController {
 		.where('id_rol', auth.user.id_rol)
 		.where('estado', '1');
 		//.where( auth.user.id_rol = 'id_rol');
-		
-		//auth.roles = "roles de canela"
-		
+
 		session.put('prueba', funcionalidad_rol )
 		
 		return response.redirect('/tablero')
-		//return response.redirect('/tablero')
 
 	}
 	

@@ -1322,7 +1322,12 @@ async function siguienteNodoNoRegistrado(){
 	}).then(function (response) {
 		if( response.data.porcentajes.length > 0 ){
 			numero_nodo_ordenado = numero_nodo_ordenado + 1;
-			siguienteNodoNoRegistrado();
+			
+			if(total_nodos_evaluados == nodos_ordenados.length ){
+				comenzarRegistroEvidencia();
+			}else{
+				siguienteNodoNoRegistrado();
+			}
 		}else{
 			comenzarRegistroEvidencia();
 		}
@@ -1364,8 +1369,6 @@ function resetearFormulario(){
 	total_bajo = 0
 	
 	total = Number(total_bueno) + Number(total_regular) + Number(total_bajo)
-	
-
 	
 	document.getElementById("lbl_total_porcentaje").innerHTML = total
 	document.getElementById("msg_porcentaje").innerHTML = ""
@@ -1469,10 +1472,8 @@ async function cerrarModal(){
 }
 
 async function comenzarRegistroEvidencia(){
-		resetearFormulario();
-		
-		await loadQuestions({id:nodos_ordenados[numero_nodo_ordenado] });
-	
+	resetearFormulario();
+	await loadQuestions({id:nodos_ordenados[numero_nodo_ordenado] });
 }
 
 async function siguienteRegistroEvidencia(){
@@ -1519,10 +1520,7 @@ async function siguienteRegistroEvidencia(){
 }
 
 async function anteriorRegistroEvidencia(){
-	
-	//if( !nodo_evaluado && total > 0 && haCambiadoInput == true){
 	if( total > 0 && haCambiadoInput == true){
-		
 		swal({
 		  title: 'No ha guardado los cambios. Perdera los datos. ¿Desea continuar?',
 		  showDenyButton: true,
@@ -1530,15 +1528,13 @@ async function anteriorRegistroEvidencia(){
 		  confirmButtonText: 'Aceptar',
 			buttons: ["Cancelar", "Aceptar"],
 		}).then((result) => {
-			  if (result && numero_nodo_ordenado > 0) {
-				  haCambiadoInput = false;
-					numero_nodo_ordenado = numero_nodo_ordenado -  1;
-				  	comenzarRegistroEvidencia()
-			  }
+			if (result && numero_nodo_ordenado > 0) {
+				haCambiadoInput = false;
+				numero_nodo_ordenado = numero_nodo_ordenado -  1;
+				comenzarRegistroEvidencia()
+			}
 		})
-		
 	}else if(!nodo_evaluado && total == 0){
-		
 		swal({
 		  title: '¿Desea continuar sin realizar un registro?',
 		  showDenyButton: true,
@@ -1552,12 +1548,10 @@ async function anteriorRegistroEvidencia(){
 				comenzarRegistroEvidencia()
 			}
 		})
-		
 	}else{
 		numero_nodo_ordenado = numero_nodo_ordenado - 1;
 		comenzarRegistroEvidencia()
 	}
-
 }
 
 

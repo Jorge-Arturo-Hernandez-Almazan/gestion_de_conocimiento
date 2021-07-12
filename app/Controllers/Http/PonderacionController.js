@@ -387,8 +387,15 @@ class PonderacionController {
 		var k = 0;
 		let temas = await Database.raw('select temas.id as id, temas.nombre_tema as nombre, temas.nivel as nivel from temas order by nivel desc;');
 		temas = temas[0];
+		
 		const relaciones =  await Database.select('id_padre','id_hijo').from('relacion_primarias');
 
+		/*const relaciones =  await Database.select('id_padre','id_hijo')
+		.from('relacion_primarias')
+		.innerJoin('temas as t1', 'relacion_primarias.id_padre', 't1.id')
+		.innerJoin('temas as t2', 'relacion_primarias.id_hijo', 't2.id')
+		.whereRaw('not(t1.nivel = 1 and t2.nivel = 1)');*/
+		
 		let total_relaciones = relaciones.length;
 		let total_temas = temas.length;
 		var texto = "nodos\n";
@@ -434,12 +441,32 @@ class PonderacionController {
 			}
 		}
 		
+		let ramas = await Database.raw('select id, nivel from temas where nivel < 2;');
+		
+		/*for(i=0; i < ramas[0].length; i++ ){
+			for(j=0; j < solo_arreglo.length; j++){
+				if(ramas[0][i].id == solo_arreglo[j] ){
+					solo_arreglo.splice(j, 1); 
+				}
+			}	
+		}
+		
+		for(i=0; i < ramas[0].length; i++ ){
+			for(j=0; j < temas.length; j++){
+				if(ramas[0][i].id == temas[j].id ){
+					temas.splice(j, 1);
+					break;
+				}
+			}	
+		}*/
+		
+		
 		let uniqueArray = solo_arreglo.filter((c, index) => {
 			return solo_arreglo.indexOf(c) === index;
 		});
 		
 		
-		return response.json({caminos: caminos_primera_rama, nodos: uniqueArray, temas:temas });
+		return response.json({caminos: caminos_primera_rama, nodos: uniqueArray, temas:temas, ramas:ramas[0] });
 	
 	}
 	

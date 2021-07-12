@@ -25,18 +25,18 @@
             		<img src="/images/logo.png" alt="logo" style="width: 80px; height: 40px;" /> 
 				</a>
 				
-				<a class="navbar-brand brand-logo-mini" href="index.html">
+				<a class="navbar-brand brand-logo-mini" href="/">
             	<img src="/images/logo.png" alt="logo" /> </a>	
 			</div>
-				
-			<div class="navbar-menu-wrapper d-flex align-items-center" >
 			
+			<div class="navbar-menu-wrapper d-flex align-items-center">
+				
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
 						
 						<a class="nav-link " id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
 							
-                			<img class="img-xs rounded-circle" src="/images/faces/face8.jpg" alt="Profile image"> 
+                			<img class="img-xs rounded-circle" src="/images/fotosperfil/{{ auth.user.foto }}" alt="Profile image"> 
 							<i class="fas fa-angle-down"></i>
 						</a>
 						
@@ -44,19 +44,17 @@
 						
 						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
 							<div class="dropdown-header text-center">
-								<img class="img-md rounded-circle" src="/images/faces/face8.jpg" alt="Profile image">
+								<img class="img-md rounded-circle" src="/images/fotosperfil/{{ auth.user.foto }}" alt="Profile image">
 								<p class="mb-1 mt-3 font-weight-semibold">{{ auth.user.nombre }} {{auth.user.apellido_paterno}}</p>
 								
 
-								<p class="mb-1 mt-3 font-weight-semibold">{{ prueba }} </p>
-								<p class="font-weight-light text-muted mb-0">{{ auth.user.matricula}}@upv.edu.mx</p>
+								
+								<p class="font-weight-light text-muted mb-0">{{ auth.user.matricula}}</p>
 							</div>
 							
-							<a class="dropdown-item">Mi Perfil <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-							<!--<a class="dropdown-item">Messages <i class="dropdown-item-icon ti-comment-alt"></i></a>
-							<a class="dropdown-item">Activity <i class="dropdown-item-icon ti-location-arrow"></i></a>
-							<a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>-->
-							<a class="dropdown-item" href="/logout">Cerrar Sesion <i class="dropdown-item-icon ti-power-off"></i></a>
+							<a class="dropdown-item" href="/perfil"> <i class="fas fa-user fa-xs"></i> Mi Perfil <i class="dropdown-item-icon ti-dashboard"></i></a>
+							
+							<a class="dropdown-item" href="/logout"> <i class="fas fa-sign-out-alt fa-xs"></i> Cerrar Sesion <i class="dropdown-item-icon ti-power-off"></i></a>
 						</div>
 					</li>
 				</ul>
@@ -73,11 +71,15 @@
 			
 		<div class="main-panel">
 			
-			<div class="row">
-				<div class="col-lg-12">
-					
-					 <!-- Breadcrumb -->
-					<div class="col-12 mt-2">
+			<div class="col-md-12 grid-margin">
+				
+				<!-- Button trigger modal -->
+
+
+			<!-- Modal -->
+			
+
+				<div class="col-12 mt-2">
 						<div class="page-header">
 							<h3 class="page-title"> Subir imagen </h3>
 							<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
@@ -89,32 +91,57 @@
 						  </div>
 						</div>
 					</div>
-					
-					<div class="col-lg-12">
+				<div class="col-lg-12">
 						
 					<div class="card" id="tarjeta_arbol">
                   		<div class="card-body">
 					  		<div class="row">
 								
-								<form method="POST" action="/upload" enctype="multipart/form-data">
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+								   <i class="fas fa-cloud-upload-alt"></i> Cargar imagen
+								</button>
+								<br>
+								
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Subir imagen</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											  		<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+												<div class="modal-body">
+													<form method="POST" action="/upload" enctype="multipart/form-data">
 									
-									<div class="form-group">
-									Nombre de la imagen: <input class="form-control form-control-lg" type="text" name="alias" id="alias" required />
-									<br/>
-									<br/>
-								  <input type="file" name="profile_pic" required />
-									<br/>
-									<br/>
-								  <button type="submit" class="btn btn-primary"> Subir imagen </button>					
+														<div class="form-group">
+															Nombre de la imagen: <input placeholder="Ej. grafica" class="form-control form-control-lg" type="text" name="alias" id="alias" required />
+															<br/>
+															<br/>
+													  		<input type="file" name="profile_pic"  required />
+															<br/>
+															<br/>
+															<center>
+																<button type="submit" class="btn btn-primary"> 
+																	<i class="fas fa-save"></i> Guardar
+																</button>
+															</center>
+														</div>
+													</form>
+												</div>
+										  	
+										</div>
 									</div>
-								</form>
+								</div>
+								
 									
 							
 							</div>
 							
-							<div class="row">
+							<div class="row mt-2">
+								
 								<table class="table table-bordered ">
-									<tr>
+									<tr class="thead-dark">
 										<th>Nombre</th>
 										<th>Imagen</th>
 										<!--<th>Opciones</th>-->
@@ -131,11 +158,7 @@
 					</div>
 						
 					</div>
-				</div>
 			</div>
-			
-
-			
 		</div>
 
 	</div>

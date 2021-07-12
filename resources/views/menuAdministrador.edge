@@ -61,20 +61,20 @@
 								<ul class="nav flex-column sub-menu">
 									
 									<li class="nav-item">
-										<a class="nav-link" href="/usuariosAdministrador" > Administradores</a>
+										<a class="nav-link" href="/usuariosAdministrador" > <i class="fas fa-users-cog"></i> &nbsp; Administradores</a>
 									</li>
 									  
 									<li class="nav-item">
-										<a class="nav-link" href="/usuariosProfesor" > Docentes</a>
+										<a class="nav-link" href="/usuariosProfesor" > <i class="fas fa-chalkboard-teacher"></i> &nbsp; Docentes</a>
 									</li>
 									
 									<li class="nav-item">
-										<a class="nav-link" href="/usuariosAlumno" > Alumnos</a>
+										<a class="nav-link" href="/usuariosAlumno" > <i class="fas fa-graduation-cap"></i> &nbsp; Alumnos</a>
 									</li>
 									
 									<li class="nav-item">
 										<!-- <i class="fa-li fa fa-spinner fa-spin"> -->
-										<a class="nav-link" href="/usuariosExperto" > Expertos</a>
+										<a class="nav-link" href="/usuariosExperto" > <i class="fas fa-user-tie"></i> &nbsp; Expertos</a>
 									</li>
 								</ul>
 						  	</div>
@@ -98,9 +98,7 @@
 									  <a class="nav-link" href="/cuestionario"> Ver Cuestionario </a>
 								    </li>
 									
-									<li class="nav-item">
-										<a class="nav-link" href="/subirImagen"> Subir imagen </a>
-									</li>
+									
 									
 								</ul>
 							</div>
@@ -152,19 +150,38 @@
 							<a class="nav-link" href="/historialexperto">
 								<i class="fas fa-project-diagram"></i>
 								&nbsp; 	&nbsp; 	&nbsp;
-								<span class="menu-title">Arbol Experto</span>
+								<span class="menu-title">Grafo de conocimiento</span>
 							</a>
 						</li>
 					
-					<li class="nav-item">
+						<li class="nav-item">
 							<a class="nav-link" href="/historialprofesor">
 								<i class="fas fa-project-diagram"></i>
 								&nbsp; 	&nbsp; 	&nbsp;
-								<span class="menu-title">Arbol Profesor</span>
+								<span class="menu-title">Grafo de conocimiento (profesor)</span>
 							</a>
 						</li>
 					
-						
+						<li class="nav-item">  <!--Codigo de encapsular Cuestionario-->
+						  	<a class="nav-link" data-toggle="collapse" href="#imagenes" aria-expanded="false" aria-controls="imagenes">
+								<i class="fas fa-file-upload"></i>
+								&nbsp; 	&nbsp; 	&nbsp;
+								<span class="menu-title">Recursos</span>
+								<!--<i class="menu-arrow"></i>-->
+						  	</a>
+							<div class="collapse" id="imagenes">
+								<ul class="nav flex-column sub-menu">
+								   
+									<li class="nav-item">
+										
+									 <a class="nav-link" href="/subirImagen"> <i class="fas fa-file-image"></i> &nbsp;  Imagenes </a>
+								   </li>
+									
+								</ul>
+							</div>
+						</li>
+					
+					
 						
 						@elseif( auth.user.id_rol == 2)
 						<li class="nav-item">

@@ -7,7 +7,7 @@
     {{ style('css/main.css') }}
 
     {{style('awesome/css/font-awesome.min.css')}}
-    <title>Login</title>
+    <title>Sistema gestor del conocimiento - UPV</title>
 </head>
 <body>
     <div class="container-scroller" style="background-color:white;">
@@ -30,31 +30,41 @@
 						
 					</center>
 					
+					<div id="div_error_contrasena" style="display: none;" class="alert alert-danger" role="alert">
+					   <span id="error_contrasena"> </span>
+					  </div>
 					
-									{{ csrfField() }}
+					<div id="div_error_matricula" style="display: none;" class="alert alert-danger" role="alert">
+						<span id="error_matricula"> </span>
+					</div>
+					
+				  {{ csrfField() }}
                   <div class="form-group">
                     <label class="label">Matricula</label>
                     <div class="input-group">
-										<input type="text" class="form-control" placeholder="Matricula" name="matricula" id="matricula" >
+					<input type="text" class="form-control" placeholder="Matricula" name="matricula" id="matricula" onkeydown="comprobarMensajes()">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="fa fa-user-o" ></i>
                         </span>
                       </div>
                     </div>
-										{{ elIf('<span class="invalid-feefback">$self</span>', getErrorFor('matricula'), hasErrorFor('matricula')) }} 
+								
+					  
                   </div>
                   <div class="form-group">
                     <label class="label">Contraseña</label>
                     <div class="input-group">
-                      <input type="password" class="form-control " placeholder="*********" name="password" id="password">
+                      <input type="password" class="form-control " placeholder="*********" name="password" id="password" onkeydown="comprobarMensajes()">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="fa fa-key" ></i>
                         </span>
-                      </div>											
+                      </div>
                     </div>
-										{{ elIf('<span class="invalid-feefback">$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+					
+					  
+					  
                   </div>
                   <div class="form-group">
                     <button class="btn btn-primary submit-btn btn-block" type="submit">Iniciar sesión</button>
@@ -65,19 +75,7 @@
                   </div>
                 </form>
               </div>
-              <!-- <ul class="auth-footer">
-                <li>
-                  <a href="/" style="color:black">Condiciones</a>
-                </li>
-                <li>
-                  <a href="/" style="color:black">Ayuda</a>
-                </li>
-                <li>
-                  <a href="/" style="color:black" >Terminos</a>
-                </li>
-              </ul> -->
-              
-				<!-- <p class="footer-text text-center" style="color:black">copyright © 2020 Todos los derechos reservados a la Universidad Politecnica de victoria.</p> -->
+
             </div>
           </div>
         </div>
@@ -87,6 +85,39 @@
     </div>
     {{script('js/principal.js')}}
 		
-
+	<script>
+		//console.log("THIS IS IN THE CONSOLE");
+		//let uri = window.location.href.split('?');
+	  	let uri = window.location.href;
+		var div_error_matricula = document.getElementById("div_error_matricula");
+		var div_error_contrasena = document.getElementById("div_error_contrasena");
+		
+		
+		function comprobarMensajes(){
+			div_error_matricula.style.display = "none";
+			div_error_contrasena.style.display = "none";
+		}
+		
+	  	if( uri.includes("?") ){
+			uri = window.location.href.split('?');
+			var error = uri[1].split('=')[1];
+			//alert(error);
+			
+			if(error == 1){
+				var error_matricula = document.getElementById("error_matricula");
+				error_matricula.innerHTML = "Usuario no encontrado. Vuelva a intentar"
+				div_error_matricula.style.display = "block";
+			}else if (error == 2){
+				var error_contrasena = document.getElementById("error_contrasena");
+				error_contrasena.innerHTML = "Contraseña incorrecta, vuelva a intentar";
+				div_error_contrasena.style.display = "block";
+			}
+			
+			window.history.pushState('page2', 'Title', '/');
+			
+	  	}
+		
+		
+	</script>
 </body>
 </html>

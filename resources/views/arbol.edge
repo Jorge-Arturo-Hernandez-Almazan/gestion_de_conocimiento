@@ -31,8 +31,9 @@
         position: fixed;
     }
     .reveal-modal {
-        top: 20% !important;
+        top: 8% !important;
     }
+	
 	
 </style>
 
@@ -322,7 +323,9 @@
 
 
 							<!--MODAL PARA PREGUNTAS-->
-							<div id="QuestionModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" data-options="close_on_background_click:false;close_on_esc:false;">
+							<div id="QuestionModal" class="reveal-modal " data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="margin-top:0;" data-options="close_on_background_click:false;close_on_esc:false;">
+								
+								
 								
 								<div class="container text-right">	
 									<a  onclick="cerrarModal()" > 
@@ -335,12 +338,12 @@
 								  <span aria-hidden="true">&times;</span>
 								</button> -->
 								
-								<h1 id="modalTitle">Estimación del experto sobre el grado de conocimiento de sus alumnos</h1>
+								<h3 id="modalTitle"> <b> Estimación del experto sobre el grado de conocimiento de sus alumnos. </b> </h3>
 								
 								<!--<h4>
 									Tema: Multiplicacion
 								</h4>-->
-								<div>
+								<div style="outline-style: solid;">
 									<ol id="questionList">
 									</ol>
 								</div>
@@ -544,7 +547,9 @@
 									</div>
 								</div>
 							</div>
-
+							
+							
+							
 						</div>
 
 

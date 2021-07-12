@@ -3390,6 +3390,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5911,6 +5920,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -6091,7 +6102,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _btnGuardar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this3 = this;
+        var _this3 = this,
+            _this$$swal;
 
         var _ref, formValues, Toast;
 
@@ -6100,29 +6112,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return this.$swal({
-                  title: 'Registrar Experto',
-                  html: "<input id=\"nombre\" class=\"swal2-input\" placeholder=\"Nombre\">\n            <input id=\"apellido_paterno\" class=\"swal2-input\" placeholder=\"Apellido Paterno\">\n            <input id=\"apellido_materno\" class=\"swal2-input\" placeholder=\"Apellido Materno\">\n            <input id=\"matricula\" class=\"swal2-input\" placeholder=\"Matricula\">\n            <input id=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\">\n\t\t\t\t\t\t<br> \n            ",
-                  focusConfirm: false,
+                return this.$swal((_this$$swal = {
+                  //title: 'Registrar Experto',
+                  showClass: {
+                    backdrop: 'swal2-noanimation',
+                    // disable backdrop animation
+                    popup: '',
+                    // disable popup animation
+                    icon: '' // disable icon animation
+
+                  },
+                  hideClass: {
+                    popup: '' // disable popup fade-out animation
+
+                  },
+                  //customClass: 'slow-animation',
                   showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
-                  preConfirm: function preConfirm() {
-                    return [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value];
-                  }
-                });
+                  html: "\n\t\t\t<h3 class=\"text-left\"> Registrar experto </h3>\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Perez\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Sanchez\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrase\xF1a: </p>\n            <input id=\"password\" type=\"password\" class=\"swal2-input \" placeholder=\"Contrase\xF1a\">\n\t\t\t\t\t\t<hr> \n            ",
+                  focusConfirm: false
+                }, _defineProperty(_this$$swal, "showCancelButton", true), _defineProperty(_this$$swal, "confirmButtonText", 'Guardar'), _defineProperty(_this$$swal, "confirmButtonColor", '#1cc88a'), _defineProperty(_this$$swal, "cancelButttonColor", '#3085d6'), _defineProperty(_this$$swal, "cancelButtonText", 'Cancelar'), _defineProperty(_this$$swal, "preConfirm", function preConfirm() {
+                  return [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value];
+                }), _this$$swal));
 
               case 2:
                 _ref = _context.sent;
                 formValues = _ref.value;
 
                 if (this.nombre == "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos'
-                  });
+                  /*this.$swal({
+                  	type: 'info',
+                  	title: 'Datos incompletos',
+                  })*/
                 } else {
                   this.guardarExperto(this.nombre, this.apellido_materno, this.apellido_paterno, this.matricula, this.password); //funcion guardarAdmin
 
@@ -6170,7 +6190,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 2;
                 return this.$swal({
                   title: 'Editar experto',
-                  html: "<input id=\"nombre\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <input id=\"apellido_paterno\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <input id=\"apellido_materno\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <input id=\"matricula\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n            <input id=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<br> \n            ",
+                  showClass: {
+                    backdrop: 'swal2-noanimation',
+                    // disable backdrop animation
+                    popup: '',
+                    // disable popup animation
+                    icon: '' // disable icon animation
+
+                  },
+                  hideClass: {
+                    popup: '' // disable popup fade-out animation
+
+                  },
+                  html: "<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<br> \n            ",
                   focusConfirm: false,
                   showCancelButton: true,
                   confirmButtonText: 'Guardar',
@@ -6187,10 +6219,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formValues = _ref2.value;
 
                 if (this.nombre == "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos'
-                  });
+                  /*this.$swal({
+                  	type: 'info',
+                  	title: 'Datos incompletos',
+                  })*/
                 } else {
                   this.editar(this.id, this.nombre, this.apellido_materno, this.apellido_paterno, this.matricula, this.password); //funcion guardarAdmin
 
@@ -6761,18 +6793,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -49164,30 +49184,43 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "row",
-                staticStyle: { padding: "0 !important", margin: "0 !important" }
+                staticClass: "page-header border-0",
+                staticStyle: { padding: "0 0 0", margin: "0 0 0" }
               },
               [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success float-right",
-                      attrs: { type: "button" },
-                      on: { click: _vm.btnGuardar }
-                    },
-                    [
-                      _c("i", { staticClass: "fas fa-user-plus" }),
-                      _vm._v(" Registrar Alumno\n\t\t\t\t\t")
-                    ]
-                  )
-                ])
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
+                  },
+                  [
+                    _c("h3", { staticClass: "page-title" }, [
+                      _vm._v(" Lista de alumnos ")
+                    ]),
+                    _vm._v(" "),
+                    _c("ul", { staticClass: "quick-links ml-auto" }, [
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary float-right btn-lg",
+                            attrs: { type: "button" },
+                            on: { click: _vm.btnGuardar }
+                          },
+                          [
+                            _c("i", { staticClass: "fas fa-user-plus" }),
+                            _vm._v(" Registrar Alumno\n\t\t\t\t\t\t\t\t\t")
+                          ]
+                        )
+                      ])
+                    ])
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
-            _c("label", [_vm._v("Busqueda por nombre: ")]),
+            _c("b", [_vm._v(" Busqueda por nombre: ")]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -49199,6 +49232,8 @@ var render = function() {
                 }
               ],
               staticClass: "form-control mb-2",
+              staticStyle: { padding: "0 0 0", margin: "0 0 0" },
+              attrs: { placeholder: "Ej. Juan Francisco" },
               domProps: { value: _vm.filters.nombre.value },
               on: {
                 input: function($event) {
@@ -49427,9 +49462,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-2" }, [
+    return _c("div", { staticClass: "col-12 mt-4" }, [
       _c("div", { staticClass: "page-header" }, [
-        _c("h3", { staticClass: "page-title" }, [_vm._v(" Alumnos ")]),
+        _c("h1", { staticClass: "page-title" }, [
+          _c("b", [_vm._v(" Alumnos ")])
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -49453,14 +49490,6 @@ var staticRenderFns = [
           ]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("h3", [_vm._v(" Lista de Alumnos ")])
     ])
   }
 ]
@@ -51008,13 +51037,13 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-success float-right",
+                      staticClass: "btn btn-primary float-right",
                       attrs: { type: "button" },
                       on: { click: _vm.btnGuardar }
                     },
                     [
                       _c("i", { staticClass: "fas fa-user-plus" }),
-                      _vm._v(" Registrar Experto")
+                      _vm._v(" Registrar nuevo experto")
                     ]
                   )
                 ])
@@ -51033,6 +51062,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control mb-2",
+              attrs: { placeholder: "Ej. Juan Perez" },
               domProps: { value: _vm.filters.nombre.value },
               on: {
                 input: function($event) {
@@ -51276,7 +51306,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-6" }, [
-      _c("h3", [_vm._v(" Lista de expertos ")])
+      _c("h3", [_vm._v(" Lista de expertos registrados en el sistema")])
     ])
   }
 ]

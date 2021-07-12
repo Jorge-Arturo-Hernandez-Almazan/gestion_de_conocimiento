@@ -1,15 +1,8 @@
 <template>
 <div >
-	
-	
-	
-		 <div class="col-12 mt-2"> 
-			 
-			 
+		 <div class="col-12 mt-2">  
 			<div class="page-header">
 				<h3 class="page-title"> Dashboard </h3>
-
-
 				<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
 					<ul class="quick-links ml-auto">
 					<li>
@@ -19,8 +12,6 @@
 			  </div>
 			</div>
 		 </div> 
-		
-
          <div class="col-md-12 ">
                       <div class="card">
                         <div class="card-body">
@@ -89,11 +80,8 @@
                         </div>
                       </div>
             </div>	
-          
-
 </div>
 </template>
-
 
 <script>
 	
