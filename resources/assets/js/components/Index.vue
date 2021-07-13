@@ -1,8 +1,8 @@
 <template>
 <div >
-		 <div class="col-12 mt-2">  
+		 <div class="col-12 mt-4">  
 			<div class="page-header">
-				<h3 class="page-title"> Dashboard </h3>
+				<h1 class="page-title"> <b> Dashboard </b> </h1>
 				<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
 					<ul class="quick-links ml-auto">
 					<li>

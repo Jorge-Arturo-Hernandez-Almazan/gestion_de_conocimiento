@@ -31,203 +31,226 @@
 				<hr />
 			</div>
 			
+			<div class="row">
+				
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			  		<i class="fas fa-calculator"></i>
+				</button>
+				
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel"> Calculadora </h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+								<input type="text" id="campo_calculadora">
+							  </div>
+
+							  <div class="row" >
+								<div><button v-on:click="botonesCalculadora('ac')">AC</button></div>
+								<div><button v-on:click="botonesCalculadora('(')">(</button></div>
+								<div><button v-on:click="botonesCalculadora(')')">)</button></div>
+								<div><button v-on:click="botonesCalculadora('/')">/</button></div>
+							  </div>
+
+							  <div class="row" >
+								<div><button v-on:click="botonesCalculadora('7')">7</button></div>
+								<div><button v-on:click="botonesCalculadora('8')">8</button></div>
+								<div><button v-on:click="botonesCalculadora('9')">9</button></div>
+								<div><button v-on:click="botonesCalculadora('*')">*</button></div>
+							  </div>
+
+							  <div class="row" >
+								<div><button v-on:click="botonesCalculadora('4')">4</button></div>
+								<div><button v-on:click="botonesCalculadora('5')">5</button></div>
+								<div><button v-on:click="botonesCalculadora('6')">6</button></div>
+								<div><button v-on:click="botonesCalculadora('+')">+</button></div>
+							  </div>
+
+							  <div class="row" >
+								<div><button v-on:click="botonesCalculadora('1')">1</button></div>
+								<div><button v-on:click="botonesCalculadora('2')">2</button></div>
+								<div><button v-on:click="botonesCalculadora('3')">3</button></div>
+								<div><button v-on:click="botonesCalculadora('-')">-</button></div>
+							  </div>
+							  <div class="row" >
+								<div><button data-toggle="modal" data-target="#funciones">fun</button></div>
+								<div><button v-on:click="botonesCalculadora('0')">0</button></div>
+								<div><button v-on:click="botonesCalculadora('.')">.</button></div>
+								<div><button v-on:click="botonesCalculadora('=')">=</button></div>
+							  </div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog" aria-labelledby="funcionesModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Funciones</h5>
+					  </div>
+					  <div class="modal-body">
+
+						<div class="row">                     
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' abs (')">abs</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' acos (')">acos</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' acosh (')">acosh</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' asin (')">asin</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' asinh (')">asinh</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' atan (')">atan</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' atan2 (')">atan2</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' atanh (')">atanh</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' bindec (')">bindec</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' ceil (')">ceil</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' cos (')">cos</button></div>
+						  </div>
+						</div>
+
+						<div class="row">                     
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' cosh (')">cosh</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' decbin (')">decbin</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' decoct (')">decoct</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' deg2rad (')">deg2rad</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' exp (')">exp</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' expm1 (')">expm1</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' floor (')">floor</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' log10 (')">log10</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' log1p (')">log1p</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' log (')">log</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' max (')">max</button></div>
+						  </div>
+						</div>
+
+						<div class="row">  
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' min (')">min</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' pi ( )')">pi</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' pow (')">pow</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' rad2deg (')">rad2deg</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' round (')">round</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' sin (')">sin</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' sinh (')">sinh</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' sqrt (')">sqrt</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' tan (')">tan</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' tanh (')">tanh</button></div>
+						  </div>
+						  <div class="col-1">
+							<div><button v-on:click="botonesCalculadora(' ,')">,</button></div>
+						  </div>
+						</div>
+
+					  </div>
+						<!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button-->
+					</div>
+
+				  </div>
+				</div>
+				
+				
+			</div>
 			
 			<div class="row">
         
 				  <!--div class="grid"-->
             
-            <div class="col-8">
+            	<div class="col-12">
             
-              <div id="quiz">
+              		<div id="quiz">
 
-                <h3 id="question">
-                  <!--<p ></p>-->
-                </h3>
+						<h3 id="question">
+						  <!--<p ></p>-->
+						</h3>
 
-                <p id="noOpciones">
+						<p id="noOpciones">
 
-                </p>
+						</p>
 
-                <div class="buttons" id="buttons">
-                </div>
-                <hr style="margin-top: 50px">
-                <button id="next"> Siguiente </button>
-                <footer>
-                  <p id="tag_topic">Tema</p>
-                  <p id="progress"></p>
-                </footer>
-              </div>
-             </div>
-            
-            <!--Calculadora-->
-            <div class="col-4">
-              
-              <div class="row">
-                <input type="text" id="campo_calculadora">
-              </div>
-              
-              <div class="row" >
-                <div><button v-on:click="botonesCalculadora('ac')">AC</button></div>
-                <div><button v-on:click="botonesCalculadora('(')">(</button></div>
-                <div><button v-on:click="botonesCalculadora(')')">)</button></div>
-                <div><button v-on:click="botonesCalculadora('/')">/</button></div>
-              </div>
-              
-              <div class="row" >
-                <div><button v-on:click="botonesCalculadora('7')">7</button></div>
-                <div><button v-on:click="botonesCalculadora('8')">8</button></div>
-                <div><button v-on:click="botonesCalculadora('9')">9</button></div>
-                <div><button v-on:click="botonesCalculadora('*')">*</button></div>
-              </div>
-              
-              <div class="row" >
-                <div><button v-on:click="botonesCalculadora('4')">4</button></div>
-                <div><button v-on:click="botonesCalculadora('5')">5</button></div>
-                <div><button v-on:click="botonesCalculadora('6')">6</button></div>
-                <div><button v-on:click="botonesCalculadora('+')">+</button></div>
-              </div>
-              
-              <div class="row" >
-                <div><button v-on:click="botonesCalculadora('1')">1</button></div>
-                <div><button v-on:click="botonesCalculadora('2')">2</button></div>
-                <div><button v-on:click="botonesCalculadora('3')">3</button></div>
-                <div><button v-on:click="botonesCalculadora('-')">-</button></div>
-              </div>
-              <div class="row" >
-                <div><button data-toggle="modal" data-target="#funciones">fun</button></div>
-                <div><button v-on:click="botonesCalculadora('0')">0</button></div>
-                <div><button v-on:click="botonesCalculadora('.')">.</button></div>
-                <div><button v-on:click="botonesCalculadora('=')">=</button></div>
-              </div>
-              
-            </div>
+						<div class="buttons" id="buttons">
+						</div>
+						<hr style="margin-top: 50px">
+						<button id="next"> Siguiente </button>
+						<footer>
+						  <p id="tag_topic">Tema</p>
+						  <p id="progress"></p>
+						</footer>
+					  </div>
+             	</div>
+
+				
+				
         <!-- funciones de la calculadora -->
-        <div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog" aria-labelledby="funcionesModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Funciones</h5>
-              </div>
-              <div class="modal-body">
-                
-                <div class="row">                     
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' abs (')">abs</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' acos (')">acos</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' acosh (')">acosh</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' asin (')">asin</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' asinh (')">asinh</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' atan (')">atan</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' atan2 (')">atan2</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' atanh (')">atanh</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' bindec (')">bindec</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' ceil (')">ceil</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' cos (')">cos</button></div>
-                  </div>
-                </div>
-                
-                <div class="row">                     
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' cosh (')">cosh</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' decbin (')">decbin</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' decoct (')">decoct</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' deg2rad (')">deg2rad</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' exp (')">exp</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' expm1 (')">expm1</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' floor (')">floor</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' log10 (')">log10</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' log1p (')">log1p</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' log (')">log</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' max (')">max</button></div>
-                  </div>
-                </div>
-                
-                <div class="row">  
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' min (')">min</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' pi ( )')">pi</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' pow (')">pow</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' rad2deg (')">rad2deg</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' round (')">round</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' sin (')">sin</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' sinh (')">sinh</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' sqrt (')">sqrt</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' tan (')">tan</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' tanh (')">tanh</button></div>
-                  </div>
-                  <div class="col-1">
-                    <div><button v-on:click="botonesCalculadora(' ,')">,</button></div>
-                  </div>
-                </div>
-                
-              </div>
-                <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button-->
-            </div>
-            
-          </div>
-        </div>
+        
             
 				  <!--/div-->
         
-      </div>
+      		</div>
 		
         </div>
       </div>

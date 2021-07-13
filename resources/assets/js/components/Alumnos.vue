@@ -48,7 +48,7 @@
 							<ul class="quick-links ml-auto">
 								<li>
 									<button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar">
-										<i class="fas fa-user-plus"></i> Registrar Alumno
+										<i class="fas fa-user-plus"></i> Registrar alumno
 									</button>
 								</li>
 							</ul>
@@ -222,19 +222,36 @@ export default{
 		},
 		btnGuardar: async function(){
 				const { value: formValues } = await this.$swal({
-					title: 'Registrar Alumno',
+					//title: 'Registrar Alumno',
+					showClass: {
+						backdrop: 'swal2-noanimation', // disable backdrop animation
+						popup: '',                     // disable popup animation
+						icon: ''                       // disable icon animation
+					},
+					hideClass: {
+						popup: '',                     // disable popup fade-out animation
+					},
+					
 					html:
-					`<input id="nombre" class="swal2-input" placeholder="Nombre">
-            <input id="apellido_paterno" class="swal2-input" placeholder="Apellido Paterno">
-            <input id="apellido_materno" class="swal2-input" placeholder="Apellido Materno">
-            <input id="matricula" class="swal2-input" placeholder="Matricula">
-            <input id="password" class="swal2-input" placeholder="Contraseña">
-            <input id="nivel_academico" class="swal2-input" placeholder="Nivel academico">
-						<br> 
-          <label for="id_profesor">Elije un profesor:</label>
+					`
+			<h3 class="text-left"> Registrar alumno </h3>
+			<p class="text-left mt-0 mb-0"> Nombre: </p>
+			<input id="nombre" type="text" class="swal2-input" placeholder="Nombre">
+			<p class="text-left mt-0 mb-0"> Apellido paterno: </p>
+            <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Apellido Paterno">
+			<p class="text-left mt-0 mb-0"> Apellido materno: </p>
+            <input id="apellido_materno" type="text" class="swal2-input" placeholder="Apellido Materno">
+			<p class="text-left mt-0 mb-0"> Matricula: </p>
+            <input id="matricula" type="text" class="swal2-input" placeholder="Matricula">
+			<p class="text-left mt-0 mb-0"> Contrseña: </p>
+            <input id="password" type="password" class="swal2-input" placeholder="Contraseña">
+			<p class="text-left mt-0 mb-0"> Nivel academico: </p>
+            <input id="nivel_academico" type="text" class="swal2-input" placeholder="Nivel academico">
+			
+			<p class="text-left mt-0 mb-0"> Profesor:</p>
           <select id="id_profesor" value="${
             this.profesor
-          }" name="profesor" class="swal2-input">
+          }" name="profesor" class="form-control">
             ${this.profesor.map(
               cat => `<option value="${cat.id}">${cat.nombre}</option>`
             )}
@@ -258,10 +275,10 @@ export default{
 						]
 					}})
 					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == "" || this.id_profesor == "" || this.nivel_academico == ""){
-							this.$swal({
+							/*this.$swal({
 								type: 'info',
 								title: 'Datos incompletos',
-							})
+							})*/
 					}
 					else{
 						this.guardarAlumno(this.nombre,this.apellido_paterno,this.apellido_materno,this.matricula,this.password,this.nivel_academico,this.id_profesor,4);//funcion guardarAdmin
@@ -284,19 +301,33 @@ export default{
 		},
      btnEditar:async function(id,nombre_alumno,apellido_paterno,apellido_materno,matricula,nivel_academico,idProfesor){
          	const { value: formValues } = await this.$swal({
-					title: 'Editar Alumno',
+					//title: 'Editar Alumno',
+					showClass: {
+						backdrop: 'swal2-noanimation', // disable backdrop animation
+						popup: '',                     // disable popup animation
+						icon: ''                       // disable icon animation
+					},
+					hideClass: {
+						popup: '',                     // disable popup fade-out animation
+					},
 					html:
-						`<input id="nombre" class="swal2-input" placeholder="Nombre" value="`+nombre_alumno+`">
-						<input id="apellido_paterno" class="swal2-input" placeholder="Apellido Paterno" value="`+apellido_paterno+`">
-						<input id="apellido_materno" class="swal2-input" placeholder="Apellido Materno" value="`+apellido_materno+`">
-						<input id="matricula" class="swal2-input" placeholder="Matricula" value="`+matricula+`">
-						<input id="password" class="swal2-input" placeholder="Contraseña" value="secret">
-						<input id="nivel_academico" class="swal2-input" placeholder="Nivel academico" value="`+nivel_academico+`" >
-						<br> 
-						<label for="id_profesor3">Elije un profesor:</label>
+						`<h3 class="text-left"> Editar alumno </h3>
+						<p class="text-left mt-0 mb-0"> Nombre: </p>
+						<input id="nombre" type="text" class="swal2-input" placeholder="Nombre" value="`+nombre_alumno+`">
+						<p class="text-left mt-0 mb-0"> Apellido paterno: </p>
+						<input id="apellido_paterno" type="text" class="swal2-input" placeholder="Apellido Paterno" value="`+apellido_paterno+`">
+						<p class="text-left mt-0 mb-0"> Apellido materno: </p>
+						<input id="apellido_materno" type="text" class="swal2-input" placeholder="Apellido Materno" value="`+apellido_materno+`">
+						<p class="text-left mt-0 mb-0"> Matricula: </p>
+						<input id="matricula" type="text" class="swal2-input" placeholder="Matricula" value="`+matricula+`">
+						<p class="text-left mt-0 mb-0"> Contrseña: </p>
+						<input id="password" type="password" class="swal2-input" placeholder="Contraseña" value="secret">
+						<p class="text-left mt-0 mb-0"> Nivel academico: </p>
+						<input id="nivel_academico" type="text" class="swal2-input" placeholder="Nivel academico" value="`+nivel_academico+`" >
+						<p class="text-left mt-0 mb-0"> Profesor: </p>
 						<select id="id_profesor" value="${
 							this.profesor
-						}" name="profesor" class="swal2-input">
+						}" name="profesor" class="form-control">
 							${this.profesor.map(
 							cat => `<option value="${cat.id}">${cat.nombre}</option>`
 							)}

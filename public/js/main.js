@@ -2776,6 +2776,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2883,6 +2884,21 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3498,8 +3514,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return this.$swal({
-                  title: 'Registrar Alumno',
-                  html: "<input id=\"nombre\" class=\"swal2-input\" placeholder=\"Nombre\">\n            <input id=\"apellido_paterno\" class=\"swal2-input\" placeholder=\"Apellido Paterno\">\n            <input id=\"apellido_materno\" class=\"swal2-input\" placeholder=\"Apellido Materno\">\n            <input id=\"matricula\" class=\"swal2-input\" placeholder=\"Matricula\">\n            <input id=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\">\n            <input id=\"nivel_academico\" class=\"swal2-input\" placeholder=\"Nivel academico\">\n\t\t\t\t\t\t<br> \n          <label for=\"id_profesor\">Elije un profesor:</label>\n          <select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"swal2-input\">\n            ").concat(this.profesor.map(function (cat) {
+                  //title: 'Registrar Alumno',
+                  showClass: {
+                    backdrop: 'swal2-noanimation',
+                    // disable backdrop animation
+                    popup: '',
+                    // disable popup animation
+                    icon: '' // disable icon animation
+
+                  },
+                  hideClass: {
+                    popup: '' // disable popup fade-out animation
+
+                  },
+                  html: "\n\t\t\t<h3 class=\"text-left\"> Registrar alumno </h3>\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Matricula\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrse\xF1a: </p>\n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Nivel academico: </p>\n            <input id=\"nivel_academico\" type=\"text\" class=\"swal2-input\" placeholder=\"Nivel academico\">\n\t\t\t\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Profesor:</p>\n          <select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n            ").concat(this.profesor.map(function (cat) {
                     return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre, "</option>");
                   }), "\n          </select>\n            "),
                   focusConfirm: false,
@@ -3518,10 +3546,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formValues = _ref.value;
 
                 if (this.nombre == "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == "" || this.id_profesor == "" || this.nivel_academico == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos'
-                  });
+                  /*this.$swal({
+                  	type: 'info',
+                  	title: 'Datos incompletos',
+                  })*/
                 } else {
                   this.guardarAlumno(this.nombre, this.apellido_paterno, this.apellido_materno, this.matricula, this.password, this.nivel_academico, this.id_profesor, 4); //funcion guardarAdmin
 
@@ -3568,8 +3596,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return this.$swal({
-                  title: 'Editar Alumno',
-                  html: "<input id=\"nombre\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre_alumno + "\">\n\t\t\t\t\t\t<input id=\"apellido_paterno\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t\t<input id=\"apellido_materno\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\t\t\t\t\t\t<input id=\"matricula\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\t\t\t\t\t\t<input id=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<input id=\"nivel_academico\" class=\"swal2-input\" placeholder=\"Nivel academico\" value=\"" + nivel_academico + "\" >\n\t\t\t\t\t\t<br> \n\t\t\t\t\t\t<label for=\"id_profesor3\">Elije un profesor:</label>\n\t\t\t\t\t\t<select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"swal2-input\">\n\t\t\t\t\t\t\t").concat(this.profesor.map(function (cat) {
+                  //title: 'Editar Alumno',
+                  showClass: {
+                    backdrop: 'swal2-noanimation',
+                    // disable backdrop animation
+                    popup: '',
+                    // disable popup animation
+                    icon: '' // disable icon animation
+
+                  },
+                  hideClass: {
+                    popup: '' // disable popup fade-out animation
+
+                  },
+                  html: "<h3 class=\"text-left\"> Editar alumno </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre_alumno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrse\xF1a: </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nivel academico: </p>\n\t\t\t\t\t\t<input id=\"nivel_academico\" type=\"text\" class=\"swal2-input\" placeholder=\"Nivel academico\" value=\"" + nivel_academico + "\" >\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Profesor: </p>\n\t\t\t\t\t\t<select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n\t\t\t\t\t\t\t").concat(this.profesor.map(function (cat) {
                     return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre, "</option>");
                   }), "\n\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t"),
                   focusConfirm: false,
@@ -4030,6 +4070,29 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6032,6 +6095,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -6850,6 +6927,149 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      pregunta: '',
+      experto: '',
+      profesor: '',
+      alumnos: '',
+      temas: '',
+      admins: ''
+    };
+  },
+  mounted: function mounted() {
+    this.getpregunta();
+    this.getTemas();
+    this.getadmins();
+    this.getprofesor();
+    this.getalumnos();
+    this.getexperto();
+  },
+  methods: {
+    getpregunta: function getpregunta() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'GET',
+        url: '/pregunta/count'
+      }).then(function (result) {
+        //console.log(result.data)
+        _this.pregunta = result.data[0][0].totalPreguntas;
+      }, function (error) {
+        console.error(error);
+      });
+    },
+    getTemas: function getTemas() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'GET',
+        url: '/temas/count'
+      }).then(function (result) {
+        //console.log("Los temas son "+ result.data)
+        _this2.temas = result.data[0][0].totalTemas;
+      }, function (error) {
+        console.error(error);
+      });
+    },
+    getadmins: function getadmins() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'GET',
+        url: '/admin/count'
+      }).then(function (result) {
+        //console.log("Admin",result.data)
+        _this3.admins = result.data[0][0].totalAdministradores;
+      }, function (error) {
+        console.error(error);
+      });
+    },
+    getalumnos: function getalumnos() {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'GET',
+        url: '/alumno/count'
+      }).then(function (result) {
+        //console.log("hola como estas ", result.data)
+        _this4.alumnos = result.data[0][0].totalAlumnos;
+      }, function (error) {
+        console.error(error);
+      });
+    },
+    getprofesor: function getprofesor() {
+      var _this5 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'GET',
+        url: '/profesor/count'
+      }).then(function (result) {
+        //console.log(result.data)
+        _this5.profesor = result.data[0][0].totalDocentes;
+      }, function (error) {
+        console.error(error);
+      });
+    },
+    getexperto: function getexperto() {
+      var _this6 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'GET',
+        url: '/experto/count'
+      }).then(function (result) {
+        //console.log(result.data)
+        _this6.experto = result.data[0][0].totalExpertos;
+      }, function (error) {
+        console.error(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -48716,16 +48936,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-2" }, [
+    return _c("div", { staticClass: "col-12 mt-4" }, [
       _c("div", { staticClass: "page-header" }, [
-        _c("h3", { staticClass: "page-title" }, [
-          _vm._v(" Control de acceso ")
-        ]),
-        _vm._v(" "),
         _c(
           "div",
           { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
           [
+            _c("h1", { staticClass: "page-title" }, [
+              _vm._v(" Control de acceso ")
+            ]),
+            _vm._v(" "),
             _c("ul", { staticClass: "quick-links ml-auto" }, [
               _c("li", [
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
@@ -48896,26 +49116,41 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "row",
-                staticStyle: { padding: "0 !important", margin: "0 !important" }
+                staticClass: "page-header border-0",
+                staticStyle: { padding: "0 0 0", margin: "0 0 0" }
               },
               [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 " }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success float-right",
-                      attrs: { type: "button" },
-                      on: { click: _vm.btnGuardar }
-                    },
-                    [
-                      _c("i", { staticClass: "fas fa-user-plus" }),
-                      _vm._v(" Registrar Administrador\n\t\t\t\t\t\t")
-                    ]
-                  )
-                ])
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
+                  },
+                  [
+                    _c("h3", { staticClass: "page-title" }, [
+                      _vm._v(" Lista de administradores ")
+                    ]),
+                    _vm._v(" "),
+                    _c("ul", { staticClass: "quick-links ml-auto" }, [
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary float-right btn-lg",
+                            attrs: { type: "button" },
+                            on: { click: _vm.btnGuardar }
+                          },
+                          [
+                            _c("i", { staticClass: "fas fa-user-plus" }),
+                            _vm._v(
+                              " Registrar administrador\n\t\t\t\t\t\t\t\t\t"
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
@@ -48931,6 +49166,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control mb-2",
+              attrs: { placeholder: "Ej. Juan Pérez" },
               domProps: { value: _vm.filters.nombre.value },
               on: {
                 input: function($event) {
@@ -49114,14 +49350,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-2" }, [
+    return _c("div", { staticClass: "col-12 mt-4" }, [
       _c("div", { staticClass: "page-header" }, [
-        _c("h3", { staticClass: "page-title" }, [_vm._v(" Administradores ")]),
-        _vm._v(" "),
         _c(
           "div",
           { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
           [
+            _c("h1", { staticClass: "page-title" }, [
+              _c("b", [_vm._v(" Administradores  ")])
+            ]),
+            _vm._v(" "),
             _c("ul", { staticClass: "quick-links ml-auto" }, [
               _c("li", [
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
@@ -49131,23 +49369,16 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Usuarios "),
+                  _vm._v("  Usuarios "),
                   _c("i", { staticClass: "fas fa-angle-right" })
                 ]),
-                _vm._v(" Administradores\n\t\t\t\t\t\t")
+                _vm._v(" "),
+                _c("b", [_vm._v("Administradores ")])
               ])
             ])
           ]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-8" }, [
-      _c("h3", [_vm._v(" Lista de administradores ")])
     ])
   }
 ]
@@ -49210,7 +49441,7 @@ var render = function() {
                           },
                           [
                             _c("i", { staticClass: "fas fa-user-plus" }),
-                            _vm._v(" Registrar Alumno\n\t\t\t\t\t\t\t\t\t")
+                            _vm._v(" Registrar alumno\n\t\t\t\t\t\t\t\t\t")
                           ]
                         )
                       ])
@@ -50039,287 +50270,312 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _vm._m(2),
             _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("ac")
-                        }
-                      }
-                    },
-                    [_vm._v("AC")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("(")
-                        }
-                      }
-                    },
-                    [_vm._v("(")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.botonesCalculadora(")")
-                        }
-                      }
-                    },
-                    [_vm._v(")")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("/")
-                        }
-                      }
-                    },
-                    [_vm._v("/")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("7")
-                        }
-                      }
-                    },
-                    [_vm._v("7")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("8")
-                        }
-                      }
-                    },
-                    [_vm._v("8")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("9")
-                        }
-                      }
-                    },
-                    [_vm._v("9")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("*")
-                        }
-                      }
-                    },
-                    [_vm._v("*")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("4")
-                        }
-                      }
-                    },
-                    [_vm._v("4")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("5")
-                        }
-                      }
-                    },
-                    [_vm._v("5")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("6")
-                        }
-                      }
-                    },
-                    [_vm._v("6")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("+")
-                        }
-                      }
-                    },
-                    [_vm._v("+")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("1")
-                        }
-                      }
-                    },
-                    [_vm._v("1")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("2")
-                        }
-                      }
-                    },
-                    [_vm._v("2")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("3")
-                        }
-                      }
-                    },
-                    [_vm._v("3")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("-")
-                        }
-                      }
-                    },
-                    [_vm._v("-")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("0")
-                        }
-                      }
-                    },
-                    [_vm._v("0")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora(".")
-                        }
-                      }
-                    },
-                    [_vm._v(".")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          return _vm.botonesCalculadora("=")
-                        }
-                      }
-                    },
-                    [_vm._v("=")]
-                  )
-                ])
-              ])
-            ]),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: {
+                  id: "exampleModal",
+                  tabindex: "-1",
+                  role: "dialog",
+                  "aria-labelledby": "exampleModalLabel",
+                  "aria-hidden": "true"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "modal-dialog", attrs: { role: "document" } },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("ac")
+                                  }
+                                }
+                              },
+                              [_vm._v("AC")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("(")
+                                  }
+                                }
+                              },
+                              [_vm._v("(")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.botonesCalculadora(")")
+                                  }
+                                }
+                              },
+                              [_vm._v(")")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("/")
+                                  }
+                                }
+                              },
+                              [_vm._v("/")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("7")
+                                  }
+                                }
+                              },
+                              [_vm._v("7")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("8")
+                                  }
+                                }
+                              },
+                              [_vm._v("8")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("9")
+                                  }
+                                }
+                              },
+                              [_vm._v("9")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("*")
+                                  }
+                                }
+                              },
+                              [_vm._v("*")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("4")
+                                  }
+                                }
+                              },
+                              [_vm._v("4")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("5")
+                                  }
+                                }
+                              },
+                              [_vm._v("5")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("6")
+                                  }
+                                }
+                              },
+                              [_vm._v("6")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("+")
+                                  }
+                                }
+                              },
+                              [_vm._v("+")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("1")
+                                  }
+                                }
+                              },
+                              [_vm._v("1")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("2")
+                                  }
+                                }
+                              },
+                              [_vm._v("2")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("3")
+                                  }
+                                }
+                              },
+                              [_vm._v("3")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("-")
+                                  }
+                                }
+                              },
+                              [_vm._v("-")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("0")
+                                  }
+                                }
+                              },
+                              [_vm._v("0")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora(".")
+                                  }
+                                }
+                              },
+                              [_vm._v(".")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c(
+                              "button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.botonesCalculadora("=")
+                                  }
+                                }
+                              },
+                              [_vm._v("=")]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -50342,7 +50598,7 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(5),
+                      _vm._m(6),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
                         _c("div", { staticClass: "row" }, [
@@ -50888,7 +51144,9 @@ var render = function() {
                 )
               ]
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(7)
         ])
       ])
     ])
@@ -50941,24 +51199,42 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8" }, [
-      _c("div", { attrs: { id: "quiz" } }, [
-        _c("h3", { attrs: { id: "question" } }),
-        _vm._v(" "),
-        _c("p", { attrs: { id: "noOpciones" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "buttons", attrs: { id: "buttons" } }),
-        _vm._v(" "),
-        _c("hr", { staticStyle: { "margin-top": "50px" } }),
-        _vm._v(" "),
-        _c("button", { attrs: { id: "next" } }, [_vm._v(" Siguiente ")]),
-        _vm._v(" "),
-        _c("footer", [
-          _c("p", { attrs: { id: "tag_topic" } }, [_vm._v("Tema")]),
-          _vm._v(" "),
-          _c("p", { attrs: { id: "progress" } })
-        ])
-      ])
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#exampleModal"
+        }
+      },
+      [_c("i", { staticClass: "fas fa-calculator" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v(" Calculadora ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ])
   },
   function() {
@@ -50991,6 +51267,32 @@ var staticRenderFns = [
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
         [_vm._v("Funciones")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { attrs: { id: "quiz" } }, [
+          _c("h3", { attrs: { id: "question" } }),
+          _vm._v(" "),
+          _c("p", { attrs: { id: "noOpciones" } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "buttons", attrs: { id: "buttons" } }),
+          _vm._v(" "),
+          _c("hr", { staticStyle: { "margin-top": "50px" } }),
+          _vm._v(" "),
+          _c("button", { attrs: { id: "next" } }, [_vm._v(" Siguiente ")]),
+          _vm._v(" "),
+          _c("footer", [
+            _c("p", { attrs: { id: "tag_topic" } }, [_vm._v("Tema")]),
+            _vm._v(" "),
+            _c("p", { attrs: { id: "progress" } })
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -51027,30 +51329,43 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "row",
-                staticStyle: { padding: "0 !important", margin: "0 !important" }
+                staticClass: "page-header border-0",
+                staticStyle: { padding: "0 0 0", margin: "0 0 0" }
               },
               [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary float-right",
-                      attrs: { type: "button" },
-                      on: { click: _vm.btnGuardar }
-                    },
-                    [
-                      _c("i", { staticClass: "fas fa-user-plus" }),
-                      _vm._v(" Registrar nuevo experto")
-                    ]
-                  )
-                ])
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
+                  },
+                  [
+                    _c("h3", { staticClass: "page-title" }, [
+                      _vm._v(" Lista de expertos ")
+                    ]),
+                    _vm._v(" "),
+                    _c("ul", { staticClass: "quick-links ml-auto" }, [
+                      _c("li", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary float-right btn-lg",
+                            attrs: { type: "button" },
+                            on: { click: _vm.btnGuardar }
+                          },
+                          [
+                            _c("i", { staticClass: "fas fa-user-plus" }),
+                            _vm._v(" Registrar experto\n\t\t\t\t\t\t\t\t\t")
+                          ]
+                        )
+                      ])
+                    ])
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
-            _c("label", [_vm._v("Busqueda por nombre: ")]),
+            _vm._m(1),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -51273,9 +51588,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-2" }, [
+    return _c("div", { staticClass: "col-12 mt-4" }, [
       _c("div", { staticClass: "page-header" }, [
-        _c("h3", { staticClass: "page-title" }, [_vm._v(" Expertos ")]),
+        _c("h1", { staticClass: "page-title" }, [_vm._v(" Expertos ")]),
         _vm._v(" "),
         _c(
           "div",
@@ -51305,9 +51620,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("h3", [_vm._v(" Lista de expertos registrados en el sistema")])
-    ])
+    return _c("label", [_c("b", [_vm._v(" Busqueda por nombre: ")])])
   }
 ]
 render._withStripped = true
@@ -52123,9 +52436,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-2" }, [
+    return _c("div", { staticClass: "col-12 mt-4" }, [
       _c("div", { staticClass: "page-header" }, [
-        _c("h3", { staticClass: "page-title" }, [_vm._v(" Dashboard ")]),
+        _c("h1", { staticClass: "page-title" }, [
+          _c("b", [_vm._v(" Dashboard ")])
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -52299,6 +52614,65 @@ var staticRenderFns = [
           "aria-valuemax": "45"
         }
       })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "col-12 mt-2" }, [
+        _c("div", { staticClass: "page-header" }, [
+          _c("h1", { staticClass: "page-title" }, [_vm._v(" Dashboard  ")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
+            [
+              _c("ul", { staticClass: "quick-links ml-auto" }, [
+                _c("li", [
+                  _c("span", [_c("i", { staticClass: "fas fa-home" })])
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12 " }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("h1", [_vm._v("\n\t\t\t\t\t\t\tBienvenido\n\t\t\t\t\t\t")])
+            ])
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -72768,6 +73142,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/IndexAlumnos.vue":
+/*!*********************************************************!*\
+  !*** ./resources/assets/js/components/IndexAlumnos.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IndexAlumnos.vue?vue&type=template&id=70af75f4& */ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&");
+/* harmony import */ var _IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IndexAlumnos.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/IndexAlumnos.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexAlumnos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&":
+/*!****************************************************************************************!*\
+  !*** ./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexAlumnos.vue?vue&type=template&id=70af75f4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Perfil.vue":
 /*!***************************************************!*\
   !*** ./resources/assets/js/components/Perfil.vue ***!
@@ -73744,6 +74187,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PreguntasCalculadas__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @/components/PreguntasCalculadas */ "./resources/assets/js/components/PreguntasCalculadas.vue");
 /* harmony import */ var _components_PreguntasOpcionMultipleCalculadas__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @/components/PreguntasOpcionMultipleCalculadas */ "./resources/assets/js/components/PreguntasOpcionMultipleCalculadas.vue");
 /* harmony import */ var _components_Perfil__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @/components/Perfil */ "./resources/assets/js/components/Perfil.vue");
+/* harmony import */ var _components_IndexAlumnos__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @/components/IndexAlumnos */ "./resources/assets/js/components/IndexAlumnos.vue");
 // resources/assets/js/router/index.js
 
 
@@ -73758,6 +74202,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
  //import historialalumnos from '@/components/historialalumnos'
+
 
 
 
@@ -73917,6 +74362,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/perfil',
     name: 'Perfil',
     component: _components_Perfil__WEBPACK_IMPORTED_MODULE_23__["default"]
+  }, {
+    path: '/alumno/app',
+    name: 'Perfilalumno',
+    component: _components_IndexAlumnos__WEBPACK_IMPORTED_MODULE_24__["default"]
   }]
 }));
 

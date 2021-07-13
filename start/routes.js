@@ -10,6 +10,9 @@
 	Route.post('login','UserController.login')
 	Route.get('logout','UserController.logout')
 
+
+Route.get('/pruebapython', 'PonderacionController.pruebaPython');
+
   Route.get('temas/count','TemaController.temacount') 
   /*Route.post('upload', async ({ request }) => {
   const profilePics = request.file('profile_pics', {
@@ -179,6 +182,10 @@ Route.get('/perfil', ({view}) =>  view.render('app'))
 
 
 /////////////////////////////////////////
+
+
+Route.get('/alumno/app', ({view})=> view.render('app') );
+
 Route.get('pregunta/showCalculadas','PreguntaController.mostrarPreguntasCalculadas')
 	Route.get('/preguntasCalculadas', ({view})=> view.render('app') );
   Route.post('/preguntaCalculada/store','PreguntaController.storeCalculada')

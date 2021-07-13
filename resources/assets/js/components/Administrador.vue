@@ -3,14 +3,15 @@
 	  	<div class="col-xl-12">
 			
 			<!-- Breadcrumb -->
-			<div class="col-12 mt-2" >
+			<div class="col-12 mt-4" >
 				<div class="page-header">
-					<h3 class="page-title"> Administradores </h3>
+					
 					<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+						<h1 class="page-title"> <b> Administradores  </b></h1>
 						<ul class="quick-links ml-auto">
 						<li>
-							<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd"> Usuarios <i class="fas fa-angle-right"></i> </span> Administradores
-						</li>
+							 <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> </span> <span style="color: #bdb9bd">  Usuarios <i class="fas fa-angle-right"></i> </span> <b>Administradores </b>
+						</li> 
 						</ul>
 				  </div>
 				</div>
@@ -27,7 +28,7 @@
 					</div>-->
 					
 					
-					<div class="row" style="padding: 0 !important; margin: 0 !important; ">
+					<!--<div class="row" style="padding: 0 !important; margin: 0 !important; ">
 						<div class="col-md-8">
 							<h3> Lista de administradores </h3>
 						</div>
@@ -41,11 +42,25 @@
 
 
 						</div>	
+					</div> -->
+					
+					<div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h3 class="page-title"> Lista de administradores </h3>
+							
+							<ul class="quick-links ml-auto">
+								<li>
+									<button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar">
+										<i class="fas fa-user-plus"></i> Registrar administrador
+									</button>
+								</li>
+							</ul>
+						</div>
 					</div>
 					
 					  
 					<label>Busqueda por nombre: </label>
-      				<input class="form-control mb-2" v-model="filters.nombre.value"/>
+      				<input class="form-control mb-2" placeholder="Ej. Juan Pérez" v-model="filters.nombre.value"/>
 					  
 					<div class="table-responsive">
 						

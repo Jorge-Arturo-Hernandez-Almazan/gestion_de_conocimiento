@@ -113,7 +113,7 @@ class UserController {
 
 		session.put('prueba', funcionalidad_rol )
 		
-		return response.redirect('/tablero')
+		return response.redirect('/')
 
 	}
 	

@@ -3,9 +3,9 @@
               <div class="col-lg-12">
 				  
 				  <!-- Breadcrumb -->
-				<div class="col-12 mt-2">
+				<div class="col-12 mt-4">
 					<div class="page-header">
-						<h3 class="page-title"> Expertos </h3>
+						<h1 class="page-title"> Expertos </h1>
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
 							<ul class="quick-links ml-auto">
 							<li>
@@ -25,7 +25,7 @@
                     <h4 class="card-title">Expertos</h4>
 										<button  type="button" class="btn btn-warning btn-fw" @click="btnGuardar">Registrar Expertos</button>-->
 					  
-					  <div class="row" style="padding: 0 !important; margin: 0 !important; ">
+					 <!-- <div class="row" style="padding: 0 !important; margin: 0 !important; ">
 						<div class="col-md-6">
 							<h3> Lista de expertos registrados en el sistema</h3>
 						</div>
@@ -33,9 +33,23 @@
 							<button  type="button" class="btn btn-primary float-right"@click="btnGuardar"> <i class="fas fa-user-plus"></i> Registrar nuevo experto</button>
 							
 						</div>	
+					</div> -->
+					  
+					<div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h3 class="page-title"> Lista de expertos </h3>
+							
+							<ul class="quick-links ml-auto">
+								<li>
+									<button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar">
+										<i class="fas fa-user-plus"></i> Registrar experto
+									</button>
+								</li>
+							</ul>
+						</div>
 					</div>
 					  
-					  <label>Busqueda por nombre: </label>
+					  <label> <b> Busqueda por nombre: </b></label>
       				<input placeholder="Ej. Juan Perez" class="form-control mb-2" v-model="filters.nombre.value"/>
 					  
 					<div class="table-responsive">

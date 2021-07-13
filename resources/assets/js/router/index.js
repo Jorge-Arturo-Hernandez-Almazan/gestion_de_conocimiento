@@ -27,6 +27,7 @@ import AccesoRutas from '@/components/AccesoRutas'
 import PreguntasCalculadas from '@/components/PreguntasCalculadas'
 import PreguntasOpcionMultipleCalculadas from '@/components/PreguntasOpcionMultipleCalculadas'
 import Perfil from '@/components/Perfil'
+import indexAlumnos from '@/components/IndexAlumnos'
 
 Vue.use(Router)
 
@@ -218,6 +219,11 @@ export default new Router({
        path:'/perfil',
        name:'Perfil',
        component:Perfil
+    },
+	{
+       path:'/alumno/app',
+       name:'Perfilalumno',
+       component:indexAlumnos
     },
 	   
 ]

@@ -10,6 +10,12 @@ class PonderacionController {
     return "Prueba"
   }
   
+  async pruebaPython({response})
+  {
+     const output = execSync('python3 CalculoCPTS2.py', { encoding: 'utf-8' });  // the default is 'buffer'
+     return response.json(output);
+  }
+  
   async arrayEquals(a, b) {
     if (a === b) return true;
     if (a == null || b == null) return false;

@@ -91,11 +91,11 @@
 								<ul class="nav flex-column sub-menu">
 								   
 									<li class="nav-item">
-									 <a class="nav-link" href="/configurarCuestionario"> Configurar cuestionario </a>
+									 <a class="nav-link" href="/configurarCuestionario"> <i class="fas fa-cogs"></i> &nbsp; Configurar cuestionario </a>
 								   </li>
 									
 								    <li class="nav-item">
-									  <a class="nav-link" href="/cuestionario"> Ver Cuestionario </a>
+									  <a class="nav-link" href="/cuestionario"> <i class="fas fa-eye"></i> &nbsp; Ver Cuestionario </a>
 								    </li>
 									
 									
@@ -122,24 +122,24 @@
 							<div class="collapse" id="auth">
 								<ul class="nav flex-column sub-menu">
 								  <li class="nav-item">
-									<a class="nav-link" href="/preguntasAbiertas">  Abiertas </a>
+									<a class="nav-link" href="/preguntasAbiertas"> <i class="fas fa-keyboard"></i> &nbsp; Abiertas </a>
 								  </li>
 								  <li class="nav-item">
-									<a class="nav-link" href="/preguntasNumericas">  Numericas</a>
+									<a class="nav-link" href="/preguntasNumericas"> <i class="fas fa-sort-numeric-down"></i> &nbsp; Numericas</a>
 								  </li>
 								  <li class="nav-item">
-									<a class="nav-link" href="/preguntasVerdaderoFalso">  Verdadero / falso </a>
+									<a class="nav-link" href="/preguntasVerdaderoFalso"> <i class="fas fa-toggle-on"></i> &nbsp; Verdadero / falso </a>
 								  </li>
 									<li class="nav-item">
-									<a class="nav-link" href="/preguntasOpcionMultiple"> Opcion multiple</a>
+									<a class="nav-link" href="/preguntasOpcionMultiple"> <i class="fas fa-stream"></i>  &nbsp; Opcion multiple</a>
 								  </li>
 									
 									<li class="nav-item">
-									<a class="nav-link" href="/preguntasCalculadas"> Calculadas</a>
+									<a class="nav-link" href="/preguntasCalculadas"> <i class="fas fa-keyboard"></i> &nbsp; Calculadas</a>
 								  </li>
                   
                   <li class="nav-item">
-									<a class="nav-link" href="/PreguntasOpcionMultipleCalculadas"> Calculadas opcion multiple</a>
+									<a class="nav-link" href="/PreguntasOpcionMultipleCalculadas">  <i class="fas fa-stream"></i>  &nbsp; Calculadas opcion multiple</a>
 								  </li>
 									
 								</ul>
@@ -211,6 +211,7 @@
 							<span class="menu-title">Temas</span>
 						</a>
 						</li>
+					
 						@elseif( auth.user.id_rol == 3)
             <li class="nav-item">
 						<a class="nav-link" href="/tablero">
@@ -228,19 +229,23 @@
             <span class="menu-title">Prueba</span>
             </a>
             </li>
-						@elseif( auth.user.id_rol == 4)
-            <li class="nav-item">
-						<a class="nav-link" href="/tablero">
-							<!-- <i class="fa fa-home"></i> -->
-							<i class="fa-li fa fa-check-square"> </i>
+				@elseif( auth.user.id_rol == 4)
+					<li class="nav-item">
+						<a class="nav-link" href="/">
+							<i class="fas fa-home"></i>
+							&nbsp; 	&nbsp; 	&nbsp;
 							<span class="menu-title">Inicio</span>
 						</a>
-						</li>
-						<li class="nav-item">
-            <a class="nav-link" href="/cuestionario">
-            <span class="menu-title">Contestar cuestionario</span>
-            </a>
-            </li>	
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="/cuestionario">
+							
+							<i class="fas fa-chalkboard-teacher"></i>
+							&nbsp; 	&nbsp; 	&nbsp;
+							<span class="menu-title">Cuestionario</span>
+						</a>
+					</li>	
 				@endif
 			</ul>
 		  </nav>
