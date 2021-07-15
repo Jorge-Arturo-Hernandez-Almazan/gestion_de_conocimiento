@@ -26,7 +26,7 @@
 							</a>
 						</li> -->
 					<br>
-					<li class="nav-item nav-category">Menu Principal</li>
+					<li class="nav-item nav-category">Menú Principal</li>
 					
 					 <!-- Condicion para mostar el menu a los administradores-->
 						@if( auth.user.id_rol == 1)  
@@ -35,7 +35,7 @@
 							<a class="nav-link" href="/tablero">
 								<!-- <i class="fa fa-home"></i> -->
 								<i class="fas fa-home"></i>
-									&nbsp; 	&nbsp; 	&nbsp;
+									&nbsp; 
 								<span class="menu-title">Inicio</span>
 								
 								
@@ -45,7 +45,7 @@
 						<li class="nav-item">							
 							<a class="nav-link" href="/configurarAccesos">
 								<i class="fas fa-lock-open"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 								<span class="menu-title">Accesos</span>
 							</a>
 						</li>  
@@ -54,7 +54,7 @@
 						<li class="nav-item">			<!--Codigo de encapsular Usuarios-->
 						  	<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 								<i class="fas fa-users"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp;
 								<span class="menu-title">Usuarios</span>
 						  	</a>
 						  	<div class="collapse" id="ui-basic">
@@ -83,7 +83,7 @@
 						<li class="nav-item">  <!--Codigo de encapsular Cuestionario-->
 						  	<a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
 								<i class="far fa-file-alt"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 								<span class="menu-title">Cuestionario</span>
 								<!--<i class="menu-arrow"></i>-->
 						  	</a>
@@ -107,7 +107,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="/temas">
 								<i class="fas fa-chalkboard-teacher"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 								<span class="menu-title">Temas</span>
 							</a>
 						</li>
@@ -115,7 +115,7 @@
 						<li class="nav-item"> <!--Codigo Registrar Preguntas-->
 							<a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
 								<i class="fas fa-question"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 								<span class="menu-title">Preguntas</span>
 								<!--<i class="menu-arrow"></i>-->
 							</a>
@@ -149,7 +149,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="/historialexperto">
 								<i class="fas fa-project-diagram"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 								<span class="menu-title">Grafo de conocimiento</span>
 							</a>
 						</li>
@@ -157,7 +157,7 @@
 						<li class="nav-item">
 							<a class="nav-link" href="/historialprofesor">
 								<i class="fas fa-project-diagram"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 								<span class="menu-title">Grafo de conocimiento (profesor)</span>
 							</a>
 						</li>
@@ -165,7 +165,7 @@
 						<li class="nav-item">  <!--Codigo de encapsular Cuestionario-->
 						  	<a class="nav-link" data-toggle="collapse" href="#imagenes" aria-expanded="false" aria-controls="imagenes">
 								<i class="fas fa-file-upload"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 								<span class="menu-title">Recursos</span>
 								<!--<i class="menu-arrow"></i>-->
 						  	</a>
@@ -186,10 +186,10 @@
 						@elseif( auth.user.id_rol == 2)
 						<li class="nav-item">
 							
-							<a class="nav-link" href="/tablero">
+							<a class="nav-link" href="/">
 								<!-- <i class="fa fa-home"></i> -->
 								<i class="fas fa-home"></i>
-									&nbsp; 	&nbsp; 	&nbsp;
+									&nbsp; 
 								<span class="menu-title">Inicio</span>
 							</a>
 						</li>   
@@ -198,37 +198,30 @@
 						<a class="nav-link" href="/historialexperto">
 							<!-- <i class="fa fa-eercast"></i> -->
 							<i class="fas fa-project-diagram"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp;
 							
-							<span class="menu-title">Árbol de conocimiento</span>
+							<span class="menu-title">Grafo de conocimiento</span>
 						</a>
 						<li class="nav-item">
 						<a class="nav-link" href="/temas">
 							<!-- <i class="fa fa-eercast"></i> -->
 							<i class="fas fa-chalkboard-teacher"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
+								&nbsp; 
 							
 							<span class="menu-title">Temas</span>
 						</a>
 						</li>
 					
 						@elseif( auth.user.id_rol == 3)
-            <li class="nav-item">
-						<a class="nav-link" href="/tablero">
-							<!-- <i class="fa fa-home"></i> -->
-							<i class="fa-li fa fa-check-square"> </i>
-							<span class="menu-title">Inicio</span>
-						</a>
+            			<li class="nav-item">
+							<a class="nav-link" href="/">
+								<!-- <i class="fa fa-home"></i> -->
+								<i class="fas fa-home"></i>
+									&nbsp; 
+								<span class="menu-title">Inicio</span>
+							</a>
 						</li>
-						<li class="nav-item">
-            <a class="nav-link" href="/resolverCuestionario">
-            
-				<i class="fas fa-project-diagram"></i>
-								&nbsp; 	&nbsp; 	&nbsp;
-				
-            <span class="menu-title">Prueba</span>
-            </a>
-            </li>
+						
 				@elseif( auth.user.id_rol == 4)
 					<li class="nav-item">
 						<a class="nav-link" href="/">

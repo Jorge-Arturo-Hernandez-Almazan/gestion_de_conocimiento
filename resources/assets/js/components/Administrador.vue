@@ -7,7 +7,7 @@
 				<div class="page-header">
 					
 					<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-						<h1 class="page-title"> <b> Administradores  </b></h1>
+						<h1 class="page-title">  Administradores </h1>
 						<ul class="quick-links ml-auto">
 						<li>
 							 <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> </span> <span style="color: #bdb9bd">  Usuarios <i class="fas fa-angle-right"></i> </span> <b>Administradores </b>

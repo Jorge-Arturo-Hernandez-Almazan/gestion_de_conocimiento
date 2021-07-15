@@ -8,7 +8,7 @@ class ImagenesSchema extends Schema {
     this.create('imagenes', (table) => {
       	table.increments()
       	table.timestamps()
-		table.string('nombre',80)
+		 table.string('nombre',80)
      table.string('alias',100)
     })
   }

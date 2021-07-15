@@ -6,10 +6,11 @@
 			
 				
 				<!-- Breadcrumb -->
-			<div class="col-12 mt-2">
+			<div class="col-12 mt-4">
 				<div class="page-header">
-					<h3 class="page-title"> Docentes </h3>
+					
 					<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+						<h1 class="page-title"> Docentes </h1>
 						<ul class="quick-links ml-auto">
 						<li>
 							<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd"> Usuarios  <i class="fas fa-angle-right"></i> </span> Docentes

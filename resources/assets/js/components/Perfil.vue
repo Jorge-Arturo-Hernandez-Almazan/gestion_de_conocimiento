@@ -1,12 +1,13 @@
 <template>
 <!-- <div class="row"> -->
-    <div class="col-xl-12">
-		<div class="col-12 mt-2">
+    <div class="">
+		<div class="col-12 mt-4">
 				<div class="page-header">
-					<h3 class="page-title"> Perfil de usuario </h3>
+					
 
 					
 					<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+						<h1 class="page-title"> Perfil de usuario </h1>
 						<ul class="quick-links ml-auto">
 						<li>
 							<span> <i class="fas fa-home"></i> </span>  
@@ -16,12 +17,10 @@
 				</div>
 			</div>
 		
-        <div class="card-body">
-          <div class="row ">
-            <div class="col-md-12 ">
+
                       <div class="card">
                         <div class="card-body">
-                          <div class="row">
+                          <div class="row" style="padding: 0 !important; margin: 0 !important; ">
 							  
                             <div class="col-md-12">
 								
@@ -105,9 +104,7 @@
                           </div>
                         </div>
                       </div>
-            </div>	
-          </div>
-        </div>
+ 
   </div>
 <!-- </div> -->
 </template>

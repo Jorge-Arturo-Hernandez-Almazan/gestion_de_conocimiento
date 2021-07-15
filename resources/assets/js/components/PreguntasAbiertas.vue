@@ -1,10 +1,11 @@
 <template>
         <div class="">
 			
-			<div class="col-12 mt-2">
+			<div class="col-12 mt-4">
 					<div class="page-header">
-						<h3 class="page-title"> Preguntas abiertas </h3>
+						
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h1 class="page-title"> Preguntas abiertas </h1>
 							<ul class="quick-links ml-auto">
 							<li>
 								<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd">  Preguntas  <i class="fas fa-angle-right"></i> </span> Preguntas abiertas
@@ -276,8 +277,8 @@ export default {
     btnGuardar: async function() {
       const { value: formValues } = await this.$swal({
         title: "Registrar Pregunta",
-        html: `<input id="pregunta" class="swal2-input" placeholder="pregunta">
-					<textarea id="respuesta" class="swal2-input"  placeholder="respuesta"></textarea>
+        html: `<input id="pregunta" class="swal2-input" placeholder="Pregunta">
+					<textarea id="respuesta" class="swal2-input"  placeholder="Respuesta"></textarea>
 					<br>
 					<label for="id_tema_2">Elije a que tema es correspondiente:</label>
 

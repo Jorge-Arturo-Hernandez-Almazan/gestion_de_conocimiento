@@ -28,6 +28,9 @@ import PreguntasCalculadas from '@/components/PreguntasCalculadas'
 import PreguntasOpcionMultipleCalculadas from '@/components/PreguntasOpcionMultipleCalculadas'
 import Perfil from '@/components/Perfil'
 import indexAlumnos from '@/components/IndexAlumnos'
+import indexExpertos from '@/components/IndexExpertos'
+import indexProfesores from '@/components/IndexProfesores'
+import PruebaImagenes from '@/components/PruebaImagenes'
 
 Vue.use(Router)
 
@@ -225,6 +228,22 @@ export default new Router({
        name:'Perfilalumno',
        component:indexAlumnos
     },
+	{
+       path:'/experto/app',
+       name:'Dashboardexperto',
+       component:indexExpertos
+    },
+	{
+       path:'/profesor/app',
+       name:'Dashboardprofesor',
+       component:indexProfesores
+    },
+    {
+	   path:'/pruebaimagenes',
+	   name:'pruebaImagenes',
+	   component:PruebaImagenes
+    }
+	   
 	   
 ]
 })

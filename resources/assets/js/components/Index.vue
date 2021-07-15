@@ -2,8 +2,9 @@
 <div >
 		 <div class="col-12 mt-4">  
 			<div class="page-header">
-				<h1 class="page-title"> <b> Dashboard </b> </h1>
+				
 				<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+					<h1 class="page-title"> Dashboard </h1>
 					<ul class="quick-links ml-auto">
 					<li>
 						<span> <i class="fas fa-home"></i> </span>  

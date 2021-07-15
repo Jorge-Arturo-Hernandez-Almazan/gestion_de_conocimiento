@@ -6,8 +6,9 @@
 				  <!-- Breadcrumb -->
 				<div class="col-12 mt-4">
 					<div class="page-header">
-						<h1 class="page-title"> <b> Alumnos </b> </h1>
+						
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h1 class="page-title">  Alumnos  </h1>
 							<ul class="quick-links ml-auto">
 							<li>
 								<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd"> Usuarios  <i class="fas fa-angle-right"></i> </span> Alumnos
@@ -58,7 +59,7 @@
 					 <!-- <label>Busqueda por nombre: </label> -->
 
 					<b> Busqueda por nombre: </b>
-								<input class="form-control mb-2" placeholder="Ej. Juan Francisco" v-model="filters.nombre.value" style="padding: 0 0 0; margin: 0 0 0;"/>
+								<input class="form-control mb-2" placeholder=" Ej. Juan Francisco" v-model="filters.nombre.value" style="padding: 0 0 0; margin: 0 0 0;"/>
 					  
 					<div class="table-responsive">
 						

@@ -34,9 +34,8 @@ Route.get('/pruebapython', 'PonderacionController.pruebaPython');
 
 ///RUTAS DEL METODO DE PONDERACION
 
-Route.get('/arbol/obtenerCaminos/:id', 'PonderacionController.getPaths')
+Route.get('/arbol/obtenerCaminos/:id', 'PonderacionController.getPaths');
 Route.get('/arbol/obtenerResultados', 'PonderacionController.getResults');
-
 Route.get('/arbol/obtenerRamas', 'PonderacionController.obtener_ramas');
 ///////////////////////////////////////////////////
 
@@ -185,9 +184,14 @@ Route.get('/perfil', ({view}) =>  view.render('app'))
 
 
 Route.get('/alumno/app', ({view})=> view.render('app') );
+Route.get('/experto/app', ({view})=> view.render('app') );
+Route.get('/profesor/app', ({view})=> view.render('app') );
+
+Route.get('/pruebaimagenes', ({view})=> view.render('app') );
+
 
 Route.get('pregunta/showCalculadas','PreguntaController.mostrarPreguntasCalculadas')
-	Route.get('/preguntasCalculadas', ({view})=> view.render('app') );
+Route.get('/preguntasCalculadas', ({view})=> view.render('app') );
   Route.post('/preguntaCalculada/store','PreguntaController.storeCalculada')
   Route.post('/preguntaCalculada/delete','PreguntaController.deleteCalculadas')
   Route.post('pregunta/getComodines','PreguntaController.getComodines')

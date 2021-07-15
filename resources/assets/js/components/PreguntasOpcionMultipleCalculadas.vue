@@ -2,10 +2,11 @@
 <template>
             <div class="">
 				
-				<div class="col-12 mt-2">
+				<div class="col-12 mt-4">
 					<div class="page-header">
-						<h3 class="page-title"> Preguntas calculadas de opción multiple</h3>
+						
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h1 class="page-title"> Preguntas calculadas de opción multiple </h1>
 							<ul class="quick-links ml-auto">
 							<li>
 								<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd">  Preguntas  <i class="fas fa-angle-right"></i> </span> Preguntas opcion multiple

@@ -38,7 +38,7 @@ class UserController {
 			if( auth.user.id_rol == 1){
 			  	return response.redirect('/tablero')
 			} else if (auth.user.id_rol == 2) {
-				return response.redirect('/tablero')        
+				return response.redirect('/experto/app')        
 			} else if (auth.user.id_rol == 3) {
 				return response.redirect('/profesor/app')
 			} else if (auth.user.id_rol == 4) {

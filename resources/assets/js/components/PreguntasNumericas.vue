@@ -2,10 +2,11 @@
 
         <div class="">
 			
-			<div class="col-12 mt-2">
+			<div class="col-12 mt-4">
 					<div class="page-header">
-						<h3 class="page-title"> Preguntas numericas </h3>
+						
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h1 class="page-title"> Preguntas numericas </h1>
 							<ul class="quick-links ml-auto">
 							<li>
 								<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd">  Preguntas  <i class="fas fa-angle-right"></i> </span> Preguntas numericas
@@ -247,7 +248,30 @@ export default {
 					<!-- <label for="tipo">Elige un tipo de pregunta:</label>
 					<select id="tipo">
 						<option value="2">Numérica</option>
-					</select> --> `,
+					</select> 
+
+					<div class="flex w-full h-screen items-center justify-center text-center" id="app">
+					  <div class="p-12 bg-gray-100 border border-gray-300" @dragover="dragover" @dragleave="dragleave" @drop="drop">
+						<input type="file" multiple name="fields[assetsFieldHandle][]" id="assetsFieldHandle" 
+						  class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png" />
+
+						<label for="assetsFieldHandle" class="block cursor-pointer">
+						  <div>
+							Explain to our users they can drop files in here 
+							or <span class="underline">click here</span> to upload their files
+						  </div>
+						</label>
+						<ul class="mt-4" v-if="this.filelist.length" v-cloak>
+						  <li class="text-sm p-1" v-for="file in filelist">
+							${ file.name }<button class="ml-2" type="button" @click="remove(filelist.indexOf(file))" title="Remove file">remove</button>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+
+
+
+					--> `,
         focusConfirm: false,
         showCancelButton: true,
         confirmButtonText: "Guardar",
