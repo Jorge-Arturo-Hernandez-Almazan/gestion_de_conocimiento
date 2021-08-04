@@ -9,14 +9,17 @@ import 'select2';
 import 'foundation-sites';
 import ToggleButton from 'vue-js-toggle-button'
 import SmartTable from 'vuejs-smart-table'
-
+import VueViewer from 'v-viewer'
+//require(['VueViewer'], function (VueViewer) {});
 
 
 
 Vue.use(SmartTable)
 Vue.use(ToggleButton)
 Vue.use(VueSweetalert2)
+Vue.use(VueViewer)
 Vue.config.productionTip = false
+
 
 var vue_app = new Vue({
   el: '#app',

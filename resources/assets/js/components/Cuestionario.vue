@@ -34,6 +34,15 @@
 			
 			<div class="row">
 				
+				<div>
+					<div class="images" v-viewer="{movable: false}">
+					  <img v-for="src in images" :src="src" :key="src">
+					</div>
+					<button type="button" @click="show">Show</button>
+				  </div>
+				
+				
+				
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 			  		<i class="fas fa-calculator"></i>
 				</button>
@@ -261,7 +270,16 @@
 
 <script>
 import axios from "axios";
+import 'viewerjs/dist/viewer.css'
+import { directive as viewer } from "v-viewer"
+	
 export default {
+	directives: {
+      viewer: viewer({
+        debug: true,
+      }),
+    },
+	
 	data() {
 		return {
 			pregunta: [],
@@ -271,7 +289,12 @@ export default {
       		comodines: [],
 			configuracion: [],
 			topic: [],
-			numero_tema: 0
+			numero_tema: 0,
+			images: [
+			  "https://picsum.photos/200/200",
+			  "https://picsum.photos/300/200",
+			  "https://picsum.photos/250/200"
+			]
 		};
 	},
 
@@ -290,7 +313,10 @@ export default {
 	}
 	,
   	methods: {
-		
+		show () {
+        	const viewer = this.$el.querySelector('.images').$viewer
+        	viewer.show()
+      	},
 		checkQuestionnaireStart: async function(){
 			return axios({method: 'get', url: 'questions/checkQuestionnaireStart'}).then(
 			result=>{

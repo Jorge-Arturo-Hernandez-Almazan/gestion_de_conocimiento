@@ -4,7 +4,6 @@
 			
 			<div class="col-12 mt-4">
 					<div class="page-header">
-						
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
 							<h1 class="page-title"> Preguntas numericas </h1>
 							<ul class="quick-links ml-auto">
@@ -20,8 +19,24 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
+                
+                <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+                    <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                        <h2 class="page-title"> Listado de preguntas numericas </h2>
+                        <ul class="quick-links ml-auto">
+                            <li>
+                                <button type="button" class="btn btn-primary float-right btn-lg"
+                                     data-toggle="modal" data-target="#registrarPregunta" @click="btnGuardar">
+                                    <i class="fas fa-edit"></i> Registrar pregunta
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                
 				  
-				  <div class="row" style="padding: 0 !important; margin: 0 !important; ">
+				  <!-- <div class="row" style="padding: 0 !important; margin: 0 !important; ">
 						<div class="col-md-6">
 							<h3> Lista de preguntas numericas </h3>
 						</div>
@@ -35,13 +50,13 @@
 							> <i class="fas fa-plus-circle"></i>  Registrar pregunta</button>
 							
 						</div>	
-					</div>
+					</div> -->
 				  
 				  
 				  <div class="table-responsive">
 					
-					<label>Busqueda por pregunta: </label>
-      				<input class="form-control mb-2" v-model="filters.pregunta.value"/>
+					<label> <b> Busqueda por pregunta: </b> </label>
+      				<input class="form-control mb-2" v-model="filters.pregunta.value" placeholder="Ej. ¿Cuánto es 2+2?" />
 					  
 					<div class="table-responsive">
 						
@@ -69,9 +84,9 @@
 					<tbody slot="body" slot-scope="{displayData}">
 						<tr v-for="preguntaNumerica in displayData" :key="preguntaNumerica.id">
 						 <!-- <td class="text-center">{{-- preguntaNumerica.tipo --}}</td>-->
-                      <td class="text-center">{{preguntaNumerica.pregunta}}</td>
+                      <td v-html="wrapText(preguntaNumerica.pregunta)" > </td>
                       <td class="text-center">{{preguntaNumerica.tema}}</td>
-                       <td class="text-center"><span class="badge badge-success"> {{preguntaNumerica.opcion}} </span></td>
+                       <td class="text-center"> {{preguntaNumerica.opcion}} </td>
                       <td class="text-center">{{preguntaNumerica.rango}}</td>
                       
                       <td v-if="preguntaNumerica.aplicableArriba == true" class="text-center">SI</td>
@@ -82,11 +97,11 @@
 							  <button
                           class="btn btn-warning"
                           @click="btnEditar(preguntaNumerica.id_pregunta,preguntaNumerica.pregunta,preguntaNumerica.opcion,preguntaNumerica.tipo,preguntaNumerica.id_tema)"
-                        ><i class="fas fa-pen"></i></button>
+                        ><i class="fas fa-pen"></i> Editar </button>
                         <button
                           class="btn btn-danger"
                           @click="eliminar(preguntaNumerica.id_pregunta)"
-                        ><i class="fas fa-trash"></i></button>
+                        ><i class="fas fa-trash"></i> Eliminar </button>
 	
 						  </td>
 							
@@ -163,6 +178,18 @@ export default {
   },
   methods: {
  
+    wrapText(str) {
+              const palabrasSinEspacios = str.split(" ");
+              let textoDePregunta = "";
+              for(let i=0; i < palabrasSinEspacios.length; i++){
+                textoDePregunta = textoDePregunta + " " + palabrasSinEspacios[i];
+                if( (i % 7) == 0 && i != 0){
+                   textoDePregunta = textoDePregunta + "<br>"
+                }
+              }
+              return textoDePregunta;
+          },
+    
     getPreguntaNumerica() {
       axios({ method: "GET", url: "/pregunta/showPN" }).then(
         result => {
@@ -245,33 +272,12 @@ export default {
             )}
 					</select>
 					<br>
-					<!-- <label for="tipo">Elige un tipo de pregunta:</label>
+					 <label for="tipo">Elige un tipo de pregunta:</label>
 					<select id="tipo">
 						<option value="2">Numérica</option>
 					</select> 
 
-					<div class="flex w-full h-screen items-center justify-center text-center" id="app">
-					  <div class="p-12 bg-gray-100 border border-gray-300" @dragover="dragover" @dragleave="dragleave" @drop="drop">
-						<input type="file" multiple name="fields[assetsFieldHandle][]" id="assetsFieldHandle" 
-						  class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png" />
-
-						<label for="assetsFieldHandle" class="block cursor-pointer">
-						  <div>
-							Explain to our users they can drop files in here 
-							or <span class="underline">click here</span> to upload their files
-						  </div>
-						</label>
-						<ul class="mt-4" v-if="this.filelist.length" v-cloak>
-						  <li class="text-sm p-1" v-for="file in filelist">
-							${ file.name }<button class="ml-2" type="button" @click="remove(filelist.indexOf(file))" title="Remove file">remove</button>
-						  </li>
-						</ul>
-					  </div>
-					</div>
-
-
-
-					--> `,
+					 `,
         focusConfirm: false,
         showCancelButton: true,
         confirmButtonText: "Guardar",

@@ -21,23 +21,14 @@ class ConfiguracionController {
 		return response.json(configuraciones[0]);
 	}
 	
+  
 	async obtenerTotalPreguntas({response}){
 		
-		const preguntasNumericas = await Database.raw('SELECT COUNT(*) as totalNumericas FROM banco_preguntas where tipo = 2;');
-		
-		const preguntasMultiples = await Database.raw('SELECT COUNT(*) as totalMultiples FROM banco_preguntas where tipo = 4;');
-		
-		const preguntasBooleanas = await Database.raw('SELECT COUNT(*) as totalBooleanas FROM banco_preguntas where tipo = 3;');
-		
-		const preguntasCalculadas = await Database.raw('SELECT COUNT(*) as totalCalculadas FROM banco_preguntas where tipo = 5;');
-    
-    const preguntasCalculadasMultiples = await Database.raw('SELECT COUNT(*) as totalCalculadasMultiples FROM banco_preguntas where tipo = 6;');
-			
-		const preguntasBreves = await Database.raw('SELECT COUNT(*) as totalBreves FROM banco_preguntas where tipo = 1;');
-		
-		var totalPreguntas = [preguntasNumericas[0][0].totalNumericas, preguntasMultiples[0][0].totalMultiples, preguntasBooleanas[0][0].totalBooleanas, preguntasBreves[0][0].totalBreves, preguntasCalculadas[0][0].totalCalculadas, preguntasCalculadasMultiples[0][0].totalCalculadasMultiples];
-		
-		return response.json(totalPreguntas);
+    // select temas.id, temas.nombre_tema, banco_preguntas.tipo, count(banco_preguntas.tipo) from temas inner join banco_preguntas on temas.id = banco_preguntas.id_tema group by banco_preguntas.tipo, temas.nombre_tema;
+		const totalPreguntasPorTipo = await Database.raw('select temas.id, temas.nombre_tema, banco_preguntas.tipo, count(banco_preguntas.tipo) as totalPreguntas from temas inner join banco_preguntas on temas.id = banco_preguntas.id_tema group by banco_preguntas.tipo, temas.nombre_tema;');
+    const temas = await Database.raw('select id, nombre_tema, nivel from temas;');
+
+		return response.json({totalPreguntasPorTipo, temas});
 			
 	}
 	

@@ -20,33 +20,10 @@
 				   
             <div class="card">
                 <div class="card-body">
-					<!--<div class="col-lg-12">
-						 <h4>Lista de administradores</h4>
-						<button  type="button" class="btn btn-success btn-fw"  @click="btnGuardar">
-							<i class="fas fa-user-plus"></i> Registrar Administrador
-						</button>
-					</div>-->
-					
-					
-					<!--<div class="row" style="padding: 0 !important; margin: 0 !important; ">
-						<div class="col-md-8">
-							<h3> Lista de administradores </h3>
-						</div>
-
-						<div class="col-md-4 ">
-							
-							<button  type="button" class="btn btn-success float-right"  @click="btnGuardar">
-							<i class="fas fa-user-plus"></i> Registrar Administrador
-						</button>
-							
-
-
-						</div>	
-					</div> -->
 					
 					<div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-							<h3 class="page-title"> Lista de administradores </h3>
+							<h2 class="page-title"> Lista de administradores </h2>
 							
 							<ul class="quick-links ml-auto">
 								<li>
@@ -59,7 +36,7 @@
 					</div>
 					
 					  
-					<label>Busqueda por nombre: </label>
+					<label> <b> Busqueda por nombre: </b> </label>
       				<input class="form-control mb-2" placeholder="Ej. Juan Pérez" v-model="filters.nombre.value"/>
 					  
 					<div class="table-responsive">
@@ -173,13 +150,28 @@ export default{
 		},
 		btnGuardar: async function(){
 				const { value: formValues } = await this.$swal({
-					title: 'Registrar administrador',
+					//title: 'Registrar administrador',
+					showClass: {
+						backdrop: 'swal2-noanimation', // disable backdrop animation
+						popup: '',                     // disable popup animation
+						icon: ''                       // disable icon animation
+					},
+					hideClass: {
+						popup: '',                     // disable popup fade-out animation
+					},
 					html:
-						`<label class="text-left"> Nombre: </label> <input id="nombre" class="form-control" placeholder="Juan">
-            <label class="text-left mt-1"> Apellido paterno: </label> <input id="apellido_paterno" class="form-control" placeholder="Martinez">
-            <label class="text-left mt-1"> Apellido materno: </label> <input id="apellido_materno" class="form-control" placeholder="Perez">
-            <label class="text-left mt-1"> Matricula: </label> <input id="matricula" class="form-control" placeholder="1530001">
-            <label class="text-left mt-1"> Contraseña: </label> <input id="password" type="password" class="form-control" >
+						`
+			<h3 class="text-left"> Registrar administrador </h3>
+			<p class="text-left mt-0 mb-0"> Nombre: </p>
+			<input id="nombre" type="text" class="swal2-input" placeholder="Juan">
+            <p class="text-left mt-0 mb-0"> Apellido paterno:: </p>
+			<input id="apellido_paterno" type="text" class="swal2-input" placeholder="Martinez">
+            <p class="text-left mt-0 mb-0"> Apellido materno: </p>
+			<input id="apellido_materno" type="text" class="swal2-input" placeholder="Perez">
+            <p class="text-left mt-0 mb-0"> Matricula: </p>
+			<input id="matricula" type="text" class="swal2-input" placeholder="1234567">
+            <p class="text-left mt-0 mb-0"> Contraseña: </p>
+			<input id="password" type="text" type="password" class="swal2-input" placeholder="contraseña">
 						<br> 
             `,
 					focusConfirm: false,
@@ -198,10 +190,10 @@ export default{
 						]
 					}})
 					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == ""){
-							this.$swal({
+							/*this.$swal({
 								type: 'info',
 								title: 'Datos incompletos',
-							})
+							})*/
 					}
 					else{
 						this.guardarAdmin(this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);//funcion guardarAdmin

@@ -39,6 +39,7 @@ Route.get('/arbol/obtenerResultados', 'PonderacionController.getResults');
 Route.get('/arbol/obtenerRamas', 'PonderacionController.obtener_ramas');
 ///////////////////////////////////////////////////
 
+Route.get('/obtenerTodasLasImagenes', 'PreguntaController.obtenerTodasImagenes');
 Route.get('/obtenerDatos', 'UserController.obtenerDatos');
 
 
@@ -95,6 +96,7 @@ Route.post('upload', async ({ request, response }) => {
   response.redirect('/subirImagen')
 })
 
+Route.post('/subirr', 'UserController.subirimagen');
 
 Route.post('editardatos', async ({ request, response, auth }) => {
   
@@ -122,19 +124,9 @@ Route.post('editardatos', async ({ request, response, auth }) => {
 		
 		
 	}else{
-		
 		await Database.raw('UPDATE users SET nombre = ?, apellido_paterno = ?, apellido_materno = ? WHERE id = ?',[nombre, apaterno, amaterno ,auth.user.id])
-		
 		response.redirect('/perfil?e=1')
-		
 	}
-	
-	
-	
-	
-	
-  //await Database.insert({nombre: name, alias:name}).into('users').where('id',auth.user.id)
-
 	
 })
 
@@ -152,13 +144,12 @@ Route.post('subirfotoperfil', async ({ request, response, auth }) => {
 	
 	await Database.raw('UPDATE users SET foto = ? WHERE id = ?',[name, auth.user.id])
 	
-  //await Database.insert({nombre: name, alias:name}).into('users').where('id',auth.user.id)
-	
   if (!profilePic.moved()) {
     return profilePic.error()
   }
   response.redirect('/perfil')
 })
+
 
 
 //Route.get('historial', ({view}) =>  view.render('app'))
@@ -192,18 +183,18 @@ Route.get('/pruebaimagenes', ({view})=> view.render('app') );
 
 Route.get('pregunta/showCalculadas','PreguntaController.mostrarPreguntasCalculadas')
 Route.get('/preguntasCalculadas', ({view})=> view.render('app') );
-  Route.post('/preguntaCalculada/store','PreguntaController.storeCalculada')
-  Route.post('/preguntaCalculada/delete','PreguntaController.deleteCalculadas')
-  Route.post('pregunta/getComodines','PreguntaController.getComodines')
-  Route.post('/preguntaCalculada/update','PreguntaController.updateCalculadas')
-	Route.get('pregunta/showVcomodines','PreguntaController.valorcomodin')
+Route.post('/preguntaCalculada/store','PreguntaController.storeCalculada')
+Route.post('/preguntaCalculada/delete','PreguntaController.deleteCalculadas')
+Route.post('pregunta/getComodines','PreguntaController.getComodines')
+Route.post('/preguntaCalculada/update','PreguntaController.updateCalculadas')
+Route.get('pregunta/showVcomodines','PreguntaController.valorcomodin')
 ///////////////////////////////////////////
 
-  Route.get('preguntasOpcionMultipleCalculadas', ({view}) => view.render('app'))
-  Route.get('pregunta/showMultiplesCalculadas','PreguntaController.mostrarPreguntasOpcionMultipleCalculadas')
-  Route.post('preguntaOpcionMultipleCalculadas/store','PreguntaController.storeMultipleCalculadas')
-  Route.post('preguntaOpcionMultipleCalculadas/update','PreguntaController.updateMultipleCalculadas')
-  Route.post('preguntaOpcionMultipleCalculadas/delete', 'PreguntaController.deleteCalculadasMultiples')
+Route.get('preguntasOpcionMultipleCalculadas', ({view}) => view.render('app'))
+Route.get('pregunta/showMultiplesCalculadas','PreguntaController.mostrarPreguntasOpcionMultipleCalculadas')
+Route.post('preguntaOpcionMultipleCalculadas/store','PreguntaController.storeMultipleCalculadas')
+Route.post('preguntaOpcionMultipleCalculadas/update','PreguntaController.updateMultipleCalculadas')
+Route.post('preguntaOpcionMultipleCalculadas/delete', 'PreguntaController.deleteCalculadasMultiples')
 
 ///////////////////////////////////////////////////////////////////
 
@@ -406,7 +397,9 @@ Route.get('/pregunta/respuestas/:id', 'PreguntaController.obtenerRespuestas');
 		//rutas preguntas
 		//OBTENER LAS CONFIGURACIONES DEL CUESTIONARIO
 		// Route.get('cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion') // Grupo Cuestionario
-		Route.post('pregunta/update','PreguntaController.updateAN')
+		
+    Route.post('pregunta/update','PreguntaController.updateAN')
+    
 		Route.post('pregunta/add','PreguntaController.store')//
 		Route.post('preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
 		Route.post('preguntaOpcionMultiple/update','PreguntaController.updateMultiple')

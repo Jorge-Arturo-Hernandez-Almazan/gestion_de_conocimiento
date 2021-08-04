@@ -44,7 +44,7 @@
 					
 					<div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
 						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-							<h3 class="page-title"> Lista de alumnos </h3>
+							<h2 class="page-title"> Lista de alumnos </h2>
 							
 							<ul class="quick-links ml-auto">
 								<li>
@@ -58,8 +58,8 @@
 					  
 					 <!-- <label>Busqueda por nombre: </label> -->
 
-					<b> Busqueda por nombre: </b>
-								<input class="form-control mb-2" placeholder=" Ej. Juan Francisco" v-model="filters.nombre.value" style="padding: 0 0 0; margin: 0 0 0;"/>
+					<label> <b> Busqueda por nombre: </b> </label>
+					<input class="form-control mb-2" placeholder="Ej. Juan Pérez" v-model="filters.nombre.value"/>
 					  
 					<div class="table-responsive">
 						
@@ -88,7 +88,7 @@
                     
                         <td class="text-left">{{alumnos.matricula}}</td>
                         <td class="text-left">{{alumnos.nivel_academico}}</td>  
-                        <td class="text-left">{{alumnos.id_profesor}}</td>
+                        <td class="text-left">{{alumnos.nombre_profesor + ' ' + alumnos.apellido_profesor }}</td>
 							
 							
 						  <td>
@@ -237,13 +237,13 @@ export default{
 					`
 			<h3 class="text-left"> Registrar alumno </h3>
 			<p class="text-left mt-0 mb-0"> Nombre: </p>
-			<input id="nombre" type="text" class="swal2-input" placeholder="Nombre">
+			<input id="nombre" type="text" class="swal2-input" placeholder="Juan">
 			<p class="text-left mt-0 mb-0"> Apellido paterno: </p>
-            <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Apellido Paterno">
+            <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Martínez">
 			<p class="text-left mt-0 mb-0"> Apellido materno: </p>
-            <input id="apellido_materno" type="text" class="swal2-input" placeholder="Apellido Materno">
+            <input id="apellido_materno" type="text" class="swal2-input" placeholder="Peréz">
 			<p class="text-left mt-0 mb-0"> Matricula: </p>
-            <input id="matricula" type="text" class="swal2-input" placeholder="Matricula">
+            <input id="matricula" type="text" class="swal2-input" placeholder="1234567">
 			<p class="text-left mt-0 mb-0"> Contrseña: </p>
             <input id="password" type="password" class="swal2-input" placeholder="Contraseña">
 			<p class="text-left mt-0 mb-0"> Nivel academico: </p>

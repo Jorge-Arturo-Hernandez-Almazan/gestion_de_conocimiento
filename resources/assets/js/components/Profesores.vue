@@ -24,36 +24,39 @@
                 <div class="card">
                   <div class="card-body">
                     
-                    <!--<h4>Lista de docentes </h4>
-					<button  type="button" class="btn btn-success btn-fw"  @click="btnGuardar">
-						<i class="fas fa-user-plus"></i> Registrar docente
-					</button>-->
 					  
 					  
-					<div class="row" style="padding: 0 !important; margin: 0 !important; ">
+					<!--<div class="row" style="padding: 0 !important; margin: 0 !important; ">
 						<div class="col-md-6" >
 							<h3> Lista de docentes </h3>
 						</div>
-
-						<div class="col-md-6">
-							
+						<div class="col-md-6">	
 							<button  type="button" class="btn btn-success float-right"  @click="btnGuardar">
-						<i class="fas fa-user-plus"></i> Registrar docente
-					</button>
-							
-							
-							
-							
-
-
+								<i class="fas fa-user-plus"></i> Registrar docente
+							</button>
 						</div>	
+					</div> -->
+					
+					 
+					<div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h2 class="page-title"> Lista de docentes </h2>
+							
+							<ul class="quick-links ml-auto">
+								<li>
+									<button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar">
+										<i class="fas fa-user-plus"></i> Registrar docente
+									</button>
+								</li>
+							</ul>
+						</div>
 					</div>
-										
+					  
                     
 					  
 					  
-					  <label>Busqueda por nombre: </label>
-      				<input class="form-control mb-2" v-model="filters.nombre.value"/>
+					  <label> <b> Busqueda por nombre:  </b> </label>
+      				<input class="form-control mb-2" placeholder="Ej. Juan Pérez" v-model="filters.nombre.value"/>
 					  
 					<div class="table-responsive">
 				  	<v-table 
@@ -175,13 +178,29 @@ export default{
 		},
 		btnGuardar: async function(){
 				const { value: formValues } = await this.$swal({
-					title: 'Registrar Docente',
+					//title: 'Registrar Docente',
+					showClass: {
+						backdrop: 'swal2-noanimation', // disable backdrop animation
+						popup: '',                     // disable popup animation
+						icon: ''                       // disable icon animation
+					},
+					hideClass: {
+						popup: '',                     // disable popup fade-out animation
+					},
+					
 					html:
-						`<input id="nombre" class="swal2-input" placeholder="Nombre">
-            <input id="apellido_paterno" class="swal2-input" placeholder="Apellido Paterno">
-            <input id="apellido_materno" class="swal2-input" placeholder="Apellido Materno">
-            <input id="matricula" class="swal2-input" placeholder="Matricula">
-            <input id="password" class="swal2-input" placeholder="Contraseña">
+						`
+			<h3 class="text-left"> Registrar docente </h3>
+			<p class="text-left mt-0 mb-0"> Nombre: </p>
+			<input id="nombre" type="text" class="swal2-input" placeholder="Juan">
+			<p class="text-left mt-0 mb-0"> Apellido paterno: </p>
+            <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Martínez">
+			<p class="text-left mt-0 mb-0"> Apellido materno: </p>
+            <input id="apellido_materno" type="text" class="swal2-input" placeholder="Peréz">
+			<p class="text-left mt-0 mb-0"> Matricula: </p>
+            <input id="matricula" type="text" class="swal2-input" placeholder="1234567">
+			<p class="text-left mt-0 mb-0"> Contraseña: </p>
+            <input id="password" type="password" class="swal2-input" placeholder="Contraseña">
 						<br> 
             `,
 					focusConfirm: false,
@@ -200,10 +219,10 @@ export default{
 						]
 					}})
 					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == ""){
-							this.$swal({
+							/*this.$swal({
 								type: 'info',
 								title: 'Datos incompletos',
-							})
+							})*/
 					}
 					else{
 						this.guardarProfesor(this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);//funcion guardarAdmin

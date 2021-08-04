@@ -20,7 +20,7 @@
 					<div class="card">
                   	<div class="card-body">
 						
-						<div class="row" style="padding: 0 !important; margin: 0 !important; ">
+						<!-- <div class="row" style="padding: 0 !important; margin: 0 !important; ">
 						<div class="col-md-6">
 							<h3> Lista de preguntas calculadas de opción multiple </h3>
 						</div>
@@ -31,14 +31,29 @@
 							</button>
 							
 						</div>	
-					</div>
+					</div> -->
+                      
+                      
+            <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+              <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                  <h2 class="page-title"> Listado de preguntas calculadas de opcion mutliple </h2>
+                  <ul class="quick-links ml-auto">
+                      <li>
+                          <button type="button" class="btn btn-primary float-right btn-lg"
+                               data-toggle="modal" data-target="#exampleModal" @click="abrirModal">
+                              <i class="fas fa-edit"></i> Registrar pregunta
+                          </button>
+                      </li>
+                  </ul>
+              </div>
+          </div>
 						
 					 
 					
 					<div class="table-responsive">
 					
-					<label>Busqueda por pregunta: </label>
-      				<input class="form-control mb-2" v-model="filters.pregunta.value"/>
+					<label><b> Busqueda por pregunta: </b> </label>
+      				<input class="form-control mb-2" v-model="filters.pregunta.value" placeholder="Ej. ¿Cuánto es 2+2?"/>
 					  
 					<div class="table-responsive">
 						
@@ -63,7 +78,11 @@
 					</thead>
 					<tbody slot="body" slot-scope="{displayData}">
 						<tr v-for="(pregunta, preg) in displayData" :key="pregunta.id_pregunta">
-						  <td class="text-left">{{pregunta.pregunta}} </td>
+						  
+              
+              <td v-html="wrapText(pregunta.pregunta)">  </td>
+              
+              
 								  <td class="text-left">{{pregunta.tema}}</td>
 
 								<td>
@@ -87,8 +106,8 @@
 								</td>
 
 								<td class="text-right">
-									<button class="btn btn-warning" @click="editarPregunta(pregunta.id_pregunta, pregunta.pregunta, pregunta.tema, pregunta.id_tema)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen"></i> </button> 
-									<button  class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)"> <i class="fas fa-trash"></i> </button>
+									<button class="btn btn-warning" @click="editarPregunta(pregunta.id_pregunta, pregunta.pregunta, pregunta.tema, pregunta.id_tema)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen"></i>Editar </button> 
+									<button  class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)"> <i class="fas fa-trash"></i>Eliminar </button>
 								</td>
 							
 							
@@ -396,6 +415,20 @@ export default{
 		
 	},
 	methods: {
+    
+    wrapText(str) {
+              const palabrasSinEspacios = str.split(" ");
+              let textoDePregunta = "";
+              for(let i=0; i < palabrasSinEspacios.length; i++){
+                textoDePregunta = textoDePregunta + " " + palabrasSinEspacios[i];
+                if( (i % 7) == 0 && i != 0){
+                   textoDePregunta = textoDePregunta + "<br>"
+                }
+              }
+              return textoDePregunta;
+          },
+    
+    
 		abrirModalCuestionario(){
 			this.getpreguntas();
 			this.getTemas();

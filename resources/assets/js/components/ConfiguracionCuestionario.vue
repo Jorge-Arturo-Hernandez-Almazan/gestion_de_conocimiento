@@ -13,8 +13,8 @@
 						<li>
 							<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd"> Cuestionario  <i class="fas fa-angle-right"></i> </span> Configurar cuestionario
 						</li>
-						</ul>
-				  </div>
+						</ul>    
+          </div>
 				</div>
 			</div>
 		
@@ -43,9 +43,8 @@
 
 						<div class="form-group">
 						  <label class="mb-2" for="exampleFormControlSelect1">Numero de preguntas numericas</label>
-							<select @change="totalPreg" v-model="configuraciones.num_preguntas_numericas" id="numeroPreguntasNumericas" class="form-control form-control-lg">
-								<option v-for="(n, i) in this.numero_preguntas[0]" :value="i"> {{i}} </option>
-							</select>
+							<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_numericas" 
+                      id="numeroPreguntasNumericas" class="form-control form-control-lg">
 							
 						</div>
 					
@@ -53,10 +52,9 @@
 					
 						<div class="form-group">
 						  <label class="mb-2" for="exampleFormControlSelect2">Numero de preguntas breves</label>
-							
-							<select @change="totalPreg" v-model="configuraciones.num_preguntas_abiertas" id="numeroPreguntasBreves" class="form-control form-control-lg">
-								<option v-for="(n, i) in this.numero_preguntas[3]" :value="i"> {{i}} </option>
-							</select>
+							<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_abiertas" 
+                      id="numeroPreguntasBreves" class="form-control form-control-lg">
+								
 							
 						</div>
 					
@@ -66,9 +64,8 @@
 						  	<label class="mb-2" for="exampleFormControlSelect2">Numero de preguntas calculadas</label>
 							
 							
-							<select @change="totalPreg" v-model="configuraciones.num_preguntas_calculadas" id="numeroPreguntasCalculadas" class="form-control form-control-lg">
-								<option v-for="(n, i) in this.numero_preguntas[4]" :value="i"> {{i}} </option>
-							</select>
+							<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_calculadas" 
+                      id="numeroPreguntasCalculadas" class="form-control form-control-lg">
 							
 						</div>
           
@@ -77,18 +74,17 @@
 						  	<label class="mb-2" for="exampleFormControlSelect2">Numero de preguntas calculadas multiples</label>
 							
 							
-							<select @change="totalPreg" v-model="configuraciones.num_preguntas_calculadas_multiples" id="numeroPreguntasCalculadasMultiples" class="form-control form-control-lg">
-								<option v-for="(n, i) in this.numero_preguntas[5]" :value="i"> {{i}} </option>
-							</select>
+							<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_calculadas_multiples" 
+                      id="numeroPreguntasCalculadasMultiples" class="form-control form-control-lg">
 							
 						</div>					
 					
 						<div class="form-group">
 						  <label class="mb-2" for="exampleFormControlSelect3">Numero de peguntas booleanas</label>
 							
-							<select @change="totalPreg" v-model="configuraciones.num_preguntas_boleanas" id="numeroPreguntasBooleanas" class="form-control form-control-lg">
-								<option v-for="(n, i) in this.numero_preguntas[2]" :value="i"> {{i}} </option>
-							</select>
+							<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_boleanas" 
+                      id="numeroPreguntasBooleanas" class="form-control form-control-lg">
+								
 							
 							
 						</div>
@@ -96,9 +92,9 @@
 						<div class="form-group">
 						  <label class="mb-2" for="exampleFormControlSelect3">Numero de peguntas opcion multiple</label>
 						 
-							<select @change="totalPreg" v-model="configuraciones.num_preguntas_multiples" id="numeroPreguntasMultiples" class="form-control form-control-lg">
-								<option v-for="(n, i) in this.numero_preguntas[1]" :value="i"> {{i}} </option>
-							</select>
+							<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_multiples" 
+                      id="numeroPreguntasMultiples" class="form-control form-control-lg">
+								
 							
 						</div>
 					
@@ -117,6 +113,106 @@
 						</div>
 					
 					
+            <table style="list-style-type: none; width:100%">
+                  <tr>
+                    
+                    <th>
+                      Tema:
+                    </th>
+                    <th>
+                      Abiertas
+                    </th>
+                    <th>
+                      Numerica
+                    </th>
+                    <th>
+                      Booleana
+                    </th>
+                    <th>
+                      Multiple
+                    </th>
+                    <th>
+                      Calculada
+                    </th>
+                    <th>
+                      Calculada Multiple
+                    </th>
+                    
+                  </tr>
+                  <tr v-for="tema in preguntasPorTema" v-if="
+                                                             
+                    (tema.totalPreguntasAbiertas < configuraciones.num_preguntas_abiertas ) ||
+                    (tema.totalPreguntasNumericas < configuraciones.num_preguntas_numericas) ||
+                    (tema.totalPreguntasBooleanas < configuraciones.num_preguntas_boleanas) ||
+                    (tema.totalPreguntasMultiples < configuraciones.num_preguntas_multiples ) ||
+                    (tema.totalPreguntasCalculadas < configuraciones.num_preguntas_calculadas ) || 
+                    (tema.totalPreguntasCalculadasMultiples < configuraciones.num_preguntas_calculadas_multiples ) ">
+                    
+                    <td class="d-flex justify-content-center"> 
+                      {{ tema.nombre_tema }} 
+                      
+                      
+                    </td>
+                    
+                    <td>
+                      {{ tema.totalPreguntasAbiertas }}
+                      
+                      <i v-if="tema.totalPreguntasAbiertas >= configuraciones.num_preguntas_abiertas" class="fas fa-check-circle" style="color:green"></i>
+                      <i v-else class="fas fa-times-circle" style="color:red"></i>
+                      
+                    </td>
+                    
+                    <td>
+                      {{ tema.totalPreguntasNumericas }}
+                      
+                      <i v-if="tema.totalPreguntasNumericas >= configuraciones.num_preguntas_numericas" class="fas fa-check-circle" style="color:green"></i>
+                      <i v-else class="fas fa-times-circle" style="color:red"></i>
+                      
+                    </td>
+                    
+                    <td>
+                      {{ tema.totalPreguntasBooleanas }}
+                      
+                      <i v-if="tema.totalPreguntasBooleanas >= configuraciones.num_preguntas_boleanas" class="fas fa-check-circle" style="color:green"></i>
+                      <i v-else class="fas fa-times-circle" style="color:red"></i>
+                      
+                      
+                    </td>
+                    
+                    <td>
+                      {{ tema.totalPreguntasMultiples }}
+                      
+                      <i v-if="tema.totalPreguntasMultiples >= configuraciones.num_preguntas_multiples" class="fas fa-check-circle" style="color:green"></i>
+                      <i v-else class="fas fa-times-circle" style="color:red"></i>
+                      
+                      
+                    </td>
+                    
+                    <td>
+                      {{ tema.totalPreguntasCalculadas }}
+                      
+                      <i v-if="tema.totalPreguntasCalculadas >= configuraciones.num_preguntas_calculadas" class="fas fa-check-circle" style="color:green"></i>
+                      <i v-else class="fas fa-times-circle" style="color:red"></i>
+                      
+                      
+                    </td>
+                    
+                    <td>
+                      {{ tema.totalPreguntasCalculadasMultiples }}
+                      
+                      <i v-if="tema.totalPreguntasCalculadasMultiples >= configuraciones.num_preguntas_calculadas_multiples" class="fas fa-check-circle" style="color:green"></i>
+                      <i v-else class="fas fa-times-circle" style="color:red"></i>
+                      
+                      
+                    </td>
+                    
+                  </tr>
+
+
+
+                </table>
+          
+          
 
 					</div>
   
@@ -136,14 +232,22 @@
 
 <script>
 import axios from "axios";
-
 export default {
 	data() {
 		return{
 			id: "",
 			numero_preguntas: [],
-			configuraciones: [],
+			configuraciones:{
+        num_preguntas_numericas: 0,
+        num_preguntas_multiples: 0,
+        num_preguntas_boleanas: 0,
+        num_preguntas_calculadas: 0,
+        num_preguntas_abiertas: 0,
+        num_preguntas_calculadas_multiples: 0,
+        num_preguntas_multiples: 0
+      },
 			totalPreguntas: 0,
+      preguntasPorTema: []
 		};
 	},
 	created(){
@@ -156,16 +260,30 @@ export default {
 	},
 	methods: {
 		
-		totalPreg() { 
-
-			this.configuraciones.num_preguntas = this.configuraciones.num_preguntas_numericas + this.configuraciones.num_preguntas_multiples + this.configuraciones.num_preguntas_boleanas + this.configuraciones.num_preguntas_calculadas + this.configuraciones.num_preguntas_abiertas + this.configuraciones.num_preguntas_calculadas_multiples;
+		totalPreg() {
+      
+      
+      this.configuraciones.num_preguntas_numericas = (this.configuraciones.num_preguntas_numericas === "") ? 0 : parseInt(this.configuraciones.num_preguntas_numericas);
+      this.configuraciones.num_preguntas_multiples = (this.configuraciones.num_preguntas_multiples === "") ? 0 : parseInt(this.configuraciones.num_preguntas_multiples);
+      this.configuraciones.num_preguntas_boleanas = (this.configuraciones.num_preguntas_boleanas === "") ? 0 : parseInt(this.configuraciones.num_preguntas_boleanas);
+			this.configuraciones.num_preguntas_calculadas = (this.configuraciones.num_preguntas_calculadas === "") ? 0 : parseInt(this.configuraciones.num_preguntas_calculadas);
+      this.configuraciones.num_preguntas_abiertas = (this.configuraciones.num_preguntas_abiertas === "") ? 0 : parseInt(this.configuraciones.num_preguntas_abiertas);
+      this.configuraciones.num_preguntas_calculadas_multiples = (this.configuraciones.num_preguntas_calculadas_multiples === "") ? 0 : parseInt(this.configuraciones.num_preguntas_calculadas_multiples);
+      
+      
+      this.configuraciones.num_preguntas = parseInt( this.configuraciones.num_preguntas_numericas ) + 
+        parseInt(this.configuraciones.num_preguntas_multiples) + 
+        parseInt(this.configuraciones.num_preguntas_boleanas ) +
+        parseInt(this.configuraciones.num_preguntas_calculadas ) +
+        parseInt(this.configuraciones.num_preguntas_abiertas ) +
+        parseInt(this.configuraciones.num_preguntas_calculadas_multiples)
 			
 		},
 		
 		checkPonderacionEstricta(){
 			
 			var checkEstricta = document.getElementById("ponderacionEstricta");
-			//console.log("Configuraciones ponde estricta " + this.configuraciones.ponde_estricta);
+			
 			
 			if(this.configuraciones.ponde_estricta == 1){
 			   checkEstricta.checked = true;
@@ -174,19 +292,57 @@ export default {
 			}
 		},
 		
+
 		obtenerTotales(){
 			//obtenerTotalPorPregunta
 			axios({method: 'GET', url: '/obtenerTotalPorPregunta'}).then(
 				result=> {
-					this.numero_preguntas = result.data;
-					this.numero_preguntas[0] = this.numero_preguntas[0] + 1;
-					this.numero_preguntas[1] = this.numero_preguntas[1] + 1;
-					this.numero_preguntas[2] = this.numero_preguntas[2] + 1;
-					this.numero_preguntas[3] = this.numero_preguntas[3] + 1;
-					this.numero_preguntas[4] = this.numero_preguntas[4] + 1;
-          			this.numero_preguntas[5] = this.numero_preguntas[5] + 1;
-					
-					//console.log(result.data);
+          
+          let temas = result.data.temas[0];
+          let preguntas = result.data.totalPreguntasPorTipo[0];
+          
+          for(let i=0; i < temas.length; i++){
+            temas[i].totalPreguntasMultiples = 0;
+            temas[i].totalPreguntasCalculadas = 0;
+            temas[i].totalPreguntasAbiertas = 0;
+            temas[i].totalPreguntasNumericas = 0;
+            temas[i].totalPreguntasBooleanas = 0;
+            temas[i].totalPreguntasCalculadasMultiples = 0;
+          }
+          
+          console.log( preguntas); 
+          
+          for(let i=0; i < temas.length; i++){
+            for(let j=0; j < preguntas.length;j++){
+                if( temas[i].id === preguntas[j].id ){
+                  switch( parseInt(preguntas[j].tipo) ){
+                    case 1:
+                      temas[i].totalPreguntasAbiertas = preguntas[j].totalPreguntas;
+                      break;
+                    case 2:
+                      temas[i].totalPreguntasNumericas = preguntas[j].totalPreguntas;
+                      break;
+                    case 3:
+                      temas[i].totalPreguntasBooleanas = preguntas[j].totalPreguntas;
+                      break;
+                    case 4:
+                      temas[i].totalPreguntasMultiples = preguntas[j].totalPreguntas;
+                      break;
+                    case 5:
+                      temas[i].totalPreguntasCalculadas = preguntas[j].totalPreguntas; 
+                      break;
+                    case 6:
+                      temas[i].totalPreguntasCalculadasMultiples = preguntas[j].totalPreguntas;
+                      break;
+                  }
+              }
+            }
+          }
+              
+          
+          //console.log(temas);
+          this.preguntasPorTema = temas;
+              
 				},
 				error=> {
 					console.error(error)
@@ -237,7 +393,6 @@ export default {
              totalCalculadasMultiples : totalCalculadasMultiples,
 						 ponderacionEstricta : ponderacionEstricta,})
 			.then((res)=>{
-
 				this.$swal.fire({
 				  icon: 'success',
 				  title: 'Configuracion guardada',
@@ -247,7 +402,6 @@ export default {
 				this.obtenerConfiguraciones();
 				this.obtenerTotales();
 				this.checkPonderacionEstricta();
-
 			})
 			.catch((err)=>{
 				console.log(err)
@@ -259,11 +413,9 @@ export default {
 	},
 	
 }
-
 </script>
 
 <style>
-
 	/* The container */
 	.container {
 		display: block;
@@ -301,24 +453,20 @@ export default {
 	  .container:hover input ~ .checkmark {
 		background-color: #ccc;
 	  }
-
 	  /* When the checkbox is checked, add a blue background */
 	  .container  input:checked ~ .checkmark {
 		background-color: #2196F3;
 	  }
-
 	  /* Create the checkmark/indicator (hidden when not checked) */
 	  .checkmark:after {
 		content: "";
 		position: absolute;
 		display: none;
 	  }
-
 	  /* Show the checkmark when checked */
 	  .container input:checked ~ .checkmark:after {
 		display: block;
 	  }
-
 	  /* Style the checkmark/indicator */
 	  .container .checkmark:after {
 		left: 9px;

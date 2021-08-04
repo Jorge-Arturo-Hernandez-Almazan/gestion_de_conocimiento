@@ -20,7 +20,7 @@
               <div class="card">
                 <div class="card-body">
 
-            <div class="row" style="padding: 0 !important; margin: 0 !important; ">
+            <!-- <div class="row" style="padding: 0 !important; margin: 0 !important; ">
               <div class="col-md-6">
                 <h3> Lista de preguntas calculadas </h3>
               </div>
@@ -34,12 +34,27 @@
                 </button> 
 
               </div>	
-            </div>
+            </div> -->
+                  
+                  <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+                        <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                            <h2 class="page-title"> Listado de preguntas calculadas </h2>
+                            <ul class="quick-links ml-auto">
+                                <li>
+                                    <button type="button" class="btn btn-primary float-right btn-lg"
+                                         data-toggle="modal" data-target="#exampleModal" @click="abrirModal(-1)">
+                                        <i class="fas fa-edit"></i> Registrar pregunta
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                  
 
                 <div class="table-responsive">
                   
-						<label>Busqueda por pregunta: </label>
-      				<input class="form-control mb-2" v-model="filters.pregunta.value"/>
+						<label> <b> Busqueda por pregunta: </b> </label>
+      				<input class="form-control mb-2" v-model="filters.pregunta.value" placeholder="Ej. ¿Cuánto es 2+2?" />
 					
                 <div class="table-responsive">
                   <!--table class="table table-bordered"-->
@@ -50,7 +65,7 @@
                     :pageSize="3"
                     @totalPagesChanged="totalPages = $event"
                      style="width: 1800px; table-layout: fixed;"
-                     class="table table-bordered table-condensed">
+                     class="table mb-2">
                     
                     <thead slot="head" class="thead-dark">
                       <tr>
@@ -75,19 +90,19 @@
                         <td class="text-center" style="width: 300px; white-space: normal;" >{{preguntaNumerica.tema}}</td>
                         <td class="text-center" style="width: 300px; white-space: normal;">{{preguntaNumerica.opcion}}</td>
                         <td class="text-center" style="width: 300px; white-space: normal;"> <p v-for="(valorComodines) in valorComodines" v-if="preguntaNumerica.id_opcion === valorComodines.id_opcion">{{valorComodines.comodin}}={{valorComodines.valor_comodin}}</p></td>
-                        <td class="text-center" >{{preguntaNumerica.rango}}</td>
-                        <td class="text-center" >{{preguntaNumerica.aplicableArriba}}</td>
-                        <td class="text-center" >{{preguntaNumerica.aplicableAnbajo}}</td>
+                        <td class="text-center" style="width: 300px; white-space: normal;">{{preguntaNumerica.rango}}</td>
+                        <td class="text-center" style="width: 300px; white-space: normal;">{{preguntaNumerica.aplicableArriba}}</td>
+                        <td class="text-center" style="width: 300px; white-space: normal;">{{preguntaNumerica.aplicableAnbajo}}</td>
                         <td class="text-center" style="width: 300px; white-space: normal;">{{preguntaNumerica.decimales}}</td>
                         
                         <td class="text-center">
                           <button
-                            class="btn btn-info" @click="abrirModal(preguntaNumerica.id_pregunta)" data-toggle="modal" data-target="#exampleModal">Editar</button>
-                          <br>
+                            class="btn btn-warning" @click="abrirModal(preguntaNumerica.id_pregunta)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen"></i> Editar  </button>
+                          
                           <button
                             class="btn btn-danger"
                             @click="eliminarCalculadas(preguntaNumerica.id_pregunta)"
-                          >Eliminar</button>
+                          > <i class="fas fa-trash"></i> Eliminar </button>
                         </td>
                       </tr>
                     </tbody>
@@ -365,16 +380,7 @@
 						//var formData = new FormData();
 						var imagen;
 						
-						document.querySelector("#profile_pic").addEventListener("change", function(){
-							const reader = new FileReader;
-						reader.addEventListener("load", () => {
-							//console.log("AQUI ESTA LA IMAGEN");
-							//console.log(reader.result);
-							imagen = reader.result;
-							//localStorage.setItem("recent-image", reader.result);
-						});
-							reader.readAsDataURL(this.files[0]);
-						});
+			 
 						
 						//var imagefile = document.getElementById('profile_pic');
 						//formData.append("image", imagefile.files[0]);

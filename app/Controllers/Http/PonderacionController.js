@@ -10,9 +10,9 @@ class PonderacionController {
     return "Prueba"
   }
   
-  async pruebaPython({response})
+  pruebaPython({response})
   {
-     const output = execSync('python3 CalculoCPTS2.py', { encoding: 'utf-8' });  // the default is 'buffer'
+     const output = execSync('at now -f /root/SistemaKMS/ejecucion.sh', { encoding: 'utf-8' });  // the default is 'buffer'
      return response.json(output);
   }
   
@@ -388,9 +388,9 @@ class PonderacionController {
 	
 	
 	async obtener_caminos_simulador({response}){
-		var i = 0;
-		var j = 0;
-		var k = 0;
+		let i = 0;
+		let j = 0;
+		let k = 0;
 		let temas = await Database.raw('select temas.id as id, temas.nombre_tema as nombre, temas.nivel as nivel from temas order by nivel desc;');
 		temas = temas[0];
 		

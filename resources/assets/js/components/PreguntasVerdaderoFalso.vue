@@ -20,28 +20,31 @@
               <div class="col-lg-12 ">
                 <div class="card">
                   <div class="card-body">
-					  
-					  <div class="row" style="padding: 0 !important; margin: 0 !important; ">
-						<div class="col-md-6">
-							<h3> Lista de preguntas verdadero/falso </h3>
-						</div>
-						<div class="col-md-6">
-							
-							
-							<button
-                 			 type="button"
-                			  class="btn btn-success btn-fw float-right"
-                			  @click="btnGuardar"> 
-								<i class="fas fa-plus-circle"></i> Registrar pregunta 									</button>
-							
-						</div>	
-					</div>
+                    
+
+                    
+                    
+                    <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+                        <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                            <h2 class="page-title"> Listado de preguntas verdadero/falso </h2>
+                            <ul class="quick-links ml-auto">
+                                <li>
+                                    <button type="button" class="btn btn-primary float-right btn-lg"
+                                         data-toggle="modal" data-target="#registrarPregunta" @click="btnGuardar">
+                                        <i class="fas fa-edit"></i> Registrar pregunta
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
 					  
 					  
                     <div class="table-responsive">
 					
-					<label>Busqueda por pregunta: </label>
-      				<input type="search" class="form-control mb-2" v-model="filters.pregunta.value"/>
+					<label><b> Busqueda por pregunta: </b>  </label>
+      				<input type="search" class="form-control mb-2" v-model="filters.pregunta.value" placeholder="Ej. ¿Cuánto es 2+2?" />
 					  
 					<div class="table-responsive">
 						
@@ -56,25 +59,23 @@
 					  
 					<thead slot="head" class="thead-dark">
 						
-						<!--<v-th sortKey="tipo" defaultSort="desc">Tipo</v-th>-->
 						<v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
 						<v-th sortKey="tema" defaultSort="desc">Tema</v-th>
 						<v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
-						<th>Opciones(respuestas)</th>
-						<th>Opciones</th>
+						<th class="text-center">Opciones</th>
 					</thead>
 					<tbody slot="body" slot-scope="{displayData}">
 						<tr v-for="pregunta in displayData" :key="pregunta.id">
 							
-						  <!--<td class="text-left">{{-- pregunta.tipo --}}</td>-->
-							  <td class="text-left">{{pregunta.pregunta}}</td>
+							  <td v-html="wrapText(pregunta.pregunta)" > </td>
 							  <td class="text-left">{{pregunta.tema}}</td>
-							  <td class="text-left">{{pregunta.respuesta}}</td>
+
 							  <td>
-							<tr> <span class="badge badge-success"> {{pregunta.opcion}} </span></tr></td>
+							<tr>  {{pregunta.opcion}} </tr>
+  </td>
 							<td class="text-right">
-								<button class="btn btn-warning" @click="btnEditar(pregunta.id_pregunta,pregunta.pregunta,pregunta.respuesta,pregunta.tipo,pregunta.opcion,pregunta.opcion2,pregunta.opcion3,pregunta.opcion4,pregunta.id_tema)"> <i class="fas fa-pen"></i> </button>
-								<button  class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)"> <i class="fas fa-trash"></i> </button>
+								<button class="btn btn-warning" @click="btnEditar(pregunta.id_pregunta,pregunta.pregunta,pregunta.respuesta,pregunta.tipo,pregunta.opcion,pregunta.opcion2,pregunta.opcion3,pregunta.opcion4,pregunta.id_tema)"> <i class="fas fa-pen"></i> Editar </button>
+								<button  class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)"> <i class="fas fa-trash"></i> Eliminar </button>
 							</td>
 							
 							
@@ -95,38 +96,7 @@
 					  
 					  
 					  
-					  
-                     <!--<form class="ml-auto search-form d-none d-md-block" action="#">
-                      <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Buscar">
-                      </div>
-                    </form>
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                        <th>Tipo de pregunta</th>
-                          <th>Pregunta</th>
-                          <th>Tema</th>
-                          <th>Respuesta</th>
-                          <th>Opciones(respuestas)</th>
-                          <th>Opciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-						<tr v-for="(pregunta, preg) in pregunta" v-bind:key="pregunta.id">
-							  <td class="text-left">{{-- pregunta.tipo --}}</td>
-							  <td class="text-left">{{-- pregunta.pregunta --}}</td>
-							  <td class="text-left">{{-- pregunta.tema --}}</td>
-							  <td class="text-left">{{-- pregunta.respuesta --}}</td>
-							  <td>
-							<tr>A) {{-- pregunta.opcion --}}</tr></td>
-							<td class="text-right">
-								<button class="btn btn-info" @click="btnEditar(pregunta.id_pregunta,pregunta.pregunta,pregunta.respuesta,pregunta.tipo,pregunta.opcion,pregunta.opcion2,pregunta.opcion3,pregunta.opcion4,pregunta.id_tema)">Editar</button>
-								<button  class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)">Eliminar</button>
-							</td>
-						</tr>
-                      </tbody>
-                    </table>-->
+		
                   </div>
                 </div>
              </div>
@@ -179,6 +149,19 @@ export default{
 		
 	},
 	methods: {
+    
+    wrapText(str) {
+        const palabrasSinEspacios = str.split(" ");
+        let textoDePregunta = "";
+        for(let i=0; i < palabrasSinEspacios.length; i++){
+          textoDePregunta = textoDePregunta + " " + palabrasSinEspacios[i];
+          if( (i % 7) == 0 && i != 0){
+             textoDePregunta = textoDePregunta + "<br>"
+          }
+        }
+        return textoDePregunta;
+    },
+    
 		getpregunta(){
 			axios({method: 'GET', url: '/pregunta/show'}).then(
 				result=> {

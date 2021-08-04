@@ -1,5 +1,9 @@
 'use strict'
+
 const Database = use('Database')
+const fs = require('fs');
+const execSync = require('child_process').execSync;
+const Drive = use('Drive');
 
 class PreguntaController {
 	
@@ -123,18 +127,18 @@ class PreguntaController {
     //almacenar pregunta
 	async store({request,response}){
 		
-		const{pregunta,respuesta,tipo,id_tema,id_imagen} = request.only(['pregunta','respuesta','tipo','id_tema','id_imagen']) 
+		const{pregunta,respuesta,tipo,id_tema} = request.only(['pregunta','respuesta','tipo','id_tema']) 
 		
-		var preunta_guardada = await Database.insert({pregunta:pregunta,tipo:tipo,id_tema:id_tema, id_imagen:id_imagen}).into('banco_preguntas')
+		let preguntaAlmacenada = await Database.insert({pregunta:pregunta,tipo:tipo,id_tema:id_tema}).into('banco_preguntas')
 		
-		//OBTIENE EL ULTIMO ID GENERADO EN LA TABLA POR LA ULTIMA PREGUNTA GUARDADA
+		//Obtiene el último id generado en la tabla por la ultima pregunta guardada
 		let ultimo_id = await Database.raw('SELECT MAX(id) as id FROM banco_preguntas')
 		
 		ultimo_id = ultimo_id[0][0].id;
 		
 		const op = await Database.insert({opcion:respuesta, id_pregunta: ultimo_id, esrespuesta: 1}).into('opciones');
 		
-		return response.json({message:'Se ha registrado la pregunta'})
+		return response.json({mensaje:'Se ha registrado la pregunta', ultimo_id})
 	}
 	
 	//Mostrar las preguntas de opcion multiple
@@ -296,11 +300,38 @@ class PreguntaController {
 			
 	}*/
 	
+  //Método para modificar las preguntas sin opciones múltiples
+	async updateAN({request,response}){
+    
+		const{id,pregunta,respuesta,tipo,id_tema,imagenesAEliminar} = request.only(
+			['id','pregunta','respuesta','tipo','id_tema', 'imagenesAEliminar']) 
+		const banco_preguntas = await Database.raw('UPDATE banco_preguntas SET pregunta = ?,tipo = ?, id_tema = ? WHERE id = ?',[pregunta,tipo,id_tema,id])
+		const opcion = await Database.raw('UPDATE opciones SET opcion = ? WHERE id_pregunta = ?',[respuesta,id])
+		for(let i = 0; i < imagenesAEliminar.length; i++){
+			await Database.raw('DELETE FROM imagenes WHERE id = ?', [imagenesAEliminar[i].idImagen]);
+			const output = execSync('rm /root/SistemaKMS/public/' + imagenesAEliminar[i].imagen , { encoding: 'utf-8' });
+		}
+		return response.json({message:'Se ha modificado la pregunta'})
+    
+	}
+  
 	async delete({request,response}){
+		
+    let resultado = "";
 		const{id} = request.only(['id']) 
+    
+    /*let imagenesAEliminar = request.post().imagenesAEliminar;
+    
+    for(let i = 0; i < imagenesAEliminar.length; i++){
+			await Database.raw('DELETE FROM imagenes WHERE id = ?', [imagenesAEliminar[i].idImagen]);
+			const output = await execSync('rm /root/SistemaKMS/public/imagenes/preguntas/' + imagenesAEliminar[i].nombre , { encoding: 'utf-8' });
+		}*/
+    
 		const banco_preguntas1 = await Database.raw('DELETE FROM opciones WHERE id_pregunta = ?',[id])
 		const banco_preguntas3 = await Database.raw('DELETE FROM banco_preguntas WHERE id = ?',[id])
-		return response.json({message:'Se ha eliminado la pregunta'})
+		
+		return response.json({mensaje: "La pregunta se ha eliminado correctamente", resultado})
+
 	}
 	
   	// Esta funcion se utliza para mostrar las preguntas por nodo (tema) en el arbol
@@ -333,11 +364,10 @@ class PreguntaController {
 		//const preguntas_abiertas = await Database.raw("SELECT b.id as id_pregunta,b.id_tema as id_tema,b.pregunta as pregunta, r.respuesta as respuesta,b.tipo as tipo,t.nombre_tema as tema FROM banco_preguntas b INNER JOIN temas t on b.id_tema=t.id  INNER JOIN respuestas as r on b.id = r.id_pregunta WHERE b.tipo='Abierta/Breve'")
 		const preguntas_abiertas = await Database.raw(
 			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema, '+
-      'o.id, o.opcion, o.esrespuesta, b.id_imagen, i.nombre as nombreImagen '+
+      'o.id, o.opcion, o.esrespuesta, b.id_imagen '+
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema '+
 			'INNER JOIN opciones o on b.id = o.id_pregunta '+
-			'INNER JOIN imagenes i on i.id = b.id_imagen ' +
 			'WHERE b.tipo = 1');
 		
 		//const opciones = await Database.raw('SELECT * FROM opciones')
@@ -364,19 +394,7 @@ class PreguntaController {
 		
 	}
 	
-	//Método para modificar las preguntas sin opciones múltiples
-	async updateAN({request,response}){
-		
-		const{id,pregunta,respuesta,tipo,id_tema} = request.only(
-			['id','pregunta','respuesta','tipo','id_tema',]) 
-		
-		const banco_preguntas = await Database.raw('UPDATE banco_preguntas SET pregunta = ?,tipo = ?, id_tema = ? WHERE id = ?',[pregunta,tipo,id_tema,id])
-		
-		const opcion = await Database.raw('UPDATE opciones SET opcion = ? WHERE id_pregunta = ?',[respuesta,id])
-		
-		return response.json({message:'Se ha modificado la pregunta'})
-		
-	}
+	
 	
 	async obtenerconfiguracion({response}){
 		
@@ -426,22 +444,23 @@ class PreguntaController {
 		return response.json({id_ponderado: id_tema})
 	}
 	
+  
 	async storeCalculada({request,response}){
 		
 		const opciones = request.post().opciones;
 		const reactivo = request.post().rectivo;
-    	const respuesta = request.post().respuesta;
-    	const comodines = request.post().comodines;
-    	const valorComodines = request.post().valorComodines;
+    const respuesta = request.post().respuesta;
+    const comodines = request.post().comodines;
+    const valorComodines = request.post().valorComodines;
 		const tema = request.post().tema;
-    	const decimales = request.post().decimales;
-    	const margen = request.post().margen;
-    	const aplica_arriba = request.post().arriba;
-    	const aplica_abajo = request.post().abajo;
-    	const fs = require('fs');
-		fs.writeFileSync('imagen.jpg',request.post().imagen, 'binary');
+    const decimales = request.post().decimales;
+    const margen = request.post().margen;
+    const aplica_arriba = request.post().arriba;
+    const aplica_abajo = request.post().abajo;
+    const fs = require('fs');
+		//fs.writeFileSync('imagen.jpg',request.post().imagen, 'binary');
 		//GUARDAR UNA NUEVA PREGUNTA
-		const preguntas = await Database.insert({pregunta:reactivo,tipo:'5',id_tema:tema,esrespuesta:1}).into('banco_preguntas')
+		const preguntas = await Database.insert({pregunta:reactivo,tipo:'5',id_tema:tema}).into('banco_preguntas')
 		
 		//OBTIENE EL ULTIMO ID GENERADO EN LA TABLA POR LA ULTIMA PREGUNTA GUARDADA
 		let ultimo_id = await Database.raw('SELECT MAX(id) as id FROM banco_preguntas')
@@ -463,6 +482,8 @@ class PreguntaController {
     
     
 		return "success";
+    
+    
 	}
 	
 	
@@ -610,8 +631,16 @@ class PreguntaController {
 		
 	}
 	
+	async obtenerTodasImagenes({params, response}){
+		const imagenesPreguntas = await Database.raw(
+			'select banco_preguntas.id as idpregunta, imagenes.id as idImagen, imagenes.alias as alias, imagenes.nombre from banco_preguntas inner join pregunta_imagen on banco_preguntas.id = pregunta_imagen.id_pregunta inner join imagenes on pregunta_imagen.id_imagen = imagenes.id;')
+
+		return response.json({todasImagenes: imagenesPreguntas})
+		
+	}
 	
 	
 	
 }
 module.exports = PreguntaController
+

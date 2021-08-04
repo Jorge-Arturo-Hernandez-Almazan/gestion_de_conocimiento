@@ -12,11 +12,11 @@ let mix = require('laravel-mix');
  */
 // setting the public directory to public (this is where the mix-manifest.json gets created)
 mix.setPublicPath('public')
-.scripts(['resources/assets/plantilla/vendors/js/vendor.bundle.base.js','resources/assets/plantilla/vendors/js/vendor.bundle.addons.js','resources/assets/plantilla/js/shared/off-canvas.js','resources/assets/plantilla/js/shared/misc.js','resources/assets/plantilla/js/demo_1/dashboard.js'],'public/js/principal.js')
+.scripts(['resources/assets/plantilla/vendors/js/vendor.bundle.base.js','resources/assets/plantilla/vendors/js/vendor.bundle.addons.js','resources/assets/plantilla/js/shared/off-canvas.js','resources/assets/plantilla/js/shared/misc.js','resources/assets/plantilla/js/demo_1/dashboard.js',], 'public/js/principal.js')
 
 .js('resources/assets/js/main.js','public/js/main.js')
 
-.styles(['resources/assets/plantilla/vendors/iconfonts/mdi/css/materialdesignicons.min.css','resources/assets/plantilla/vendors/iconfonts/ionicons/css/ionicons.css','resources/assets/plantilla/vendors/iconfonts/typicons/src/font/typicons.css','resources/assets/plantilla/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css','resources/assets/plantilla/vendors/css/vendor.bundle.base.css','resources/assets/plantilla/vendors/css/vendor.bundle.addons.css','resources/assets/plantilla/css/shared/style.css','resources/assets/plantilla/css/demo_1/style.css'],'public/css/main.css');
+.styles(['resources/assets/plantilla/vendors/iconfonts/mdi/css/materialdesignicons.min.css','resources/assets/plantilla/vendors/iconfonts/ionicons/css/ionicons.css','resources/assets/plantilla/vendors/iconfonts/typicons/src/font/typicons.css','resources/assets/plantilla/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css','resources/assets/plantilla/vendors/css/vendor.bundle.base.css','resources/assets/plantilla/vendors/css/vendor.bundle.addons.css','resources/assets/plantilla/css/shared/style.css','resources/assets/plantilla/css/demo_1/style.css','resources/assets/css/styles.css'],'public/css/main.css');
 
 
 
