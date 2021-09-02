@@ -17,7 +17,7 @@ def dividir(cpc,cpic):
         if cpc>0:
             cpic/= cpc
 
-URL = "http://67.205.132.145/arbol/simulador/caminos"
+URL = "http://159.203.185.170/arbol/simulador/caminos"
 evaluaciones=25
 r = requests.get(url = URL)
 data = r.json()

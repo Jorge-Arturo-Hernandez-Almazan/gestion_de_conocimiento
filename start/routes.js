@@ -14,23 +14,6 @@
 Route.get('/pruebapython', 'PonderacionController.pruebaPython');
 
   Route.get('temas/count','TemaController.temacount') 
-  /*Route.post('upload', async ({ request }) => {
-  const profilePics = request.file('profile_pics', {
-    types: ['image'],
-    size: '2mb'
-  })
-
-  await profilePics.moveAll(Helpers.tmpPath(''))
-
-  if (!profilePics.movedAll()) {
-    return profilePics.errors()
-  }
-})*/
-
-/// RUTAS DEL ARBOL//////
-//Route.get('/historialexperto', ({view, request}) => {
-//			view.render('arbol')
-//			})
 
 ///RUTAS DEL METODO DE PONDERACION
 
@@ -41,6 +24,8 @@ Route.get('/arbol/obtenerRamas', 'PonderacionController.obtener_ramas');
 
 Route.get('/obtenerTodasLasImagenes', 'PreguntaController.obtenerTodasImagenes');
 Route.get('/obtenerDatos', 'UserController.obtenerDatos');
+
+Route.post('/verificarExistencia', 'UserController.verificarExistencia');
 
 
 Route.get('/arbol/caminos', 'PonderacionController.obtener_caminos')
@@ -166,6 +151,7 @@ Route.get('/user/obtenerArbol/:id','TemaController.obtenerArbol')
 Route.get('/obtenerConexiones/:id','TemaController.obtenerConexiones')
 
 Route.get('/perfil', ({view}) =>  view.render('app'))
+
 
 
 //////////////////////////////////////
@@ -314,6 +300,9 @@ Route.get('/pregunta/respuestas/:id', 'PreguntaController.obtenerRespuestas');
   Route.get('alumno/showp','UserController.alumnosP')
   Route.get('show/profesor','UserController.profesor')
   Route.get('show/experto','UserController.experto')
+
+  Route.post('user/delete','UserController.delete')
+  Route.post('user/deleteExperto','UserController.deleteExperto')
   Route.post('user/delete2','UserController.deletealumno')
   Route.post('user/delete3','UserController.deleteprofesor')
 
@@ -321,7 +310,7 @@ Route.get('/pregunta/respuestas/:id', 'PreguntaController.obtenerRespuestas');
   Route.post('registrar','UserController.registrar')
   Route.get('admin/show','UserController.admins')
   Route.post('user/actualizar','UserController.actualizar')
-  Route.post('user/delete','UserController.delete')
+  
   Route.get('app/cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion')
 	Route.post('app/pregunta/add','PreguntaController.store')//
 	Route.post('app/preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
@@ -399,6 +388,7 @@ Route.get('/pregunta/respuestas/:id', 'PreguntaController.obtenerRespuestas');
 		// Route.get('cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion') // Grupo Cuestionario
 		
     Route.post('pregunta/update','PreguntaController.updateAN')
+    Route.post('pregunta/updateAbierta','PreguntaController.updateAbierta')
     
 		Route.post('pregunta/add','PreguntaController.store')//
 		Route.post('preguntaOpcionMultiple/store','PreguntaController.storeMultiple')

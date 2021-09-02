@@ -93,7 +93,7 @@ class PreguntaController {
 		const op = await Database.insert({opcion:respuesta, id_pregunta: ultimo_id, esrespuesta: 1}).into('opciones');
 		const mar = await Database.insert({id_pregunta:ultimo_id, aplicableArriba:arriba, aplicableAnbajo:abajo, rango:margen}).into('margen_errors');
 		
-		return response.json({message:'Se ha registrado la pregunta'})
+		return response.json({message:'Se ha registrado la pregunta', ultimo_id})
 	}
 	
 	//actualiza pregunta de opcion multiple
@@ -295,10 +295,24 @@ class PreguntaController {
     
   }
 	
-	/*async updateMultiple({request, response})
-	{
-			
-	}*/
+
+  async updateAbierta({request,response}){
+    
+    const{id,pregunta,respuesta,tipo,margen,mArriba,mAbajo,id_tema,imagenesAEliminar} = request.only(
+			['id','pregunta','respuesta','tipo','margen','mArriba','mAbajo','id_tema', 'imagenesAEliminar']) 
+		const banco_preguntas = 
+          await Database.raw('UPDATE banco_preguntas SET pregunta = ?,tipo = ?, id_tema = ? WHERE id = ?',[pregunta,tipo,id_tema,id])
+		const opcion = await Database.raw('UPDATE opciones SET opcion = ? WHERE id_pregunta = ?',[respuesta,id])
+		
+    const mergenes = await Database.raw('UPDATE margen_errors SET aplicableArriba=?, aplicableAnbajo=?, rango=? WHERE id_pregunta = ?',[mArriba,mAbajo,margen,id])
+    
+    for(let i = 0; i < imagenesAEliminar.length; i++){
+			await Database.raw('DELETE FROM imagenes WHERE id = ?', [imagenesAEliminar[i].idImagen]);
+			const output = execSync('rm /root/SistemaKMS/public/' + imagenesAEliminar[i].imagen , { encoding: 'utf-8' });
+		}
+		return response.json({message:'Se ha modificado la pregunta'})
+    
+  }
 	
   //Método para modificar las preguntas sin opciones múltiples
 	async updateAN({request,response}){

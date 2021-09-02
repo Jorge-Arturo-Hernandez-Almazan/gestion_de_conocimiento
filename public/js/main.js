@@ -2967,13 +2967,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3043,18 +3036,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     btnGuardar: function () {
       var _btnGuardar = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var _this3 = this;
 
-        var _ref, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        var valores;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context.next = 2;
+                _context2.next = 2;
                 return this.$swal({
-                  //title: 'Registrar administrador',
                   showClass: {
                     backdrop: 'swal2-noanimation',
                     // disable backdrop animation
@@ -3067,51 +3058,116 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     popup: '' // disable popup fade-out animation
 
                   },
-                  html: "\n\t\t\t<h3 class=\"text-left\"> Registrar administrador </h3>\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido paterno:: </p>\n\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Martinez\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Perez\">\n            <p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n\t\t\t<input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n            <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a: </p>\n\t\t\t<input id=\"password\" type=\"text\" type=\"password\" class=\"swal2-input\" placeholder=\"contrase\xF1a\">\n\t\t\t\t\t\t<br> \n            ",
+                  html: "\n                <h3 class=\"text-left\"> Registrar administrador </h3>\n                <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n                <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n                <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n                <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Martinez\">\n                <p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n                <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Perez\">\n                <p class=\"text-left mt-0 mb-0\"> Correo<span style=\"color:red\">*</span>: </p>\n                <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"ejemplo@ejemplo.com\">\n                <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a<span style=\"color:red\">*</span>: </p>\n                <input id=\"password\" type=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"contrase\xF1a\"> \n\n\n\n                <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                  <span class=\"text-left\" id=\"msjError\">  </span>\n                </div>\n                <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            ",
                   focusConfirm: false,
                   showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
-                  preConfirm: function preConfirm() {
-                    return [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value];
-                  }
+                  confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+                  confirmButtonColor: '#2196f3',
+                  cancelButtonColor: '#aaa',
+                  cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
+                  allowOutsideClick: false,
+                  allowEscapeKey: false,
+                  preConfirm: function () {
+                    var _preConfirm = _asyncToGenerator(
+                    /*#__PURE__*/
+                    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+                      var error, mensajeError;
+                      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+                        while (1) {
+                          switch (_context.prev = _context.next) {
+                            case 0:
+                              error = 0;
+                              _this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value;
+                              mensajeError = document.getElementById('msjError');
+
+                              if (!(_this3.nombre == "" || _this3.apellido_paterno == "" || _this3.password == "" || _this3.matricula == "")) {
+                                _context.next = 7;
+                                break;
+                              }
+
+                              error = 2;
+                              _context.next = 9;
+                              break;
+
+                            case 7:
+                              _context.next = 9;
+                              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/verificarExistencia', {
+                                correo: _this3.matricula
+                              }).then(function (res) {
+                                if (res.data[0].length !== 0) {
+                                  error = 1;
+                                }
+                              })["catch"](function (err) {
+                                console.log(err);
+                              });
+
+                            case 9:
+                              if (!(error === 1)) {
+                                _context.next = 16;
+                                break;
+                              }
+
+                              mensajeError.innerHTML = "El Correo ya esta siendo usado, por favor elija otro";
+                              document.getElementById('msjError').innerHTML = "El correo está en uso";
+                              document.getElementById('div_error_matricula').style.display = "block";
+                              return _context.abrupt("return", false);
+
+                            case 16:
+                              if (!(error === 2)) {
+                                _context.next = 22;
+                                break;
+                              }
+
+                              mensajeError.innerHTML = "Por favor, complete todos los campos requeridos";
+                              document.getElementById('div_error_matricula').style.display = "block";
+                              return _context.abrupt("return", false);
+
+                            case 22:
+                              return _context.abrupt("return", [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value, error]);
+
+                            case 23:
+                            case "end":
+                              return _context.stop();
+                          }
+                        }
+                      }, _callee);
+                    }));
+
+                    function preConfirm() {
+                      return _preConfirm.apply(this, arguments);
+                    }
+
+                    return preConfirm;
+                  }()
                 });
 
               case 2:
-                _ref = _context.sent;
-                formValues = _ref.value;
+                valores = _context2.sent;
 
-                if (this.nombre == "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == "") {
-                  /*this.$swal({
-                  	type: 'info',
-                  	title: 'Datos incompletos',
-                  })*/
-                } else {
+                if (valores.hasOwnProperty('value')) {
                   this.guardarAdmin(this.nombre, this.apellido_materno, this.apellido_paterno, this.matricula, this.password); //funcion guardarAdmin
 
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
                   this.$swal.fire({
-                    type: 'success',
-                    title: '¡Administrador Registrado!'
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Información almacenada con éxito',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true
                   });
-                } //if (formValues) {
-                //this.$swal(JSON.stringify(formValues))
-                //}			
+                  this.apellido_paterno = "";
+                  this.apellido_materno = "";
+                  this.nombre = "";
+                  this.matricula = "";
+                  this.password = "";
+                }
 
-
-              case 5:
+              case 4:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function btnGuardar() {
@@ -3123,59 +3179,163 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     btnEditar: function () {
       var _btnEditar = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id, nombre, apellido_paterno, apellido_materno, matricula) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id, nombre, apellido_paterno, apellido_materno, matricula) {
         var _this4 = this;
 
-        var _ref2, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        var valores;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context2.next = 2;
+                _context4.next = 2;
                 return this.$swal({
-                  title: 'Editar administrador',
-                  html: "<input id=\"nombre\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <input id=\"apellido_paterno\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <input id=\"apellido_materno\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <input id=\"matricula\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n            <input id=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<br> \n            ",
+                  showClass: {
+                    backdrop: 'swal2-noanimation',
+                    popup: '',
+                    icon: ''
+                  },
+                  hideClass: {
+                    popup: ''
+                  },
+                  html: "\n            <h3 class=\"text-left\"> Actualizar administrador </h3>\n\t\t\t      <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n            <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido materno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Correo<span style=\"color:red\">*</span>: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"ejemplo@ejemplo.com\" value=\"" + matricula + "\">\n            <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a <span style=\"color:red\">**</span> :</p> \n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" >  \n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\n            \n            ",
                   focusConfirm: false,
                   showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
+                  confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+                  confirmButtonColor: '#2196f3',
                   cancelButttonColor: '#3085d6',
-                  preConfirm: function preConfirm() {
-                    return [_this4.apellido_paterno = document.getElementById('apellido_paterno').value, _this4.apellido_materno = document.getElementById('apellido_materno').value, _this4.nombre = document.getElementById('nombre').value, _this4.matricula = document.getElementById('matricula').value, _this4.password = document.getElementById('password').value, _this4.id = id];
-                  }
+                  cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
+                  preConfirm: function () {
+                    var _preConfirm2 = _asyncToGenerator(
+                    /*#__PURE__*/
+                    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+                      var error, mensajeError;
+                      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+                        while (1) {
+                          switch (_context3.prev = _context3.next) {
+                            case 0:
+                              error = 0;
+                              _this4.apellido_paterno = document.getElementById('apellido_paterno').value;
+                              _this4.apellido_materno = document.getElementById('apellido_materno').value;
+                              _this4.nombre = document.getElementById('nombre').value;
+                              _this4.matricula = document.getElementById('matricula').value;
+                              _this4.password = "";
+                              mensajeError = document.getElementById('msjError');
+
+                              if (!(_this4.nombre == "" || _this4.apellido_paterno == "" || _this4.matricula == "")) {
+                                _context3.next = 11;
+                                break;
+                              }
+
+                              error = 2;
+                              _context3.next = 14;
+                              break;
+
+                            case 11:
+                              if (!(matricula !== _this4.matricula)) {
+                                _context3.next = 14;
+                                break;
+                              }
+
+                              _context3.next = 14;
+                              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/verificarExistencia', {
+                                correo: _this4.matricula
+                              }).then(function (res) {
+                                if (res.data[0].length !== 0) {
+                                  error = 1;
+                                }
+                              })["catch"](function (err) {
+                                console.log(err);
+                              });
+
+                            case 14:
+                              if (!(error === 1)) {
+                                _context3.next = 21;
+                                break;
+                              }
+
+                              mensajeError.innerHTML = "El Correo ya esta siendo usado, por favor elija otro";
+                              document.getElementById('msjError').innerHTML = "El correo está en uso";
+                              document.getElementById('div_error_matricula').style.display = "block";
+                              return _context3.abrupt("return", false);
+
+                            case 21:
+                              if (!(error === 2)) {
+                                _context3.next = 27;
+                                break;
+                              }
+
+                              mensajeError.innerHTML = "Por favor, complete todos los campos requeridos";
+                              document.getElementById('div_error_matricula').style.display = "block";
+                              return _context3.abrupt("return", false);
+
+                            case 27:
+                              return _context3.abrupt("return", [_this4.apellido_paterno = document.getElementById('apellido_paterno').value, _this4.apellido_materno = document.getElementById('apellido_materno').value, _this4.nombre = document.getElementById('nombre').value, _this4.matricula = document.getElementById('matricula').value, _this4.password = document.getElementById('password').value, error]);
+
+                            case 28:
+                            case "end":
+                              return _context3.stop();
+                          }
+                        }
+                      }, _callee3);
+                    }));
+
+                    function preConfirm() {
+                      return _preConfirm2.apply(this, arguments);
+                    }
+
+                    return preConfirm;
+                  }()
                 });
 
               case 2:
-                _ref2 = _context2.sent;
-                formValues = _ref2.value;
+                valores = _context4.sent;
 
-                if (this.nombre == "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos'
-                  });
-                } else {
-                  this.editar(this.id, this.nombre, this.apellido_materno, this.apellido_paterno, this.matricula, this.password); //funcion guardarAdmin
+                if (valores.hasOwnProperty('value')) {
+                  //this.editar(this.id,this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/actualizar', {
+                    id: id,
+                    nombre: this.nombre,
+                    nivel_academico: "",
+                    id_rol: 1,
+                    apellido_materno: this.apellido_materno,
+                    apellido_paterno: this.apellido_paterno,
+                    password: this.password,
+                    matricula: this.matricula
+                  }).then(function (res) {
+                    _this4.nombre = '';
+                    _this4.id_rol = '';
+                    _this4.apellido_materno = '';
+                    _this4.apellido_paterno = '';
+                    _this4.matricula = '';
+                    _this4.password = '';
+                    _this4.id = '';
 
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
+                    _this4.getAdmin();
+                  })["catch"](function (err) {
+                    console.log(err);
                   });
                   this.$swal.fire({
-                    type: 'success',
-                    title: '¡Administrador Editado!'
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Información actualizada',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true
                   });
+                  console.log(this.id, this.nombre, this.apellido_materno, this.apellido_paterno, this.matricula, this.password);
+                  this.apellido_paterno = "";
+                  this.apellido_materno = "";
+                  this.nombre = "";
+                  this.matricula = "";
+                  this.password = "";
                 }
 
-              case 5:
+              case 4:
               case "end":
-                return _context2.stop();
+                return _context4.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee4, this);
       }));
 
       function btnEditar(_x, _x2, _x3, _x4, _x5) {
@@ -3214,33 +3374,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     eliminar: function eliminar(id) {
       var _this6 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/delete', {
-        id: id
-      }).then(function (res) {
-        _this6.nombre = '';
-        _this6.id_rol = '';
-        _this6.apellido_materno = '';
-        _this6.apellido_paterno = '';
-        _this6.matricula = '';
-        _this6.password = '';
-        _this6.id = '';
+      this.$swal.fire({
+        title: '¿Estas seguro de realizar esta acción?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+      }).then(function (result) {
+        if (result.value) {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/delete', {
+            id: id
+          }).then(function (res) {
+            _this6.nombre = '';
+            _this6.id_rol = '';
+            _this6.apellido_materno = '';
+            _this6.apellido_paterno = '';
+            _this6.matricula = '';
+            _this6.password = '';
+            _this6.id = '';
 
-        _this6.getAdmin(); //console.log(res)
+            _this6.getAdmin();
 
-
-        var Toast = _this6.$swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000
-        });
-
-        _this6.$swal.fire({
-          type: 'success',
-          title: '¡Administrador Eliminado!'
-        });
-      })["catch"](function (err) {
-        console.log(err);
+            _this6.$swal.fire({
+              position: 'top-end',
+              icon: 'warning',
+              title: 'Datos eliminados con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
+            });
+          })["catch"](function (err) {
+            console.log(err);
+          });
+        }
       });
     }
   }
@@ -3262,6 +3430,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -3576,7 +3746,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _btnEditar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id, nombre_alumno, apellido_paterno, apellido_materno, matricula, nivel_academico, idProfesor) {
-        var _this5 = this;
+        var _this5 = this,
+            _this$$swal;
 
         var _ref2, formValues, Toast;
 
@@ -3585,7 +3756,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return this.$swal({
+                return this.$swal((_this$$swal = {
                   //title: 'Editar Alumno',
                   showClass: {
                     backdrop: 'swal2-noanimation',
@@ -3599,19 +3770,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     popup: '' // disable popup fade-out animation
 
                   },
+                  confirmButtonText: '<i class="fa fa-thumbs-o-up"></i> Text',
                   html: "<h3 class=\"text-left\"> Editar alumno </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre_alumno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrse\xF1a: </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nivel academico: </p>\n\t\t\t\t\t\t<input id=\"nivel_academico\" type=\"text\" class=\"swal2-input\" placeholder=\"Nivel academico\" value=\"" + nivel_academico + "\" >\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Profesor: </p>\n\t\t\t\t\t\t<select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n\t\t\t\t\t\t\t").concat(this.profesor.map(function (cat) {
                     return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre, "</option>");
                   }), "\n\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t"),
                   focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
-                  preConfirm: function preConfirm() {
-                    return [_this5.apellido_paterno = document.getElementById('apellido_paterno').value, _this5.apellido_materno = document.getElementById('apellido_materno').value, _this5.nombre = document.getElementById('nombre').value, _this5.matricula = document.getElementById('matricula').value, _this5.password = document.getElementById('password').value, _this5.nivel_academico = document.getElementById('nivel_academico').value, _this5.id_profesor = document.getElementById('id_profesor').value, _this5.id = id];
-                  }
-                });
+                  showCancelButton: true
+                }, _defineProperty(_this$$swal, "confirmButtonText", 'Guardar'), _defineProperty(_this$$swal, "confirmButtonColor", '#1cc88a'), _defineProperty(_this$$swal, "cancelButttonColor", '#3085d6'), _defineProperty(_this$$swal, "cancelButtonText", 'Cancelar'), _defineProperty(_this$$swal, "preConfirm", function preConfirm() {
+                  return [_this5.apellido_paterno = document.getElementById('apellido_paterno').value, _this5.apellido_materno = document.getElementById('apellido_materno').value, _this5.nombre = document.getElementById('nombre').value, _this5.matricula = document.getElementById('matricula').value, _this5.password = document.getElementById('password').value, _this5.nivel_academico = document.getElementById('nivel_academico').value, _this5.id_profesor = document.getElementById('id_profesor').value, _this5.id = id];
+                }), _this$$swal));
 
               case 2:
                 _ref2 = _context2.sent;
@@ -3657,7 +3824,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     editar: function editar(id, nombre, apellido_paterno, apellido_materno, password, matricula, nivel_academico, id_profesor) {
       var _this6 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/administrador/alumno/actualizar', {
+      //axios.post('/administrador/alumno/actualizar',
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/alumno/actualizar', {
         id: id,
         nombre: nombre,
         apellido_paterno: apellido_paterno,
@@ -4000,6 +4168,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4066,7 +4248,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         for (var _i = 0; _i < temas.length; _i++) {
           for (var j = 0; j < preguntas.length; j++) {
-            if (temas[_i].id === preguntas[j].id) {
+            if (temas[_i].nombre_tema === preguntas[j].nombre_tema) {
               switch (parseInt(preguntas[j].tipo)) {
                 case 1:
                   temas[_i].totalPreguntasAbiertas = preguntas[j].totalPreguntas;
@@ -6336,7 +6518,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     popup: ''
                   },
                   showCancelButton: true,
-                  html: "\n\t\t\t\t\t\t<h3 class=\"text-left\"> Registrar experto </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Mart\xEDnez\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Per\xE9z\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrase\xF1a: </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"swal2-input \" placeholder=\"Contrase\xF1a\">\n\t\t\t\t\t\t\t\t\t<hr> \n\t\t\t\t\t\t",
+                  html: "\n\t\t\t\t\t\t<h3 class=\"text-left\"> Registrar experto </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Mart\xEDnez\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Per\xE9z\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrase\xF1a: </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"swal2-input \" placeholder=\"Contrase\xF1a\">\n\t\t\t\t\t\t",
                   focusConfirm: false
                 }, _defineProperty(_this$$swal, "showCancelButton", true), _defineProperty(_this$$swal, "confirmButtonText", 'Guardar'), _defineProperty(_this$$swal, "confirmButtonColor", '#1cc88a'), _defineProperty(_this$$swal, "cancelButttonColor", '#3085d6'), _defineProperty(_this$$swal, "cancelButtonText", 'Cancelar'), _defineProperty(_this$$swal, "preConfirm", function preConfirm() {
                   return [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value];
@@ -6528,7 +6710,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancelButtonText: 'Cancelar'
       }).then(function (result) {
         if (result.value) {
-          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/delete', {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/deleteExperto', {
             id: id,
             estado: estado
           }).then(function (res) {
@@ -7793,6 +7975,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/subirImagenes */ "./resources/assets/js/components/subirImagenes.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -8028,25 +8211,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
 
     return _ref = {
+      subidor: {},
       pregunta: [],
       preguntaAbierta: [],
       id: "",
       id_tema: "",
-      id_imagen: "",
-      idUsuario: " ",
       respuesta: ""
-    }, _defineProperty(_ref, "pregunta", ""), _defineProperty(_ref, "tipo", ""), _defineProperty(_ref, "temasSeleccionado", {}), _defineProperty(_ref, "temas", []), _defineProperty(_ref, "id", ""), _defineProperty(_ref, "nombre_tema", ""), _defineProperty(_ref, "imagenes", []), _defineProperty(_ref, "nivel", ""), _defineProperty(_ref, "filters", {
+    }, _defineProperty(_ref, "pregunta", ""), _defineProperty(_ref, "tipo", ""), _defineProperty(_ref, "temas", []), _defineProperty(_ref, "id", ""), _defineProperty(_ref, "nombre_tema", ""), _defineProperty(_ref, "filters", {
       pregunta: {
         value: '',
         keys: ['pregunta', 'tema']
       }
-    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "filelist", []), _defineProperty(_ref, "form_data", {}), _defineProperty(_ref, "imagenesVistaPrevia", []), _defineProperty(_ref, "contadorImagen", 0), _defineProperty(_ref, "modoEdicion", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "imagenesAEliminar", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "numeroDePreguntaAEditar", 0), _defineProperty(_ref, "ultimaImagenEnPreguntaAEditar", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _ref;
+    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "modoEdicion", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "ultimaImagenEnPreguntaAEditar", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _ref;
+  },
+  created: function created() {
+    this.subidor = new _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__["default"]();
   },
   mounted: function mounted() {
     var _this = this;
@@ -8107,10 +8315,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context2.prev = _context2.next) {
               case 0:
                 _this2.imagenesParaDesplegarEnModal = imagenes;
-                _context2.next = 3;
-                return console.log(imagenes);
 
-              case 3:
+              case 1:
               case "end":
                 return _context2.stop();
             }
@@ -8119,36 +8325,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }))();
     },
     onChange: function onChange(e) {
-      var file = e.target.files[0];
-      var url = URL.createObjectURL(file);
-      var imgp = document.getElementById("imgp");
-      this.imagenes.push(file);
-      this.acomodarImagen(url, 0, null);
-      console.log(this.imagenesAEliminar);
-      console.log(this.imagenesVistaPrevia);
+      this.subidor.onChange(e);
     },
     remove: function remove(imagen) {
-      var i = this.imagenesVistaPrevia.indexOf(imagen);
-
-      if (imagen.hasOwnProperty('eliminar')) {
-        this.imagenesAEliminar.push(imagen);
-      } else {
-        this.imagenes.splice(i, 1);
-      }
-
-      this.imagenesVistaPrevia.splice(i, 1); //this.imagenes.splice(i,1);
-
-      console.log(this.imagenesAEliminar);
-      console.log(this.imagenesVistaPrevia);
+      this.subidor.remove(imagen);
     },
     dragover: function dragover(event) {
-      event.preventDefault();
-      event.currentTarget.style.backgroundColor = 'green';
+      this.subidor.dragover(event);
     },
     dragleave: function dragleave(event) {
-      event.currentTarget.style.backgroundColor = 'white';
+      this.subidor.dragleave(event);
     },
-    acomodarImagen: function acomodarImagen(imagen, vaAEliminarse, idImagen) {
+    drop: function drop(event) {
+      this.subidor.drop(event);
+    },
+    subirImagenes: function subirImagenes(id) {
       var _this3 = this;
 
       return _asyncToGenerator(
@@ -8158,35 +8349,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                if (!(vaAEliminarse === 1)) {
-                  _context3.next = 6;
-                  break;
-                }
+                _this3.subidor.subirImagenes(id);
 
-                _context3.next = 3;
-                return _this3.imagenesVistaPrevia.push({
-                  imagen: imagen,
-                  id: _this3.contadorImagen,
-                  eliminar: true,
-                  idImagen: idImagen
-                });
-
-              case 3:
-                _this3.contadorImagen++;
-                _context3.next = 9;
-                break;
-
-              case 6:
-                _context3.next = 8;
-                return _this3.imagenesVistaPrevia.push({
-                  imagen: imagen,
-                  id: _this3.contadorImagen
-                });
-
-              case 8:
-                _this3.contadorImagen++;
-
-              case 9:
+              case 1:
               case "end":
                 return _context3.stop();
             }
@@ -8194,149 +8359,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee3);
       }))();
     },
-    drop: function drop(event) {
+    getPreguntaAbierta: function getPreguntaAbierta() {
       var _this4 = this;
-
-      event.preventDefault();
-      var self = this;
-
-      var _loop = function _loop(i) {
-        var reader = new FileReader();
-        reader.readAsDataURL(event.dataTransfer.files[i]);
-
-        _this4.imagenes.push(event.dataTransfer.files[i]);
-
-        reader.onload = function () {
-          self.acomodarImagen(reader.result, 0, null);
-        };
-      };
-
-      for (var i = 0; i < event.dataTransfer.files.length; i++) {
-        _loop(i);
-      }
-
-      event.currentTarget.style.backgroundColor = 'white';
-      console.log(this.imagenesAEliminar);
-      console.log(this.imagenesVistaPrevia);
-    },
-    subirImagenes: function subirImagenes(id) {
-      var _this5 = this;
 
       return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var extension, ruta, numeroPregunta, nombreImagen, alias, conteoActualImagenes, i, _i;
-
+        var i, j;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                extension = "";
-                ruta = "/subirr";
-                numeroPregunta = id;
-                nombreImagen = "";
-                alias = ""; //this.numeroDePreguntaAEditar, 
-                //this.ultimaImagenEnPreguntaAEditar 
-
-                if (!(_this5.modoEdicion === 1)) {
-                  _context4.next = 27;
-                  break;
-                }
-
-                conteoActualImagenes = parseInt(_this5.ultimaImagenEnPreguntaAEditar) + 1;
-
-                if (!(_this5.imagenes.length > 0)) {
-                  _context4.next = 25;
-                  break;
-                }
-
-                i = 0;
-
-              case 9:
-                if (!(i < _this5.imagenes.length)) {
-                  _context4.next = 25;
-                  break;
-                }
-
-                extension = _this5.imagenes[i].name.split('.')[1];
-                nombreImagen = new Date().getTime() + "_" + i + "." + extension;
-                alias = "imagen_pregunta_" + numeroPregunta + "_" + conteoActualImagenes + "." + extension;
-                _this5.form_data = new FormData();
-
-                _this5.form_data.append('imagen', _this5.imagenes[i]);
-
-                _this5.form_data.append('csrf-token', "{{ csrfToken }}");
-
-                _this5.form_data.append('alias', alias);
-
-                _this5.form_data.append('nombreImagen', nombreImagen);
-
-                _this5.form_data.append('idPregunta', id);
-
-                _context4.next = 21;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(ruta, _this5.form_data).then(function (res) {
-                  console.log("La subida se ha completado con exito");
-                })["catch"](function (error) {
-                  console.log(error);
+                _context4.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: "GET",
+                  url: "/obtenerTodasLasImagenes"
+                }).then(function (result) {
+                  _this4.todasLasImagenes = result.data.todasImagenes[0];
+                }, function (error) {
+                  console.error(error);
                 });
 
-              case 21:
-                conteoActualImagenes++;
-
-              case 22:
-                i++;
-                _context4.next = 9;
-                break;
-
-              case 25:
-                _context4.next = 44;
-                break;
-
-              case 27:
-                if (!(_this5.imagenes.length > 0)) {
-                  _context4.next = 44;
-                  break;
-                }
-
-                _i = 0;
-
-              case 29:
-                if (!(_i < _this5.imagenes.length)) {
-                  _context4.next = 44;
-                  break;
-                }
-
-                extension = _this5.imagenes[_i].name.split('.')[1];
-                nombreImagen = new Date().getTime() + "_" + _i + "." + extension;
-                alias = "imagen_pregunta_" + numeroPregunta + "_" + (_i + 1) + "." + extension;
-                _this5.form_data = new FormData();
-
-                _this5.form_data.append('imagen', _this5.imagenes[_i]);
-
-                _this5.form_data.append('csrf-token', "{{ csrfToken }}");
-
-                _this5.form_data.append('alias', alias);
-
-                _this5.form_data.append('nombreImagen', nombreImagen);
-
-                _this5.form_data.append('idPregunta', id);
-
-                _context4.next = 41;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(ruta, _this5.form_data).then(function (res) {
-                  console.log("La subida se ha completado con exito");
-                })["catch"](function (error) {
-                  console.log(error);
+              case 2:
+                _context4.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: "GET",
+                  url: "/pregunta/showPAB"
+                }).then(function (result) {
+                  _this4.preguntaAbierta = result.data[0];
+                }, function (error) {
+                  console.error(error);
                 });
 
-              case 41:
-                _i++;
-                _context4.next = 29;
-                break;
+              case 4:
+                for (i = 0; i < _this4.preguntaAbierta.length; i++) {
+                  _this4.preguntaAbierta[i].imagenes = [];
 
-              case 44:
-                return _context4.abrupt("return", true);
+                  for (j = 0; j < _this4.todasLasImagenes.length; j++) {
+                    if (_this4.preguntaAbierta[i].id_pregunta == _this4.todasLasImagenes[j].idpregunta) {
+                      _this4.preguntaAbierta[i].imagenes.push(_this4.todasLasImagenes[j]);
+                    }
+                  }
+                }
 
-              case 45:
+              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -8344,82 +8410,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee4);
       }))();
     },
-    getPreguntaAbierta: function getPreguntaAbierta() {
-      var _this6 = this;
-
-      return _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var i, j;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  method: "GET",
-                  url: "/obtenerTodasLasImagenes"
-                }).then(function (result) {
-                  _this6.todasLasImagenes = result.data.todasImagenes[0];
-                }, function (error) {
-                  console.error(error);
-                });
-
-              case 2:
-                _context5.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  method: "GET",
-                  url: "/pregunta/showPAB"
-                }).then(function (result) {
-                  _this6.preguntaAbierta = result.data[0];
-                }, function (error) {
-                  console.error(error);
-                });
-
-              case 4:
-                for (i = 0; i < _this6.preguntaAbierta.length; i++) {
-                  _this6.preguntaAbierta[i].imagenes = [];
-
-                  for (j = 0; j < _this6.todasLasImagenes.length; j++) {
-                    if (_this6.preguntaAbierta[i].id_pregunta == _this6.todasLasImagenes[j].idpregunta) {
-                      _this6.preguntaAbierta[i].imagenes.push(_this6.todasLasImagenes[j]);
-                    }
-                  }
-                }
-
-              case 5:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }))();
-    },
-    // Funcion para mostrar los temas
     getTemas: function getTemas() {
-      var _this7 = this;
+      var _this5 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
         url: "/tema/all"
       }).then(function (result) {
-        _this7.temas = result.data;
+        _this5.temas = result.data;
       }, function (error) {
         console.error(error);
       });
     },
-    // Funcion para guardar los temas
     guardarPregunta: function guardarPregunta(pregunta, respuesta, tipo, id_tema) {
-      var _this8 = this;
+      var _this6 = this;
 
       return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
-                _context7.next = 2;
+                _context6.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/add", {
                   pregunta: pregunta,
                   respuesta: respuesta,
@@ -8430,36 +8443,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 function () {
                   var _ref2 = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(res) {
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(res) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
                       while (1) {
-                        switch (_context6.prev = _context6.next) {
+                        switch (_context5.prev = _context5.next) {
                           case 0:
-                            _this8.tipo = "";
-                            _this8.respuesta = "";
-                            _this8.pregunta = "";
-                            _this8.id_tema = "";
-                            _context6.next = 6;
-                            return _this8.subirImagenes(res.data.ultimo_id);
+                            _this6.tipo = "";
+                            _this6.respuesta = "";
+                            _this6.pregunta = "";
+                            _this6.id_tema = "";
+                            _context5.next = 6;
+                            return _this6.subirImagenes(res.data.ultimo_id);
 
                           case 6:
-                            _context6.next = 8;
-                            return _this8.getPreguntaAbierta();
+                            _context5.next = 8;
+                            return _this6.getPreguntaAbierta();
 
                           case 8:
                             $('#registrarPregunta').modal('toggle');
 
-                            _this8.$swal.fire({
+                            _this6.$swal.fire({
                               type: "success",
                               title: res.data.mensaje
                             });
 
-                          case 10:
+                            _context5.next = 12;
+                            return _this6.getPreguntaAbierta();
+
+                          case 12:
                           case "end":
-                            return _context6.stop();
+                            return _context5.stop();
                         }
                       }
-                    }, _callee6);
+                    }, _callee5);
                   }));
 
                   return function (_x) {
@@ -8471,14 +8487,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 2:
               case "end":
-                return _context7.stop();
+                return _context6.stop();
             }
           }
-        }, _callee7);
+        }, _callee6);
       }))();
     },
     btnGuardar: function btnGuardar() {
-      // Referencia de los elementos del formulario.
       var inputPregunta = document.getElementById("pregunta");
       var inputRespuesta = document.getElementById("respuesta");
       var selectTema = document.getElementById("id_tema");
@@ -8512,8 +8527,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       } else {
         this.guardarPregunta(this.pregunta, this.respuesta, this.tipo, this.id_tema);
-      } //console.log("Im in the function btnGuardar");
-
+      }
     },
     limpiarCampos: function limpiarCampos(id) {
       var inputPregunta = document.getElementById("pregunta");
@@ -8540,8 +8554,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     btnEditar: function btnEditar(id, pregunta, respuesta, tipo, id_tema, imagenes) {
       this.totalImagenesEnPregunta = imagenes.length + 1;
-      this.imagenesVistaPrevia = [];
-      this.imagenes = [];
+      this.subidor.imagenesVistaPrevia = []; //this.subidor.imagenes = [];
+
       var inputPregunta = document.getElementById("pregunta");
       var inputRespuesta = document.getElementById("respuesta");
       var selectTema = document.getElementById("id_tema");
@@ -8553,14 +8567,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var numeroMayorDeImagen = 0;
 
       for (var i = 0; i < imagenes.length; i++) {
-        this.acomodarImagen("/imagenes/preguntas/" + imagenes[i].nombre, 1, imagenes[i].idImagen);
+        this.subidor.acomodarImagen("/imagenes/preguntas/" + imagenes[i].nombre, 1, imagenes[i].idImagen);
 
         if (imagenes[i].alias.split("_")[3].split(".")[0] > numeroMayorDeImagen) {
           numeroMayorDeImagen = imagenes[i].alias.split("_")[3].split(".")[0];
         }
       }
 
-      this.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
+      this.subidor.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
     },
     cambiarModo: function cambiarModo() {
       var inputPregunta = document.getElementById("pregunta");
@@ -8569,12 +8583,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       inputRespuesta.value = "";
       inputPregunta.value = "";
       selectTema.value = "";
-      this.imagenesVistaPrevia = [];
-      this.imagenes = [];
+      this.subidor.imagenesVistaPrevia = [];
+      this.subidor.imagenes = [];
+      this.subidor.contadorImagen = 0;
+      this.subidor.form_data = {};
+      this.subidor.ultimaImagenEnPreguntaAEditar = 0;
+      this.subidor.imagenesAEliminar = [];
       this.modoEdicion = 0;
     },
     editar: function editar() {
-      var _this9 = this;
+      var _this7 = this;
 
       // Referencia de los elementos del formulario.
       var inputPregunta = document.getElementById("pregunta");
@@ -8616,44 +8634,47 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           respuesta: this.respuesta,
           tipo: this.tipo,
           id_tema: this.id_tema,
-          imagenesAEliminar: this.imagenesAEliminar
+          imagenesAEliminar: this.subidor.imagenesAEliminar
         }).then(
         /*#__PURE__*/
         function () {
           var _ref3 = _asyncToGenerator(
           /*#__PURE__*/
-          _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(res) {
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(res) {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
               while (1) {
-                switch (_context8.prev = _context8.next) {
+                switch (_context7.prev = _context7.next) {
                   case 0:
-                    _context8.next = 2;
-                    return _this9.subirImagenes(_this9.id);
+                    _context7.next = 2;
+                    return _this7.subirImagenes(_this7.id);
 
                   case 2:
-                    _context8.next = 4;
-                    return _this9.getPreguntaAbierta();
+                    _context7.next = 4;
+                    return _this7.getPreguntaAbierta();
 
                   case 4:
-                    _this9.id = "";
-                    _this9.tipo = "";
-                    _this9.respuesta = "";
-                    _this9.pregunta = "";
-                    _this9.id_tema = "";
+                    _this7.id = "";
+                    _this7.tipo = "";
+                    _this7.respuesta = "";
+                    _this7.pregunta = "";
+                    _this7.id_tema = "";
+                    _this7.subidor.imagenesAEliminar = [];
 
-                    _this9.$swal.fire({
+                    _this7.$swal.fire({
                       type: "success",
                       title: "¡Pregunta actualizada con éxito!"
                     });
 
                     $('#registrarPregunta').modal('toggle');
+                    _context7.next = 14;
+                    return _this7.getPreguntaAbierta();
 
-                  case 11:
+                  case 14:
                   case "end":
-                    return _context8.stop();
+                    return _context7.stop();
                 }
               }
-            }, _callee8);
+            }, _callee7);
           }));
 
           return function (_x2) {
@@ -8665,7 +8686,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     eliminar: function eliminar(id, imagenes) {
-      var _this10 = this;
+      var _this8 = this;
 
       this.$swal.fire({
         title: '¿Está seguro de eliminar el registro?',
@@ -8681,26 +8702,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             id: id,
             imagenesAEliminar: imagenes
           }).then(function (res) {
-            console.log(res);
-            _this10.id = "";
+            _this8.id = "";
 
-            _this10.getPreguntaAbierta();
+            _this8.getPreguntaAbierta();
 
-            var Toast = _this10.$swal.mixin({
+            var Toast = _this8.$swal.mixin({
               toast: true,
               position: "top-end",
               showConfirmButton: false,
               timer: 3000
             });
 
-            _this10.$swal.fire({
+            _this8.$swal.fire({
               type: "success",
               title: "¡Pregunta Eliminada!"
             });
           })["catch"](function (err) {
             console.log(err);
 
-            _this10.$swal({
+            _this8.$swal({
               type: "info",
               title: "Error al eliminar"
             });
@@ -9674,6 +9694,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/subirImagenes */ "./resources/assets/js/components/subirImagenes.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -9815,30 +9836,119 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
 
     return _ref = {
+      subidor: {},
       pregunta: [],
       preguntaNumerica: [],
       id: "",
       id_tema: "",
       respuesta: ""
-    }, _defineProperty(_ref, "pregunta", ""), _defineProperty(_ref, "margen", ""), _defineProperty(_ref, "margend", ""), _defineProperty(_ref, "arriba", null), _defineProperty(_ref, "abajo", null), _defineProperty(_ref, "tipo", ""), _defineProperty(_ref, "temasSeleccionado", {}), _defineProperty(_ref, "temas", []), _defineProperty(_ref, "id", ""), _defineProperty(_ref, "nombre_tema", ""), _defineProperty(_ref, "nivel", ""), _defineProperty(_ref, "filters", {
+    }, _defineProperty(_ref, "pregunta", ""), _defineProperty(_ref, "margen", ""), _defineProperty(_ref, "margend", ""), _defineProperty(_ref, "arriba", null), _defineProperty(_ref, "abajo", null), _defineProperty(_ref, "tipo", ""), _defineProperty(_ref, "temas", []), _defineProperty(_ref, "id", ""), _defineProperty(_ref, "nombre_tema", ""), _defineProperty(_ref, "nivel", ""), _defineProperty(_ref, "filters", {
       pregunta: {
         value: '',
         keys: ['pregunta', 'tema']
       }
-    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _ref;
+    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "modoEdicion", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _ref;
+  },
+  created: function created() {
+    this.subidor = new _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__["default"]();
   },
   mounted: function mounted() {
-    this.getPreguntaNumerica(), this.getTemas(), this.getMargen();
-    /*let uri = window.location.href.split('?');
-    var fil = uri[1].split('=')[1];
-    this.filters.pregunta.value = fil.replace(/%20/g, " ");*/
-
+    this.getPreguntaNumerica();
+    this.getTemas();
+    this.getMargen();
     var uri = window.location.href;
 
     if (uri.includes("?")) {
@@ -9862,301 +9972,461 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return textoDePregunta;
     },
-    getPreguntaNumerica: function getPreguntaNumerica() {
+    desplegarImagenesEnModal: function desplegarImagenesEnModal(imagenes) {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default()({
-        method: "GET",
-        url: "/pregunta/showPN"
-      }).then(function (result) {
-        //console.log(result.data);
-        _this.preguntaNumerica = result.data[0];
-      }, function (error) {
-        console.error(error);
-      });
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.imagenesParaDesplegarEnModal = imagenes;
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
-    getTemas: function getTemas() {
+    onChange: function onChange(e) {
+      this.subidor.onChange(e);
+    },
+    remove: function remove(imagen) {
+      this.subidor.remove(imagen);
+    },
+    dragover: function dragover(event) {
+      this.subidor.dragover(event);
+    },
+    dragleave: function dragleave(event) {
+      this.subidor.dragleave(event);
+    },
+    acomodarImagen: function acomodarImagen(imagen, vaAEliminarse, idImagen) {
       var _this2 = this;
 
-      ///Funcion para mostrar los temas
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.subidor.acomodarImagen(imagen, vaAEliminarse, idImagen);
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    drop: function drop(event) {
+      this.subidor.drop(event);
+    },
+    subirImagenes: function subirImagenes(id) {
+      var _this3 = this;
+
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.subidor.subirImagenes(id);
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    getPreguntaNumerica: function getPreguntaNumerica() {
+      var _this4 = this;
+
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var i, j;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: "GET",
+                  url: "/obtenerTodasLasImagenes"
+                }).then(function (result) {
+                  _this4.todasLasImagenes = result.data.todasImagenes[0];
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 2:
+                _context4.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: "GET",
+                  url: "/pregunta/showPN"
+                }).then(function (result) {
+                  _this4.preguntaNumerica = result.data[0];
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 4:
+                for (i = 0; i < _this4.preguntaNumerica.length; i++) {
+                  _this4.preguntaNumerica[i].imagenes = [];
+
+                  for (j = 0; j < _this4.todasLasImagenes.length; j++) {
+                    if (_this4.preguntaNumerica[i].id_pregunta == _this4.todasLasImagenes[j].idpregunta) {
+                      _this4.preguntaNumerica[i].imagenes.push(_this4.todasLasImagenes[j]);
+                    }
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    getTemas: function getTemas() {
+      var _this5 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
         url: "/tema/all"
       }).then(function (result) {
-        //console.log(result.data);
-        _this2.temas = result.data;
+        _this5.temas = result.data;
       }, function (error) {
         console.error(error);
       });
     },
     getMargen: function getMargen() {
-      var _this3 = this;
+      var _this6 = this;
 
-      ///Funcion para mostrar los temas
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
         url: "/configuracionCuestionario/margen"
       }).then(function (result) {
-        //console.log(result.data);
-        _this3.margend = result.data.rango_por_defecto;
+        _this6.margend = result.data.rango_por_defecto;
       }, function (error) {
         console.error(error);
       });
     },
     guardarPregunta: function guardarPregunta(pregunta, respuesta, margen, arriba, abajo, tipo, id_tema) {
-      var _this4 = this;
-
-      ///Funcion para guardar los temas
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/addNumerica", {
-        pregunta: pregunta,
-        respuesta: respuesta,
-        margen: margen,
-        arriba: arriba,
-        abajo: abajo,
-        tipo: tipo,
-        id_tema: id_tema
-      }).then(function (res) {
-        _this4.tipo = "";
-        _this4.respuesta = "";
-        _this4.pregunta = "";
-        _this4.margen = "";
-        _this4.id_tema = "";
-
-        _this4.getPreguntaNumerica(); //console.log(res);
-
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    },
-    btnGuardar: function () {
-      var _btnGuardar = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this5 = this;
-
-        var _ref2, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return this.$swal({
-                  title: "Registrar Pregunta",
-                  html: "<input id=\"pregunta\" class=\"swal2-input\" placeholder=\"pregunta\">\n\t\t\t\t\t<input id=\"respuesta\" class=\"swal2-input\"  placeholder=\"respuesta\">\n         <input id=\"margen\" class=\"swal2-input\" value=\"".concat(this.margend, "\"  placeholder=\"margen\"> \n        <label>Aplicar el margen de error a la respuesta</label>\n        <input type=\"checkbox\" id=\"arriba\" name=\"arriba\" value=\"si\" checked>\n        <label for=\"male\">Aplicar hacia arriba</label><br>\n        <input type=\"checkbox\" id=\"abajo\" name=\"abajo\" value=\"si\" checked>\n        <label for=\"male\">Aplicar hacia abajp</label><br>\n\t\t\t\t\t<br>\n\t\t\t\t\t<label for=\"id_tema_2\">Elije a que tema es correspondiente:</label>\n\t\t\t\t\t<select id=\"id_tema\" value=\"").concat(this.temas, "\" name=\"temas\" class=\"swal2-input\">\n\t\t\t\t\t\t<option value=\"\">Tema</option>\n\t\t\t\t\t\t").concat(this.temas[0].map(function (cat) {
-                    return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre_tema, "</option>");
-                  }), "\n\t\t\t\t\t</select>\n\t\t\t\t\t<br>\n\t\t\t\t\t <label for=\"tipo\">Elige un tipo de pregunta:</label>\n\t\t\t\t\t<select id=\"tipo\">\n\t\t\t\t\t\t<option value=\"2\">Num\xE9rica</option>\n\t\t\t\t\t</select> \n\n\t\t\t\t\t "),
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: "Guardar",
-                  confirmButtonColor: "#1cc88a",
-                  cancelButtonColor: "#3085d6",
-                  cancelButtonText: 'Cancelar',
-                  preConfirm: function preConfirm() {
-                    return [_this5.pregunta = document.getElementById("pregunta").value, _this5.respuesta = document.getElementById("respuesta").value, _this5.margen = document.getElementById("margen").value, _this5.arriba = document.getElementById("arriba").checked, _this5.abajo = document.getElementById("abajo").checked, _this5.tipo = 2, _this5.id_tema = document.getElementById("id_tema").value];
-                  }
-                });
-
-              case 2:
-                _ref2 = _context.sent;
-                formValues = _ref2.value;
-
-                if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "" || this.tipo == "") {
-                  this.$swal({
-                    type: "info",
-                    title: "Datos incompletos"
-                  });
-                } else {
-                  this.guardarPregunta(this.pregunta, this.respuesta, this.margen, this.arriba, this.abajo, this.tipo, this.id_tema); //funcion guardarTema
-
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
-                  this.$swal.fire({
-                    type: "success",
-                    title: "¡Pregunta Registrada!"
-                  });
-                } //if (formValues) {
-                //this.$swal(JSON.stringify(formValues))
-                //}
-
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function btnGuardar() {
-        return _btnGuardar.apply(this, arguments);
-      }
-
-      return btnGuardar;
-    }(),
-    btnEditar: function () {
-      var _btnEditar = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id, pregunta, respuesta, tipo, id_tema) {
-        var _this6 = this;
-
-        var _ref3, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return this.$swal({
-                  title: "Editar Pregunta",
-                  html: "<input id=\"pregunta\" class=\"swal2-input\" value=\"" + pregunta + "\">\n\t\t\t\t\t<input id=\"respuesta\" class=\"swal2-input\" value=\"" + respuesta + "\">\n\t\t\t\t\t<br>\n\t\t\t\t\t<label for=\"id_tema5\">Elije a que tema es correspondiente:</label>\n\t\t\t\t\t<select id=\"id_tema\" value=\"".concat(this.temas, "\" name=\"temas\" class=\"swal2-input\">\n\t\t\t\t\t\t<option value=\"") + id_tema + "\">Tema</option>\n\t\t\t\t\t\t".concat(this.temas[0].map(function (cat) {
-                    return "<option value=\"".concat(cat.id, "\" id=\"tema_").concat(cat.id, ">").concat(cat.nombre_tema, "</option>");
-                  }), "\n\t\t\t\t\t</select>\n\t\t\t\t\t<br>\n\t\t\t\t\t<label for=\"tipo\">Elige un tipo de pregunta:</label>\n\t\t\t\t\t<select id=\"tipo\">\n\t\t\t\t\t\t<option value=\"2\">Num\xE9rica</option>\n\t\t\t\t\t</select>"),
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: "Editar",
-                  confirmButtonColor: "#1cc88a",
-                  cancelButtonColor: "#3085d6",
-                  cancelButtonText: 'Cancelar',
-                  onOpen: function onOpen() {//document.getElementById("tema_"+id_tema).setAttribute("selected","");
-                    //console.log(this.temas)
-                  },
-                  preConfirm: function preConfirm() {
-                    return [_this6.pregunta = document.getElementById("pregunta").value, _this6.respuesta = document.getElementById("respuesta").value, _this6.tipo = document.getElementById("tipo").value, _this6.id_tema = document.getElementById("id_tema").value];
-                  }
-                });
-
-              case 2:
-                _ref3 = _context2.sent;
-                formValues = _ref3.value;
-
-                if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.tipo == "") {
-                  this.$swal({
-                    type: "info",
-                    title: "Datos incompletos"
-                  });
-                } else {
-                  this.editar(id, this.pregunta, this.respuesta, this.tipo, this.id_tema); //funcion guardarTema
-
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
-                  this.$swal.fire({
-                    type: "success",
-                    title: "¡Pregunta Editada!"
-                  });
-                } //if (formValues) {
-                //this.$swal(JSON.stringify(formValues))
-                //}
-
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function btnEditar(_x, _x2, _x3, _x4, _x5) {
-        return _btnEditar.apply(this, arguments);
-      }
-
-      return btnEditar;
-    }(),
-    editar: function editar(id, pregunta, respuesta, tipo, id_tema) {
       var _this7 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/update", {
-        id: id,
-        pregunta: pregunta,
-        respuesta: respuesta,
-        tipo: tipo,
-        id_tema: id_tema
-      }).then(function (res) {
-        _this7.id = "";
-        _this7.tipo = "";
-        _this7.respuesta = "";
-        _this7.pregunta = "";
-        _this7.id_tema = "";
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/addNumerica", {
+                  pregunta: pregunta,
+                  respuesta: respuesta,
+                  margen: margen,
+                  arriba: arriba,
+                  abajo: abajo,
+                  tipo: tipo,
+                  id_tema: id_tema
+                }).then(
+                /*#__PURE__*/
+                function () {
+                  var _ref2 = _asyncToGenerator(
+                  /*#__PURE__*/
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(res) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+                      while (1) {
+                        switch (_context5.prev = _context5.next) {
+                          case 0:
+                            _this7.tipo = "";
+                            _this7.respuesta = "";
+                            _this7.pregunta = "";
+                            _this7.margen = "";
+                            _this7.id_tema = "";
+                            _context5.next = 7;
+                            return _this7.subidor.subirImagenes(res.data.ultimo_id);
 
-        _this7.getPreguntaNumerica(); //console.log(res);
+                          case 7:
+                            $('#registrarPregunta').modal('toggle');
 
-      })["catch"](function (err) {
-        console.log(err);
-      });
+                            _this7.getPreguntaNumerica();
+
+                          case 9:
+                          case "end":
+                            return _context5.stop();
+                        }
+                      }
+                    }, _callee5);
+                  }));
+
+                  return function (_x) {
+                    return _ref2.apply(this, arguments);
+                  };
+                }())["catch"](function (err) {
+                  console.log(err);
+                });
+
+              case 2:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
     },
-    eliminar: function eliminar(id) {
+    btnGuardar: function btnGuardar() {
+      var inputPregunta = document.getElementById("pregunta");
+      var inputRespuesta = document.getElementById("respuesta");
+      var selectTema = document.getElementById("id_tema");
+      var msjSelectTema = document.getElementById("msjSelectTema");
+      var msjInputRespuesta = document.getElementById("msjInputRespuesta");
+      var msjInputPregunta = document.getElementById("msjInputPregunta");
+      this.margen = document.getElementById("margen").value;
+      this.arriba = document.getElementById("arriba").checked;
+      this.abajo = document.getElementById("abajo").checked;
+      this.pregunta = inputPregunta.value;
+      this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
+      this.tipo = 2;
+      this.id_tema = selectTema.value;
+
+      if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "") {
+        if (this.id_tema == "") {
+          selectTema.style.border = "1px solid #ff6258";
+          msjSelectTema.innerHTML = "Este dato es obligatorio";
+          msjSelectTema.style.color = "#ff6258";
+        }
+
+        if (this.pregunta == "") {
+          inputPregunta.style.border = "1px solid #ff6258";
+          msjInputPregunta.innerHTML = "Este dato es obligatorio";
+          msjInputPregunta.style.color = "#ff6258";
+        }
+
+        if (this.respuesta == "") {
+          inputRespuesta.style.border = "1px solid #ff6258";
+          msjInputRespuesta.innerHTML = "Este dato es obligatorio";
+          msjInputRespuesta.style.color = "#ff6258";
+        }
+      } else {
+        this.guardarPregunta(this.pregunta, this.respuesta, this.margen, this.arriba, this.abajo, this.tipo, this.id_tema);
+      }
+    },
+    limpiarCampos: function limpiarCampos(id) {
+      var inputPregunta = document.getElementById("pregunta");
+      var inputRespuesta = document.getElementById("respuesta");
+      var selectTema = document.getElementById("id_tema");
+      var msjSelectTema = document.getElementById("msjSelectTema");
+      var msjInputRespuesta = document.getElementById("msjInputRespuesta");
+      var msjInputPregunta = document.getElementById("msjInputPregunta");
+
+      if (id == "tema") {
+        selectTema.style.border = "1px solid #dee2e6";
+        msjSelectTema.innerHTML = "";
+      }
+
+      if (id == "pregunta") {
+        inputPregunta.style.border = "1px solid #dee2e6";
+        msjInputPregunta.innerHTML = "";
+      }
+
+      if (id == "respuesta") {
+        inputRespuesta.style.border = "1px solid #dee2e6";
+        msjInputRespuesta.innerHTML = "";
+      }
+    },
+    btnEditar: function btnEditar(id, pregunta, respuesta, tipo, id_tema, margen, imagenes) {
+      this.totalImagenesEnPregunta = imagenes.length + 1;
+      this.subidor.imagenesVistaPrevia = []; //this.subidor.imagenes = [];
+
+      var inputPregunta = document.getElementById("pregunta");
+      var inputRespuesta = document.getElementById("respuesta");
+      var selectTema = document.getElementById("id_tema");
+      var inputMargen = document.getElementById("margen");
+      this.modoEdicion = 1;
+      this.id = id;
+      inputRespuesta.value = respuesta;
+      inputPregunta.value = pregunta;
+      selectTema.value = id_tema;
+      inputMargen.value = margen;
+      var numeroMayorDeImagen = 0;
+
+      for (var i = 0; i < imagenes.length; i++) {
+        this.subidor.acomodarImagen("/imagenes/preguntas/" + imagenes[i].nombre, 1, imagenes[i].idImagen);
+
+        if (imagenes[i].alias.split("_")[3].split(".")[0] > numeroMayorDeImagen) {
+          numeroMayorDeImagen = imagenes[i].alias.split("_")[3].split(".")[0];
+        }
+      }
+
+      this.subidor.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
+    },
+    cambiarModo: function cambiarModo() {
+      var inputPregunta = document.getElementById("pregunta");
+      var inputRespuesta = document.getElementById("respuesta");
+      var selectTema = document.getElementById("id_tema");
+      var inputMargen = document.getElementById("margen");
+      inputMargen.value = this.margend;
+      inputRespuesta.value = "";
+      inputPregunta.value = "";
+      selectTema.value = "";
+      this.subidor.imagenesVistaPrevia = [];
+      this.subidor.imagenes = [];
+      this.modoEdicion = 0;
+    },
+    editar: function editar() {
       var _this8 = this;
 
+      var inputPregunta = document.getElementById("pregunta");
+      var inputRespuesta = document.getElementById("respuesta");
+      var selectTema = document.getElementById("id_tema");
+      var msjSelectTema = document.getElementById("msjSelectTema");
+      var msjInputRespuesta = document.getElementById("msjInputRespuesta");
+      var msjInputPregunta = document.getElementById("msjInputPregunta");
+      this.margen = document.getElementById("margen").value;
+      this.arriba = document.getElementById("arriba").checked;
+      this.abajo = document.getElementById("abajo").checked;
+      this.pregunta = inputPregunta.value;
+      this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
+      this.tipo = 2;
+      this.id_tema = selectTema.value;
+
+      if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "") {
+        if (this.id_tema == "") {
+          selectTema.style.border = "1px solid #ff6258";
+          msjSelectTema.innerHTML = "Este dato es obligatorio";
+          msjSelectTema.style.color = "#ff6258";
+        }
+
+        if (this.pregunta == "") {
+          inputPregunta.style.border = "1px solid #ff6258";
+          msjInputPregunta.innerHTML = "Este dato es obligatorio";
+          msjInputPregunta.style.color = "#ff6258";
+        }
+
+        if (this.respuesta == "") {
+          inputRespuesta.style.border = "1px solid #ff6258";
+          msjInputRespuesta.innerHTML = "Este dato es obligatorio";
+          msjInputRespuesta.style.color = "#ff6258";
+        }
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/updateAbierta", {
+          id: this.id,
+          pregunta: this.pregunta,
+          respuesta: this.respuesta,
+          tipo: this.tipo,
+          id_tema: this.id_tema,
+          imagenesAEliminar: this.subidor.imagenesAEliminar,
+          mArriba: this.arriba,
+          mAbajo: this.abajo,
+          margen: this.margen
+        }).then(
+        /*#__PURE__*/
+        function () {
+          var _ref3 = _asyncToGenerator(
+          /*#__PURE__*/
+          _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(res) {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _context7.next = 2;
+                    return _this8.subidor.subirImagenes(_this8.id);
+
+                  case 2:
+                    _context7.next = 4;
+                    return _this8.getPreguntaNumerica();
+
+                  case 4:
+                    _this8.id = "";
+                    _this8.tipo = "";
+                    _this8.respuesta = "";
+                    _this8.pregunta = "";
+                    _this8.id_tema = "";
+                    _this8.arriba = "";
+                    _this8.abajo = "";
+
+                    _this8.$swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Pregunta actualizada con éxito',
+                      showConfirmButton: false,
+                      timer: 1500,
+                      toast: true
+                    });
+
+                    $('#registrarPregunta').modal('toggle');
+
+                  case 13:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7);
+          }));
+
+          return function (_x2) {
+            return _ref3.apply(this, arguments);
+          };
+        }())["catch"](function (err) {
+          console.error(err);
+        });
+      }
+    },
+    eliminar: function eliminar(id, imagenes) {
+      var _this9 = this;
+
       this.$swal.fire({
-        title: '¿Estas seguro de eliminar el registro?',
+        title: '¿Está seguro de eliminar el registro?',
         text: "Esto no podrá revertirse",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonText: 'Aceptar'
       }).then(function (result) {
         if (result.value) {
-          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("pregunta/delete", {
-            id: id
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/delete", {
+            id: id,
+            imagenesAEliminar: imagenes
           }).then(function (res) {
-            _this8.id = "";
+            _this9.id = "";
 
-            _this8.getPreguntaAbierta(); //console.log(res);
+            _this9.getPreguntaNumerica();
 
-
-            var Toast = _this8.$swal.mixin({
+            var Toast = _this9.$swal.mixin({
               toast: true,
               position: "top-end",
               showConfirmButton: false,
               timer: 3000
             });
 
-            _this8.$swal.fire('Pregunta eliminada', 'La pregunta ha sido eliminada con exito.', 'success');
+            _this9.$swal.fire({
+              type: "success",
+              title: "¡Pregunta Eliminada!"
+            });
           })["catch"](function (err) {
             console.log(err);
 
-            _this8.$swal({
+            _this9.$swal({
               type: "info",
               title: "Error al eliminar"
             });
           });
         }
       });
-      /*axios
-        .post("pregunta/delete", { id: id })
-        .then(res => {
-          this.id = "";
-          this.getPreguntaAbierta();
-          console.log(res);
-               const Toast = this.$swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000
-          });
-          this.$swal.fire({
-            type: "success",
-            title: "¡Pregunta Eliminada!"
-          });
-        })
-        .catch(err => {
-          console.log(err);
-          this.$swal({
-            type: "info",
-            title: "Error al eliminar"
-          });
-        });*/
     }
   }
 });
@@ -10176,6 +10446,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/subirImagenes */ "./resources/assets/js/components/subirImagenes.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -10382,68 +10653,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-var opciones = [];
-var noOpcion = 0;
-var reactivo = "";
-
-function btnQuitarOpcion(opcion) {
-  var id_fila = opcion.split('_')[1];
-  var row = document.getElementById("fila_" + id_fila);
-  row.parentNode.removeChild(row);
-  var id_opc = "opt_" + id_fila;
-
-  for (var i = 0; i < opciones.length; i++) {
-    if (opciones[i][1] == id_opc) {
-      opciones.splice(i, 1);
-    }
-  }
-}
-
-function checkRespuesta(opcion) {
-  var id_check = opcion.split('_')[1];
-  var id_opc = "opt_" + id_check;
-  var total_opciones = opciones.length;
-  var total_chequeados = 0;
-
-  for (var i = 0; i < opciones.length; i++) {
-    if (opciones[i][2] == 1) {
-      total_chequeados++;
-    }
-  }
-
-  if (total_chequeados + 1 == total_opciones) {
-    if (document.getElementById(opcion).checked) {
-      this.$swal.fire({
-        icon: 'error',
-        title: 'Error...',
-        text: 'No puedes poner todas las opciones como respuesta'
-      });
-    }
-
-    document.getElementById(opcion).checked = false;
-  }
-
-  if (document.getElementById(opcion).checked) {
-    for (var i = 0; i < opciones.length; i++) {
-      if (opciones[i][1] == id_opc) {
-        opciones[i][2] = 1;
-      }
-    }
-  } else {
-    for (var i = 0; i < opciones.length; i++) {
-      if (opciones[i][1] == id_opc) {
-        opciones[i][2] = 0;
-      }
-    }
-  }
-}
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
 
     return _ref = {
+      subidor: {},
       editarPreguntaVar: false,
       pregunta: [],
       opciones: [],
@@ -10459,12 +10697,13 @@ function checkRespuesta(opcion) {
         value: '',
         keys: ['pregunta', 'tema']
       }
-    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _ref;
+    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "ultimaImagenEnPreguntaAEditar", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _ref;
   },
   props: {
     seccion: String
   },
   created: function created() {
+    this.subidor = new _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__["default"]();
     this.getpreguntas();
     this.getTemas();
   },
@@ -10486,10 +10725,6 @@ function checkRespuesta(opcion) {
 
             case 2:
               _this.getTemas();
-              /*let uri = window.location.href.split('?');
-               var fil = uri[1].split('=')[1];
-               this.filters.pregunta.value = fil.replace(/%20/g, " ");*/
-
 
               uri = window.location.href;
 
@@ -10608,11 +10843,8 @@ function checkRespuesta(opcion) {
 
       for (var i = 0; i < this.pregunta.length; i++) {
         if (this.pregunta[i].id_pregunta == id) {
-          pregunta.value = this.pregunta[i].pregunta; //x.selectedIndex = this.pregunta[i].id_tema + "";
-
-          document.getElementById("id_tema").value = this.pregunta[i].id_tema; //console.log(this.pregunta[i]);
-          //console.log(this.pregunta[i].id_tema);
-
+          pregunta.value = this.pregunta[i].pregunta;
+          document.getElementById("id_tema").value = this.pregunta[i].id_tema;
           break;
         }
       } //Obtener las opciones
@@ -10786,8 +11018,7 @@ function checkRespuesta(opcion) {
                         icon: 'success',
                         title: 'Pregunta actualizada',
                         text: 'Pregunta actualizada con exito'
-                      }); // Para cerrar el modal con el formulario
-
+                      });
 
                       var modals = document.getElementsByClassName('modal');
 
@@ -10819,10 +11050,9 @@ function checkRespuesta(opcion) {
                         icon: 'success',
                         title: 'Pregunta guardada',
                         text: 'Pregunta guardada con exito'
-                      }); // get modals
+                      });
 
-
-                      var modals = document.getElementsByClassName('modal'); // on every modal change state like in hidden modal
+                      var modals = document.getElementsByClassName('modal');
 
                       for (var _i3 = 0; _i3 < modals.length; _i3++) {
                         modals[_i3].classList.remove('show');
@@ -10830,10 +11060,9 @@ function checkRespuesta(opcion) {
                         modals[_i3].setAttribute('aria-hidden', 'true');
 
                         modals[_i3].setAttribute('style', 'display: none');
-                      } // get modal backdrops
+                      }
 
-
-                      var modalsBackdrops = document.getElementsByClassName('modal-backdrop'); // remove every modal backdrop
+                      var modalsBackdrops = document.getElementsByClassName('modal-backdrop');
 
                       for (var _i4 = 0; _i4 < modalsBackdrops.length; _i4++) {
                         document.body.removeChild(modalsBackdrops[_i4]);
@@ -10878,8 +11107,7 @@ function checkRespuesta(opcion) {
                   cell1 = row.insertCell(0);
                   cell2 = row.insertCell(1);
                   cell3 = row.insertCell(2);
-                  cell1.innerHTML = "" + opcion.value; // creating checkbox element 
-
+                  cell1.innerHTML = "" + opcion.value;
                   checkbox = document.createElement('input');
                   checkbox.type = "checkbox";
                   checkbox.id = "check_" + noOpcion;
@@ -10932,7 +11160,6 @@ function checkRespuesta(opcion) {
         cancelButtonText: 'Cancelar'
       }).then(function (result) {
         if (result.value) {
-          ////
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/eliminar', {
             id: id
           }).then(function (res) {
@@ -10943,31 +11170,71 @@ function checkRespuesta(opcion) {
 
             _this5.getpreguntas();
           })["catch"](function (err) {
-            //console.log(err)
             _this5.$swal({
               type: 'info',
               title: 'Error al eliminar'
             });
-          }); ////
+          });
         }
       });
-      /*axios.post('pregunta/eliminar',{id:id}).then((res)=>{
-      	this.$swal({
-      		type: 'success',
-      		title: '¡Pregunta Eliminada!'
-      	})
-      	this.getpreguntas();
-      })
-      .catch((err)=>{
-      	console.log(err)
-      	this.$swal({
-      		type: 'info',
-      		title: 'Error al eliminar',
-      	})
-      })*/
     }
   }
 });
+var opciones = [];
+var noOpcion = 0;
+var reactivo = "";
+
+function btnQuitarOpcion(opcion) {
+  var id_fila = opcion.split('_')[1];
+  var row = document.getElementById("fila_" + id_fila);
+  row.parentNode.removeChild(row);
+  var id_opc = "opt_" + id_fila;
+
+  for (var i = 0; i < opciones.length; i++) {
+    if (opciones[i][1] == id_opc) {
+      opciones.splice(i, 1);
+    }
+  }
+}
+
+function checkRespuesta(opcion) {
+  var id_check = opcion.split('_')[1];
+  var id_opc = "opt_" + id_check;
+  var total_opciones = opciones.length;
+  var total_chequeados = 0;
+
+  for (var i = 0; i < opciones.length; i++) {
+    if (opciones[i][2] == 1) {
+      total_chequeados++;
+    }
+  }
+
+  if (total_chequeados + 1 == total_opciones) {
+    if (document.getElementById(opcion).checked) {
+      this.$swal.fire({
+        icon: 'error',
+        title: 'Error...',
+        text: 'No puedes poner todas las opciones como respuesta'
+      });
+    }
+
+    document.getElementById(opcion).checked = false;
+  }
+
+  if (document.getElementById(opcion).checked) {
+    for (var i = 0; i < opciones.length; i++) {
+      if (opciones[i][1] == id_opc) {
+        opciones[i][2] = 1;
+      }
+    }
+  } else {
+    for (var i = 0; i < opciones.length; i++) {
+      if (opciones[i][1] == id_opc) {
+        opciones[i][2] = 0;
+      }
+    }
+  }
+}
 
 /***/ }),
 
@@ -12396,153 +12663,261 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/subirImagenes */ "./resources/assets/js/components/subirImagenes.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
+      modoEdicion: 0,
+      todasLasImagenes: [],
+      totalImagenesEnPregunta: 0,
+      imagenesParaDesplegarEnModal: [],
+      subidor: {},
       pregunta: [],
-      id: '',
-      id_tema: '',
-      opcion: '',
-      opcion2: '',
-      opcion3: '',
-      opcion4: '',
-      respuesta: '',
-      tipo: '',
+      currentPage: 1,
+      totalPages: 0,
+      temas: [],
       filters: {
         pregunta: {
           value: '',
           keys: ['pregunta', 'tema']
         }
       },
-      currentPage: 1,
-      totalPages: 0,
-      temasSeleccionado: {},
-      temas: []
-    }, _defineProperty(_ref, "id", ''), _defineProperty(_ref, "nombre_tema", ''), _defineProperty(_ref, "nivel", ''), _ref;
+      form: new Form({
+        id: '',
+        tipo: 3,
+        pregunta: '',
+        respuesta: '',
+        tema: ''
+      })
+    };
+  },
+  created: function created() {
+    this.subidor = new _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__["default"]();
   },
   mounted: function mounted() {
-    this.getpregunta(), this.getTemas();
-    /*let uri = window.location.href.split('?');
-     var fil = uri[1].split('=')[1];
-     this.filters.pregunta.value = fil.replace(/%20/g, " ");*/
-
+    this.obtenerPreguntasVerdaderoFalso();
+    this.obtenerTemas();
     var uri = window.location.href;
 
     if (uri.includes("?")) {
@@ -12552,7 +12927,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: {
-    wrapText: function wrapText(str) {
+    espaciarTexto: function espaciarTexto(str) {
       var palabrasSinEspacios = str.split(" ");
       var textoDePregunta = "";
 
@@ -12566,220 +12941,357 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return textoDePregunta;
     },
-    getpregunta: function getpregunta() {
+    desplegarImagenesEnModal: function desplegarImagenesEnModal(imagenes) {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default()({
-        method: 'GET',
-        url: '/pregunta/show'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this.pregunta = result.data[0];
-      }, function (error) {
-        console.error(error);
-      });
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.imagenesParaDesplegarEnModal = imagenes;
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
-    getTemas: function getTemas() {
+    onChange: function onChange(e) {
+      this.subidor.onChange(e);
+    },
+    remove: function remove(imagen) {
+      this.subidor.remove(imagen);
+    },
+    dragover: function dragover(event) {
+      this.subidor.dragover(event);
+    },
+    dragleave: function dragleave(event) {
+      this.subidor.dragleave(event);
+    },
+    drop: function drop(event) {
+      this.subidor.drop(event);
+    },
+    subirImagenes: function subirImagenes(id) {
       var _this2 = this;
+
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.subidor.subirImagenes(id);
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    resetearDatos: function resetearDatos() {
+      this.limpiarMensajeYAlerta("selTema", "msjSelectTema");
+      this.limpiarMensajeYAlerta("inpPregunta", "msjInputPregunta");
+      this.limpiarMensajeYAlerta("selRespuesta", "msjInputRespuesta");
+      this.form.reset();
+      this.subidor.imagenesVistaPrevia = [];
+      this.subidor.imagenes = [];
+      this.subidor.imagenesAEliminar = [];
+    },
+    cambiarModo: function cambiarModo() {
+      this.resetearDatos();
+      this.modoEdicion = 0;
+    },
+    obtenerPreguntasVerdaderoFalso: function obtenerPreguntasVerdaderoFalso() {
+      var _this3 = this;
+
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var i, j;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: "GET",
+                  url: "/obtenerTodasLasImagenes"
+                }).then(function (result) {
+                  _this3.todasLasImagenes = result.data.todasImagenes[0];
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 2:
+                _context3.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: "GET",
+                  url: "/pregunta/show"
+                }).then(function (result) {
+                  _this3.pregunta = result.data[0];
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 4:
+                for (i = 0; i < _this3.pregunta.length; i++) {
+                  _this3.pregunta[i].imagenes = [];
+
+                  for (j = 0; j < _this3.todasLasImagenes.length; j++) {
+                    if (_this3.pregunta[i].id_pregunta == _this3.todasLasImagenes[j].idpregunta) {
+                      _this3.pregunta[i].imagenes.push(_this3.todasLasImagenes[j]);
+                    }
+                  }
+                }
+                /*axios({
+                    method: 'GET',
+                    url: '/pregunta/show'
+                }).then(
+                    result => {
+                        this.pregunta = result.data[0];
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )*/
+
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    obtenerTemas: function obtenerTemas() {
+      var _this4 = this;
 
       ///Funcion para mostrar los temas
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'GET',
         url: '/tema/all'
       }).then(function (result) {
-        //console.log(result.data)
-        _this2.temas = result.data;
+        _this4.temas = result.data;
       }, function (error) {
         console.error(error);
       });
     },
-    guardarPregunta: function guardarPregunta(pregunta, respuesta, tipo, id_tema) {
-      var _this3 = this;
-
-      ///Funcion para guardar los temas
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/pregunta/add', {
-        pregunta: pregunta,
-        respuesta: respuesta,
-        tipo: tipo,
-        id_tema: id_tema
-      }).then(function (res) {
-        _this3.tipo = '';
-        _this3.respuesta = '';
-        _this3.pregunta = '';
-        _this3.id_tema = '';
-
-        _this3.getpregunta(); //console.log(res)
-
-      })["catch"](function (err) {
-        console.log(err);
-      });
+    mostrarMensajeYAlerta: function mostrarMensajeYAlerta(idInput, idMensaje, mensajeADesplegar) {
+      document.getElementById(idInput).style.border = "1px solid #ff6258";
+      document.getElementById(idMensaje).innerHTML = mensajeADesplegar;
     },
-    btnGuardar: function () {
-      var _btnGuardar = _asyncToGenerator(
+    limpiarMensajeYAlerta: function limpiarMensajeYAlerta(idInput, idMensaje) {
+      document.getElementById(idInput).style.border = "1px solid #dee2e6";
+      document.getElementById(idMensaje).innerHTML = "";
+    },
+    limpiarCampo: function limpiarCampo(id) {
+      if (id === "tema") this.limpiarMensajeYAlerta("selTema", "msjSelectTema");
+      if (id === "pregunta") this.limpiarMensajeYAlerta("inpPregunta", "msjInputPregunta");
+      if (id === "respuesta") this.limpiarMensajeYAlerta("selRespuesta", "msjInputRespuesta");
+    },
+    comprobarCampos: function comprobarCampos() {
+      var existeError = false;
+
+      if (this.form.tema === "") {
+        this.mostrarMensajeYAlerta("selTema", "msjSelectTema", "Este dato es obligatorio");
+        existeError = true;
+      }
+
+      if (this.form.pregunta === "") {
+        this.mostrarMensajeYAlerta("inpPregunta", "msjInputPregunta", "Este dato es obligatorio");
+        existeError = true;
+      }
+
+      if (this.form.respuesta === "") {
+        this.mostrarMensajeYAlerta("selRespuesta", "msjInputRespuesta", "Este dato es obligatorio");
+        existeError = true;
+      }
+
+      return existeError;
+    },
+    registrarPregunta: function registrarPregunta() {
+      var _this5 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this4 = this;
-
-        var _ref2, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var existeError;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                _context.next = 2;
-                return this.$swal({
-                  title: 'Registrar Pregunta',
-                  html: "\n\t\t\t\t\t<br>\n          <!-- <label for=\"tipo\">Elije un tipo de pregunta:</label>\n\n          <select id=\"tipo\">\n            <option value=\"3\">True o false</option>\n          </select> -->\n\t\t\t\t\t\n\t\t\t\t\t<input id=\"pregunta\" class=\"swal2-input\" placeholder=\"Ingresa la pregunta\">\n    \t\t\t<select id=\"respuesta\">\n            <option value=\"verdadero\">Verdadero</option>\n\t\t\t\t\t\t<option value=\"falso\">Falso</option>\n          </select>\n\t\t\t\t\t\t<br>\n          <label for=\"id_tema_2\">Elije a que tema es correspondiente:</label>\n          <select id=\"id_tema\" value=\"".concat(this.temas, "\" name=\"temas\" class=\"swal2-input\">\n            <option value=\"\">Tema</option>\n            ").concat(this.temas[0].map(function (cat) {
-                    return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre_tema, "</option>");
-                  }), "\n          </select>\n\n         "),
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButtonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
-                  preConfirm: function preConfirm() {
-                    return [_this4.pregunta = document.getElementById('pregunta').value, _this4.respuesta = document.getElementById('respuesta').value, _this4.tipo = 3, _this4.id_tema = document.getElementById('id_tema').value];
-                  }
-                });
+                _context5.next = 2;
+                return _this5.comprobarCampos();
 
               case 2:
-                _ref2 = _context.sent;
-                formValues = _ref2.value;
+                existeError = _context5.sent;
 
-                if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.tipo == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos'
+                if (!existeError) {
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/pregunta/add', {
+                    pregunta: _this5.form.pregunta,
+                    respuesta: _this5.form.respuesta,
+                    tipo: _this5.form.tipo,
+                    id_tema: _this5.form.tema
+                  }).then(
+                  /*#__PURE__*/
+                  function () {
+                    var _ref = _asyncToGenerator(
+                    /*#__PURE__*/
+                    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(res) {
+                      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+                        while (1) {
+                          switch (_context4.prev = _context4.next) {
+                            case 0:
+                              _this5.form.reset();
+
+                              $('#registrarPregunta').modal('hide');
+                              _context4.next = 4;
+                              return _this5.subidor.subirImagenes(res.data.ultimo_id);
+
+                            case 4:
+                              _this5.$swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Pregunta almacenada con éxito',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                toast: true
+                              });
+
+                              _this5.obtenerPreguntasVerdaderoFalso();
+
+                            case 6:
+                            case "end":
+                              return _context4.stop();
+                          }
+                        }
+                      }, _callee4);
+                    }));
+
+                    return function (_x) {
+                      return _ref.apply(this, arguments);
+                    };
+                  }())["catch"](function (err) {
+                    console.log(err);
                   });
-                } else {
-                  this.guardarPregunta(this.pregunta, this.respuesta, this.tipo, this.id_tema); //funcion guardarTema
-
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
-                  this.$swal.fire({
-                    type: 'success',
-                    title: '¡Pregunta Registrada!'
-                  });
-                } //if (formValues) {
-                //this.$swal(JSON.stringify(formValues))
-                //}			
-
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function btnGuardar() {
-        return _btnGuardar.apply(this, arguments);
-      }
-
-      return btnGuardar;
-    }(),
-    btnEditar: function () {
-      var _btnEditar = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id, pregunta, respuesta, tipo, opcion, opcion2, opcion3, opcion4, id_tema) {
-        var _this5 = this;
-
-        var esVerdadero, esFalso, _ref3, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                esVerdadero = "", esFalso = ""; //console.log(respuesta+"=====");
-
-                if (respuesta == true) esVerdadero = "selected";else esFalso = "selected";
-                _context2.next = 4;
-                return this.$swal({
-                  title: 'Editar Pregunta',
-                  html: "<input id=\"pregunta\" class=\"swal2-input\" value=\"" + pregunta + "\">\n\t\t\t\t\t\t<!--input type= radio id=\"respuesta\" class=\"swal2-input\" value=\"" + respuesta + "\"-->\n            <select>\n              <option value=\"true\" " + esVerdadero + " >Verdadero</option>\n              <option value=\"false\" " + esFalso + " >Falso</option>\n            </select>\n\t\t\t\t\t\t<br>\n          <label for=\"id_tema5\">Elije a que tema es correspondiente:</label>\n          <select id=\"id_tema\" value=\"".concat(this.temas, "\" name=\"temas\" class=\"swal2-input\">\n            <option value=\"") + id_tema + "\">Tema</option>\n            ".concat(this.temas[0].map(function (cat) {
-                    return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre_tema, "</option>");
-                  }), "\n          </select>\n          \t<br>\n          <label for=\"tipo\">Elije un tipo de pregunta:</label>\n          <select id=\"tipo\">       \n            <option value=\"true o false\">True o false</option>\n          </select>\n          \n          \n\n\n         "),
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
-                  preConfirm: function preConfirm() {
-                    return [_this5.pregunta = document.getElementById('pregunta').value, _this5.respuesta = document.getElementById('respuesta').value, _this5.tipo = document.getElementById('tipo').value, _this5.id_tema = document.getElementById('id_tema').value];
-                  }
-                });
+                }
 
               case 4:
-                _ref3 = _context2.sent;
-                formValues = _ref3.value;
-
-                if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.tipo == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos'
-                  });
-                } else {
-                  this.editar(id, this.pregunta, this.respuesta, this.tipo, this.id_tema); //funcion guardarTema
-
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
-                  this.$swal.fire({
-                    type: 'success',
-                    title: '¡Pregunta Editada!'
-                  });
-                } //if (formValues) {
-                //this.$swal(JSON.stringify(formValues))
-                //}			
-
-
-              case 7:
               case "end":
-                return _context2.stop();
+                return _context5.stop();
             }
           }
-        }, _callee2, this);
-      }));
+        }, _callee5);
+      }))();
+    },
+    editarPregunta: function editarPregunta(pregunta, imagenes) {
+      this.resetearDatos();
+      this.modoEdicion = 1;
+      this.form.fill(pregunta);
+      this.totalImagenesEnPregunta = imagenes.length + 1;
+      var numeroMayorDeImagen = 0;
 
-      function btnEditar(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9) {
-        return _btnEditar.apply(this, arguments);
+      for (var i = 0; i < imagenes.length; i++) {
+        this.subidor.acomodarImagen("/imagenes/preguntas/" + imagenes[i].nombre, 1, imagenes[i].idImagen);
+
+        if (imagenes[i].alias.split("_")[3].split(".")[0] > numeroMayorDeImagen) {
+          numeroMayorDeImagen = imagenes[i].alias.split("_")[3].split(".")[0];
+        }
       }
 
-      return btnEditar;
-    }(),
-    editar: function editar(id, pregunta, respuesta, tipo, id_tema) {
+      this.subidor.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
+      $('#registrarPregunta').modal('show');
+    },
+    actualizarPregunta: function actualizarPregunta() {
       var _this6 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/pregunta/update', {
-        id: id,
-        pregunta: pregunta,
-        respuesta: respuesta,
-        tipo: tipo,
-        id_tema: id_tema
-      }).then(function (res) {
-        _this6.id = '';
-        _this6.tipo = '';
-        _this6.respuesta = '';
-        _this6.pregunta = '';
-        _this6.id_tema = '';
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var existeError;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.next = 2;
+                return _this6.comprobarCampos();
 
-        _this6.getpregunta(); //console.log(res)
+              case 2:
+                existeError = _context7.sent;
 
-      })["catch"](function (err) {
-        console.log(err);
-      });
+                if (!existeError) {
+                  axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/pregunta/update', {
+                    id: _this6.form.id,
+                    pregunta: _this6.form.pregunta,
+                    respuesta: _this6.form.respuesta,
+                    tipo: _this6.form.tipo,
+                    id_tema: _this6.form.tema,
+                    imagenesAEliminar: _this6.subidor.imagenesAEliminar
+                  }).then(
+                  /*#__PURE__*/
+                  function () {
+                    var _ref2 = _asyncToGenerator(
+                    /*#__PURE__*/
+                    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(res) {
+                      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+                        while (1) {
+                          switch (_context6.prev = _context6.next) {
+                            case 0:
+                              _context6.next = 2;
+                              return _this6.subidor.subirImagenes(_this6.form.id);
+
+                            case 2:
+                              _this6.resetearDatos();
+
+                              _this6.form.reset();
+
+                              $('#registrarPregunta').modal('hide');
+
+                              _this6.$swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Pregunta actualizada con éxito',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                toast: true
+                              });
+
+                              _this6.obtenerPreguntasVerdaderoFalso();
+
+                            case 7:
+                            case "end":
+                              return _context6.stop();
+                          }
+                        }
+                      }, _callee6);
+                    }));
+
+                    return function (_x2) {
+                      return _ref2.apply(this, arguments);
+                    };
+                  }())["catch"](function (err) {
+                    console.log(err);
+                  });
+                }
+
+              case 4:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
     },
-    eliminar: function eliminar(id) {
+    eliminarPregunta: function eliminarPregunta(id) {
       var _this7 = this;
 
       this.$swal.fire({
@@ -12793,51 +13305,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         cancelButtonText: 'Cancelar'
       }).then(function (result) {
         if (result.value) {
-          ////
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/delete', {
             id: id
           }).then(function (res) {
-            _this7.id = '';
-
-            _this7.getpregunta(); //console.log(res)
-
-
-            var Toast = _this7.$swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000
-            });
+            _this7.obtenerPreguntasVerdaderoFalso();
 
             _this7.$swal.fire({
-              type: 'success',
-              title: '¡Pregunta Eliminada!'
+              position: 'top-end',
+              icon: 'success',
+              title: 'Pregunta eliminada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
           })["catch"](function (err) {
             _this7.$swal({
               type: 'info',
               title: 'Error al eliminar'
             });
-          }); ////
+          });
         }
       });
-      /*const Toast = this.$swal.mixin({
-      		toast: true,
-      		position: 'top-end',
-      		showConfirmButton: false,
-      		timer: 3000
-      });
-      	this.$swal.fire({
-      		type: 'success',
-      		title: '¡Pregunta Eliminada!'
-      	})
-      })
-      .catch((err)=>{
-      	this.$swal({
-      		type: 'info',
-      		title: 'Error al eliminar',
-      	})
-      })*/
     }
   }
 });
@@ -13076,13 +13564,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     popup: '' // disable popup fade-out animation
 
                   },
-                  html: "\n\t\t\t<h3 class=\"text-left\"> Registrar docente </h3>\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Mart\xEDnez\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Per\xE9z\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrase\xF1a: </p>\n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\">\n\t\t\t\t\t\t<br> \n            ",
+                  html: "\n\t\t\t<h3 class=\"text-left\"> Registrar docente </h3>\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Mart\xEDnez\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Per\xE9z\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrase\xF1a: </p>\n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\">\n            ",
                   focusConfirm: false,
                   showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+                  confirmButtonColor: '#2196f3',
+                  cancelButtonColor: '#aaa',
+                  cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                   preConfirm: function preConfirm() {
                     return [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value];
                   }
@@ -13158,14 +13646,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return this.$swal({
-                  title: 'Editar Docente',
-                  html: "<input id=\"nombre\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <input id=\"apellido_paterno\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <input id=\"apellido_materno\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <input id=\"matricula\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n            <input id=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<br> \n            ",
+                  showClass: {
+                    backdrop: 'swal2-noanimation',
+                    popup: '',
+                    icon: ''
+                  },
+                  hideClass: {
+                    popup: ''
+                  },
+                  html: "\n            <h3 class=\"text-left\"> Actualizar docente </h3>\n\t\t\t      <p class=\"text-left mt-0 mb-0\"> Nombre: </p>\n            <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido paterno: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n             <p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Correo: </p>  \n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n            <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a <span style=\"color:red\">*</span> : </p>\n            <input id=\"password\" type=\"text\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Deje en blanco si no desea actualizar </p>\n\n            ",
                   focusConfirm: false,
                   showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
+                  confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+                  confirmButtonColor: '#2196f3',
+                  cancelButtonColor: '#aaa',
+                  cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                   preConfirm: function preConfirm() {
                     return [_this4.apellido_paterno = document.getElementById('apellido_paterno').value, _this4.apellido_materno = document.getElementById('apellido_materno').value, _this4.nombre = document.getElementById('nombre').value, _this4.matricula = document.getElementById('matricula').value, _this4.password = document.getElementById('password').value, _this4.id = id];
                   }
@@ -13175,11 +13670,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _ref2 = _context2.sent;
                 formValues = _ref2.value;
 
-                if (this.nombre == "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos'
-                  });
+                if (this.nombre == "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.matricula == "") {
+                  /*this.$swal({
+                  	type: 'info',
+                  	title: 'Datos incompletos',
+                  })*/
                 } else {
                   this.editar(this.id, this.nombre, this.apellido_materno, this.apellido_paterno, this.matricula, this.password); //funcion guardarAdmin
 
@@ -14183,6 +14678,25 @@ exports.push([module.i, "\n.vt-sort[data-v-ef19c1f6] {\n  cursor: pointer;\n}\n"
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.swal-footer { \n  text-align: right !important;\n}\n.swal-modal .swal-footer { \n  direction: rtl !important;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ConfiguracionCuestionario.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ConfiguracionCuestionario.vue?vue&type=style&index=0&lang=css& ***!
@@ -14195,7 +14709,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t/* The container */\n.container {\n\t\tdisplay: block;\n\t\tposition: relative;\n\t\tpadding-left: 35px;\n\t\tmargin-bottom: 12px;\n\t\tcursor: pointer;\n\t\tfont-size: 22px;\n\t\t-webkit-user-select: none;\n\t\t-moz-user-select: none;\n\t\t-ms-user-select: none;\n\t\tuser-select: none;\n}\n  \n\t/* Hide the browser's default checkbox */\n.container input {\n\t\tposition: absolute;\n\t\topacity: 0;\n\t\tcursor: pointer;\n\t\theight: 0;\n\t\twidth: 0;\n}\n  \n  \t/* Create a custom checkbox */\n.checkmark {\n    \tposition: absolute;\n    \ttop: 0;\n    \tleft: 0;\n    \theight: 25px;\n    \twidth: 25px;\n    \tbackground-color: #eee;\n}\n  \n\t  /* On mouse-over, add a grey background color */\n.container:hover input ~ .checkmark {\n\t\tbackground-color: #ccc;\n}\n\t  /* When the checkbox is checked, add a blue background */\n.container  input:checked ~ .checkmark {\n\t\tbackground-color: #2196F3;\n}\n\t  /* Create the checkmark/indicator (hidden when not checked) */\n.checkmark:after {\n\t\tcontent: \"\";\n\t\tposition: absolute;\n\t\tdisplay: none;\n}\n\t  /* Show the checkmark when checked */\n.container input:checked ~ .checkmark:after {\n\t\tdisplay: block;\n}\n\t  /* Style the checkmark/indicator */\n.container .checkmark:after {\n\t\tleft: 9px;\n\t\ttop: 5px;\n\t\twidth: 5px;\n\t\theight: 10px;\n\t\tborder: solid white;\n\t\tborder-width: 0 3px 3px 0;\n\t\t-webkit-transform: rotate(45deg);\n\t\t-ms-transform: rotate(45deg);\n\t\ttransform: rotate(45deg);\n}\n\t\n", ""]);
+exports.push([module.i, "\ndiv.gfg {\n      width: 100%;\n      height: 800px;\n      overflow: auto;\n      text-align:justify;\n}\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44304,6 +44818,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Administrador.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ConfiguracionCuestionario.vue?vue&type=style&index=0&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ConfiguracionCuestionario.vue?vue&type=style&index=0&lang=css& ***!
@@ -48748,6 +49292,24 @@ if (false) {}
 /***/ })
 /******/ ]);
 });
+
+/***/ }),
+
+/***/ "./node_modules/vform/dist/vform.es.js":
+/*!*********************************************!*\
+  !*** ./node_modules/vform/dist/vform.es.js ***!
+  \*********************************************/
+/*! exports provided: default, Errors, Form */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Errors", function() { return y; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Form", function() { return g; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+var e=Object.defineProperty,t=Object.prototype.hasOwnProperty,s=Object.getOwnPropertySymbols,r=Object.prototype.propertyIsEnumerable,o=(t,s,r)=>s in t?e(t,s,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[s]=r,i=(e,i)=>{for(var a in i||(i={}))t.call(i,a)&&o(e,a,i[a]);if(s)for(var a of s(i))r.call(i,a)&&o(e,a,i[a]);return e};const n=e=>void 0===e,c=e=>Array.isArray(e),l=e=>e&&"number"==typeof e.size&&"string"==typeof e.type&&"function"==typeof e.slice,u=(e,t,s,r)=>((t=t||{}).indices=!n(t.indices)&&t.indices,t.nullsAsUndefineds=!n(t.nullsAsUndefineds)&&t.nullsAsUndefineds,t.booleansAsIntegers=!n(t.booleansAsIntegers)&&t.booleansAsIntegers,t.allowEmptyArrays=!n(t.allowEmptyArrays)&&t.allowEmptyArrays,s=s||new FormData,n(e)||(null===e?t.nullsAsUndefineds||s.append(r,""):(e=>"boolean"==typeof e)(e)?t.booleansAsIntegers?s.append(r,e?1:0):s.append(r,e):c(e)?e.length?e.forEach(((e,o)=>{const i=r+"["+(t.indices?o:"")+"]";u(e,t,s,i)})):t.allowEmptyArrays&&s.append(r+"[]",""):(e=>e instanceof Date)(e)?s.append(r,e.toISOString()):!(e=>e===Object(e))(e)||(e=>l(e)&&"string"==typeof e.name&&("object"==typeof e.lastModifiedDate||"number"==typeof e.lastModified))(e)||l(e)?s.append(r,e):Object.keys(e).forEach((o=>{const i=e[o];if(c(i))for(;o.length>2&&o.lastIndexOf("[]")===o.length-2;)o=o.substring(0,o.length-2);u(i,t,s,r?r+"["+o+"]":o)}))),s);var h={serialize:u};function d(e){if(null===e||"object"!=typeof e)return e;const t=Array.isArray(e)?[]:{};return Object.keys(e).forEach((s=>{t[s]=d(e[s])})),t}function f(e){return Array.isArray(e)?e:[e]}function p(e){return e instanceof File||e instanceof Blob||e instanceof FileList||"object"==typeof e&&null!==e&&void 0!==Object.values(e).find((e=>p(e)))}class y{constructor(){this.errors={},this.errors={}}set(e,t){"object"==typeof e?this.errors=e:this.set(i(i({},this.errors),{[e]:f(t)}))}all(){return this.errors}has(e){return Object.prototype.hasOwnProperty.call(this.errors,e)}hasAny(...e){return e.some((e=>this.has(e)))}any(){return Object.keys(this.errors).length>0}get(e){if(this.has(e))return this.getAll(e)[0]}getAll(e){return f(this.errors[e]||[])}only(...e){const t=[];return e.forEach((e=>{const s=this.get(e);s&&t.push(s)})),t}flatten(){return Object.values(this.errors).reduce(((e,t)=>e.concat(t)),[])}clear(e){const t={};e&&Object.keys(this.errors).forEach((s=>{s!==e&&(t[s]=this.errors[s])})),this.set(t)}}class g{constructor(e={}){this.originalData={},this.busy=!1,this.successful=!1,this.recentlySuccessful=!1,this.recentlySuccessfulTimeoutId=void 0,this.errors=new y,this.progress=void 0,this.update(e)}static make(e){return new this(e)}update(e){this.originalData=Object.assign({},this.originalData,d(e)),Object.assign(this,e)}fill(e={}){this.keys().forEach((t=>{this[t]=e[t]}))}data(){return this.keys().reduce(((e,t)=>i(i({},e),{[t]:this[t]})),{})}keys(){return Object.keys(this).filter((e=>!g.ignore.includes(e)))}startProcessing(){this.errors.clear(),this.busy=!0,this.successful=!1,this.progress=void 0,this.recentlySuccessful=!1,clearTimeout(this.recentlySuccessfulTimeoutId)}finishProcessing(){this.busy=!1,this.successful=!0,this.progress=void 0,this.recentlySuccessful=!0,this.recentlySuccessfulTimeoutId=setTimeout((()=>{this.recentlySuccessful=!1}),g.recentlySuccessfulTimeout)}clear(){this.errors.clear(),this.successful=!1,this.recentlySuccessful=!1,this.progress=void 0,clearTimeout(this.recentlySuccessfulTimeoutId)}reset(){Object.keys(this).filter((e=>!g.ignore.includes(e))).forEach((e=>{this[e]=d(this.originalData[e])}))}get(e,t={}){return this.submit("get",e,t)}post(e,t={}){return this.submit("post",e,t)}patch(e,t={}){return this.submit("patch",e,t)}put(e,t={}){return this.submit("put",e,t)}delete(e,t={}){return this.submit("delete",e,t)}submit(e,t,s={}){return this.startProcessing(),s=i({data:{},params:{},url:this.route(t),method:e,onUploadProgress:this.handleUploadProgress.bind(this)},s),"get"===e.toLowerCase()?s.params=i(i({},this.data()),s.params):(s.data=i(i({},this.data()),s.data),p(s.data)&&(s.transformRequest=[e=>h.serialize(e)])),new Promise(((e,t)=>{(g.axios||axios__WEBPACK_IMPORTED_MODULE_0___default.a).request(s).then((t=>{this.finishProcessing(),e(t)})).catch((e=>{this.handleErrors(e),t(e)}))}))}handleErrors(e){this.busy=!1,this.progress=void 0,e.response&&this.errors.set(this.extractErrors(e.response))}extractErrors(e){return e.data&&"object"==typeof e.data?e.data.errors?i({},e.data.errors):e.data.message?{error:e.data.message}:i({},e.data):{error:g.errorMessage}}handleUploadProgress(e){this.progress={total:e.total,loaded:e.loaded,percentage:Math.round(100*e.loaded/e.total)}}route(e,t={}){let s=e;return Object.prototype.hasOwnProperty.call(g.routes,e)&&(s=decodeURI(g.routes[e])),"object"!=typeof t&&(t={id:t}),Object.keys(t).forEach((e=>{s=s.replace(`{${e}}`,t[e])})),s}onKeydown(e){const t=e.target;t.name&&this.errors.clear(t.name)}}g.routes={},g.errorMessage="Something went wrong. Please try again.",g.recentlySuccessfulTimeout=2e3,g.ignore=["busy","successful","errors","progress","originalData","recentlySuccessful","recentlySuccessfulTimeoutId"];/* harmony default export */ __webpack_exports__["default"] = (g);
+
 
 /***/ }),
 
@@ -54552,7 +55114,7 @@ var render = function() {
                           [
                             _c("i", { staticClass: "fas fa-user-plus" }),
                             _vm._v(
-                              " Registrar administrador\n\t\t\t\t\t\t\t\t\t"
+                              " Registrar administrador\n                          "
                             )
                           ]
                         )
@@ -54654,7 +55216,10 @@ var render = function() {
                                         }
                                       }
                                     },
-                                    [_c("i", { staticClass: "fas fa-pen" })]
+                                    [
+                                      _c("i", { staticClass: "fas fa-pen" }),
+                                      _vm._v("Editar")
+                                    ]
                                   ),
                                   _vm._v(" "),
                                   _c(
@@ -54667,7 +55232,10 @@ var render = function() {
                                         }
                                       }
                                     },
-                                    [_c("i", { staticClass: "fas fa-trash" })]
+                                    [
+                                      _c("i", { staticClass: "fas fa-trash" }),
+                                      _vm._v("Eliminar")
+                                    ]
                                   )
                                 ])
                               ])
@@ -54720,7 +55288,7 @@ var render = function() {
                           {
                             attrs: { sortKey: "matricula", defaultSort: "desc" }
                           },
-                          [_vm._v("Matricula")]
+                          [_vm._v("Correo")]
                         ),
                         _vm._v(" "),
                         _c("th", [_vm._v("Opciones")])
@@ -55170,484 +55738,584 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
+    _vm._m(0),
+    _vm._v(" "),
     _c("div", { staticClass: "col-md-12" }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-body" }, [
           _vm._m(1),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("b", [_vm._v(" Configuraciones de preguntas ")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { staticClass: "mb-2" }, [
-                  _vm._v("Numero de preguntas por cuestionario")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.configuraciones.num_preguntas,
-                      expression: "configuraciones.num_preguntas"
-                    }
-                  ],
-                  staticClass: "form-control form-control-lg",
-                  attrs: {
-                    id: "numeroPreguntas",
-                    type: "number",
-                    placeholder: "# Preguntas",
-                    disabled: ""
-                  },
-                  domProps: { value: _vm.configuraciones.num_preguntas },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.configuraciones,
-                        "num_preguntas",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mb-2",
-                    attrs: { for: "exampleFormControlSelect1" }
-                  },
-                  [_vm._v("Numero de preguntas numericas")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.configuraciones.num_preguntas_numericas,
-                      expression: "configuraciones.num_preguntas_numericas"
-                    }
-                  ],
-                  staticClass: "form-control form-control-lg",
-                  attrs: { id: "numeroPreguntasNumericas" },
-                  domProps: {
-                    value: _vm.configuraciones.num_preguntas_numericas
-                  },
-                  on: {
-                    keyup: _vm.totalPreg,
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.configuraciones,
-                        "num_preguntas_numericas",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mb-2",
-                    attrs: { for: "exampleFormControlSelect2" }
-                  },
-                  [_vm._v("Numero de preguntas breves")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.configuraciones.num_preguntas_abiertas,
-                      expression: "configuraciones.num_preguntas_abiertas"
-                    }
-                  ],
-                  staticClass: "form-control form-control-lg",
-                  attrs: { id: "numeroPreguntasBreves" },
-                  domProps: {
-                    value: _vm.configuraciones.num_preguntas_abiertas
-                  },
-                  on: {
-                    keyup: _vm.totalPreg,
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.configuraciones,
-                        "num_preguntas_abiertas",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mb-2",
-                    attrs: { for: "exampleFormControlSelect2" }
-                  },
-                  [_vm._v("Numero de preguntas calculadas")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.configuraciones.num_preguntas_calculadas,
-                      expression: "configuraciones.num_preguntas_calculadas"
-                    }
-                  ],
-                  staticClass: "form-control form-control-lg",
-                  attrs: { id: "numeroPreguntasCalculadas" },
-                  domProps: {
-                    value: _vm.configuraciones.num_preguntas_calculadas
-                  },
-                  on: {
-                    keyup: _vm.totalPreg,
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.configuraciones,
-                        "num_preguntas_calculadas",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mb-2",
-                    attrs: { for: "exampleFormControlSelect2" }
-                  },
-                  [_vm._v("Numero de preguntas calculadas multiples")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value:
-                        _vm.configuraciones.num_preguntas_calculadas_multiples,
-                      expression:
-                        "configuraciones.num_preguntas_calculadas_multiples"
-                    }
-                  ],
-                  staticClass: "form-control form-control-lg",
-                  attrs: { id: "numeroPreguntasCalculadasMultiples" },
-                  domProps: {
-                    value:
-                      _vm.configuraciones.num_preguntas_calculadas_multiples
-                  },
-                  on: {
-                    keyup: _vm.totalPreg,
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.configuraciones,
-                        "num_preguntas_calculadas_multiples",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mb-2",
-                    attrs: { for: "exampleFormControlSelect3" }
-                  },
-                  [_vm._v("Numero de peguntas booleanas")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.configuraciones.num_preguntas_boleanas,
-                      expression: "configuraciones.num_preguntas_boleanas"
-                    }
-                  ],
-                  staticClass: "form-control form-control-lg",
-                  attrs: { id: "numeroPreguntasBooleanas" },
-                  domProps: {
-                    value: _vm.configuraciones.num_preguntas_boleanas
-                  },
-                  on: {
-                    keyup: _vm.totalPreg,
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.configuraciones,
-                        "num_preguntas_boleanas",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mb-2",
-                    attrs: { for: "exampleFormControlSelect3" }
-                  },
-                  [_vm._v("Numero de peguntas opcion multiple")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.configuraciones.num_preguntas_multiples,
-                      expression: "configuraciones.num_preguntas_multiples"
-                    }
-                  ],
-                  staticClass: "form-control form-control-lg",
-                  attrs: { id: "numeroPreguntasMultiples" },
-                  domProps: {
-                    value: _vm.configuraciones.num_preguntas_multiples
-                  },
-                  on: {
-                    keyup: _vm.totalPreg,
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.configuraciones,
-                        "num_preguntas_multiples",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("b", [_vm._v(" Otras configuraciones ")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mb-2",
-                    attrs: { for: "exampleFormControlSelect1" }
-                  },
-                  [_vm._v("Rango por defecto")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-lg",
-                  attrs: {
-                    min: "0",
-                    max: "1",
-                    step: "0.001",
-                    id: "rangoPorDefecto",
-                    type: "number",
-                    placeholder: "# Preguntas"
-                  },
-                  domProps: { value: _vm.configuraciones.rango_por_defecto }
-                })
-              ]),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _c(
-                "table",
-                { staticStyle: { "list-style-type": "none", width: "100%" } },
-                [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._l(_vm.preguntasPorTema, function(tema) {
-                    return tema.totalPreguntasAbiertas <
-                      _vm.configuraciones.num_preguntas_abiertas ||
-                      tema.totalPreguntasNumericas <
-                        _vm.configuraciones.num_preguntas_numericas ||
-                      tema.totalPreguntasBooleanas <
-                        _vm.configuraciones.num_preguntas_boleanas ||
-                      tema.totalPreguntasMultiples <
-                        _vm.configuraciones.num_preguntas_multiples ||
-                      tema.totalPreguntasCalculadas <
-                        _vm.configuraciones.num_preguntas_calculadas ||
-                      tema.totalPreguntasCalculadasMultiples <
-                        _vm.configuraciones.num_preguntas_calculadas_multiples
-                      ? _c("tr", [
-                          _c(
-                            "td",
-                            { staticClass: "d-flex justify-content-center" },
-                            [
-                              _vm._v(
-                                " \n                      " +
-                                  _vm._s(tema.nombre_tema) +
-                                  " \n                      \n                      \n                    "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                      " +
-                                _vm._s(tema.totalPreguntasAbiertas) +
-                                "\n                      \n                      "
-                            ),
-                            tema.totalPreguntasAbiertas >=
-                            _vm.configuraciones.num_preguntas_abiertas
-                              ? _c("i", {
-                                  staticClass: "fas fa-check-circle",
-                                  staticStyle: { color: "green" }
-                                })
-                              : _c("i", {
-                                  staticClass: "fas fa-times-circle",
-                                  staticStyle: { color: "red" }
-                                })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                      " +
-                                _vm._s(tema.totalPreguntasNumericas) +
-                                "\n                      \n                      "
-                            ),
-                            tema.totalPreguntasNumericas >=
-                            _vm.configuraciones.num_preguntas_numericas
-                              ? _c("i", {
-                                  staticClass: "fas fa-check-circle",
-                                  staticStyle: { color: "green" }
-                                })
-                              : _c("i", {
-                                  staticClass: "fas fa-times-circle",
-                                  staticStyle: { color: "red" }
-                                })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                      " +
-                                _vm._s(tema.totalPreguntasBooleanas) +
-                                "\n                      \n                      "
-                            ),
-                            tema.totalPreguntasBooleanas >=
-                            _vm.configuraciones.num_preguntas_boleanas
-                              ? _c("i", {
-                                  staticClass: "fas fa-check-circle",
-                                  staticStyle: { color: "green" }
-                                })
-                              : _c("i", {
-                                  staticClass: "fas fa-times-circle",
-                                  staticStyle: { color: "red" }
-                                })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                      " +
-                                _vm._s(tema.totalPreguntasMultiples) +
-                                "\n                      \n                      "
-                            ),
-                            tema.totalPreguntasMultiples >=
-                            _vm.configuraciones.num_preguntas_multiples
-                              ? _c("i", {
-                                  staticClass: "fas fa-check-circle",
-                                  staticStyle: { color: "green" }
-                                })
-                              : _c("i", {
-                                  staticClass: "fas fa-times-circle",
-                                  staticStyle: { color: "red" }
-                                })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                      " +
-                                _vm._s(tema.totalPreguntasCalculadas) +
-                                "\n                      \n                      "
-                            ),
-                            tema.totalPreguntasCalculadas >=
-                            _vm.configuraciones.num_preguntas_calculadas
-                              ? _c("i", {
-                                  staticClass: "fas fa-check-circle",
-                                  staticStyle: { color: "green" }
-                                })
-                              : _c("i", {
-                                  staticClass: "fas fa-times-circle",
-                                  staticStyle: { color: "red" }
-                                })
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                      " +
-                                _vm._s(tema.totalPreguntasCalculadasMultiples) +
-                                "\n                      \n                      "
-                            ),
-                            tema.totalPreguntasCalculadasMultiples >=
+          _c(
+            "div",
+            {
+              staticClass: "page-header border-0",
+              staticStyle: { padding: "0 0 0", margin: "0 0 0" }
+            },
+            [
+              _c("div", { staticClass: "col-lg-6" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { staticClass: "mb-2" }, [
+                        _vm._v("Numero de preguntas por tema")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.configuraciones.num_preguntas,
+                            expression: "configuraciones.num_preguntas"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: {
+                          id: "numeroPreguntas",
+                          type: "number",
+                          placeholder: "# Preguntas",
+                          disabled: ""
+                        },
+                        domProps: { value: _vm.configuraciones.num_preguntas },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.configuraciones,
+                              "num_preguntas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "mb-2",
+                          attrs: { for: "exampleFormControlSelect1" }
+                        },
+                        [
+                          _vm._v(
+                            "Total de preguntas\n                                    numericas"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.configuraciones.num_preguntas_numericas,
+                            expression:
+                              "configuraciones.num_preguntas_numericas"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: { id: "numeroPreguntasNumericas" },
+                        domProps: {
+                          value: _vm.configuraciones.num_preguntas_numericas
+                        },
+                        on: {
+                          keyup: _vm.totalPreg,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.configuraciones,
+                              "num_preguntas_numericas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "mb-2",
+                          attrs: { for: "exampleFormControlSelect2" }
+                        },
+                        [_vm._v("Numero de preguntas abiertas")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.configuraciones.num_preguntas_abiertas,
+                            expression: "configuraciones.num_preguntas_abiertas"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: { id: "numeroPreguntasBreves" },
+                        domProps: {
+                          value: _vm.configuraciones.num_preguntas_abiertas
+                        },
+                        on: {
+                          keyup: _vm.totalPreg,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.configuraciones,
+                              "num_preguntas_abiertas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "mb-2",
+                          attrs: { for: "exampleFormControlSelect2" }
+                        },
+                        [
+                          _vm._v(
+                            "Numero de preguntas\n                                    calculadas"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.configuraciones.num_preguntas_calculadas,
+                            expression:
+                              "configuraciones.num_preguntas_calculadas"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: { id: "numeroPreguntasCalculadas" },
+                        domProps: {
+                          value: _vm.configuraciones.num_preguntas_calculadas
+                        },
+                        on: {
+                          keyup: _vm.totalPreg,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.configuraciones,
+                              "num_preguntas_calculadas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "mb-2",
+                          attrs: { for: "exampleFormControlSelect2" }
+                        },
+                        [
+                          _vm._v(
+                            "Numero de preguntas calculadas\n                                    multiples"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.configuraciones
+                                .num_preguntas_calculadas_multiples,
+                            expression:
+                              "configuraciones.num_preguntas_calculadas_multiples"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: { id: "numeroPreguntasCalculadasMultiples" },
+                        domProps: {
+                          value:
                             _vm.configuraciones
                               .num_preguntas_calculadas_multiples
-                              ? _c("i", {
-                                  staticClass: "fas fa-check-circle",
-                                  staticStyle: { color: "green" }
-                                })
-                              : _c("i", {
-                                  staticClass: "fas fa-times-circle",
-                                  staticStyle: { color: "red" }
-                                })
-                          ])
-                        ])
-                      : _vm._e()
-                  })
-                ],
-                2
+                        },
+                        on: {
+                          keyup: _vm.totalPreg,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.configuraciones,
+                              "num_preguntas_calculadas_multiples",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "mb-2",
+                          attrs: { for: "exampleFormControlSelect3" }
+                        },
+                        [_vm._v("Numero de peguntas booleanas")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.configuraciones.num_preguntas_boleanas,
+                            expression: "configuraciones.num_preguntas_boleanas"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: { id: "numeroPreguntasBooleanas" },
+                        domProps: {
+                          value: _vm.configuraciones.num_preguntas_boleanas
+                        },
+                        on: {
+                          keyup: _vm.totalPreg,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.configuraciones,
+                              "num_preguntas_boleanas",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "mb-2",
+                          attrs: { for: "exampleFormControlSelect3" }
+                        },
+                        [
+                          _vm._v(
+                            "Numero de peguntas opcion\n                                    multiple"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.configuraciones.num_preguntas_multiples,
+                            expression:
+                              "configuraciones.num_preguntas_multiples"
+                          }
+                        ],
+                        staticClass: "form-control form-control-lg",
+                        attrs: { id: "numeroPreguntasMultiples" },
+                        domProps: {
+                          value: _vm.configuraciones.num_preguntas_multiples
+                        },
+                        on: {
+                          keyup: _vm.totalPreg,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.configuraciones,
+                              "num_preguntas_multiples",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("b", [_vm._v(" Otras configuraciones ")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "mb-2",
+                          attrs: { for: "exampleFormControlSelect1" }
+                        },
+                        [_vm._v("Rango por defecto")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control form-control-lg",
+                        attrs: {
+                          min: "0",
+                          max: "1",
+                          step: "0.001",
+                          id: "rangoPorDefecto",
+                          type: "number",
+                          placeholder: "# Preguntas"
+                        },
+                        domProps: {
+                          value: _vm.configuraciones.rango_por_defecto
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-center btn-lg",
+                        attrs: { type: "button" },
+                        on: { click: _vm.guardarConfiguracion }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-save" }),
+                        _vm._v(" Guardar")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-lg-6 gfg",
+                  staticStyle: { padding: "0 0 0", margin: "0 0 0" }
+                },
+                [
+                  _c(
+                    "table",
+                    {
+                      staticStyle: { "list-style-type": "none", width: "100%" }
+                    },
+                    [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _vm._l(_vm.preguntasPorTema, function(tema) {
+                        return tema.totalPreguntasAbiertas <
+                          _vm.configuraciones.num_preguntas_abiertas ||
+                          tema.totalPreguntasNumericas <
+                            _vm.configuraciones.num_preguntas_numericas ||
+                          tema.totalPreguntasBooleanas <
+                            _vm.configuraciones.num_preguntas_boleanas ||
+                          tema.totalPreguntasMultiples <
+                            _vm.configuraciones.num_preguntas_multiples ||
+                          tema.totalPreguntasCalculadas <
+                            _vm.configuraciones.num_preguntas_calculadas ||
+                          tema.totalPreguntasCalculadasMultiples <
+                            _vm.configuraciones
+                              .num_preguntas_calculadas_multiples
+                          ? _c("tr", [
+                              _c(
+                                "td",
+                                {
+                                  staticClass: "d-flex justify-content-center"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(tema.nombre_tema) +
+                                      "\n\n\n                                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(tema.totalPreguntasAbiertas) +
+                                    "\n\n                                        "
+                                ),
+                                tema.totalPreguntasAbiertas >=
+                                _vm.configuraciones.num_preguntas_abiertas
+                                  ? _c("i", {
+                                      staticClass: "fas fa-check-circle",
+                                      staticStyle: { color: "green" }
+                                    })
+                                  : _c("i", {
+                                      staticClass: "fas fa-times-circle",
+                                      staticStyle: { color: "red" }
+                                    })
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(tema.totalPreguntasNumericas) +
+                                    "\n\n                                        "
+                                ),
+                                tema.totalPreguntasNumericas >=
+                                _vm.configuraciones.num_preguntas_numericas
+                                  ? _c("i", {
+                                      staticClass: "fas fa-check-circle",
+                                      staticStyle: { color: "green" }
+                                    })
+                                  : _c("i", {
+                                      staticClass: "fas fa-times-circle",
+                                      staticStyle: { color: "red" }
+                                    })
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(tema.totalPreguntasBooleanas) +
+                                    "\n\n                                        "
+                                ),
+                                tema.totalPreguntasBooleanas >=
+                                _vm.configuraciones.num_preguntas_boleanas
+                                  ? _c("i", {
+                                      staticClass: "fas fa-check-circle",
+                                      staticStyle: { color: "green" }
+                                    })
+                                  : _c("i", {
+                                      staticClass: "fas fa-times-circle",
+                                      staticStyle: { color: "red" }
+                                    })
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(tema.totalPreguntasMultiples) +
+                                    "\n\n                                        "
+                                ),
+                                tema.totalPreguntasMultiples >=
+                                _vm.configuraciones.num_preguntas_multiples
+                                  ? _c("i", {
+                                      staticClass: "fas fa-check-circle",
+                                      staticStyle: { color: "green" }
+                                    })
+                                  : _c("i", {
+                                      staticClass: "fas fa-times-circle",
+                                      staticStyle: { color: "red" }
+                                    })
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(tema.totalPreguntasCalculadas) +
+                                    "\n\n                                        "
+                                ),
+                                tema.totalPreguntasCalculadas >=
+                                _vm.configuraciones.num_preguntas_calculadas
+                                  ? _c("i", {
+                                      staticClass: "fas fa-check-circle",
+                                      staticStyle: { color: "green" }
+                                    })
+                                  : _c("i", {
+                                      staticClass: "fas fa-times-circle",
+                                      staticStyle: { color: "red" }
+                                    })
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(
+                                      tema.totalPreguntasCalculadasMultiples
+                                    ) +
+                                    "\n\n                                        "
+                                ),
+                                tema.totalPreguntasCalculadasMultiples >=
+                                _vm.configuraciones
+                                  .num_preguntas_calculadas_multiples
+                                  ? _c("i", {
+                                      staticClass: "fas fa-check-circle",
+                                      staticStyle: { color: "green" }
+                                    })
+                                  : _c("i", {
+                                      staticClass: "fas fa-times-circle",
+                                      staticStyle: { color: "red" }
+                                    })
+                              ])
+                            ])
+                          : _vm._e()
+                      })
+                    ],
+                    2
+                  )
+                ]
               )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-footer" }, [
+            ]
+          ),
+          _vm._v(" "),
           _c(
-            "button",
+            "div",
             {
-              staticClass: "btn btn-primary",
-              attrs: { type: "button" },
-              on: { click: _vm.guardarConfiguracion }
+              staticClass: "modal fade",
+              attrs: {
+                id: "modalDeInformacion",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true"
+              }
             },
-            [_vm._v("Guardar")]
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      _vm.modoEdicion
+                        ? _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v(" Actualizar pregunta  ")]
+                          )
+                        : _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v(" Registrar pregunta  ")]
+                          ),
+                      _vm._v(" "),
+                      _vm._m(4)
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\tAlgo de información para el usuario \n\t\t\t\t\t\t\t\t\t"
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
           )
         ])
       ])
@@ -55659,7 +56327,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
+    return _c("div", { staticClass: "col-md-12 mt-4" }, [
       _c("div", { staticClass: "page-header" }, [
         _c(
           "div",
@@ -55678,10 +56346,10 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Cuestionario  "),
+                  _vm._v(" Cuestionario "),
                   _c("i", { staticClass: "fas fa-angle-right" })
                 ]),
-                _vm._v(" Configurar cuestionario\n\t\t\t\t\t\t")
+                _vm._v(" Configurar cuestionario\n                        ")
               ])
             ])
           ]
@@ -55693,9 +56361,44 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-12" }, [
-      _c("h4", [_vm._v("Configurar cuestionario")])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "page-header border-0",
+        staticStyle: { padding: "0 0 0", margin: "0 0 0" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
+          [
+            _c("h2", { staticClass: "page-title" }, [
+              _vm._v(" Configuración de parametros del cuestionario")
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "quick-links ml-auto" }, [
+              _c("li", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary float-right btn-lg",
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "modal",
+                      "data-target": "#modalDeInformacion"
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-info-circle" }),
+                    _vm._v(" Información\n                                    ")
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -55714,7 +56417,7 @@ var staticRenderFns = [
             value: "first_checkbox"
           }
         }),
-        _vm._v(" Sí ")
+        _vm._v(" Sí\n                                ")
       ])
     ])
   },
@@ -55723,34 +56426,65 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("th", [_vm._v("\n                      Tema:\n                    ")]),
-      _vm._v(" "),
       _c("th", [
-        _vm._v("\n                      Abiertas\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v("\n                      Numerica\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v("\n                      Booleana\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v("\n                      Multiple\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("th", [
-        _vm._v("\n                      Calculada\n                    ")
+        _vm._v(
+          "\n                                        Tema:\n                                    "
+        )
       ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                      Calculada Multiple\n                    "
+          "\n                                        Abiertas\n                                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                        Numerica\n                                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                        Booleana\n                                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                        Multiple\n                                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                        Calculada\n                                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                        Calculada Multiple\n                                    "
         )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true
@@ -58645,7 +59379,7 @@ var render = function() {
                           [
                             _c("i", { staticClass: "fas fa-edit" }),
                             _vm._v(
-                              " Registrar pregunta\n                                    "
+                              " Registrar pregunta\n                                "
                             )
                           ]
                         )
@@ -58730,17 +59464,17 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("td", [
                                   _vm._v(
-                                    "\n                                        " +
+                                    "\n                                    " +
                                       _vm._s(preguntaAbierta.tema) +
-                                      "\n                                    "
+                                      "\n                                "
                                   )
                                 ]),
                                 _vm._v(" "),
                                 _c("td", [
                                   _vm._v(
-                                    "\n                                        " +
+                                    "\n                                    " +
                                       _vm._s(preguntaAbierta.opcion) +
-                                      " \n                                    "
+                                      "\n                                "
                                   )
                                 ]),
                                 _vm._v(" "),
@@ -58765,7 +59499,7 @@ var render = function() {
                                     [
                                       _c("i", { staticClass: "fas fa-eye" }),
                                       _vm._v(
-                                        "  Ver\n                                      "
+                                        " Ver\n                                    "
                                       )
                                     ]
                                   )
@@ -58796,7 +59530,7 @@ var render = function() {
                                     [
                                       _c("i", { staticClass: "fas fa-pen" }),
                                       _vm._v(
-                                        " Editar\n                                        "
+                                        " Editar\n                                    "
                                       )
                                     ]
                                   ),
@@ -58817,7 +59551,7 @@ var render = function() {
                                     [
                                       _c("i", { staticClass: "fas fa-trash" }),
                                       _vm._v(
-                                        " Eliminar\n                                        "
+                                        " Eliminar\n                                    "
                                       )
                                     ]
                                   )
@@ -58913,7 +59647,11 @@ var render = function() {
                                 staticClass: "modal-title",
                                 attrs: { id: "exampleModalLabel" }
                               },
-                              [_vm._v(" Actualizar pregunta  ")]
+                              [
+                                _vm._v(
+                                  " Actualizar\n                                    pregunta "
+                                )
+                              ]
                             )
                           : _c(
                               "h5",
@@ -58921,7 +59659,7 @@ var render = function() {
                                 staticClass: "modal-title",
                                 attrs: { id: "exampleModalLabel" }
                               },
-                              [_vm._v(" Registrar pregunta  ")]
+                              [_vm._v(" Registrar pregunta ")]
                             ),
                         _vm._v(" "),
                         _vm._m(2)
@@ -58992,9 +59730,9 @@ var render = function() {
                                 { domProps: { value: t.id } },
                                 [
                                   _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                    "\n                                        " +
                                       _vm._s(t.nombre_tema) +
-                                      "\n\t\t\t\t\t\t\t\t\t\t\t"
+                                      "\n                                    "
                                   )
                                 ]
                               )
@@ -59036,7 +59774,7 @@ var render = function() {
                             _vm._v(" "),
                             _vm._m(7),
                             _vm._v(" "),
-                            this.imagenesVistaPrevia.length
+                            this.subidor.imagenesVistaPrevia.length
                               ? _c(
                                   "table",
                                   {
@@ -59048,48 +59786,50 @@ var render = function() {
                                   [
                                     _vm._m(8),
                                     _vm._v(" "),
-                                    _vm._l(_vm.imagenesVistaPrevia, function(
-                                      imagen
-                                    ) {
-                                      return _c("tr", [
-                                        _c(
-                                          "td",
-                                          {
-                                            staticClass:
-                                              "d-flex justify-content-center"
-                                          },
-                                          [
-                                            _c("img", {
-                                              staticStyle: { width: "15em" },
-                                              attrs: { src: imagen.imagen }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("td", [
+                                    _vm._l(
+                                      _vm.subidor.imagenesVistaPrevia,
+                                      function(imagen) {
+                                        return _c("tr", [
                                           _c(
-                                            "button",
+                                            "td",
                                             {
-                                              staticClass: "btn btn-danger",
-                                              attrs: {
-                                                type: "button",
-                                                title: "Remove file"
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.remove(imagen)
-                                                }
-                                              }
+                                              staticClass:
+                                                "d-flex justify-content-center"
                                             },
                                             [
-                                              _c("i", {
-                                                staticClass: "fas fa-trash-alt"
+                                              _c("img", {
+                                                staticStyle: { width: "15em" },
+                                                attrs: { src: imagen.imagen }
                                               })
                                             ]
-                                          )
+                                          ),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass: "btn btn-danger",
+                                                attrs: {
+                                                  type: "button",
+                                                  title: "Remove file"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.remove(imagen)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-trash-alt"
+                                                })
+                                              ]
+                                            )
+                                          ])
                                         ])
-                                      ])
-                                    })
+                                      }
+                                    )
                                   ],
                                   2
                                 )
@@ -59107,7 +59847,11 @@ var render = function() {
                                 attrs: { type: "button" },
                                 on: { click: _vm.editar }
                               },
-                              [_vm._v(" Editar ")]
+                              [
+                                _vm._v(
+                                  "\n                                    Editar "
+                                )
+                              ]
                             )
                           : _c(
                               "button",
@@ -59116,7 +59860,11 @@ var render = function() {
                                 attrs: { type: "button" },
                                 on: { click: _vm.btnGuardar }
                               },
-                              [_vm._v(" Guardar ")]
+                              [
+                                _vm._v(
+                                  " Guardar\n                                "
+                                )
+                              ]
                             ),
                         _vm._v(" "),
                         _c(
@@ -59125,7 +59873,11 @@ var render = function() {
                             staticClass: "btn btn-secondary",
                             attrs: { type: "button", "data-dismiss": "modal" }
                           },
-                          [_vm._v(" Cancelar ")]
+                          [
+                            _vm._v(
+                              " Cancelar\n                                "
+                            )
+                          ]
                         )
                       ])
                     ])
@@ -59191,9 +59943,9 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("td", [
                                     _vm._v(
-                                      "\n                                    " +
+                                      "\n                                                " +
                                         _vm._s(imagen.alias) +
-                                        "\n                                  "
+                                        "\n                                            "
                                     )
                                   ])
                                 ])
@@ -59205,7 +59957,7 @@ var render = function() {
                           _vm.imagenesParaDesplegarEnModal.length == 0
                             ? _c("span", { staticClass: "text-center" }, [
                                 _vm._v(
-                                  " Está pregunta no tiene imagenes adjuntas "
+                                  " Esta\n                                        pregunta no tiene imagenes adjuntas "
                                 )
                               ])
                             : _vm._e()
@@ -59249,11 +60001,11 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" \n                              Preguntas "),
+                  _vm._v("\n                            Preguntas "),
                   _c("i", { staticClass: "fas fa-angle-right" })
                 ]),
                 _vm._v(
-                  "\n                            Preguntas abiertas\n                        "
+                  "\n                        Preguntas abiertas\n                    "
                 )
               ])
             ])
@@ -59306,7 +60058,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
-      _c("b", [_vm._v("  Tema: ")])
+      _c("b", [_vm._v(" Tema: ")])
     ])
   },
   function() {
@@ -59337,7 +60089,7 @@ var staticRenderFns = [
                 [
                   _c("i", { staticClass: "fas fa-cloud-download-alt" }),
                   _vm._v(
-                    " Arrastra la imagen o da clic aquí para subir \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                    " Arrastra la imagen\n                                                        o da clic aquí para subir\n                                                    "
                   )
                 ]
               )
@@ -59365,7 +60117,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v(" Imagenes adjuntas en la pregunta")]
+        [
+          _vm._v(
+            " Imagenes adjuntas en la pregunta\n                                "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -59389,13 +60145,13 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [
         _vm._v(
-          "\n                                    Imagen\n                                  "
+          "\n                                                Imagen\n                                            "
         )
       ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                                    Nombre\n                                  "
+          "\n                                                Nombre\n                                            "
         )
       ])
     ])
@@ -59411,7 +60167,7 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v(" Cerrar ")]
+        [_vm._v(" Cerrar\n                                ")]
       )
     ])
   }
@@ -60249,7 +61005,7 @@ var render = function() {
                             "data-toggle": "modal",
                             "data-target": "#registrarPregunta"
                           },
-                          on: { click: _vm.btnGuardar }
+                          on: { click: _vm.cambiarModo }
                         },
                         [
                           _c("i", { staticClass: "fas fa-edit" }),
@@ -60373,7 +61129,38 @@ var render = function() {
                                     _c(
                                       "button",
                                       {
+                                        staticClass: "btn btn-primary",
+                                        attrs: {
+                                          type: "button",
+                                          "data-toggle": "modal",
+                                          "data-target": "#modalParaVerImagenes"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.desplegarImagenesEnModal(
+                                              preguntaNumerica.imagenes
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", { staticClass: "fas fa-eye" }),
+                                        _vm._v(
+                                          " Ver\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "button",
+                                      {
                                         staticClass: "btn btn-warning",
+                                        attrs: {
+                                          "data-toggle": "modal",
+                                          "data-target": "#registrarPregunta"
+                                        },
                                         on: {
                                           click: function($event) {
                                             return _vm.btnEditar(
@@ -60381,7 +61168,9 @@ var render = function() {
                                               preguntaNumerica.pregunta,
                                               preguntaNumerica.opcion,
                                               preguntaNumerica.tipo,
-                                              preguntaNumerica.id_tema
+                                              preguntaNumerica.id_tema,
+                                              preguntaNumerica.rango,
+                                              preguntaNumerica.imagenes
                                             )
                                           }
                                         }
@@ -60399,7 +61188,8 @@ var render = function() {
                                         on: {
                                           click: function($event) {
                                             return _vm.eliminar(
-                                              preguntaNumerica.id_pregunta
+                                              preguntaNumerica.id_pregunta,
+                                              preguntaNumerica.imagenes
                                             )
                                           }
                                         }
@@ -60408,7 +61198,9 @@ var render = function() {
                                         _c("i", {
                                           staticClass: "fas fa-trash"
                                         }),
-                                        _vm._v(" Eliminar ")
+                                        _vm._v(
+                                          " Eliminar\n                                        "
+                                        )
                                       ]
                                     )
                                   ])
@@ -60460,6 +61252,8 @@ var render = function() {
                           _vm._v(" "),
                           _c("th", [_vm._v("Margen abajo")]),
                           _vm._v(" "),
+                          _c("th", [_vm._v("Imagenes")]),
+                          _vm._v(" "),
                           _c("th", [_vm._v("Opciones")])
                         ],
                         1
@@ -60486,6 +61280,384 @@ var render = function() {
               })
             ],
             1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "registrarPregunta",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      _vm.modoEdicion
+                        ? _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [
+                              _vm._v(
+                                " Actualizar\n                                    pregunta "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v(" Registrar pregunta ")]
+                          ),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        staticClass: "form-control mt-0 mb-0",
+                        attrs: {
+                          id: "pregunta",
+                          type: "text",
+                          placeholder: "Pregunta"
+                        },
+                        on: {
+                          focus: function($event) {
+                            return _vm.limpiarCampos("pregunta")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { attrs: { id: "msjInputPregunta" } }),
+                      _vm._v(" "),
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        staticClass: "form-control mt-0 mb-0",
+                        attrs: {
+                          id: "respuesta",
+                          type: "text",
+                          placeholder: "Respuesta"
+                        },
+                        on: {
+                          focus: function($event) {
+                            return _vm.limpiarCampos("respuesta")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { attrs: { id: "msjInputRespuesta" } }),
+                      _vm._v(" "),
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "swal2-input",
+                        attrs: { id: "margen", placeholder: "margen" }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: {
+                          type: "checkbox",
+                          id: "arriba",
+                          name: "arriba",
+                          value: "si",
+                          checked: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "male" } }, [
+                        _vm._v("Aplicar hacia arriba")
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: {
+                          type: "checkbox",
+                          id: "abajo",
+                          name: "abajo",
+                          value: "si",
+                          checked: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "male" } }, [
+                        _vm._v("Aplicar hacia abajo")
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control mt-0 mb-0",
+                          attrs: {
+                            id: "id_tema",
+                            value: "${this.temas}",
+                            name: "temas"
+                          },
+                          on: {
+                            focus: function($event) {
+                              return _vm.limpiarCampos("tema")
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Tema")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.temas[0], function(t) {
+                            return _c("option", { domProps: { value: t.id } }, [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(t.nombre_tema) +
+                                  "\n                                    "
+                              )
+                            ])
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("span", { attrs: { id: "msjSelectTema" } }),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticStyle: {
+                            "border-style": "dashed",
+                            width: "100%"
+                          },
+                          on: {
+                            dragover: _vm.dragover,
+                            dragleave: _vm.dragleave,
+                            drop: _vm.drop
+                          }
+                        },
+                        [
+                          _c("input", {
+                            ref: "file",
+                            staticClass:
+                              "w-px h-px opacity-0 overflow-hidden absolute",
+                            attrs: {
+                              type: "file",
+                              id: "assetsFieldHandle",
+                              accept: ".pdf,.jpg,.jpeg,.png",
+                              hidden: ""
+                            },
+                            on: { change: _vm.onChange }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(9),
+                          _vm._v(" "),
+                          this.subidor.imagenesVistaPrevia.length
+                            ? _c(
+                                "table",
+                                {
+                                  staticStyle: {
+                                    "list-style-type": "none",
+                                    width: "100%"
+                                  }
+                                },
+                                [
+                                  _vm._m(10),
+                                  _vm._v(" "),
+                                  _vm._l(
+                                    _vm.subidor.imagenesVistaPrevia,
+                                    function(imagen) {
+                                      return _c("tr", [
+                                        _c(
+                                          "td",
+                                          {
+                                            staticClass:
+                                              "d-flex justify-content-center"
+                                          },
+                                          [
+                                            _c("img", {
+                                              staticStyle: { width: "15em" },
+                                              attrs: { src: imagen.imagen }
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn btn-danger",
+                                              attrs: {
+                                                type: "button",
+                                                title: "Remove file"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.remove(imagen)
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fas fa-trash-alt"
+                                              })
+                                            ]
+                                          )
+                                        ])
+                                      ])
+                                    }
+                                  )
+                                ],
+                                2
+                              )
+                            : _vm._e()
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _vm.modoEdicion
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { type: "button" },
+                              on: { click: _vm.editar }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Editar "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { type: "button" },
+                              on: { click: _vm.btnGuardar }
+                            },
+                            [
+                              _vm._v(
+                                " Guardar\n                                "
+                              )
+                            ]
+                          ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v(" Cancelar\n                                ")]
+                      )
+                    ])
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "modalParaVerImagenes",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "modal-dialog", attrs: { role: "document" } },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", { staticStyle: { width: "100%" } }, [
+                        _c(
+                          "table",
+                          {
+                            staticStyle: {
+                              "list-style-type": "none",
+                              width: "100%"
+                            }
+                          },
+                          [
+                            _vm._m(12),
+                            _vm._v(" "),
+                            _vm._l(_vm.imagenesParaDesplegarEnModal, function(
+                              imagen
+                            ) {
+                              return _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "d-flex justify-content-center"
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticStyle: { width: "15em" },
+                                      attrs: {
+                                        src:
+                                          "/imagenes/preguntas/" + imagen.nombre
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    "\n                                                " +
+                                      _vm._s(imagen.alias) +
+                                      "\n                                            "
+                                  )
+                                ])
+                              ])
+                            })
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _vm.imagenesParaDesplegarEnModal.length == 0
+                          ? _c("span", { staticClass: "text-center" }, [
+                              _vm._v(
+                                " Está\n                                        pregunta no tiene imagenes adjuntas "
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(13)
+                  ])
+                ]
+              )
+            ]
           )
         ])
       ])
@@ -60516,10 +61688,12 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v("  Preguntas  "),
+                  _vm._v(
+                    "\n                            Preguntas\n                            "
+                  ),
                   _c("i", { staticClass: "fas fa-angle-right" })
                 ]),
-                _vm._v(" Preguntas numericas\n\t\t\t\t\t\t\t")
+                _vm._v(" Preguntas numericas\n                    ")
               ])
             ])
           ]
@@ -60532,6 +61706,173 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [_c("b", [_vm._v(" Busqueda por pregunta: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mb-0" }, [
+      _c("b", [_vm._v(" Pregunta: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Respuesta: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Margen: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Aplicar el margen de error a la respuesta ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Tema: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Imagenes: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "label",
+          {
+            staticClass: "block cursor-pointer",
+            attrs: { for: "assetsFieldHandle" }
+          },
+          [
+            _c("div", [
+              _c(
+                "p",
+                { staticClass: "text-center", attrs: { id: "mensajito" } },
+                [
+                  _c("i", { staticClass: "fas fa-cloud-download-alt" }),
+                  _vm._v(
+                    " Arrastra la imagen\n                                                        o da clic aquí para subir\n                                                    "
+                  )
+                ]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Imagen")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Acción")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [
+          _vm._v(
+            " Imagenes adjuntas en la pregunta\n                                "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [
+        _vm._v(
+          "\n                                                Imagen\n                                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                                Nombre\n                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v(" Cerrar\n                                ")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -60555,7 +61896,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
+  return _c("div", [
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-12" }, [
@@ -60594,7 +61935,7 @@ var render = function() {
                         [
                           _c("i", { staticClass: "fas fa-edit" }),
                           _vm._v(
-                            " Registrar pregunta\n                                    "
+                            " Registrar pregunta\n                                "
                           )
                         ]
                       )
@@ -60694,7 +62035,7 @@ var render = function() {
                                               _vm._v(
                                                 " " +
                                                   _vm._s(opcion.opcion) +
-                                                  " "
+                                                  "\n                                            "
                                               )
                                             ])
                                           : _vm._e()
@@ -60715,7 +62056,7 @@ var render = function() {
                                         opcion.esrespuesta == 1
                                           ? _c("span", [
                                               _vm._v(
-                                                " " +
+                                                "\n                                                " +
                                                   _vm._s(opcion.opcion) +
                                                   " "
                                               )
@@ -60745,7 +62086,9 @@ var render = function() {
                                       },
                                       [
                                         _c("i", { staticClass: "fas fa-pen" }),
-                                        _vm._v(" Editar ")
+                                        _vm._v(
+                                          "\n                                            Editar "
+                                        )
                                       ]
                                     ),
                                     _vm._v(" "),
@@ -60868,7 +62211,13 @@ var render = function() {
                             staticClass: "modal-title",
                             attrs: { id: "exampleModalLabel" }
                           },
-                          [_c("b", [_vm._v(" Registrar pregunta ")])]
+                          [
+                            _c("b", [
+                              _vm._v(
+                                "\n                                    Registrar pregunta "
+                              )
+                            ])
+                          ]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -60879,7 +62228,13 @@ var render = function() {
                             staticClass: "modal-title",
                             attrs: { id: "exampleModalLabel" }
                           },
-                          [_c("b", [_vm._v(" Editar pregunta ")])]
+                          [
+                            _c("b", [
+                              _vm._v(
+                                "\n                                    Editar pregunta "
+                              )
+                            ])
+                          ]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -60898,7 +62253,7 @@ var render = function() {
                           staticClass: "text-left mb-2",
                           attrs: { for: "opciones" }
                         },
-                        [_vm._v("  Opciones:  ")]
+                        [_vm._v(" Opciones: ")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
@@ -60974,10 +62329,12 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v("  Preguntas  "),
+                  _vm._v(" Preguntas "),
                   _c("i", { staticClass: "fas fa-angle-right" })
                 ]),
-                _vm._v(" Preguntas opcion multiple\n\t\t\t\t\t\t\t")
+                _vm._v(
+                  "\n                        Preguntas opcion multiple\n                    "
+                )
               ])
             ])
           ]
@@ -61016,7 +62373,7 @@ var staticRenderFns = [
       _c(
         "label",
         { staticClass: "text-left mb-2", attrs: { for: "pregunta" } },
-        [_vm._v("  Reactivo:  ")]
+        [_vm._v(" Reactivo: ")]
       ),
       _vm._v(" "),
       _c("textarea", {
@@ -61031,7 +62388,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { staticClass: "text-left mb-2" }, [
-        _vm._v("\n\t\t\t\t\t\t\t\t\tTema:\n\t\t\t\t\t\t\t\t")
+        _vm._v(
+          "\n                                    Tema:\n                                "
+        )
       ]),
       _vm._v(" "),
       _c("select", {
@@ -61866,12 +63225,12 @@ var render = function() {
                             "data-toggle": "modal",
                             "data-target": "#registrarPregunta"
                           },
-                          on: { click: _vm.btnGuardar }
+                          on: { click: _vm.cambiarModo }
                         },
                         [
                           _c("i", { staticClass: "fas fa-edit" }),
                           _vm._v(
-                            " Registrar pregunta\n                                    "
+                            " Registrar pregunta\n                                "
                           )
                         ]
                       )
@@ -61949,7 +63308,7 @@ var render = function() {
                                   _c("td", {
                                     domProps: {
                                       innerHTML: _vm._s(
-                                        _vm.wrapText(pregunta.pregunta)
+                                        _vm.espaciarTexto(pregunta.pregunta)
                                       )
                                     }
                                   }),
@@ -61961,9 +63320,38 @@ var render = function() {
                                   _c("td", [
                                     _c("tr", [
                                       _vm._v(
-                                        "  " + _vm._s(pregunta.opcion) + " "
+                                        " \n                                            " +
+                                          _vm._s(pregunta.opcion) +
+                                          " \n                                        "
                                       )
                                     ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-primary",
+                                        attrs: {
+                                          type: "button",
+                                          "data-toggle": "modal",
+                                          "data-target": "#modalParaVerImagenes"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.desplegarImagenesEnModal(
+                                              pregunta.imagenes
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", { staticClass: "fas fa-eye" }),
+                                        _vm._v(
+                                          " Ver\n                                        "
+                                        )
+                                      ]
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("td", { staticClass: "text-right" }, [
@@ -61973,23 +63361,24 @@ var render = function() {
                                         staticClass: "btn btn-warning",
                                         on: {
                                           click: function($event) {
-                                            return _vm.btnEditar(
-                                              pregunta.id_pregunta,
-                                              pregunta.pregunta,
-                                              pregunta.respuesta,
-                                              pregunta.tipo,
-                                              pregunta.opcion,
-                                              pregunta.opcion2,
-                                              pregunta.opcion3,
-                                              pregunta.opcion4,
-                                              pregunta.id_tema
+                                            return _vm.editarPregunta(
+                                              {
+                                                id: pregunta.id_pregunta,
+                                                pregunta: pregunta.pregunta,
+                                                respuesta: pregunta.opcion,
+                                                tipo: 3,
+                                                tema: pregunta.id_tema
+                                              },
+                                              pregunta.imagenes
                                             )
                                           }
                                         }
                                       },
                                       [
                                         _c("i", { staticClass: "fas fa-pen" }),
-                                        _vm._v(" Editar ")
+                                        _vm._v(
+                                          " Editar \n                                        "
+                                        )
                                       ]
                                     ),
                                     _vm._v(" "),
@@ -61999,7 +63388,7 @@ var render = function() {
                                         staticClass: "btn btn-danger",
                                         on: {
                                           click: function($event) {
-                                            return _vm.eliminar(
+                                            return _vm.eliminarPregunta(
                                               pregunta.id_pregunta
                                             )
                                           }
@@ -62009,7 +63398,9 @@ var render = function() {
                                         _c("i", {
                                           staticClass: "fas fa-trash"
                                         }),
-                                        _vm._v(" Eliminar ")
+                                        _vm._v(
+                                          " Eliminar\n                                        "
+                                        )
                                       ]
                                     )
                                   ])
@@ -62055,6 +63446,8 @@ var render = function() {
                             [_vm._v("Respuesta")]
                           ),
                           _vm._v(" "),
+                          _c("th", [_vm._v(" Imagenes ")]),
+                          _vm._v(" "),
                           _c("th", { staticClass: "text-center" }, [
                             _vm._v("Opciones")
                           ])
@@ -62080,7 +63473,454 @@ var render = function() {
                     _vm.currentPage = $event
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: {
+                    id: "registrarPregunta",
+                    tabindex: "-1",
+                    role: "dialog",
+                    "aria-labelledby": "exampleModalLabel",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-dialog",
+                      attrs: { role: "document" }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _c("div", { staticClass: "modal-header" }, [
+                          _vm.modoEdicion
+                            ? _c(
+                                "h5",
+                                {
+                                  staticClass: "modal-title",
+                                  attrs: { id: "exampleModalLabel" }
+                                },
+                                [_vm._v(" Actualizar pregunta ")]
+                              )
+                            : _c(
+                                "h5",
+                                {
+                                  staticClass: "modal-title",
+                                  attrs: { id: "exampleModalLabel" }
+                                },
+                                [_vm._v(" Registrar pregunta ")]
+                              ),
+                          _vm._v(" "),
+                          _vm._m(2)
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-body" }, [
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.pregunta,
+                                expression: "form.pregunta"
+                              }
+                            ],
+                            staticClass: "form-control mt-0 mb-0",
+                            attrs: {
+                              id: "inpPregunta",
+                              type: "text",
+                              placeholder: "Pregunta"
+                            },
+                            domProps: { value: _vm.form.pregunta },
+                            on: {
+                              focus: function($event) {
+                                return _vm.limpiarCampo("pregunta")
+                              },
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "pregunta",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", {
+                            staticStyle: { color: "#ff6258" },
+                            attrs: { id: "msjInputPregunta" }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.respuesta,
+                                  expression: "form.respuesta"
+                                }
+                              ],
+                              staticClass: "form-control mt-0 mb-0",
+                              attrs: { id: "selRespuesta" },
+                              on: {
+                                focus: function($event) {
+                                  return _vm.limpiarCampo("respuesta")
+                                },
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "respuesta",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Respuesta")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "verdadero" } }, [
+                                _vm._v("Verdadero")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "falso" } }, [
+                                _vm._v("Falso")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("span", {
+                            staticStyle: { color: "#ff6258" },
+                            attrs: { id: "msjInputRespuesta" }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.tema,
+                                  expression: "form.tema"
+                                }
+                              ],
+                              staticClass: "form-control mt-0 mb-0",
+                              attrs: {
+                                id: "selTema",
+                                value: "${this.temas}",
+                                name: "temas"
+                              },
+                              on: {
+                                focus: function($event) {
+                                  return _vm.limpiarCampo("tema")
+                                },
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "tema",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Tema")
+                              ]),
+                              _vm._v(" "),
+                              _vm._l(_vm.temas[0], function(t) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: t.id } },
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(t.nombre_tema) +
+                                        "\n                                        "
+                                    )
+                                  ]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("span", {
+                            staticStyle: { color: "#ff6258" },
+                            attrs: { id: "msjSelectTema" }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticStyle: {
+                                "border-style": "dashed",
+                                width: "100%"
+                              },
+                              on: {
+                                dragover: _vm.dragover,
+                                dragleave: _vm.dragleave,
+                                drop: _vm.drop
+                              }
+                            },
+                            [
+                              _c("input", {
+                                ref: "file",
+                                staticClass:
+                                  "w-px h-px opacity-0 overflow-hidden absolute",
+                                attrs: {
+                                  type: "file",
+                                  id: "assetsFieldHandle",
+                                  accept: ".pdf,.jpg,.jpeg,.png",
+                                  hidden: ""
+                                },
+                                on: { change: _vm.onChange }
+                              }),
+                              _vm._v(" "),
+                              _vm._m(7),
+                              _vm._v(" "),
+                              this.subidor.imagenesVistaPrevia.length
+                                ? _c(
+                                    "table",
+                                    {
+                                      staticStyle: {
+                                        "list-style-type": "none",
+                                        width: "100%"
+                                      }
+                                    },
+                                    [
+                                      _vm._m(8),
+                                      _vm._v(" "),
+                                      _vm._l(
+                                        _vm.subidor.imagenesVistaPrevia,
+                                        function(imagen) {
+                                          return _c("tr", [
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-content-center"
+                                              },
+                                              [
+                                                _c("img", {
+                                                  staticStyle: {
+                                                    width: "15em"
+                                                  },
+                                                  attrs: { src: imagen.imagen }
+                                                })
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass: "btn btn-danger",
+                                                  attrs: {
+                                                    type: "button",
+                                                    title: "Remove file"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.remove(imagen)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "fas fa-trash-alt"
+                                                  })
+                                                ]
+                                              )
+                                            ])
+                                          ])
+                                        }
+                                      )
+                                    ],
+                                    2
+                                  )
+                                : _vm._e()
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-footer" }, [
+                          _vm.modoEdicion
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.actualizarPregunta }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        Editar \n                                    "
+                                  )
+                                ]
+                              )
+                            : _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.registrarPregunta }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        Guardar\n                                    "
+                                  )
+                                ]
+                              ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-secondary",
+                              attrs: { type: "button", "data-dismiss": "modal" }
+                            },
+                            [
+                              _vm._v(
+                                " \n                                        Cancelar\n                                    "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: {
+                    id: "modalParaVerImagenes",
+                    tabindex: "-1",
+                    role: "dialog",
+                    "aria-labelledby": "exampleModalLabel",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-dialog",
+                      attrs: { role: "document" }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _vm._m(9),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-body" }, [
+                          _c("div", { staticStyle: { width: "100%" } }, [
+                            _c(
+                              "table",
+                              {
+                                staticStyle: {
+                                  "list-style-type": "none",
+                                  width: "100%"
+                                }
+                              },
+                              [
+                                _vm._m(10),
+                                _vm._v(" "),
+                                _vm._l(
+                                  _vm.imagenesParaDesplegarEnModal,
+                                  function(imagen) {
+                                    return _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticClass:
+                                            "d-flex justify-content-center"
+                                        },
+                                        [
+                                          _c("img", {
+                                            staticStyle: { width: "15em" },
+                                            attrs: {
+                                              src:
+                                                "/imagenes/preguntas/" +
+                                                imagen.nombre
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                                                    " +
+                                            _vm._s(imagen.alias) +
+                                            "\n                                                "
+                                        )
+                                      ])
+                                    ])
+                                  }
+                                )
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _vm.imagenesParaDesplegarEnModal.length == 0
+                              ? _c("span", { staticClass: "text-center" }, [
+                                  _vm._v(
+                                    "\n                                            Esta pregunta no tiene imagenes adjuntas \n                                        "
+                                  )
+                                ])
+                              : _vm._e()
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(11)
+                      ])
+                    ]
+                  )
+                ]
+              )
             ],
             1
           )
@@ -62113,10 +63953,12 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v("  Preguntas  "),
+                  _vm._v(" Preguntas "),
                   _c("i", { staticClass: "fas fa-angle-right" })
                 ]),
-                _vm._v(" Preguntas verdadero/falso\n\t\t\t\t\t\t\t")
+                _vm._v(
+                  "\n                        Preguntas verdadero/falso\n                    "
+                )
               ])
             ])
           ]
@@ -62129,6 +63971,157 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [_c("b", [_vm._v(" Busqueda por pregunta: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mb-0" }, [
+      _c("b", [_vm._v(" Pregunta: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Respuesta: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Tema: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
+      _c("b", [_vm._v(" Imagenes: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "label",
+          {
+            staticClass: "block cursor-pointer",
+            attrs: { for: "assetsFieldHandle" }
+          },
+          [
+            _c("div", [
+              _c(
+                "p",
+                { staticClass: "text-center", attrs: { id: "mensajito" } },
+                [
+                  _c("i", { staticClass: "fas fa-cloud-download-alt" }),
+                  _vm._v(
+                    " \n                                                            Arrastra la imagen o da clic aquí para subir\n                                                        "
+                  )
+                ]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("Imagen")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Acción")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [
+          _vm._v(
+            " \n                                        Imagenes adjuntas en la pregunta\n                                    "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [
+        _vm._v(
+          "\n                                                    Imagen\n                                                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v(
+          "\n                                                    Nombre\n                                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v(" Cerrar\n                                    ")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -79174,7 +81167,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Administrador_vue_vue_type_template_id_56d31796___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Administrador.vue?vue&type=template&id=56d31796& */ "./resources/assets/js/components/Administrador.vue?vue&type=template&id=56d31796&");
 /* harmony import */ var _Administrador_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Administrador.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Administrador.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Administrador_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Administrador.vue?vue&type=style&index=0&lang=css& */ "./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -79182,7 +81177,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Administrador_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Administrador_vue_vue_type_template_id_56d31796___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Administrador_vue_vue_type_template_id_56d31796___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -79211,6 +81206,22 @@ component.options.__file = "resources/assets/js/components/Administrador.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Administrador.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Administrador.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Administrador.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Administrador.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Administrador_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -80778,6 +82789,283 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/subirImagenes.js":
+/*!*********************************************************!*\
+  !*** ./resources/assets/js/components/subirImagenes.js ***!
+  \*********************************************************/
+/*! exports provided: Cargador, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cargador", function() { return Cargador; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+var Cargador =
+/*#__PURE__*/
+function () {
+  function Cargador() {
+    _classCallCheck(this, Cargador);
+
+    this.form_data = {};
+    this.imagenesVistaPrevia = [];
+    this.contadorImagen = 0;
+    this.imagenesAEliminar = [];
+    this.ultimaImagenEnPreguntaAEditar = 0;
+    this.imagenes = [];
+  }
+
+  _createClass(Cargador, [{
+    key: "onChange",
+    value: function onChange(e) {
+      var file = e.target.files[0];
+      var url = URL.createObjectURL(file);
+      var imgp = document.getElementById("imgp");
+      this.imagenes.push(file);
+      this.acomodarImagen(url, 0, null);
+    }
+  }, {
+    key: "acomodarImagen",
+    value: function () {
+      var _acomodarImagen = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(imagen, vaAEliminarse, idImagen) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!(vaAEliminarse === 1)) {
+                  _context.next = 6;
+                  break;
+                }
+
+                _context.next = 3;
+                return this.imagenesVistaPrevia.push({
+                  imagen: imagen,
+                  id: this.contadorImagen,
+                  eliminar: true,
+                  idImagen: idImagen
+                });
+
+              case 3:
+                this.contadorImagen++;
+                _context.next = 9;
+                break;
+
+              case 6:
+                _context.next = 8;
+                return this.imagenesVistaPrevia.push({
+                  imagen: imagen,
+                  id: this.contadorImagen
+                });
+
+              case 8:
+                this.contadorImagen++;
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function acomodarImagen(_x, _x2, _x3) {
+        return _acomodarImagen.apply(this, arguments);
+      }
+
+      return acomodarImagen;
+    }()
+  }, {
+    key: "remove",
+    value: function remove(imagen) {
+      var i = this.imagenesVistaPrevia.indexOf(imagen);
+
+      if (imagen.hasOwnProperty('eliminar')) {
+        this.imagenesAEliminar.push(imagen);
+      } else {
+        this.imagenes.splice(i, 1);
+      }
+
+      this.imagenesVistaPrevia.splice(i, 1);
+    }
+  }, {
+    key: "drop",
+    value: function drop(event) {
+      var _this = this;
+
+      event.preventDefault();
+      var self = this;
+
+      var _loop = function _loop(i) {
+        var reader = new FileReader();
+        reader.readAsDataURL(event.dataTransfer.files[i]);
+
+        _this.imagenes.push(event.dataTransfer.files[i]);
+
+        reader.onload = function () {
+          self.acomodarImagen(reader.result, 0, null);
+        };
+      };
+
+      for (var i = 0; i < event.dataTransfer.files.length; i++) {
+        _loop(i);
+      }
+
+      event.currentTarget.style.backgroundColor = 'white';
+    }
+  }, {
+    key: "dragover",
+    value: function dragover(event) {
+      event.preventDefault();
+      event.currentTarget.style.backgroundColor = 'green';
+    }
+  }, {
+    key: "dragleave",
+    value: function dragleave(event) {
+      event.currentTarget.style.backgroundColor = 'white';
+    }
+  }, {
+    key: "subirImagenes",
+    value: function () {
+      var _subirImagenes = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
+        var extension, ruta, numeroPregunta, nombreImagen, alias, conteoActualImagenes, i, _i;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                extension = "";
+                ruta = "/subirr";
+                numeroPregunta = id;
+                nombreImagen = "";
+                alias = "";
+
+                if (!(this.modoEdicion === 1)) {
+                  _context2.next = 27;
+                  break;
+                }
+
+                conteoActualImagenes = parseInt(this.ultimaImagenEnPreguntaAEditar) + 1;
+
+                if (!(this.imagenes.length > 0)) {
+                  _context2.next = 25;
+                  break;
+                }
+
+                i = 0;
+
+              case 9:
+                if (!(i < this.imagenes.length)) {
+                  _context2.next = 25;
+                  break;
+                }
+
+                extension = this.imagenes[i].name.split('.')[1];
+                nombreImagen = new Date().getTime() + "_" + i + "." + extension;
+                alias = "imagen_pregunta_" + numeroPregunta + "_" + conteoActualImagenes + "." + extension;
+                this.form_data = new FormData();
+                this.form_data.append('imagen', this.imagenes[i]);
+                this.form_data.append('csrf-token', "{{ csrfToken }}");
+                this.form_data.append('alias', alias);
+                this.form_data.append('nombreImagen', nombreImagen);
+                this.form_data.append('idPregunta', id);
+                _context2.next = 21;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(ruta, this.form_data).then(function (res) {
+                  console.log("La subida se ha completado con exito");
+                })["catch"](function (error) {
+                  console.log(error);
+                });
+
+              case 21:
+                conteoActualImagenes++;
+
+              case 22:
+                i++;
+                _context2.next = 9;
+                break;
+
+              case 25:
+                _context2.next = 44;
+                break;
+
+              case 27:
+                if (!(this.imagenes.length > 0)) {
+                  _context2.next = 44;
+                  break;
+                }
+
+                _i = 0;
+
+              case 29:
+                if (!(_i < this.imagenes.length)) {
+                  _context2.next = 44;
+                  break;
+                }
+
+                extension = this.imagenes[_i].name.split('.')[1];
+                nombreImagen = new Date().getTime() + "_" + _i + "." + extension;
+                alias = "imagen_pregunta_" + numeroPregunta + "_" + (_i + 1) + "." + extension;
+                this.form_data = new FormData();
+                this.form_data.append('imagen', this.imagenes[_i]);
+                this.form_data.append('csrf-token', "{{ csrfToken }}");
+                this.form_data.append('alias', alias);
+                this.form_data.append('nombreImagen', nombreImagen);
+                this.form_data.append('idPregunta', id);
+                _context2.next = 41;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(ruta, this.form_data).then(function (res) {
+                  console.log("La subida se ha completado con exito");
+                })["catch"](function (error) {
+                  console.log(error);
+                });
+
+              case 41:
+                _i++;
+                _context2.next = 29;
+                break;
+
+              case 44:
+                return _context2.abrupt("return", true);
+
+              case 45:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function subirImagenes(_x4) {
+        return _subirImagenes.apply(this, arguments);
+      }
+
+      return subirImagenes;
+    }()
+  }]);
+
+  return Cargador;
+}();
+/* harmony default export */ __webpack_exports__["default"] = (Cargador);
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/temas.vue":
 /*!**************************************************!*\
   !*** ./resources/assets/js/components/temas.vue ***!
@@ -80875,6 +83163,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_smart_table__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuejs-smart-table */ "./node_modules/vuejs-smart-table/src/main.js");
 /* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! v-viewer */ "./node_modules/v-viewer/dist/v-viewer.js");
 /* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(v_viewer__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
 
 
 
@@ -80886,13 +83175,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //require(['VueViewer'], function (VueViewer) {});
+
+
+window.Form = vform__WEBPACK_IMPORTED_MODULE_12__["Form"]; //require(['VueViewer'], function (VueViewer) {});
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuejs_smart_table__WEBPACK_IMPORTED_MODULE_10__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_js_toggle_button__WEBPACK_IMPORTED_MODULE_9___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_5__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_viewer__WEBPACK_IMPORTED_MODULE_11___default.a);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false; //Vue.use(cargadorImagenes);
+
 var vue_app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],

@@ -36,7 +36,7 @@ def imprimir(cpi,padres,d,f):
         texto="\n"
         f.write(texto.encode())        
 
-URL = "http://67.205.132.145/arbol/simulador/caminos"
+URL = "http://159.203.185.170/arbol/simulador/caminos"
 evaluaciones=100000
 r = requests.get(url = URL)
 data = r.json()

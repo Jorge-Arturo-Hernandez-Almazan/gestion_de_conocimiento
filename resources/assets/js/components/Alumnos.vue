@@ -311,6 +311,7 @@ export default{
 					hideClass: {
 						popup: '',                     // disable popup fade-out animation
 					},
+            confirmButtonText: '<i class="fa fa-thumbs-o-up"></i> Text',
 					html:
 						`<h3 class="text-left"> Editar alumno </h3>
 						<p class="text-left mt-0 mb-0"> Nombre: </p>
@@ -382,7 +383,8 @@ export default{
     
     
     editar(id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_profesor){
-  	axios.post('/administrador/alumno/actualizar',
+  	//axios.post('/administrador/alumno/actualizar',
+    axios.post('/alumno/actualizar',           
 			{id:id,nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,password:password,matricula:matricula,nivel_academico:nivel_academico,id_profesor:id_profesor})
 			.then((res)=>{
 				this.nombre=''

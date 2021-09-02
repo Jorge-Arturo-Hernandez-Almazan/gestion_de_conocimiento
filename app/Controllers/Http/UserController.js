@@ -207,7 +207,7 @@ class UserController {
     return response.json(ids[0].id)
   }
   //eliminar usuario
-  async delete({request,response}){
+  async deleteExperto({request,response}){
 	  
 	  const{id, estado} = request.only(
         [
@@ -226,6 +226,17 @@ class UserController {
 	  	.query()
 	  	.where('id', id)
 	  	.update({	eliminado:estadoo})
+	
+    return response.json({message:'Se ha eliminado el usuario'})
+  }
+  
+  async delete({request,response}){
+	  
+	  const{id} = request.only(['id'])
+
+
+    const user = await Database.raw('DELETE FROM users WHERE id = ?',[id])
+     // const relacion = await Database.raw('DELETE FROM relacion_profesors WHERE id_profesor = ?',[id])
 	
     return response.json({message:'Se ha eliminado el usuario'})
   }
@@ -256,7 +267,7 @@ class UserController {
 	  	.update({	eliminado:estadoo})
 	
 
-    //const user = await Database.raw('DELETE FROM users WHERE id = ?',[id])
+     //const user = await Database.raw('DELETE FROM users WHERE id = ?',[id])
      // const relacion = await Database.raw('DELETE FROM relacion_profesors WHERE id_profesor = ?',[id])
     return response.json({message:'Se ha eliminado el usuario'})
   }
@@ -288,28 +299,49 @@ class UserController {
   }
   //usuario
   async actualizar({request,response}){
-    const safePassword = await Hash.make(request.input('password'))
-   const{id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_rol}= request.only(
-        [
-            'id',
-            'nombre',
-            'apellido_paterno',
-            'apellido_materno',
-            'password',
-            'matricula',
-            'nivel_academico',
-            'id_rol',
-           
-        ])  
+    
+    let contrasena = request.input('password');
+    
+    
+    const{id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_rol}= request.only(
+    [
+        'id',
+        'nombre',
+        'apellido_paterno',
+        'apellido_materno',
+        'password',
+        'matricula',
+        'nivel_academico',
+        'id_rol',
+
+    ])  
+    
+    if(contrasena === "" || contrasena === null || contrasena === false || contrasena === undefined){
+      
+      await User
+      .query()
+      .where('id', id)
+      .update({ nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,matricula:matricula,nivel_academico:nivel_academico,id_rol:id_rol})
+      
+    }else{
+      
+      const safePassword = await Hash.make(request.input('password'));
+      
+      await User
+      .query()
+      .where('id', id)
+      .update({ nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,password:safePassword,matricula:matricula,nivel_academico:nivel_academico,id_rol:id_rol})
+    
+    }
+    
+    
  
     
-    await User
-  .query()
-  .where('id', id)
-  .update({ nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,password:safePassword,matricula:matricula,nivel_academico:nivel_academico,id_rol:id_rol})
+    
    
-  return response.json({message:'Actualizado'})  
-  
+  //return response.json({message:'Actualizado', })  
+    
+  return response.json({id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_rol})
   }
    // actualizar usuario alumno
   async actualizarA({request,response}){
@@ -361,6 +393,13 @@ class UserController {
         return response.json(user)
   }
 	
+  async verificarExistencia({request,response}){
+        const{correo}= request.only(['correo'])
+        
+         const user = await Database.raw('SELECT * FROM users WHERE matricula = ?',[correo])
+        return response.json(user)
+  }
+  
 	async subirimagen({request, response}){
 		
 		const profilePic = request.file('imagen', {

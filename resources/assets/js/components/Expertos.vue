@@ -175,7 +175,6 @@ export default{
 						<input id="matricula" type="text" class="swal2-input" placeholder="1234567">
 						<p class="text-left mt-0 mb-0"> Contraseña: </p>
 						<input id="password" type="password" class="swal2-input " placeholder="Contraseña">
-									<hr> 
 						`,
 					focusConfirm: false,
 					showCancelButton: true,
@@ -357,7 +356,7 @@ export default{
 			
 		  if (result.value) {
 			  
-			axios.post('user/delete',{id:id, estado:estado}).then((res)=>{
+			axios.post('user/deleteExperto',{id:id, estado:estado}).then((res)=>{
 				
 				this.id = ''
 				this.getexperto()

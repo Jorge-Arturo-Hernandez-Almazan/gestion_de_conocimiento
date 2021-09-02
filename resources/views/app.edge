@@ -23,6 +23,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
+
+<style>
+
+  .swal2-actions {
+    text-align: right !important;
+  }
+  .swal-footer { 
+    text-align: right !important; 
+  } 
+  
+  .swal-modal .swal-footer { 
+    direction: rtl !important; 
+  }
+  
+</style>
+
+
 </head>
 
 <body>
@@ -111,7 +128,6 @@
 	
 	<script>
 		
-		//console.log("Prueba de fuego " + {{ auth.user.id }} );
 		window.idusuario = {{ auth.user.id }}
 
 	</script>

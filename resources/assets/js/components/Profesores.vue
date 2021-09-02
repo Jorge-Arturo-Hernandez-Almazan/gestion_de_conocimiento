@@ -201,14 +201,13 @@ export default{
             <input id="matricula" type="text" class="swal2-input" placeholder="1234567">
 			<p class="text-left mt-0 mb-0"> Contraseña: </p>
             <input id="password" type="password" class="swal2-input" placeholder="Contraseña">
-						<br> 
             `,
 					focusConfirm: false,
 					showCancelButton: true,
-					confirmButtonText: 'Guardar',
-					confirmButtonColor: '#1cc88a',
-					cancelButttonColor: '#3085d6',
-					cancelButtonText: 'Cancelar',
+					confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+           confirmButtonColor: '#2196f3',
+					cancelButtonColor: '#aaa',
+					cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
 					preConfirm: () => {
 						return [
 							this.apellido_paterno=document.getElementById('apellido_paterno').value,
@@ -260,21 +259,37 @@ export default{
       
     btnEditar:async function(id,nombre,apellido_paterno,apellido_materno,matricula){
           const { value: formValues } = await this.$swal({
-					title: 'Editar Docente',
+					showClass: {
+						backdrop: 'swal2-noanimation',
+						popup: '',
+						icon: ''
+					},
+					hideClass: {
+						popup: ''
+					},
 					html:
-						`<input id="nombre" class="swal2-input" placeholder="Nombre" value="`+nombre+`">
-            <input id="apellido_paterno" class="swal2-input" placeholder="Apellido Paterno" value="`+apellido_paterno+`">
-            <input id="apellido_materno" class="swal2-input" placeholder="Apellido Materno" value="`+apellido_materno+`">
-            <input id="matricula" class="swal2-input" placeholder="Matricula" value="`+matricula+`">
-            <input id="password" class="swal2-input" placeholder="Contraseña" value="secret">
-						<br> 
+						`
+            <h3 class="text-left"> Actualizar docente </h3>
+			      <p class="text-left mt-0 mb-0"> Nombre: </p>
+            <input id="nombre" type="text" class="swal2-input" placeholder="Nombre" value="`+nombre+`">
+            <p class="text-left mt-0 mb-0"> Apellido paterno: </p>
+            <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Apellido Paterno" value="`+apellido_paterno+`">
+             <p class="text-left mt-0 mb-0"> Apellido materno: </p>
+            <input id="apellido_materno" type="text" class="swal2-input" placeholder="Apellido Materno" value="`+apellido_materno+`">
+            <p class="text-left mt-0 mb-0"> Correo: </p>  
+            <input id="matricula" type="text" class="swal2-input" placeholder="Matricula" value="`+matricula+`">
+            <p class="text-left mt-0 mb-0"> Contraseña <span style="color:red">*</span> : </p>
+            <input id="password" type="text" class="swal2-input" placeholder="Contraseña" value="secret">
+						
+            <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Deje en blanco si no desea actualizar </p>
+
             `,
 					focusConfirm: false,
 					showCancelButton: true,
-					confirmButtonText: 'Guardar',
-					confirmButtonColor: '#1cc88a',
-					cancelButttonColor: '#3085d6',
-			  cancelButtonText: 'Cancelar',
+					confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+           confirmButtonColor: '#2196f3',
+					cancelButtonColor: '#aaa',
+					cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
 					preConfirm: () => {
 						return [
 							this.apellido_paterno=document.getElementById('apellido_paterno').value,
@@ -285,11 +300,11 @@ export default{
               this.id = id
 						]
 					}})
-					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == ""){
-							this.$swal({
+					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.matricula == ""){
+							/*this.$swal({
 								type: 'info',
 								title: 'Datos incompletos',
-							})
+							})*/
 					}
 					else{
 						this.editar(this.id,this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);//funcion guardarAdmin

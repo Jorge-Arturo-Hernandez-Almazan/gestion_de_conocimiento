@@ -32,7 +32,7 @@ def recorrer(cpi,estado,idh,idsp):
             cursor1.execute(sql, datos)
             print(idh,i+1,idsp,estado,cpi[i])
 cptA=[]
-URL = "http://67.205.132.145/arbol/simulador/caminos"
+URL = "http://localhost/arbol/simulador/caminos"
 evaluaciones=5000
 r = requests.get(url = URL)
 data = r.json()

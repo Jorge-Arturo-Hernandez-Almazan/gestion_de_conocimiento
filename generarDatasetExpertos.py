@@ -1,11 +1,10 @@
 import requests
 import numpy as np
 import random
-import math
-from time import time
 import mysql.connector
 cptA=[]
-URL = "http://67.205.132.145/arbol/simulador/caminos"
+print("Cargando nodos...")
+URL = "http://localhost/arbol/simulador/caminos"
 r = requests.get(url = URL)
 data = r.json()
 nodos = data['nodos']
@@ -57,6 +56,7 @@ for i in range(len(nodos)):
         padres.append(padres_nodo)
         padres_ids.append(padres_nodo_id)
 cPadres=len(padres)
+print("Cargando estimaciones...")
 
 probabilidadades=[]
 for i in range(len(padres)):
@@ -73,7 +73,8 @@ for i in range(len(padres)):
   pn[1]/=len(ponderaciones)
   pn[2]/=len(ponderaciones)
   probabilidadades.append(pn)
-  
+print("Generando dataset...")
+
 dataset = []
 evaluaciones=59049
 for i in range(evaluaciones):
@@ -86,6 +87,7 @@ for i in range(evaluaciones):
 #for i in range(evaluaciones):
 #  print(dataset[i])
  
+print("Guardando dataset...")
                  
 f = open ("dataset.csv",'wb')
 for i in range(len(dataset)):

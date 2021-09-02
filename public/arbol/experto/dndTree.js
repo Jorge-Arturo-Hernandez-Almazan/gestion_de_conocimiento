@@ -163,7 +163,7 @@ async function draw_tree(error, treeData) {
                 let padres = [];
                 await axios({
                     method: 'get',
-                    url: "http://67.205.132.145/temas/obtenerPadresConNombre/" + d.id,
+                    url: "http://159.203.185.170/temas/obtenerPadresConNombre/" + d.id,
                     headers: { 'content-type': 'application/x-www-form-urlencoded' },
                 }).then(function (response) {
                     padres = response.data[0];
@@ -378,10 +378,10 @@ async function draw_tree(error, treeData) {
                 draggingNode['freex'] = newPosition[1];
                 updatePosition(draggingNode);
             }
-            endDrag();
+            //endDrag();
         });
 
-    function endDrag() {
+    /*function endDrag() {
         selectedNode = null;
         d3.selectAll('.ghostCircle').attr('class', 'ghostCircle');
         d3.select(domNode).attr('class', 'node');
@@ -393,7 +393,7 @@ async function draw_tree(error, treeData) {
             //centerNode(draggingNode);
             draggingNode = null;
         }
-    }
+    }*/
 
     // Helper functions for collapsing and expanding nodes.
 
@@ -610,7 +610,7 @@ async function draw_tree(error, treeData) {
 
         // Enter any new nodes at the parent's previous position.
        var nodeEnter = node.enter().append("g")
-            .call(dragListener)
+            //.call(dragListener)
             .attr("class", "node")
             .attr("transform", function (d) {
                 if (horizontalVertical) {
@@ -873,7 +873,7 @@ async function draw_tree(error, treeData) {
 		//clasificacion_colores_nodos
 
         // Add a context menu
-        node.on('contextmenu', d3.contextMenu(menu));
+        // node.on('contextmenu', d3.contextMenu(menu));
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
