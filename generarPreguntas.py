@@ -125,24 +125,7 @@ def preguntasCalculadasM(conexion1,padres_ids):
   datos=(id[0][0],0)
   cursor1.execute(sql, datos)
   
-  cursor1=conexion1.cursor()
-  sql="insert into opciones(opcion,id_pregunta,esrespuesta) values (%s,%s,%s)"
-  datos=("{a}",id[0][0],1)
-  cursor1.execute(sql, datos)
-      
-  cursor = conexion1.cursor()
-  cursor.execute("select max(id) from opciones;")
-  idopcion=cursor.fetchall()
-  cursor1=conexion1.cursor()
-  
-  cursor1=conexion1.cursor()
-  sql="insert into comodines(comodin,valor_comodin,id_opcion) values (%s,%s,%s)"
-  datos=("{a}",1,idopcion[0][0])
-  cursor1.execute(sql, datos)
-  
-  sql="insert into configuracion_preguntas_calculadas(id_pregunta,decimales) values (%s,%s)"
-  datos=(id[0][0],0)
-  cursor1.execute(sql, datos)
+   
   
   #2
   cursor1=conexion1.cursor()
@@ -244,13 +227,13 @@ for i in range(len(nodos)):
 
 conexion1=mysql.connector.connect(user='root', password='PROYECTO1KMS', host='localhost', database='kms')   
 for i in range(len(padres)):
-  for j in range(35):
-    preguntasAbiertas(conexion1,padres_ids[i])
-    preguntasNumericas(conexion1,padres_ids[i])
-    preguntasVF(conexion1,padres_ids[i])
-    preguntasOMultiple(conexion1,padres_ids[i])
-    preguntasCalculadasS(conexion1,padres_ids[i])
-    preguntasCalculadasM(conexion1,padres_ids[i])
+ 
+  preguntasAbiertas(conexion1,padres_ids[i])
+  preguntasNumericas(conexion1,padres_ids[i])
+  preguntasVF(conexion1,padres_ids[i])
+  preguntasOMultiple(conexion1,padres_ids[i])
+  preguntasCalculadasS(conexion1,padres_ids[i])
+  preguntasCalculadasM(conexion1,padres_ids[i])
 conexion1.commit()
 conexion1.close() 
 

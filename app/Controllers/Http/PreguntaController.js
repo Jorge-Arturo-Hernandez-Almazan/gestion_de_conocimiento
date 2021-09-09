@@ -35,7 +35,7 @@ class PreguntaController {
 			
 		}
 		
-		return "success";
+		return response.json({message:'Se ha registrado la pregunta', ultimo_id})
 	}
   
   async checkQuestionnaireStart( {params,response})	
@@ -144,16 +144,30 @@ class PreguntaController {
 	//Mostrar las preguntas de opcion multiple
 	async mostrarPreguntasOpcionMultiple({response}){
 		
-		const banco_preguntas = await Database.raw(
+    //SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema, o.opcion, o.esrespuesta 
+    //FROM banco_preguntas b 
+    //INNER JOIN temas t on t.id = b.id_tema 
+    //INNER JOIN opciones o on o.id_pregunta = b.id 
+    //WHERE tipo = 4;
+    
+		/*const banco_preguntas = await Database.raw(
 			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema '+
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema ' +
-			'WHERE tipo = 4')
+			'WHERE tipo = 4')*/
+    
+    const banco_preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema, o.opcion, o.esrespuesta '+
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+			'INNER JOIN opciones o on o.id_pregunta = b.id '+
+      'WHERE tipo = 4;')
 		
 		const opciones = await Database.raw('SELECT * FROM opciones')
 		
 		
 		return response.json({banco_preguntas:banco_preguntas, opciones:opciones})
+    //return response.json({banco_preguntas:banco_preguntas})
 	}
 	
 	//Mostrar todas las preguntas
@@ -554,8 +568,8 @@ class PreguntaController {
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema ' +
 			'WHERE tipo = 6')
-		
-		const opciones = await Database.raw('SELECT * FROM opciones')
+		var opciones=[]
+		//const opciones = await Database.raw('SELECT * FROM opciones')
     
     const comodines = await Database.raw('SELECT * FROM comodines')
 		

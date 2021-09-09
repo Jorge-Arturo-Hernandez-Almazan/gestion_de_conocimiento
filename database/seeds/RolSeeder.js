@@ -82,11 +82,6 @@ class RolSeeder {
   }
 }
 
-await Database.from('imagenes').insert([{
-			'id':1,
-			'nombre':'-',
-			'alias': '-',
-		}])
 
 module.exports = RolSeeder
 

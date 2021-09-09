@@ -13,6 +13,8 @@ class UsuarioSchema extends Schema {
       	table.string('matricula',50).notNullable().unique()
       	table.string('password',90).notNullable()
       	table.string('nivel_academico',60)
+        table.string('foto',255).defaultTo('perfil.png')
+        table.integer('eliminado').defaultTo(0)
     	table.integer('id_rol').unsigned().references('id').inTable('rols').onDelete('CASCADE').onUpdate('CASCADE')
 		table.timestamps()
     })

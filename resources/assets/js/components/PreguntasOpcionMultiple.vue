@@ -44,7 +44,8 @@
                                     <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
                                     <th>Opciones</th>
                                     <v-th sortKey="opcion" defaultSort="desc">Respuestas</v-th>
-                                    <th>Opciones</th>
+                                    <th>Imagenes</th>
+                                    <th>Gestión</th>
                                 </thead>
                                 <tbody slot="body" slot-scope="{displayData}">
                                     <tr v-for="(pregunta, preg) in displayData" :key="pregunta.id_pregunta">
@@ -53,22 +54,24 @@
                                         <td class="text-left">{{pregunta.tema}}</td>
 
                                         <td>
-                                            <tr v-for="(opcion, preg) in opciones[0]" v-bind:key="opcion.id">
-                                                <span v-if="pregunta.id_pregunta == opcion.id_pregunta"> {{opcion.opcion}}
-                                                </span>
+                                            <tr v-for="opc in pregunta.opciones" >
+                                                {{opc}}
                                             </tr>
+                                          
                                         </td>
 
                                         <td>
-                                            <tr v-for="(opcion, preg) in opciones[0]" v-bind:key="opcion.id">
-                                                <span
-                                                    v-if="pregunta.id_pregunta == opcion.id_pregunta && opcion.esrespuesta == 1">
-                                                    {{opcion.opcion}} </span>
-                                            </tr>
+                                            {{pregunta.respuesta}}
+                                        </td>
+                                        
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalParaVerImagenes" @click="desplegarImagenesEnModal(pregunta.imagenes)">
+                                                <i class="fas fa-eye"></i> Ver
+                                            </button>
                                         </td>
 
                                         <td class="text-right">
-                                            <button class="btn btn-warning" @click="editarPregunta(pregunta.id_pregunta)"
+                                            <button class="btn btn-warning" @click="editarPregunta(pregunta.id_pregunta, pregunta.imagenes)"
                                                 data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen"></i>
                                                 Editar </button>
                                             <button class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)"> <i
@@ -83,7 +86,7 @@
                     </div>
                 </div>
 
-                <!-- Modal -->
+                <!-- Modal para registrar pregunta -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -131,7 +134,8 @@
                                         </table>
                                     </div>
                                 </div>
-                                <!-- <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
+                                
+                                <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
                                 <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
                                     style="border-style: dashed; width: 100%;">
                                     <input type="file" id="assetsFieldHandle"
@@ -163,7 +167,8 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </div> -->
+                                </div>
+                              
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -173,12 +178,14 @@
                     </div>
                 </div>
 
-               <!-- <div class="modal fade" id="modalParaVerImagenes" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+              
+                <!-- Modal para visualizar imagenes -->
+                <div class="modal fade" id="modalParaVerImagenes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta </h5>
+                                <h5 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
+                                </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -196,14 +203,16 @@
                                         </tr>
                                         <tr v-for="imagen in imagenesParaDesplegarEnModal">
                                             <td class="d-flex justify-content-center">
-                                                <img :src="'/imagenes/preguntas/'+imagen.nombre" style=" width: 15em;">
+                                                <img :src="'/imagenes/preguntas/'+imagen.nombre"
+                                                    style=" width: 15em;">
                                             </td>
                                             <td>
                                                 {{ imagen.alias }}
                                             </td>
                                         </tr>
                                     </table>
-                                    <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Esta pregunta no tiene imagenes adjuntas </span>
+                                    <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Está
+                                        pregunta no tiene imagenes adjuntas </span>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -212,7 +221,8 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+
             </div>
         </div>
     </div>
@@ -248,6 +258,9 @@
                 todasLasImagenes: [],
                 totalImagenesEnPregunta: 0,
                 ultimaImagenEnPreguntaAEditar: 0,
+                imagenesParaDesplegarEnModal: [],
+                todasLasImagenes: [],
+                totalImagenesEnPregunta: 0,
                 imagenesParaDesplegarEnModal: []
             }
         },
@@ -282,26 +295,93 @@
                 }
                 return textoDePregunta;
             },
+            async desplegarImagenesEnModal(imagenes) {
+                this.imagenesParaDesplegarEnModal = imagenes;
+            },
+            onChange(e) {
+                this.subidor.onChange(e);
+            },
+            remove(imagen) {
+                this.subidor.remove(imagen);
+            },
+            dragover(event) {
+                this.subidor.dragover(event);
+            },
+            dragleave(event) {
+                this.subidor.dragleave(event);
+            },
+            async acomodarImagen(imagen, vaAEliminarse, idImagen) {
+                this.subidor.acomodarImagen(imagen, vaAEliminarse, idImagen);
+            },
+            drop(event) {
+                this.subidor.drop(event);
+            },
+            async subirImagenes(id) {
+                this.subidor.subirImagenes(id);
+            },
             abrirModalCuestionario() {
                 this.getpreguntas();
                 this.getTemas();
             },
             getpreguntas: async function () {
-                return axios({
+                
+                await axios({
+                    method: "GET",
+                    url: "/obtenerTodasLasImagenes"
+                }).then(
+                    result => {
+                        this.todasLasImagenes = result.data.todasImagenes[0];
+                    },
+                    error => {
+                        console.error(error);
+                    }
+                );
+                
+                await axios({
                     method: 'get',
                     url: 'pregunta/showMultiples'
                 }).then(
-                    result => {
+                     result => {
+
                         this.pregunta = result.data.banco_preguntas[0];
                         this.opciones = result.data.opciones;
-                        this.respuestas = result.data.respuestas;
-
-                        return result.data;
+                        let preguntasConOpciones = [];
+                        let ultimoId = 0;
+                        let preguntaConOpcionesContador = 0;
+                        for(let i = 0; i < this.pregunta.length; i++){
+                          if( ultimoId === this.pregunta[i].id_pregunta ){
+                            preguntasConOpciones[preguntaConOpcionesContador-1].opciones.push(this.pregunta[i].opcion);
+                            preguntasConOpciones[preguntaConOpcionesContador-1].respuesta = (this.pregunta[i].esrespuesta) ? this.pregunta[i].opcion : preguntasConOpciones[preguntaConOpcionesContador-1].respuesta;
+                          }else{
+                            preguntasConOpciones.push({
+                              id_pregunta: this.pregunta[i].id_pregunta,
+                              id_tema: this.pregunta[i].id_tema,
+                              pregunta: this.pregunta[i].pregunta,
+                              tipo: this.pregunta[i].tipo,
+                              tema: this.pregunta[i].tema,
+                              opciones: [this.pregunta[i].opcion],
+                              respuesta: (this.pregunta[i].esrespuesta) ? this.pregunta[i].opcion : ''
+                            });
+                            ultimoId = this.pregunta[i].id_pregunta;
+                            preguntaConOpcionesContador++;
+                          }
+                        }
+                        this.pregunta = preguntasConOpciones;    
                     },
                     error => {
                         console.error(error)
                     }
                 )
+                
+                for (let i = 0; i < this.pregunta.length; i++) {
+                    this.pregunta[i].imagenes = [];
+                    for (let j = 0; j < this.todasLasImagenes.length; j++) {
+                        if (this.pregunta[i].id_pregunta == this.todasLasImagenes[j].idpregunta) {
+                            this.pregunta[i].imagenes.push(this.todasLasImagenes[j]);
+                        }
+                    }
+                }
+                
             },
 
             getTemas() {
@@ -318,7 +398,7 @@
                 )
             },
 
-            editarPregunta(id) {
+            editarPregunta(id, imagenes) {
                 this.editarPreguntaVar = true;
                 this.id_editar = id;
                 var x = document.getElementById("id_tema");
@@ -415,7 +495,20 @@
                 }
 
                 noOpcion = 0;
-
+                
+                this.subidor.imagenesVistaPrevia = [];
+                this.subidor.imagenes = [];
+                this.subidor.imagenesAEliminar = [];
+                
+                let numeroMayorDeImagen = 0;
+                for (let i = 0; i < imagenes.length; i++) {
+                    this.subidor.acomodarImagen("/imagenes/preguntas/" + imagenes[i].nombre, 1, imagenes[i].idImagen);
+                    if (imagenes[i].alias.split("_")[3].split(".")[0] > numeroMayorDeImagen) {
+                        numeroMayorDeImagen = imagenes[i].alias.split("_")[3].split(".")[0];
+                    }
+                }
+                this.subidor.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
+                
             },
 
             abrirModal: async function () {
@@ -450,6 +543,10 @@
                 for (var x = rowCount - 1; x > 0; x--) {
                     elmtTable.removeChild(tableRows[x]);
                 }
+                
+                this.subidor.imagenesVistaPrevia = [];
+                this.subidor.imagenes = [];
+                this.subidor.imagenesAEliminar = [];
             },
             btnGuardarPregunta: async function () {
                 var pregunta = document.getElementById("pregunta");
@@ -496,7 +593,7 @@
                                 tema: tema,
                                 id: this.id_editar
                             })
-                            .then((res) => {
+                            .then( async (res) => {
                                 this.$swal.fire({
                                     icon: 'success',
                                     title: 'Pregunta actualizada',
@@ -512,6 +609,9 @@
                                 for (let i = 0; i < modalsBackdrops.length; i++) {
                                     document.body.removeChild(modalsBackdrops[i]);
                                 }
+                            
+                                await this.subidor.subirImagenes(this.id_editar);
+                                
                                 this.getpreguntas();
 
                             })
@@ -526,7 +626,7 @@
                                 rectivo: pregunta.value,
                                 tema: tema
                             })
-                            .then((res) => {
+                            .then(async (res) => {
                                 this.$swal.fire({
                                     icon: 'success',
                                     title: 'Pregunta guardada',
@@ -542,6 +642,9 @@
                                 for (let i = 0; i < modalsBackdrops.length; i++) {
                                     document.body.removeChild(modalsBackdrops[i]);
                                 }
+                            
+                                await this.subidor.subirImagenes(res.data.ultimo_id);
+                                
                                 this.getpreguntas();
                             })
                             .catch((err) => {

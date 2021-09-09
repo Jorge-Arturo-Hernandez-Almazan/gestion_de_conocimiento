@@ -56,7 +56,7 @@
                                     <tr v-for="preguntaNumerica in displayData" :key="preguntaNumerica.id">
                                         <td v-html="wrapText(preguntaNumerica.pregunta)"> </td>
                                         <td class="text-center">{{preguntaNumerica.tema}}</td>
-                                        <td class="text-center"> {{preguntaNumerica.opcion}} </td>
+                                        <td class="text-center">{{preguntaNumerica.opcion}} </td>
                                         <td class="text-center">{{preguntaNumerica.rango}}</td>
                                         <td v-if="preguntaNumerica.aplicableArriba == true" class="text-center">SI</td>
                                         <td v-else class="text-center">No</td>
@@ -484,6 +484,7 @@
                 selectTema.value = "";
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
+                this.subidor.imagenesAEliminar = [];
                 this.modoEdicion = 0;
             },
             editar() {
