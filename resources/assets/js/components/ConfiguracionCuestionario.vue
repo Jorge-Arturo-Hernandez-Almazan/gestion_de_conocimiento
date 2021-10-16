@@ -1,33 +1,35 @@
 <template>
-    <div class="">
-        <!-- Breadcrumb -->
-        <div class="col-md-12 mt-4">
-            <div class="page-header">
-                <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                    <h1 class="page-title"> Configuración de cuestionario </h1>
-                    <ul class="quick-links ml-auto">
-                        <li>
-                            <span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
-                            </span> <span style="color: #bdb9bd"> Cuestionario <i class="fas fa-angle-right"></i>
-                            </span> Configurar cuestionario
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div >
+				<div class="col-lg-12">
+						<!-- Breadcrumb -->
+						<div class="col-12 mt-4">
+								<div class="page-header">
+										<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+												<h1 class="page-title"> Configuración de cuestionario </h1>
+												<ul class="quick-links ml-auto">
+														<li>
+																<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
+																</span> <span style="color: #bdb9bd"> Cuestionario <i class="fas fa-angle-right"></i>
+																</span> Configurar cuestionario
+														</li>
+												</ul>
+										</div>
+								</div>
+						</div>
 
-        <!-- Cuerpo de la pagina -->
-        <div class="col-md-12">
-            <div class="card">
+						<!-- Cuerpo de la pagina -->
+					
+        
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
                     
                     <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
                         <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                            <h2 class="page-title"> Configuración de parametros del cuestionario</h2>
+                            
                             <ul class="quick-links ml-auto">
                                 <li>
                                     <button type="button" class="btn btn-primary float-right btn-lg"
-                                        data-toggle="modal" data-target="#modalDeInformacion">
+                                        data-toggle="modal" data-target="#modalDeInformacion" style="border-radius: 25px;">
                                         <i class="fas fa-info-circle"></i> Información
                                     </button>
                                 </li>
@@ -37,11 +39,13 @@
                   
                     <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
                       
-                        <div class="col-lg-6">
+                        <div class="col-4" style="border: 0.5px solid black; border-radius: 15px;">
                           
-                          <div class="card">
-                             <div class="card-body">
-                            <div class="form-group">
+
+													
+														<h5 class="page-title"> Configuración de parametros del cuestionario</h5>
+                            
+														<div class="form-group">
                                 <label class="mb-2">Numero de preguntas por tema</label>
                                 <input id="numeroPreguntas" type="number" class="form-control form-control-lg"
                                     placeholder="# Preguntas" v-model="configuraciones.num_preguntas" disabled>
@@ -102,139 +106,127 @@
                                 </label>
                             </div>
 
-                            <button type="button" @click="guardarConfiguracion" class="btn btn-primary float-center btn-lg"> <i
-                                    class="fas fa-save"></i> Guardar</button>
+                            <button type="button" @click="guardarConfiguracion" class="btn btn-primary float-right btn-lg"> <i
+                                    class="fas fa-save" style="border-radius: 25px;"></i> Guardar</button>
                                
-                          </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-6 gfg" style="padding: 0 0 0; margin: 0 0 0;">
-                            <table style="list-style-type: none; width:100%">
-                                <tr>
-                                    <th>
-                                        Tema:
-                                    </th>
-                                    <th>
-                                        Abiertas
-                                    </th>
-                                    <th>
-                                        Numerica
-                                    </th>
-                                    <th>
-                                        Booleana
-                                    </th>
-                                    <th>
-                                        Multiple
-                                    </th>
-                                    <th>
-                                        Calculada
-                                    </th>
-                                    <th>
-                                        Calculada Multiple
-                                    </th>
 
-                                </tr>
-                                <tr v-for="tema in preguntasPorTema"
-                                    v-if="(tema.totalPreguntasAbiertas < configuraciones.num_preguntas_abiertas ) ||
+                        </div>
+												
+												
+                        	<div class="col-8">
+														<p>
+															Establecer configuración
+														</p>
+														
+														<div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+															<div class="col-6" style="padding: 5px;">
+																<b> Termino de busqueda: </b>
+																<input class="form-control" type="search" placeholder="Ej. tablas de multiplicar" v-model="filters.nombre.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+															</div>
+														</div>
+														
+														<div class="table-responsive">
+															
+															<v-table 
+																			 :data="preguntasPorTema" 
+																			 :filters="filters" 
+																			 :currentPage.sync="currentPage" 
+																			 :pageSize="15" 
+																			 @totalPagesChanged="totalPages = $event" 
+																			 style="width:100%" 
+																			 class="table table-hover">
+																	<thead slot="head">
+																			<th>Tema: </th>
+																			<th>Abiertas </th>
+																			<th>Numerica </th>
+																			<th>Booleana</th>
+																			<th>Multiple</th>
+																			<th>Calculada</th>
+																			<th>Calculada Multiple</th>
+																	</thead>
+																	<tbody slot="body" slot-scope="{displayData}">
+																			<tr v-for="tema in displayData" 
+																					v-if="(tema.totalPreguntasAbiertas < configuraciones.num_preguntas_abiertas ) ||
                                           (tema.totalPreguntasNumericas < configuraciones.num_preguntas_numericas) ||
                                           (tema.totalPreguntasBooleanas < configuraciones.num_preguntas_boleanas) ||
                                           (tema.totalPreguntasMultiples < configuraciones.num_preguntas_multiples ) ||
                                           (tema.totalPreguntasCalculadas < configuraciones.num_preguntas_calculadas ) || 
-                                          (tema.totalPreguntasCalculadasMultiples < configuraciones.num_preguntas_calculadas_multiples ) ">
+                                          (tema.totalPreguntasCalculadasMultiples < configuraciones.num_preguntas_calculadas_multiples ) " >
+																					
+																					<td>{{ tema.nombre_tema }}</td>
+																					<td>
+																							{{ tema.totalPreguntasAbiertas }}
 
-                                    <td class="d-flex justify-content-center">
-                                        {{ tema.nombre_tema }}
+																							<i v-if="tema.totalPreguntasAbiertas >= configuraciones.num_preguntas_abiertas"
+																									class="fas fa-check-circle" style="color:green"></i>
+																							<i v-else class="fas fa-times-circle" style="color:red"></i>
+																					</td>
+																					<td>
+																							{{ tema.totalPreguntasNumericas }}
 
+																							<i v-if="tema.totalPreguntasNumericas >= configuraciones.num_preguntas_numericas"
+																									class="fas fa-check-circle" style="color:green"></i>
+																							<i v-else class="fas fa-times-circle" style="color:red"></i>
+																					</td>
+																					<td>
+																							{{ tema.totalPreguntasBooleanas }}
 
-                                    </td>
+																							<i v-if="tema.totalPreguntasBooleanas >= configuraciones.num_preguntas_boleanas"
+																									class="fas fa-check-circle" style="color:green"></i>
+																							<i v-else class="fas fa-times-circle" style="color:red"></i>
+																					</td>
+																					<td>
+																							{{ tema.totalPreguntasMultiples }}
 
-                                    <td>
-                                        {{ tema.totalPreguntasAbiertas }}
+																							<i v-if="tema.totalPreguntasMultiples >= configuraciones.num_preguntas_multiples"
+																									class="fas fa-check-circle" style="color:green"></i>
+																							<i v-else class="fas fa-times-circle" style="color:red"></i>
+																					</td>
+																					<td>
+																							{{ tema.totalPreguntasCalculadas }}
 
-                                        <i v-if="tema.totalPreguntasAbiertas >= configuraciones.num_preguntas_abiertas"
-                                            class="fas fa-check-circle" style="color:green"></i>
-                                        <i v-else class="fas fa-times-circle" style="color:red"></i>
+																							<i v-if="tema.totalPreguntasCalculadas >= configuraciones.num_preguntas_calculadas"
+																									class="fas fa-check-circle" style="color:green"></i>
+																							<i v-else class="fas fa-times-circle" style="color:red"></i>
+																					</td>
+																					<td>
+																							{{ tema.totalPreguntasCalculadasMultiples }}
 
-                                    </td>
-
-                                    <td>
-                                        {{ tema.totalPreguntasNumericas }}
-
-                                        <i v-if="tema.totalPreguntasNumericas >= configuraciones.num_preguntas_numericas"
-                                            class="fas fa-check-circle" style="color:green"></i>
-                                        <i v-else class="fas fa-times-circle" style="color:red"></i>
-
-                                    </td>
-
-                                    <td>
-                                        {{ tema.totalPreguntasBooleanas }}
-
-                                        <i v-if="tema.totalPreguntasBooleanas >= configuraciones.num_preguntas_boleanas"
-                                            class="fas fa-check-circle" style="color:green"></i>
-                                        <i v-else class="fas fa-times-circle" style="color:red"></i>
-
-
-                                    </td>
-
-                                    <td>
-                                        {{ tema.totalPreguntasMultiples }}
-
-                                        <i v-if="tema.totalPreguntasMultiples >= configuraciones.num_preguntas_multiples"
-                                            class="fas fa-check-circle" style="color:green"></i>
-                                        <i v-else class="fas fa-times-circle" style="color:red"></i>
-
-
-                                    </td>
-
-                                    <td>
-                                        {{ tema.totalPreguntasCalculadas }}
-
-                                        <i v-if="tema.totalPreguntasCalculadas >= configuraciones.num_preguntas_calculadas"
-                                            class="fas fa-check-circle" style="color:green"></i>
-                                        <i v-else class="fas fa-times-circle" style="color:red"></i>
-
-
-                                    </td>
-
-                                    <td>
-                                        {{ tema.totalPreguntasCalculadasMultiples }}
-
-                                        <i v-if="tema.totalPreguntasCalculadasMultiples >= configuraciones.num_preguntas_calculadas_multiples"
-                                            class="fas fa-check-circle" style="color:green"></i>
-                                        <i v-else class="fas fa-times-circle" style="color:red"></i>
-
-
-                                    </td>
-
-                                </tr>
-                            </table>
-                        </div>
+																							<i v-if="tema.totalPreguntasCalculadasMultiples >= configuraciones.num_preguntas_calculadas_multiples"
+																									class="fas fa-check-circle" style="color:green"></i>
+																							<i v-else class="fas fa-times-circle" style="color:red"></i>
+																					</td>
+																			</tr>
+																	</tbody>
+															</v-table>
+															<smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
+                        		</div>
+												</div>
                     </div> 
                           
                   
                   
                   <div class="modal fade" id="modalDeInformacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									
-									<h5 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar pregunta  </h5>
-									<h5 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta  </h5>
-									
-									
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-									<div class="modal-body">
-										
-										Algo de información para el usuario 
-									</div>
-								
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
 
-							</div>
-						</div>
-					</div>
+													<h5 class="modal-title" id="exampleModalLabel"> Información  </h5>
+
+
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+													<div class="modal-body">
+
+														Algo de información para el usuario 
+													</div>
+
+
+											</div>
+										</div>
+									</div>
                   
                   
                          
@@ -261,7 +253,12 @@ export default {
         num_preguntas_multiples: 0
       },
 			totalPreguntas: 0,
-      preguntasPorTema: []
+      preguntasPorTema: [],
+			filters: {
+			  nombre: { value: '', keys: ['nombre_tema'] }
+			},
+			currentPage: 1,
+			totalPages: 0
 		};
 	},
 	created(){

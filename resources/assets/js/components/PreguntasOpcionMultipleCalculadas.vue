@@ -61,7 +61,7 @@
                  :data="pregunta" 
                  :filters="filters" 
                  :currentPage.sync="currentPage"
-                :pageSize="7"
+                :pageSize="5"
                 @totalPagesChanged="totalPages = $event"
                  style="width:100%"
                  class="table mb-2">
@@ -77,41 +77,10 @@
               <th>Opciones</th>
             </thead>
             <tbody slot="body" slot-scope="{displayData}">
-              <tr v-for="(pregunta, preg) in displayData" :key="pregunta.id_pregunta">
+              <tr v-for="index in cpreguntas" :key="index">
+                <td v-html="wrapText(pregunta)">  </td>
 
-
-                <td v-html="wrapText(pregunta.pregunta)">  </td>
-
-
-                    <td class="text-left">{{pregunta.tema}}</td>
-
-                  <td>
-                    <tr v-for="(opcion, preg) in opciones[0]" v-bind:key="opcion.id">
-                      <span v-if="pregunta.id_pregunta == opcion.id_pregunta"> {{opcion.opcion}} </span>
-                    </tr>
-                  </td>
-
-                  <td>
-                    <tr v-for="(opcion, preg) in opciones[0]" v-bind:key="opcion.id">
-                      <span v-if="pregunta.id_pregunta == opcion.id_pregunta && opcion.esrespuesta == 1"> {{opcion.opcion}} </span>
-                    </tr>
-                  </td>
-
-                  <td>
-                    
-                         <!-- <tr v-for="(comodin, preg) in comodines_raw" v-bind:key="comodin.id">
-                          <span v-if="pregunta.id_pregunta == opcion.id_pregunta && opcion.id == comodin.id_opcion"> {{comodin.comodin + ' = ' + comodin.valor_comodin}} </span>
-                        </tr>-->
-                          <span > {{pregunta.id_pregunta}} </span>
-                        
-                
-                  </td>
-
-                  <td class="text-right">
-                    <button class="btn btn-warning" @click="editarPregunta(pregunta.id_pregunta, pregunta.pregunta, pregunta.tema, pregunta.id_tema)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen"></i>Editar </button> 
-                    <button  class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)"> <i class="fas fa-trash"></i>Eliminar </button>
-                  </td>
-
+ 
 
               </tr>
             </tbody>
@@ -123,6 +92,8 @@
               :currentPage.sync="currentPage"
               :totalPages="totalPages"
               />
+              
+              <p> Total de registros: {{ this.pregunta.length }} </p>
 
 
 
@@ -363,6 +334,7 @@
         tema: '',
         reactivo: '',
         bandera: 0,
+        cpreguntas: 0,
         opcion:'',
         opcion2:'',
         opcion3:'',
@@ -435,6 +407,7 @@
             this.opciones = result.data.opciones;
             this.respuestas = result.data.respuestas;
             //console.log(result.data.comodines[0]);
+            this.cpreguntas=this.pregunta.length
            this.comodines_raw = result.data.comodines[0];//error
            //return result.data;
           },

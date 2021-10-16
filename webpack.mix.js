@@ -16,7 +16,7 @@ mix.setPublicPath('public')
 
 .js('resources/assets/js/main.js','public/js/main.js')
 
-.styles(['resources/assets/plantilla/vendors/iconfonts/mdi/css/materialdesignicons.min.css','resources/assets/plantilla/vendors/iconfonts/ionicons/css/ionicons.css','resources/assets/plantilla/vendors/iconfonts/typicons/src/font/typicons.css','resources/assets/plantilla/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css','resources/assets/plantilla/vendors/css/vendor.bundle.base.css','resources/assets/plantilla/vendors/css/vendor.bundle.addons.css','resources/assets/plantilla/css/shared/style.css','resources/assets/plantilla/css/demo_1/style.css','resources/assets/css/styles.css'],'public/css/main.css');
+.styles(['resources/assets/plantilla/vendors/iconfonts/mdi/css/materialdesignicons.min.css','resources/assets/plantilla/vendors/iconfonts/ionicons/css/ionicons.css','resources/assets/plantilla/vendors/iconfonts/typicons/src/font/typicons.css','resources/assets/plantilla/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css','resources/assets/plantilla/vendors/css/vendor.bundle.base.css','resources/assets/plantilla/vendors/css/vendor.bundle.addons.css','resources/assets/plantilla/css/shared/style.css','resources/assets/plantilla/css/demo_1/style.css','resources/assets/css/styles.css', 'resources/assets/css/estilooo.css'],'public/css/main.css');
 
 
 

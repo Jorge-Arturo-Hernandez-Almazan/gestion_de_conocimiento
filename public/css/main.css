@@ -21171,3 +21171,62 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
     }
   });
 })(jQuery);
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-style: normal;
+  color: #222222;
+  text-rendering: optimizeLegibility;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+#menuuuu{
+	list-style-type: none;
+	text-align: center;
+  color: red;
+}
+
+#menuuuu{
+  list-style: none;
+}
+
+#menuuuu li::before {
+  content: "\2022";
+  color: red;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+
+
+#olaaaa::after {
+	content: none;
+}
+
+#olaaaa::before {
+	content:none;
+}
+
+
+.swal2-actions.swal2-loading .swal2-styled.swal2-confirm {
+  box-sizing: border-box;
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0.46875em;
+  padding: 0;
+  -webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+          animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+  border: 25px solid transparent; /*cambio*/
+  border-radius: 100%;
+  border-color: transparent;
+  background-color: transparent !important;
+  color: transparent;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}

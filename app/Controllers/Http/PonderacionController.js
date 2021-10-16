@@ -295,7 +295,7 @@ class PonderacionController {
       }
     }
     
-    /*for(i=0; i < nodos_abajo.length; i++){
+    for(i=0; i < nodos_abajo.length; i++){
       if( nodos_abajo[i].clasificacion != 1){
          await Database.raw('update relacion_nodo_alumnos set ponderacion = ?, clasificacion = ?, historial = ? where id_tema = ? and id_alumno = ?;', [ nodos_abajo[i].ponderacion, nodos_abajo[i].clasificacion, nodos_abajo[i].historial, nodos_abajo[i].id, auth.user.id ])
       }
@@ -305,7 +305,7 @@ class PonderacionController {
       if( nodos_arriba[i].clasificacion != 1){
          await Database.raw('update relacion_nodo_alumnos set ponderacion = ?, clasificacion = ?, historial = ? where id_tema = ? and id_alumno = ?;', [ nodos_arriba[i].ponderacion, nodos_arriba[i].clasificacion, nodos_arriba[i].historial, nodos_arriba[i].id, auth.user.id ])
       }
-    }*/
+    }
     
     return response.json({nodos_abajo: nodos_abajo, nodos_arriba: nodos_arriba, nodo_objetivo:nodo_objetivo_props});
     //return response.json({arriba: caminos_arriba, abajo: caminos_abajo});
@@ -395,12 +395,6 @@ class PonderacionController {
 		temas = temas[0];
 		
 		const relaciones =  await Database.select('id_padre','id_hijo').from('relacion_primarias');
-
-		/*const relaciones =  await Database.select('id_padre','id_hijo')
-		.from('relacion_primarias')
-		.innerJoin('temas as t1', 'relacion_primarias.id_padre', 't1.id')
-		.innerJoin('temas as t2', 'relacion_primarias.id_hijo', 't2.id')
-		.whereRaw('not(t1.nivel = 1 and t2.nivel = 1)');*/
 		
 		let total_relaciones = relaciones.length;
 		let total_temas = temas.length;
@@ -449,34 +443,80 @@ class PonderacionController {
 		
 		let ramas = await Database.raw('select id, nivel from temas where nivel < 2;');
 		
-		/*for(i=0; i < ramas[0].length; i++ ){
-			for(j=0; j < solo_arreglo.length; j++){
-				if(ramas[0][i].id == solo_arreglo[j] ){
-					solo_arreglo.splice(j, 1); 
-				}
-			}	
-		}
-		
-		for(i=0; i < ramas[0].length; i++ ){
-			for(j=0; j < temas.length; j++){
-				if(ramas[0][i].id == temas[j].id ){
-					temas.splice(j, 1);
-					break;
-				}
-			}	
-		}*/
-		
 		
 		let uniqueArray = solo_arreglo.filter((c, index) => {
 			return solo_arreglo.indexOf(c) === index;
 		});
-		
 		
 		return response.json({caminos: caminos_primera_rama, nodos: uniqueArray, temas:temas, ramas:ramas[0] });
 	
 	}
 	
 	
+  async obtener_caminos_red_bayesiana({response}){
+		let i = 0;
+		let j = 0;
+		let k = 0;
+		let temas = await Database.raw('select temas.id as id, temas.nombre_tema as nombre, temas.nivel as nivel from temas order by nivel desc;');
+		temas = temas[0];
+		
+		const relaciones =  await Database.select('id_padre','id_hijo').from('relacion_primarias');
+		
+		let total_relaciones = relaciones.length;
+		let total_temas = temas.length;
+		var texto = "nodos\n";
+
+		for(  i = 0; i <  total_temas; i++){
+		  if(i == total_temas-1){
+			 texto = texto +  temas[i].id;
+		  }else{
+			texto = texto +  temas[i].id + ",";
+		  }
+		}
+		texto = texto + "\nrelaciones\n";
+		for ( i = 0; i < total_relaciones; i++) {
+		  var padre = relaciones[i].id_padre;
+		  var hijo = relaciones[i].id_hijo;
+		  texto = texto + padre + "-" + hijo + "\n";
+		}
+
+		fs.writeFileSync('nodos', texto);
+
+		var output = execSync('g++ dag.cpp -o dag', { encoding: 'utf-8' });  // the default is 'buffer'
+		var caminos = execSync('./dag ' + total_temas, { encoding: 'utf-8' });
+
+		var paths = JSON.parse(caminos);
+		
+		var caminoss = paths.caminos//respuesta de servidor
+		
+		/*var caminos_primera_rama = []
+		
+		
+		for(i=0;i<caminoss.length;i++){
+			if( caminoss[i][1] == 2 ){
+				caminos_primera_rama.push( caminoss[i].slice(2, caminoss[i].length) ); 
+			}
+		}*/
+		
+		
+		var solo_arreglo = []
+		for( j=0; j < caminoss.length; j++){
+			for( k=0; k < caminoss[j].length; k ++){
+				solo_arreglo.push(caminoss[j][k]);
+			}
+		}
+		
+		
+		
+		let uniqueArray = solo_arreglo.filter((c, index) => {
+			return solo_arreglo.indexOf(c) === index;
+		});
+		
+		return response.json({caminos: caminoss, nodos: uniqueArray, temas:temas});
+	
+	}
+  
+  
 	
 	async obtener_ramas({response, auth}){
 		let ramas = await Database.raw('select id, nivel from temas where nivel = 1;');

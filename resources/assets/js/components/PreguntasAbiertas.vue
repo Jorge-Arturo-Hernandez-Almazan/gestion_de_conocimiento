@@ -1,27 +1,29 @@
 <template>
     <div class="">
-        <!-- Breadcrum -->
-        <div class="col-12 mt-4">
-            <div class="page-header">
-                <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                    <h1 class="page-title"> Preguntas abiertas </h1>
-                    <ul class="quick-links ml-auto">
-                        <li>
-                            <span style="color: #bdb9bd">
-                                <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
-                            </span>
-                            <span style="color: #bdb9bd">
-                                Preguntas <i class="fas fa-angle-right"></i>
-                            </span>
-                            Preguntas abiertas
-                        </li>
-                    </ul>
+        <div class="col-lg-12">
+          
+            <!-- Breadcrum -->
+            <div class="col-12 mt-4">
+                <div class="page-header">
+                    <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                        <h1 class="page-title"> Preguntas abiertas </h1>
+                        <ul class="quick-links ml-auto">
+                            <li>
+                                <span style="color: #bdb9bd">
+                                    <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
+                                </span>
+                                <span style="color: #bdb9bd">
+                                    Preguntas <i class="fas fa-angle-right"></i>
+                                </span>
+                                Preguntas abiertas
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--Cuerpo de la página -->
-        <div class="col-lg-12">
-            <div class="card">
+
+        
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
                     <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
                         <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
@@ -29,27 +31,37 @@
                             <ul class="quick-links ml-auto">
                                 <li>
                                     <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal"
-                                        data-target="#registrarPregunta" @click="cambiarModo">
+                                        data-target="#registrarPregunta" @click="cambiarModo" style="border-radius: 25px;">
                                         <i class="fas fa-edit"></i> Registrar pregunta
                                     </button>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                  
+                  
+                    <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+                      <div class="col-6" style="padding: 5px;">
+                        <b> Termino de busqueda: </b>
+                        <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+                      </div>
+                      <div class="col-6" style="padding: 5px;">
+                        <b>Campo de busqueda: </b>
+                        <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
+                          <option value="pregunta">Pregunta</option>
+                          <option value="tema">Tema</option>
+                          <option value="opcion">Respuesta</option>
+                        </select>
+                      </div>
+                    </div>
+                  
                     <div class="table-responsive">
-
-
-
-                        <!-- Busqueda -->
-                        <label> <b> Busqueda por pregunta: </b> </label>
-                        <input class="form-control mb-2" v-model="filters.pregunta.value"
-                            placeholder="Ej. ¿Cuánto es 2+2?" />
 
                         <!-- Tabla -->
                         <v-table :data="preguntaAbierta" :filters="filters" :currentPage.sync="currentPage"
                             :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
-                            class="table mb-2">
-                            <thead slot="head" class="thead-dark">
+                            class="table table-hover">
+                            <thead slot="head" >
                                 <v-th sortKey="pregunta" defaultSort="desc" style="width:10%">Pregunta</v-th>
                                 <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
                                 <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
@@ -68,29 +80,39 @@
                                         {{preguntaAbierta.opcion}}
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        <a data-toggle="modal"
                                             data-target="#modalParaVerImagenes"
                                             @click="desplegarImagenesEnModal(preguntaAbierta.imagenes)">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
+                                            <i class="fas fa-eye" style="color: #2196f3"></i> 
+                                        </a>
                                     </td>
 
                                     <td>
-                                        <button class="btn btn-warning"
-                                            @click="btnEditar(preguntaAbierta.id_pregunta,preguntaAbierta.pregunta,preguntaAbierta.opcion,preguntaAbierta.tipo,preguntaAbierta.id_tema, preguntaAbierta.imagenes)"
+                                        <a @click="btnEditar(preguntaAbierta.id_pregunta,preguntaAbierta.pregunta,preguntaAbierta.opcion,preguntaAbierta.tipo,preguntaAbierta.id_tema, preguntaAbierta.imagenes)"
                                             data-toggle="modal" data-target="#registrarPregunta">
-                                            <i class="fas fa-pen"></i> Editar
-                                        </button>
-                                        <button class="btn btn-danger"
-                                            @click="eliminar(preguntaAbierta.id_pregunta, preguntaAbierta.imagenes)">
-                                            <i class="fas fa-trash"></i> Eliminar
-                                        </button>
+                                            <i class="fas fa-pen" style="color: #ffae00;"></i> 
+                                        </a>
+                                        |
+                                        <a  @click="eliminar(preguntaAbierta.id_pregunta, preguntaAbierta.imagenes)">
+                                            <i class="fas fa-trash" style="color: #ff6258"></i> 
+                                        </a>
                                     </td>
                                 </tr>
+                              
+                                <tr>
+                                  <td> <b> <p> Mostrando {{displayData.length}} de {{ preguntaAbierta.length }} registros </p> </b> </td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                </tr>
+                              
                             </tbody>
                         </v-table>
                     </div>
                     <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
+                  
+                    <p> Total de registros: {{ this.preguntaAbierta.length }} </p>
 
 
                     <div class="modal fade" id="registrarPregunta" tabindex="-1" role="dialog"
@@ -269,7 +291,7 @@
                 filters: {
                     pregunta: {
                         value: '',
-                        keys: ['pregunta', 'tema']
+                        keys: ['pregunta']
                     }
                 },
                 currentPage: 1,
@@ -293,9 +315,12 @@
                 var fil = uri[1].split('=')[1];
                 this.filters.pregunta.value = fil.replace(/%20/g, " ");
             }
-
         },
         methods: {
+            cambiarCampoDeBusqueda(){
+              let x = document.getElementById("campoBusqueda").value;
+              this.filters.pregunta.keys[0] = x;			
+            },
             wrapText(str) {
                 const palabrasSinEspacios = str.split(" ");
                 let textoDePregunta = "";

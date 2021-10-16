@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-lg-12">
-            <div class="card">
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
 
                     <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
@@ -25,21 +25,34 @@
                             <ul class="quick-links ml-auto">
                                 <li>
                                     <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal"
-                                        data-target="#exampleModal" @click="abrirModal">
+                                        data-target="#exampleModal" @click="abrirModal" style="border-radius: 25px;">
                                         <i class="fas fa-edit"></i> Registrar pregunta
                                     </button>
                                 </li>
                             </ul>
                         </div>
                     </div>
-
+                    
+                     <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+                      <div class="col-6" style="padding: 5px;">
+                        <b> Termino de busqueda: </b>
+                        <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+                      </div>
+                      <div class="col-6" style="padding: 5px;">
+                        <b>Campo de busqueda: </b>
+                        <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
+                          <option value="pregunta">Pregunta</option>
+                          <option value="tema">Tema</option>
+                          <option value="opcion">Respuesta</option>
+                        </select>
+                      </div>
+                    </div>
+                  
                     <div class="table-responsive">
-                        <label> <b> Busqueda por pregunta: </b> </label>
-                        <input class="form-control mb-2" v-model="filters.pregunta.value" placeholder="Ej. ¿Cuánto es 2+2?" />
-                        <div class="table-responsive">
+                        
                             <v-table :data="pregunta" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
-                                @totalPagesChanged="totalPages = $event" style="width:100%" class="table mb-2">
-                                <thead slot="head" class="thead-dark">
+                                @totalPagesChanged="totalPages = $event" style="width:100%" class="table table-hover">
+                                <thead slot="head" >
                                     <v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
                                     <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
                                     <th>Opciones</th>
@@ -65,24 +78,36 @@
                                         </td>
                                         
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalParaVerImagenes" @click="desplegarImagenesEnModal(pregunta.imagenes)">
-                                                <i class="fas fa-eye"></i> Ver
-                                            </button>
+                                            <a data-toggle="modal" data-target="#modalParaVerImagenes" @click="desplegarImagenesEnModal(pregunta.imagenes)">
+                                                <i class="fas fa-eye" style="color: #2196f3"></i> 
+                                            </a>
                                         </td>
-
-                                        <td class="text-right">
-                                            <button class="btn btn-warning" @click="editarPregunta(pregunta.id_pregunta, pregunta.imagenes)"
-                                                data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen"></i>
-                                                Editar </button>
-                                            <button class="btn btn-danger" @click="eliminar(pregunta.id_pregunta)"> <i
-                                                    class="fas fa-trash"></i> Eliminar </button>
+                                        
+                                        <td >
+                                            <a  @click="editarPregunta(pregunta.id_pregunta, pregunta.imagenes)"
+                                                data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen" style="color: #ffae00;"></i>
+                                                 </a>
+                                          |
+                                            <a  @click="eliminar(pregunta.id_pregunta)"> <i
+                                                    class="fas fa-trash" style="color: #ff6258"></i>  </a>
                                         </td>
 
                                     </tr>
+                                  
+                                    <tr>
+                                      <td> <b> <p> Mostrando {{displayData.length}} de {{ pregunta.length }} registros </p> </b> </td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  
                                 </tbody>
                             </v-table>
-                        </div>
+
                         <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
+                      
                     </div>
                 </div>
 
@@ -284,6 +309,10 @@
             }
         },
         methods: {
+            cambiarCampoDeBusqueda(){
+              let x = document.getElementById("campoBusqueda").value;
+              this.filters.pregunta.keys[0] = x;			
+            },
             wrapText(str) {
                 const palabrasSinEspacios = str.split(" ");
                 let textoDePregunta = "";

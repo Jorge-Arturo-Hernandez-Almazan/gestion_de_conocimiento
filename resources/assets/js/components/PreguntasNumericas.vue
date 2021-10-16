@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="card">
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
                     <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
                         <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
@@ -27,22 +27,35 @@
                             <ul class="quick-links ml-auto">
                                 <li>
                                     <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal"
-                                        data-target="#registrarPregunta" @click="cambiarModo">
+                                        data-target="#registrarPregunta" @click="cambiarModo" style="border-radius: 25px;">
                                         <i class="fas fa-edit"></i> Registrar pregunta
                                     </button>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                  
+                    <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+                      <div class="col-6" style="padding: 5px;">
+                        <b> Termino de busqueda: </b>
+                        <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+                      </div>
+                      <div class="col-6" style="padding: 5px;">
+                        <b>Campo de busqueda: </b>
+                        <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
+                          <option value="pregunta">Pregunta</option>
+                          <option value="tema">Tema</option>
+                          <option value="opcion">Respuesta</option>
+                        </select>
+                      </div>
+                    </div>
+                  
                     <div class="table-responsive">
-                        <label> <b> Busqueda por pregunta: </b> </label>
-                        <input class="form-control mb-2" v-model="filters.pregunta.value"
-                            placeholder="Ej. ¿Cuánto es 2+2?" />
                         <div class="table-responsive">
                             <v-table :data="preguntaNumerica" :filters="filters" :currentPage.sync="currentPage"
                                 :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
-                                class="table mb-2">
-                                <thead slot="head" class="thead-dark">
+                                class="table table-hover">
+                                <thead slot="head">
                                     <v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
                                     <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
                                     <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
@@ -55,78 +68,98 @@
                                 <tbody slot="body" slot-scope="{displayData}">
                                     <tr v-for="preguntaNumerica in displayData" :key="preguntaNumerica.id">
                                         <td v-html="wrapText(preguntaNumerica.pregunta)"> </td>
-                                        <td class="text-center">{{preguntaNumerica.tema}}</td>
-                                        <td class="text-center">{{preguntaNumerica.opcion}} </td>
-                                        <td class="text-center">{{preguntaNumerica.rango}}</td>
-                                        <td v-if="preguntaNumerica.aplicableArriba == true" class="text-center">SI</td>
-                                        <td v-else class="text-center">No</td>
-                                        <td v-if="preguntaNumerica.aplicableAnbajo == true" class="text-center">SI</td>
-                                        <td v-else class="text-center">No</td>
+                                        <td>{{preguntaNumerica.tema}}</td>
+                                        <td>{{preguntaNumerica.opcion}} </td>
+                                        <td>{{preguntaNumerica.rango}}</td>
+                                        <td v-if="preguntaNumerica.aplicableArriba == true" > <i class="far fa-check-circle" style="color: #3bd949;">Si</i></td>
+                                        <td v-else> <i class="fas fa-ban" style="color: #ff6258">No</i> </td>
+                                        <td v-if="preguntaNumerica.aplicableAnbajo == true" > <i class="far fa-check-circle" style="color: #3bd949;">Si</i></td>
+                                        <td v-else> <i class="fas fa-ban" style="color: #ff6258">No</i> </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            <a data-toggle="modal"
                                                 data-target="#modalParaVerImagenes"
                                                 @click="desplegarImagenesEnModal(preguntaNumerica.imagenes)">
-                                                <i class="fas fa-eye"></i> Ver
-                                            </button>
+                                                <i class="fas fa-eye" style="color: #2196f3"></i> 
+                                            </a>
                                         </td>
                                         <td>
-                                            <button class="btn btn-warning"
-                                                @click="btnEditar(preguntaNumerica.id_pregunta,preguntaNumerica.pregunta,preguntaNumerica.opcion,preguntaNumerica.tipo,preguntaNumerica.id_tema, preguntaNumerica.rango ,preguntaNumerica.imagenes)"
+                                            <a @click="btnEditar(preguntaNumerica.id_pregunta,preguntaNumerica.pregunta,preguntaNumerica.opcion,preguntaNumerica.tipo,preguntaNumerica.id_tema, preguntaNumerica.rango ,preguntaNumerica.imagenes)"
                                                 data-toggle="modal" data-target="#registrarPregunta"><i
-                                                    class="fas fa-pen"></i> Editar </button>
-                                            <button class="btn btn-danger"
-                                                @click="eliminar(preguntaNumerica.id_pregunta, preguntaNumerica.imagenes)"><i
-                                                    class="fas fa-trash"></i> Eliminar
-                                            </button>
+                                                    class="fas fa-pen" style="color: #ffae00;"></i>  </a>
+                                            |
+                                            <a @click="eliminar(preguntaNumerica.id_pregunta, preguntaNumerica.imagenes)"><i
+                                                    class="fas fa-trash" style="color: #ff6258"></i> 
+                                            </a>
                                         </td>
                                     </tr>
+                                  
+                                    <tr>
+                                      <td> <b> <p> Mostrando {{displayData.length}} de {{ preguntaNumerica.length }} registros </p> </b> </td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  
                                 </tbody>
                             </v-table>
                         </div>
                         <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
+                      
+                      
                     </div>
-                    <div class="modal fade" id="registrarPregunta" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
-                                        pregunta </h5>
-                                    <h5 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h5>
+                    <div class="modal fade" id="registrarPregunta"  role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false" >
+                        <div class="modal-dialog" role="document" >
+                            <div class="modal-content" style="border-radius: 15px;">
+                                <!--<div class="modal-header">
+                                    
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                </div>
+                                </div> -->
                                 <div class="modal-body">
-                                    <p class="text-left mb-0"> <b> Pregunta: </b></p>
-                                    <textarea id="pregunta" type="text" class="form-control mt-0 mb-0"
-                                        placeholder="Pregunta" @focus="limpiarCampos('pregunta')"></textarea>
+                                    
+                                    <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
+                                        pregunta </h3>
+                                    <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
+                                  
+                                    <p class="text-left">  Pregunta: </p>
+                                    <textarea id="pregunta" type="text" class="form-control "
+                                        placeholder="Pregunta" @focus="limpiarCampos('pregunta')" style="margin:0px;"></textarea>
+                                  
                                     <span id="msjInputPregunta"> </span>
-                                    <p class="text-left mt-2 mb-0"> <b> Respuesta: </b> </p>
-                                    <textarea id="respuesta" type="text" class="form-control mt-0 mb-0"
-                                        placeholder="Respuesta" @focus="limpiarCampos('respuesta')"></textarea>
+                                    <p class="text-left ">  Respuesta:  </p>
+                                    <textarea id="respuesta" type="text" class="form-control"
+                                        placeholder="Respuesta" @focus="limpiarCampos('respuesta')" style="margin:0px;"></textarea>
+                                    
+                                    
+                                  
                                     <span id="msjInputRespuesta"> </span>
-                                    <p class="text-left mt-2 mb-0"> <b> Margen: </b> </p>
-                                    <input id="margen" class="swal2-input" placeholder="margen">
-                                    <p class="text-left mt-2 mb-0"> <b> Aplicar el margen de error a la respuesta </b>
-                                    </p>
-                                    <input type="checkbox" id="arriba" name="arriba" value="si" checked>
-                                    <label for="male">Aplicar hacia arriba</label><br>
-                                    <input type="checkbox" id="abajo" name="abajo" value="si" checked>
-                                    <label for="male">Aplicar hacia abajo</label><br>
-                                    <p class="text-left mt-2 mb-0"> <b> Tema: </b> </p>
-                                    <select id="id_tema" value="${this.temas}" name="temas"
-                                        class="form-control mt-0 mb-0" @focus="limpiarCampos('tema')">
-                                        <option value="">Tema</option>
-
-                                        <option v-for="t in temas[0]" :value="t.id">
-                                            {{ t.nombre_tema }}
-                                        </option>
-                                    </select>
+                                    <p class="text-left ">  Margen de error: </p>
+                                    <input id="margen" class="form-control" placeholder="margen" type="number">
+                                    <p class="text-left ">  Aplicar el margen: </p>
+                                    
+                                   
+                                    <table style="width: 100%; border-radius: 15px;">
+                                      <tr>
+                                        <th> <input type="checkbox" id="arriba" name="arriba" value="si" style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" checked> </th>
+                                        <th> <label for="male">Aplicar hacia arriba</label> </th>
+                                      </tr>
+                                      
+                                      <tr>
+                                        <th>  <input type="checkbox" id="abajo" name="abajo" value="si" style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" checked> </th>
+                                        <th> <label for="male">Aplicar hacia abajo</label> </th>
+                                      </tr>
+                                    </table>
+                                  
+                                    <p class="text-left">  Tema:  </p>
+                                    <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" />
+                                    
                                     <span id="msjSelectTema"> </span>
-                                    <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
+                                    <p class="text-left"> Imagenes:  </p>
                                     <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                        style="border-style: dashed; width: 100%;">
+                                        style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
                                         <input type="file" id="assetsFieldHandle"
                                             class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
                                             ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
@@ -151,21 +184,23 @@
                                             <tr v-for="imagen in subidor.imagenesVistaPrevia">
                                                 <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
                                                         style=" width: 15em;"> </td>
-                                                <td><button class="btn btn-danger" type="button" @click="remove(imagen)"
-                                                        title="Remove file"> <i class="fas fa-trash-alt"></i> </button>
+                                                <td><a  @click="remove(imagen)"
+                                                        title="Remove file"> <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
+                                    
+                                  
                                 </div>
                                 <div class="modal-footer">
-                                    <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary">
-                                        Editar </button>
-                                    <button v-else type="button" @click="btnGuardar" class="btn btn-primary"> Guardar
+                                    <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary btn-lg" style="border-radius: 25px;">
+                                        Guardar </button>
+                                    <button v-else type="button" @click="btnGuardar" class="btn btn-primary btn-lg" style="border-radius: 25px;"> <i class="fas fa-save"></i> Guardar
                                     </button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cancelar
+                                    <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal" style="border-radius: 25px;">  <i class="fas fa-ban"></i> Cancelar
                                     </button>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -268,6 +303,13 @@
             }
         },
         methods: {
+            cambioSelect(val){
+              this.limpiarCampos("tema");
+            },
+            cambiarCampoDeBusqueda(){
+              let x = document.getElementById("campoBusqueda").value;
+              this.filters.pregunta.keys[0] = x;			
+            },
             wrapText(str) {
                 const palabrasSinEspacios = str.split(" ");
                 let textoDePregunta = "";
@@ -341,7 +383,14 @@
                     url: "/tema/all"
                 }).then(
                     result => {
-                        this.temas = result.data;
+                        //this.temas = result.data;
+                      
+                        let temasApi = result.data[0];
+                  
+                        for( let i = 0; i <  temasApi.length; i++ ){
+                          this.temas.push({id: temasApi[i].id, text: temasApi[i].nombre_tema })
+                        }
+                      
                     },
                     error => {
                         console.error(error);
@@ -389,7 +438,7 @@
             btnGuardar() {
                 let inputPregunta = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
-                let selectTema = document.getElementById("id_tema");
+                //let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
                 let msjInputPregunta = document.getElementById("msjInputPregunta");
@@ -400,10 +449,10 @@
                 this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
                     /[\u0300-\u036f]/g, "").replace(/ /g, "")
                 this.tipo = 2
-                this.id_tema = selectTema.value;
+                //this.id_tema = selectTema.value;
                 if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "") {
                     if (this.id_tema == "") {
-                        selectTema.style.border = "1px solid #ff6258";
+                        //selectTema.style.border = "1px solid #ff6258";
                         msjSelectTema.innerHTML = "Este dato es obligatorio";
                         msjSelectTema.style.color = "#ff6258";
                     }
@@ -432,12 +481,12 @@
             limpiarCampos(id) {
                 let inputPregunta = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
-                let selectTema = document.getElementById("id_tema");
+                //let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
                 let msjInputPregunta = document.getElementById("msjInputPregunta");
                 if (id == "tema") {
-                    selectTema.style.border = "1px solid #dee2e6";
+                    //selectTema.style.border = "1px solid #dee2e6";
                     msjSelectTema.innerHTML = "";
                 }
                 if (id == "pregunta") {
@@ -455,13 +504,14 @@
                 //this.subidor.imagenes = [];
                 let inputPregunta = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
-                let selectTema = document.getElementById("id_tema");
+                //let selectTema = document.getElementById("id_tema");
                 let inputMargen = document.getElementById("margen");
                 this.modoEdicion = 1;
                 this.id = id;
                 inputRespuesta.value = respuesta;
                 inputPregunta.value = pregunta;
-                selectTema.value = id_tema;
+                //selectTema.value = id_tema;
+                this.id_tema = id_tema;
                 inputMargen.value = margen;
               
                 let numeroMayorDeImagen = 0;
@@ -476,12 +526,13 @@
             cambiarModo() {
                 let inputPregunta = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
-                let selectTema = document.getElementById("id_tema");
+                //let selectTema = document.getElementById("id_tema");
                 let inputMargen = document.getElementById("margen");
                 inputMargen.value = this.margend;
                 inputRespuesta.value = "";
                 inputPregunta.value = "";
-                selectTema.value = "";
+                //selectTema.value = "";
+                this.id_tema = "";
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
                 this.subidor.imagenesAEliminar = [];
@@ -490,7 +541,7 @@
             editar() {
                 let inputPregunta = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
-                let selectTema = document.getElementById("id_tema");
+                //let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
                 let msjInputPregunta = document.getElementById("msjInputPregunta");
@@ -501,10 +552,10 @@
                 this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
                     /[\u0300-\u036f]/g, "").replace(/ /g, "")
                 this.tipo = 2
-                this.id_tema = selectTema.value;
+                //this.id_tema = selectTema.value;
                 if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "") {
                     if (this.id_tema == "") {
-                        selectTema.style.border = "1px solid #ff6258";
+                        //selectTema.style.border = "1px solid #ff6258";
                         msjSelectTema.innerHTML = "Este dato es obligatorio";
                         msjSelectTema.style.color = "#ff6258";
                     }

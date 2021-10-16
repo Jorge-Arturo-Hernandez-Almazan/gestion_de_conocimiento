@@ -20,6 +20,10 @@ Route.get('/pruebapython', 'PonderacionController.pruebaPython');
 Route.get('/arbol/obtenerCaminos/:id', 'PonderacionController.getPaths');
 Route.get('/arbol/obtenerResultados', 'PonderacionController.getResults');
 Route.get('/arbol/obtenerRamas', 'PonderacionController.obtener_ramas');
+
+Route.get('/imagen/pregunta/:id', 'PreguntaController.obtenerImagenesPregunta')
+
+Route.get('/obtenercpts/:idhijo/:idpadres', 'CptController.obtenerCpts');
 ///////////////////////////////////////////////////
 
 Route.get('/obtenerTodasLasImagenes', 'PreguntaController.obtenerTodasImagenes');
@@ -32,6 +36,8 @@ Route.get('/arbol/caminos', 'PonderacionController.obtener_caminos')
 
 //RUTAS TEMPORALES PARA EL SIMULADOR
 Route.get('/arbol/simulador/caminos', 'PonderacionController.obtener_caminos_simulador')
+
+Route.get('/arbol/caminoslibreria', 'PonderacionController.obtener_caminos_red_bayesiana')
 
 
 Route.post('/temas/guardarProbabilidades', 'TemaController.storeProbabilidades');
@@ -211,7 +217,7 @@ Route.get('/pregunta/respuestas/:id', 'PreguntaController.obtenerRespuestas');
 	}).middleware(['AccessValidator:1']);
 
 
-
+  
 
 
 	//Rutas generales 

@@ -1,21 +1,22 @@
 <template>
     <div class="">
-        <div class="col-12 mt-4">
-            <div class="page-header">
-                <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                    <h1 class="page-title"> Preguntas verdadero/falso </h1>
-                    <ul class="quick-links ml-auto">
-                        <li>
-                            <span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
-                            </span> <span style="color: #bdb9bd"> Preguntas <i class="fas fa-angle-right"></i> </span>
-                            Preguntas verdadero/falso
-                        </li>
-                    </ul>
+      <div class="col-lg-12 ">
+            <div class="col-12 mt-4">
+                <div class="page-header">
+                    <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                        <h1 class="page-title"> Preguntas verdadero/falso </h1>
+                        <ul class="quick-links ml-auto">
+                            <li>
+                                <span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
+                                </span> <span style="color: #bdb9bd"> Preguntas <i class="fas fa-angle-right"></i> </span>
+                                Preguntas verdadero/falso
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-12 ">
-            <div class="card">
+        
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
                     <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
                         <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
@@ -23,25 +24,44 @@
                             <ul class="quick-links ml-auto">
                                 <li>
                                     <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal"
-                                        data-target="#registrarPregunta" @click="cambiarModo">
+                                        data-target="#registrarPregunta" @click="cambiarModo" style="border-radius: 25px;">
                                         <i class="fas fa-edit"></i> Registrar pregunta
                                     </button>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <label><b> Busqueda por pregunta: </b> </label>
-                        <input type="search" class="form-control mb-2" v-model="filters.pregunta.value" placeholder="Ej. ¿Cuánto es 2+2?" />
+                  
+
+                      <Select2 v-model="form.tema" :options="temas" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                  
+
+                <h4>Value: {{ form.tema }}</h4>
+                  
+                    <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+                      <div class="col-6" style="padding: 5px;">
+                        <b> Termino de busqueda: </b>
+                        <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+                      </div>
+                      <div class="col-6" style="padding: 5px;">
+                        <b>Campo de busqueda: </b>
+                        <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
+                          <option value="pregunta">Pregunta</option>
+                          <option value="tema">Tema</option>
+                          <option value="opcion">Respuesta</option>
+                        </select>
+                      </div>
+                    </div>
+
                         <div class="table-responsive">
                             <v-table :data="pregunta" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
-                                @totalPagesChanged="totalPages = $event" style="width:100%" class="table mb-2">
-                                <thead slot="head" class="thead-dark">
+                                @totalPagesChanged="totalPages = $event" style="width:100%" class="table table-hover">
+                                <thead slot="head" >
                                     <v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
                                     <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
                                     <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
                                     <th> Imagenes </th>
-                                    <th class="text-center">Opciones</th>
+                                    <th >Opciones</th>
                                 </thead>
                                 <tbody slot="body" slot-scope="{displayData}">
                                     <tr v-for="pregunta in displayData" :key="pregunta.id">
@@ -53,27 +73,36 @@
                                             </tr>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            <a  data-toggle="modal"
                                                 data-target="#modalParaVerImagenes"
                                                 @click="desplegarImagenesEnModal(pregunta.imagenes)">
-                                                <i class="fas fa-eye"></i> Ver
-                                            </button>
+                                                <i class="fas fa-eye" style="color: #2196f3"></i> 
+                                            </a>
                                         </td>
                                         
-                                        <td class="text-right">
-                                            <button class="btn btn-warning"                 
-                                                @click="editarPregunta({id:pregunta.id_pregunta, pregunta: pregunta.pregunta, respuesta: pregunta.opcion, tipo: 3, tema:pregunta.id_tema}, pregunta.imagenes)">
-                                                <i class="fas fa-pen"></i> Editar 
-                                            </button>
-                                            <button class="btn btn-danger" @click="eliminarPregunta(pregunta.id_pregunta)"> 
-                                                <i class="fas fa-trash"></i> Eliminar
-                                            </button>
+                                        <td>
+                                            <a @click="editarPregunta({id:pregunta.id_pregunta, pregunta: pregunta.pregunta, respuesta: pregunta.opcion, tipo: 3, tema:pregunta.id_tema}, pregunta.imagenes)">
+                                                <i class="fas fa-pen" style="color: #ffae00;"></i>  
+                                            </a>
+                                            <a @click="eliminarPregunta(pregunta.id_pregunta)"> 
+                                                <i class="fas fa-trash" style="color: #ff6258"></i> 
+                                            </a>
                                         </td>
                                     </tr>
+                                  
+                                    <tr>
+                                      <td> <b> <p> Mostrando {{displayData.length}} de {{ pregunta.length }} registros </p> </b> </td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  
                                 </tbody>
                             </v-table>
                         </div>
-                        <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
+                        <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages"  />
+                      
                       
                       
                         <div class="modal fade" id="registrarPregunta" tabindex="-1" role="dialog"
@@ -102,15 +131,10 @@
                                           <option value="falso">Falso</option>
                                         </select>
                                         <span id="msjInputRespuesta" style="color: #ff6258;"> </span>
-                                      
+                                        
                                         <p class="text-left mt-2 mb-0"> <b> Tema: </b> </p>
-                                        <select v-model="form.tema" id="selTema" value="${this.temas}" name="temas"
-                                            class="form-control mt-0 mb-0" @focus="limpiarCampo('tema')">
-                                            <option value="">Tema</option>
-                                            <option v-for="t in temas[0]" :value="t.id">
-                                                {{ t.nombre_tema }}
-                                            </option>
-                                        </select>
+                                        <Select2 v-model="form.tema" :options="this.temas" />
+                                        
                                         <span id="msjSelectTema" style="color: #ff6258;"> </span>
                                       
                                         <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
@@ -195,6 +219,8 @@
                                             <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center">
                                                 Esta pregunta no tiene imagenes adjuntas 
                                             </span>
+                                          
+                                          
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -204,7 +230,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -214,8 +240,10 @@
 <script>
     import axios from 'axios';
     import Cargador from '@/components/subirImagenes';
+    import Select2 from 'v-select2-component';
 
     export default {
+        components: {Select2},
         data() {
             return {
                 modoEdicion: 0,
@@ -239,11 +267,14 @@
                   pregunta: '',
                   respuesta: '',
                   tema: ''
-                })
+                }),
+                myValue: '',
+                myOptions: ['opc1', 'opc2', 'opc3'] // or [{id: key, text: value}, {id: key, text: value}]
             }
         },
         created(){
             this.subidor = new Cargador();
+          
         },
         mounted() {
             this.obtenerPreguntasVerdaderoFalso();
@@ -257,6 +288,17 @@
             }
         },
         methods: {
+            myChangeEvent(val){
+                console.log(val);
+            },
+            mySelectEvent({id, text}){
+                console.log({id, text})
+            },
+          
+            cambiarCampoDeBusqueda(){
+              let x = document.getElementById("campoBusqueda").value;
+              this.filters.pregunta.keys[0] = x;			
+            },
             espaciarTexto(str) {
                 const palabrasSinEspacios = str.split(" ");
                 let textoDePregunta = "";
@@ -290,10 +332,11 @@
                 this.subidor.subirImagenes(id);
             },
             resetearDatos(){
-                this.limpiarMensajeYAlerta("selTema", "msjSelectTema");
+                //this.limpiarMensajeYAlerta("selTema", "msjSelectTema");
                 this.limpiarMensajeYAlerta("inpPregunta", "msjInputPregunta");
                 this.limpiarMensajeYAlerta("selRespuesta", "msjInputRespuesta");
                 this.form.reset();
+                this.form.tema = "";
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
                 this.subidor.imagenesAEliminar = [];
@@ -336,17 +379,6 @@
                 }
                 
                 
-                /*axios({
-                    method: 'GET',
-                    url: '/pregunta/show'
-                }).then(
-                    result => {
-                        this.pregunta = result.data[0];
-                    },
-                    error => {
-                        console.error(error)
-                    }
-                )*/
             },
             obtenerTemas() { ///Funcion para mostrar los temas
                 axios({
@@ -354,7 +386,11 @@
                     url: '/tema/all'
                 }).then(
                     result => {
-                        this.temas = result.data
+                        let temasApi = result.data[0];
+                  
+                        for( let i = 0; i <  temasApi.length; i++ ){
+                          this.temas.push({id: temasApi[i].id, text: temasApi[i].nombre_tema })
+                        }
                     },
                     error => {
                         console.error(error)
@@ -370,14 +406,14 @@
                 document.getElementById(idMensaje).innerHTML = "";
             },
             limpiarCampo(id) {
-                if (id === "tema") this.limpiarMensajeYAlerta("selTema", "msjSelectTema");
+                //if (id === "tema") this.limpiarMensajeYAlerta("selTema", "msjSelectTema");
                 if (id === "pregunta") this.limpiarMensajeYAlerta("inpPregunta", "msjInputPregunta")
                 if (id === "respuesta") this.limpiarMensajeYAlerta("selRespuesta", "msjInputRespuesta")
             },
             comprobarCampos(){
                 let existeError = false;
                 if (this.form.tema === ""){
-                    this.mostrarMensajeYAlerta("selTema", "msjSelectTema", "Este dato es obligatorio");
+                    //this.mostrarMensajeYAlerta("selTema", "msjSelectTema", "Este dato es obligatorio");
                     existeError = true;
                 }
                 if (this.form.pregunta === ""){

@@ -23,7 +23,7 @@
             </div>
 
             <!-- Cuerpo de la página -->
-            <div class="card">
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
                     <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
                         <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
@@ -31,24 +31,38 @@
                             <ul class="quick-links ml-auto">
                                 <li>
                                     <button type="button" class="btn btn-primary float-right btn-lg"
-                                        @click="btnGuardar">
+                                        @click="btnGuardar" style="border-radius: 25px;">
                                         <i class="fas fa-user-plus"></i> Registrar experto
                                     </button>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <label> <b> Busqueda por nombre: </b></label>
-                    <input placeholder="Ej. Juan Pérez" class="form-control mb-2" v-model="filters.nombre.value" />
+                    
+									<div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+										<div class="col-6" style="padding: 5px;">
+											<b> Termino de busqueda: </b>
+											<input class="form-control" type="search" placeholder="Ej. Juan Antonio" v-model="filters.nombre.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+										</div>
+										<div class="col-6" style="padding: 5px;">
+											<b>Campo de busqueda: </b>
+											<select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
+												<option value="nombre">Nombre</option>
+												<option value="apellido_paterno">Apellido paterno</option>
+												<option value="apellido_materno">Apellido materno</option>
+												<option value="matricula">Correo</option>
+											</select>
+										</div>
+									</div>
+									
                     <div class="table-responsive">
-                        <v-table :data="experto" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
-                            @totalPagesChanged="totalPages = $event" style="width:100%" class="table mb-2">
+                        <v-table :data="experto" :filters="filters" :currentPage.sync="currentPage" :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%" class="table table-hover">
 
-                            <thead slot="head" class="thead-dark">
+                            <thead slot="head">
                                 <v-th sortKey="nombre" defaultSort="desc">Nombre</v-th>
                                 <v-th sortKey="apellido_paterno" defaultSort="desc">Apellido Paterno</v-th>
                                 <v-th sortKey="apellido_materno" defaultSort="desc">Apellido Materno</v-th>
-                                <v-th sortKey="matricula" defaultSort="desc">Matricula</v-th>
+                                <v-th sortKey="matricula" defaultSort="desc">Correo</v-th>
                                 <th>Opciones</th>
                             </thead>
                             <tbody slot="body" slot-scope="{displayData}">
@@ -59,28 +73,40 @@
                                     <td>{{ experto.matricula }}</td>
                                     <td>
                                         <!-- Botón de editar -->
-                                        <button class="btn btn-warning" @click="btnEditar(experto.id,experto.nombre,experto.apellido_materno,experto.apellido_paterno,experto.matricula)">
-                                            <i class="fas fa-pen"></i> 
-                                        </button>
-
+                                        <a @click="btnEditar(experto.id,experto.nombre,experto.apellido_paterno,experto.apellido_materno,experto.matricula)">
+                                            <i class="fas fa-pen" style="color: #ffae00;"></i>   
+                                        </a>
+																				|
                                         <!-- Botón de eliminar (Lógicamente) -->
-                                        <button v-if="experto.eliminado=='0'" class="btn btn-danger"
+                                        <a v-if="experto.eliminado=='0'" 
                                             @click="eliminar(experto.id, experto.eliminado)">
-                                            Desactivar
-                                        </button>
+                                           <i class="fas fa-user-lock" style="color: #ff6258"></i> 
+                                        </a>
 
                                         <!-- Botón para activar a usuario eliminado -->
-                                        <button v-else class="btn btn-success"
+                                        <a v-else 
                                             @click="eliminar(experto.id, experto.eliminado)">
-                                            Activar
-                                        </button>
+                                           <i class="fas fa-unlock" style="color: #19d895"></i> 
+                                        </a>
 
                                     </td>
                                 </tr>
+															
+															<tr>
+																<td> <b> <p> Mostrando {{displayData.length}} de {{ experto.length }} registros </p> </b> </td>
+																<td></td>
+																<td></td>
+																<td></td>
+																<td></td>
+															</tr>
+															
+															
                             </tbody>
                         </v-table>
                     </div>
                     <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
+                  
+                  
                 </div>
             </div>
         </div>
@@ -113,7 +139,10 @@ export default{
 		this.getexperto()
 	},
 	methods: {
-		
+		cambiarCampoDeBusqueda(){
+			let x = document.getElementById("campoBusqueda").value;
+			this.filters.nombre.keys[0] = x;			
+		},
 		getexperto(){
 			axios({method: 'GET', url: 'show/experto'}).then(
 				result=> {
@@ -145,6 +174,14 @@ export default{
 				this.matricula=''
 				this.password=''
 				this.getexperto()
+        this.$swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Información almacenada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
+          })
 			})
 			.catch((err)=>{
 				console.log(err)
@@ -152,137 +189,219 @@ export default{
 		},
 		
 		btnGuardar: async function(){
-			const { value: formValues } = await this.$swal({
-					showClass: {
+			const valores = await this.$swal({
+					/*showClass: {
 						backdrop: 'swal2-noanimation',
 						popup: '',
 						icon: ''
 					},
 					hideClass: {
 						popup: '',
-					},
+					},*/
 					showCancelButton: true,
 					html:
 						`
 						<h3 class="text-left"> Registrar experto </h3>
-						<p class="text-left mt-0 mb-0"> Nombre: </p>
-						<input id="nombre" type="text" class="swal2-input" placeholder="Juan">
-						<p class="text-left mt-0 mb-0"> Apellido paterno: </p>
-						<input id="apellido_paterno" type="text" class="swal2-input" placeholder="Martínez">
+						<p class="text-left mt-0 mb-0"> Nombre<span style="color:red">*</span>: </p>
+						<input id="nombre" type="text" class="swal2-input" placeholder="Juan" style="margin: 0px 0px 5px 0px;">
+						<p class="text-left mt-0 mb-0"> Apellido paterno<span style="color:red">*</span>: </p>
+						<input id="apellido_paterno" type="text" class="swal2-input" placeholder="Martínez" style="margin: 0px 0px 5px 0px;">
 						<p class="text-left mt-0 mb-0"> Apellido materno: </p>
-						<input id="apellido_materno" type="text" class="swal2-input" placeholder="Peréz">
-						<p class="text-left mt-0 mb-0"> Matricula: </p>
-						<input id="matricula" type="text" class="swal2-input" placeholder="1234567">
-						<p class="text-left mt-0 mb-0"> Contraseña: </p>
-						<input id="password" type="password" class="swal2-input " placeholder="Contraseña">
+						<input id="apellido_materno" type="text" class="swal2-input" placeholder="Peréz" style="margin: 0px 0px 5px 0px;">
+						<p class="text-left mt-0 mb-0"> Matricula<span style="color:red">*</span>: </p>
+						<input id="matricula" type="text" class="swal2-input" placeholder="1234567" style="margin: 0px 0px 5px 0px;">
+						<p class="text-left mt-0 mb-0"> Contraseña<span style="color:red">*</span>: </p>
+						<input id="password" type="password" class="swal2-input " placeholder="Contraseña" style="margin: 0px 0px 5px 0px;">
+
+            <div id="div_error_matricula" style="display: none;" class="alert alert-danger" role="alert">
+              <span class="text-left" id="msjError">  </span>
+            </div>
+            <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
+
 						`,
 					focusConfirm: false,
-					showCancelButton: true,
-					confirmButtonText: 'Guardar',
-					confirmButtonColor: '#1cc88a',
-					cancelButttonColor: '#3085d6',
-					cancelButtonText: 'Cancelar',
-					preConfirm: () => {
-						return [
+          showCancelButton: true,
+          confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+          confirmButtonColor: '#2196f3',
+          cancelButtonColor: '#aaa',
+          cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+					preConfirm: async () => {
+						/*return [
 							this.apellido_paterno=document.getElementById('apellido_paterno').value,
 							this.apellido_materno=document.getElementById('apellido_materno').value,
 							this.nombre=document.getElementById('nombre').value,
 							this.matricula=document.getElementById('matricula').value,
 							this.password=document.getElementById('password').value
-						]
+						]*/
+            
+            let error = 0;
+              this.apellido_paterno=document.getElementById('apellido_paterno').value,
+              this.apellido_materno=document.getElementById('apellido_materno').value,
+              this.nombre=document.getElementById('nombre').value,
+              this.matricula=document.getElementById('matricula').value,
+              this.password=document.getElementById('password').value
+              
+              let mensajeError = document.getElementById('msjError');
+              
+              if(this.nombre== "" ||  this.apellido_paterno == "" ||  this.password == "" || this.matricula == ""){
+                error = 2;
+              }else{
+                  await axios.post('/verificarExistencia',
+                  {correo:this.matricula})
+                  .then((res)=>{
+                      if(res.data[0].length !== 0){
+                        error = 1;
+                      }
+                  })
+                  .catch((err)=>{
+                    console.log(err)
+                  })
+              }
+              
+              if(error === 1){
+                mensajeError.innerHTML = "El correo ya esta siendo usado, por favor elija otro";
+                document.getElementById('msjError').innerHTML = "El correo está en uso";
+                document.getElementById('div_error_matricula').style.display = "block";
+                return false;
+              }else if(error === 2) {
+                mensajeError.innerHTML = "Por favor, complete todos los campos requeridos";
+                document.getElementById('div_error_matricula').style.display = "block";
+                return false;
+              }else{
+                return [
+                  this.apellido_paterno=document.getElementById('apellido_paterno').value,
+                  this.apellido_materno=document.getElementById('apellido_materno').value,
+                  this.nombre=document.getElementById('nombre').value,
+                  this.matricula=document.getElementById('matricula').value,
+                  this.password=document.getElementById('password').value,
+                  error
+                ]
+              }
+            
 					}
 				
 				})
-					
-			
-			if( this.nombre == "" || this.apellido_materno == "" || 
-				this.apellido_paterno == "" || this.password == "" || 
-				this.matricula == ""){
-
-				// UX-UI TODO:
-				// Mostrar una animación o notificación en formularios
-			} else{
-
-				//funcion guardarAdmin
-				this.guardarExperto(
-					this.nombre,
-					this.apellido_materno,
-					this.apellido_paterno,
-					this.matricula,
-					this.password
-				);
-
-				const Toast = this.$swal.mixin({
-					toast: true,
-					position: 'top-end',
-					showConfirmButton: false,
-					timer: 3000
-				});
-
-				this.$swal.fire({
-					type: 'success',
-					title: '¡Experto Registrado!'
-				})
-
-			}
+      
+      if( valores.hasOwnProperty('value') ){
+          this.guardarExperto(
+            this.nombre,
+            this.apellido_materno,
+            this.apellido_paterno,
+            this.matricula,
+            this.password
+          );
+        }
+      
 		},
 		
 		
      	btnEditar:async function(id,nombre,apellido_paterno,apellido_materno,matricula){
-          const { value: formValues } = await this.$swal({
-					title: 'Editar experto',
-			  		showClass: {
+          const valores = await this.$swal({
+			  		/*showClass: {
 						backdrop: 'swal2-noanimation', // disable backdrop animation
 						popup: '',                     // disable popup animation
 						icon: ''                       // disable icon animation
 					},
 					hideClass: {
 						popup: '',                     // disable popup fade-out animation
-					},
+					},*/
 			  
 					html:
-						`<input id="nombre" type="text" class="swal2-input" placeholder="Nombre" value="`+nombre+`">
+						`
+            <h3 class="text-left"> Actualizar experto </h3>
+            <p class="text-left mt-0 mb-0"> Nombre<span style="color:red">*</span>: </p>
+            <input id="nombre" type="text" class="swal2-input" placeholder="Nombre" value="`+nombre+`">
+            <p class="text-left mt-0 mb-0"> Apellido paterno<span style="color:red">*</span>: </p>
             <input id="apellido_paterno" type="text" class="swal2-input" placeholder="Apellido Paterno" value="`+apellido_paterno+`">
+            <p class="text-left mt-0 mb-0"> Apellido materno<span style="color:red">*</span>: </p>
             <input id="apellido_materno" type="text" class="swal2-input" placeholder="Apellido Materno" value="`+apellido_materno+`">
-            <input id="matricula" type="text" class="swal2-input" placeholder="Matricula" value="`+matricula+`">
-            <input id="password" type="password" class="swal2-input" placeholder="Contraseña" value="secret">
-						<br> 
+            <p class="text-left mt-0 mb-0"> Correo<span style="color:red">*</span>: </p>
+            <input id="matricula" type="text" class="swal2-input" placeholder="Experto@experto.com" value="`+matricula+`">
+            <p class="text-left mt-0 mb-0"> Contraseña <span style="color:red">**</span> :</p>
+            <input id="password" type="password" class="swal2-input" placeholder="contraseña" >
+            
+            <div id="div_error_matricula" style="display: none;" class="alert alert-danger" role="alert">
+              <span class="text-left" id="msjError">  </span>
+            </div>
+            <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
+            <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">**</span> Deje en blanco si no desea actualizar </p>
+
             `,
 					focusConfirm: false,
 					showCancelButton: true,
-					confirmButtonText: 'Guardar',
-					confirmButtonColor: '#1cc88a',
-					cancelButttonColor: '#3085d6',
-			  cancelButtonText: 'Cancelar',
-					preConfirm: () => {
-						return [
+					confirmButtonText: '<i class="fas fa-save"></i> Guardar',
+          confirmButtonColor: '#2196f3',
+          cancelButtonColor: '#aaa',
+					cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+					preConfirm: async () => {
+						/*return [
 							this.apellido_paterno=document.getElementById('apellido_paterno').value,
 							this.apellido_materno=document.getElementById('apellido_materno').value,
 							this.nombre=document.getElementById('nombre').value,
               this.matricula=document.getElementById('matricula').value,
               this.password=document.getElementById('password').value,
               this.id = id
-						]
+						]*/
+            
+            let error = 0;
+            this.apellido_paterno=document.getElementById('apellido_paterno').value;
+            this.apellido_materno=document.getElementById('apellido_materno').value;
+            this.nombre=document.getElementById('nombre').value;
+            this.matricula=document.getElementById('matricula').value;
+            this.password=document.getElementById('password').value;
+            this.id = id
+            let mensajeError = document.getElementById('msjError');
+
+            if(this.nombre== "" ||  this.apellido_paterno == "" || this.matricula == ""){
+              error = 2;
+            }else{
+
+                if(matricula !== this.matricula ){
+                    await axios.post('/verificarExistencia',
+                    {correo:this.matricula})
+                    .then((res)=>{
+                        if(res.data[0].length !== 0){
+                          error = 1;
+                        }
+                    })
+                    .catch((err)=>{
+                      console.log(err)
+                    })
+
+                }
+
+            }
+
+            if(error === 1){
+              mensajeError.innerHTML = "El correo ya esta siendo usado, por favor elija otro";
+              document.getElementById('msjError').innerHTML = "El correo está en uso";
+              document.getElementById('div_error_matricula').style.display = "block";
+              return false;
+            }else if(error === 2) {
+              mensajeError.innerHTML = "Por favor, complete todos los campos requeridos";
+              document.getElementById('div_error_matricula').style.display = "block";
+              return false;
+            }else{
+              return [
+                this.apellido_paterno,
+                this.apellido_materno,
+                this.nombre,
+                this.matricula,
+                this.password,
+                error
+              ]
+            }
+            
 					}})
-					if(this.nombre== "" || this.apellido_materno == "" || this.apellido_paterno == "" || this.password == "" || this.matricula == ""){
-							/*this.$swal({
-								type: 'info',
-								title: 'Datos incompletos',
-							})*/
-					}
-					else{
-						this.editar(this.id,this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);//funcion guardarAdmin
-						const Toast = this.$swal.mixin({
-							toast: true,
-							position: 'top-end',
-							showConfirmButton: false,
-							timer: 3000
-						});
-						this.$swal.fire({
-							type: 'success',
-							title: '¡Experto Editado!'
-						})
-    }
+          
+          if( valores.hasOwnProperty('value') ){
+              this.editar(this.id,this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);
+          }
+        
     },
     
     
@@ -299,6 +418,16 @@ export default{
 				this.password=''
 				this.id = ''
 				this.getexperto()
+      
+        this.$swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Información actualizada',
+          showConfirmButton: false,
+          timer: 1500,
+          toast: true
+        })
+      
 				//console.log(res)
 			})
 				.catch((err)=>{
@@ -307,35 +436,6 @@ export default{
     },
       
       
-      
-    /*eliminar(id){  
-      axios.post('user/delete',{id:id}).then((res)=>{
-				this.nombre=''
-				this.id_rol=''
-        this.apellido_materno=''
-        this.apellido_paterno=''
-        this.matricula=''
-        this.password=''
-        this.id = ''
-				this.getexperto()
-				//console.log(res)
-        const Toast = this.$swal.mixin({
-							toast: true,
-							position: 'top-end',
-							showConfirmButton: false,
-							timer: 3000
-						});
-						this.$swal.fire({
-							type: 'success',
-							title: '¡Experto Eliminado!'
-						})
-			})
-				.catch((err)=>{
-					console.log(err)
-			   
-				})
-    
-    }*/
 		
 	eliminar(id, estado){ 
 		

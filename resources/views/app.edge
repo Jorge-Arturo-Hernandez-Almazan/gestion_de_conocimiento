@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	
-	<title>Sistema gestor de Conocimientos - UPV</title>
+	<title>Sistema de gestión del conocimineto </title>
 	
 	<!-- <link rel="shortcut icon" type="image/x-icon" href="/images/logo_icono.ico" /> -->
 
@@ -16,36 +16,124 @@
 	{{ style('css/main.css') }}
 	{{style('awesome/css/font-awesome.min.css')}}
 	{{style('arbol/foundation.css')}}
-	
-	
+
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-	
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
-<style>
+	<style>
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Roboto';
+			font-weight: normal;
+			font-style: normal;
+			color: #222222;
+			text-rendering: optimizeLegibility;
+			margin-top: 0.2rem;
+			margin-bottom: 0.5rem;
+			line-height: 1.4;
+			}
 
-  .swal2-actions {
-    text-align: right !important;
-  }
-  .swal-footer { 
-    text-align: right !important; 
-  } 
-  
-  .swal-modal .swal-footer { 
-    direction: rtl !important; 
-  }
-  
-</style>
+			body {
+				/*background: #f5f5f6;*/
+				background: #ffffff;
+				color: #222;
+				padding: 0;
+				margin: 0;
+				font-family: Roboto, Arial, sans-serif;
+				font-weight: normal;
+				font-style: normal;
+				line-height: 1.5;
+				position: relative;
+				cursor: auto;
+			}
+
+			
+
+			.page-header {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				width: 100%;
+				padding-bottom: 0px;
+				border-bottom: 0px solid #cdd6dc;
+				margin-bottom: 15px;
+			}
+
+			.navbar.default-layout .navbar-menu-wrapper {
+				transition: width 0.25s ease;
+				-webkit-transition: width 0.25s ease;
+				-moz-transition: width 0.25s ease;
+				-ms-transition: width 0.25s ease;
+				color: #001737;
+				padding-left: 15px;
+				padding-right: 15px;
+				width: calc(100% - 270px);
+				height: 63px;
+				/*-webkit-box-shadow: none;
+				box-shadow: none;*/
+			}
+
+			p {
+				font-family: inherit;
+				font-weight: normal;
+				font-size: 1rem;
+				line-height: 1.6;
+				margin-bottom: 0rem;
+				text-rendering: optimizeLegibility;
+			}
 
 
+			.sidebar > .nav .nav-item .nav-link {
+				padding: 15px 30px 15px 35px;
+			}
+
+			.table td, .table th {
+				padding: 20px 20px;
+			}
+
+			.table th, .table td {
+				border-top: none;
+			}
+
+			.table thead th {
+				font-weight: 600;
+				border-bottom-color: #000000;
+			}
+
+		.swal2-popup.swal2-modal {
+				border-radius: 15px;
+		}
+		
+		.table {
+				transition: box-shadow .3s;
+				
+
+			}
+
+		
+		.table:hover {
+			box-shadow: 0 0 11px rgba(33,33,33,.2); 
+		}
+		
+
+		.page-item {
+				margin-top:10px;
+		}
+
+		.select2-container {
+			width: 100% !important;
+			padding: 0;
+		}
+		
+	</style>
 </head>
 
 <body>
 	<div class="container-scroller">
 		
-		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" >
 			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 				
 				<a class="navbar-brand brand-logo" href="/">
@@ -56,7 +144,7 @@
             	<img src="/images/logo.png" alt="logo" /> </a>	
 			</div>
 			
-			<div class="navbar-menu-wrapper d-flex align-items-center">
+			<div class="navbar-menu-wrapper d-flex align-items-center" style="">
 				
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
@@ -69,14 +157,14 @@
 						
 						
 						
-						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-							<div class="dropdown-header text-center">
+						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown" style="border-radius: 15px;">
+							<div class="dropdown-header ">
 								<img class="img-md rounded-circle" src="/images/fotosperfil/{{ auth.user.foto }}" alt="Profile image">
-								<p class="mb-1 mt-3 font-weight-semibold">{{ auth.user.nombre }} {{auth.user.apellido_paterno}}</p>
+								<p class="mb-1 mt-3 font-weight-semibold">Nombre: {{ auth.user.nombre }} {{auth.user.apellido_paterno}}</p>
 								
 
 								
-								<p class="font-weight-light text-muted mb-0">{{ auth.user.matricula}}</p>
+								<p class="font-weight-light text-muted mb-0"> Matricula: {{ auth.user.matricula}}</p>
 							</div>
 							
 							<a class="dropdown-item" href="/perfil"> <i class="fas fa-user fa-xs"></i> Mi Perfil <i class="dropdown-item-icon ti-dashboard"></i></a>
@@ -110,7 +198,7 @@
 	</div>
 	<!-- content-wrapper ends -->
 	<!-- partial:partials/_footer.html -->
-	<footer class="footer">
+	<!-- <footer class="footer">
 			  <div class="container-fluid clearfix">
 				<span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
 				<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
@@ -119,26 +207,32 @@
 					
 				</span>
 			  </div>
-			</footer>
+			</footer> -->
 	</div>
 	<!-- main-panel ends -->
 	</div>
 	<!-- page-body-wrapper ends -->
 	</div>
 	
-	<script>
-		
-		window.idusuario = {{ auth.user.id }}
-
-	</script>
+	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://rawgit.com/select2/select2/master/dist/js/select2.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
 	<link href="https://rawgit.com/select2/select2/master/dist/css/select2.min.css" rel="stylesheet"/>
 
+	
+
 	{{script('js/main.js')}}
+	{{script('js/upadtess.js')}}
 	{{script('js/principal.js')}}
+	
+	<script>
+		//$.fn.modal.Constructor.prototype.enforceFocus = function() {};
+		$.fn.modal.Constructor.prototype._enforceFocus = function() {};
+		window.idusuario = {{ auth.user.id }}
+	</script>
+	
 </body>
 
 </html>

@@ -11,7 +11,7 @@
 						<h1 class="page-title"> Temas </h1>
 						<ul class="quick-links ml-auto">
 						<li>
-							<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd"> Temas </span> 
+							<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> </span>  <span style="color: #bdb9bd"> Temas </span> 
 						</li>
 						</ul>
 				  </div>
@@ -22,33 +22,35 @@
                 <div class="card">
                   <div class="card-body">
 					  
-					  
-					<div class="row" style="padding: 0 !important; margin: 0 !important; ">
-						<div class="col-md-6">
-							<h3> Lista de temas </h3>
+                    
+                    <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+						<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+							<h2 class="page-title"> Lista de temas </h2>
+							
+							
 						</div>
-
-						<div class="col-md-6">
-							
-							
-							
-							<button @click="btnGuardar" class="btn btn-success float-right"> <i class="fas fa-plus-circle"></i> Registrar Tema</button>
-							
-							
-
-
-						</div>	
 					</div>
+                    
 					  
 					  
+					  <div class="alert alert-primary" role="alert">
+              
+              <h2>
+                Atención
+              </h2>
+              <i class="fas fa-info-circle"></i> Los temas aquí mostrados son los pertenecientes al grafo de conocimineto, esta página es unicamente para mostrar la información de los mismos
+              <br>
+              <b>Nota: </b> Si desea realizar una cambio en los temas, por favor diríjase a la interfaz del grafo de conocimineto. 
+            </div>
                    
-					  <label>Busqueda por nombre: </label>
-      				<input class="form-control mb-2" v-model="filters.nombre_tema.value"/>
+					  <p> <b> Busqueda por nombre:  </b> </p>
+      				<input type="search" class="form-control mb-2" placeholder="Matemáticas" v-model="filters.nombre_tema.value"/>
 					     <div v-if="verificarPreguntas!=false" class="alert alert-danger" role="alert">{{verificarPreguntas}}</div>
 					  
-					  <p>
-					 Total de temas: {{ this.temas.length }}	
-					</p>
+                    
+            
+                    
+					  
 					  
 						
 					<div class="table-responsive">
@@ -57,7 +59,7 @@
 						   :data="temas" 
 						   :filters="filters" 
 						   :currentPage.sync="currentPage"
-							:pageSize="10"
+							:pageSize="5"
 							@totalPagesChanged="totalPages = $event"
 						   style="width:100%"
 						   class="table mb-2"
@@ -65,16 +67,10 @@
 					  
 					<thead slot="head" class="thead-dark">
 						<v-th sortKey="nombre_tema" defaultSort="desc">Tema</v-th>
-						<v-th sortKey="padre" defaultSort="desc">Depende de </v-th>
+						<v-th sortKey="padre" defaultSort="desc"> Depende de </v-th>
+						<v-th sortKey="totalAbiertas" defaultSort="desc" > Total de preguntas </v-th>
 						
-						<v-th sortKey="totalAbiertas" defaultSort="desc" >#? Abiertas</v-th>
-						<v-th sortKey="totalNumericas" defaultSort="desc">#? Numericas</v-th>
-						<v-th sortKey="totalBooleanas" defaultSort="desc">#? V/F</v-th>
-						<v-th sortKey="totalMultiple" defaultSort="desc">#? Multiple </v-th>
-						<v-th sortKey="totalCalculadas" defaultSort="desc">#? Calculada </v-th>
-						<v-th sortKey="totalCMultiple" defaultSort="desc">#? M. Calculada </v-th>
-						
-						<th>Opciones</th>
+						<!-- <th>Opciones</th> -->
 					</thead>
 					<tbody slot="body" slot-scope="{displayData}">
 						<tr v-for="temas in displayData" :key="temas.id">
@@ -82,36 +78,26 @@
 							<td  calss="text-left">{{temas.nombre_tema}}</td>
 							<td calss="text-left">{{temas.padre}}</td>
 							
-							<td v-if="temas.totalAbiertas>=configuracion.num_preguntas_abiertas" calss="text-left">{{temas.totalAbiertas}}</td>
-              <td v-else calss="text-left" ><font color="red">{{temas.totalAbiertas}}</font></td>
+							<td calss="text-left">
+                Breves: {{temas.totalAbiertas}} <br>
+                Númericas: {{temas.totalNumericas}} <br>
+                Verdadero/falso: {{temas.totalBooleanas}} <br>
+                Multiples: {{temas.totalMultiple}} <br>
+                Calculadas: {{temas.totalCalculadas}} <br>
+                Calculadas multiples: {{temas.totalCMultiple}} <br>
+              </td>
               
-              <td v-if="temas.totalNumericas>=configuracion.num_preguntas_numericas" calss="text-left">{{temas.totalNumericas}}</td>
-              <td v-else calss="text-left" ><font color="red">{{temas.totalNumericas}}</font></td>
-              
-              <td v-if="temas.totalBooleanas>=configuracion.num_preguntas_boleanas" calss="text-left">{{temas.totalBooleanas}}</td>
-              <td v-else calss="text-left" ><font color="red">{{temas.totalBooleanas}}</font></td>
-              
-              <td v-if="temas.totalMultiple>=configuracion.num_preguntas_multiples" calss="text-left">{{temas.totalMultiple}}</td>
-              <td v-else calss="text-left" ><font color="red">{{temas.totalMultiple}}</font></td>
-              
-              <td v-if="temas.totalCalculadas>=configuracion.num_preguntas_calculadas" calss="text-left">{{temas.totalCalculadas}}</td>
-              <td v-else calss="text-left" ><font color="red">{{temas.totalCalculadas}}</font></td>
-              
-              <td v-if="temas.totalCMultiple>=configuracion.num_preguntas_calculadas_multiples" calss="text-left">{{temas.totalCMultiple}}</td>
-              <td v-else calss="text-left" ><font color="red">{{temas.totalCMultiple}}</font></td>
+
     			
-							<td class="text-right">
+							<!-- <td class="text-right">
 								
 								
 								<button v-on:click="btnEditar(temas.id,temas.nombre_tema,temas.padre,temas.id_padre)" class="btn btn-warning"> <i class="fas fa-pen"></i> </button>
 
 										
-										<!--<button id="btnGroupDrop1"  type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fas fa-trash"></i>
-										</button> -->
 											
 																	
-							</td>
+							</td> -->
 							
 							
 							
@@ -126,7 +112,9 @@
 						:totalPages="totalPages"
 					  />
 					  
-					  <p> #? - Total de Preguntas </p>
+                    
+					  <p> Total de registros: {{ this.temas.length }} </p>
+                    
                   </div>
 					
 					

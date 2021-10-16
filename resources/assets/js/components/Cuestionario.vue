@@ -1,285 +1,280 @@
 <template>
-  <div class="">
-    <div class="col-xl-12">
-		
-		<div class="col-12 mt-4">
-			<div class="page-header">
-				
-				<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-					<h1 class="page-title"> Cuestionario </h1>
-					<ul class="quick-links ml-auto">
-					<li>
-						<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 								</span>  <span style="color: #bdb9bd"> Cuestionario <i class="fas fa-angle-right"></i> </span> Cuestionario
-					</li>
-					</ul>
-			  </div>
-			</div>
-		</div>
-		
-      <div class="card">
-        <div class="card-body">
-         	
-			<div class="row">
-				<div class="col-md-6">
-					<!--<h3> Cuestionario </h3>-->
-
-				</div>
-				<!--<div class="col-md-6">
-					<button  type="button" class="btn btn-success float-right" @click =	"cargarCuestionario"> <i class="fas fa-sync-alt"></i> Reiniciar cuestionario</button>
-
-				</div>-->	
-				
-				<hr />
-			</div>
-			
-			<div class="row">
-				
-				<div>
-					<div class="images" v-viewer="{movable: false}">
-					  <img v-for="src in images" :src="src" :key="src">
-					</div>
-					<button type="button" @click="show">Show</button>
-				  </div>
-				
-				
-				
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-			  		<i class="fas fa-calculator"></i>
-				</button>
-				
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"> Calculadora </h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="row">
-								<input type="text" id="campo_calculadora">
-							  </div>
-
-							  <div class="row" >
-								<div><button v-on:click="botonesCalculadora('ac')">AC</button></div>
-								<div><button v-on:click="botonesCalculadora('(')">(</button></div>
-								<div><button v-on:click="botonesCalculadora(')')">)</button></div>
-								<div><button v-on:click="botonesCalculadora('/')">/</button></div>
-							  </div>
-
-							  <div class="row" >
-								<div><button v-on:click="botonesCalculadora('7')">7</button></div>
-								<div><button v-on:click="botonesCalculadora('8')">8</button></div>
-								<div><button v-on:click="botonesCalculadora('9')">9</button></div>
-								<div><button v-on:click="botonesCalculadora('*')">*</button></div>
-							  </div>
-
-							  <div class="row" >
-								<div><button v-on:click="botonesCalculadora('4')">4</button></div>
-								<div><button v-on:click="botonesCalculadora('5')">5</button></div>
-								<div><button v-on:click="botonesCalculadora('6')">6</button></div>
-								<div><button v-on:click="botonesCalculadora('+')">+</button></div>
-							  </div>
-
-							  <div class="row" >
-								<div><button v-on:click="botonesCalculadora('1')">1</button></div>
-								<div><button v-on:click="botonesCalculadora('2')">2</button></div>
-								<div><button v-on:click="botonesCalculadora('3')">3</button></div>
-								<div><button v-on:click="botonesCalculadora('-')">-</button></div>
-							  </div>
-							  <div class="row" >
-								<div><button data-toggle="modal" data-target="#funciones">fun</button></div>
-								<div><button v-on:click="botonesCalculadora('0')">0</button></div>
-								<div><button v-on:click="botonesCalculadora('.')">.</button></div>
-								<div><button v-on:click="botonesCalculadora('=')">=</button></div>
-							  </div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				
-				<div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog" aria-labelledby="funcionesModalLabel" aria-hidden="true">
-				  <div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-					  <div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Funciones</h5>
-					  </div>
-					  <div class="modal-body">
-
-						<div class="row">                     
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' abs (')">abs</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' acos (')">acos</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' acosh (')">acosh</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' asin (')">asin</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' asinh (')">asinh</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' atan (')">atan</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' atan2 (')">atan2</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' atanh (')">atanh</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' bindec (')">bindec</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' ceil (')">ceil</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' cos (')">cos</button></div>
-						  </div>
-						</div>
-
-						<div class="row">                     
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' cosh (')">cosh</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' decbin (')">decbin</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' decoct (')">decoct</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' deg2rad (')">deg2rad</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' exp (')">exp</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' expm1 (')">expm1</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' floor (')">floor</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' log10 (')">log10</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' log1p (')">log1p</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' log (')">log</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' max (')">max</button></div>
-						  </div>
-						</div>
-
-						<div class="row">  
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' min (')">min</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' pi ( )')">pi</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' pow (')">pow</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' rad2deg (')">rad2deg</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' round (')">round</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' sin (')">sin</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' sinh (')">sinh</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' sqrt (')">sqrt</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' tan (')">tan</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' tanh (')">tanh</button></div>
-						  </div>
-						  <div class="col-1">
-							<div><button v-on:click="botonesCalculadora(' ,')">,</button></div>
-						  </div>
-						</div>
-
-					  </div>
-						<!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button-->
-					</div>
-
-				  </div>
-				</div>
-				
-				
-			</div>
-			
-			<div class="row">
-        
-				  <!--div class="grid"-->
-            
-            	<div class="col-12">
-            
-              		<div id="quiz">
-
-						<h3 id="question">
-						  <!--<p ></p>-->
-						</h3>
-
-						<p id="noOpciones">
-
-						</p>
-
-						<div class="buttons" id="buttons">
-						</div>
-						<hr style="margin-top: 50px">
-						<button id="next"> Siguiente </button>
-						<footer>
-						  <p id="tag_topic">Tema</p>
-						  <p id="progress"></p>
-						</footer>
-					  </div>
-             	</div>
-
-				
-				
-        <!-- funciones de la calculadora -->
-        
-            
-				  <!--/div-->
-        
-      		</div>
-		
+  <div>
+    <div class="col-xl-12 mt-4">
+        <div class="page-header">
+            <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                <h1 class="page-title"> Cuestionario </h1>
+                <ul class="quick-links ml-auto">
+                <li>
+                    <span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
+                    </span>  
+                    <span style="color: #bdb9bd"> Cuestionario <i class="fas fa-angle-right"></i> 
+                    </span> Ver cuestionario
+                </li>
+                </ul>
+          </div>
         </div>
-      </div>
+
+
+        <div class="card" style="border-radius: 15px;">
+            <div class="card-body"> 
+                <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
+                    <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
+                        <ul class="quick-links ml-auto">
+                            <li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+							
+							
+
+                <div class="row">
+									
+
+									
+									
+									
+                    <div class="col-12 mt-2 pt-2" >
+                        <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal" data-target="#exampleModal" style="border-radius: 25px;">                            
+                            <i class="fas fa-calculator fa-5x"></i>  
+                        </button>
+                        <div id="quiz mt-3">
+                            <h3 id="question"> </h3>
+													
+														
+													<div class="row mt-3">
+														
+	
+													<div v-for="(img,i) in this.imagenesPregunta" :key="img" class="col-6" style="text-align: center;">
+															<img class="ml-2 mr-2" :src="img" style="border: 0.5px solid black;">
+															<p>
+																<b> Imagen {{i+1}} </b>
+															</p>
+													</div>
+													
+													</div>
+													 
+													
+													
+													
+													
+															
+													
+                            
+                          
+                            <p id="noOpciones"> </p>
+                            <div class="buttons" id="buttons"> </div>
+                            <hr style="margin-top: 50px">
+                        </div>
+                        <button type="button" class="btn btn-primary float-right " id="next" style="border-radius: 25px;"> <i class="fas fa-chevron-right"></i> Siguiente </button>
+                        
+                        <p id="tag_topic">Tema</p>
+                        
+                        
+                        
+                        
+                        <p id="progress"></p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+      
+    <div class="row">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"> Calculadora </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                  <input type="text" class="form-control" id="campo_calculadora" style="text-align:right;font-size:35px;">
+                                </div>
+
+                                <div class="form-group">
+                                  <table style="table-layout: fixed; width: 100%;">
+                                    <tr>
+                                      <td> <button v-on:click="botonesCalculadora('ac')" style="width: 100%; height: 100%;">AC</button> </td>
+                                      <td> <button v-on:click="botonesCalculadora('(')"  style="width: 100%; height: 100%;">(</button>   </td>
+                                      <td> <button v-on:click="botonesCalculadora(')')"  style="width: 100%; height: 100%;">)</button>   </td>
+                                      <td> <button v-on:click="botonesCalculadora('/')"  style="width: 100%; height: 100%;">/</button>   </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <button v-on:click="botonesCalculadora('7')" style="width: 100%; height: 100%;">7</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('8')" style="width: 100%; height: 100%;">8</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('9')" style="width: 100%; height: 100%;">9</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('*')" style="width: 100%; height: 100%;">*</button> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <button v-on:click="botonesCalculadora('4')" style="width: 100%; height: 100%;">4</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('5')" style="width: 100%; height: 100%;">5</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('6')" style="width: 100%; height: 100%;">6</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('+')" style="width: 100%; height: 100%;">+</button> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <button v-on:click="botonesCalculadora('1')" style="width: 100%; height: 100%;">1</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('2')" style="width: 100%; height: 100%;">2</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('3')" style="width: 100%; height: 100%;">3</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('-')" style="width: 100%; height: 100%;">-</button> </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <button data-toggle="modal" data-target="#funciones" style="width: 100%; height: 100%;">fun</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('0')" style="width: 100%; height: 100%;">0</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('.')" style="width: 100%; height: 100%;">.</button> </td>
+                                        <td> <button v-on:click="botonesCalculadora('=')" style="width: 100%; height: 100%;">=</button></td>
+                                    </tr>
+
+                                  </table>  
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog" aria-labelledby="funcionesModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Funciones</h5>
+                      </div>
+                      <div class="modal-body">
+
+                        <div class="row">                     
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' abs (')">abs</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' acos (')">acos</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' acosh (')">acosh</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' asin (')">asin</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' asinh (')">asinh</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' atan (')">atan</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' atan2 (')">atan2</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' atanh (')">atanh</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' bindec (')">bindec</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' ceil (')">ceil</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' cos (')">cos</button></div>
+                          </div>
+                        </div>
+
+                        <div class="row">                     
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' cosh (')">cosh</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' decbin (')">decbin</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' decoct (')">decoct</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' deg2rad (')">deg2rad</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' exp (')">exp</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' expm1 (')">expm1</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' floor (')">floor</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' log10 (')">log10</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' log1p (')">log1p</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' log (')">log</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' max (')">max</button></div>
+                          </div>
+                        </div>
+
+                        <div class="row">  
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' min (')">min</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' pi ( )')">pi</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' pow (')">pow</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' rad2deg (')">rad2deg</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' round (')">round</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' sin (')">sin</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' sinh (')">sinh</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' sqrt (')">sqrt</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' tan (')">tan</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' tanh (')">tanh</button></div>
+                          </div>
+                          <div class="col-1">
+                            <div><button v-on:click="botonesCalculadora(' ,')">,</button></div>
+                          </div>
+                        </div>
+
+                      </div>
+                        <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button-->
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+      
+      
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import 'viewerjs/dist/viewer.css'
-import { directive as viewer } from "v-viewer"
 	
 export default {
-	directives: {
-      viewer: viewer({
-        debug: true,
-      }),
-    },
-	
+
 	data() {
 		return {
 			pregunta: [],
@@ -290,102 +285,62 @@ export default {
 			configuracion: [],
 			topic: [],
 			numero_tema: 0,
-			images: [
-			  "https://picsum.photos/200/200",
-			  "https://picsum.photos/300/200",
-			  "https://picsum.photos/250/200"
-			]
+      imagenesPregunta: []
 		};
 	},
-
-	async created(){
-  // 
-		await this.obtenerConfiguracion();
-		//await this.checkQuestionnaireStart();
+	created(){
 		this.confirmAttempt();
-		//this.checkQuestionnaireStart();
-		await this.getopic();
-		
-		
 	},
-	mounted(){
-		//this.ver_resultado();
-	}
-	,
   	methods: {
-		show () {
-        	const viewer = this.$el.querySelector('.images').$viewer
-        	viewer.show()
-      	},
-		checkQuestionnaireStart: async function(){
-			return axios({method: 'get', url: 'questions/checkQuestionnaireStart'}).then(
-			result=>{
-				//console.log(result);
-				if(result.data){
-				   this.confirmAttempt();
-				}else{ 
-					this.$swal.fire({
-						title: 'No es posible iniciar el cuestionario',
-						text: "Contacte al administrador",
-						icon: 'warning',
-						confirmButtonColor: '#3085d6',
-						confirmButtonText: 'Aceptar',
-						cancelButtonText: 'Cancelar',
-					  }).then( async (result) => {        
-						window.location.href = "/tablero";
-					  })
-				}
-			},error=>{
-				console.error(error)
-			})
-		},
-      
-       	confirmAttempt: function(){
-		  this.$swal.fire({
-			title: '¿Estas Seguro?',
-			text: "¿Estas seguro que quieres contestar el cuestionario?",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Si',
-			  cancelButtonText: 'Cancelar',
-		  }).then( async (result) => {        
-			if (result.value) {
-				await this.getopic();
-				await this.getpreguntas();        
-			}
-			else{
-				window.location.href = "/tablero";
-			}
-		  })
-		},
-		
+        anteriorPregunta(){
+          console.log("Anterior pregunta pulsado");
+            
+        },
+        
+        siguientePregunta(){
+          console.log("Siguiente pregunta pulsado");  
+        },
+        
+        confirmAttempt: function(){
+          this.$swal.fire({
+              title: 'Comenzar cuestionario',
+              text: "Para empezar el cuestionario, presiona el boton empezar ",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: '<i class="fas fa-play-circle"></i> Empezar',
+              confirmButtonColor: '#2196f3',
+              cancelButtonColor: '#aaa',
+              cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+          }).then( async (result) => {        
+              if (result.value) {
+                await this.obtenerConfiguracion();
+                await this.getopic();
+                await this.getpreguntas();        
+              }
+              else{
+                window.location.href = "/tablero";
+              }
+          })
+        },
+
 	
 		storeResult: async function(ponderacion){
-			
-			
 			this.pregunta = [];
-			await axios.post('/score/add',{id_tema: this.topic[this.numero_tema].id, ponderacion: ponderacion, clasificacion: 1}
-			).then((res)=>{
-			})
-			.catch((err)=>{
+			await axios.post('/score/add',{id_tema: this.topic[this.numero_tema].id, ponderacion: ponderacion, clasificacion: 1}).then((res)=>{
+			}).catch((err)=>{
 				console.log(err)
 			})
-			// llamar al metodo de ponderacion
-			await axios({method: 'get', url: '/arbol/obtenerCaminos/'+this.topic[this.numero_tema].id}).then(
-			result=>{
-				//console.log("Tema evaluado " + this.topic[this.numero_tema].nombre_tema );
-			},error=>{
-				console.error(error)
-			})
-		
+			await axios({method: 'get', url: '/arbol/obtenerCaminos/'+this.topic[this.numero_tema].id}).then(result=>{},error=>{console.error(error) })
 		},
       
 		getopic: async function(){
 			return axios({method: 'get', url: 'topic/getopic'}).then(
 			result=>{
 				this.topic = result.data[0];
+                console.log("Tema obtenido");
+                console.log(this.topic);
 			},error=>{
 				console.error(error)
 			})
@@ -404,14 +359,27 @@ export default {
 			
 			return axios({method: 'get', url: 'pregunta/showPreguntas/'+ this.topic[this.numero_tema].id}).then(
 				async result => {
-					
 					this.pregunta = result.data.banco_preguntas;
+          
+                    for(let i = 0; i < this.pregunta.length; i++){
+                        this.pregunta[i].imagenes = [];
+                      
+                        await axios({method: 'get', url: '/imagen/pregunta/' + this.pregunta[i].id_pregunta }).then(
+                        async resultado => {
+                            this.pregunta[i].imagenes = resultado.data.imagenes[0];
+                        },error=> {
+                            console.error(error)
+                        })
+                   }
+          
+                    console.log(this.pregunta);
+          
            			for(var i=0;i<this.pregunta.length;i++)
             			if(this.pregunta[i].tipo==5)
 					    	this.pCalculadas[i]=this.pregunta[i].id_pregunta;
             		else if (this.pregunta[i].tipo==6)
               			this.pCalculadasMultiples[i]=this.pregunta[i].id_pregunta;
-          			await this.getComodines(); // 
+          			await this.getComodines();
           
           
           
@@ -425,9 +393,7 @@ export default {
         const preguntasCalculadas = this.pCalculadas.concat(this.pCalculadasMultiples);
         	axios.post('pregunta/getComodines/',{pregunta: preguntasCalculadas}
 			).then( async result=>{
-          //----------------------------
           this.comodines = result.data.comodines;
-          //console.log(this.comodines);
           await this.convertirComodines();
 			})
 			.catch((err)=>{
@@ -438,7 +404,6 @@ export default {
       
     convertirComodines : async function()
     {
-      //console.log("convertirComodines");
       for(var i=0;i<this.comodines.length;i++)
       {
         var valor=this.comodines[i].valor;
@@ -462,8 +427,6 @@ export default {
                }
           }
         }
-       //     console.log("comodin "+this.comodines[i].comodin+" valor "+this.comodines[i].valor+" id pregunta "+this.comodines[i].id_pregunta);
-
       }
       await this.reemplazarComodinesEnPregunta();
     },
@@ -472,26 +435,21 @@ export default {
     {
       for(var i=0;i<this.pregunta.length;i++)
       {
-        //var com=[];
-        //console.log("entro");
-        //console.log(this.pregunta[i])
+
         if(this.pregunta[i].tipo==5)
         {
           var comodinesPregunta = [];
           for(var j=0;j<this.comodines.length;j++)
             if(this.pregunta[i].id_pregunta==this.comodines[j].id_pregunta)
             {
-              //console.log("j "+j)
-              //com[j]=this.comodines[j];
+
               comodinesPregunta.push(this.comodines[j]);
-               //console.log("pregunta "+this.comodines[j].comodin+" "+this.comodines[j].valor+" "+this.comodines[j].id_pregunta);
+
             }
-          //console.log("tamaño "+comodinesPregunta.length);
+
      
             for (var k = 0; k < comodinesPregunta.length; k++) {             
-                //console.log("k "+k+" comodin "+com[k].comodin+" "+com[k].valor);
-                //console.log("k: "+k)
-                //console.log(com[k]);
+
                 while(this.pregunta[i].pregunta.indexOf(comodinesPregunta[k].comodin) != -1)
                   this.pregunta[i].pregunta = this.pregunta[i].pregunta.replace(comodinesPregunta[k].comodin,comodinesPregunta[k].valor);
               }
@@ -536,7 +494,7 @@ export default {
 		
 		cargarCuestionario: async function (topic, prguntass) {
 				
-      var questions = [];
+                var questions = [];
 				for(var i=0; i < prguntass.length; i++)
 				{
 					var pregunta = prguntass[i].pregunta
@@ -545,21 +503,20 @@ export default {
 					var up = 0;
 					var down = 0;
 					var value = 0;
-          var decimales = 0;
+                    var decimales = 0;
+                    let imagenesPregunta = prguntass[i].imagenes;
+                    
 					if(prguntass[i].tipo == 2 || prguntass[i].tipo == 5 || prguntass[i].tipo == 6)
-          {
-								//console.log("Entro a la condicion del margen arriba y abajo");
-								//console.log("aplicable arriba " + prguntass[i].aplicableArriba);
-								//console.log("aplicable abajo " + prguntass[i].aplicableAnbajo);
-								 up = prguntass[i].aplicableArriba;
-								 down = prguntass[i].aplicableAnbajo;
-								 value = prguntass[i].rango;
+                    {
+                         up = prguntass[i].aplicableArriba;
+                         down = prguntass[i].aplicableAnbajo;
+                         value = prguntass[i].rango;
 					}
 					if(prguntass[i].tipo == 5 || prguntass[i].tipo == 6){
-					decimales = prguntass[i].decimales;
-				 }
+                        decimales = prguntass[i].decimales;
+                     }
 						
-					questions.push(new Question(id,pregunta, [], [], tipo, up, down, value, decimales) );
+					questions.push(new Question(id,pregunta, [], [], tipo, up, down, value, decimales, imagenesPregunta) );
 					
 				}
 
@@ -571,13 +528,14 @@ export default {
 					this.questions = questions;
 					this.questionIndex = 0;
 				}
+            
+                
 
 				Quiz.prototype.getQuestionIndex = function() {
 					return this.questions[this.questionIndex];
 				}
 
 				Quiz.prototype.guess = function(answer) {
-					//console.log("ress del usuario " + answer);
 					return this.getQuestionIndex().isCorrectAnswer(answer);
 				}
 
@@ -588,9 +546,13 @@ export default {
 				Quiz.prototype.nextQuestion = function (){
 					this.questionIndex++;
 				}
+                
+                Quiz.prototype.getImages = function(){
+                    return this.getQuestionIndex().imagenes;
+                }
 
-				function Question(id, text, choices, answer, type, up, down, value, decimales ) 
-      {
+				function Question(id, text, choices, answer, type, up, down, value, decimales, imagenes ) 
+                {
 					this.id = id;
 					this.text = text;
 					this.choices = choices;
@@ -599,17 +561,14 @@ export default {
 					this.up = up;
 					this.down = down;
 					this.value = value;
-          this.decimales = decimales;
+                    this.decimales = decimales;
+                    this.imagenes = imagenes;
 				}
 
 				Question.prototype.isCorrectAnswer = function(choice) {
 					var correcta = false;
-          			
-					//console.log("Respuesta usuario " + choice );
-					//console.log("Respuesta correcta " + this.answer[0]);
 					
-					switch( this.type )
-          {
+					switch( this.type ) {
 						case 1:
 							if(choice == this.answer[0].toString().toLowerCase() )
 								correcta = true;
@@ -620,22 +579,11 @@ export default {
 							var arriba=this.answer[0]+Math.abs(Number(this.answer[0]*this.value*this.up))
 							var abajo=this.answer[0]-Math.abs(Number(this.answer[0]*this.value*this.down))
 				  			
-							/*console.log("up " + this.up)
-							console.log("down " + this.down)
-				  			console.log("respuesta " + this.answer[0]);
-							console.log("Arriba " + arriba)
-              				console.log("Abajo "  + abajo)
-				  			console.log("Margen de error " + this.value);
-				  			console.log("Choice " + choice);*/
-							
 				  			if(choice>=abajo && choice<=arriba){
-								correcta = true;
-								//console.log("Correcta");
-							}else{
-								//console.log("Incorrecta");
-							}
-							
-				  			//console.log("-----------------------------");
+								  correcta = true;
+                  
+							  }
+
 				  
 							break;
 						case 3:
@@ -654,24 +602,10 @@ export default {
 						  this.answer[0] = Number(this.answer[0]);
 						  var arriba=this.answer[0]+Math.abs(Number(this.answer[0]*this.value*this.up))
 						  var abajo=this.answer[0] - Math.abs(Number(this.answer[0]*this.value*this.down))
-							/*console.log("up " + this.up)
-							console.log("down " + this.down)
-				  			console.log("respuesta " + this.answer[0]);
-							console.log("Arriba " + arriba)
-              				console.log("Abajo "  + abajo)
-				  			console.log("Margen de error " + this.value);
-				  			console.log("Choice " + choice);*/
-				  			
-				  
+
 						  if(choice>=abajo && choice<=arriba){
-							  correcta = true;
-							  //console.log("Correcta");
-						  }else{
-							  //console.log("Incorrecta");
+							  correcta = true;							 
 						  }
-						   
-				 			//console.log("-----------------------------");
-				  
 						break;
 
 						case 6:
@@ -901,51 +835,62 @@ export default {
 				let _this = this
 			 
 				async function populate() {
-					 
+          
 					if(quiz.isEnded()) {
-              
+                        
+            
 						if(quiz.questions.length > 0){
-              				
-							var total = Math.round( (quiz.score / quiz.questions.length ) * 100);
-							//console.log("NUMERO DE TEMA ANTES" + this.numero_tema);
-							await _this.storeResult(total);
-							
-							
-							if(_this.numero_tema < 4){
-								quiz = "";
-								questions = [];
-								//tipo = 0;
-							 	_this.numero_tema = _this.numero_tema + 1;
-								await _this.getpreguntas();
-							}else{
-								showScores();
-							}
-						
-            			}
+                                    var total = Math.round( (quiz.score / quiz.questions.length ) * 100);
+                                    await _this.storeResult(total);
+
+                                    // if(_this.numero_tema < 4  ){
+
+
+                                    if(_this.numero_tema <= _this.pregunta.length-1 ){
+                                      quiz = "";
+                                      questions = [];
+                                      _this.numero_tema = _this.numero_tema + 1;
+                                      await _this.getpreguntas();
+                                    }else{
+                                      showScores();
+                                    }
+
+                        }
           
 						
 						
 					} else {  
-						//Limpiar el div de las opciones
 						document.getElementById("buttons").innerHTML = "";
-
-						// mostrar pregunta
 						var element = document.getElementById("question").innerHTML = quiz.getQuestionIndex().text;
-						//element;
+                        
+            let imgstr = "";
+						_this.imagenesPregunta = [];
+            for(let ii = 0; ii < quiz.getQuestionIndex().imagenes.length; ii++){
+                imgstr = "/imagenes/preguntas/" + quiz.getQuestionIndex().imagenes[ii].nombre;
+              
+                
+                _this.imagenesPregunta.push(imgstr);
+              
+                //let img = document.getElementById("imgPregunta");
+                //img.src = imgstr;
+                /*let img = document.createElement("img");
+                img.src = imgstr;
+              
+                let divImg = document.getElementById("imgPregunta");
+                divImg.appendChild(img);*/
+              
+            
+            }
+            
 
+            //document.getElementById("imgPregunta").innerHTML = imgstr;
+            
+            console.log( quiz.getQuestionIndex().imagenes );
+            
+                        
 						var tema =  document.getElementById("tag_topic");
-						tema.innerHTML = "Tema: " + _this.topic[_this.numero_tema].nombre_tema;
+						tema.innerHTML = "<b> Tema: </b> " + _this.topic[_this.numero_tema].nombre_tema;
 						
-						/*var numero_opciones = document.getElementById("noOpciones");
-						if(quiz.getQuestionIndex().type == 4){
-						   if(quiz.getQuestionIndex().answer.length < 2){
-							numero_opciones.innerHTML = "  (Seleccione " + quiz.getQuestionIndex().answer.length +" Opcion)";
-						   }else{
-							   numero_opciones.innerHTML = "  (Seleccione " + quiz.getQuestionIndex().answer.length +" Opciones )";
-						   }
-						}else{
-							numero_opciones.innerHTML = "";
-						}*/
 						
 						if(quiz.getQuestionIndex().type == 4){
 							await axios({method: 'get', url: '/pregunta/opciones/'+quiz.getQuestionIndex().id}).then(
@@ -962,23 +907,21 @@ export default {
 							)
 						}
             
-            var opcionesAux = [];
-            if(quiz.getQuestionIndex().type == 6){
+                        var opcionesAux = [];
+                        if(quiz.getQuestionIndex().type == 6){
 							await axios({method: 'get', url: '/pregunta/opcionescalculadasmultiples/'+quiz.getQuestionIndex().id}).then(
-								result=> {
-                  var ops = [];
+					        result=> {
+                                var ops = [];
 									for( var i = 0; i < result.data.length; i++ ){
-                    ops.push(result.data[i].opcion);
-                    opcionesAux.push(result.data[i]);
+                                        ops.push(result.data[i].opcion);
+                                        opcionesAux.push(result.data[i]);
 									}
-                  quiz.getQuestionIndex().choices = ops;
+                                    quiz.getQuestionIndex().choices = ops;
 								},error=> {
 									console.error(error)
 								}
 							)
 						}
-						
-            //console.log(this.opciones)
 						
 						var choices = quiz.getQuestionIndex().choices;
 						
@@ -1040,19 +983,19 @@ export default {
 									zona_botones.appendChild(label);
 								}
 							break;
-              case 5:
+                            case 5:
 								var input_respuesta = document.createElement("input");
 								input_respuesta.type = "number";
 								input_respuesta.id = "input_respuesta";
 								var zona_botones = document.getElementById("buttons");
 								zona_botones.appendChild(input_respuesta);
 							break;
-              case 6:
-                for(var i = 0; i < choices.length; i++) {
+                            case 6:
+                                for(var i = 0; i < choices.length; i++) {
 									var label = document.createElement("label");
 									//label.innerHTML = choices[i];
-                  var power = Math.pow(10, opcionesAux[i].decimales);
-                  label.innerHTML = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
+                                    var power = Math.pow(10, opcionesAux[i].decimales);
+                                    label.innerHTML = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
 									label.className = "container";
 									label.id = "opcl_"+i;
 									var span = document.createElement("checkmark");
@@ -1060,14 +1003,14 @@ export default {
 									var button = document.createElement("input");
 									button.type = "checkbox"
 									//button.text = choices[i];
-                  button.text = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
+                                    button.text = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
 									button.id = "opc_"+i;
 									label.appendChild(button);
 									label.appendChild(span);
 									var zona_botones = document.getElementById("buttons");
 									zona_botones.appendChild(label);
 								}
-              break;
+                                break;
 						}
 						showProgress();
 					}
@@ -1109,8 +1052,8 @@ export default {
 
 					await axios.get('/arbol/obtenerResultados'
 					).then((res)=>{
-						//console.log("Temas");
-						//console.log(res);
+
+                        
 						for(var i = 0; i < res.data.length; i++){
 
 							if(res.data[i].clasificacion == 1){
@@ -1591,5 +1534,46 @@ export default {
 		-ms-transform: rotate(45deg);
 		transform: rotate(45deg);
 	  }
+	
+	
+	#carouselExampleIndicators {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.item img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selected img {
+	opacity:0.5;
+}
+
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background: none;
+  border: none;
+}
+
+.carousel-control.left {
+  margin-left: -300px;
+}
+
+.carousel-control.right {
+  margin-right: -300px;
+}
+
+.carousel-control {
+  width: 0%;
+}
+	
+	
 	
 </style>

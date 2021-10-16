@@ -14,16 +14,20 @@
 				  </div>
 				</div>
 			</div>
-            <div class="card">
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
+									
+									
+									
+									
                   <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
                     <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
                       <h2 class="page-title"> Lista de administradores </h2>
 
                       <ul class="quick-links ml-auto">
                         <li>
-                          <button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar">
-                            <i class="fas fa-user-plus"></i> Registrar administrador
+                          <button  type="button" class="btn btn-primary float-right btn-lg" @click="btnGuardar" style="border-radius: 25px;">
+                            <i class="fas fa-user-plus"></i> Nuevo
                           </button>
                         </li>
                       </ul>
@@ -31,8 +35,21 @@
                   </div>
 
 
-                  <label> <b> Busqueda por nombre: </b> </label>
-                  <input class="form-control mb-2" placeholder="Ej. Juan Pérez" v-model="filters.nombre.value"/>
+                  <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+										<div class="col-6" style="padding: 5px;">
+											<b> Termino de busqueda: </b>
+											<input class="form-control" type="search" placeholder="Ej. Juan Antonio" v-model="filters.nombre.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+										</div>
+										<div class="col-6" style="padding: 5px;">
+											<b>Campo de busqueda: </b>
+											<select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
+												<option value="nombre">Nombre</option>
+												<option value="apellido_paterno">Apellido parterno</option>
+												<option value="apellido_materno">Apellido materno</option>
+												<option value="matricula">Correo</option>
+											</select>
+										</div>
+									</div>
 
                   <div class="table-responsive">
 
@@ -43,9 +60,9 @@
                       :pageSize="5"
                       @totalPagesChanged="totalPages = $event"
                        style="width:100%"
-                       class="table mb-2">
+                       class="table table-hover">
 
-                  <thead slot="head" class="thead-dark">
+                  <thead slot="head">
                     <v-th sortKey="nombre" defaultSort="desc">Nombre</v-th>
                     <v-th sortKey="apellido_paterno" defaultSort="desc">Apellido Paterno</v-th>
                     <v-th sortKey="apellido_materno" defaultSort="desc">Apellido Materno</v-th>
@@ -60,13 +77,26 @@
                       <td> {{ admin.matricula }} </td>
                       <td>
 
-                        <button class="btn btn-warning"  @click="btnEditar(admin.id,admin.nombre,admin.apellido_materno,admin.apellido_paterno,admin.matricula)"><i class="fas fa-pen"></i>Editar</button>
-                        <button  class="btn btn-danger" @click="eliminar(admin.id)"><i class="fas fa-trash"></i>Eliminar</button>
+                        <a @click="btnEditar(admin.id,admin.nombre,admin.apellido_paterno, admin.apellido_materno,admin.matricula)"> <i class="fas fa-pen " style="color: #ffae00;"></i> </a>
+												|
+                        <a   @click="eliminar(admin.id)"> <i class="fas fa-trash " style="color: #ff6258"></i> </a>
+
 
                       </td>
 
 
                     </tr>
+										
+										<tr>
+											<td> <b> <p> Mostrando {{displayData.length}} de {{ admin.length }} registros </p> </b> </td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+
+										</tr>
+										
                   </tbody>
                   </v-table>
 
@@ -76,6 +106,8 @@
                     :currentPage.sync="currentPage"
                     :totalPages="totalPages"
                     />
+                  
+                  
                   </div>
                 </div>
               </div>
@@ -108,7 +140,10 @@ export default{
 		this.getAdmin()
 	},
 	methods: {
-    
+    cambiarCampoDeBusqueda(){
+			let x = document.getElementById("campoBusqueda").value;
+			this.filters.nombre.keys[0] = x;			
+		},
 		getAdmin(){
 			axios({method: 'GET', url: 'admin/show'}).then(
 				result=> {
@@ -141,14 +176,14 @@ export default{
 		btnGuardar: async function(){
       
 				const valores = await this.$swal({
-					showClass: {
-						backdrop: 'swal2-noanimation', // disable backdrop animation
-						popup: '',                     // disable popup animation
-						icon: ''                       // disable icon animation
+					/*showClass: {
+						backdrop: 'swal2-noanimation',
+						popup: '',
+						icon: ''
 					},
 					hideClass: {
-						popup: '',                     // disable popup fade-out animation
-					},
+						popup: '',
+					},*/
 					html:
 						`
                 <h3 class="text-left"> Registrar administrador </h3>
@@ -179,6 +214,7 @@ export default{
             allowOutsideClick: false,
             allowEscapeKey: false,
 					  preConfirm: async () => {
+              
               let error = 0;
               this.apellido_paterno=document.getElementById('apellido_paterno').value,
               this.apellido_materno=document.getElementById('apellido_materno').value,
@@ -247,14 +283,14 @@ export default{
     btnEditar:async function(id,nombre,apellido_paterno,apellido_materno,matricula){
           const valores = await this.$swal({
 					
-            showClass: {
+            /*showClass: {
 						backdrop: 'swal2-noanimation',
 						popup: '',
 						icon: ''
 					},
 					hideClass: {
 						popup: ''
-					},
+					},*/
 					html:
 						`
             <h3 class="text-left"> Actualizar administrador </h3>
@@ -281,8 +317,10 @@ export default{
             
 					confirmButtonText: '<i class="fas fa-save"></i> Guardar',
            confirmButtonColor: '#2196f3',
-					cancelButttonColor: '#3085d6',
+            cancelButtonColor: '#aaa',
 					cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
 					preConfirm: async () => {
 						  
               let error = 0;
@@ -337,7 +375,6 @@ export default{
           
           if( valores.hasOwnProperty('value') ){
             
-              //this.editar(this.id,this.nombre,this.apellido_materno,this.apellido_paterno,this.matricula,this.password);
             
               axios.post('user/actualizar',
                 {id:id,nombre: this.nombre, nivel_academico:"",id_rol:1,apellido_materno:this.apellido_materno,apellido_paterno:this.apellido_paterno,password:this.password,matricula:this.matricula})
@@ -423,7 +460,7 @@ export default{
           
             this.$swal.fire({
 							position: 'top-end',
-              icon: 'warning',
+              icon: 'success',
               title: 'Datos eliminados con éxito',
               showConfirmButton: false,
               timer: 1500,
@@ -452,14 +489,5 @@ export default{
 </script>
 
 <style>
-  
-  .swal-footer { 
-    text-align: right !important; 
-  } 
-  
-  .swal-modal .swal-footer { 
-    direction: rtl !important; 
-  }
-  
 </style>
 

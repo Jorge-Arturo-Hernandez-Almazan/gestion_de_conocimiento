@@ -237,6 +237,14 @@ class PreguntaController {
 		banco_preguntas = banco_preguntas.concat(preguntasAbiertas[0]);
 		banco_preguntas = banco_preguntas.concat(preguntaCalculadas[0]);
     banco_preguntas = banco_preguntas.concat(preguntaCalculadasMultiples[0]);
+    
+    // select * from banco_preguntas inner join pregunta_imagen on banco_preguntas.id = pregunta_imagen.id_imagen inner join imagenes on imagenes.id = pregunta_imagen.id_imagen;
+    
+    /*for(let i = 0; i < banco_preguntas.length; i++ ){
+        
+        
+        
+    }*/
 		
 		banco_preguntas.sort(() => Math.random() - 0.5);
 		
@@ -290,6 +298,7 @@ class PreguntaController {
     const aplica_arriba = request.post().arriba;
     const aplica_abajo = request.post().abajo;
     const decimales = request.post().decimales;
+    const imagenesAEliminar = request.post().imagenesAEliminar;
 		
     const update1 = await Database.raw("UPDATE banco_preguntas SET pregunta = '" + reactivo + "', id_tema = '" + tema + "' WHERE id = '"+id+"'");
     const update2 = await Database.raw("UPDATE opciones SET opcion = '" + respuesta + "' WHERE id_pregunta = '"+id+"'");
@@ -305,7 +314,19 @@ class PreguntaController {
       const com = await Database.insert({comodin:comodines[i], valor_comodin:valorComodines[i], id_opcion:id_opcion}).into('comodines');
     }
 		
-		return "success";
+    if(imagenesAEliminar){
+      
+       for(let i = 0; i < imagenesAEliminar.length; i++){
+          await Database.raw('DELETE FROM imagenes WHERE id = ?', [imagenesAEliminar[i].idImagen]);
+          const output = execSync('rm /root/SistemaKMS/public/' + imagenesAEliminar[i].imagen , { encoding: 'utf-8' });
+        }
+      
+    }
+    
+		return response.json({message:'Se ha modificado la pregunta'})
+    
+    
+		//return "success";
     
   }
 	
@@ -348,12 +369,12 @@ class PreguntaController {
     let resultado = "";
 		const{id} = request.only(['id']) 
     
-    /*let imagenesAEliminar = request.post().imagenesAEliminar;
+    let imagenesAEliminar = request.post().imagenesAEliminar;
     
     for(let i = 0; i < imagenesAEliminar.length; i++){
 			await Database.raw('DELETE FROM imagenes WHERE id = ?', [imagenesAEliminar[i].idImagen]);
 			const output = await execSync('rm /root/SistemaKMS/public/imagenes/preguntas/' + imagenesAEliminar[i].nombre , { encoding: 'utf-8' });
-		}*/
+		}
     
 		const banco_preguntas1 = await Database.raw('DELETE FROM opciones WHERE id_pregunta = ?',[id])
 		const banco_preguntas3 = await Database.raw('DELETE FROM banco_preguntas WHERE id = ?',[id])
@@ -366,9 +387,6 @@ class PreguntaController {
 	async preguntanodo({request,response,auth}){
 		
 		var id_usuario = auth.user.id;
-		/*const{id} = request.only(['id'])
-		const banco_preguntas = await Database.select('id','nombre_tema', 'nivel').from('temas').where('id',id)
-		return response.json(banco_preguntas)*/
 		
 		const{id} = request.only(['id'])
 		const banco_preguntas = await Database.select('id','nombre_tema', 'nivel').from('temas').where('id',id)
@@ -509,7 +527,7 @@ class PreguntaController {
     const margen_error = await Database.insert({id_pregunta: ultimo_id, rango: margen, aplicableArriba: aplica_arriba, aplicableAnbajo: aplica_abajo}).into("margen_errors");
     
     
-		return "success";
+		return response.json({message:'Se ha registrado la pregunta', ultimo_id})
     
     
 	}
@@ -524,6 +542,16 @@ class PreguntaController {
 		const banco_preguntas3 = await Database.raw('DELETE FROM opciones WHERE id_pregunta = '+request.post().id)
     const banco_preguntas4 = await Database.raw('delete from configuracion_preguntas_calculadas where id_pregunta= '+request.post().id)
 		const banco_preguntas5 = await Database.raw('DELETE FROM banco_preguntas WHERE id = '+request.post().id)
+    
+    
+    let imagenesAEliminar = request.post().imagenesAEliminar;
+    
+    for(let i = 0; i < imagenesAEliminar.length; i++){
+			await Database.raw('DELETE FROM imagenes WHERE id = ?', [imagenesAEliminar[i].idImagen]);
+			const output = await execSync('rm /root/SistemaKMS/public/imagenes/preguntas/' + imagenesAEliminar[i].nombre , { encoding: 'utf-8' });
+		}
+    
+    
 		return response.json({message:'Se ha eliminado la pregunta'})
   }
 	
@@ -568,12 +596,21 @@ class PreguntaController {
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema ' +
 			'WHERE tipo = 6')
-		var opciones=[]
+    var opciones=[]
+    
+     const opcionesAct = await Database.raw('select * from opciones where id_pregunta = 121048');
+   for (var a of banco_preguntas[0]) 
+    {
+      const opcionesAct = await Database.raw('select * from opciones where id_pregunta = 121048');
+      opciones.push( opcionesAct[0]  );
+      
+    }
+		
 		//const opciones = await Database.raw('SELECT * FROM opciones')
     
     const comodines = await Database.raw('SELECT * FROM comodines')
 		
-		
+		//return response.json({ opciones:opciones })
 		return response.json({banco_preguntas:banco_preguntas, opciones:opciones, comodines:comodines})
 	}
   
@@ -664,6 +701,15 @@ class PreguntaController {
 			'select banco_preguntas.id as idpregunta, imagenes.id as idImagen, imagenes.alias as alias, imagenes.nombre from banco_preguntas inner join pregunta_imagen on banco_preguntas.id = pregunta_imagen.id_pregunta inner join imagenes on pregunta_imagen.id_imagen = imagenes.id;')
 
 		return response.json({todasImagenes: imagenesPreguntas})
+		
+	}
+  
+  
+  async obtenerImagenesPregunta({params, response}){
+		const imagenesPregunta = await Database.raw(
+			'select banco_preguntas.id as idpregunta, imagenes.id as idImagen, imagenes.alias as alias, imagenes.nombre from banco_preguntas inner join pregunta_imagen on banco_preguntas.id = pregunta_imagen.id_pregunta inner join imagenes on pregunta_imagen.id_imagen = imagenes.id where banco_preguntas.id = ?', [ params.id ])
+
+		return response.json({imagenes: imagenesPregunta})
 		
 	}
 	

@@ -8,29 +8,19 @@ const Database = use('Database')
 class ConfiguracionController {
   
 	async cargarMargen({response}){
-		
 		const margen = await Database.raw('SELECT rango_por_defecto	FROM configuracion_cuestionarios; ' );
-
 		return response.json(margen[0][0])
-		
 	} 
  
 	async obtenerConfiguracionCuestionario({response}){
 		const configuraciones = await Database.raw('SELECT * FROM configuracion_cuestionarios; ');
-		
 		return response.json(configuraciones[0]);
 	}
-	
   
 	async obtenerTotalPreguntas({response}){
-		
-    // select temas.id, temas.nombre_tema, banco_preguntas.tipo, count(banco_preguntas.tipo) from temas inner join banco_preguntas on temas.id = banco_preguntas.id_tema group by banco_preguntas.tipo, temas.nombre_tema;
-		//const totalPreguntasPorTipo = await Database.raw('select temas.id, temas.nombre_tema, banco_preguntas.tipo, count(banco_preguntas.tipo) as totalPreguntas from temas inner join banco_preguntas on temas.id = banco_preguntas.id_tema group by banco_preguntas.tipo, temas.nombre_tema;');
     const totalPreguntasPorTipo = await Database.raw('select temas.nombre_tema, banco_preguntas.tipo, count(banco_preguntas.tipo) as totalPreguntas from temas inner join banco_preguntas on temas.id = banco_preguntas.id_tema group by banco_preguntas.tipo, temas.nombre_tema;');
-    const temas = await Database.raw('select id, nombre_tema, nivel from temas;');
-
+    const temas = await Database.raw('select id, nombre_tema, nivel from temas where nivel > 1;');
 		return response.json({totalPreguntasPorTipo, temas});
-			
 	}
 	
 	async guardarconfiguracion({request,response}){

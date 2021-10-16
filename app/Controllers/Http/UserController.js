@@ -339,10 +339,11 @@ class UserController {
     
     
    
-  //return response.json({message:'Actualizado', })  
+    //return response.json({message:'Actualizado', })  
     
-  return response.json({id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_rol})
+    return response.json({id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_rol})
   }
+  
    // actualizar usuario alumno
   async actualizarA({request,response}){
    
