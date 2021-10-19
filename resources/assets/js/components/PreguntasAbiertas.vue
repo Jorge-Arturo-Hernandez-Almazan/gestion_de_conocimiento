@@ -112,14 +112,13 @@
                     </div>
                     <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
                   
-                    <p> Total de registros: {{ this.preguntaAbierta.length }} </p>
 
 
-                    <div class="modal fade" id="registrarPregunta" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
+                    <div class="modal animated animate__bounceIn" id="registrarPregunta" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content" style="border-radius: 15px;">
+                                <!-- <div class="modal-header">
 
                                     <h5 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
                                         pregunta </h5>
@@ -129,34 +128,31 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                </div>
+                                </div> -->
                                 <div class="modal-body">
+                                  
+                                    <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
+                                        pregunta </h3>
+                                    <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
 
                                     <p class="text-left mb-0"> <b> Pregunta: </b></p>
-                                    <textarea id="pregunta" type="text" class="form-control mt-0 mb-0"
-                                        placeholder="Pregunta" @focus="limpiarCampos('pregunta')"></textarea>
+                                    <textarea rows="4" id="pregunta" type="text" class="form-control"
+                                        placeholder="Pregunta" @focus="limpiarCampos('pregunta')" style="margin:0px; font-size: 15px; line-height: 20px;"> </textarea>
                                     <span id="msjInputPregunta"> </span>
 
-                                    <p class="text-left mt-2 mb-0"> <b> Respuesta: </b> </p>
-                                    <textarea id="respuesta" type="text" class="form-control mt-0 mb-0"
-                                        placeholder="Respuesta" @focus="limpiarCampos('respuesta')"></textarea>
+                                    <p class="text-left"> <b> Respuesta: </b> </p>
+                                    <textarea rows="1" id="respuesta" type="text" class="form-control"
+                                        placeholder="Respuesta" @focus="limpiarCampos('respuesta')"  style="margin:0px; font-size: 15px; line-height: 20px;"></textarea>
                                     <span id="msjInputRespuesta"> </span>
 
-                                    <p class="text-left mt-2 mb-0"> <b> Tema: </b> </p>
-                                    <select id="id_tema" value="${this.temas}" name="temas"
-                                        class="form-control mt-0 mb-0" @focus="limpiarCampos('tema')">
-                                        <option value="">Tema</option>
-
-                                        <option v-for="t in temas[0]" :value="t.id">
-                                            {{ t.nombre_tema }}
-                                        </option>
-                                    </select>
+                                    <p class="text-left"> <b> Tema: </b> </p>
+                                    <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema" />
                                     <span id="msjSelectTema"> </span>
                                   
 
-                                    <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
+                                    <p class="text-left" style="margin-top: 8px;"> <b> Imagenes: </b> </p>
                                     <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                        style="border-style: dashed; width: 100%;">
+                                        style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
                                         <input type="file" id="assetsFieldHandle"
                                             class="w-px h-px opacity-0 overflow-hidden absolute"
                                             @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png"
@@ -182,23 +178,20 @@
                                             <tr v-for="imagen in subidor.imagenesVistaPrevia">
                                                 <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
                                                         style=" width: 15em;"> </td>
-                                                <td><button class="btn btn-danger" type="button" @click="remove(imagen)"
-                                                        title="Remove file"> <i class="fas fa-trash-alt"></i> </button>
+                                                <td>
+                                                  <a  @click="remove(imagen)" title="Eliminar la imagen"> <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
-
-                                </div>
-
-                                <div class="modal-footer">
-
-                                    <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary">
-                                        Editar </button>
-                                    <button v-else type="button" @click="btnGuardar" class="btn btn-primary"> Guardar
+                                    
+                                    <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;">  <i class="fas fa-ban"></i> Cerrar
                                     </button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cancelar
+                                    <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
+                                        <i class="fas fa-save"></i>  Guardar </button>
+                                    <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;"> <i class="fas fa-save"></i> Guardar
                                     </button>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -206,20 +199,15 @@
 
 
 
-                    <div class="modal fade" id="modalParaVerImagenes" tabindex="-1" role="dialog"
+                    <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
-                                    </h5>
-
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content" style="border-radius: 15px;">
+                                
                                 <div class="modal-body">
+                                  
+                                  <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
+                                    </h3>
 
                                     <div style="width: 100%;">
 
@@ -251,13 +239,10 @@
 
 
                                     </div>
-
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cerrar
+                                    <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 " style="border-radius: 25px;"> <i class="fas fa-ban"></i> Cerrar
                                     </button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -284,7 +269,7 @@
                 id_tema: "",
                 respuesta: "",
                 pregunta: "",
-                tipo: "",
+                tipo: 1,
                 temas: [],
                 id: "",
                 nombre_tema: "",
@@ -317,6 +302,9 @@
             }
         },
         methods: {
+            cambioSelect(val){
+              this.limpiarCampos("tema");
+            },
             cambiarCampoDeBusqueda(){
               let x = document.getElementById("campoBusqueda").value;
               this.filters.pregunta.keys[0] = x;			
@@ -392,7 +380,10 @@
                     url: "/tema/all"
                 }).then(
                     result => {
-                        this.temas = result.data;
+                        let temasApi = result.data[0];
+                        for( let i = 0; i <  temasApi.length; i++ ){
+                          this.temas.push({id: temasApi[i].id, text: temasApi[i].nombre_tema })
+                        }
                     },
                     error => {
                         console.error(error);
@@ -431,9 +422,8 @@
                 this.pregunta = inputPregunta.value;
                 this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
                     /[\u0300-\u036f]/g, "").replace(/ /g, "")
-                this.tipo = 1
-                this.id_tema = selectTema.value;
-                if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "") {
+                //this.id_tema = selectTema.value;
+                if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" ) {
                     // Alertar al usuario sobre campos vacios
                     if (this.id_tema == "") {
                         selectTema.style.border = "1px solid #ff6258";
@@ -488,9 +478,9 @@
                 let selectTema = document.getElementById("id_tema");
                 this.modoEdicion = 1;
                 this.id = id;
+                this.id_tema = id_tema;
                 inputRespuesta.value = respuesta;
                 inputPregunta.value = pregunta;
-                selectTema.value = id_tema;
                 let numeroMayorDeImagen = 0;
                 for (let i = 0; i < imagenes.length; i++) {
                     this.subidor.acomodarImagen("/imagenes/preguntas/" + imagenes[i].nombre, 1, imagenes[i].idImagen);
@@ -499,6 +489,10 @@
                     }
                 }
                 this.subidor.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
+              
+                this.limpiarCampos("tema");
+                this.limpiarCampos("pregunta");
+                this.limpiarCampos("respuesta");
             },
             cambiarModo() {
                 let inputPregunta = document.getElementById("pregunta");
@@ -506,7 +500,7 @@
                 let selectTema = document.getElementById("id_tema");
                 inputRespuesta.value = "";
                 inputPregunta.value = "";
-                selectTema.value = "";
+                //selectTema.value = "";
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
                 this.subidor.contadorImagen = 0;
@@ -514,6 +508,11 @@
                 this.subidor.ultimaImagenEnPreguntaAEditar = 0;
                 this.subidor.imagenesAEliminar = [];
                 this.modoEdicion = 0;
+                this.id_tema = "";
+              
+                this.limpiarCampos("tema");
+                this.limpiarCampos("pregunta");
+                this.limpiarCampos("respuesta");
             },
             editar() {
                 // Referencia de los elementos del formulario.
@@ -527,8 +526,7 @@
                 this.pregunta = inputPregunta.value;
                 this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
                     /[\u0300-\u036f]/g, "").replace(/ /g, "")
-                this.tipo = 1
-                this.id_tema = selectTema.value;
+                //this.id_tema = selectTema.value;
                 if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "") {
                     // Alertar al usuario sobre campos vacios
                     if (this.id_tema == "") {
@@ -559,7 +557,6 @@
                             await this.subirImagenes(this.id);
                             await this.getPreguntaAbierta();
                             this.id = "";
-                            this.tipo = "";
                             this.respuesta = "";
                             this.pregunta = "";
                             this.id_tema = "";
@@ -583,9 +580,10 @@
                     text: "Esto no podrá revertirse",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Aceptar'
+                    confirmButtonColor: '#ff6258',
+                    cancelButtonColor: '#AAAAAA',
+                    confirmButtonText: '<i class="fas fa-check-circle"></i> Aceptar',
+                    cancelButtonText: '<i class="fas fa-ban"></i> Cerrar'
                 }).then((result) => {
                     if (result.value) {
                         axios.post("/pregunta/delete", {
