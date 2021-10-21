@@ -11,6 +11,8 @@
 	Route.get('logout','UserController.logout')
 
 
+Route.get('/saludame/:nombre/:edad', 'SaludarController.metodoSaludar');
+
 Route.get('/pruebapython', 'PonderacionController.pruebaPython');
 
   Route.get('temas/count','TemaController.temacount') 
