@@ -163,10 +163,10 @@ class PreguntaController {
 			'INNER JOIN opciones o on o.id_pregunta = b.id '+
       'WHERE tipo = 4;')
 		
-		const opciones = await Database.raw('SELECT * FROM opciones')
+		//const opciones = await Database.raw('SELECT * FROM opciones')
 		
 		
-		return response.json({banco_preguntas:banco_preguntas, opciones:opciones})
+		return response.json({banco_preguntas:banco_preguntas})
     //return response.json({banco_preguntas:banco_preguntas})
 	}
 	

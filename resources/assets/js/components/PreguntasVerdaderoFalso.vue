@@ -32,11 +32,6 @@
                         </div>
                     </div>
                   
-
-                      <Select2 v-model="form.tema" :options="temas" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
-                  
-
-                <h4>Value: {{ form.tema }}</h4>
                   
                     <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
                       <div class="col-6" style="padding: 5px;">
@@ -84,6 +79,7 @@
                                             <a @click="editarPregunta({id:pregunta.id_pregunta, pregunta: pregunta.pregunta, respuesta: pregunta.opcion, tipo: 3, tema:pregunta.id_tema}, pregunta.imagenes)">
                                                 <i class="fas fa-pen" style="color: #ffae00;"></i>  
                                             </a>
+                                            |
                                             <a @click="eliminarPregunta(pregunta.id_pregunta)"> 
                                                 <i class="fas fa-trash" style="color: #ff6258"></i> 
                                             </a>
@@ -105,22 +101,17 @@
                       
                       
                       
-                        <div class="modal fade" id="registrarPregunta" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar pregunta </h5>
-                                        <h5 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                        <div class="modal animated animate__bounceIn" id="registrarPregunta" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content" style="border-radius: 15px;">
+                                    
                                     <div class="modal-body">
-                                      
+                                        <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar pregunta </h3>
+                                        <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
                                         <p class="text-left mb-0"> <b> Pregunta: </b> </p>
-                                        <textarea v-model="form.pregunta" id="inpPregunta" type="text" class="form-control mt-0 mb-0"
-                                            placeholder="Pregunta" @focus="limpiarCampo('pregunta')"></textarea>
+                                        <textarea rows="4" v-model="form.pregunta" id="inpPregunta" type="text" class="form-control mt-0 mb-0"
+                                            placeholder="Pregunta" @focus="limpiarCampo('pregunta')" style="margin:0px; font-size: 15px; line-height: 20px;"></textarea>
                                       
                                         <span id="msjInputPregunta" style="color: #ff6258;"> </span>
                                       
@@ -133,12 +124,12 @@
                                         <span id="msjInputRespuesta" style="color: #ff6258;"> </span>
                                         
                                         <p class="text-left mt-2 mb-0"> <b> Tema: </b> </p>
-                                        <Select2 v-model="form.tema" :options="this.temas" />
+                                        <Select2 :options="this.temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema" />
                                         
                                         <span id="msjSelectTema" style="color: #ff6258;"> </span>
                                       
                                         <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
-                                        <div @dragover="dragover" @dragleave="dragleave" @drop="drop" style="border-style: dashed; width: 100%;">
+                                        <div @dragover="dragover" @dragleave="dragleave" @drop="drop" style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
                                             <input type="file" id="assetsFieldHandle"
                                                 class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
                                                 ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
@@ -162,40 +153,40 @@
                                                 <tr v-for="imagen in subidor.imagenesVistaPrevia">
                                                     <td class="d-flex justify-content-center"> <img :src="imagen.imagen" style=" width: 15em;"> </td>
                                                     <td>
-                                                        <button class="btn btn-danger" type="button" @click="remove(imagen)" title="Remove file"> 
-                                                            <i class="fas fa-trash-alt"></i> 
-                                                        </button>
+                                                        <a  @click="remove(imagen)" title="Eliminar la imagen"> <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
+                                      
+                                        
+                                        
+                                        <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;"> 
+                                             <i class="fas fa-ban"></i> Cancelar
+                                        </button>
+                                        <button v-if="modoEdicion" type="button" @click="actualizarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
+                                            <i class="fas fa-save"></i> Editar 
+                                        </button>
+                                        <button v-else type="button" @click="registrarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
+                                            <i class="fas fa-save"></i> Guardar
+                                        </button>
+                                        
+                                      
                                     </div>
-                                    <div class="modal-footer">
-                                        <button v-if="modoEdicion" type="button" @click="actualizarPregunta" class="btn btn-primary">
-                                            Editar 
-                                        </button>
-                                        <button v-else type="button" @click="registrarPregunta" class="btn btn-primary">
-                                            Guardar
-                                        </button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> 
-                                            Cancelar
-                                        </button>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="modalParaVerImagenes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel"> 
-                                            Imagenes adjuntas en la pregunta
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                        <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content"  style="border-radius: 15px;">
+                                    
                                     <div class="modal-body">
+                                      
+                                        <h3 class="modal-title" id="exampleModalLabel"> 
+                                            Imagenes adjuntas en la pregunta
+                                        </h3>
+                                      
                                         <div style="width: 100%;">
                                             <table style="list-style-type: none; width:100%">
                                                 <tr>
@@ -222,10 +213,10 @@
                                           
                                           
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cerrar
+                                      
+                                        <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 " style="border-radius: 25px;"> <i class="fas fa-ban"></i> Cerrar
                                         </button>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -255,6 +246,7 @@
                 currentPage: 1,
                 totalPages: 0,
                 temas: [],
+                id_tema: '',
                 filters: {
                     pregunta: {
                         value: '',
@@ -288,6 +280,10 @@
             }
         },
         methods: {
+            cambioSelect(val){
+              this.limpiarMensajeYAlerta("id_tema", "msjSelectTema");
+            },
+          
             myChangeEvent(val){
                 console.log(val);
             },
@@ -332,11 +328,11 @@
                 this.subidor.subirImagenes(id);
             },
             resetearDatos(){
-                //this.limpiarMensajeYAlerta("selTema", "msjSelectTema");
+                this.limpiarMensajeYAlerta("id_tema", "msjSelectTema");
                 this.limpiarMensajeYAlerta("inpPregunta", "msjInputPregunta");
                 this.limpiarMensajeYAlerta("selRespuesta", "msjInputRespuesta");
                 this.form.reset();
-                this.form.tema = "";
+                this.id_tema = "";
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
                 this.subidor.imagenesAEliminar = [];
@@ -412,8 +408,8 @@
             },
             comprobarCampos(){
                 let existeError = false;
-                if (this.form.tema === ""){
-                    //this.mostrarMensajeYAlerta("selTema", "msjSelectTema", "Este dato es obligatorio");
+                if (this.id_tema === ""){
+                    this.mostrarMensajeYAlerta("id_tema", "msjSelectTema", "Este dato es obligatorio");
                     existeError = true;
                 }
                 if (this.form.pregunta === ""){
@@ -433,10 +429,11 @@
                         pregunta:   this.form.pregunta,
                         respuesta:  this.form.respuesta,
                         tipo:       this.form.tipo,
-                        id_tema:    this.form.tema
+                        id_tema:    this.id_tema
                     })
                     .then(async (res) => {
                         this.form.reset();
+                        this.id_tema = "";
                         
                         $('#registrarPregunta').modal('hide');
                         await this.subidor.subirImagenes(res.data.ultimo_id);
@@ -460,6 +457,7 @@
             editarPregunta (pregunta, imagenes) {
                 this.resetearDatos();
                 this.modoEdicion = 1;
+                this.id_tema = pregunta.tema;
                 this.form.fill(pregunta);
                 this.totalImagenesEnPregunta = (imagenes.length + 1);
                 let numeroMayorDeImagen = 0;
@@ -471,6 +469,7 @@
                 }
                 this.subidor.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
                 $('#registrarPregunta').modal('show');
+                console.log(pregunta);
             },
             async actualizarPregunta() {
                 let existeError = await this.comprobarCampos();
@@ -480,7 +479,7 @@
                         pregunta:   this.form.pregunta,
                         respuesta:  this.form.respuesta,
                         tipo:       this.form.tipo,
-                        id_tema:    this.form.tema,
+                        id_tema:    this.id_tema,
                         imagenesAEliminar: this.subidor.imagenesAEliminar,
                     })
                     .then(async (res) => {

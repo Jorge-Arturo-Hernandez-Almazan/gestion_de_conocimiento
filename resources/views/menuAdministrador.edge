@@ -1,7 +1,7 @@
 		<div class="container-fluid page-body-wrapper" >
 		  <!-- partial:partials/_sidebar.html -->
-		  <nav class="sidebar sidebar-offcanvas" id="sidebar">
-				<ul  class="nav" style="font-family: 'Roboto', sans-serif; margin: 0;padding: 0; list-style-type: none; list-style: none; " >
+		  <nav class="sidebar circle sidebar-offcanvas " id="sidebar">
+				<ul  class="nav" style="margin: 0;padding: 0; list-style-type: none; list-style: none; font-weight: bold; margin: 10px 0px 10px 10px; border-radius:  10px;">
 						<!-- <li class="nav-item nav-profile" >
 							<center>
 							<a href="#" class="nav-link" style="margin-top:0px;">
@@ -31,11 +31,11 @@
 					 <!-- Condicion para mostar el menu a los administradores-->
 						@if( auth.user.id_rol == 1)  
 						
-						<li id="olaaaa" class="nav-item" style="list-style-type: none; list-style: none;">
-							<a class="nav-link" href="/tablero">
-								<!-- <i class="fa fa-home"></i> -->
-								<i class="fas fa-home"></i>
-									&nbsp; 
+						<li class="nav-item">
+							<a class="nav-link" id="navTablero" href="/tablero">
+								<!-- <i class="fas fa-home"></i>-->
+								<img src="/iconos/inicio.png" style="width: 30px;">
+									&nbsp;
 								<span class="menu-title">Inicio</span>
 								
 								
@@ -43,19 +43,21 @@
 						</li>
 					
 						<li class="nav-item">							
-							<a class="nav-link" href="/configurarAccesos">
-								<i class="fas fa-lock-open"></i>
+							<a class="nav-link" id="navAccesos" href="/configurarAccesos">
+								<!-- <i class="fas fa-lock-open"></i> -->
+								<img src="/iconos/acceso.png" style="width: 30px;">
 								&nbsp; 
 								<span class="menu-title">Accesos</span>
 							</a>
 						</li>  
 					
 
-						<li class="nav-item">			<!--Codigo de encapsular Usuarios-->
-						  	<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-								<i class="fas fa-users"></i>
-								&nbsp;
-								<span class="menu-title">Usuarios</span>
+						<li class="nav-item">
+						  	<a class="nav-link" id="navUsuarios" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+									<!-- <i class="fas fa-users"></i> -->
+									<img src="/iconos/usuarios.png" style="width: 30px;">
+									&nbsp;
+									<span class="menu-title">Usuarios</span>
 						  	</a>
 						  	<div class="collapse" id="ui-basic">
 								<ul class="nav flex-column sub-menu">
@@ -81,8 +83,9 @@
 						</li>
 					
 						<li class="nav-item">  <!--Codigo de encapsular Cuestionario-->
-						  	<a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
-								<i class="far fa-file-alt"></i>
+						  	<a class="nav-link" id="navCuestionario" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+								<!-- <i class="far fa-file-alt"></i> -->
+									<img src="/iconos/examen.png" style="width: 30px;">
 								&nbsp; 
 								<span class="menu-title">Cuestionario</span>
 								<!--<i class="menu-arrow"></i>-->
@@ -105,16 +108,18 @@
 						</li>
 						
 						<li class="nav-item">
-							<a class="nav-link " href="/temas">
-								<i class="fas fa-chalkboard-teacher"></i>
+							<a class="nav-link " id="navTemas" href="/temas">
+								<!-- <i class="fas fa-chalkboard-teacher"></i> -->
+								<img src="/iconos/temas.png" style="width: 30px;">
 								&nbsp; 
 								<span class="menu-title">Temas</span>
 							</a>
 						</li>
 					
 						<li class="nav-item"> <!--Codigo Registrar Preguntas-->
-							<a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-								<i class="fas fa-question"></i>
+							<a class="nav-link" id="navPreguntas" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+								<!-- <i class="fas fa-question"></i> -->
+								<img src="/iconos/question.png" style="width: 30px;">
 								&nbsp; 
 								<span class="menu-title">Preguntas</span>
 								<!--<i class="menu-arrow"></i>-->
@@ -146,25 +151,11 @@
 							</div>
 						</li>
 					
-						<!-- <li class="nav-item">
-							<a class="nav-link" href="/historialexperto">
-								<i class="fas fa-project-diagram"></i>
-								&nbsp; 
-								<span class="menu-title">Grafo de conocimiento</span>
-							</a>
-						</li>
-					
-						<li class="nav-item">
-							<a class="nav-link" href="/historialprofesor">
-								<i class="fas fa-project-diagram"></i>
-								&nbsp; 
-								<span class="menu-title">Grafo de conocimiento (profesor)</span>
-							</a>
-						</li> -->
 					
 						<li class="nav-item">  <!--Codigo de encapsular Cuestionario-->
 						  	<a class="nav-link" data-toggle="collapse" href="#grafo" aria-expanded="false" aria-controls="grafo">
-								<i class="fas fa-project-diagram"></i>
+								<!-- <i class="fas fa-project-diagram"></i>-->
+								<img src="/iconos/grafo.png" style="width: 30px;">
 								&nbsp; 
 								<span class="menu-title">Grafo de conocimiento </span>
 								<!--<i class="menu-arrow"></i>-->
@@ -190,8 +181,9 @@
 					
 					
 						<li class="nav-item">  <!--Codigo de encapsular Cuestionario-->
-						  	<a class="nav-link" data-toggle="collapse" href="#imagenes" aria-expanded="false" aria-controls="imagenes">
-								<i class="fas fa-file-upload"></i>
+						  	<a class="nav-link" id="navRecursos" data-toggle="collapse" href="#imagenes" aria-expanded="false" aria-controls="imagenes">
+								<!-- <i class="fas fa-file-upload"></i> -->
+								<img src="/iconos/documentos.png" style="width: 30px;">
 								&nbsp; 
 								<span class="menu-title">Recursos</span>
 								<!--<i class="menu-arrow"></i>-->

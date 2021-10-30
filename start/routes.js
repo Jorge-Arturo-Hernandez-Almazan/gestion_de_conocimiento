@@ -10,7 +10,7 @@
 	Route.post('login','UserController.login')
 	Route.get('logout','UserController.logout')
 
-
+Route.get('/saludarvue', ({view})=> view.render('app') );
 Route.get('/saludame/:nombre/:edad', 'SaludarController.metodoSaludar');
 
 Route.get('/pruebapython', 'PonderacionController.pruebaPython');
@@ -472,6 +472,8 @@ Route.get('/pregunta/respuestas/:id', 'PreguntaController.obtenerRespuestas');
 
 		Route.get('app/historialalumnos',({view}) => view.render('alumno'))
 	}).prefix('alumno').middleware(['auth'])
+
+
 
 
 

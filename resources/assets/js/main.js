@@ -3,7 +3,7 @@ import router from './router'
 import App from '@/components/layout/App'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'select2';
-import 'foundation-sites';
+//import 'foundation-sites';
 import ToggleButton from 'vue-js-toggle-button'
 import SmartTable from 'vuejs-smart-table'
 import VueViewer from 'v-viewer'

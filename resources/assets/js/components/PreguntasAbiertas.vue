@@ -119,12 +119,9 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content" style="border-radius: 15px;">
                                 <!-- <div class="modal-header">
-
                                     <h5 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
                                         pregunta </h5>
                                     <h5 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h5>
-
-
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -257,8 +254,6 @@
 <script>
     import axios from "axios";
     import Cargador from '@/components/subirImagenes';
-
-
     export default {
         data() {
             return {
@@ -371,7 +366,6 @@
                             this.preguntaAbierta[i].imagenes.push(this.todasLasImagenes[j]);
                         }
                     }
-
                 }
             },
             getTemas() {
@@ -603,7 +597,6 @@
                                     type: "success",
                                     title: "¡Pregunta Eliminada!"
                                 });
-
                             })
                             .catch(err => {
                                 console.log(err);

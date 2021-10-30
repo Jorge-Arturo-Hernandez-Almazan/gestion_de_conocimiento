@@ -123,8 +123,7 @@
                                 </div> -->
                                 <div class="modal-body">
                                     
-                                    <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
-                                        pregunta </h3>
+                                    <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar pregunta </h3>
                                     <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
                                   
                                     <p class="text-left">  Pregunta: </p>
@@ -146,7 +145,7 @@
                                    
                                     <table style="width: 100%; border-radius: 15px;">
                                       <tr>
-                                        <th> <input class="ml-2 mt-2" type="checkbox" id="arriba" name="arriba" value="si" style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" checked> </th>
+                                        <th> <input class="ml-2 mt-2 " type="checkbox" id="arriba" name="arriba" value="si" style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" checked> </th>
                                         <th> <p>Aplicar hacia arriba</p> </th>
                                       </tr>
                                       

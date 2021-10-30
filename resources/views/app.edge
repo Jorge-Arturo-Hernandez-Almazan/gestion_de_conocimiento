@@ -20,7 +20,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 	<style>
@@ -48,9 +47,7 @@
 				position: relative;
 				cursor: auto;
 			}
-
-			
-
+		
 			.page-header {
 				display: -webkit-box;
 				display: -ms-flexbox;
@@ -69,12 +66,13 @@
 				color: #001737;
 				padding-left: 15px;
 				padding-right: 15px;
-				width: calc(100% - 270px);
 				height: 63px;
-				/*-webkit-box-shadow: none;
-				box-shadow: none;*/
 			}
-
+			
+			.sidebar{
+				background: #1c45ef;
+			}
+		
 			p {
 				font-family: inherit;
 				font-weight: normal;
@@ -86,7 +84,8 @@
 
 
 			.sidebar > .nav .nav-item .nav-link {
-				padding: 15px 30px 15px 35px;
+				padding: 15px 30px 15px 40px;
+				background: #1c45ef;
 			}
 
 			.table td, .table th {
@@ -96,6 +95,11 @@
 			.table th, .table td {
 				border-top: none;
 			}
+		
+		.table th {
+			background: #fff;
+		}
+		
 
 			.table thead th {
 				font-weight: 600;
@@ -134,6 +138,35 @@
 			 animation-fill-mode: both;
 		}
 
+		
+		.sidebar > .nav:not(.sub-menu) > .nav-item > .nav-link {
+      background: transparent;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: "ease-in-out";
+      transition-timing-function: "ease-in-out";
+      -webkit-transition-property: "background", "color", "box-shadow", "padding", "box-shadow";
+      transition-property: "background", "color", "box-shadow", "padding", "box-shadow";
+      transition-property: "background", "color", "box-shadow", "padding"; }
+    .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]) {
+      background: #1026d5;
+      padding-left: 45px;
+			width: 250px;
+			border-radius: 10px;
+		}
+      .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]):before {
+        border-color: #fff; 
+		width: 250px;
+			border-radius: 10px;}
+      .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]) .menu-title {
+        color: #fff; 
+		width: 250px;
+			border-radius: 10px;}
+      .sidebar > .nav:not(.sub-menu) > .nav-item:hover:not(.nav-profile):not(.hover-open) > .nav-link:not([aria-expanded="true"]) .menu-arrow:before {
+        color: #bfccda; 
+		width: 250px;
+			border-radius: 10px;}
+		
 		
 	</style>
 </head>
@@ -225,7 +258,6 @@
 	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://rawgit.com/select2/select2/master/dist/js/select2.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
 	<link href="https://rawgit.com/select2/select2/master/dist/css/select2.min.css" rel="stylesheet"/>
 
@@ -236,8 +268,72 @@
 	{{script('js/principal.js')}}
 	
 	<script>
-		//$.fn.modal.Constructor.prototype.enforceFocus = function() {};
-		$.fn.modal.Constructor.prototype._enforceFocus = function() {};
+
+		let link = window.location.href;
+		let pagina = link.split("/")[3]
+		console.log();
+		
+		if(pagina === "tablero"){
+				let navTablero = document.getElementById("navTablero");
+				navTablero.style.backgroundColor = "#1026d5";
+				navTablero.style.padding = "15px 30px 15px 40px";
+				navTablero.style.width = "250px";
+				navTablero.style.borderRadius = "10px";
+		}
+		
+		if(pagina === "usuariosAdministrador" || pagina === "usuariosProfesor" || pagina === "usuariosAlumno" || pagina === "usuariosExperto"){
+			  let navTablero = document.getElementById("navUsuarios");
+				navTablero.style.backgroundColor = "#1026d5";
+				navTablero.style.padding = "15px 30px 15px 40px";
+				navTablero.style.width = "250px";
+				navTablero.style.borderRadius = "10px";
+		}
+		
+		
+		if(pagina === "configurarAccesos"){
+			  let navTablero = document.getElementById("navAccesos");
+				navTablero.style.backgroundColor = "#1026d5";
+				navTablero.style.padding = "15px 30px 15px 40px";
+				navTablero.style.width = "250px";
+				navTablero.style.borderRadius = "10px";
+		}
+		
+		
+		if(pagina === "configurarCuestionario" || pagina === "cuestionario"){
+			  let navTablero = document.getElementById("navCuestionario");
+				navTablero.style.backgroundColor = "#1026d5";
+				navTablero.style.padding = "15px 30px 15px 40px";
+				navTablero.style.width = "250px";
+				navTablero.style.borderRadius = "10px";
+		}
+		
+		if(pagina === "temas"){
+			  let navTablero = document.getElementById("navTemas");
+				navTablero.style.backgroundColor = "#1026d5";
+				navTablero.style.padding = "15px 30px 15px 40px";
+				navTablero.style.width = "250px";
+				navTablero.style.borderRadius = "10px";
+		}
+		
+		if(pagina === "preguntasAbiertas" || pagina === "preguntasNumericas" || pagina === "preguntasVerdaderoFalso" || pagina === "preguntasOpcionMultiple" || pagina === "preguntasCalculadas" || pagina === "PreguntasOpcionMultipleCalculadas"){
+			  let navTablero = document.getElementById("navPreguntas");
+				navTablero.style.backgroundColor = "#1026d5";
+				navTablero.style.padding = "15px 30px 15px 40px";
+				navTablero.style.width = "250px";
+				navTablero.style.borderRadius = "10px";
+		}
+		
+		
+		if(pagina === "subirImagen"){
+			  let navTablero = document.getElementById("navRecursos");
+				navTablero.style.backgroundColor = "#1026d5";
+				navTablero.style.padding = "15px 30px 15px 40px";
+				navTablero.style.width = "250px";
+				navTablero.style.borderRadius = "10px";
+		}
+		
+		
+		
 		window.idusuario = {{ auth.user.id }}
 	</script>
 	

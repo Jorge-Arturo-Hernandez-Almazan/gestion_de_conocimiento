@@ -31,6 +31,7 @@ import indexAlumnos from '@/components/IndexAlumnos'
 import indexExpertos from '@/components/IndexExpertos'
 import indexProfesores from '@/components/IndexProfesores'
 import PruebaImagenes from '@/components/PruebaImagenes'
+import saludar from '@/components/saludar'
 
 Vue.use(Router)
 
@@ -233,7 +234,7 @@ export default new Router({
        name:'Dashboardexperto',
        component:indexExpertos
     },
-	{
+		{
        path:'/profesor/app',
        name:'Dashboardprofesor',
        component:indexProfesores
@@ -242,7 +243,12 @@ export default new Router({
 	   path:'/pruebaimagenes',
 	   name:'pruebaImagenes',
 	   component:PruebaImagenes
-    }
+    },
+		 {
+			 path: '/saludarvue',
+			 name: 'saludar',
+			 component: saludar
+		 }
 	   
 	   
 ]

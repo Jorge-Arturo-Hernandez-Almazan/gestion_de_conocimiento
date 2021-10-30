@@ -55,20 +55,20 @@
 
                                 <thead slot="head" >
                                     <tr>
-                                        <th class="text-center font-weight-bold"
+                                        <th class="font-weight-bold"
                                             style="width: 300px; white-space: normal;">Pregunta</th>
-                                        <th class="text-center font-weight-bold"
+                                        <th class="font-weight-bold"
                                             style="width: 300px; white-space: normal;">Tema</th>
-                                        <th class="text-center font-weight-bold"
+                                        <th class="font-weight-bold"
                                             style="width: 300px; white-space: normal;">Respuesta</th>
-                                        <th class="text-center font-weight-bold"
+                                        <th class="font-weight-bold"
                                             style="width: 300px; white-space: normal;">Valores</th>
-                                        <th class="text-center font-weight-bold">Margen</th>
-                                        <th class="text-center font-weight-bold">Margen arriba</th>
-                                        <th class="text-center font-weight-bold">Margen abajo</th>
-                                        <th class="text-center font-weight-bold">Decimales</th>
+                                        <th class="font-weight-bold">Margen</th>
+                                        <th class="font-weight-bold">Margen arriba</th>
+                                        <th class="font-weight-bold">Margen abajo</th>
+                                        <th class="font-weight-bold">Decimales</th>
                                         <th> Imagenes </th>
-                                        <th class="text-center font-weight-bold" style="width: 300px; white-space: normal;">Opciones</th>
+                                        <th class="font-weight-bold" style="width: 300px; white-space: normal;">Opciones</th>
 
                                     </tr>
                                 </thead>
@@ -76,22 +76,22 @@
                                     <tr v-for="(preguntaNumerica) in displayData" v-bind:key="preguntaNumerica.id">
                                         <td style="width: 300px; white-space: normal;">{{preguntaNumerica.pregunta}}
                                         </td>
-                                        <td class="text-center" style="width: 300px; white-space: normal;">
+                                        <td  style="width: 300px; white-space: normal;">
                                             {{preguntaNumerica.tema}}</td>
-                                        <td class="text-center" style="width: 300px; white-space: normal;">
+                                        <td style="width: 300px; white-space: normal;">
                                             {{preguntaNumerica.opcion}}</td>
-                                        <td class="text-center" style="width: 300px; white-space: normal;">
+                                        <td  style="width: 300px; white-space: normal;">
                                             <p v-for="(valorComodines) in valorComodines"
                                                 v-if="preguntaNumerica.id_opcion === valorComodines.id_opcion">
                                                 {{valorComodines.comodin}}={{valorComodines.valor_comodin}}</p>
                                         </td>
-                                        <td class="text-center" style="width: 300px; white-space: normal;">
+                                        <td  style="width: 300px; white-space: normal;">
                                             {{preguntaNumerica.rango}}</td>
-                                        <td class="text-center" style="width: 300px; white-space: normal;">
+                                        <td  style="width: 300px; white-space: normal;">
                                             {{preguntaNumerica.aplicableArriba}}</td>
-                                        <td class="text-center" style="width: 300px; white-space: normal;">
+                                        <td style="width: 300px; white-space: normal;">
                                             {{preguntaNumerica.aplicableAnbajo}}</td>
-                                        <td class="text-center" style="width: 300px; white-space: normal;">
+                                        <td  style="width: 300px; white-space: normal;">
                                             {{preguntaNumerica.decimales}}</td>
                                         
                                         <td> 
@@ -137,27 +137,39 @@
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-
-                                    <h3 class="modal-title" id="exampleModalLabel" style="margin-left: 24%;"></h3>
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                    <div class="modal animated animate__bounceIn" id="exampleModal" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content" style="border-radius: 15px;">
+                                
                                 <div class="modal-body">
-                                    <label>Pregunta</label>
-                                    <input id="pregunta" class="swal2-input" placeholder="pregunta">
+                                  
+                                    <h3 class="modal-title" id="exampleModalLabel" ></h3>
+                                    
+                                    
+                                    <p class="text-left"> <b> Pregunta: </b></p>
+                                    <textarea @focus="limpiarCampos('pregunta')" rows="4" id="pregunta" type="text" class="form-control" placeholder="pregunta"
+                                              style="margin:0px; font-size: 15px; line-height: 20px;"> </textarea>
+                                    
+                                    <span id="msjInputPregunta"> </span>
+                                  
                                     <div style="display: table; width:100%;">
+                                        
+                                      
+                                        <p class="text-left"> <b> Respuesta: </b></p>
+                                        <div class="row">
+                                            <div class="col-md-8" style="padding:0px;">
+                                                
+                                              <input @focus="limpiarCampos('respuesta')" id="respuesta" class="form-control" placeholder="respuesta" style="margin:0px; font-size: 15px; line-height: 20px; height: 37px;">
+                                            </div>
+                                            <div class="col-md-4" style="padding:0px;">
+                                                <button class="btn btn-success" @click="ExpresionCorrecta"
+                                            style="margin: 0px 0px 0px; height: 37px;"> <i class="fas fa-search"></i> Buscar comodines</button>
+                                            </div>
+                                        </div>
                                         <p id="errorEncontrado" style="color:red;"></p>
-                                        <label>Respuesta</label>
-                                        <input id="respuesta" class="swal2-input" placeholder="respuesta">
-                                        <button class="btn btn-success" @click="ExpresionCorrecta"
-                                            style="display: table; width:100%;">Buscar comodines</button>
+                                        <span id="msjInputRespuesta"> </span>
+                                        
                                     </div>
 
                                     <div class="table-responsive">
@@ -168,8 +180,9 @@
                                             </tr>
                                         </table>
                                     </div>
-                                    <span>Numero de cifras: </span>
-                                    <select id="totalCifras" v-model="decimales" name="totalCifras" class="swal2-input">
+                                    
+                                    <p class="text-left"> <b> Numero de cifras: </b></p>
+                                    <select id="totalCifras" v-model="decimales" name="totalCifras" class="form-control" style="height:37px; margin: 0px 0px 10px 0px; font-size: 15px;">
                                         <option id="0_decimal">0</option>
                                         <option id="1_decimal">1</option>
                                         <option id="2_decimal">2</option>
@@ -182,30 +195,47 @@
                                         <option id="9_decimal">9</option>
                                     </select>
 
-                                    <center><label>Aplicar el margen de error a la respuesta</label></center>
+                                    
+                                    <p class="text-left"> <b> Aplicar margen de error: </b></p>
+                                    <table style="width: 100%; border-radius: 15px; margin: 0px 0px 10px;">
+                                      <tr>
+                                        <th>
+                                            <div class="checkbox" >
+                                              <label>
+                                                <input style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" type="checkbox" id="arriba" name="arriba" value="si"
+                                                  checked>&nbsp;&nbsp;Aplicar hacia arriba
+                                              </label>
+                                            </div>
+                                          
+                                        </th>
+                                        <th> 
+                                           <div class="checkbox" >
+                                              <label><input style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" type="checkbox" id="abajo" name="abajo" value="si" checked>
+                                                &nbsp;&nbsp;Aplicar hacia abajo
+                                              </label>
+                                            </div>
+                                        </th>
+                                      </tr>
+                                    </table>
+          
+                                    
+                                    <p class="text-left"> <b> Margen: </b></p>
+                                    <input id="margen" @focus="limpiarCampos('margen')" class="form-control" placeholder="margen" style="height:37px; margin: 0px 0px 10px 0px; font-size: 15px;">
+                                  
+                                    <span id="msjInputMargen"> </span>
 
-                                    <div class="checkbox" style="text-align: center;">
-                                        <label><input type="checkbox" id="arriba" name="arriba" value="si"
-                                                checked>&nbsp;&nbsp;Aplicar hacia arriba</label>
-                                    </div>
+                                    <p class="text-left" for="id_tema_2"> <b> Tema: </b></p>
+                                    
+                                    <!-- <select id="id_tema" name="temas" class="swal2-input">
 
-                                    <div class="checkbox" style="text-align: center;">
-                                        <label><input type="checkbox" id="abajo" name="abajo" value="si"
-                                                checked>&nbsp;&nbsp;Aplicar hacia abajo</label>
-                                    </div>
-                                    <label>Margen</label>
-                                    <input id="margen" class="" class="swal2-input" placeholder="margen">
-
-                                    <br>
-                                    <center><label for="id_tema_2">Tema:</label></center>
-                                    <select id="id_tema" name="temas" class="swal2-input">
-
-                                    </select>
-                                    <br>
-
+                                    </select> -->
+                                    
+                                    <Select2  :options="temas" v-model="id_tema" @select="limpiarCampos('tema')" id="id_tema" />
+                                    <span id="msjSelectTema"> </span>
+                                  
                                     <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
                                     <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                        style="border-style: dashed; width: 100%;">
+                                        style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
                                         <input type="file" id="assetsFieldHandle"
                                             class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
                                             ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
@@ -239,32 +269,29 @@
                                             </tr>
                                         </table>
                                     </div>
+                                  
+                                    <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;">  <i class="fas fa-ban"></i> Cerrar
+                                    </button>
+                                    
+                                    <button type="button" @click="btnGuardarPregunta(GuardarEditar)" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;"> <i class="fas fa-save"></i> Guardar
+                                    </button>
 
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" @click="btnGuardarPregunta(GuardarEditar)"
-                                        class="btn btn-primary">Continuar</button>
-                                </div>
+                                
 
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="modal fade" id="modalParaVerImagenes" tabindex="-1" role="dialog"
+                    <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        Imagenes adjuntas en la pregunta
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content" style="border-radius: 15px;">
                                 <div class="modal-body">
+                                  
+                                    <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
+                                    </h3>
                                     <div style="width: 100%;">
                                         <table style="list-style-type: none; width:100%">
                                             <tr>
@@ -289,11 +316,10 @@
                                             Esta pregunta no tiene imagenes adjuntas
                                         </span>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cerrar
+                                    <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 " style="border-radius: 25px;"> <i class="fas fa-ban"></i> Cerrar
                                     </button>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -361,6 +387,9 @@
             }
         },
         methods: {
+            cambioSelect(val){
+              //this.limpiarCampos("tema");
+            },
             cambiarCampoDeBusqueda(){
               let x = document.getElementById("campoBusqueda").value;
               this.filters.pregunta.keys[0] = x;			
@@ -433,7 +462,7 @@
             },
             getTemas() {
                 ///Funcion para mostrar los temas
-                axios({
+                /*axios({
                     method: "GET",
                     url: "/tema/all"
                 }).then(
@@ -443,18 +472,71 @@
                     error => {
                         console.error(error);
                     }
+                );*/
+                axios({
+                    method: "GET",
+                    url: "/tema/all"
+                }).then(
+                    result => {
+                        let temasApi = result.data[0];
+                        for( let i = 0; i <  temasApi.length; i++ ){
+                          this.temas.push({id: temasApi[i].id, text: temasApi[i].nombre_tema })
+                        }
+                    },
+                    error => {
+                        console.error(error);
+                    }
                 );
+              
             },
+            limpiarCampos(id) {
+                
+                let msjSelectTema = document.getElementById("msjSelectTema");
+                let msjInputMargen = document.getElementById("msjInputMargen");
+                let msjInputPregunta = document.getElementById("msjInputPregunta");
+                let msjInputRespuesta = document.getElementById("msjInputRespuesta");
+              
+              
+                if (id == "tema") {
+                    msjSelectTema.innerHTML = "";
+                }
 
+                if (id == "pregunta") {
+                    document.getElementById("pregunta").style.border = "1px solid #dee2e6";                  
+                    msjInputPregunta.innerHTML = "";
+                }
+
+                if (id == "respuesta") {
+                    document.getElementById("respuesta").style.border = "1px solid #dee2e6";
+                    msjInputRespuesta.innerHTML = "";
+                }
+
+                if (id == "margen") {
+                    document.getElementById("margen").style.border = "1px solid #dee2e6";
+                    msjInputMargen.innerHTML = "";;
+                }
+              
+              
+               
+            },
+          
             btnGuardarPregunta(id) {
                 var vacio = false;
                 var comodinesCorrecto = true;
                 var pregunta = document.getElementById("pregunta").value;
                 var respuesta = document.getElementById("respuesta").value;
                 var margen = document.getElementById("margen").value;
-                var tema = document.getElementById("id_tema").value;
+                //var tema = document.getElementById("id_tema").value;
+                var tema = this.id_tema;
                 var aplica_arriba = document.getElementById("arriba").checked ? 1 : 0;
                 var aplica_abajo = document.getElementById("abajo").checked ? 1 : 0;
+              
+              
+                let msjSelectTema = document.getElementById("msjSelectTema");
+                let msjInputMargen = document.getElementById("msjInputMargen");
+                let msjInputPregunta = document.getElementById("msjInputPregunta");
+                let msjInputRespuesta = document.getElementById("msjInputRespuesta");
+              
 
                 this.valorComodines = [];
                 for (var i = 0; i < this.comodines.length; i++) {
@@ -462,12 +544,37 @@
                     if (input == "")
                         vacio = true;
                 }
-                if (vacio == true || pregunta == "" || respuesta == "")
-                    this.$swal({
+                if (vacio == true || pregunta == "" || respuesta == "" || this.id_tema == ""){
+                    
+                    if (this.id_tema == "") {
+                        msjSelectTema.innerHTML = "Este dato es obligatorio";
+                        msjSelectTema.style.color = "#ff6258";
+                    }
+              
+                    if (pregunta == "") {
+                        document.getElementById("pregunta").style.border = "1px solid #ff6258";
+                        msjInputPregunta.innerHTML = "Este dato es obligatorio";
+                        msjInputPregunta.style.color = "#ff6258";
+                    }
+              
+                    if (respuesta == "") {
+                        document.getElementById("respuesta").style.border = "1px solid #ff6258";
+                        msjInputRespuesta.innerHTML = "Este dato es obligatorio";
+                        msjInputRespuesta.style.color = "#ff6258";
+                    }
+              
+                    if (margen == "") {
+                        document.getElementById("margen").style.border = "1px solid #ff6258";
+                        msjInputMargen.innerHTML = "Este dato es obligatorio";
+                        msjInputMargen.style.color = "#ff6258";
+                    }
+                    
+                    /*this.$swal({
                         type: 'error',
                         title: '¡Datos incompletos!'
-                    })
-                else {
+                    })*/
+                
+                }else {
                     for (var i = 0; i < this.comodines.length; i++) {
                         var vcomodin = document.getElementById(i).value;
                         this.valorComodines[i] = vcomodin;
@@ -949,7 +1056,7 @@
                   
                 }
 
-                var x = document.getElementById("id_tema");
+                /*var x = document.getElementById("id_tema");
 
                 var length = x.options.length;
                 for (i = length - 1; i >= 0; i--) {
@@ -962,7 +1069,7 @@
                     option.value = this.temas[0][i].id;
                     option.id = "tema_" + this.temas[0][i].id;
                     x.add(option);
-                }
+                }*/
 
                 document.getElementById("errorEncontrado").innerHTML = "";
 
@@ -982,8 +1089,8 @@
                 for (var i = 0; i < 10; i++)
                     document.getElementById(i + "_decimal").removeAttribute("selected");
 
-                for (var i = 0; i < this.preguntaNumerica.length; i++)
-                    document.getElementById("tema_" + this.preguntaNumerica[i].id_tema).removeAttribute("selected");
+                //for (var i = 0; i < this.preguntaNumerica.length; i++)
+                //    document.getElementById("tema_" + this.preguntaNumerica[i].id_tema).removeAttribute("selected");
 
                 if (id == -1) {
                     this.GuardarEditar = -1;
@@ -1008,8 +1115,10 @@
                             aplica_arriba.checked = this.preguntaNumerica[i].aplicableArriba;
                             aplica_abajo.checked = this.preguntaNumerica[i].aplicableAnbajo;
                             id_opcion = this.preguntaNumerica[i].id_opcion;
-                            var opcionTema = document.getElementById("tema_" + this.preguntaNumerica[i].id_tema);
-                            opcionTema.setAttribute("selected", "");
+                          
+                            this.id_tema = this.preguntaNumerica[i].id_tema;
+                            /*var opcionTema = document.getElementById("tema_" + this.preguntaNumerica[i].id_tema);
+                            opcionTema.setAttribute("selected", "");*/
 
                             var opcionDecimal = document.getElementById(this.preguntaNumerica[i].decimales +
                                 "_decimal")
@@ -1050,7 +1159,7 @@
                         arriba: arriba,
                         abajo: abajo,
                         tipo: tipo,
-                        id_tema: id_tema
+                        id_tema: this.id_tema
                     })
                     .then(res => {
                         this.tipo = "";
@@ -1072,7 +1181,7 @@
                         pregunta: pregunta,
                         respuesta: respuesta,
                         tipo: tipo,
-                        id_tema: id_tema
+                        id_tema: this.id_tema
                     })
                     .then(res => {
                         this.id = "";
