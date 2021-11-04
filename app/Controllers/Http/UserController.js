@@ -427,7 +427,29 @@ class UserController {
 		
 	}
 	
-  
+	
+	async verificarExistencia({request,response}){
+        const{correo}= request.only(['correo'])
+        
+         const user = await Database.raw('SELECT * FROM users WHERE matricula = ?',[correo])
+        return response.json(user)
+  }
+	
+	async verificarLogin({view, auth, response}){
+		
+		if (auth.user == null){
+			return response.redirect('/');
+		}else{
+			return view.render('app');
+		}
+		
+		/*if( auth.user.id_rol ){
+			 return response.redirect('/');
+		}else{
+			return view.render('app');
+		}*/
+		
+	}  
 	
 	
 }

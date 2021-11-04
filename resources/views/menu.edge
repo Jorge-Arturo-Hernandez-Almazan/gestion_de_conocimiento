@@ -1,0 +1,258 @@
+<!-- Main Sidebar Container -->
+	<aside class="main-sidebar sidebar-dark-primary elevation-4">
+		<!-- Brand Logo -->
+		<a href="index3.html" class="brand-link">
+			<img src="/imagenes/fondo/logo.png" alt="logo" salt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8" />
+			<span class="brand-text font-weight-light">KMS</span>
+		</a>
+
+		
+		<router-link
+          class="nav-link authBtn"
+          id="pills-contact-tab"
+          data-toggle="pill"
+          to="/temas"
+          role="tab"
+          aria-controls="pills-contact"
+          aria-selected="false"
+          >Temas</router-link
+        >
+  
+  <router-link
+          class="nav-link authBtn"
+          id="pills-contact-tab"
+          data-toggle="pill"
+          to="/preguntasAbiertas"
+          role="tab"
+          aria-controls="pills-contact"
+          aria-selected="false"
+          >Preguntas abiertas</router-link
+        >
+  
+  <router-link
+          class="nav-link authBtn"
+          id="pills-contact-tab"
+          data-toggle="pill"
+          to="/preguntasNumericas"
+          role="tab"
+          aria-controls="pills-contact"
+          aria-selected="false"
+          >Preguntas numericas</router-link
+        >
+		
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+				<div class="image">
+					<img src="/imagenes/fotosperfil/{{ auth.user.foto }}" class="img-circle elevation-2" alt="User Image"> 
+					
+				</div>
+				<div class="info">
+					<a href="#" class="d-block"> {{ auth.user.nombre }} {{auth.user.apellido_paterno}}  </a>
+					
+				</div>
+			</div>
+
+			<!-- Sidebar Menu -->
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+					<!-- Add icons to the links using the .nav-icon class
+							 with font-awesome or any other icon font library -->
+					<li class="nav-item">
+						<a id="navTablero" href="/tablero" class="nav-link">
+							<i class="nav-icon fas fa-home"></i>
+							<p>
+								Inicio
+							</p>
+						</a>
+					</li>
+					
+					<li class="nav-item">							
+						<a class="nav-link" id="navAccesos" href="/configurarAccesos">
+							<i class="nav-icon fas fa-lock-open"></i>  
+							<p>
+								Accesos
+							</p>
+						</a>
+					</li>
+					
+					
+					<li class="nav-item" id="liUsuarios">
+							<a class="nav-link" id="navUsuarios" href="#" >
+								<i class="nav-icon fas fa-users"></i>
+								<p>
+									Usuarios
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a class="nav-link" href="/usuariosAdministrador" id="aAdmin"> 
+										<i class="fas fa-users-cog nav-icon"></i> 
+										Administradores
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/usuariosProfesor" id="aDocentes"> 
+										<i class="fas fa-chalkboard-teacher nav-icon"></i> 
+										Docentes
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/usuariosAlumno" id="aAlumnos"> 
+										<i class="fas fa-graduation-cap nav-icon"></i> 
+										Alumnos
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/usuariosExperto" id="aExpertos"> 
+										<i class="fas fa-user-tie nav-icon"></i> 
+										Expertos
+									</a>
+								</li>
+								
+							</ul>
+					</li>
+					
+					
+					<li class="nav-item" id="liCuestionario">
+							<a class="nav-link" id="navCuestionario" href="#" >
+								<i class="nav-icon far fa-file-alt"></i>
+								<p>
+									Cuestionario
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/configurarCuestionario" id="aConfigurar"> 
+										<i class="fas fa-cogs nav-icon"></i> 
+										Configurar
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/cuestionario" id="aVer"> 
+										<i class="fas fa-eye nav-icon"></i> 
+										Ver
+									</a>
+								</li>
+								
+							</ul>
+					</li>
+					
+					 <li class="nav-item">							
+						<a class="nav-link" id="navTemas" href="/temas">
+							<i class="nav-icon fas fa-chalkboard-teacher"></i>  
+							<p>
+								Temas
+							</p>
+						</a>
+					</li>
+
+					
+					<li class="nav-item" id="liPreguntas">
+							<a class="nav-link" id="navPreguntas" href="#" >
+								<i class="nav-icon fas fa-question"></i>
+								<p>
+									Preguntas
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/preguntasAbiertas" id="aAbiertas"> 
+										<i class="fas fa-keyboard nav-icon"></i> 
+										Abiertas
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/preguntasNumericas" id="aNumericas"> 
+										<i class="fas fa-sort-numeric-down nav-icon"></i> 
+										Númericas
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/preguntasVerdaderoFalso" id="aVerdaderoFalso"> 
+										<i class="fas fa-toggle-on nav-icon"></i> 
+										Verdadero / Falso
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/preguntasOpcionMultiple" id="aMultiple"> 
+										<i class="fas fa-stream nav-icon"></i> 
+										Opción Múltiple
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/preguntasCalculadas" id="aCalculadas"> 
+										<i class="fas fa-keyboard nav-icon"></i> 
+										Calculadas
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/PreguntasOpcionMultipleCalculadas" id="aMCalculadas"> 
+										<i class="fas fa-stream nav-icon"></i> 
+										Calculadas múltiples
+									</a>
+								</li>
+								
+							</ul>
+					</li>
+					
+					
+					
+					<li class="nav-item" id="liGrafo">
+							<a class="nav-link" id="navGrafo" href="#" >
+								<i class="nav-icon fas fa-project-diagram"></i>
+								<p>
+									Grafo de conocimineto
+									<i class="right fas fa-angle-left"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/historialexperto" id="aExperto"> 
+										<i class="fas fa-user-tie nav-icon"></i> 
+										Experto
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="nav-link" href="/historialprofesor" id="aDocentes"> 
+										<i class="fas fa-chalkboard-teacher nav-icon"></i> 
+										Docente
+									</a>
+								</li>
+								
+							</ul>
+					</li>
+					
+					<li class="nav-item">							
+						<a class="nav-link" id="navRecursos" href="/subirImagen">
+							<i class="nav-icon fas fa-file-upload"></i>  
+							<p>
+								Recursos
+							</p>
+						</a>
+					</li>
+					
+					
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
+		</div>
+		<!-- /.sidebar -->
+	</aside>

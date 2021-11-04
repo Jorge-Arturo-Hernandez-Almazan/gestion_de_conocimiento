@@ -8,6 +8,14 @@
   <button @click="metodoSaludame">
     saludo cuando me das click
   </button>
+
+  <iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="500"
+    height="1000"
+    src="/historialexperto">
+</iframe>
+
   
 </div>
 </template>

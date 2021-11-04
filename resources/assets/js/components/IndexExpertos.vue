@@ -1,5 +1,5 @@
 <template>
-<div >
+<div class="content-wrapper">
 		 <div class="col-12 mt-2">  
 			<div class="page-header">
 				<h1 class="page-title"> Dashboard  </h1>

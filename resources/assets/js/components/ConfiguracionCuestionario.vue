@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div class="content-wrapper">
 				<div class="col-lg-12">
 						<!-- Breadcrumb -->
 						<div class="col-12 mt-4">

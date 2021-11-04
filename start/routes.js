@@ -10,7 +10,7 @@
 	Route.post('login','UserController.login')
 	Route.get('logout','UserController.logout')
 
-Route.get('/saludarvue', ({view})=> view.render('app') );
+
 Route.get('/saludame/:nombre/:edad', 'SaludarController.metodoSaludar');
 
 Route.get('/pruebapython', 'PonderacionController.pruebaPython');
@@ -474,6 +474,13 @@ Route.get('/pregunta/respuestas/:id', 'PreguntaController.obtenerRespuestas');
 	}).prefix('alumno').middleware(['auth'])
 
 
+
+Route.get('/recuperarPass', async ({view}) =>{
+	
+		return view.render('recuperarPass')	
+});
+//Route.get('/*', ({view})=> view.render('app') );
+Route.get('/*', 'UserController.verificarLogin');
 
 
 

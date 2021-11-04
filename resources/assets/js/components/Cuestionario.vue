@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content-wrapper">
     <div class="col-xl-12 mt-4">
         <div class="page-header">
             <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">

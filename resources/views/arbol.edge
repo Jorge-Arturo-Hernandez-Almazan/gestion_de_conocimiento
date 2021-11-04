@@ -38,63 +38,7 @@
 </style>
 
 <body>
-	<div class="container-scroller">
-		
-		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-				
-				<a class="navbar-brand brand-logo" href="/">
-            		<img src="/images/logo.png" alt="logo" style="width: 80px; height: 40px;" /> 
-				</a>
-				
-				<a class="navbar-brand brand-logo-mini" href="/">
-            	<img src="/images/logo.png" alt="logo" /> </a>	
-			</div>
-				
-			<div class="navbar-menu-wrapper d-flex align-items-center">
-				
-				
-				
-				
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-						
-						<a class="nav-link " id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-							
-                			<img class="img-xs rounded-circle" src="/images/fotosperfil/{{ auth.user.foto }}" alt="Profile image"> 
-							<i class="fas fa-angle-down"></i>
-						</a>
-						
-						
-						
-						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-							<div class="dropdown-header text-center">
-								<img class="img-md rounded-circle" src="/images/fotosperfil/{{ auth.user.foto }}" alt="Profile image">
-								<p class="mb-1 mt-3 font-weight-semibold">{{ auth.user.nombre }} {{auth.user.apellido_paterno}}</p>
-								
-
-								
-								<p class="font-weight-light text-muted mb-0">{{ auth.user.matricula}}</p>
-							</div>
-							
-							<a class="dropdown-item" href="/perfil"> <i class="fas fa-user fa-xs"></i> Mi Perfil <i class="dropdown-item-icon ti-dashboard"></i></a>
-							
-							<a class="dropdown-item" href="/logout"> <i class="fas fa-sign-out-alt fa-xs"></i> Cerrar Sesion <i class="dropdown-item-icon ti-power-off"></i></a>
-						</div>
-					</li>
-				</ul>
-				
-				
-				<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-            <i class="fas fa-bars"></i>
-          </button>
-				
-		</nav>
-			
-		<!-- partial -->
-		@include('menuAdministrador')
-		<!-- partial -->
-			
+	<div class="container-scroller">	
 		<div class="main-panel">
 
 				<div class="col-md-12 grid-margin">

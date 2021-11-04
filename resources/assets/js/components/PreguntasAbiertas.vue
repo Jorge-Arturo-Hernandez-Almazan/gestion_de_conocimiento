@@ -1,262 +1,254 @@
 <template>
-    <div class="">
-        <div class="col-lg-12">
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="page-title m-0">Preguntas</h1>
+                      
+                      
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Preguntas</a></li>
+                            <li class="breadcrumb-item active"> Abiertas </li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
           
-            <!-- Breadcrum -->
-            <div class="col-12 mt-4">
-                <div class="page-header">
-                    <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                        <h1 class="page-title"> Preguntas abiertas </h1>
-                        <ul class="quick-links ml-auto">
-                            <li>
-                                <span style="color: #bdb9bd">
-                                    <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
-                                </span>
-                                <span style="color: #bdb9bd">
-                                    Preguntas <i class="fas fa-angle-right"></i>
-                                </span>
-                                Preguntas abiertas
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
 
-        
-            <div class="card" style="border-radius: 15px;">
-                <div class="card-body">
-                    <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
-                        <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                            <h2 class="page-title"> Listado de preguntas abiertas</h2>
-                            <ul class="quick-links ml-auto">
-                                <li>
-                                    <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal"
-                                        data-target="#registrarPregunta" @click="cambiarModo" style="border-radius: 25px;">
-                                        <i class="fas fa-edit"></i> Registrar pregunta
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                  
-                  
-                    <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
-                      <div class="col-6" style="padding: 5px;">
-                        <b> Termino de busqueda: </b>
-                        <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
-                      </div>
-                      <div class="col-6" style="padding: 5px;">
-                        <b>Campo de busqueda: </b>
-                        <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
-                          <option value="pregunta">Pregunta</option>
-                          <option value="tema">Tema</option>
-                          <option value="opcion">Respuesta</option>
-                        </select>
-                      </div>
-                    </div>
-                  
-                    <div class="table-responsive">
+                            
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h1 class="page-title m-0">Preguntas abiertas</h1>
+                                    </div><!-- /.col -->
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right" style="background: white">
+                                            <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal"
+                                            data-target="#registrarPregunta" @click="cambiarModo">
+                                                <i class="fas fa-edit"></i> Registrar
+                                            </button>
+                                        </ol>
+                                    </div><!-- /.col -->
+                                </div>
 
-                        <!-- Tabla -->
-                        <v-table :data="preguntaAbierta" :filters="filters" :currentPage.sync="currentPage"
-                            :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
-                            class="table table-hover">
-                            <thead slot="head" >
-                                <v-th sortKey="pregunta" defaultSort="desc" style="width:10%">Pregunta</v-th>
-                                <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
-                                <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
-                                <th> Imagenes </th>
-                                <th>Opciones</th>
-                            </thead>
-                            <tbody slot="body" slot-scope="{displayData}">
-                                <tr v-for="preguntaAbierta in displayData" :key="preguntaAbierta.id">
-                                    <td v-html="wrapText(preguntaAbierta.pregunta)">
+                                <div class="row mb-2">
+                                    <div class="col-6" >
+                                        <b> Termino de busqueda: </b>
+                                        <input class="form-control" type="search" 
+                                            placeholder="Término" 
+                                            v-model="filters.pregunta.value" 
+                                            style=" height: 38px;" />
+                                        
+                                    </div>
+                                    <div class="col-6" >
+                                        <b>Campo de busqueda: </b>
+                                        <select class="form-control" name="campoBusqueda" id="campoBusqueda" @change="cambiarCampoDeBusqueda">
+                                        <option value="pregunta">Pregunta</option>
+                                        <option value="tema">Tema</option>
+                                        <option value="opcion">Respuesta</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            
+                                <div class="table-responsive">
 
-                                    </td>
-                                    <td>
-                                        {{preguntaAbierta.tema}}
-                                    </td>
-                                    <td>
-                                        {{preguntaAbierta.opcion}}
-                                    </td>
-                                    <td>
-                                        <a data-toggle="modal"
-                                            data-target="#modalParaVerImagenes"
-                                            @click="desplegarImagenesEnModal(preguntaAbierta.imagenes)">
-                                            <i class="fas fa-eye" style="color: #2196f3"></i> 
-                                        </a>
-                                    </td>
+                                    <!-- Tabla -->
+                                    <v-table :data="preguntaAbierta" :filters="filters" :currentPage.sync="currentPage"
+                                        :pageSize="10" @totalPagesChanged="totalPages = $event" style="width:100%"
+                                        class="table table-hover">
+                                        <thead slot="head" >
+                                            <v-th sortKey="pregunta" defaultSort="desc" >Pregunta</v-th>
+                                            <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
+                                            <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
+                                            <th> Imagenes </th>
+                                            <th>Opciones</th>
+                                        </thead>
+                                        <tbody slot="body" slot-scope="{displayData}">
+                                            <tr v-for="preguntaAbierta in displayData" :key="preguntaAbierta.id">
+                                                <td >
+                                                    {{preguntaAbierta.pregunta}}
+                                                </td>
+                                                <td>
+                                                    {{preguntaAbierta.tema}}
+                                                </td>
+                                                <td>
+                                                    {{preguntaAbierta.opcion}}
+                                                </td>
+                                                <td>
+                                                    <a data-toggle="modal"
+                                                        data-target="#modalParaVerImagenes"
+                                                        @click="desplegarImagenesEnModal(preguntaAbierta.imagenes)" >
+                                                        <i class="fas fa-eye" style="color: #2196f3"></i> <span  style="color: #2196f3"> Ver </span>
+                                                    </a>
+                                                </td>
 
-                                    <td>
-                                        <a @click="btnEditar(preguntaAbierta.id_pregunta,preguntaAbierta.pregunta,preguntaAbierta.opcion,preguntaAbierta.tipo,preguntaAbierta.id_tema, preguntaAbierta.imagenes)"
-                                            data-toggle="modal" data-target="#registrarPregunta">
-                                            <i class="fas fa-pen" style="color: #ffae00;"></i> 
-                                        </a>
-                                        |
-                                        <a  @click="eliminar(preguntaAbierta.id_pregunta, preguntaAbierta.imagenes)">
-                                            <i class="fas fa-trash" style="color: #ff6258"></i> 
-                                        </a>
-                                    </td>
-                                </tr>
-                              
-                                <tr>
-                                  <td> <b> <p> Mostrando {{displayData.length}} de {{ preguntaAbierta.length }} registros </p> </b> </td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                </tr>
-                              
-                            </tbody>
-                        </v-table>
-                    </div>
-                    <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
-                  
+                                                <td>
+                                                    <a @click="btnEditar(preguntaAbierta.id_pregunta,preguntaAbierta.pregunta,preguntaAbierta.opcion,preguntaAbierta.tipo,preguntaAbierta.id_tema, preguntaAbierta.imagenes)"
+                                                        data-toggle="modal" data-target="#registrarPregunta">
+                                                        <i class="fas fa-pen" style="color: #ffae00;"></i> <span style="color: #ffae00;"> Editar </span>
+                                                    </a>
+                                                    /
+                                                    <a  @click="eliminar(preguntaAbierta.id_pregunta, preguntaAbierta.imagenes)">
+                                                        <i class="fas fa-trash" style="color: #ff6258"></i>  <span style="color: #ff6258">Eliminar</span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        
+                                        </tbody>
+                                    </v-table>
+                                </div>
+                                
+                                Total: {{ preguntaAbierta.length }} registros
+                                <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" :maxPageLinks="3" />
+                                
+                                <div class="modal animated animate__bounceIn" id="registrarPregunta" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content" >
+                                            <div class="modal-body">
+                                            
+                                                <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
+                                                    pregunta </h3>
+                                                <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
 
+                                                <p class="text-left mb-0"> <b> Pregunta: </b></p>
+                                                <textarea rows="4" id="pregunta" type="text" class="form-control"
+                                                    placeholder="Pregunta" @focus="limpiarCampos('pregunta')" > </textarea>
+                                                <span id="msjInputPregunta"> </span>
 
-                    <div class="modal animated animate__bounceIn" id="registrarPregunta" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content" style="border-radius: 15px;">
-                                <!-- <div class="modal-header">
-                                    <h5 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
-                                        pregunta </h5>
-                                    <h5 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div> -->
-                                <div class="modal-body">
-                                  
-                                    <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
-                                        pregunta </h3>
-                                    <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
+                                                <p class="text-left mb-0"> <b> Respuesta: </b> </p>
+                                                <textarea rows="1" id="respuesta" type="text" class="form-control"
+                                                    placeholder="Respuesta" @focus="limpiarCampos('respuesta')"  ></textarea>
+                                                <span id="msjInputRespuesta"> </span>
 
-                                    <p class="text-left mb-0"> <b> Pregunta: </b></p>
-                                    <textarea rows="4" id="pregunta" type="text" class="form-control"
-                                        placeholder="Pregunta" @focus="limpiarCampos('pregunta')" style="margin:0px; font-size: 15px; line-height: 20px;"> </textarea>
-                                    <span id="msjInputPregunta"> </span>
+                                                <p class="text-left mb-0"> <b> Tema: </b> </p>
+                                                <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema" />
+                                                <span id="msjSelectTema"> </span>
+                                            
 
-                                    <p class="text-left"> <b> Respuesta: </b> </p>
-                                    <textarea rows="1" id="respuesta" type="text" class="form-control"
-                                        placeholder="Respuesta" @focus="limpiarCampos('respuesta')"  style="margin:0px; font-size: 15px; line-height: 20px;"></textarea>
-                                    <span id="msjInputRespuesta"> </span>
-
-                                    <p class="text-left"> <b> Tema: </b> </p>
-                                    <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema" />
-                                    <span id="msjSelectTema"> </span>
-                                  
-
-                                    <p class="text-left" style="margin-top: 8px;"> <b> Imagenes: </b> </p>
-                                    <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                        style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
-                                        <input type="file" id="assetsFieldHandle"
-                                            class="w-px h-px opacity-0 overflow-hidden absolute"
-                                            @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png"
-                                            hidden />
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label for="assetsFieldHandle" class="block cursor-pointer">
-                                                    <div>
-                                                        <p id="mensajito" class="text-center">
-                                                            <i class="fas fa-cloud-download-alt"></i> Arrastra la imagen
-                                                            o da clic aquí para subir
-                                                        </p>
+                                                <p class="text-left mb-0"> <b> Imagenes: </b> </p>
+                                                <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
+                                                    style="border: 0.5px dashed black; width: 100%;">
+                                                    <input type="file" id="assetsFieldHandle"
+                                                        class="w-px h-px opacity-0 overflow-hidden absolute"
+                                                        @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png"
+                                                        hidden />
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="assetsFieldHandle" class="block cursor-pointer">
+                                                                <div>
+                                                                    <center>
+                                                                    <p id="mensajito" class="text-center">
+                                                                        <i class="fas fa-cloud-download-alt"></i> Arrastra la imagen
+                                                                        o da clic aquí para subir
+                                                                    </p>
+                                                                    </center>
+                                                                </div>
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                </label>
+                                                    <table style="list-style-type: none; width:100%"
+                                                        v-if="this.subidor.imagenesVistaPrevia.length" v-cloak>
+                                                        <tr>
+                                                            <th>Imagen</th>
+                                                            <th>Acción</th>
+                                                        </tr>
+                                                        <tr v-for="imagen in subidor.imagenesVistaPrevia">
+                                                            <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
+                                                                    style=" width: 15em;"> </td>
+                                                            <td>
+                                                            <a  @click="remove(imagen)" title="Eliminar la imagen"> <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                
+                                                <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 4px">  <i class="fas fa-ban"></i> Cerrar
+                                                </button>
+                                                <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 4px">
+                                                    <i class="fas fa-save"></i>  Guardar </button>
+                                                <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 4px"> <i class="fas fa-save"></i> Guardar
+                                                </button>
+                                            
                                             </div>
                                         </div>
-                                        <table style="list-style-type: none; width:100%"
-                                            v-if="this.subidor.imagenesVistaPrevia.length" v-cloak>
-                                            <tr>
-                                                <th>Imagen</th>
-                                                <th>Acción</th>
-                                            </tr>
-                                            <tr v-for="imagen in subidor.imagenesVistaPrevia">
-                                                <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
-                                                        style=" width: 15em;"> </td>
-                                                <td>
-                                                  <a  @click="remove(imagen)" title="Eliminar la imagen"> <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
-                                                </td>
-                                            </tr>
-                                        </table>
                                     </div>
-                                    
-                                    <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;">  <i class="fas fa-ban"></i> Cerrar
-                                    </button>
-                                    <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
-                                        <i class="fas fa-save"></i>  Guardar </button>
-                                    <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;"> <i class="fas fa-save"></i> Guardar
-                                    </button>
-                                  
                                 </div>
-                            </div>
-                        </div>
-                    </div>
 
 
 
-                    <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content" style="border-radius: 15px;">
-                                
-                                <div class="modal-body">
-                                  
-                                  <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
-                                    </h3>
+                                <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-body">
+                                            
+                                            <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
+                                                </h3>
 
-                                    <div style="width: 100%;">
+                                                <div style="width: 100%;">
 
-                                        <table style="list-style-type: none; width:100%">
-                                            <tr>
-                                                <th>
-                                                    Imagen
-                                                </th>
-                                                <th>
-                                                    Nombre
-                                                </th>
-                                            </tr>
-                                            <tr v-for="imagen in imagenesParaDesplegarEnModal">
-                                                <td class="d-flex justify-content-center">
-                                                    <img :src="'/imagenes/preguntas/'+imagen.nombre"
-                                                        style=" width: 15em;">
-                                                </td>
-                                                <td>
-                                                    {{ imagen.alias }}
-                                                </td>
-                                            </tr>
-
-
-
-                                        </table>
-
-                                        <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Esta
-                                            pregunta no tiene imagenes adjuntas </span>
+                                                    <table style="list-style-type: none; width:100%">
+                                                        <tr>
+                                                            <th>
+                                                                Imagen
+                                                            </th>
+                                                            <th>
+                                                                Nombre
+                                                            </th>
+                                                        </tr>
+                                                        <tr v-for="imagen in imagenesParaDesplegarEnModal">
+                                                            <td class="d-flex justify-content-center">
+                                                                <img :src="'/imagenes/preguntas/'+imagen.nombre"
+                                                                    style=" width: 15em;">
+                                                            </td>
+                                                            <td>
+                                                                {{ imagen.alias }}
+                                                            </td>
+                                                        </tr>
 
 
+
+                                                    </table>
+
+                                                    <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Esta
+                                                        pregunta no tiene imagenes adjuntas </span>
+
+
+                                                </div>
+                                                <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 " style="border-radius: 4px"> <i class="fas fa-ban"></i> Cerrar
+                                                </button>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 " style="border-radius: 25px;"> <i class="fas fa-ban"></i> Cerrar
-                                    </button>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </div>
+        </section>   
     </div>
-
 </template>
-
 <script>
     import axios from "axios";
     import Cargador from '@/components/subirImagenes';
     export default {
         data() {
             return {
+                totalRegistros: "5",
                 subidor: {},
                 pregunta: [],
                 preguntaAbierta: [],

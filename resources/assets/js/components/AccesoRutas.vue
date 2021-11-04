@@ -1,6 +1,6 @@
 <template>
 
-			<div class="">
+			<div class="content-wrapper">
 				
 				<div class="col-12 mt-4">
 				<div class="page-header">

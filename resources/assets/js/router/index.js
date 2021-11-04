@@ -4,18 +4,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
 import Profesores from '@/components/Profesores'
-import Halumno from '@/components/Halumno'
+
 import Expertos from '@/components/Expertos'
 import Alumnos from '@/components/Alumnos'
 import Administrador from '@/components/Administrador'
 
 //modulos extras que permiten resolver problemas
-import Informacion from '@/components/informacionpersonal'
-import resolvercuestionario from '@/components/resolvercuestionario'
-import historialalumnosprofesor from '@/components/historialalumnosprofesor'
-import arbolalumno from '@/components/arbolalumno'
 //import historialalumnos from '@/components/historialalumnos'
-import expertop from '@/components/expertop'
 import temas from '@/components/temas'
 import PreguntasAbiertas from '@/components/PreguntasAbiertas'
 import PreguntasNumericas from '@/components/PreguntasNumericas'
@@ -30,8 +25,8 @@ import Perfil from '@/components/Perfil'
 import indexAlumnos from '@/components/IndexAlumnos'
 import indexExpertos from '@/components/IndexExpertos'
 import indexProfesores from '@/components/IndexProfesores'
-import PruebaImagenes from '@/components/PruebaImagenes'
 import saludar from '@/components/saludar'
+import NotFound from '@/components/NotFound.vue'
 
 Vue.use(Router)
 
@@ -111,27 +106,12 @@ export default new Router({
         component: PreguntasOpcionMultipleCalculadas
 	},
     {
-        path:'/resolverCuestionario',
-        name:'resolvercuestionario',
-        component:resolvercuestionario
-    }, 
-    {
-        path: '/historial',
-        name: 'Historial',
-        component: Halumno
-    }, 
-    {
          path:'/temas',
          name:'temas',
          component:temas
     },
      //////////////////////////////////////////////////////////////////////////////
-    
-    {
-        path: '/experto/historial',
-        name: 'HistorialExperto',
-        component: Halumno
-    }, 
+     
     {
          path:'/experto/temas',
          name:'temasExperto',
@@ -158,62 +138,7 @@ export default new Router({
         name: 'PreguntasOpcionMultipleExperto',
         component: PreguntasOpcionMultiple
     }, 
-     
-    
-     
-    {
-        path:'/profesor/resolverCuestionario',
-        name:'resolvercuestionarioProfesor',
-        component:resolvercuestionario
-    }, 
-     
-    
-     
-     
-   {
-        path:'/alumno/resolverCuestionario',
-        name:'resolvercuestionarioAlumno',
-        component:resolvercuestionario
-    }, 
-		 
-     /*{
-       path:'/profesor/app/historialalumnosprofesor',
-       name:'historialalumnosprofesor',
-       component:historialalumnosprofesor
-     },*/
-      {
-       path:'/profesor/app/arbolalumno',
-       name:'arbolalumno',
-       component:arbolalumno
-     },
-      {
-       path:'/profesor/app/informacionpersonal',
-       name:'informacionProfesor',
-       component:Informacion
-     },
-     {
-       path:'/alumno/app/arbolalumno',
-       name:'arbol_alumno',
-       component:arbolalumno
-     },
-      {
-       path:'/alumno/app/informacionpersonal',
-       name:'informacionAlumno',
-       component:Informacion
-     },
-      
-      /*{
-       path:'/alumno/app/historialalumnos',
-       name:'historialalumnos',
-       component:historialalumnos
-     },*/
-    
-      {
-       path:'/experto/app/informacionpersonal',
-       name:'informacionExperto',
-       component:Informacion
-     },
-	 
+          
 	 {
        path:'/admins/app/Preguntanodo',
        name:'Preguntanodo',
@@ -239,16 +164,16 @@ export default new Router({
        name:'Dashboardprofesor',
        component:indexProfesores
     },
-    {
-	   path:'/pruebaimagenes',
-	   name:'pruebaImagenes',
-	   component:PruebaImagenes
-    },
 		 {
 			 path: '/saludarvue',
 			 name: 'saludar',
 			 component: saludar
-		 }
+		 },
+		 {
+				path: '*',
+				name: 'NotFound',
+				component: NotFound,
+			},
 	   
 	   
 ]

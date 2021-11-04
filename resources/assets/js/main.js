@@ -25,10 +25,17 @@ Vue.use(VueViewer)
 Vue.use(vueselect2)
 Vue.config.productionTip = false
 
-var vue_app = new Vue({
+/*var vue_app = new Vue({
   el: '#app',
   router,
   menu:0,
+  components: { App},
+  template: '<App/>'
+})*/
+
+new Vue({
+  el: '#app',
+  router,
   components: { App},
   template: '<App/>'
 })

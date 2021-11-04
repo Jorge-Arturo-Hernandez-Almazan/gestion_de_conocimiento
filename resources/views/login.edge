@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{ style('css/main.css') }}
 
-    {{style('awesome/css/font-awesome.min.css')}}
+    
     <title>Sistema de gestión de conocimiento</title>
 	
 		<script src="https://kit.fontawesome.com/4e3c5501e7.js" crossorigin="anonymous"></script>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
+		{{style('adminlte/css/fontawesome-free/css/all.min.css') }}
+		{{style('adminlte/css/adminlte/adminlte.min.css') }}
 	
 		<style>
 	
@@ -30,88 +33,87 @@
 			
 		</style>
 </head>
-<body>
-    <div class="container-scroller" style="background-color:white;" >
-      <div class="container-fluid page-body-wrapper full-page-wrapper" >
-        <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one" >
-          <div class="row w-100" >
-            <div class="col-lg-4 mx-auto" style="border-radius: 15px;">
-              <div class="auto-form-wrapper" style="border-radius: 15px;">
-                <form action="/login" method="POST">
-					
-					<center>
+<body class="hold-transition login-page" style="background-image: url('imagenes/fondo/universidad.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+    
+		<div class="login-box">
+			<!-- /.login-logo -->
+			<div class="card card-outline card-primary">
+				<div class="card-header text-center">
+					<img src="/imagenes/fondo/logo_azul.png" alt="logo" style="width: 150px; " />
+					<br>
+					<a href="#" class="h3"><b>Sistema de gestión del conocimiento</b> </a>
+				</div>
+				<div class="card-body">
+					<p class="login-box-msg">Inicia sesión </p>
+
+					<form action="/login" method="post">
+						{{ csrfField() }}
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="Correo" name="matricula" id="matricula" onkeydown="comprobarMensajes()">
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-envelope"></span>
+								</div>
+							</div>
+						</div>
+						<div class="input-group mb-3">
+							<input type="password" class="form-control " name="password" id="password" onkeydown="comprobarMensajes()" placeholder="Contraseña">
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-lock"></span>
+								</div>
+							</div>
+						</div>
 						
-						<a class="navbar-brand brand-logo" href="/">
-							<img src="/images/logo_azul.png" alt="logo" style="width: 150px; " /> 
-						</a>
-						
-						<h1>
-							Sistema de gestión de conocimiento
-						</h1>
-						
-					</center>
-					
-					<div id="div_error_contrasena" style="display: none;" class="alert alert-danger" role="alert">
-					   <span id="error_contrasena"> </span>
+						<div id="div_error_contrasena" style="display: none;" class="alert alert-warning alert-dismissible fade show" role="alert">
+					   	<span id="error_contrasena"> </span>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
 					  </div>
 					
-					<div id="div_error_matricula" style="display: none;" class="alert alert-danger" role="alert">
-						<span id="error_matricula"> </span>
-					</div>
-					
-				  {{ csrfField() }}
-                  <div class="form-group">
-                    <label class="label">Correo / Matricula</label>
-                    <div class="input-group">
-					<input type="text" class="form-control" placeholder="Matricula" name="matricula" id="matricula" onkeydown="comprobarMensajes()">
-                      <div class="input-group-append">
-                        <span class="input-group-text">
-                          <i class="fa fa-user-o" ></i>
-                        </span>
-                      </div>
-                    </div>
-								
-					  
-                  </div>
-                  <div class="form-group">
-                    <label class="label">Contraseña</label>
-                    <div class="input-group">
-                      <input type="password" class="form-control " placeholder="*********" name="password" id="password" onkeydown="comprobarMensajes()">
-                      <div class="input-group-append">
-                        <span class="input-group-text">
-                          <i class="fa fa-key" ></i>
-                        </span>
-                      </div>
-                    </div>
-					
-					  
-					  
-                  </div>
-                  <div class="form-group">
-                    <button class="btn btn-primary submit-btn btn-block" type="submit" style="border-radius: 15px;"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</button>
-                  </div>
-                  <div class="form-group d-flex justify-content-between">
-              
-                    <!-- <a href="#" class="text-small forgot-password text-black">Olvide la contraseña</a> -->
-                  </div>
-                </form>
-              </div>
+						<div id="div_error_matricula" style="display: none;" class="alert alert-warning alert-dismissible fade show" role="alert">
+							<span id="error_matricula"> </span>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						
+						<div class="row">
+							<div class="col-12">
+								<button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+							</div>
+							
+							<!-- /.col -->
+						</div>
+					</form>
 
-            </div>
-          </div>
-        </div>
-     
-      </div>
 
-    </div>
-    {{script('js/principal.js')}}
+					<!-- /.social-auth-links -->
+
+					<p class="mb-1 mt-1">
+						<a href="/recuperarPass">Recuperar contraseña</a>
+					</p>
+					<p class="mb-0">
+						<a href="register.html" class="text-center"> Registrarse</a>
+					</p>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+		<!-- /.login-box -->
+	
+    
+		{{script('adminlte/js/jquery/jquery.min.js')}}
+		{{script('adminlte/js/bootstrap/bootstrap.bundle.min.js')}}
+		{{script('adminlte/js/adminlte.min.js')}}
 		
 	<script>
-		//console.log("THIS IS IN THE CONSOLE");
-		//let uri = window.location.href.split('?');
-	  	let uri = window.location.href;
+
+	  let uri = window.location.href;
 		var div_error_matricula = document.getElementById("div_error_matricula");
-		var div_error_contrasena = document.getElementById("div_error_contrasena");
+	 	var div_error_contrasena = document.getElementById("div_error_contrasena");
 		
 		
 		function comprobarMensajes(){
@@ -120,25 +122,23 @@
 		}
 		
 	  	if( uri.includes("?") ){
-			uri = window.location.href.split('?');
-			var error = uri[1].split('=')[1];
-			//alert(error);
-			
-			if(error == 1){
-				var error_matricula = document.getElementById("error_matricula");
-				error_matricula.innerHTML = "Usuario no encontrado. Vuelva a intentar"
-				div_error_matricula.style.display = "block";
-			}else if (error == 2){
-				var error_contrasena = document.getElementById("error_contrasena");
-				error_contrasena.innerHTML = "Contraseña incorrecta, vuelva a intentar";
-				div_error_contrasena.style.display = "block";
-			}
-			
-			window.history.pushState('page2', 'Title', '/');
+				uri = window.location.href.split('?');
+				var error = uri[1].split('=')[1];
+				//alert(error);
+
+				if(error == 1){
+					var error_matricula = document.getElementById("error_matricula");
+					error_matricula.innerHTML = " <i class='fas fa-exclamation-circle'></i> Usuario no encontrado."
+					div_error_matricula.style.display = "block";
+				}else if (error == 2){
+					var error_contrasena = document.getElementById("error_contrasena");
+					error_contrasena.innerHTML = " <i class='fas fa-exclamation-circle'></i> Contraseña incorrecta.";
+					div_error_contrasena.style.display = "block";
+				}
+
+				window.history.pushState('page2', 'Title', '/');
 			
 	  	}
-		
-		
 	</script>
 </body>
 </html>
