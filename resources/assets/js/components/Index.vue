@@ -106,18 +106,36 @@ export default{
 		}
 	},
 	mounted(){
+
+		
+		document.getElementById("navTablero").classList.remove('active');
+		document.getElementById("navUsuarios").classList.remove('active');
+		document.getElementById("liUsuarios").classList.remove('menu-open');
+		document.getElementById("navAccesos").classList.remove('active');
+		document.getElementById("navCuestionario").classList.remove('active');
+		document.getElementById("liCuestionario").classList.remove('menu-open');
+		document.getElementById("aConfigurar").classList.remove('active');
+		document.getElementById("navTemas").classList.remove('active');
+		document.getElementById("navGrafo").classList.remove('active');
+		document.getElementById("liGrafo").classList.remove('menu-open');
+		document.getElementById("navPreguntas").classList.remove('active');
+		document.getElementById("liPreguntas").classList.remove('menu-open');
+		document.getElementById("navRecursos").classList.remove('active');
+		
+		
 		this.getpregunta();
 		this.getTemas();
 		this.getadmins();
 		this.getprofesor();
 		this.getalumnos();
 		this.getexperto();
+
+		
 	},
 	methods: {
 		getpregunta(){
 			axios({method: 'GET', url: '/pregunta/count'}).then(
 				result=> {
-					//console.log(result.data)
 					this.pregunta = result.data[0][0].totalPreguntas
 				},
 				error=> {
@@ -125,7 +143,7 @@ export default{
 				}
 			)
 		}, 
-    getTemas(){
+    	getTemas(){
 			axios({method: 'GET', url: '/temas/count'}).then(
 				result=> {
 					//console.log("Los temas son "+ result.data)
@@ -136,7 +154,7 @@ export default{
 				}
 			)
 		}, 
-    getadmins(){
+    	getadmins(){
 			axios({method: 'GET', url: '/admin/count'}).then(
 				result=> {
 					//console.log("Admin",result.data)
@@ -147,7 +165,7 @@ export default{
 				}
 			)
 		}, 
-    getalumnos(){
+    	getalumnos(){
 			axios({method: 'GET', url: '/alumno/count'}).then(
 				result=> {
 					//console.log("hola como estas ", result.data)
@@ -158,7 +176,7 @@ export default{
 				}
 			)
 		}, 
-    getprofesor(){
+		getprofesor(){
 			axios({method: 'GET', url: '/profesor/count'}).then(
 				result=> {
 					//console.log(result.data)
@@ -169,7 +187,7 @@ export default{
 				}
 			)
 		}, 
-    getexperto(){
+    	getexperto(){
 			axios({method: 'GET', url: '/experto/count'}).then(
 				result=> {
 					//console.log(result.data)

@@ -55,7 +55,10 @@ function rename_node() {
                             saveNewName(node_to_rename)
                         }
 
-                        closeModal();
+                        
+                        //closeModal();
+                        $('#RenameNodeModal').modal('hide');
+
                         outer_update(node_to_rename);
                     });
             }
@@ -72,7 +75,8 @@ function rename_node() {
 
         if (!hasDuplicated) {
             
-            closeModal();
+            //closeModal();
+            $('#RenameNodeModal').modal('hide');
             outer_update(node_to_rename);
         }
 
@@ -84,7 +88,7 @@ function rename_node() {
 async function saveNewName(node_to_rename) {
     await axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/editarNodo/" + node_to_rename.id + "?id_nodo=" + node_to_rename.id + "&nombre_nodo=" + node_to_rename.name + "&textPosition=" + node_to_rename.textPosition,
+        url: "http://167.99.228.145/tema/editarNodo/" + node_to_rename.id + "?id_nodo=" + node_to_rename.id + "&nombre_nodo=" + node_to_rename.name + "&textPosition=" + node_to_rename.textPosition,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id_nodo: node_to_rename.id,
@@ -242,7 +246,8 @@ function createParentConection() {
             child: couplingChild
         })
         registerParentConection(couplingParent, couplingChild, color);
-        closeModal();
+        //closeModal();
+        $('#NewParentModal').modal('hide');
         outer_update(create_parent_relation);
     } else {
         alert("Son familia")
@@ -253,7 +258,7 @@ function createParentConection() {
 function registerParentConection(parent, child, color) {
     axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/addsecundario?id_padre=" + parent.id + "&id_hijo=" + child.id + "&color=" + color,
+        url: "http://167.99.228.145/tema/addsecundario?id_padre=" + parent.id + "&id_hijo=" + child.id + "&color=" + color,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id_padre: parent.id,
@@ -313,7 +318,7 @@ async function deleteParentDB(child, parent, tipo) {
 
     await axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/deleteNodoSecundario?id_hijo=" + child + "&id_padre=" + parent + "&tipo=" + tipo_numerico,
+        url: "http://167.99.228.145/tema/deleteNodoSecundario?id_hijo=" + child + "&id_padre=" + parent + "&tipo=" + tipo_numerico,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id_hijo: child.id,
@@ -324,7 +329,7 @@ async function deleteParentDB(child, parent, tipo) {
         //console.log("funciono");
         //console.log(response)
         //location.reload();
-		window.location.href = "http://159.203.185.170/historialexperto?x="+x_init+"&y="+y_init+"&e="+e_init;
+		window.location.href = "http://167.99.228.145/grafo";
     }).catch(function (error) {
         console.log('Error: ' + error)
     })
@@ -398,7 +403,8 @@ async function confirmCreateNode(name) {
         $('#CreateNodeName').val('');
 
     }
-    closeModal();
+    //closeModal();
+    $('#CreateNodeModal').modal('hide');
     outer_update(create_node_parent);
 }
 
@@ -599,13 +605,15 @@ function delete_node(node1) {
         deleteAllSons(node1.id);
         confirmDeleteNode(node1);
     }
-    closeModal();
+
+    $('#DeleteNodeModal').modal('hide');
+    //closeModal();
 }
 
 function hacerHijoPadre(oldParent, newChildParent) {
     axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/hacerHijoPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newChildParent.id,
+        url: "http://167.99.228.145/tema/hacerHijoPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newChildParent.id,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id: oldParent.id,
@@ -622,7 +630,7 @@ function hacerHijoPadre(oldParent, newChildParent) {
 function cambiarPadre(nodeToChange, newParent) {
     axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/cambiarPadre/" + nodeToChange.id + "?id=" + nodeToChange.id + "&id2=" + newParent.id,
+        url: "http://167.99.228.145/tema/cambiarPadre/" + nodeToChange.id + "?id=" + nodeToChange.id + "&id2=" + newParent.id,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id: nodeToChange.id,
@@ -638,7 +646,7 @@ function cambiarPadre(nodeToChange, newParent) {
 function actualizarPadre(oldParent, newParent, children ,color) {
     axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/cambiarPadre/" + oldParent + "?id=" + oldParent + "&id2=" + newParent + "&hijo=" + children  + "&color=" + color,
+        url: "http://167.99.228.145/tema/cambiarPadre/" + oldParent + "?id=" + oldParent + "&id2=" + newParent + "&hijo=" + children  + "&color=" + color,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id: oldParent,
@@ -657,7 +665,7 @@ function actualizarPadre(oldParent, newParent, children ,color) {
 function deleteandcambiarPadre(oldParent, newParent) {
     axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/deleteandcambiarPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newParent.id,
+        url: "http://167.99.228.145/tema/deleteandcambiarPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newParent.id,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id: oldParent.id,
@@ -676,7 +684,7 @@ function deleteAllSons(idNode) {
     //debugger;
     axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/deleteTema1/" + idNode + "?id=" + idNode,
+        url: "http://167.99.228.145/tema/deleteTema1/" + idNode + "?id=" + idNode,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id: idNode
@@ -772,7 +780,7 @@ function deleteRecursiveNode(node, nodeToDelete) {
 async function updatePosition(draggingNode) {
     await axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/posicion?newx=" + draggingNode.freex + "&newy=" + draggingNode.freey + "&id=" + draggingNode.id,
+        url: "http://167.99.228.145/tema/posicion?newx=" + draggingNode.freex + "&newy=" + draggingNode.freey + "&id=" + draggingNode.id,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             newy: draggingNode.freey,
@@ -795,7 +803,7 @@ async function createRequestNewNode(new_node) {
     var newId;
     await axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/addTema?nombre_tema=" + new_node.name + "&nivel_tema=" + (create_node_parent.level2 + 1) + "&id_padre=" + create_node_parent.id +
+        url: "http://167.99.228.145/tema/addTema?nombre_tema=" + new_node.name + "&nivel_tema=" + (create_node_parent.level2 + 1) + "&id_padre=" + create_node_parent.id +
             "&freex=" + new_node.freex + "&freey=" + new_node.freey + "&textPosition=" + new_node.textPosition + "&color=" + color,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
@@ -828,7 +836,7 @@ async function getTreeFromBD() {
     //Consultar la base de datos
     await axios({
         method: 'get',
-        url: "http://159.203.185.170/temas/arbol",
+        url: "http://167.99.228.145/temas/arbol",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
         treeData = response['data']['treeStructure'];
@@ -869,7 +877,7 @@ function listarNodos(d){
     mensaje_uno.innerHTML = "";
     axios({
         method: 'get',
-        url: "http://159.203.185.170/temas/posiblesNodosPadres/" + d.level2,
+        url: "http://167.99.228.145/temas/posiblesNodosPadres/" + d.level2,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
         nodos = response.data[0];
@@ -880,7 +888,7 @@ function listarNodos(d){
         }
         axios({
             method: 'get',
-            url: "http://159.203.185.170/temas/obtenerPadres/" + d.id,
+            url: "http://167.99.228.145/temas/obtenerPadres/" + d.id,
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
         }).then(function (response) {
             let padres = response.data[0];
@@ -916,7 +924,7 @@ function listarNodosPadre(d){
     mensaje_uno.innerHTML = "";
     axios({
         method: 'get',
-        url: "http://159.203.185.170/temas/posiblesNodosPadres/" + d.level2,
+        url: "http://167.99.228.145/temas/posiblesNodosPadres/" + d.level2,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
         nodos = response.data[0];
@@ -927,7 +935,7 @@ function listarNodosPadre(d){
         }
         axios({
             method: 'get',
-            url: "http://159.203.185.170/temas/obtenerPadres/" + d.id,
+            url: "http://167.99.228.145/temas/obtenerPadres/" + d.id,
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
         }).then(function (response) {
             let padres = response.data[0];
@@ -958,7 +966,7 @@ function listarNodosPadre(d){
     $('#oldParentSelect').empty().trigger("change");
     axios({
     method: 'get',
-    url: "http://159.203.185.170/obtenerConexiones/" + d.id,
+    url: "http://167.99.228.145/obtenerConexiones/" + d.id,
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
     let conexiones = response.data[0];
@@ -986,7 +994,7 @@ async  function obtenerColoresRelaciones(){
     let relaciones_secundarias = [];
     await axios({
         method: 'get',
-        url: "http://159.203.185.170/tema/relacionesPrimarias",
+        url: "http://167.99.228.145/tema/relacionesPrimarias",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
         for(var i=0; i < response['data'].length; i++ ){
@@ -1008,7 +1016,8 @@ async function click_conexion(d){
 	/*console.log("Valor de x " + x_init);
 	console.log("Valor de y " + y_init);
 	console.log("Valor de e " + e_init);*/
-    $('#CambiarColorConexion').foundation('reveal', 'open');
+    //$('#CambiarColorConexion').foundation('reveal', 'open');
+    $('#CambiarColorConexion').modal('show');
     document.getElementById("idConexion").value = d.padre + "-" + d.hijo;
 }
 
@@ -1018,7 +1027,7 @@ async function guardarNuevoColor(){
     nuevo_color = nuevo_color.slice(1);
     await axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/actualizarColor?id=" + id_conexion + "&color=" + nuevo_color,
+        url: "http://167.99.228.145/tema/actualizarColor?id=" + id_conexion + "&color=" + nuevo_color,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             id: id_conexion,
@@ -1026,7 +1035,9 @@ async function guardarNuevoColor(){
         }
     }).then(function (response) {
         outer_update(tree_root);
-        closeModal();
+        //closeModal();
+        $('#CambiarColorConexion').modal('hide');
+
     }).catch(function (error) {
         console.log('Error: ' + error)
     })
@@ -1035,17 +1046,21 @@ async function guardarNuevoColor(){
 
 // Cambiar el tamaño de los nodos
 async function sizeNode(){
-    ratio = $('#slider').attr('data-slider');
+    //ratio = $('#slider').attr('data-slider');
+
+    ratio = $('#slider').val();
     outer_update(tree_root);
 }
 
 // Cambiar el tamaño de los nodos
 async function updateSizeNode(){
-    ratio = $('#slider').attr('data-slider');
+    //ratio = $('#slider').attr('data-slider');
+
+    ratio = $('#slider').val();
 
     await axios({
         method: 'post',
-        url: "http://159.203.185.170/tema/actualizarRadio/" + ratio,
+        url: "http://167.99.228.145/tema/actualizarRadio/" + ratio,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
         data: {
             radio: ratio
@@ -1069,7 +1084,7 @@ async function getSizeNode(){
     let respuesta;
     await axios({
         method: 'get',
-        url: "http://159.203.185.170/tema/obtenerRadio",
+        url: "http://167.99.228.145/tema/obtenerRadio",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
         //Obteniendo la data
@@ -1078,7 +1093,11 @@ async function getSizeNode(){
         ratio = respuesta[0]['radio']
         //Renderizando el arbol
         //outer_update(tree_root);
-        $('#slider').foundation('slider', 'set_value', ratio);
+
+
+        //$('#slider').foundation('slider', 'set_value', ratio);
+        $('#slider').val(ratio)
+        
         //console.log(respuesta[0]['radio']);
 
     }).catch(function (error) {
@@ -1101,8 +1120,6 @@ var total_nodos_evaluados = 0 ;
 var nodo_evaluado = false;
 function loadQuestions(d) {
 	
-	//$("#modalDeCarga").foundation('reveal', 'open');
-	$('html, body').animate({ scrollTop: 0 }, 'fast');
 	
 	id_tema = d.id
 	evidencia = false;
@@ -1132,7 +1149,7 @@ function loadQuestions(d) {
 	
     axios({
         method: 'get',
-        url: "http://159.203.185.170/preguntas/nodo?id=" + id_tema,
+        url: "http://167.99.228.145/preguntas/nodo?id=" + id_tema,
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
         
@@ -1172,7 +1189,9 @@ function loadQuestions(d) {
 		
 		
     	if(response.data.banco_preguntas[0].nivel > 1){
-			$('#QuestionModal').foundation('reveal', 'open'); 	
+			//$('#QuestionModal').foundation('reveal', 'open');
+            
+            $('#QuestionModal').modal('show');
 		}else{
 			swal({
 			  position: 'top-end',
@@ -1239,7 +1258,7 @@ async function guardarPorcentajes(){
 		
 		await axios({
 			method: 'post',
-			url: "http://159.203.185.170/temas/guardarProbabilidades",
+			url: "http://167.99.228.145/temas/guardarProbabilidades",
 			data: {
 				bueno:total_bueno,
 				regular:total_regular,
@@ -1317,7 +1336,7 @@ async function guardarPorcentajes(){
 async function siguienteNodoNoRegistrado(){
 	axios({
 		method: 'get',
-		url: "http://159.203.185.170/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
+		url: "http://167.99.228.145/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
 		headers: { 'content-type': 'application/x-www-form-urlencoded' },
 	}).then(function (response) {
 		if( response.data.porcentajes.length > 0 ){
@@ -1341,7 +1360,7 @@ async function obtenerEvidenciaExpertos(){
     var evidencia = []
 	await axios({
         method: 'get',
-        url: "http://159.203.185.170/temas/obtenerEvidencias",
+        url: "http://167.99.228.145/temas/obtenerEvidencias",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
 		evidencia = response.data[0]
@@ -1391,10 +1410,9 @@ var primero = true;
 
 async function resetearConteo(){ 
 	
-	$('html, body').animate({ scrollTop: 0 }, 'fast');
+	//$('html, body').animate({ scrollTop: 0 }, 'fast');
 	if(total_nodos_evaluados == nodos_ordenados.length ){
 	   
-		//$("#modalDeCarga").foundation('reveal', 'close');
 		
 		swal({
 		  position: 'top-end',
@@ -1406,7 +1424,7 @@ async function resetearConteo(){
 		})
 		
 	}else{
-		$("#modalDeCarga").foundation('reveal', 'open');
+        $('#modalDeCarga').modal('show');
 		numero_nodo_ordenado = 0;
 		encontrarPrimero()
 	}
@@ -1418,7 +1436,7 @@ async function encontrarPrimero(){
 	
 	axios({
 		method: 'get',
-		url: "http://159.203.185.170/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
+		url: "http://167.99.228.145/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
 		headers: { 'content-type': 'application/x-www-form-urlencoded' },
 	}).then(function (response) {
 		
@@ -1429,9 +1447,9 @@ async function encontrarPrimero(){
 			numero_nodo_ordenado = numero_nodo_ordenado + 1;
 			encontrarPrimero() 
 		}else{
-			//$("#modalDeCarga").foundation('reveal', 'close');
-			//closeModal();
-			$('#QuestionModal').foundation('reveal', 'open');
+            $('#modalDeCarga').modal('hide');
+            $('#QuestionModal').modal('show');
+
 			comenzarRegistroEvidencia();
 		}
 
@@ -1559,7 +1577,7 @@ async function obtenerTotalTemas(){
 	var total_temas = 0
 	await axios({
         method: 'get',
-        url: "http://159.203.185.170/temas/obtenerTotalTemas",
+        url: "http://167.99.228.145/temas/obtenerTotalTemas",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
 		total_temas = response.data[0][0].total;		
@@ -1577,7 +1595,7 @@ async function obtenerCaminos(){
 	//await obtiene los datos del servidor
 	await axios({
         method: 'get',
-        url: "http://159.203.185.170/arbol/caminos",
+        url: "http://167.99.228.145/arbol/caminos",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
 		//console.log(response);
@@ -1646,7 +1664,7 @@ async function obtenerCaminos(){
         console.log('Error: ' + error)
     });
 	
-	console.log(caminos);
+	//console.log(caminos);
 	
     return caminos;
 }
@@ -1656,7 +1674,7 @@ async function obtenerRamas(){
 	var ramas = []
 	await axios({
         method: 'get',
-        url: "http://159.203.185.170/arbol/obtenerRamas",
+        url: "http://167.99.228.145/arbol/obtenerRamas",
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
     }).then(function (response) {
 		//console.log(response);
@@ -1676,7 +1694,9 @@ async function changeParent(){
     color = color.slice(1);
 
     actualizarPadre(oldParent, newParent, children ,color);
-    closeModal();
+    //closeModal();
+
+    $('#CambiarConexionPadre').modal('hide');
     //location.reload();
-	window.location.href = "http://159.203.185.170/historialexperto?x="+x_init+"&y="+y_init+"&e="+e_init;
+	window.location.href = "http://167.99.228.145/historialexperto?x="+x_init+"&y="+y_init+"&e="+e_init;
 }

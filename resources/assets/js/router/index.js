@@ -27,12 +27,13 @@ import indexExpertos from '@/components/IndexExpertos'
 import indexProfesores from '@/components/IndexProfesores'
 import saludar from '@/components/saludar'
 import NotFound from '@/components/NotFound.vue'
+import Grafo from '@/components/grafo'
+import Contacto from '@/components/Contacto'
 
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history', // use HTML5 history instead of hashes
-   // ... other settings
+    mode: 'history',
    routes: [
 	   
     {
@@ -110,8 +111,6 @@ export default new Router({
          name:'temas',
          component:temas
     },
-     //////////////////////////////////////////////////////////////////////////////
-     
     {
          path:'/experto/temas',
          name:'temasExperto',
@@ -164,17 +163,25 @@ export default new Router({
        name:'Dashboardprofesor',
        component:indexProfesores
     },
-		 {
-			 path: '/saludarvue',
-			 name: 'saludar',
-			 component: saludar
-		 },
-		 {
-				path: '*',
-				name: 'NotFound',
-				component: NotFound,
-			},
-	   
-	   
-]
+    {
+        path: '/saludarvue',
+        name: 'saludar',
+        component: saludar
+    },
+    {
+        path: '/grafo',
+        name: 'grafo',
+        component: Grafo
+    },
+    {
+        path: '/contacto',
+        name: 'contacto',
+        component: Contacto
+    },
+	{
+        path: '*',
+        name: 'NotFound',
+        component: NotFound,
+    },
+],linkActiveClass:"active", linkExactActiveClass: "active",
 })

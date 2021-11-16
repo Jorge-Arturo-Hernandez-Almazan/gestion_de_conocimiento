@@ -11,16 +11,14 @@
 	<script src="https://kit.fontawesome.com/4e3c5501e7.js" crossorigin="anonymous"></script>
 	
 	
+
 	{{ style('css/main.css?n=1') }}
-	{{style('awesome/css/font-awesome.min.css')}}
-		{{style('arbol/foundation.css')}} 
-		{{style('arbol/app.css')}} 
+	{{style('arbol/foundation.css')}} 
+	{{style('arbol/app.css')}} 
 	{{style('arbol/d3-context-menu.css')}} 
 	{{style('arbol/select2.css')}}
-		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-	
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
 
 </head>
 	
@@ -308,18 +306,6 @@
 								  </thead>
 								  <tbody >
 									  
-									  <!--<tr>
-										<td style="font-size:20px;">Excelente</td>
-										<td style="font-size:20px;">Mayor a 91 o igual a 100</td>
-										<td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_excelente"> </td>
-									  </tr>
-									  
-									  <tr>
-									  	<td style="font-size:20px;">Bueno</td>
-									  	<td style="font-size:20px;"> Mayor a 74 Menor o igual a 91 </td>
-										<td style="font-size:20px;"> <input onkeyup="cambioInput(id)" onchange="cambioInput(id)" type="number" min="0" max="100" class="form-control" id="inp_bueno"> </td>
-									  </tr> -->
-									  
 									  <tr>
 									  	<td style="font-size:20px;">Bueno</td>
 										<td style="font-size:20px;">Mayor a 83 - Menor o igual a 100</td>
@@ -368,18 +354,9 @@
 											<button href="#" class="button primary align-right" id="btn_siguiente_tema" onclick="siguienteRegistroEvidencia()">
 												<i class="fas fa-arrow-right"></i>
 											</button>
-
-											
 											
 										</div>
-										
-										
 									</center>
-								
-								
-
-								
-								
 							</div>
 
 							
@@ -395,45 +372,21 @@
 
 										<center> 
 									  
-									  <div class="modal-body">
-									<div class="spinner-border text-primary" role="status">
-  <span class="sr-only">Loading...</span> 
-</div> 
-								  </div> Cargando
+											<div class="modal-body">
+											<div class="spinner-border text-primary" role="status">
+												<span class="sr-only">Loading...</span> 
+											</div> 
+											</div> Cargando
 								  
-									</center>
+										</center>
 										
 										
 									</div>
 								</div>
 							</div>
 							
-							
-							<!--<div class="reveal-modal" id="modalDeCarga" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" >
-							  <div class="modal-dialog" role="document">
-								<div class="modal-content">
-								  
-									
-								  <center> 
-									  
-									  <div class="modal-body">
-									<div class="spinner-border text-primary" role="status">
-  <span class="sr-only">Loading...</span> 
-</div> 
-								  </div> Cargando
-								  
-									</center>
-									
-								</div>
-							  </div>
-							</div> --> 
-							
-							
-							
-							
 							<!--MODAL PARA CAMBIAR DE COLOR AL NODO-->
-							<div id="CambiarColorConexion" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true"
-								role="dialog">
+							<div id="CambiarColorConexion" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 								<h2 id="modalTitle">Cambiar color de conexión</h2>
 								<form id="RenameNodeForm">
 								<div class="row">
@@ -493,38 +446,24 @@
 									</div>
 								</div>
 							</div>
-							
-							
-							
 						</div>
-
-
 					</div>
-					
 					</div>
 				</div>
-				</div>
-
-			
+			</div>
 
 			
 		</div>
 
 	</div>
-		
-	<footer class="footer">
-			  <div class="container-fluid clearfix">
-				<span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>
-				<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-					
-					Copyright © 2020 -  <a href="http://www.upvictoria.edu.mx/" target="_blank">Universidad Politecnica de Victoria</a>.
-					
-				</span>
-			  </div>
-			</footer>
 	
+
+
+
+
 	{{script('js/main.js')}}
-	{{script('js/principal.js')}}
+	{{ script('js/principal.js')}}
+	
 	{{script('arbol/jquery.js')}}
 	{{script('arbol/d3.v3.min.js')}}
 	{{script('https://d3plus.org/js/d3plus.v2.0.0-alpha.29.full.min.js')}}
@@ -532,67 +471,33 @@
 	{{script('arbol/experto/dndTree.js')}}
 	{{script('arbol/d3-context-menu.js')}}
 	{{script('arbol/underscore-min.js')}}
-	{{script('https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js')}}
 	{{script('arbol/fastclick.js')}}
 	{{script('arbol/foundation.min.js')}}
 	{{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
 	{{script('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}
 	
-	
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> 
+
 
 	<script>
 		// for the first initialization
 		$('document').ready(function(){
-			cristian();
-			$(document).foundation();
-			$(document).on('opened', '[data-reveal]', function () {
-				var element = $(".inputName:visible").first();
-				element.focus(function(){
-					this.selectionStart = this.selectionEnd = this.value.length;
-				});
-				element.focus();
-			});
-			$('#RenameNodeForm').submit(function(e){
-					//rename_node();
-					//return false;
-			});
-			$('#CreateNodeForm').submit(function(e){
-					//create_node();
-					//return false;
-			});
-			var treeJSON = d3.json("arbol/tree.json'", draw_tree);
-			// $("#abrirCarga").click();
-			$('#modalDeCarga').foundation('reveal', 'open');
-		});
-		
-		
-
-		function cristian(){
-
+			//inicializarGrafo();
 			$('.js-example-basic-multiple').select2();
-
 			$('#nodesSelect').select2();
-
 			$('#nodesSelectAllDelete').select2();
 			$('#nodesSelectChildNewParent').select2();
 			$('#nodesSelectAllDelete').next(".select2-container").hide();
 			$('#nodesSelectChildNewParent').next(".select2-container").hide();
 
 			$("#horizontalVertical").change(function (e) {
-				// alert("Handler for .change() called. ");
-
 				horizontalVertical = !horizontalVertical;
 				outer_update(tree_root);
-
 			});
-
-
 
 			$("#textPosition").change(function (e) {
 				textPosition = !textPosition;
 			});
-
 
 			$("#textPositionRename").change(function (e) {
 				textPosition = !textPosition;
@@ -611,28 +516,23 @@
 
 			$("#showNumber").change(function (e) {
 				showNumber = !showNumber;
-
 				outer_update(tree_root);
-
 			});
 
 
 
 			var $optionsDelete = $("#optionsDelete").select2().on("change", function (e) {
-
 				var optionsS = $('#optionsDelete').select2('data')
 				let deleteOption = optionsS[0]['id'];
 				if (deleteOption == 4) {
 					$('#nodesSelectAllDelete').next(".select2-container").show();
 					$('#nodesSelectChildNewParent').next(".select2-container").hide();
-
 				} else if (deleteOption == 3) {
 					$('#nodesSelectChildNewParent').next(".select2-container").show();
 					$('#nodesSelectAllDelete').next(".select2-container").hide();
 				} else {
 					$('#nodesSelectAllDelete').next(".select2-container").hide();
 					$('#nodesSelectChildNewParent').next(".select2-container").hide();
-
 				}
 
 			});
@@ -654,12 +554,25 @@
 				create_node();
 				return false;
 			});
-			/*$("/public/arbol/d3.v3.min.js", function(){
-			var treeJSON = d3.json("tree.json", draw_tree);
-			});*/
+			
+			$(document).foundation();
+			
+			$(document).on('opened', '[data-reveal]', function () {
+				var element = $(".inputName:visible").first();
+				element.focus(function(){
+					this.selectionStart = this.selectionEnd = this.value.length;
+				});
+				element.focus();
+			});
+			$('#RenameNodeForm').submit(function(e){});
+			$('#CreateNodeForm').submit(function(e){});
+			var treeJSON = d3.json("arbol/tree.json'", draw_tree);
+			$('#modalDeCarga').foundation('reveal', 'open');
+		});
 		
-							
-		}
+		
+
+		
 	</script>
 
 </body>

@@ -46,7 +46,7 @@
 				<div class="card-body">
 					<p class="login-box-msg">Recuperar contraseña </p>
 
-					<form action="/login" method="post">
+					<form action="/enviarCorreo" method="post">
 						{{ csrfField() }}
 						<div class="input-group mb-3">
 							<input type="text" class="form-control" placeholder="Matricula" name="matricula" id="matricula" onkeydown="comprobarMensajes()">

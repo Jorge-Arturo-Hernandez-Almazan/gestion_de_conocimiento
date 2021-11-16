@@ -129,6 +129,26 @@ export default{
 		}
 	},
 	mounted(){
+		
+		document.getElementById("navTablero").classList.remove('active');
+		document.getElementById("navUsuarios").classList.remove('active');
+		document.getElementById("liUsuarios").classList.remove('menu-open');
+		
+		document.getElementById("navAccesos").classList.remove('active');
+		document.getElementById("navCuestionario").classList.remove('active');
+		document.getElementById("liCuestionario").classList.remove('menu-open');
+		document.getElementById("aConfigurar").classList.remove('active');
+		
+		document.getElementById("navTemas").classList.remove('active');
+		document.getElementById("navGrafo").classList.remove('active');
+		document.getElementById("liGrafo").classList.remove('menu-open');
+		
+		document.getElementById("navPreguntas").classList.remove('active');
+		document.getElementById("liPreguntas").classList.remove('menu-open');
+		
+		document.getElementById("navRecursos").classList.remove('active');
+		
+		
 		this.cambioRol();
 	},
 	methods: {

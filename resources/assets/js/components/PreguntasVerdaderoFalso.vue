@@ -269,6 +269,14 @@
           
         },
         mounted() {
+          document.getElementById("navUsuarios").classList.remove('active');
+            document.getElementById("liUsuarios").classList.remove('menu-open');
+            document.getElementById("navCuestionario").classList.remove('active');
+            document.getElementById("liCuestionario").classList.remove('menu-open');
+            document.getElementById("navGrafo").classList.remove('active');
+            document.getElementById("liGrafo").classList.remove('menu-open');
+            document.getElementById("navPreguntas").classList.add('active');
+            document.getElementById("liPreguntas").classList.add('menu-open');
             this.obtenerPreguntasVerdaderoFalso();
             this.obtenerTemas();
             let uri = window.location.href;

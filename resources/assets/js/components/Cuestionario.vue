@@ -26,15 +26,7 @@
                         </ul>
                     </div>
                 </div>
-
-							
-							
-
                 <div class="row">
-									
-
-									
-									
 									
                     <div class="col-12 mt-2 pt-2" >
                         <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal" data-target="#exampleModal" style="border-radius: 25px;">                            
@@ -44,26 +36,15 @@
                             <h3 id="question"> </h3>
 													
 														
-													<div class="row mt-3">
-														
-	
-													<div v-for="(img,i) in this.imagenesPregunta" :key="img" class="col-6" style="text-align: center;">
-															<img class="ml-2 mr-2" :src="img" style="border: 0.5px solid black;">
-															<p>
-																<b> Imagen {{i+1}} </b>
-															</p>
-													</div>
-													
-													</div>
-													 
-													
-													
-													
-													
-															
-													
-                            
-                          
+                            <div class="row mt-3">
+                              <div v-for="(img,i) in this.imagenesPregunta" :key="img" class="col-6" style="text-align: center;">
+                                  <img class="ml-2 mr-2" :src="img" style="border: 0.5px solid black;">
+                                  <p>
+                                    <b> Imagen {{i+1}} </b>
+                                  </p>
+                              </div>
+                            </div>
+
                             <p id="noOpciones"> </p>
                             <div class="buttons" id="buttons"> </div>
                             <hr style="margin-top: 50px">
@@ -288,6 +269,18 @@ export default {
       imagenesPregunta: []
 		};
 	},
+	mounted(){
+		
+		document.getElementById("navUsuarios").classList.remove('active');
+		document.getElementById("liUsuarios").classList.remove('menu-open');
+		document.getElementById("navCuestionario").classList.add('active');
+		document.getElementById("liCuestionario").classList.add('menu-open');
+		document.getElementById("navGrafo").classList.remove('active');
+		document.getElementById("liGrafo").classList.remove('menu-open');
+		document.getElementById("navPreguntas").classList.remove('active');
+		document.getElementById("liPreguntas").classList.remove('menu-open');
+		
+	},
 	created(){
 		this.confirmAttempt();
 	},
@@ -320,7 +313,10 @@ export default {
                 await this.getpreguntas();        
               }
               else{
-                window.location.href = "/tablero";
+                //window.location.href = "/tablero";
+
+                //router.push("Index")
+                this.$router.push('tablero');
               }
           })
         },

@@ -117,6 +117,10 @@ class UserController {
 
 	}
 	
+	async enviarCorreo({session, request, response, auth}){
+		
+ 
+	}
 	
 	
 	async logout({session,response,auth}){
@@ -437,17 +441,12 @@ class UserController {
 	
 	async verificarLogin({view, auth, response}){
 		
-		if (auth.user == null){
+		if( auth.user ){
+			 return view.render('app');
+		}else{
+			
 			return response.redirect('/');
-		}else{
-			return view.render('app');
 		}
-		
-		/*if( auth.user.id_rol ){
-			 return response.redirect('/');
-		}else{
-			return view.render('app');
-		}*/
 		
 	}  
 	

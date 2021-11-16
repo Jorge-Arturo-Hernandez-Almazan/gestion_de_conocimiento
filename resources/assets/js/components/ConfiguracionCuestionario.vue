@@ -265,6 +265,16 @@ export default {
 		
 	},
 	mounted() {
+		
+		document.getElementById("navUsuarios").classList.remove('active');
+		document.getElementById("liUsuarios").classList.remove('menu-open');
+		document.getElementById("navCuestionario").classList.add('active');
+		document.getElementById("liCuestionario").classList.add('menu-open');
+		document.getElementById("navGrafo").classList.remove('active');
+		document.getElementById("liGrafo").classList.remove('menu-open');
+		document.getElementById("navPreguntas").classList.remove('active');
+		document.getElementById("liPreguntas").classList.remove('menu-open');
+		
 		this.obtenerConfiguraciones();
 		this.obtenerTotales();
 		

@@ -1,5 +1,5 @@
 function closeModal() {
-    $(document).foundation('reveal', 'close');
+    //$(document).foundation('reveal', 'close');
 }
 
 var tree_root;
@@ -34,18 +34,23 @@ outer_update = null;
 var ratio = 0;
 var lista_nodos_eliminar = [];
 
-var x_init = document.getElementById("x_input").value;
+/*var x_init = document.getElementById("x_input").value;
 var y_init = document.getElementById("y_input").value;
-var e_init = document.getElementById("e_input").value;
+var e_init = document.getElementById("e_input").value;*/
+
+var x_init = 0;
+var y_init = 0;
+var e_init = 1;
+
 var nodos_ordenados = []
 var ramas = []
 async function draw_tree(error, treeData) {
 	
 
 	if( x_init == "undefined" ){
-	   x_init = 0;
+	    x_init = 0;
 		y_init = 0;
-			e_init = 1;
+		e_init = 1;
 	}
 	
     //debugger;
@@ -56,7 +61,8 @@ async function draw_tree(error, treeData) {
     ramas = ramas[0];
 	nodos_ordenados = await obtenerCaminos();
 	
-    $('#slider').foundation('slider', 'set_value', ratio);
+    //$('#slider').foundation('slider', 'set_value', ratio);
+    $('#slider').val(ratio);
     treeData = await getTreeFromBD(); // Await espera a que se termine de ejecutar la funcion para continuar a las demas lineas
 	
 	
@@ -78,11 +84,10 @@ async function draw_tree(error, treeData) {
     var root;
 
     // size of the diagram
-    var viewerWidth = $("#tarjeta_arbol").width() * 0.95;
-    var viewerHeight = $(document).height() * 1;
+    var viewerWidth = $("#tarjeta_arbol").width();
+    var viewerHeight = $(document).height();
 
-    var tree = d3.layout.tree()
-        .size([viewerHeight, viewerWidth]);
+    var tree = d3.layout.tree().size([viewerHeight, viewerWidth]);
     tree_d3 = tree;
 
     createExtraConectionStructure(treeData); // Carga del arbol a partir del json
@@ -115,8 +120,10 @@ async function draw_tree(error, treeData) {
                 $('#mensaje_3').text("")
 
                 rename_node_modal_active = true;
-                node_to_rename = d
-                $('#RenameNodeModal').foundation('reveal', 'open');
+                node_to_rename = d;
+
+                //$('#RenameNodeModal').foundation('reveal', 'open');
+                $('#RenameNodeModal').modal('show');
             }
         },
         {
@@ -129,7 +136,9 @@ async function draw_tree(error, treeData) {
                 makeListSons(node_to_delete)
                 updateNodeToListToDelete()
 
-                $('#DeleteNodeModal').foundation('reveal', 'open');
+                //$('#DeleteNodeModal').foundation('reveal', 'open');
+
+                $('#DeleteNodeModal').modal('show');
 
                 //delete_node(d);
             }
@@ -140,8 +149,10 @@ async function draw_tree(error, treeData) {
                 //debugger;
                 create_node_parent = d;
                 create_node_modal_active = true;
-                $('#CreateNodeModal').foundation('reveal', 'open');
-                $('#CreateNodeName').focus();
+                //$('#CreateNodeModal').foundation('reveal', 'open');
+                $('#CreateNodeModal').modal('show');
+
+                //$('#CreateNodeName').focus();
             }
         },
         {
@@ -149,8 +160,9 @@ async function draw_tree(error, treeData) {
             action: function (elm, d, i) {
                 create_parent_relation = d;
                 create_parent_modal_active = true;
-                $('#NewParentModal').foundation('reveal', 'open');
-                $('#CreateNodeName').focus();
+                //$('#NewParentModal').foundation('reveal', 'open');
+                //$('#CreateNodeName').focus();
+                $('#NewParentModal').modal('show');
                 listarNodos(d);
             }
         },
@@ -163,7 +175,7 @@ async function draw_tree(error, treeData) {
                 let padres = [];
                 await axios({
                     method: 'get',
-                    url: "http://159.203.185.170/temas/obtenerPadresConNombre/" + d.id,
+                    url: "http://167.99.228.145/temas/obtenerPadresConNombre/" + d.id,
                     headers: { 'content-type': 'application/x-www-form-urlencoded' },
                 }).then(function (response) {
                     padres = response.data[0];
@@ -195,8 +207,9 @@ async function draw_tree(error, treeData) {
 
                 }
 
-                $('#DeleteParentModal').foundation('reveal', 'open');
-                $('#CreateNodeName').focus();
+                //$('#DeleteParentModal').foundation('reveal', 'open');
+                $('#DeleteParentModal').modal('show');
+                //$('#CreateNodeName').focus();
             }
         },
         {
@@ -204,7 +217,8 @@ async function draw_tree(error, treeData) {
             action: function (elm, d, i) {
                 create_parent_relation = d;
                 create_parent_modal_active = true;
-                $('#CambiarConexionPadre').foundation('reveal', 'open');
+                //$('#CambiarConexionPadre').foundation('reveal', 'open');
+                $('#CambiarConexionPadre').modal('show');
                
                 var select_conexion = document.getElementById("childrenSelect");
                 var children = document.createElement("option");
@@ -213,7 +227,7 @@ async function draw_tree(error, treeData) {
                 children.value = d.id;
                 select_conexion.appendChild(children);
 
-                $('#CreateNodeName').focus();
+                //$('#CreateNodeName').focus();
                 listarNodosPadre(d);
             }
         }
@@ -1180,6 +1194,14 @@ async function draw_tree(error, treeData) {
         updateNodeToList();
     }
     nodeToListFlag = true;
+
+    $('#modalDeCarga').modal('hide');
 }
 
 
+window.addEventListener('resize', function(event) {
+    var viewerWidth = $("#tarjeta_arbol").width();
+    var viewerHeight = $(document).height();
+
+    var tree = d3.layout.tree().size([viewerHeight, viewerWidth]);
+}, true);

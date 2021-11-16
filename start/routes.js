@@ -17,6 +17,10 @@ Route.get('/pruebapython', 'PonderacionController.pruebaPython');
 
   Route.get('temas/count','TemaController.temacount') 
 
+
+Route.get('/grafo', ({view}) =>  view.render('app') );
+Route.get('/contacto', ({view}) =>  view.render('app')  );
+
 ///RUTAS DEL METODO DE PONDERACION
 
 Route.get('/arbol/obtenerCaminos/:id', 'PonderacionController.getPaths');
@@ -479,6 +483,7 @@ Route.get('/recuperarPass', async ({view}) =>{
 	
 		return view.render('recuperarPass')	
 });
+Route.get('/enviarCorreo', 'UserController.enviarCorreo');
 //Route.get('/*', ({view})=> view.render('app') );
 Route.get('/*', 'UserController.verificarLogin');
 

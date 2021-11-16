@@ -454,6 +454,7 @@ class PonderacionController {
 	
 	
   async obtener_caminos_red_bayesiana({response}){
+    
 		let i = 0;
 		let j = 0;
 		let k = 0;

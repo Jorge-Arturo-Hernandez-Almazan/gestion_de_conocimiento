@@ -136,7 +136,17 @@ export default{
 		}
 	},
 	mounted(){
-		this.getexperto()
+		
+		document.getElementById("navUsuarios").classList.add('active');
+		document.getElementById("liUsuarios").classList.add('menu-open');
+		document.getElementById("navCuestionario").classList.remove('active');
+		document.getElementById("liCuestionario").classList.remove('menu-open');
+		document.getElementById("navGrafo").classList.remove('active');
+		document.getElementById("liGrafo").classList.remove('menu-open');
+		document.getElementById("navPreguntas").classList.remove('active');
+		document.getElementById("liPreguntas").classList.remove('menu-open');
+		
+		this.getexperto();
 	},
 	methods: {
 		cambiarCampoDeBusqueda(){
