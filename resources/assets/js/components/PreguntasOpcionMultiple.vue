@@ -35,11 +35,11 @@
                     
                      <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
                       <div class="col-6" style="padding: 5px;">
-                        <b> Termino de busqueda: </b>
+                        <b> Término de búsqueda: </b>
                         <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
                       </div>
                       <div class="col-6" style="padding: 5px;">
-                        <b>Campo de busqueda: </b>
+                        <b>Campo de búsqueda: </b>
                         <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
                           <option value="pregunta">Pregunta</option>
                           <option value="tema">Tema</option>
@@ -122,19 +122,19 @@
                                 <h3 v-if="editarPreguntaVar == true" class="modal-title" id="exampleModalLabel"> 
                                         Editar pregunta  </h3>
                                 
-                                <p class="text-left" for="pregunta"> <b> Reactivo: </b>  </p>
+                                <p class="text-left" for="pregunta"> <b> Reactivo <span style="color:red">*</span>: </b>  </p>
                                 <textarea @focus="limpiarCampos('pregunta')" id="pregunta" class="form-control" rows="4"
                                     placeholder="Escribe el reactivo" style="margin: 0px; font-size: 15px; line-height: 20px; border: 1px solid rgb(222, 226, 230);">  </textarea>
                                 <span id="msjInputPregunta"> </span>
                                 
-                                <p class="text-left"> <b> Tema: </b> </p>                              
+                                <p class="text-left"> <b> Tema <span style="color:red">*</span>: </b> </p>                              
                                 <Select2  :options="temas" v-model="id_tema" id="id_tema" @select="cambioSelect($event)" />
                                 <span id="msjSelectTema"> </span>
                                 
-                                <p class="text-left" for="opciones"> <b> Opciones:  </b></p>
+                                <p class="text-left" for="opciones"> <b> Opciones  <span style="color:red">*</span>: </b></p>
                                 <div class="row">
                                     <div class="col-md-8" style="padding:0px;">
-                                        <input @focus="limpiarCampos('respuesta')" id="inputOpcion" class="form-control" type="text" style="border-radius: 15px; margin: 0px 0px 10px;">
+                                        <input @focus="limpiarCampos('respuesta')" id="inputOpcion" class="form-control" type="text" style=" margin: 0px 0px 10px;">
                                     </div>
                                     
                                     
@@ -155,9 +155,9 @@
                                 </div>
                                 
                                 
-                                <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
+                                <p class="text-left mt-2 mb-0"> <b> Imagenes  <span style="color:red">*</span>: </b> </p>
                                 <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                    style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
+                                    style="border: 0.5px dashed black; width: 100%; ">
                                     <input type="file" id="assetsFieldHandle"
                                         class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
                                         ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
@@ -188,7 +188,8 @@
                                         </tr>
                                     </table>
                                 </div>
-                                
+                                  <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
+
                                 <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;"> <i class="fas fa-ban"></i> Cerrar</button>
                                 <button type="button" @click="btnGuardarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;"> <i class="fas fa-save"></i> Guardar</button>
                               
@@ -291,15 +292,6 @@
         },
 
         async mounted() {
-          document.getElementById("navUsuarios").classList.remove('active');
-            document.getElementById("liUsuarios").classList.remove('menu-open');
-            document.getElementById("navCuestionario").classList.remove('active');
-            document.getElementById("liCuestionario").classList.remove('menu-open');
-            document.getElementById("navGrafo").classList.remove('active');
-            document.getElementById("liGrafo").classList.remove('menu-open');
-            document.getElementById("navPreguntas").classList.add('active');
-            document.getElementById("liPreguntas").classList.add('menu-open');
-          
             await this.getpreguntas().then(data => {}).catch(err => console.log(err))
             this.getTemas();
             let uri = window.location.href;

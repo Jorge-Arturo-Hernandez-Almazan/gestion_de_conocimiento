@@ -5,13 +5,10 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="page-title m-0">Preguntas</h1>
-                      
-                      
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Preguntas</a></li>
-                            <li class="breadcrumb-item active"> Abiertas </li>
+                            <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> </span> <span style="color: #bdb9bd">  Preguntas <i class="fas fa-angle-right"></i> </span> <b>Abiertas </b>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -26,20 +23,28 @@
                             <div class="card-body">
 
                             
-                                <div class="row mb-2">
+                                <div class="row ">
                                     <div class="col-sm-6">
                                         <h1 class="page-title m-0">Preguntas abiertas</h1>
                                     </div><!-- /.col -->
                                     <div class="col-sm-6">
                                         <ol class="breadcrumb float-sm-right" style="background: white">
-                                            <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal"
+                                          
+                                          
+                                          
+                                          <button type="button" class="btn btn-primary float-right"  data-toggle="modal"
                                             data-target="#registrarPregunta" @click="cambiarModo">
-                                                <i class="fas fa-edit"></i> Registrar
+                                                <i class="fas fa-edit"></i> Registrar pregunta
                                             </button>
+                                            
+                                 
+                                            
                                         </ol>
                                     </div><!-- /.col -->
                                 </div>
 
+                               
+                            
                                 <div class="row mb-2">
                                     <div class="col-6" >
                                         <b> Termino de busqueda: </b>
@@ -58,7 +63,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            
+
                                 <div class="table-responsive">
 
                                     <!-- Tabla -->
@@ -67,38 +72,40 @@
                                         class="table table-hover">
                                         <thead slot="head" >
                                             <v-th sortKey="pregunta" defaultSort="desc" >Pregunta</v-th>
-                                            <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
                                             <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
-                                            <th> Imagenes </th>
-                                            <th>Opciones</th>
+                                            <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
+                                            <th>Imagen </th>
+                                            <th>Editar</th>
+                                            <th>Eliminar</th>
                                         </thead>
                                         <tbody slot="body" slot-scope="{displayData}">
                                             <tr v-for="preguntaAbierta in displayData" :key="preguntaAbierta.id">
-                                                <td >
+                                                <td style="width:30%">
                                                     {{preguntaAbierta.pregunta}}
                                                 </td>
-                                                <td>
-                                                    {{preguntaAbierta.tema}}
-                                                </td>
-                                                <td>
+                                                <td style="width:30%">
                                                     {{preguntaAbierta.opcion}}
                                                 </td>
-                                                <td>
+                                                <td style="width:25%">
+                                                    {{preguntaAbierta.tema}}
+                                                </td>
+                                                <td style="width:5%">
                                                     <a data-toggle="modal"
                                                         data-target="#modalParaVerImagenes"
-                                                        @click="desplegarImagenesEnModal(preguntaAbierta.imagenes)" >
-                                                        <i class="fas fa-eye" style="color: #2196f3"></i> <span  style="color: #2196f3"> Ver </span>
+                                                        @click="desplegarImagenesEnModal(preguntaAbierta.imagenes)" class="btn btn-outline-primary">
+                                                        <i class="fas fa-eye" style="color: #2196f3"></i> <span  style="color: #2196f3"></span>
                                                     </a>
                                                 </td>
 
-                                                <td>
+                                                <td style="width:5%">
                                                     <a @click="btnEditar(preguntaAbierta.id_pregunta,preguntaAbierta.pregunta,preguntaAbierta.opcion,preguntaAbierta.tipo,preguntaAbierta.id_tema, preguntaAbierta.imagenes)"
-                                                        data-toggle="modal" data-target="#registrarPregunta">
-                                                        <i class="fas fa-pen" style="color: #ffae00;"></i> <span style="color: #ffae00;"> Editar </span>
+                                                        data-toggle="modal" data-target="#registrarPregunta" class="btn btn-outline-warning">
+                                                        <i class="fas fa-pen" style="color: #ffae00;"></i> <span style="color: #ffae00;"></span>
                                                     </a>
-                                                    /
-                                                    <a  @click="eliminar(preguntaAbierta.id_pregunta, preguntaAbierta.imagenes)">
-                                                        <i class="fas fa-trash" style="color: #ff6258"></i>  <span style="color: #ff6258">Eliminar</span>
+                                                </td>
+                                                <td style="width:5%">
+                                                    <a  @click="eliminar(preguntaAbierta.id_pregunta, preguntaAbierta.imagenes)" class="btn btn-outline-danger" >
+                                                        <i class="fas fa-trash" style="color: #ff6258"></i>  <span style="color: #ff6258"></span>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -119,26 +126,28 @@
                                                 <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
                                                     pregunta </h3>
                                                 <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
-
-                                                <p class="text-left mb-0"> <b> Pregunta: </b></p>
-                                                <textarea rows="4" id="pregunta" type="text" class="form-control"
+                                        
+                                               
+                                               <p class="text-left mt-0 mb-0"><b>Pregunta <span style="color:red">*</span>:</b></p>
+                                                <textarea rows="4" id="pregunta" type="text" class="form-control mt-0 mb-0" 
                                                     placeholder="Pregunta" @focus="limpiarCampos('pregunta')" > </textarea>
                                                 <span id="msjInputPregunta"> </span>
-
-                                                <p class="text-left mb-0"> <b> Respuesta: </b> </p>
-                                                <textarea rows="1" id="respuesta" type="text" class="form-control"
+                                                
+                                                                                                                                            
+                                                <p class="text-left mt-0 mb-0"><b>Respuesta <span style="color:red">*</span>: </b></p>
+                                                <textarea rows="1" id="respuesta" type="text"  class="form-control mt-0 mb-0"
                                                     placeholder="Respuesta" @focus="limpiarCampos('respuesta')"  ></textarea>
                                                 <span id="msjInputRespuesta"> </span>
 
-                                                <p class="text-left mb-0"> <b> Tema: </b> </p>
-                                                <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema" />
+                                                <p class="text-left mt-0 mb-0"><b>Tema <span style="color:red">*</span>:</b> </p>
+                                                <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema"/>
                                                 <span id="msjSelectTema"> </span>
                                             
 
-                                                <p class="text-left mb-0"> <b> Imagenes: </b> </p>
+                                                <p class="text-left mt-0 mb-0"><b>Imagenes: </b></p>
                                                 <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                                    style="border: 0.5px dashed black; width: 100%;">
-                                                    <input type="file" id="assetsFieldHandle"
+                                                    style="border: 0.5px dashed black; width: 100%;" >
+                                                    <input type="file" id="assetsFieldHandle" 
                                                         class="w-px h-px opacity-0 overflow-hidden absolute"
                                                         @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png"
                                                         hidden />
@@ -170,13 +179,21 @@
                                                             </td>
                                                         </tr>
                                                     </table>
+                                                    
                                                 </div>
                                                 
-                                                <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 4px">  <i class="fas fa-ban"></i> Cerrar
+                                                
+                                                
+                                                
+                                                <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
+                                                
+
+
+                                                <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px">  <i class="fas fa-ban"></i> Cerrar
                                                 </button>
-                                                <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 4px">
-                                                    <i class="fas fa-save"></i>  Guardar </button>
-                                                <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 4px"> <i class="fas fa-save"></i> Guardar
+                                                <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
+                                                    <i class="fas fa-save"></i>  Guardar</button>
+                                                <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px"> <i class="fas fa-save"></i> Guardar
                                                 </button>
                                             
                                             </div>
@@ -279,16 +296,6 @@
             this.subidor = new Cargador();
         },
         async mounted() {
-          
-            document.getElementById("navUsuarios").classList.remove('active');
-            document.getElementById("liUsuarios").classList.remove('menu-open');
-            document.getElementById("navCuestionario").classList.remove('active');
-            document.getElementById("liCuestionario").classList.remove('menu-open');
-            document.getElementById("navGrafo").classList.remove('active');
-            document.getElementById("liGrafo").classList.remove('menu-open');
-            document.getElementById("navPreguntas").classList.add('active');
-            document.getElementById("liPreguntas").classList.add('menu-open');
-          
             await this.getPreguntaAbierta();
             this.getTemas();
             let uri = window.location.href;

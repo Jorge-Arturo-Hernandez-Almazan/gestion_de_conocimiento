@@ -8,8 +8,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Preguntas</a></li>
-                            <li class="breadcrumb-item active"> Numericas </li>
+                            <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> </span> <span style="color: #bdb9bd">  Preguntas <i class="fas fa-angle-right"></i> </span> <b>Numéricas </b>
+
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -25,36 +25,35 @@
 
                               <div class="row  mb-2">
                                   <div class="col-sm-6">
-                                      <h1 class="page-title m-0">Preguntas numericas</h1>
+                                      <h1 class="page-title m-0">Preguntas numéricas</h1>
                                   </div><!-- /.col -->
                                   <div class="col-sm-6">
                                       <ol class="breadcrumb float-sm-right" style="background: white">
                                           <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal"
-                                          data-target="#registrarPregunta" @click="cambiarModo">
+                                          data-target="#registrarPregunta" @click="cambiarModo" style="border-radius: 25px;">
                                               <i class="fas fa-edit"></i> Registrar
                                           </button>
                                       </ol>
                                   </div><!-- /.col -->
                               </div>          
 
-                              <div class="row mb-2">
-                                  <div class="col-6" >
-                                      <b> Termino de busqueda: </b>
-                                      <input class="form-control" type="search" 
-                                          placeholder="Término" 
-                                          v-model="filters.pregunta.value" 
-                                          style=" height: 38px;" />
-
-                                  </div>
-                                  <div class="col-6" >
-                                      <b>Campo de busqueda: </b>
-                                      <select class="form-control" name="campoBusqueda" id="campoBusqueda" @change="cambiarCampoDeBusqueda">
-                                      <option value="pregunta">Pregunta</option>
-                                      <option value="tema">Tema</option>
-                                      <option value="opcion">Respuesta</option>
-                                      </select>
-                                  </div>
+                                                        
+                            <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
+                                <div class="col-6" style="padding: 5px;">
+                                  <b> Término de búsqueda: </b>
+                                  <input class="form-control" type="search" placeholder="Término" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
+                                </div>
+                                <div class="col-6" style="padding: 5px;">
+                                  <b>Campo de búsqueda: </b>
+                                  <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
+                                    <option value="pregunta">Pregunta</option>
+                                        <option value="tema">Tema</option>
+                                        <option value="opcion">Respuesta</option>
+                                  </select>
+                                </div>
                               </div>
+                            
+                            
                             
                               <div class="table-responsive">
                                 
@@ -77,25 +76,25 @@
                                               <td>{{preguntaNumerica.tema}}</td>
                                               <td>{{preguntaNumerica.opcion}} </td>
                                               <td>{{preguntaNumerica.rango}}</td>
-                                              <td v-if="preguntaNumerica.aplicableArriba == true" > <i class="far fa-check-circle" style="color: #3bd949;"></i> <span style="color: #3bd949;"> Si </span> </td>
-                                              <td v-else> <i class="fas fa-ban" style="color: #ff6258"></i> <span style="color: #ff6258"> No </span> </td>
-                                              <td v-if="preguntaNumerica.aplicableAnbajo == true" > <i class="far fa-check-circle" style="color: #3bd949;"></i> <span style="color: #3bd949;"> Si </span> </td>
-                                              <td v-else> <i class="fas fa-ban" style="color: #ff6258">  </i> <span style="color: #ff6258"> No </span> </td>
+                                              <td v-if="preguntaNumerica.aplicableArriba == true" > <i class="far fa-check-circle" style="color: #3bd949;"></i> <span style="color: #3bd949;"></span> </td>
+                                              <td v-else> <i class="fas fa-ban" style="color: #ff6258"></i> <span style="color: #ff6258"></span> </td>
+                                              <td v-if="preguntaNumerica.aplicableAnbajo == true" > <i class="far fa-check-circle" style="color: #3bd949;"></i> <span style="color: #3bd949;"></span> </td>
+                                              <td v-else> <i class="fas fa-ban" style="color: #ff6258">  </i> <span style="color: #ff6258"></span> </td>
                                               <td>
                                                   <a data-toggle="modal"
                                                       data-target="#modalParaVerImagenes"
                                                       @click="desplegarImagenesEnModal(preguntaNumerica.imagenes)">
-                                                      <i class="fas fa-eye" style="color: #2196f3" title="Ver imagenes adjuntas a la pregunta"></i>  <span  style="color: #2196f3"> Ver </span>
+                                                      <i class="fas fa-eye" style="color: #2196f3" title="Ver imagenes adjuntas a la pregunta"></i>  <span  style="color: #2196f3"></span>
                                                   </a>
                                               </td>
                                               <td>
                                                   <a @click="btnEditar(preguntaNumerica.id_pregunta,preguntaNumerica.pregunta,preguntaNumerica.opcion,preguntaNumerica.tipo,preguntaNumerica.id_tema, preguntaNumerica.rango ,preguntaNumerica.imagenes)"
                                                       data-toggle="modal" data-target="#registrarPregunta"><i
-                                                          class="fas fa-pen" style="color: #ffae00;" title="Editar la pregunta"></i> <span style="color: #ffae00;"> Editar </span> 
+                                                          class="fas fa-pen" style="color: #ffae00;" title="Editar la pregunta"></i> <span style="color: #ffae00;"></span> 
                                                   </a>
-                                                  /
+                                                  |
                                                   <a @click="eliminar(preguntaNumerica.id_pregunta, preguntaNumerica.imagenes)"><i
-                                                          class="fas fa-trash" style="color: #ff6258" title="Eliminar la pregunta"></i>  <span style="color: #ff6258">Eliminar</span>
+                                                          class="fas fa-trash" style="color: #ff6258" title="Eliminar la pregunta"></i>  <span style="color: #ff6258"></span>
                                                   </a>
                                               </td>
                                           </tr>
@@ -117,39 +116,50 @@
                                               <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar pregunta </h3>
                                               <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
 
-                                              <p class="text-left mb-0">  <b> Pregunta: </b> </p>
-                                              <textarea rows="4" id="pregunta" type="text" class="form-control "
-                                                  placeholder="Pregunta" @focus="limpiarCampos('pregunta')" style="margin:0px; font-size: 15px; line-height: 20px;"></textarea>
+                                              <p class="text-left mt-0 mb-0">  <b>Pregunta <span style="color:red">*</span>:</b> </p>
+                                              <textarea rows="4" id="pregunta" type="text"  class="form-control mt-0 mb-0"
+                                                  placeholder="Pregunta" @focus="limpiarCampos('pregunta')" ></textarea>
                                               <span id="msjInputPregunta"> </span>
 
-                                              <p class="text-left mb-0">  <b> Respuesta: </b> </p>
-                                              <textarea rows="1" id="respuesta" type="text" class="form-control"
-                                                  placeholder="Respuesta" @focus="limpiarCampos('respuesta')" style="margin:0px; font-size: 15px; line-height: 20px;"></textarea>
+                                              <p class="text-left mt-0 mb-0"><b>Respuesta: <span style="color:red">*</span>:</b></p>
+                                              <textarea rows="1" id="respuesta" type="text"  class="form-control mt-0 mb-0"
+                                                  placeholder="Respuesta" @focus="limpiarCampos('respuesta')" ></textarea>
                                               <span id="msjInputRespuesta"> </span>
 
-                                              <p class="text-left mb-0">  <b> Margen de error: </b> </p>
-                                              <input id="margen" class="form-control" placeholder="margen" type="number" style="margin-bottom: 5px;font-size: 15px;" @focus="limpiarCampos('margen')" >
+                                              <p class="text-left mt-0 mb-0"><b>Margen de error: <span style="color:red">*</span>:</b></p>
+                                              <input id="margen"  placeholder="margen" type="number"  @focus="limpiarCampos('margen')"  class="form-control mt-0 mb-0">
                                               <span id="msjInputMargen"> </span>
 
-                                              <p class="text-left mb-0"> <b>  Aplicar el margen: </b> </p>
+                                              <p class="text-left mt-0 mb-0"> <b>Aplicar el margen:</b> </p>
 
+                                    <table style="width: 100%; border-radius: 15px; margin: 0px 0px 10px;">
+                                      <tr>
+                                        <th>
+                                            <div class="checkbox" >
+                                              <label>
+                                                <input style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" type="checkbox" id="arriba" name="arriba" value="si"
+                                                  checked>&nbsp;&nbsp;Aplicar hacia arriba
+                                              </label>
+                                            </div>
+                                          
+                                        </th>
+                                        <th> 
+                                           <div class="checkbox" >
+                                              <label><input style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" type="checkbox" id="abajo" name="abajo" value="si" checked>
+                                                &nbsp;&nbsp;Aplicar hacia abajo
+                                              </label>
+                                            </div>
+                                        </th>
+                                      </tr>
+                                    </table>
 
-                                              <table style="width: 100%; border-radius: 15px;">
-                                                <tr>
-                                                  <th> <input class="ml-2 mt-2 " type="checkbox" id="arriba" name="arriba" value="si" style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" checked> Aplicar hacia arriba </th>
-                                                </tr>
-                                                <tr>
-                                                  <th>  <input class="ml-2 mt-2" type="checkbox" id="abajo" name="abajo" value="si" style="width:20px; height:20px; border-radius:5px; border:2px solid #555;" checked> Aplicar hacia abajo </th>
-                                                </tr>
-                                              </table>
-
-                                              <p class="text-left mb-0"> <b>  Tema:  </b> </p>
+                                              <p class="text-left mt-0 mb-0"><b>Tema:  <span style="color:red">*</span>: </b></p>
                                               <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema" />
 
                                               <span id="msjSelectTema"> </span>
 
-                                              <p class="text-left mb-0" style="margin-top: 8px;"> <b> Imagenes: </b> </p>
-                                              <div @dragover="dragover" @dragleave="dragleave" @drop="drop" style="border: 0.5px dashed black; width: 100%;">
+                                              <p class="text-left mt-0 mb-0" style="margin-top: 8px;"> <b> Imagenes:</b> </p>
+                                              <div @dragover="dragover" @dragleave="dragleave" @drop="drop" style="border: 0.5px dashed black; width: 100%;"  >
                                                   <input type="file" id="assetsFieldHandle"
                                                       class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
                                                       ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
@@ -178,12 +188,13 @@
                                                       </tr>
                                                   </table>
                                               </div>
+                                                <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
 
-                                              <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" >  <i class="fas fa-ban"></i> Cerrar
+                                              <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px" >  <i class="fas fa-ban"></i> Cerrar
                                               </button>
-                                              <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" >
+                                              <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px">
                                                   <i class="fas fa-save"></i>  Guardar </button>
-                                              <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" > <i class="fas fa-save"></i> Guardar
+                                              <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px"> <i class="fas fa-save"></i> Guardar
                                               </button>
                                           </div>
 
@@ -278,15 +289,6 @@
             this.subidor = new Cargador();
         },
         mounted() {
-          document.getElementById("navUsuarios").classList.remove('active');
-            document.getElementById("liUsuarios").classList.remove('menu-open');
-            document.getElementById("navCuestionario").classList.remove('active');
-            document.getElementById("liCuestionario").classList.remove('menu-open');
-            document.getElementById("navGrafo").classList.remove('active');
-            document.getElementById("liGrafo").classList.remove('menu-open');
-            document.getElementById("navPreguntas").classList.add('active');
-            document.getElementById("liPreguntas").classList.add('menu-open');
-          
             this.getPreguntaNumerica();
             this.getTemas();
             this.getMargen();

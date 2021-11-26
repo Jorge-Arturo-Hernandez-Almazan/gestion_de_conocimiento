@@ -449,6 +449,30 @@ class UserController {
 		}
 		
 	}  
+
+	async subirimagenes({request, response}){
+		
+		const profilePic = request.file('imagen', {
+			types: ['image'],
+			size: '2mb'
+		})
+		
+		console.log(profilePic);
+		
+		const nombreImagen = request.input('nombreImagen');
+		const alias = request.input('alias');
+		await profilePic.move('public/imagenes/preguntas/', {
+			name: nombreImagen
+		})
+		
+		await Database.insert({nombre: nombreImagen, alias:alias}).into('imagenes');
+		if (!profilePic.moved()) {
+			return profilePic.error()
+		}
+		
+		response.redirect('/subirImagenes')
+		
+	}
 	
 	
 }

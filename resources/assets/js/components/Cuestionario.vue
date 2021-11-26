@@ -29,16 +29,16 @@
                 <div class="row">
 									
                     <div class="col-12 mt-2 pt-2" >
-                        <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal" data-target="#exampleModal" style="border-radius: 25px;">                            
-                            <i class="fas fa-calculator fa-5x"></i>  
+                        <button type="button" class="btn btn-primary float-right " data-toggle="modal" data-target="#exampleModal" style="border-radius: 25px;">                            
+                            <i class="fas fa-calculator"></i>  
                         </button>
                         <div id="quiz mt-3">
                             <h3 id="question"> </h3>
 													
 														
                             <div class="row mt-3">
-                              <div v-for="(img,i) in this.imagenesPregunta" :key="img" class="col-6" style="text-align: center;">
-                                  <img class="ml-2 mr-2" :src="img" style="border: 0.5px solid black;">
+                              <div v-for="(img,i) in this.imagenesPregunta" :key="img" class="col-12 col-md-6" style="text-align: center;">
+                                  <img class="ml-2 mr-2" :src="img" style="border: 0.5px solid black; width:100%;">
                                   <p>
                                     <b> Imagen {{i+1}} </b>
                                   </p>
@@ -49,14 +49,18 @@
                             <div class="buttons" id="buttons"> </div>
                             <hr style="margin-top: 50px">
                         </div>
-                        <button type="button" class="btn btn-primary float-right " id="next" style="border-radius: 25px;"> <i class="fas fa-chevron-right"></i> Siguiente </button>
+
+                        <div class="row">
+                          <button type="button" class="btn btn-primary float-right " id="next" style="border-radius: 25px;"> <i class="fas fa-chevron-right"></i> Siguiente </button>
+                        </div>
+
+                        <div class="row">
+                          <p id="tag_topic">Tema</p>
+                          <p id="progress"></p>
+                        </div>
                         
-                        <p id="tag_topic">Tema</p>
                         
                         
-                        
-                        
-                        <p id="progress"></p>
                         
                     </div>
                 </div>

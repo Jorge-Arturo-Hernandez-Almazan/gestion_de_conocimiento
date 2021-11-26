@@ -33,11 +33,11 @@
                   
                     <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
                       <div class="col-6" style="padding: 5px;">
-                        <b> Termino de busqueda: </b>
+                        <b> Término de búsqueda: </b>
                         <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
                       </div>
                       <div class="col-6" style="padding: 5px;">
-                        <b>Campo de busqueda: </b>
+                        <b>Campo de búsqueda: </b>
                         <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
                           <option value="pregunta">Pregunta</option>
                           <option value="tema">Tema</option>
@@ -164,7 +164,7 @@
                                             </div>
                                             <div class="col-md-4" style="padding:0px;">
                                                 <button class="btn btn-success" @click="ExpresionCorrecta"
-                                            style="margin: 0px 0px 0px; height: 37px;"> <i class="fas fa-search"></i> Buscar comodines</button>
+                                             style="border-radius: 25px; margin: 0px 0px 10px; height: 37px;"> <i class="fas fa-search"></i> Buscar comodines</button>
                                             </div>
                                         </div>
                                         <p id="errorEncontrado" style="color:red;"></p>
@@ -220,7 +220,7 @@
           
                                     
                                     <p class="text-left"> <b> Margen: </b></p>
-                                    <input id="margen" @focus="limpiarCampos('margen')" class="form-control" placeholder="margen" style="height:37px; margin: 0px 0px 10px 0px; font-size: 15px;">
+                                    <input id="margen" type="number" @focus="limpiarCampos('margen')" class="form-control" placeholder="margen" style="height:37px; margin: 0px 0px 10px 0px; font-size: 15px;">
                                   
                                     <span id="msjInputMargen"> </span>
 
@@ -235,7 +235,7 @@
                                   
                                     <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
                                     <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                        style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
+                                        style="border: 0.5px dashed black; width: 100%;">
                                         <input type="file" id="assetsFieldHandle"
                                             class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
                                             ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
@@ -374,20 +374,10 @@
             };
         },
         created() {
-          
             this.subidor = new Cargador();
         },
 
         mounted() {
-          document.getElementById("navUsuarios").classList.remove('active');
-            document.getElementById("liUsuarios").classList.remove('menu-open');
-            document.getElementById("navCuestionario").classList.remove('active');
-            document.getElementById("liCuestionario").classList.remove('menu-open');
-            document.getElementById("navGrafo").classList.remove('active');
-            document.getElementById("liGrafo").classList.remove('menu-open');
-            document.getElementById("navPreguntas").classList.add('active');
-            document.getElementById("liPreguntas").classList.add('menu-open');
-          
             this.getPreguntaNumerica(), this.getTemas(), this.getMargen(), this.getComodines();
             let uri = window.location.href;
             if (uri.includes("?")) {

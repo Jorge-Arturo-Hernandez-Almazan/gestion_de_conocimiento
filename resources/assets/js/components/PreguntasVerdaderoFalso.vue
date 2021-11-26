@@ -35,11 +35,11 @@
                   
                     <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
                       <div class="col-6" style="padding: 5px;">
-                        <b> Termino de busqueda: </b>
+                        <b> Término de búsqueda: </b>
                         <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
                       </div>
                       <div class="col-6" style="padding: 5px;">
-                        <b>Campo de busqueda: </b>
+                        <b>Campo de búsqueda: </b>
                         <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
                           <option value="pregunta">Pregunta</option>
                           <option value="tema">Tema</option>
@@ -109,7 +109,9 @@
                                     <div class="modal-body">
                                         <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar pregunta </h3>
                                         <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
-                                        <p class="text-left mb-0"> <b> Pregunta: </b> </p>
+                                       
+                                       
+                                       <p class="text-left mb-0"> <b> Pregunta: </b> </p>
                                         <textarea rows="4" v-model="form.pregunta" id="inpPregunta" type="text" class="form-control mt-0 mb-0"
                                             placeholder="Pregunta" @focus="limpiarCampo('pregunta')" style="margin:0px; font-size: 15px; line-height: 20px;"></textarea>
                                       
@@ -129,7 +131,7 @@
                                         <span id="msjSelectTema" style="color: #ff6258;"> </span>
                                       
                                         <p class="text-left mt-2 mb-0"> <b> Imagenes: </b> </p>
-                                        <div @dragover="dragover" @dragleave="dragleave" @drop="drop" style="border: 0.5px dashed black; width: 100%; border-radius: 25px;">
+                                        <div @dragover="dragover" @dragleave="dragleave" @drop="drop" style="border: 0.5px dashed black; width: 100%;" >
                                             <input type="file" id="assetsFieldHandle"
                                                 class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
                                                 ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
@@ -161,13 +163,13 @@
                                       
                                         
                                         
-                                        <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;"> 
+                                        <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px" > 
                                              <i class="fas fa-ban"></i> Cancelar
                                         </button>
-                                        <button v-if="modoEdicion" type="button" @click="actualizarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
+                                        <button v-if="modoEdicion" type="button" @click="actualizarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px">
                                             <i class="fas fa-save"></i> Editar 
                                         </button>
-                                        <button v-else type="button" @click="registrarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
+                                        <button v-else type="button" @click="registrarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px" >
                                             <i class="fas fa-save"></i> Guardar
                                         </button>
                                         
@@ -269,14 +271,6 @@
           
         },
         mounted() {
-          document.getElementById("navUsuarios").classList.remove('active');
-            document.getElementById("liUsuarios").classList.remove('menu-open');
-            document.getElementById("navCuestionario").classList.remove('active');
-            document.getElementById("liCuestionario").classList.remove('menu-open');
-            document.getElementById("navGrafo").classList.remove('active');
-            document.getElementById("liGrafo").classList.remove('menu-open');
-            document.getElementById("navPreguntas").classList.add('active');
-            document.getElementById("liPreguntas").classList.add('menu-open');
             this.obtenerPreguntasVerdaderoFalso();
             this.obtenerTemas();
             let uri = window.location.href;

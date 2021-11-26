@@ -121,6 +121,35 @@ export class Cargador {
         }
         return true
     }
+
+    async subirImagen(nombreImg){
+   
+        let extension = "";
+        let ruta = "/subirr2";
+        let nombreImagen = "";
+        let alias = "";
+        if (this.imagenes.length > 0) {
+            for (let i = 0; i < this.imagenes.length; i++) {
+                extension = this.imagenes[i].name.split('.')[1];
+                nombreImagen = new Date().getTime() + "_" + i + "." + extension;
+                if(i<10){
+                    alias = nombreImg + "_0" + (i+1);
+                }else{
+                    alias = nombreImg + "_" + (i+1);
+                }
+                this.form_data = new FormData();
+                this.form_data.append('imagen', this.imagenes[i]);
+                this.form_data.append('csrf-token', "{{ csrfToken }}");
+                this.form_data.append('alias', alias);
+                this.form_data.append('nombreImagen', nombreImagen);
+                await axios.post(ruta, this.form_data).then((res) => {
+                    console.log("La subida se ha completado con exito");
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        }
+    }
 }
 
 

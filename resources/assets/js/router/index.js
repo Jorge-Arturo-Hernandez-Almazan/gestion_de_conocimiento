@@ -29,6 +29,7 @@ import saludar from '@/components/saludar'
 import NotFound from '@/components/NotFound.vue'
 import Grafo from '@/components/grafo'
 import Contacto from '@/components/Contacto'
+import subirImagenes from '@/components/subir_Imagenes'
 
 Vue.use(Router)
 
@@ -177,6 +178,11 @@ export default new Router({
         path: '/contacto',
         name: 'contacto',
         component: Contacto
+    },
+    {
+        path: '/subirImagenes',
+        name: 'subirImagenes',
+        component: subirImagenes
     },
 	{
         path: '*',

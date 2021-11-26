@@ -94,6 +94,7 @@ Route.post('upload', async ({ request, response }) => {
 })
 
 Route.post('/subirr', 'UserController.subirimagen');
+Route.post('/subirr2', 'UserController.subirimagenes');
 
 Route.post('editardatos', async ({ request, response, auth }) => {
   

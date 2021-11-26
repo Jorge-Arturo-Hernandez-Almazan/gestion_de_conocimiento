@@ -2,10 +2,10 @@
 <!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-dark-primary elevation-4">
 		<!-- Brand Logo -->
-		<a href="index3.html" class="brand-link">
+		<router-link to="tablero"  class="brand-link">
 			<img src="/imagenes/fondo/logo.png" alt="logo" salt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8" />
 			<span class="brand-text font-weight-light">KMS</span>
-		</a>
+		</router-link>
 		<!-- Sidebar -->
 		<div class="sidebar">
 			<!-- Sidebar user panel (optional) -->
@@ -37,7 +37,7 @@
 						</router-link>
 					</li>
 					
-					<li class="nav-item">							
+					<li v-if="this.id_rol==1" class="nav-item">							
 						<router-link class="nav-link" id="navAccesos" to="/configurarAccesos">
 							<i class="nav-icon fas fa-lock-open"></i>  
 							<p>
@@ -47,7 +47,7 @@
 					</li>
 					
 					
-					<li class="nav-item" id="liUsuarios">
+					<li v-if="this.id_rol==1" class="nav-item" id="liUsuarios">
 							<a class="nav-link" id="navUsuarios" href="#" >
 								<i class="nav-icon fas fa-users"></i>
 								<p>
@@ -98,7 +98,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								
-								<li class="nav-item">
+								<li v-if="this.id_rol==1 || this.id_rol==3" class="nav-item">
 									<router-link class="nav-link" to="/configurarCuestionario" id="aConfigurar"> 
 										<i class="fas fa-cogs nav-icon"></i> 
 										Configurar
@@ -115,7 +115,7 @@
 							</ul>
 					</li>
 					
-					 <li class="nav-item">							
+					 <li v-if="this.id_rol==1 || this.id_rol==2"  class="nav-item">							
 						<router-link class="nav-link" id="navTemas" to="/temas">
 							<i class="nav-icon fas fa-chalkboard-teacher"></i>  
 							<p>
@@ -125,7 +125,7 @@
 					</li>
 
 					
-					<li class="nav-item" id="liPreguntas">
+					<li v-if="this.id_rol==1 || this.id_rol==3 || this.id_rol==2" class="nav-item" id="liPreguntas">
 							<a class="nav-link" id="navPreguntas" href="#" >
 								<i class="nav-icon fas fa-question"></i>
 								<p>
@@ -182,7 +182,7 @@
 					
 					
 					
-					<li class="nav-item" id="liGrafo">
+					<li v-if="this.id_rol==1 || this.id_rol==2" class="nav-item" id="liGrafo">
 							<a class="nav-link" id="navGrafo" href="#" >
 								<i class="nav-icon fas fa-project-diagram"></i>
 								<p>
@@ -209,8 +209,8 @@
 							</ul>
 					</li>
 					
-					<li class="nav-item">							
-						<router-link class="nav-link" id="navRecursos" to="/subirImagen">
+					<li v-if="this.id_rol==1 || this.id_rol==2" class="nav-item">							
+						<router-link class="nav-link" id="navRecursos" to="/subirImagenes">
 							<i class="nav-icon fas fa-file-upload"></i>  
 							<p>
 								Recursos
