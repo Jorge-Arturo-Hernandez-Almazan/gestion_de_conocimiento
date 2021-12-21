@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     {{ style('css/main.css') }}
 
     
-    <title>Sistema de gestión de conocimiento</title>
+    <title>Sistema de gestión del conocimiento</title>
 	
 		<script src="https://kit.fontawesome.com/4e3c5501e7.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -44,12 +44,12 @@
 					<a href="#" class="h3"><b>Sistema de gestión del conocimiento</b> </a>
 				</div>
 				<div class="card-body">
-					<p class="login-box-msg">Inicia sesión </p>
+					<p class="login-box-msg">Iniciar sesión </p>
 
 					<form action="/login" method="post">
 						{{ csrfField() }}
 						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="Correo o Matricula" name="matricula" id="matricula" onkeydown="comprobarMensajes()">
+							<input type="text" class="form-control" placeholder="Correo/Matrícula" name="matricula" id="matricula" onkeydown="comprobarMensajes()">
 							<div class="input-group-append">
 								<div class="input-group-text">
 									<span class="fas fa-envelope"></span>
@@ -95,7 +95,7 @@
 						<a href="/recuperarPass">Recuperar contraseña</a>
 					</p>
 					<p class="mb-0">
-						<a href="register.html" class="text-center"> Registrarse</a>
+						<!-- <a href="register.html" class="text-center"> Registrarse</a> -->
 					</p>
 				</div>
 				<!-- /.card-body -->

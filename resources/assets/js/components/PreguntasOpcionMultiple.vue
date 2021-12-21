@@ -1,248 +1,281 @@
 <template>
     <div class="content-wrapper">
-        <div class="col-12 mt-4">
-            <div class="page-header">
-                <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                    <h1 class="page-title"> Preguntas opcion multiple </h1>
-                    <ul class="quick-links ml-auto">
-                        <li>
-                            <span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
-                            </span> <span style="color: #bdb9bd"> Preguntas <i class="fas fa-angle-right"></i> </span>
-                            Preguntas opcion multiple
-                        </li>
-                    </ul>
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="page-title m-0">Preguntas</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right">
+                                </i> </span> <span style="color: #bdb9bd"> Preguntas <i class="fas fa-angle-right"> </i>
+                            </span> <b> Opción multiple </b>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-12">
-            <div class="card" style="border-radius: 15px;">
-                <div class="card-body">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow">
 
-                    <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
-                        <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                            <h2 class="page-title"> Listado de preguntas de opción multiple </h2>
-                            <ul class="quick-links ml-auto">
-                                <li>
-                                    <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal"
-                                        data-target="#exampleModal" @click="abrirModal" style="border-radius: 25px;">
-                                        <i class="fas fa-edit"></i> Registrar pregunta
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                     <div class="page-header " style="border: 1px solid #dee2e6; margin: 0px; background: #f5f5f5;">
-                      <div class="col-6" style="padding: 5px;">
-                        <b> Término de búsqueda: </b>
-                        <input class="form-control" type="search" placeholder="Ej. ¿Cuánto es 2+2?" v-model="filters.pregunta.value" style="border-radius: 10px; height: 37px; margin: 0px;" />
-                      </div>
-                      <div class="col-6" style="padding: 5px;">
-                        <b>Campo de búsqueda: </b>
-                        <select name="campoBusqueda" id="campoBusqueda" style="border-radius: 10px; margin: 0px;" @change="cambiarCampoDeBusqueda">
-                          <option value="pregunta">Pregunta</option>
-                          <option value="tema">Tema</option>
-                          <option value="opcion">Respuesta</option>
-                        </select>
-                      </div>
-                    </div>
-                  
-                    <div class="table-responsive">
-                        
-                            <v-table :data="pregunta" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
-                                @totalPagesChanged="totalPages = $event" style="width:100%" class="table table-hover">
-                                <thead slot="head" >
-                                    <v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
-                                    <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
-                                    <th>Opciones</th>
-                                    <v-th sortKey="opcion" defaultSort="desc">Respuestas</v-th>
-                                    <th>Imagenes</th>
-                                    <th>Gestión</th>
-                                </thead>
-                                <tbody slot="body" slot-scope="{displayData}">
-                                    <tr v-for="(pregunta, preg) in displayData" :key="pregunta.id_pregunta">
-
-                                        <td v-html="wrapText(pregunta.pregunta)"> </td>
-                                        <td class="text-left"> <p> {{pregunta.tema}} </p> </td>
-
-                                        <td>
-                                            <p v-for="opc in pregunta.opciones" >
-                                                {{opc.opcion}}
-                                            </p>
-                                        </td>
-
-                                        <td>
-                                            <p v-if="opc.respuesta" v-for="opc in pregunta.opciones" >
-                                                {{opc.opcion}}
-                                          
-                                            </p>
-                                        </td>
-                                        
-                                        <td>
-                                            <a data-toggle="modal" data-target="#modalParaVerImagenes" @click="desplegarImagenesEnModal(pregunta.imagenes)">
-                                                <i class="fas fa-eye" style="color: #2196f3"></i> 
-                                            </a>
-                                        </td>
-                                        
-                                        <td >
-                                            <a  @click="editarPregunta(pregunta.id_pregunta, pregunta.imagenes, pregunta.opciones)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen" style="color: #ffae00;"></i> </a>
-                                            |
-                                            <a  @click="eliminar(pregunta.id_pregunta)"> <i class="fas fa-trash" style="color: #ff6258"></i>  </a>
-                                        </td>
-
-                                    </tr>
-                                  
-                                    <tr>
-                                      <td> <b> <p> Mostrando {{displayData.length}} de {{ pregunta.length }} registros </p> </b> </td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                    </tr>
-                                  
-                                </tbody>
-                            </v-table>
-
-                        <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
-                      
-                    </div>
-                </div>
-
-                <!-- Modal para registrar pregunta -->
-                <div class="modal animated animate__bounceIn" id="exampleModal" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content" style="border-radius: 15px;">
-                            <div class="modal-body">
-                                
-                                <h3 v-if="editarPreguntaVar == false" class="modal-title" id="exampleModalLabel"> 
-                                        Registrar pregunta  </h3>
-                                <h3 v-if="editarPreguntaVar == true" class="modal-title" id="exampleModalLabel"> 
-                                        Editar pregunta  </h3>
-                                
-                                <p class="text-left" for="pregunta"> <b> Reactivo <span style="color:red">*</span>: </b>  </p>
-                                <textarea @focus="limpiarCampos('pregunta')" id="pregunta" class="form-control" rows="4"
-                                    placeholder="Escribe el reactivo" style="margin: 0px; font-size: 15px; line-height: 20px; border: 1px solid rgb(222, 226, 230);">  </textarea>
-                                <span id="msjInputPregunta"> </span>
-                                
-                                <p class="text-left"> <b> Tema <span style="color:red">*</span>: </b> </p>                              
-                                <Select2  :options="temas" v-model="id_tema" id="id_tema" @select="cambioSelect($event)" />
-                                <span id="msjSelectTema"> </span>
-                                
-                                <p class="text-left" for="opciones"> <b> Opciones  <span style="color:red">*</span>: </b></p>
-                                <div class="row">
-                                    <div class="col-md-8" style="padding:0px;">
-                                        <input @focus="limpiarCampos('respuesta')" id="inputOpcion" class="form-control" type="text" style=" margin: 0px 0px 10px;">
-                                    </div>
-                                    
-                                    
-                                    <div class="col-md-4" style="padding:0px;">
-                                        <button id="btnAgregarOption" @click="btnAgregarOpcion" type="button"
-                                            class="btn btn-success" style="border-radius: 25px; margin: 0px 0px 10px; height: 37px;"> <i class="fas fa-plus-circle"></i> Agregar opción </button>
+                            <div class="card-header">
+                                <h3 class="card-title mt-2"> <b> Preguntas opcion multiple </b> </h3>
+                                <div class="card-tools">
+                                    <div class="" style="width: 150px;">
+                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                                            data-target="#exampleModal" @click="abrirModal">
+                                            <i class="fas fa-edit"></i> Nueva
+                                        </button>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <b> Termino de busqueda: </b>
+                                        <input class="form-control" type="search" placeholder="Término"
+                                            v-model="filters.pregunta.value" style=" height: 38px;" />
+                                    </div>
+                                    <div class="col-6">
+                                        <b>Campo de busqueda: </b>
+                                        <select class="form-control" name="campoBusqueda" id="campoBusqueda"
+                                            @change="cambiarCampoDeBusqueda">
+                                            <option value="pregunta">Pregunta</option>
+                                            <option value="tema">Tema</option>
+                                            <option value="opcion">Respuesta</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
                                 <div class="table-responsive">
-                                    <table class="table" id="opciones" style="text-align: center;">
-                                        <tr>
-                                            <th>Opcion</th>
-                                            <th>¿Respuesta?</th>
+                                    <v-table :data="pregunta" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
+                                        @totalPagesChanged="totalPages = $event" style="width:100%" class="table table-hover">
+                                        <thead slot="head">
+                                            <v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
+                                            <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
+                                            <th>Opciones</th>
+                                            <v-th sortKey="opcion" defaultSort="desc">Respuestas</v-th>
+                                            <th>Imagenes</th>
+                                            <th>Editar</th>
                                             <th>Eliminar</th>
-                                        </tr>
-                                    </table>
-                                    <span id="msjInputRespuesta"> </span>
-                                </div>
-                                
-                                
-                                <p class="text-left mt-2 mb-0"> <b> Imagenes  <span style="color:red">*</span>: </b> </p>
-                                <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                    style="border: 0.5px dashed black; width: 100%; ">
-                                    <input type="file" id="assetsFieldHandle"
-                                        class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange"
-                                        ref="file" accept=".pdf,.jpg,.jpeg,.png" hidden />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="assetsFieldHandle" class="block cursor-pointer">
-                                                <div>
-                                                    <p id="mensajito" class="text-center">
-                                                        <i class="fas fa-cloud-download-alt"></i> Arrastra la imagen
-                                                        o da clic aquí para subir
+                                        </thead>
+                                        <tbody slot="body" slot-scope="{displayData}">
+                                            <tr v-for="(pregunta, preg) in displayData" :key="pregunta.id_pregunta">
+
+                                                <td v-html="wrapText(pregunta.pregunta)"> </td>
+                                                <td class="text-left">
+                                                    <p> {{pregunta.tema}} </p>
+                                                </td>
+
+                                                <td>
+                                                    <p v-for="opc in pregunta.opciones">
+                                                        {{opc.opcion}}
                                                     </p>
-                                                </div>
-                                            </label>
+                                                </td>
+
+                                                <td>
+                                                    <p v-if="opc.respuesta" v-for="opc in pregunta.opciones">
+                                                        {{opc.opcion}}
+
+                                                    </p>
+                                                </td>
+
+                                                <td>
+                                                    <a data-toggle="modal" data-target="#modalParaVerImagenes"
+                                                        @click="desplegarImagenesEnModal(pregunta.imagenes)" class="btn btn-outline-primary">
+                                                        <i class="fas fa-eye" style="color: #2196f3"></i>
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <a @click="editarPregunta(pregunta.id_pregunta, pregunta.imagenes, pregunta.opciones)"
+                                                        data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-warning"> <i class="fas fa-pen"
+                                                            style="color: #ffae00;" ></i> </a>
+                                                </td>
+                                                <td>
+                                                    <a @click="eliminar(pregunta.id_pregunta)" class="btn btn-outline-danger"> <i class="fas fa-trash"
+                                                            style="color: #ff6258"></i> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </v-table>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label> <b> Total: {{ pregunta.length }} registros </b> </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="float-right">
+                                            <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages"
+                                                :maxPageLinks="3" />
                                         </div>
                                     </div>
-                                    <table style="list-style-type: none; width:100%"
-                                        v-if="this.subidor.imagenesVistaPrevia.length" v-cloak>
-                                        <tr>
-                                            <th>Imagen</th>
-                                            <th>Acción</th>
-                                        </tr>
-                                        <tr v-for="imagen in subidor.imagenesVistaPrevia">
-                                            <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
-                                                    style=" width: 15em;"> </td>
-                                            <td>
-                                              <a  @click="remove(imagen)" title="Eliminar la imagen" > <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
-                                            </td>
-                                        </tr>
-                                    </table>
                                 </div>
-                                  <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
-
-                                <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;"> <i class="fas fa-ban"></i> Cerrar</button>
-                                <button type="button" @click="btnGuardarPregunta" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;"> <i class="fas fa-save"></i> Guardar</button>
-                              
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-              
-                <!-- Modal para visualizar imagenes -->
-                <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
-                    <div class="modal-dialog  modal-dialog-centered" role="document">
-                        <div class="modal-content" style="border-radius: 15px;">
-                            
-                            <div class="modal-body">
-                              
-                                <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
-                                </h3>
-                              
-                                <div style="width: 100%;">
-                                    <table style="list-style-type: none; width:100%">
-                                        <tr>
-                                            <th>
-                                                Imagen
-                                            </th>
-                                            <th>
-                                                Nombre
-                                            </th>
-                                        </tr>
-                                        <tr v-for="imagen in imagenesParaDesplegarEnModal">
-                                            <td class="d-flex justify-content-center">
-                                                <img :src="'/imagenes/preguntas/'+imagen.nombre"
-                                                    style=" width: 15em;">
-                                            </td>
-                                            <td>
-                                                {{ imagen.alias }}
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Está
-                                        pregunta no tiene imagenes adjuntas </span>
+
+        <div class="row">
+            <!-- Modal para registrar pregunta -->
+            <div class="modal animated animate__bounceIn" id="exampleModal" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content" >
+                        <div class="modal-body">
+
+                            <h3 v-if="editarPreguntaVar == false" class="modal-title" id="exampleModalLabel">
+                                Registrar pregunta </h3>
+                            <h3 v-if="editarPreguntaVar == true" class="modal-title" id="exampleModalLabel">
+                                Editar pregunta </h3>
+
+                            <p class="text-left" for="pregunta"> <b> Reactivo <span style="color:red">*</span>: </b>
+                            </p>
+                            <textarea @focus="limpiarCampos('pregunta')" id="pregunta" class="form-control" rows="4"
+                                placeholder="Escribe el reactivo"
+                                style="margin: 0px; font-size: 15px; line-height: 20px; border: 1px solid rgb(222, 226, 230);">  </textarea>
+                            <span id="msjInputPregunta"> </span>
+
+                            <p class="text-left"> <b> Tema <span style="color:red">*</span>: </b> </p>
+                            <Select2 :options="temas" v-model="id_tema" id="id_tema" @select="cambioSelect($event)" />
+                            <span id="msjSelectTema"> </span>
+
+                            <p class="text-left" for="opciones"> <b> Opciones <span style="color:red">*</span>: </b></p>
+                            <div class="row">
+                                <div class="col-md-8" style="padding:0px;">
+                                    <input @focus="limpiarCampos('respuesta')" id="inputOpcion" class="form-control"
+                                        type="text" style=" margin: 0px 0px 10px;">
                                 </div>
-                              
-                                <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px;"> <i class="fas fa-ban"></i> Cerrar
-                                </button>
-                              
+
+
+                                <div class="col-md-4" style="padding:0px;">
+                                    <button id="btnAgregarOption" @click="btnAgregarOpcion" type="button"
+                                        class="btn btn-success"
+                                        style=" margin: 0px 0px 10px; height: 37px;"> <i
+                                            class="fas fa-plus-circle"></i> Agregar opción </button>
+                                </div>
                             </div>
-                            
+                            <div class="table-responsive">
+                                <table class="table" id="opciones" style="text-align: center;">
+                                    <tr>
+                                        <th>Opcion</th>
+                                        <th>¿Respuesta?</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </table>
+                                <span id="msjInputRespuesta"> </span>
+                            </div>
+
+
+                            <p class="text-left mt-2 mb-0"> <b> Imagenes <span style="color:red">*</span>: </b> </p>
+                            <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
+                                style="border: 0.5px dashed black; width: 100%; ">
+                                <input type="file" id="assetsFieldHandle"
+                                    class="w-px h-px opacity-0 overflow-hidden absolute" @change="onChange" ref="file"
+                                    accept=".pdf,.jpg,.jpeg,.png" hidden />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="assetsFieldHandle" class="block cursor-pointer">
+                                            <div>
+                                                <p id="mensajito" class="text-center">
+                                                    <i class="fas fa-cloud-download-alt"></i> Arrastra la imagen
+                                                    o da clic aquí para subir
+                                                </p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <table style="list-style-type: none; width:100%"
+                                    v-if="this.subidor.imagenesVistaPrevia.length" v-cloak>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                    <tr v-for="imagen in subidor.imagenesVistaPrevia">
+                                        <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
+                                                style=" width: 15em;"> </td>
+                                        <td>
+                                            <a @click="remove(imagen)" title="Eliminar la imagen"> <i
+                                                    class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span>
+                                Datos obligatorios </p>
+
+                            <button type="button" class="btn btn-secondary float-right btn-lg mt-4 "
+                                data-dismiss="modal" > <i class="fas fa-ban"></i>
+                                Cerrar</button>
+                            <button type="button" @click="btnGuardarPregunta"
+                                class="btn btn-primary float-right btn-lg mt-4 mr-2" > <i
+                                    class="fas fa-save"></i> Guardar</button>
+
                         </div>
+
                     </div>
                 </div>
+            </div>
 
+
+            <!-- Modal para visualizar imagenes -->
+            <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+                <div class="modal-dialog  modal-dialog-centered" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+
+                            <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
+                            </h3>
+
+                            <div style="width: 100%;">
+                                <table style="list-style-type: none; width:100%">
+                                    <tr>
+                                        <th>
+                                            Imagen
+                                        </th>
+                                        <th>
+                                            Nombre
+                                        </th>
+                                    </tr>
+                                    <tr v-for="imagen in imagenesParaDesplegarEnModal">
+                                        <td class="d-flex justify-content-center">
+                                            <img :src="'/imagenes/preguntas/'+imagen.nombre" style=" width: 15em;">
+                                        </td>
+                                        <td>
+                                            {{ imagen.alias }}
+                                        </td>
+                                    </tr>
+                                </table>
+                                <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Está
+                                    pregunta no tiene imagenes adjuntas </span>
+                            </div>
+
+                            <button type="button" class="btn btn-secondary float-right btn-lg mt-4 "
+                                data-dismiss="modal" > <i class="fas fa-ban"></i> Cerrar
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -302,10 +335,10 @@
             }
         },
         methods: {
-            cambioSelect(val){
-              this.limpiarCampos("tema");
+            cambioSelect(val) {
+                this.limpiarCampos("tema");
             },
-          
+
             limpiarCampos(id) {
                 let inputPregunta = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("opciones");
@@ -313,7 +346,7 @@
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
                 let msjInputPregunta = document.getElementById("msjInputPregunta");
-              
+
                 if (id == "tema") {
                     selectTema.style.border = "1px solid #dee2e6";
                     msjSelectTema.innerHTML = "";
@@ -327,9 +360,9 @@
                     msjInputRespuesta.innerHTML = "";
                 }
             },
-            cambiarCampoDeBusqueda(){
-              let x = document.getElementById("campoBusqueda").value;
-              this.filters.pregunta.keys[0] = x;			
+            cambiarCampoDeBusqueda() {
+                let x = document.getElementById("campoBusqueda").value;
+                this.filters.pregunta.keys[0] = x;
             },
             wrapText(str) {
                 const palabrasSinEspacios = str.split(" ");
@@ -369,10 +402,10 @@
             abrirModalCuestionario() {
                 this.getpreguntas();
                 this.getTemas();
-                
+
             },
             getpreguntas: async function () {
-                
+
                 await axios({
                     method: "GET",
                     url: "/obtenerTodasLasImagenes"
@@ -384,45 +417,51 @@
                         console.error(error);
                     }
                 );
-                
+
                 await axios({
                     method: 'get',
                     url: 'pregunta/showMultiples'
                 }).then(
-                     result => {
+                    result => {
 
-                        
+
                         this.pregunta = result.data.banco_preguntas[0];
                         let preguntasConOpciones = [];
                         let ultimoId = 0;
                         let preguntaConOpcionesContador = 0;
-                        for(let i = 0; i < this.pregunta.length; i++){
-                          if( ultimoId === this.pregunta[i].id_pregunta ){
-                            preguntasConOpciones[preguntaConOpcionesContador-1].opciones.push({opcion: this.pregunta[i].opcion, respuesta: this.pregunta[i].esrespuesta });
-                          }else{
-                            preguntasConOpciones.push({
-                              id_pregunta: this.pregunta[i].id_pregunta,
-                              id_tema: this.pregunta[i].id_tema,
-                              pregunta: this.pregunta[i].pregunta,
-                              tipo: this.pregunta[i].tipo,
-                              tema: this.pregunta[i].tema,
-                              opciones: [{opcion: this.pregunta[i].opcion, respuesta: this.pregunta[i].esrespuesta }],
-                            });
-                            ultimoId = this.pregunta[i].id_pregunta;
-                            preguntaConOpcionesContador++;
-                          }
+                        for (let i = 0; i < this.pregunta.length; i++) {
+                            if (ultimoId === this.pregunta[i].id_pregunta) {
+                                preguntasConOpciones[preguntaConOpcionesContador - 1].opciones.push({
+                                    opcion: this.pregunta[i].opcion,
+                                    respuesta: this.pregunta[i].esrespuesta
+                                });
+                            } else {
+                                preguntasConOpciones.push({
+                                    id_pregunta: this.pregunta[i].id_pregunta,
+                                    id_tema: this.pregunta[i].id_tema,
+                                    pregunta: this.pregunta[i].pregunta,
+                                    tipo: this.pregunta[i].tipo,
+                                    tema: this.pregunta[i].tema,
+                                    opciones: [{
+                                        opcion: this.pregunta[i].opcion,
+                                        respuesta: this.pregunta[i].esrespuesta
+                                    }],
+                                });
+                                ultimoId = this.pregunta[i].id_pregunta;
+                                preguntaConOpcionesContador++;
+                            }
                         }
-                        this.pregunta = preguntasConOpciones; 
-                       
+                        this.pregunta = preguntasConOpciones;
+
                     },
                     error => {
                         console.error(error)
                     }
-                    
-                    
-                  
+
+
+
                 )
-                
+
                 for (let i = 0; i < this.pregunta.length; i++) {
                     this.pregunta[i].imagenes = [];
                     for (let j = 0; j < this.todasLasImagenes.length; j++) {
@@ -431,7 +470,7 @@
                         }
                     }
                 }
-                
+
             },
 
             getTemas() {
@@ -441,8 +480,11 @@
                 }).then(
                     result => {
                         let temasApi = result.data[0];
-                        for( let i = 0; i <  temasApi.length; i++ ){
-                          this.temas.push({id: temasApi[i].id, text: temasApi[i].nombre_tema })
+                        for (let i = 0; i < temasApi.length; i++) {
+                            this.temas.push({
+                                id: temasApi[i].id,
+                                text: temasApi[i].nombre_tema
+                            })
                         }
                     },
                     error => {
@@ -482,39 +524,20 @@
                 //Obtener las opciones
                 var numero = 0;
 
-                for(let i = 0; i < opc.length; i++){
-                      var o = [];
-                      o[0] = opc[i].opcion;
-                      o[1] = "opt_" + numero;
+                for (let i = 0; i < opc.length; i++) {
+                    var o = [];
+                    o[0] = opc[i].opcion;
+                    o[1] = "opt_" + numero;
 
-                      if (opc[i].respuesta == 1) {
-                          o[2] = 1;
-                      } else {
-                          o[2] = 0;
-                      }
-
-                      opciones.push(o);
-                      numero++;             
-                }
-              
-                /*for (var i = 0; i < this.opciones[0].length; i++) {
-                    if (this.opciones[0][i].id_pregunta == id) {
-                        
-                        var o = [];
-                        o[0] = this.opciones[0][i].opcion;
-                        o[1] = "opt_" + numero;
-
-                        if (this.opciones[0][i].esrespuesta == 1) {
-                            o[2] = 1;
-                        } else {
-                            o[2] = 0;
-                        }
-
-                        opciones.push(o);
-                        numero++;
+                    if (opc[i].respuesta == 1) {
+                        o[2] = 1;
+                    } else {
+                        o[2] = 0;
                     }
-                }*/
 
+                    opciones.push(o);
+                    numero++;
+                }
 
 
                 for (var i = 0; i < opciones.length; i++) {
@@ -555,11 +578,11 @@
                 }
 
                 noOpcion = 0;
-                
+
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
                 this.subidor.imagenesAEliminar = [];
-                
+
                 let numeroMayorDeImagen = 0;
                 for (let i = 0; i < imagenes.length; i++) {
                     this.subidor.acomodarImagen("/imagenes/preguntas/" + imagenes[i].nombre, 1, imagenes[i].idImagen);
@@ -568,30 +591,16 @@
                     }
                 }
                 this.subidor.ultimaImagenEnPreguntaAEditar = numeroMayorDeImagen;
-                
+
             },
 
             abrirModal: async function () {
                 this.editarPreguntaVar = false;
-              
+
                 this.id_tema = "";
                 this.limpiarCampos("tema");
                 this.limpiarCampos("pregunta");
                 this.limpiarCampos("respuesta");
-
-                /*var x = document.getElementById("id_tema");
-
-                var length = x.options.length;
-                for (i = length - 1; i >= 0; i--) {
-                    x.options[i] = null;
-                }
-
-                for (var i = 0; i < this.temas[0].length; i++) {
-                    var option = document.createElement("option");
-                    option.text = this.temas[0][i].nombre_tema;
-                    option.value = this.temas[0][i].id;
-                    x.add(option);
-                }*/
 
                 //Limpiar opciones
                 opciones = [];
@@ -608,22 +617,22 @@
                 for (var x = rowCount - 1; x > 0; x--) {
                     elmtTable.removeChild(tableRows[x]);
                 }
-                
+
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
                 this.subidor.imagenesAEliminar = [];
             },
             btnGuardarPregunta: async function () {
-              
-              
+
+
                 let inputPregunta = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("opciones");
                 let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
                 let msjInputPregunta = document.getElementById("msjInputPregunta");
-              
-              
+
+
                 var pregunta = document.getElementById("pregunta");
                 var total_opciones = opciones.length;
                 var tema = this.id_tema;
@@ -636,39 +645,39 @@
                 }
                 if (total_chequeados == 0) {
                     errores++;
-                    
+
                     inputRespuesta.style.border = "1px solid #ff6258";
                     msjInputRespuesta.innerHTML = "Debes seleccionar al menos una opcion como respuesta";
                     msjInputRespuesta.style.color = "#ff6258";
-                  
+
                 }
-                
-                
-                if( total_chequeados === total_opciones){
+
+
+                if (total_chequeados === total_opciones) {
                     errores++;
-                    
+
                     inputRespuesta.style.border = "1px solid #ff6258";
                     msjInputRespuesta.innerHTML = "El numero de respuestas no puede ser igual al de opciones";
                     msjInputRespuesta.style.color = "#ff6258";
                 }
-              
+
                 if (total_opciones < 2) {
                     errores++;
-                  
+
                     inputRespuesta.style.border = "1px solid #ff6258";
                     msjInputRespuesta.innerHTML = "La pregunta debe tener como minimo dos opciones";
                     msjInputRespuesta.style.color = "#ff6258";
-                  
+
                 }
                 if (pregunta.value == "" || pregunta.value == null) {
                     errores++;
-                    
+
                     inputPregunta.style.border = "1px solid #ff6258";
                     msjInputPregunta.innerHTML = "El reactivo no puede estar vacío";
                     msjInputPregunta.style.color = "#ff6258";
-                  
+
                 }
-              
+
                 if (tema === "" || tema === null) {
                     errores++;
                     /*this.$swal.fire({
@@ -679,7 +688,7 @@
                     selectTema.style.border = "1px solid #ff6258";
                     msjSelectTema.innerHTML = "Debes seleccionar un tema";
                     msjSelectTema.style.color = "#ff6258";
-                  
+
                 }
                 if (errores == 0) {
 
@@ -691,12 +700,18 @@
                                 tema: tema,
                                 id: this.id_editar
                             })
-                            .then( async (res) => {
+                            .then(async (res) => {
+                                
+
                                 this.$swal.fire({
+                                    position: 'top-end',
                                     icon: 'success',
-                                    title: 'Pregunta actualizada',
-                                    text: 'Pregunta actualizada con exito',
+                                    title: 'Pregunta actualizada con éxito',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    toast: true
                                 })
+
                                 const modals = document.getElementsByClassName('modal');
                                 for (let i = 0; i < modals.length; i++) {
                                     modals[i].classList.remove('show');
@@ -707,9 +722,9 @@
                                 for (let i = 0; i < modalsBackdrops.length; i++) {
                                     document.body.removeChild(modalsBackdrops[i]);
                                 }
-                            
+
                                 await this.subidor.subirImagenes(this.id_editar);
-                                
+
                                 this.getpreguntas();
 
                             })
@@ -725,11 +740,17 @@
                                 tema: tema
                             })
                             .then(async (res) => {
+                                
                                 this.$swal.fire({
+                                    position: 'top-end',
                                     icon: 'success',
-                                    title: 'Pregunta guardada',
-                                    text: 'Pregunta guardada con exito',
+                                    title: 'Pregunta almacenada con éxito',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    toast: true
                                 })
+
+
                                 const modals = document.getElementsByClassName('modal');
                                 for (let i = 0; i < modals.length; i++) {
                                     modals[i].classList.remove('show');
@@ -740,9 +761,9 @@
                                 for (let i = 0; i < modalsBackdrops.length; i++) {
                                     document.body.removeChild(modalsBackdrops[i]);
                                 }
-                            
+
                                 await this.subidor.subirImagenes(res.data.ultimo_id);
-                                
+
                                 this.getpreguntas();
                             })
                             .catch((err) => {
@@ -791,22 +812,24 @@
 
             eliminar(id) {
                 this.$swal.fire({
-                    title: '¿Estas seguro de eliminar el registro?',
-                    text: "Esto no podrá revertirse",
-                    icon: 'warning',
+                    html: `<h3 style="color:#212529;">¿Realmente desea eliminar esta pregunta?</h3>`,
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Aceptar',
-                    cancelButtonText: 'Cancelar',
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6C757D',
+                    confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
+                    cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                 }).then((result) => {
                     if (result.value) {
                         axios.post('pregunta/eliminar', {
                                 id: id
-                            }).then((res) => {
-                                this.$swal({
-                                    type: 'success',
-                                    title: '¡Pregunta Eliminada!'
+                            }).then(() => {
+                                this.$swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Pregunta eliminada con éxito',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    toast: true
                                 })
                                 this.getpreguntas();
                             })
@@ -859,7 +882,7 @@
 
             let inputRespuesta = document.getElementById("opciones");
             let msjInputRespuesta = document.getElementById("msjInputRespuesta");
-            
+
             if (document.getElementById(opcion).checked) {
                 inputRespuesta.style.border = "1px solid #ff6258";
                 msjInputRespuesta.innerHTML = "El numero de respuestas no puede ser igual al de opciones";
@@ -884,4 +907,5 @@
         }
 
     }
+
 </script>

@@ -8,7 +8,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> </span> <span style="color: #bdb9bd">  Preguntas <i class="fas fa-angle-right"></i> </span> <b>Abiertas </b>
+                            <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"> </i> </span> <span style="color: #bdb9bd">  Preguntas <i class="fas fa-angle-right"> </i> </span> <b>Abiertas </b>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -19,31 +19,19 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-
-                            
-                                <div class="row ">
-                                    <div class="col-sm-6">
-                                        <h1 class="page-title m-0">Preguntas abiertas</h1>
-                                    </div><!-- /.col -->
-                                    <div class="col-sm-6">
-                                        <ol class="breadcrumb float-sm-right" style="background: white">
-                                          
-                                          
-                                          
-                                          <button type="button" class="btn btn-primary float-right"  data-toggle="modal"
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <h3 class="card-title mt-2"> <b> Preguntas abiertas </b> </h3>
+                                <div class="card-tools">
+                                    <div class="" style="width: 150px;">
+                                        <button type="button" class="btn btn-primary float-right"  data-toggle="modal"
                                             data-target="#registrarPregunta" @click="cambiarModo">
-                                                <i class="fas fa-edit"></i> Registrar pregunta
-                                            </button>
-                                            
-                                 
-                                            
-                                        </ol>
-                                    </div><!-- /.col -->
+                                            <i class="fas fa-edit"></i> Nueva
+                                        </button> 
+                                    </div>
                                 </div>
-
-                               
+                            </div>
+                            <div class="card-body">
                             
                                 <div class="row mb-2">
                                     <div class="col-6" >
@@ -66,7 +54,6 @@
 
                                 <div class="table-responsive">
 
-                                    <!-- Tabla -->
                                     <v-table :data="preguntaAbierta" :filters="filters" :currentPage.sync="currentPage"
                                         :pageSize="10" @totalPagesChanged="totalPages = $event" style="width:100%"
                                         class="table table-hover">
@@ -113,148 +100,155 @@
                                         </tbody>
                                     </v-table>
                                 </div>
-                                
-                                Total: {{ preguntaAbierta.length }} registros
-                                <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" :maxPageLinks="3" />
-                                
-                                <div class="modal animated animate__bounceIn" id="registrarPregunta" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content" >
-                                            <div class="modal-body">
-                                            
-                                                <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
-                                                    pregunta </h3>
-                                                <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
-                                        
-                                               
-                                               <p class="text-left mt-0 mb-0"><b>Pregunta <span style="color:red">*</span>:</b></p>
-                                                <textarea rows="4" id="pregunta" type="text" class="form-control mt-0 mb-0" 
-                                                    placeholder="Pregunta" @focus="limpiarCampos('pregunta')" > </textarea>
-                                                <span id="msjInputPregunta"> </span>
-                                                
-                                                                                                                                            
-                                                <p class="text-left mt-0 mb-0"><b>Respuesta <span style="color:red">*</span>: </b></p>
-                                                <textarea rows="1" id="respuesta" type="text"  class="form-control mt-0 mb-0"
-                                                    placeholder="Respuesta" @focus="limpiarCampos('respuesta')"  ></textarea>
-                                                <span id="msjInputRespuesta"> </span>
-
-                                                <p class="text-left mt-0 mb-0"><b>Tema <span style="color:red">*</span>:</b> </p>
-                                                <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema"/>
-                                                <span id="msjSelectTema"> </span>
-                                            
-
-                                                <p class="text-left mt-0 mb-0"><b>Imagenes: </b></p>
-                                                <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
-                                                    style="border: 0.5px dashed black; width: 100%;" >
-                                                    <input type="file" id="assetsFieldHandle" 
-                                                        class="w-px h-px opacity-0 overflow-hidden absolute"
-                                                        @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png"
-                                                        hidden />
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label for="assetsFieldHandle" class="block cursor-pointer">
-                                                                <div>
-                                                                    <center>
-                                                                    <p id="mensajito" class="text-center">
-                                                                        <i class="fas fa-cloud-download-alt"></i> Arrastra la imagen
-                                                                        o da clic aquí para subir
-                                                                    </p>
-                                                                    </center>
-                                                                </div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <table style="list-style-type: none; width:100%"
-                                                        v-if="this.subidor.imagenesVistaPrevia.length" v-cloak>
-                                                        <tr>
-                                                            <th>Imagen</th>
-                                                            <th>Acción</th>
-                                                        </tr>
-                                                        <tr v-for="imagen in subidor.imagenesVistaPrevia">
-                                                            <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
-                                                                    style=" width: 15em;"> </td>
-                                                            <td>
-                                                            <a  @click="remove(imagen)" title="Eliminar la imagen"> <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    
-                                                </div>
-                                                
-                                                
-                                                
-                                                
-                                                <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
-                                                
-
-
-                                                <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" style="border-radius: 25px">  <i class="fas fa-ban"></i> Cerrar
-                                                </button>
-                                                <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px;">
-                                                    <i class="fas fa-save"></i>  Guardar</button>
-                                                <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px"> <i class="fas fa-save"></i> Guardar
-                                                </button>
-                                            
-                                            </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label> <b> Total: {{ preguntaAbierta.length }} registros </b> </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="float-right">
+                                            <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" :maxPageLinks="3" />
                                         </div>
                                     </div>
                                 </div>
-
-
-
-                                <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            
-                                            <div class="modal-body">
-                                            
-                                            <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
-                                                </h3>
-
-                                                <div style="width: 100%;">
-
-                                                    <table style="list-style-type: none; width:100%">
-                                                        <tr>
-                                                            <th>
-                                                                Imagen
-                                                            </th>
-                                                            <th>
-                                                                Nombre
-                                                            </th>
-                                                        </tr>
-                                                        <tr v-for="imagen in imagenesParaDesplegarEnModal">
-                                                            <td class="d-flex justify-content-center">
-                                                                <img :src="'/imagenes/preguntas/'+imagen.nombre"
-                                                                    style=" width: 15em;">
-                                                            </td>
-                                                            <td>
-                                                                {{ imagen.alias }}
-                                                            </td>
-                                                        </tr>
-
-
-
-                                                    </table>
-
-                                                    <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Esta
-                                                        pregunta no tiene imagenes adjuntas </span>
-
-
-                                                </div>
-                                                <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 " style="border-radius: 4px"> <i class="fas fa-ban"></i> Cerrar
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+                <div class="modal animated animate__bounceIn" id="registrarPregunta" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content" >
+                            <div class="modal-body">
+                            
+                                <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
+                                    pregunta </h3>
+                                <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
+                        
+                                
+                                <p class="text-left mt-0 mb-0"><b>Pregunta <span style="color:red">*</span>:</b></p>
+                                <textarea rows="4" id="pregunta" type="text" class="form-control mt-0 mb-0" 
+                                    placeholder="Pregunta" @focus="limpiarCampos('pregunta')" > </textarea>
+                                <span id="msjInputPregunta"> </span>
+                                
+                                                                                                                            
+                                <p class="text-left mt-0 mb-0"><b>Respuesta <span style="color:red">*</span>: </b></p>
+                                <textarea rows="1" id="respuesta" type="text"  class="form-control mt-0 mb-0"
+                                    placeholder="Respuesta" @focus="limpiarCampos('respuesta')"  ></textarea>
+                                <span id="msjInputRespuesta"> </span>
+
+                                <p class="text-left mt-0 mb-0"><b>Tema <span style="color:red">*</span>:</b> </p>
+                                <Select2  :options="temas" v-model="id_tema" @select="cambioSelect($event)" id="id_tema"/>
+                                <span id="msjSelectTema"> </span>
+                            
+
+                                <p class="text-left mt-0 mb-0"><b>Imagenes: </b></p>
+                                <div @dragover="dragover" @dragleave="dragleave" @drop="drop"
+                                    style="border: 0.5px dashed black; width: 100%;" >
+                                    <input type="file" id="assetsFieldHandle" 
+                                        class="w-px h-px opacity-0 overflow-hidden absolute"
+                                        @change="onChange" ref="file" accept=".pdf,.jpg,.jpeg,.png"
+                                        hidden />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="assetsFieldHandle" class="block cursor-pointer">
+                                                <div>
+                                                    <center>
+                                                    <p id="mensajito" class="text-center">
+                                                        <i class="fas fa-cloud-download-alt"></i> Arrastra la imagen
+                                                        o da clic aquí para subir
+                                                    </p>
+                                                    </center>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <table style="list-style-type: none; width:100%"
+                                        v-if="this.subidor.imagenesVistaPrevia.length" v-cloak>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        <tr v-for="imagen in subidor.imagenesVistaPrevia">
+                                            <td class="d-flex justify-content-center"> <img :src="imagen.imagen"
+                                                    style=" width: 15em;"> </td>
+                                            <td>
+                                            <a  @click="remove(imagen)" title="Eliminar la imagen"> <i class="fas fa-trash-alt" style="color: #ff6258"></i> </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                </div>
+                                
+                                
+                                
+                                
+                                <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span style="color:red">*</span> Datos obligatorios </p>
+                                
+
+
+                                <button type="button" class="btn btn-secondary float-right btn-lg mt-4 " data-dismiss="modal" >  <i class="fas fa-ban"></i> Cerrar
+                                </button>
+                                <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" >
+                                    <i class="fas fa-save"></i>  Guardar</button>
+                                <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2"> <i class="fas fa-save"></i> Guardar
+                                </button>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            
+                            <div class="modal-body">
+                            
+                            <h3 class="modal-title" id="exampleModalLabel"> Imagenes adjuntas en la pregunta
+                                </h3>
+
+                                <div style="width: 100%;">
+
+                                    <table style="list-style-type: none; width:100%">
+                                        <tr>
+                                            <th >
+                                                Imagen
+                                            </th>
+                                            <th>
+                                                Nombre
+                                            </th>
+                                        </tr>
+                                        <tr v-for="imagen in imagenesParaDesplegarEnModal">
+                                            <td class="d-flex justify-content-center">
+                                                <img :src="'/imagenes/preguntas/'+imagen.nombre"
+                                                    style=" width: 15em;">
+                                            </td>
+                                            <td>
+                                                {{ imagen.alias }}
+                                            </td>
+                                        </tr>
+
+
+
+                                    </table>
+
+                                    <span v-if="imagenesParaDesplegarEnModal.length == 0" class="text-center"> Esta
+                                        pregunta no tiene imagenes adjuntas </span>
+
+
+                                </div>
+                                <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 "> <i class="fas fa-ban"></i> Cerrar
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>   
     </div>
@@ -407,7 +401,17 @@
                     await this.subirImagenes(res.data.ultimo_id);
                     await this.getPreguntaAbierta();
                     $('#registrarPregunta').modal('toggle');
-                    this.$swal.fire({type: "success",title: res.data.mensaje});
+                    //this.$swal.fire({type: "success",title: res.data.mensaje});
+
+                    this.$swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Información guardada con éxito',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        toast: true
+                    })
+
                     await this.getPreguntaAbierta();
                 })
                 .catch(err => {
@@ -503,7 +507,6 @@
                 let selectTema = document.getElementById("id_tema");
                 inputRespuesta.value = "";
                 inputPregunta.value = "";
-                //selectTema.value = "";
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
                 this.subidor.contadorImagen = 0;
@@ -548,7 +551,6 @@
                         msjInputRespuesta.style.color = "#ff6258";
                     }
                 } else {
-                    //console.log(this.id, this.pregunta, this.respuesta, this.tipo, this.id_tema);
                     axios.post("/pregunta/update", {
                             id: this.id,
                             pregunta: this.pregunta,
@@ -563,12 +565,16 @@
                             this.respuesta = "";
                             this.pregunta = "";
                             this.id_tema = "";
-                      
                             this.subidor.imagenesAEliminar = [];
                             this.$swal.fire({
-                                type: "success",
-                                title: "¡Pregunta actualizada con éxito!"
-                            });
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Información almacenada con éxito',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                toast: true
+                            })
+                        
                             $('#registrarPregunta').modal('toggle');
                             await this.getPreguntaAbierta();
                         })
@@ -579,21 +585,19 @@
             },
             eliminar(id, imagenes) {
                 this.$swal.fire({
-                    title: '¿Está seguro de eliminar el registro?',
-                    text: "Esto no podrá revertirse",
-                    icon: 'warning',
+                    html: `<h3 style="color:#212529;">¿Realmente desea eliminar esta pregunta?</h3>`,
                     showCancelButton: true,
-                    confirmButtonColor: '#ff6258',
-                    cancelButtonColor: '#AAAAAA',
-                    confirmButtonText: '<i class="fas fa-check-circle"></i> Aceptar',
-                    cancelButtonText: '<i class="fas fa-ban"></i> Cerrar'
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6C757D',
+                    confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
+                    cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                 }).then((result) => {
                     if (result.value) {
                         axios.post("/pregunta/delete", {
                                 id: id,
                                 imagenesAEliminar: imagenes
                             })
-                            .then(res => {
+                            .then(() => {
                                 this.id = "";
                                 this.getPreguntaAbierta();
                                 const Toast = this.$swal.mixin({
@@ -603,9 +607,13 @@
                                     timer: 3000
                                 });
                                 this.$swal.fire({
-                                    type: "success",
-                                    title: "¡Pregunta Eliminada!"
-                                });
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Información eliminada con éxito',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    toast: true
+                                })
                             })
                             .catch(err => {
                                 console.log(err);

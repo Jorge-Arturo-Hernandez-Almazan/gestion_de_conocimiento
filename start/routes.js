@@ -54,7 +54,7 @@ Route.get('/temas/obtenerTotalTemas', 'TemaController.obtenerTotalNodos')
 ///////////////////////////////////////////////////
 Route.get('/preguntas/obtenerNumeroRespuestas/:id', 'PreguntaController.obtenerNumeroRespuestas');
 ///////////////////////////////////////////////////
-
+Route.post('/preguntasCalculadas/delete', 'PreguntaController.preguntasCalculadasDelete');
 
 Route.get('/historialprofesor', ({view}) =>  view.render('arbol_profesor') )
 

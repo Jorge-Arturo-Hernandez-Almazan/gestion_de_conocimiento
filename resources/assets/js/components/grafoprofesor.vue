@@ -540,18 +540,6 @@
         },
         mounted() {
 					
-					
-			
-			document.getElementById("navUsuarios").classList.remove('active');
-            document.getElementById("liUsuarios").classList.remove('menu-open');
-            document.getElementById("navCuestionario").classList.remove('active');
-            document.getElementById("liCuestionario").classList.remove('menu-open');
-            document.getElementById("navGrafo").classList.add('active');
-            document.getElementById("liGrafo").classList.add('menu-open');
-            document.getElementById("navPreguntas").classList.remove('active');
-            document.getElementById("liPreguntas").classList.remove('menu-open');
-
-
 
             console.log("Todo listo");
             $('document').ready(function(){

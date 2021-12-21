@@ -554,6 +554,15 @@ class PreguntaController {
     
 		return response.json({message:'Se ha eliminado la pregunta'})
   }
+  
+  async preguntasCalculadasDelete({request,response})
+  {
+	//const banco_preguntas5 = await Database.raw('DELETE FROM banco_preguntas WHERE id = '+request.post().id)
+    
+    //return response.json({a:request..id)
+    //})
+		//return response.json({message:'Se ha eliminado la pregunta'})
+  }
 	
 	async getComodines({request,response})
   {	 
@@ -598,19 +607,24 @@ class PreguntaController {
 			'WHERE tipo = 6')
     var opciones=[]
     
-     const opcionesAct = await Database.raw('select * from opciones where id_pregunta = 121048');
-   for (var a of banco_preguntas[0]) 
+    for (var a of banco_preguntas[0]) 
     {
-      const opcionesAct = await Database.raw('select * from opciones where id_pregunta = 121048');
+      const opcionesAct = await Database.raw('select * from opciones where id_pregunta ='+ a.id_pregunta);
       opciones.push( opcionesAct[0]  );
       
     }
-		
-		//const opciones = await Database.raw('SELECT * FROM opciones')
-    
-    const comodines = await Database.raw('SELECT * FROM comodines')
-		
-		//return response.json({ opciones:opciones })
+		var comodines = []
+	  for (var a of opciones) 
+    {
+        var comodinesA = []
+        for (var b of a) 
+        {
+              const comodinesAct = await Database.raw('select comodin,valor_comodin from comodines where id_opcion ='+ b.id);
+          comodinesAct.pop()
+              comodinesA.push( comodinesAct);
+        } 
+           comodines.push( comodinesA);
+    } 
 		return response.json({banco_preguntas:banco_preguntas, opciones:opciones, comodines:comodines})
 	}
   

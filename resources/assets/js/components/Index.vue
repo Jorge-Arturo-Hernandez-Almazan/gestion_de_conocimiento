@@ -1,203 +1,259 @@
 <template>
-<div class="content-wrapper">
-	
-				<div class="content-header">
-							<div class="container-fluid">
-									<div class="row mb-2">
-											<div class="col-sm-6">
-													<h1 class="page-title m-0">Inicio</h1>
-											</div><!-- /.col -->
-											<div class="col-sm-6">
-													<ol class="breadcrumb float-sm-right">
-															<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-													</ol>
-											</div><!-- /.col -->
-									</div><!-- /.row -->
-							</div><!-- /.container-fluid -->
-					</div> 
-	
-         <div class="col-md-12 ">
-                      <div class="card"  >
-                        <div class="card-body">
-													
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="d-flex align-items-center pb-2">
-                                <div class="dot-indicator bg-danger mr-2"></div>
-                                <p class="mb-0">Alumnos</p>
-                              </div>
-                              <h4 class="font-weight-semibold">{{alumnos}}</h4>
-                              <div class="progress progress-md">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="78"></div>
-                              </div>
+    <div class="content-wrapper">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="page-title m-0">Inicio</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <div class="col-md-12 ">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="small-box bg-gradient-success">
+                                <div class="inner">
+                                    <h3>{{admins}}</h3>
+                                    <p>Administradores</p>
+                                </div>
+                                <div class="icon">
+                                    <!--<i class="fas fa-user-plus"></i>-->
+                                    <i class="fas fa-user-shield"></i>
+                                    
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información <i class="fas fa-arrow-circle-right"></i>
+                                </a>
                             </div>
-                            <div class="col-md-6 mt-4 mt-md-0">
-                              <div class="d-flex align-items-center pb-2">
-                                <div class="dot-indicator bg-success mr-2"></div>
-                                <p class="mb-0">Administradores</p>
-                              </div>
-                              <h4 class="font-weight-semibold">{{admins}}</h4>
-                              <div class="progress progress-md">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="45"></div>
-                              </div>
-                               </div>
-                            <div class="col-md-6 mt-4 mt-md-0">
-                              <div class="d-flex align-items-center pb-2">
-                                <div class="dot-indicator bg-success mr-2"></div>
-                                <p class="mb-0">Docentes</p>
-                              </div>
-                              <h4 class="font-weight-semibold">{{profesor}}</h4>
-                              <div class="progress progress-md">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="45"></div>
-                              </div>
-                            </div>
-                            <div class="col-md-6 mt-4 mt-md-0">
-                              <div class="d-flex align-items-center pb-2">
-                                <div class="dot-indicator bg-success mr-2"></div>
-                                <p class="mb-0">Expertos</p>
-                              </div>
-                              <h4 class="font-weight-semibold">{{experto}}</h4>
-                              <div class="progress progress-md">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="45"></div>
-                              </div>
-                            </div>
-                            <div class="col-md-6 mt-4 mt-md-0">
-                              <div class="d-flex align-items-center pb-2">
-                                <div class="dot-indicator bg-success mr-2"></div>
-                                <p class="mb-0">Preguntas</p>
-                              </div>
-                              <h4 class="font-weight-semibold">{{pregunta}}</h4>
-                              <div class="progress progress-md">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="45"></div>
-                              </div>
-                            </div>
-                            <div class="col-md-6 mt-4 mt-md-0">
-                              <div class="d-flex align-items-center pb-2">
-                                <div class="dot-indicator bg-success mr-2"></div>
-                                <p class="mb-0">Temas</p>
-                              </div>
-                              <h4 class="font-weight-semibold">{{temas}}</h4>
-                              <div class="progress progress-md">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="45"></div>
-                              </div>
-                            </div>
-                          </div>
                         </div>
-                      </div>
-            </div>	
-</div>
+                        <div class="col-md-4">
+                            <div class="small-box bg-gradient-warning">
+                                <div class="inner">
+                                    <h3>{{experto}}</h3>
+                                    <p>Expertos</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="small-box bg-gradient-primary">
+                                <div class="inner">
+                                    <h3>{{profesor}}</h3>
+                                    <p>Docentes</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="small-box bg-gradient-primary">
+                                <div class="inner">
+                                    <h3>{{alumnos}}</h3>
+                                    <p>Alumnos</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="small-box bg-gradient-secondary">
+                                <div class="inner">
+                                    <h3>{{temas}}</h3>
+                                    <p>Temas del area disciplinar</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="small-box bg-gradient-info">
+                                <div class="inner">
+                                    <h3>{{pregunta}}</h3>
+                                    <p>Preguntas</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-question"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información<i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+					<div v-if="this.id_rol==4">
+						<h1>Bienvenido alumno: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-	
-	
-	
-import axios from 'axios'
+    import axios from 'axios'
 
-export default{
-	data(){
-		return {
-			pregunta:'',
-      experto:'',
-      profesor:'',
-      alumnos:'',
-      temas:'',
-      admins:''
-		}
-	},
-	mounted(){
+    export default {
+        data() {
+            return {
+                pregunta: '',
+                experto: '',
+                profesor: '',
+                alumnos: '',
+                temas: '',
+                admins: '',
+                id_rol: '',
+                rol: '',
+				nombre: '',
+				apellidoPaterno: '',
+				apellidoMaterno: '',
+				matricula: '',
+				foto: '',
+				id_rol: '',
+				rol: '',
+            }
+        },
+        mounted() {
 
-		
-		document.getElementById("navTablero").classList.remove('active');
-		document.getElementById("navUsuarios").classList.remove('active');
-		document.getElementById("liUsuarios").classList.remove('menu-open');
-		document.getElementById("navAccesos").classList.remove('active');
-		document.getElementById("navCuestionario").classList.remove('active');
-		document.getElementById("liCuestionario").classList.remove('menu-open');
-		document.getElementById("aConfigurar").classList.remove('active');
-		document.getElementById("navTemas").classList.remove('active');
-		document.getElementById("navGrafo").classList.remove('active');
-		document.getElementById("liGrafo").classList.remove('menu-open');
-		document.getElementById("navPreguntas").classList.remove('active');
-		document.getElementById("liPreguntas").classList.remove('menu-open');
-		document.getElementById("navRecursos").classList.remove('active');
-		
-		
-		this.getpregunta();
-		this.getTemas();
-		this.getadmins();
-		this.getprofesor();
-		this.getalumnos();
-		this.getexperto();
+            this.getpregunta();
+            this.getTemas();
+            this.getadmins();
+            this.getprofesor();
+            this.getalumnos();
+            this.getexperto();
 
-		
-	},
-	methods: {
-		getpregunta(){
-			axios({method: 'GET', url: '/pregunta/count'}).then(
-				result=> {
-					this.pregunta = result.data[0][0].totalPreguntas
-				},
-				error=> {
-					console.error(error)
-				}
-			)
-		}, 
-    	getTemas(){
-			axios({method: 'GET', url: '/temas/count'}).then(
-				result=> {
-					//console.log("Los temas son "+ result.data)
-					this.temas = result.data[0][0].totalTemas
-				},
-				error=> {
-					console.error(error)
-				}
-			)
-		}, 
-    	getadmins(){
-			axios({method: 'GET', url: '/admin/count'}).then(
-				result=> {
-					//console.log("Admin",result.data)
-					this.admins = result.data[0][0].totalAdministradores
-				},
-				error=> {
-					console.error(error)
-				}
-			)
-		}, 
-    	getalumnos(){
-			axios({method: 'GET', url: '/alumno/count'}).then(
-				result=> {
-					//console.log("hola como estas ", result.data)
-					this.alumnos = result.data[0][0].totalAlumnos
-				},
-				error=> {
-					console.error(error)
-				}
-			)
-		}, 
-		getprofesor(){
-			axios({method: 'GET', url: '/profesor/count'}).then(
-				result=> {
-					//console.log(result.data)
-					this.profesor = result.data[0][0].totalDocentes
-				},
-				error=> {
-					console.error(error)
-				}
-			)
-		}, 
-    	getexperto(){
-			axios({method: 'GET', url: '/experto/count'}).then(
-				result=> {
-					//console.log(result.data)
-					this.experto = result.data[0][0].totalExpertos
-				},
-				error=> {
-					console.error(error)
-				}
-			)
-		}, 
-	}
-}
+            this.id = window.idUsuario;
+            this.id_rol = window.rol;
+
+			this.nombre = window.nombre;
+			this.apellidoPaterno = window.apellido_paterno;
+			this.apellidoMaterno = window.apellido_materno;
+			this.matricula = window.matricula;
+			this.foto = window.foto;
+
+            if (this.id_rol === '1') {
+                this.rol = "Administrador"
+            }
+
+            if (this.id_rol === '2') {
+                this.rol = "Experto"
+            }
+
+            if (this.id_rol === '3') {
+                this.rol = "Profesor"
+            }
+
+            if (this.id_rol === '4') {
+                this.rol = "Alumno"
+            }
+        },
+        methods: {
+            getpregunta() {
+                axios({
+                    method: 'GET',
+                    url: '/pregunta/count'
+                }).then(
+                    result => {
+                        this.pregunta = result.data[0][0].totalPreguntas
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            },
+            getTemas() {
+                axios({
+                    method: 'GET',
+                    url: '/temas/count'
+                }).then(
+                    result => {
+                        this.temas = result.data[0][0].totalTemas
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            },
+            getadmins() {
+                axios({
+                    method: 'GET',
+                    url: '/admin/count'
+                }).then(
+                    result => {
+                        this.admins = result.data[0][0].totalAdministradores
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            },
+            getalumnos() {
+                axios({
+                    method: 'GET',
+                    url: '/alumno/count'
+                }).then(
+                    result => {
+                        this.alumnos = result.data[0][0].totalAlumnos
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            },
+            getprofesor() {
+                axios({
+                    method: 'GET',
+                    url: '/profesor/count'
+                }).then(
+                    result => {
+                        this.profesor = result.data[0][0].totalDocentes
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            },
+            getexperto() {
+                axios({
+                    method: 'GET',
+                    url: '/experto/count'
+                }).then(
+                    result => {
+                        this.experto = result.data[0][0].totalExpertos
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            },
+        }
+    }
 </script>

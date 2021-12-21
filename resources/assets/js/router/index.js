@@ -102,7 +102,7 @@ export default new Router({
         name: 'PreguntasCalculadas',
         component: PreguntasCalculadas
 	},
-  {
+    {
 		path: '/PreguntasOpcionMultipleCalculadas',
         name: 'PreguntasOpcionMultipleCalculadas',
         component: PreguntasOpcionMultipleCalculadas

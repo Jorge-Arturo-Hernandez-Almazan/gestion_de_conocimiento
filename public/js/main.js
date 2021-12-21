@@ -2788,19 +2788,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    document.getElementById("navTablero").classList.remove('active');
-    document.getElementById("navUsuarios").classList.remove('active');
-    document.getElementById("liUsuarios").classList.remove('menu-open');
-    document.getElementById("navAccesos").classList.remove('active');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("aConfigurar").classList.remove('active');
-    document.getElementById("navTemas").classList.remove('active');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
-    document.getElementById("navRecursos").classList.remove('active');
     this.cambioRol();
   },
   methods: {
@@ -2808,7 +2795,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log("Se ha abierto el modal");
     },
     cambiarEstado: function cambiarEstado(e) {
-      //console.log(e.srcEvent.target.name);
       var id_nodo = e.srcEvent.target.name;
       var valor = e.value;
       var valor_entero = 0;
@@ -3012,6 +2998,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3036,14 +3026,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.add('active');
-    document.getElementById("liUsuarios").classList.add('menu-open');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
     this.getAdmin();
   },
   methods: {
@@ -3058,7 +3040,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         method: 'GET',
         url: 'admin/show'
       }).then(function (result) {
-        //console.log(result.data)
         _this.admin = result.data;
       }, function (error) {
         console.error(error);
@@ -3084,8 +3065,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.matricula = '';
         _this2.password = '';
 
-        _this2.getAdmin(); //console.log(res)
-
+        _this2.getAdmin();
       })["catch"](function (err) {
         console.log(err);
       });
@@ -3103,20 +3083,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return this.$swal({
-                  /*showClass: {
-                  	backdrop: 'swal2-noanimation',
-                  	popup: '',
-                  	icon: ''
-                  },
-                  hideClass: {
-                  	popup: '',
-                  },*/
-                  html: "\n                <h3 class=\"text-left\"> Registrar administrador </h3>\n                <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n                <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n                <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n                <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Martinez\">\n                <p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n                <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Perez\">\n                <p class=\"text-left mt-0 mb-0\"> Correo<span style=\"color:red\">*</span>: </p>\n                <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"ejemplo@ejemplo.com\">\n                <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a<span style=\"color:red\">*</span>: </p>\n                <input id=\"password\" type=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"contrase\xF1a\"> \n\n\n\n                <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                  <span class=\"text-left\" id=\"msjError\">  </span>\n                </div>\n                <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            ",
+                  html: "\n                <h3 class=\"text-left\" style=\"color:#212529;\"> Registrar administrador </h3>\n                <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n                <input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Juan\">\n                <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n                <input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Martinez\">\n                <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p> \n                <input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Perez\">\n                <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Correo<span style=\"color:red\">*</span>: <b> </p> \n                <input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"ejemplo@ejemplo.com\">\n                <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a<span style=\"color:red\">*</span>: </b> </p>\n                <input id=\"password\" type=\"password\" type=\"password\" class=\"form-control\" placeholder=\"contrase\xF1a\"> \n                <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                  <span class=\"text-left\" id=\"msjError\">  </span>\n                </div>\n                <p class=\"text-left\" style=\"font-size: 12px;\"> <b> <span style=\"color:red\">*</span> Datos obligatorios </b> </p>\n                    ",
                   focusConfirm: false,
                   showCancelButton: true,
                   confirmButtonText: '<i class="fas fa-save"></i> Guardar',
-                  confirmButtonColor: '#2196f3',
-                  cancelButtonColor: '#aaa',
+                  confirmButtonColor: '#007BFF',
+                  cancelButtonColor: '#6C757D',
                   cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
                   allowOutsideClick: false,
                   allowEscapeKey: false,
@@ -3130,20 +3102,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           switch (_context.prev = _context.next) {
                             case 0:
                               error = 0;
-                              _this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value;
+                              _this3.apellido_paterno = document.getElementById('apellido_paterno').value;
+                              _this3.apellido_materno = document.getElementById('apellido_materno').value;
+                              _this3.nombre = document.getElementById('nombre').value;
+                              _this3.matricula = document.getElementById('matricula').value;
+                              _this3.password = document.getElementById('password').value;
                               mensajeError = document.getElementById('msjError');
 
                               if (!(_this3.nombre == "" || _this3.apellido_paterno == "" || _this3.password == "" || _this3.matricula == "")) {
-                                _context.next = 7;
+                                _context.next = 11;
                                 break;
                               }
 
                               error = 2;
-                              _context.next = 9;
+                              _context.next = 13;
                               break;
 
-                            case 7:
-                              _context.next = 9;
+                            case 11:
+                              _context.next = 13;
                               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/verificarExistencia', {
                                 correo: _this3.matricula
                               }).then(function (res) {
@@ -3154,9 +3130,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                 console.log(err);
                               });
 
-                            case 9:
+                            case 13:
                               if (!(error === 1)) {
-                                _context.next = 16;
+                                _context.next = 20;
                                 break;
                               }
 
@@ -3165,9 +3141,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               document.getElementById('div_error_matricula').style.display = "block";
                               return _context.abrupt("return", false);
 
-                            case 16:
+                            case 20:
                               if (!(error === 2)) {
-                                _context.next = 22;
+                                _context.next = 26;
                                 break;
                               }
 
@@ -3175,10 +3151,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               document.getElementById('div_error_matricula').style.display = "block";
                               return _context.abrupt("return", false);
 
-                            case 22:
+                            case 26:
                               return _context.abrupt("return", [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value, error]);
 
-                            case 23:
+                            case 27:
                             case "end":
                               return _context.stop();
                           }
@@ -3250,12 +3226,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   hideClass: {
                   popup: ''
                   },*/
-                  html: "\n            <h3 class=\"text-left\"> Actualizar administrador </h3>\n\t\t\t      <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n            <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido materno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Correo<span style=\"color:red\">*</span>: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"ejemplo@ejemplo.com\" value=\"" + matricula + "\">\n            <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a <span style=\"color:red\">**</span> :</p> \n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" >  \n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\n            \n            ",
+                  html: "\n            <h3 class=\"text-left\" style=\"color:#212529;\"> Actualizar administrador </h3>\n\t\t\t      <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Correo<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"ejemplo@ejemplo.com\" value=\"" + matricula + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a <span style=\"color:red\">**</span> : </b> </p> \n            <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\" >  \n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;color:#212529;\"> <b> <span style=\"color:red\">*</span> Datos obligatorios </b> </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;color:#212529;\"> <b> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </b> </p>\n\n            \n            ",
                   focusConfirm: false,
                   showCancelButton: true,
                   confirmButtonText: '<i class="fas fa-save"></i> Guardar',
-                  confirmButtonColor: '#2196f3',
-                  cancelButtonColor: '#aaa',
+                  confirmButtonColor: '#007BFF',
+                  cancelButtonColor: '#6C757D',
                   cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                   allowOutsideClick: false,
                   allowEscapeKey: false,
@@ -3429,13 +3405,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this6 = this;
 
       this.$swal.fire({
-        title: '¿Estas seguro de realizar esta acción?',
-        icon: 'warning',
+        //title: '¿Realmente deseas eliminar este registro?',
+        //icon: 'warning',
+        html: "\n                        <h3 style=\"color:#212529;\">\xBFRealmente desea eliminar este registro?</h3>\n\t\t\t        ",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#DC3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-trash"></i> Aceptar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/delete', {
@@ -3609,40 +3586,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3669,21 +3612,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.add('active');
-    document.getElementById("liUsuarios").classList.add('menu-open');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
     this.getAlumnos();
     this.getprofesor();
   },
   methods: {
     cambiarCampoDeBusqueda: function cambiarCampoDeBusqueda() {
       var x = document.getElementById("campoBusqueda").value;
-      this.filters.nombre.keys[0] = x; //console.log(this.filters.);
+      this.filters.nombre.keys[0] = x;
     },
     getAlumnos: function getAlumnos() {
       var _this = this;
@@ -3723,7 +3658,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         nivel_academico: nivel_academico,
         id_profesor: id_profesor,
         id_rol: id_rol
-      }).then(function (res) {
+      }).then(function () {
         _this3.nombre = '';
         _this3.apellido_materno = '';
         _this3.apellido_paterno = '';
@@ -3751,22 +3686,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return this.$swal({
-                  /*showClass: {
-                  	backdrop: 'swal2-noanimation', // disable backdrop animation
-                  	popup: '',                     // disable popup animation
-                  	icon: ''                       // disable icon animation
-                  },
-                  hideClass: {
-                  	popup: '',                     // disable popup fade-out animation
-                  },*/
-                  html: "\n\t\t\t    <h3 class=\"text-left\"> Registrar alumno </h3>\n\t\t\t    <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>:  </p>\n\t\t\t    <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n\t\t\t    <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>:  </p>\n          <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Mart\xEDnez\">\n\t\t\t    <p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n          <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Per\xE9z\">\n\t\t\t    <p class=\"text-left mt-0 mb-0\"> Matricula<span style=\"color:red\">*</span>:  </p>\n          <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n\t\t\t    <p class=\"text-left mt-0 mb-0\"> Contrse\xF1a<span style=\"color:red\">*</span>:  </p>\n          <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\">\n\n\t\t\t    <p class=\"text-left mt-0 mb-0\"> Nivel academico<span style=\"color:red\">*</span>:  </p>\n          <input id=\"nivel_academico\" type=\"text\" class=\"swal2-input\" placeholder=\"Nivel academico\">\n\t\t\t\n\t\t\t    <p class=\"text-left mt-0 mb-0\"> Profesor:</p>\n          <select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n            ").concat(this.profesor.map(function (cat) {
+                  html: "\n                    <h3 class=\"text-left\" style=\"color:#212529;\"> Registrar alumno </h3>\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Juan\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Mart\xEDnez\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n                    <input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Per\xE9z\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Matricula<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"1234567\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrse\xF1a<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\">\n\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nivel academico<span style=\"color:red\">*</span>: </b> </p>\n                    <input id=\"nivel_academico\" type=\"text\" class=\"form-control\" placeholder=\"Nivel academico\">\n                \n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Profesor: </b> </p>\n                    <select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n                        ").concat(this.profesor.map(function (cat) {
                     return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre, "</option>");
-                  }), "\n          </select>\n\n\n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n               <span class=\"text-left\" id=\"msjError\">  </span>\n             </div>\n             <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n\n            "),
+                  }), "\n                    </select>\n\n\n                    <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                        <span class=\"text-left\" id=\"msjError\">  </span>\n                    </div>\n                    <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n                    "),
                   focusConfirm: false,
                   showCancelButton: true,
                   confirmButtonText: '<i class="fas fa-save"></i> Guardar',
-                  confirmButtonColor: '#2196f3',
-                  cancelButtonColor: '#aaa',
+                  confirmButtonColor: '#007BFF',
+                  cancelButtonColor: '#6C757D',
                   cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
                   allowOutsideClick: false,
                   allowEscapeKey: false,
@@ -3900,21 +3827,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.next = 2;
                 return this.$swal((_this$$swal = {
-                  /*showClass: {
-                  	backdrop: 'swal2-noanimation',
-                  	popup: '',
-                  	icon: ''
-                  },
-                  hideClass: {
-                  	popup: '',
-                  },*/
                   confirmButtonText: '<i class="fa fa-thumbs-o-up"></i> Text',
-                  html: "<h3 class=\"text-left\"> Actualizar alumno </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre_alumno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrse\xF1a<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nivel academico<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"nivel_academico\" type=\"text\" class=\"swal2-input\" placeholder=\"Nivel academico\" value=\"" + nivel_academico + "\" >\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Profesor<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n\t\t\t\t\t\t\t").concat(this.profesor.map(function (cat) {
+                  html: "<h3 class=\"text-left\" style=\"color:#212529;\"> Actualizar alumno </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Nombre\" value=\"" + nombre_alumno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Matricula<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrse\xF1a<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nivel academico<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"nivel_academico\" type=\"text\" class=\"form-control\" placeholder=\"Nivel academico\" value=\"" + nivel_academico + "\" >\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Profesor<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n\t\t\t\t\t\t\t").concat(this.profesor.map(function (cat) {
                     return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre, "</option>");
-                  }), "\n\t\t\t\t\t\t</select>\n\n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\n\n\t\t\t\t\t\t\t"),
+                  }), "\n\t\t\t\t\t\t</select>\n\n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px; color:#212529;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px; color:#212529;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\n\n\t\t\t\t\t\t\t"),
                   focusConfirm: false,
                   showCancelButton: true
-                }, _defineProperty(_this$$swal, "confirmButtonText", '<i class="fas fa-save"></i> Guardar'), _defineProperty(_this$$swal, "confirmButtonColor", '#2196f3'), _defineProperty(_this$$swal, "cancelButtonColor", '#aaa'), _defineProperty(_this$$swal, "cancelButtonText", '<i class="fas fa-ban"></i> Cerrar'), _defineProperty(_this$$swal, "allowOutsideClick", false), _defineProperty(_this$$swal, "allowEscapeKey", false), _defineProperty(_this$$swal, "preConfirm", function () {
+                }, _defineProperty(_this$$swal, "confirmButtonText", '<i class="fas fa-save"></i> Guardar'), _defineProperty(_this$$swal, "confirmButtonColor", '#007BFF'), _defineProperty(_this$$swal, "cancelButtonColor", '#6C757D'), _defineProperty(_this$$swal, "cancelButtonText", '<i class="fas fa-ban"></i> Cerrar'), _defineProperty(_this$$swal, "allowOutsideClick", false), _defineProperty(_this$$swal, "allowEscapeKey", false), _defineProperty(_this$$swal, "preConfirm", function () {
                   var _preConfirm2 = _asyncToGenerator(
                   /*#__PURE__*/
                   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
@@ -4058,13 +3977,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log("Id " + id + " Estado " + estado);
       this.$swal.fire({
-        title: '¿Estas seguro de realizar esta acción?',
-        icon: 'warning',
+        html: "\n                        <h3 style=\"color:#212529;\">\xBFRealmente desea eliminar este registro?</h3>\n\t\t\t        ",
+        //icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#DC3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-trash"></i> Aceptar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/delete2', {
@@ -4074,17 +3993,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             _this7.id = '';
 
             _this7.getAlumnos();
-
-            var Toast = _this7.$swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000
+            /*const Toast = this.$swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
             });
+            this.$swal.fire({
+                type: 'success',
+                title: '¡Tarea realizada con exito!'
+            })*/
+
 
             _this7.$swal.fire({
-              type: 'success',
-              title: '¡Tarea realizada con exito!'
+              position: 'top-end',
+              icon: 'success',
+              title: 'Tarea realizada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
           })["catch"](function (err) {
             console.log(err);
@@ -4356,6 +4283,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4384,14 +4333,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   created: function created() {},
   mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.remove('active');
-    document.getElementById("liUsuarios").classList.remove('menu-open');
-    document.getElementById("navCuestionario").classList.add('active');
-    document.getElementById("liCuestionario").classList.add('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
     this.obtenerConfiguraciones();
     this.obtenerTotales();
   },
@@ -4917,6 +4858,75 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4929,40 +4939,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       configuracion: [],
       topic: [],
       numero_tema: 0,
-      imagenesPregunta: []
+      imagenesPregunta: [],
+      imagenActual: '',
+      imagenActualNombre: ''
     };
-  },
-  mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.remove('active');
-    document.getElementById("liUsuarios").classList.remove('menu-open');
-    document.getElementById("navCuestionario").classList.add('active');
-    document.getElementById("liCuestionario").classList.add('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
   },
   created: function created() {
     this.confirmAttempt();
   },
   methods: {
-    anteriorPregunta: function anteriorPregunta() {
-      console.log("Anterior pregunta pulsado");
-    },
-    siguientePregunta: function siguientePregunta() {
-      console.log("Siguiente pregunta pulsado");
-    },
     confirmAttempt: function confirmAttempt() {
       var _this2 = this;
 
       this.$swal.fire({
-        title: 'Comenzar cuestionario',
-        text: "Para empezar el cuestionario, presiona el boton empezar ",
-        icon: 'warning',
+        //title: 'Comenzar cuestionario',
+        text: "Para empezar a responder el cuestionario, presiona el boton iniciar ",
+        //icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: '<i class="fas fa-play-circle"></i> Empezar',
-        confirmButtonColor: '#2196f3',
-        cancelButtonColor: '#aaa',
+        confirmButtonText: '<i class="fas fa-play-circle"></i> Iniciar',
+        confirmButtonColor: '#007BFF',
+        cancelButtonColor: '#6C757D',
         cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
         allowOutsideClick: false,
         allowEscapeKey: false
@@ -4997,8 +4993,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
 
                 case 9:
-                  //window.location.href = "/tablero";
-                  //router.push("Index")
                   _this2.$router.push('tablero');
 
                 case 10:
@@ -5070,8 +5064,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   url: 'topic/getopic'
                 }).then(function (result) {
                   _this3.topic = result.data[0];
-                  console.log("Tema obtenido");
-                  console.log(_this3.topic);
                 }, function (error) {
                   console.error(error);
                 }));
@@ -5434,6 +5426,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getrespuestas;
     }(),
+    desplegarImagen: function desplegarImagen(img, nombre) {
+      this.imagenActual = img;
+      this.imagenActualNombre = nombre;
+      $("#modalParaVerImagenes").modal();
+    },
     cargarCuestionario: function () {
       var _cargarCuestionario = _asyncToGenerator(
       /*#__PURE__*/
@@ -5498,7 +5495,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 showProgress = function _ref11() {
                   var currentQuestionNumber = quiz.questionIndex + 1;
-                  var element = document.getElementById("progress"); //element.innerHTML = "Pregunta " + currentQuestionNumber + " de " + quiz.questions.length;
+                  var element = document.getElementById("progress");
+                  element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + quiz.questions.length;
                 };
 
                 guess = function _ref10() {
@@ -5564,10 +5562,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             showScores();
 
                           case 14:
-                            _context14.next = 80;
+                            _context14.next = 87;
                             break;
 
                           case 16:
+                            console.log();
                             document.getElementById("buttons").innerHTML = "";
                             element = document.getElementById("question").innerHTML = quiz.getQuestionIndex().text;
                             imgstr = "";
@@ -5576,27 +5575,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             for (ii = 0; ii < quiz.getQuestionIndex().imagenes.length; ii++) {
                               imgstr = "/imagenes/preguntas/" + quiz.getQuestionIndex().imagenes[ii].nombre;
 
-                              _this.imagenesPregunta.push(imgstr); //let img = document.getElementById("imgPregunta");
-                              //img.src = imgstr;
+                              _this.imagenesPregunta.push(imgstr);
 
-                              /*let img = document.createElement("img");
-                              img.src = imgstr;
-                                             let divImg = document.getElementById("imgPregunta");
-                              divImg.appendChild(img);*/
-
-                            } //document.getElementById("imgPregunta").innerHTML = imgstr;
-
+                              console.log(_this.imagenesPregunta);
+                            }
 
                             console.log(quiz.getQuestionIndex().imagenes);
                             tema = document.getElementById("tag_topic");
-                            tema.innerHTML = "<b> Tema: </b> " + _this.topic[_this.numero_tema].nombre_tema;
+                            tema.innerHTML = " <b> Tema: </b> " + _this.topic[_this.numero_tema].nombre_tema;
 
                             if (!(quiz.getQuestionIndex().type == 4)) {
-                              _context14.next = 27;
+                              _context14.next = 28;
                               break;
                             }
 
-                            _context14.next = 27;
+                            _context14.next = 28;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opciones/' + quiz.getQuestionIndex().id
@@ -5612,15 +5605,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 27:
+                          case 28:
                             opcionesAux = [];
 
                             if (!(quiz.getQuestionIndex().type == 6)) {
-                              _context14.next = 31;
+                              _context14.next = 32;
                               break;
                             }
 
-                            _context14.next = 31;
+                            _context14.next = 32;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opcionescalculadasmultiples/' + quiz.getQuestionIndex().id
@@ -5637,35 +5630,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 31:
+                          case 32:
                             choices = quiz.getQuestionIndex().choices;
                             _context14.t0 = quiz.getQuestionIndex().type;
-                            _context14.next = _context14.t0 === 1 ? 35 : _context14.t0 === 2 ? 41 : _context14.t0 === 3 ? 47 : _context14.t0 === 4 ? 69 : _context14.t0 === 5 ? 71 : _context14.t0 === 6 ? 77 : 79;
+                            _context14.next = _context14.t0 === 1 ? 36 : _context14.t0 === 2 ? 43 : _context14.t0 === 3 ? 50 : _context14.t0 === 4 ? 73 : _context14.t0 === 5 ? 77 : _context14.t0 === 6 ? 84 : 86;
                             break;
 
-                          case 35:
+                          case 36:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "text";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context14.abrupt("break", 79);
+                            return _context14.abrupt("break", 86);
 
-                          case 41:
+                          case 43:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context14.abrupt("break", 79);
+                            return _context14.abrupt("break", 86);
 
-                          case 47:
+                          case 50:
                             div_verdadero = document.createElement("div");
                             div_falso = document.createElement("div");
                             label_verdadero = document.createElement("label");
-                            label_verdadero.innerHTML = "Verdadero";
+                            label_verdadero.innerHTML = " Verdadero";
                             label_falso = document.createElement("label");
-                            label_falso.innerHTML = "Falso";
+                            label_falso.innerHTML = " Falso";
                             input_verdadero = document.createElement("input");
                             input_verdadero.type = "radio";
                             input_verdadero.name = "truefalse";
@@ -5679,11 +5674,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             div_falso.appendChild(input_falso);
                             div_falso.appendChild(label_falso);
                             zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(div_verdadero);
                             zona_botones.appendChild(div_falso);
-                            return _context14.abrupt("break", 79);
+                            return _context14.abrupt("break", 86);
 
-                          case 69:
+                          case 73:
+                            zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
+
                             for (i = 0; i < choices.length; i++) {
                               label = document.createElement("label");
                               label.innerHTML = choices[i];
@@ -5696,22 +5695,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               button.text = choices[i];
                               button.id = "opc_" + i;
                               label.appendChild(button);
-                              label.appendChild(span);
-                              zona_botones = document.getElementById("buttons");
+                              label.appendChild(span); //zona_botones.innerHTML = "Respuesta: <br>";
+
                               zona_botones.appendChild(label);
                             }
 
-                            return _context14.abrupt("break", 79);
+                            return _context14.abrupt("break", 86);
 
-                          case 71:
+                          case 77:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context14.abrupt("break", 79);
+                            return _context14.abrupt("break", 86);
 
-                          case 77:
+                          case 84:
                             for (i = 0; i < choices.length; i++) {
                               label = document.createElement("label"); //label.innerHTML = choices[i];
 
@@ -5729,15 +5729,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               label.appendChild(button);
                               label.appendChild(span);
                               zona_botones = document.getElementById("buttons");
+                              zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                               zona_botones.appendChild(label);
                             }
 
-                            return _context14.abrupt("break", 79);
+                            return _context14.abrupt("break", 86);
 
-                          case 79:
+                          case 86:
                             showProgress();
 
-                          case 80:
+                          case 87:
                           case "end":
                             return _context14.stop();
                         }
@@ -5903,13 +5904,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                               res = [Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id, res[0], id_opcion_correcta[0]) * power) / power]; //label.innerHTML = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
                             }
-                            /*if(quiz.getQuestionIndex().type == 6){
-                              res=[_this.generarRespuesta(quiz.getQuestionIndex().id,res[0])];
-                            }*/
 
-
-                            quiz.getQuestionIndex().answer = res; //console.log("respuesta "+res); 
-                            //console.log(res);
+                            quiz.getQuestionIndex().answer = res;
                           }, function (error) {
                             console.error(error);
                           });
@@ -5939,7 +5935,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
                           }
 
-                          _this.$swal.fire("Por favor ingresa una respuesta valida");
+                          //_this.$swal.fire("Por favor ingresa una respuesta valida");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Por favor ingresa una respuesta válida',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
 
                           return _context13.abrupt("return");
 
@@ -5955,7 +5958,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
                           }
 
-                          _this.$swal.fire("Por favor ingresa una respuesta valida");
+                          //_this.$swal.fire("Por favor ingresa una respuesta valida");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Por favor ingresa una respuesta válida',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
 
                           return _context13.abrupt("return");
 
@@ -5975,7 +5985,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
                           }
 
-                          _this.$swal.fire("Por favor selecciona una respuesta");
+                          //_this.$swal.fire("Por favor selecciona una respuesta");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Selecciona una respuesta',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
 
                           return _context13.abrupt("return");
 
@@ -5999,7 +6016,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
                           }
 
-                          _this.$swal.fire("Por favor selecciona una respuesta");
+                          //_this.$swal.fire("Por favor selecciona una respuesta");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Selecciona una respuesta',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
 
                           return _context13.abrupt("return");
 
@@ -6032,7 +6056,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
                           }
 
-                          _this.$swal.fire("Por favor ingresa una respuesta valida");
+                          //_this.$swal.fire("Por favor ingresa una respuesta valida");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Por favor ingresa una respuesta válida',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
 
                           return _context13.abrupt("return");
 
@@ -6056,7 +6087,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
                           }
 
-                          _this.$swal.fire("Por favor selecciona una respuesta");
+                          //_this.$swal.fire("Por favor selecciona una respuesta");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Selecciona una respuesta',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
 
                           return _context13.abrupt("return");
 
@@ -6080,15 +6118,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                         case 55:
                           if (respuestas_correctas == quiz.getQuestionIndex().answer.length && respuestas_incorretas == 0) {
-                            quiz.score = quiz.score + 1;
+                            quiz.score = quiz.score + 1; //_this.$swal.fire('Correcta');
 
-                            _this.$swal.fire('Correcta');
+                            _this.$swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Respuesta correcta',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
                           } else if (respuestas_correctas > 0 && respuestas_incorretas == 0 && tipo == 0) {
-                            quiz.score = quiz.score + respuestas_correctas / quiz.getQuestionIndex().answer.length;
+                            quiz.score = quiz.score + respuestas_correctas / quiz.getQuestionIndex().answer.length; //_this.$swal.fire("Parcialmente correcta");
 
-                            _this.$swal.fire("Parcialmente correcta");
+                            _this.$swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Respuesta parcialmente correcta',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
                           } else {
-                            _this.$swal.fire('Incorrecta');
+                            //_this.$swal.fire('Incorrecta');
+                            _this.$swal.fire({
+                              position: 'top-end',
+                              icon: 'warning',
+                              title: 'Respuesta incorrecta',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
                           }
 
                           quiz.nextQuestion();
@@ -6655,6 +6712,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -6679,14 +6742,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.add('active');
-    document.getElementById("liUsuarios").classList.add('menu-open');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
     this.getexperto();
   },
   methods: {
@@ -6718,7 +6773,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         apellido_paterno: apellido_paterno,
         password: password,
         matricula: matricula
-      }).then(function (res) {
+      }).then(function () {
         _this2.nombre = '';
         _this2.id_rol = '';
         _this2.apellido_materno = '';
@@ -6754,18 +6809,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return this.$swal((_this$$swal = {
-                  /*showClass: {
-                  	backdrop: 'swal2-noanimation',
-                  	popup: '',
-                  	icon: ''
-                  },
-                  hideClass: {
-                  	popup: '',
-                  },*/
                   showCancelButton: true,
-                  html: "\n\t\t\t\t\t\t<h3 class=\"text-left\"> Registrar experto </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Mart\xEDnez\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Per\xE9z\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Matricula<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\"> Contrase\xF1a<span style=\"color:red\">*</span>: </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"swal2-input \" placeholder=\"Contrase\xF1a\" style=\"margin: 0px 0px 5px 0px;\">\n\n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n\n\t\t\t\t\t\t",
+                  html: "\n\t\t\t\t\t\t<h3 class=\"text-left\" style=\"color:#212529;\"> Registrar experto </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Juan\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Mart\xEDnez\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Per\xE9z\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Matricula<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"1234567\" style=\"margin: 0px 0px 5px 0px;\">\n\t\t\t\t\t\t<p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"form-control \" placeholder=\"Contrase\xF1a\" style=\"margin: 0px 0px 5px 0px;\">\n                        <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                            <span class=\"text-left\" id=\"msjError\">  </span>\n                        </div>\n                        <p class=\"text-left mt-2 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n\t\t\t\t\t\t",
                   focusConfirm: false
-                }, _defineProperty(_this$$swal, "showCancelButton", true), _defineProperty(_this$$swal, "confirmButtonText", '<i class="fas fa-save"></i> Guardar'), _defineProperty(_this$$swal, "confirmButtonColor", '#2196f3'), _defineProperty(_this$$swal, "cancelButtonColor", '#aaa'), _defineProperty(_this$$swal, "cancelButtonText", '<i class="fas fa-ban"></i> Cerrar'), _defineProperty(_this$$swal, "allowOutsideClick", false), _defineProperty(_this$$swal, "allowEscapeKey", false), _defineProperty(_this$$swal, "preConfirm", function () {
+                }, _defineProperty(_this$$swal, "showCancelButton", true), _defineProperty(_this$$swal, "confirmButtonText", '<i class="fas fa-save"></i> Guardar'), _defineProperty(_this$$swal, "confirmButtonColor", '#007bff'), _defineProperty(_this$$swal, "cancelButtonColor", '#6c757d'), _defineProperty(_this$$swal, "cancelButtonText", '<i class="fas fa-ban"></i> Cerrar'), _defineProperty(_this$$swal, "allowOutsideClick", false), _defineProperty(_this$$swal, "allowEscapeKey", false), _defineProperty(_this$$swal, "preConfirm", function () {
                   var _preConfirm = _asyncToGenerator(
                   /*#__PURE__*/
                   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -6774,28 +6821,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       while (1) {
                         switch (_context.prev = _context.next) {
                           case 0:
-                            /*return [
-                            	this.apellido_paterno=document.getElementById('apellido_paterno').value,
-                            	this.apellido_materno=document.getElementById('apellido_materno').value,
-                            	this.nombre=document.getElementById('nombre').value,
-                            	this.matricula=document.getElementById('matricula').value,
-                            	this.password=document.getElementById('password').value
-                            ]*/
                             error = 0;
-                            _this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value;
+                            _this3.apellido_paterno = document.getElementById('apellido_paterno').value;
+                            _this3.apellido_materno = document.getElementById('apellido_materno').value;
+                            _this3.nombre = document.getElementById('nombre').value;
+                            _this3.matricula = document.getElementById('matricula').value;
+                            _this3.password = document.getElementById('password').value;
                             mensajeError = document.getElementById('msjError');
 
                             if (!(_this3.nombre == "" || _this3.apellido_paterno == "" || _this3.password == "" || _this3.matricula == "")) {
-                              _context.next = 7;
+                              _context.next = 11;
                               break;
                             }
 
                             error = 2;
-                            _context.next = 9;
+                            _context.next = 13;
                             break;
 
-                          case 7:
-                            _context.next = 9;
+                          case 11:
+                            _context.next = 13;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/verificarExistencia', {
                               correo: _this3.matricula
                             }).then(function (res) {
@@ -6806,9 +6850,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.log(err);
                             });
 
-                          case 9:
+                          case 13:
                             if (!(error === 1)) {
-                              _context.next = 16;
+                              _context.next = 20;
                               break;
                             }
 
@@ -6817,9 +6861,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             document.getElementById('div_error_matricula').style.display = "block";
                             return _context.abrupt("return", false);
 
-                          case 16:
+                          case 20:
                             if (!(error === 2)) {
-                              _context.next = 22;
+                              _context.next = 26;
                               break;
                             }
 
@@ -6827,10 +6871,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             document.getElementById('div_error_matricula').style.display = "block";
                             return _context.abrupt("return", false);
 
-                          case 22:
+                          case 26:
                             return _context.abrupt("return", [_this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value, error]);
 
-                          case 23:
+                          case 27:
                           case "end":
                             return _context.stop();
                         }
@@ -6879,20 +6923,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.next = 2;
                 return this.$swal({
-                  /*showClass: {
-                  backdrop: 'swal2-noanimation', // disable backdrop animation
-                  popup: '',                     // disable popup animation
-                  icon: ''                       // disable icon animation
-                  },
-                  hideClass: {
-                  popup: '',                     // disable popup fade-out animation
-                  },*/
-                  html: "\n            <h3 class=\"text-left\"> Actualizar experto </h3>\n            <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n            <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido materno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Correo<span style=\"color:red\">*</span>: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Experto@experto.com\" value=\"" + matricula + "\">\n            <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a <span style=\"color:red\">**</span> :</p>\n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"contrase\xF1a\" >\n            \n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\n            ",
+                  html: "\n                    <h3 class=\"text-left\" style=\"color:#212529;\"> Actualizar experto </h3>\n                    <p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n                    <input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n                    <p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n                    <input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n                    <p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno<span style=\"color:red\">*</span>: </b> </p>\n                    <input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n                    <p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Correo<span style=\"color:red\">*</span>: </b> </p>\n                    <input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"experto@experto.com\" value=\"" + matricula + "\">\n                    <p class=\"text-left mt-2 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a <span style=\"color:red\">**</span> : </b> </p>\n                    <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"contrase\xF1a\" >\n                    <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                        <span class=\"text-left\" id=\"msjError\">  </span>\n                    </div>\n                    <p class=\"text-left mt-2 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n                    <p class=\"text-left mt-2 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n                    ",
                   focusConfirm: false,
                   showCancelButton: true,
-                  confirmButtonText: '<i class="fas fa-save"></i> Guardar',
-                  confirmButtonColor: '#2196f3',
-                  cancelButtonColor: '#aaa',
+                  confirmButtonText: '<i class="fas fa-save"></i> Actualizar',
+                  confirmButtonColor: '#ffc107',
+                  cancelButtonColor: '#6c757d',
                   cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                   allowOutsideClick: false,
                   allowEscapeKey: false,
@@ -6905,14 +6941,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         while (1) {
                           switch (_context3.prev = _context3.next) {
                             case 0:
-                              /*return [
-                              	this.apellido_paterno=document.getElementById('apellido_paterno').value,
-                              	this.apellido_materno=document.getElementById('apellido_materno').value,
-                              	this.nombre=document.getElementById('nombre').value,
-                                      this.matricula=document.getElementById('matricula').value,
-                                      this.password=document.getElementById('password').value,
-                                      this.id = id
-                              ]*/
                               error = 0;
                               _this4.apellido_paterno = document.getElementById('apellido_paterno').value;
                               _this4.apellido_materno = document.getElementById('apellido_materno').value;
@@ -7021,7 +7049,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         apellido_paterno: apellido_paterno,
         password: password,
         matricula: matricula
-      }).then(function (res) {
+      }).then(function () {
         _this5.nombre = '';
         _this5.id_rol = '';
         _this5.apellido_materno = '';
@@ -7039,8 +7067,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           showConfirmButton: false,
           timer: 1500,
           toast: true
-        }); //console.log(res)
-
+        });
       })["catch"](function (err) {
         console.log(err);
       });
@@ -7048,39 +7075,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     eliminar: function eliminar(id, estado) {
       var _this6 = this;
 
-      if (estado == null) {
-        estado = 0;
-      }
-
-      console.log("Id " + id + " Estado " + estado);
+      if (estado == null) estado = 0;
       this.$swal.fire({
-        title: '¿Estas seguro de realizar esta acción?',
-        icon: 'warning',
+        html: "<h3 style=\"color:#212529;\">\xBFRealmente desea hacer esta acci\xF3n?</h3>",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-check"></i> Aceptar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/deleteExperto', {
             id: id,
             estado: estado
-          }).then(function (res) {
+          }).then(function () {
             _this6.id = '';
 
             _this6.getexperto();
 
-            var Toast = _this6.$swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000
-            });
-
             _this6.$swal.fire({
-              type: 'success',
-              title: '¡Tarea realizada con exito!'
+              position: 'top-end',
+              icon: 'success',
+              title: 'Tarea realizada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
           })["catch"](function (err) {
             console.log(err);
@@ -7104,6 +7123,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7197,35 +7248,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       pregunta: '',
       experto: '',
       profesor: '',
       alumnos: '',
       temas: '',
-      admins: ''
-    };
+      admins: '',
+      id_rol: '',
+      rol: '',
+      nombre: '',
+      apellidoPaterno: '',
+      apellidoMaterno: '',
+      matricula: '',
+      foto: ''
+    }, _defineProperty(_ref, "id_rol", ''), _defineProperty(_ref, "rol", ''), _ref;
   },
   mounted: function mounted() {
-    document.getElementById("navTablero").classList.remove('active');
-    document.getElementById("navUsuarios").classList.remove('active');
-    document.getElementById("liUsuarios").classList.remove('menu-open');
-    document.getElementById("navAccesos").classList.remove('active');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("aConfigurar").classList.remove('active');
-    document.getElementById("navTemas").classList.remove('active');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
-    document.getElementById("navRecursos").classList.remove('active');
     this.getpregunta();
     this.getTemas();
     this.getadmins();
     this.getprofesor();
     this.getalumnos();
     this.getexperto();
+    this.id = window.idUsuario;
+    this.id_rol = window.rol;
+    this.nombre = window.nombre;
+    this.apellidoPaterno = window.apellido_paterno;
+    this.apellidoMaterno = window.apellido_materno;
+    this.matricula = window.matricula;
+    this.foto = window.foto;
+
+    if (this.id_rol === '1') {
+      this.rol = "Administrador";
+    }
+
+    if (this.id_rol === '2') {
+      this.rol = "Experto";
+    }
+
+    if (this.id_rol === '3') {
+      this.rol = "Profesor";
+    }
+
+    if (this.id_rol === '4') {
+      this.rol = "Alumno";
+    }
   },
   methods: {
     getpregunta: function getpregunta() {
@@ -7247,7 +7317,6 @@ __webpack_require__.r(__webpack_exports__);
         method: 'GET',
         url: '/temas/count'
       }).then(function (result) {
-        //console.log("Los temas son "+ result.data)
         _this2.temas = result.data[0][0].totalTemas;
       }, function (error) {
         console.error(error);
@@ -7260,7 +7329,6 @@ __webpack_require__.r(__webpack_exports__);
         method: 'GET',
         url: '/admin/count'
       }).then(function (result) {
-        //console.log("Admin",result.data)
         _this3.admins = result.data[0][0].totalAdministradores;
       }, function (error) {
         console.error(error);
@@ -7273,7 +7341,6 @@ __webpack_require__.r(__webpack_exports__);
         method: 'GET',
         url: '/alumno/count'
       }).then(function (result) {
-        //console.log("hola como estas ", result.data)
         _this4.alumnos = result.data[0][0].totalAlumnos;
       }, function (error) {
         console.error(error);
@@ -7286,7 +7353,6 @@ __webpack_require__.r(__webpack_exports__);
         method: 'GET',
         url: '/profesor/count'
       }).then(function (result) {
-        //console.log(result.data)
         _this5.profesor = result.data[0][0].totalDocentes;
       }, function (error) {
         console.error(error);
@@ -7299,7 +7365,6 @@ __webpack_require__.r(__webpack_exports__);
         method: 'GET',
         url: '/experto/count'
       }).then(function (result) {
-        //console.log(result.data)
         _this6.experto = result.data[0][0].totalExpertos;
       }, function (error) {
         console.error(error);
@@ -7976,16 +8041,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.metodoSaludame();
   },
-  mounted: function mounted() {
-    //this.metodoSaludame();
-    document.getElementById("navUsuarios").classList.remove('active');
-    document.getElementById("liUsuarios").classList.remove('menu-open');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
+  mounted: function mounted() {//this.metodoSaludame();
   },
   methods: {
     metodoSaludame: function metodoSaludame() {
@@ -8184,12 +8240,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -8687,11 +8737,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                             return _this6.getPreguntaAbierta();
 
                           case 8:
-                            $('#registrarPregunta').modal('toggle');
+                            $('#registrarPregunta').modal('toggle'); //this.$swal.fire({type: "success",title: res.data.mensaje});
 
                             _this6.$swal.fire({
-                              type: "success",
-                              title: res.data.mensaje
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Información guardada con éxito',
+                              showConfirmButton: false,
+                              timer: 1500,
+                              toast: true
                             });
 
                             _context5.next = 12;
@@ -8809,8 +8863,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var inputRespuesta = document.getElementById("respuesta");
       var selectTema = document.getElementById("id_tema");
       inputRespuesta.value = "";
-      inputPregunta.value = ""; //selectTema.value = "";
-
+      inputPregunta.value = "";
       this.subidor.imagenesVistaPrevia = [];
       this.subidor.imagenes = [];
       this.subidor.contadorImagen = 0;
@@ -8857,7 +8910,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           msjInputRespuesta.style.color = "#ff6258";
         }
       } else {
-        //console.log(this.id, this.pregunta, this.respuesta, this.tipo, this.id_tema);
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/update", {
           id: this.id,
           pregunta: this.pregunta,
@@ -8890,8 +8942,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     _this7.subidor.imagenesAEliminar = [];
 
                     _this7.$swal.fire({
-                      type: "success",
-                      title: "¡Pregunta actualizada con éxito!"
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Información almacenada con éxito',
+                      showConfirmButton: false,
+                      timer: 1500,
+                      toast: true
                     });
 
                     $('#registrarPregunta').modal('toggle');
@@ -8918,20 +8974,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this8 = this;
 
       this.$swal.fire({
-        title: '¿Está seguro de eliminar el registro?',
-        text: "Esto no podrá revertirse",
-        icon: 'warning',
+        html: "<h3 style=\"color:#212529;\">\xBFRealmente desea eliminar esta pregunta?</h3>",
         showCancelButton: true,
-        confirmButtonColor: '#ff6258',
-        cancelButtonColor: '#AAAAAA',
-        confirmButtonText: '<i class="fas fa-check-circle"></i> Aceptar',
-        cancelButtonText: '<i class="fas fa-ban"></i> Cerrar'
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/delete", {
             id: id,
             imagenesAEliminar: imagenes
-          }).then(function (res) {
+          }).then(function () {
             _this8.id = "";
 
             _this8.getPreguntaAbierta();
@@ -8944,8 +8998,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             });
 
             _this8.$swal.fire({
-              type: "success",
-              title: "¡Pregunta Eliminada!"
+              position: 'top-end',
+              icon: 'success',
+              title: 'Información eliminada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
           })["catch"](function (err) {
             console.log(err);
@@ -10498,6 +10556,56 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -10540,20 +10648,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     cambiarCampoDeBusqueda: function cambiarCampoDeBusqueda() {
       var x = document.getElementById("campoBusqueda").value;
       this.filters.pregunta.keys[0] = x;
-    },
-    wrapText: function wrapText(str) {
-      var palabrasSinEspacios = str.split(" ");
-      var textoDePregunta = "";
-
-      for (var i = 0; i < palabrasSinEspacios.length; i++) {
-        textoDePregunta = textoDePregunta + " " + palabrasSinEspacios[i];
-
-        if (i % 7 == 0 && i != 0) {
-          textoDePregunta = textoDePregunta + "<br>";
-        }
-      }
-
-      return textoDePregunta;
     },
     desplegarImagenesEnModal: function desplegarImagenesEnModal(imagenes) {
       var _this = this;
@@ -10789,7 +10883,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.arriba = document.getElementById("arriba").checked;
       this.abajo = document.getElementById("abajo").checked;
       this.pregunta = inputPregunta.value;
-      this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, ""); //this.id_tema = selectTema.value;
+      this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 
       if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "") {
         if (this.id_tema == "") {
@@ -10945,52 +11039,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           margen: this.margen
         }).then(
         /*#__PURE__*/
-        function () {
-          var _ref3 = _asyncToGenerator(
-          /*#__PURE__*/
-          _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(res) {
-            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
-              while (1) {
-                switch (_context7.prev = _context7.next) {
-                  case 0:
-                    _context7.next = 2;
-                    return _this8.subidor.subirImagenes(_this8.id);
+        _asyncToGenerator(
+        /*#__PURE__*/
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  _context7.next = 2;
+                  return _this8.subidor.subirImagenes(_this8.id);
 
-                  case 2:
-                    _context7.next = 4;
-                    return _this8.getPreguntaNumerica();
+                case 2:
+                  _context7.next = 4;
+                  return _this8.getPreguntaNumerica();
 
-                  case 4:
-                    _this8.id = "";
-                    _this8.respuesta = "";
-                    _this8.pregunta = "";
-                    _this8.id_tema = "";
-                    _this8.arriba = "";
-                    _this8.abajo = "";
+                case 4:
+                  _this8.id = "";
+                  _this8.respuesta = "";
+                  _this8.pregunta = "";
+                  _this8.id_tema = "";
+                  _this8.arriba = "";
+                  _this8.abajo = "";
 
-                    _this8.$swal.fire({
-                      position: 'top-end',
-                      icon: 'success',
-                      title: 'Pregunta actualizada con éxito',
-                      showConfirmButton: false,
-                      timer: 1500,
-                      toast: true
-                    });
+                  _this8.$swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Pregunta actualizada con éxito',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true
+                  });
 
-                    $('#registrarPregunta').modal('toggle');
+                  $('#registrarPregunta').modal('toggle');
 
-                  case 12:
-                  case "end":
-                    return _context7.stop();
-                }
+                case 12:
+                case "end":
+                  return _context7.stop();
               }
-            }, _callee7);
-          }));
-
-          return function (_x2) {
-            return _ref3.apply(this, arguments);
-          };
-        }())["catch"](function (err) {
+            }
+          }, _callee7);
+        })))["catch"](function (err) {
           console.error(err);
         });
       }
@@ -10999,34 +11087,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this9 = this;
 
       this.$swal.fire({
-        title: '¿Está seguro de eliminar el registro?',
-        text: "Esto no podrá revertirse",
-        icon: 'warning',
+        html: "<h3 style=\"color:#212529;\">\xBFRealmente desea eliminar esta pregunta?</h3>",
         showCancelButton: true,
-        confirmButtonColor: '#ff6258',
-        cancelButtonColor: '#AAAAAA',
-        confirmButtonText: '<i class="fas fa-check-circle"></i> Aceptar',
-        cancelButtonText: '<i class="fas fa-ban"></i> Cerrar'
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/delete", {
             id: id,
             imagenesAEliminar: imagenes
-          }).then(function (res) {
+          }).then(function () {
             _this9.id = "";
 
             _this9.getPreguntaNumerica();
 
-            var Toast = _this9.$swal.mixin({
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000
-            });
-
             _this9.$swal.fire({
-              type: "success",
-              title: "¡Pregunta Eliminada!"
+              position: 'top-end',
+              icon: 'success',
+              title: 'Pregunta eliminada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
           })["catch"](function (err) {
             console.log(err);
@@ -11066,6 +11149,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11655,22 +11771,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         opciones.push(o);
         numero++;
       }
-      /*for (var i = 0; i < this.opciones[0].length; i++) {
-          if (this.opciones[0][i].id_pregunta == id) {
-              
-              var o = [];
-              o[0] = this.opciones[0][i].opcion;
-              o[1] = "opt_" + numero;
-               if (this.opciones[0][i].esrespuesta == 1) {
-                  o[2] = 1;
-              } else {
-                  o[2] = 0;
-              }
-               opciones.push(o);
-              numero++;
-          }
-      }*/
-
 
       for (var i = 0; i < opciones.length; i++) {
         var opcion = opciones[i][0];
@@ -11733,19 +11833,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 this.id_tema = "";
                 this.limpiarCampos("tema");
                 this.limpiarCampos("pregunta");
-                this.limpiarCampos("respuesta");
-                /*var x = document.getElementById("id_tema");
-                 var length = x.options.length;
-                for (i = length - 1; i >= 0; i--) {
-                    x.options[i] = null;
-                }
-                 for (var i = 0; i < this.temas[0].length; i++) {
-                    var option = document.createElement("option");
-                    option.text = this.temas[0][i].nombre_tema;
-                    option.value = this.temas[0][i].id;
-                    x.add(option);
-                }*/
-                //Limpiar opciones
+                this.limpiarCampos("respuesta"); //Limpiar opciones
 
                 opciones = []; //Limpiar el reactivo
 
@@ -11868,9 +11956,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                             switch (_context7.prev = _context7.next) {
                               case 0:
                                 _this7.$swal.fire({
+                                  position: 'top-end',
                                   icon: 'success',
-                                  title: 'Pregunta actualizada',
-                                  text: 'Pregunta actualizada con exito'
+                                  title: 'Pregunta actualizada con éxito',
+                                  showConfirmButton: false,
+                                  timer: 1500,
+                                  toast: true
                                 });
 
                                 modals = document.getElementsByClassName('modal');
@@ -11927,9 +12018,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                             switch (_context8.prev = _context8.next) {
                               case 0:
                                 _this7.$swal.fire({
+                                  position: 'top-end',
                                   icon: 'success',
-                                  title: 'Pregunta guardada',
-                                  text: 'Pregunta guardada con exito'
+                                  title: 'Pregunta almacenada con éxito',
+                                  showConfirmButton: false,
+                                  timer: 1500,
+                                  toast: true
                                 });
 
                                 modals = document.getElementsByClassName('modal');
@@ -12045,22 +12139,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this8 = this;
 
       this.$swal.fire({
-        title: '¿Estas seguro de eliminar el registro?',
-        text: "Esto no podrá revertirse",
-        icon: 'warning',
+        html: "<h3 style=\"color:#212529;\">\xBFRealmente desea eliminar esta pregunta?</h3>",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/eliminar', {
             id: id
-          }).then(function (res) {
-            _this8.$swal({
-              type: 'success',
-              title: '¡Pregunta Eliminada!'
+          }).then(function () {
+            _this8.$swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Pregunta eliminada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
 
             _this8.getpreguntas();
@@ -12380,26 +12476,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var opciones = [];
 var noOpcion = 0; //var opcion_comodin = "";
@@ -12470,29 +12546,23 @@ function checkRespuesta(opcion) {
       editarPreguntaVar: false,
       pregunta: [],
       opciones: [],
-      respuestas: [],
       comodines: [],
       comodin_inside: [],
       comodines_raw: [],
       id_editar: 0,
       id: '',
       id_tema: '',
-      id_para_tema: '',
       tema: '',
       reactivo: '',
       bandera: 0,
       cpreguntas: 0,
-      opcion: '',
-      opcion2: '',
-      opcion3: '',
-      opcion4: '',
       respuesta: ''
     }, _defineProperty(_ref, "pregunta", ''), _defineProperty(_ref, "row_count", 2), _defineProperty(_ref, "tipo", ''), _defineProperty(_ref, "temasSeleccionado", {}), _defineProperty(_ref, "temas", []), _defineProperty(_ref, "id", ''), _defineProperty(_ref, "nombre_tema", ''), _defineProperty(_ref, "nivel", ''), _defineProperty(_ref, "filters", {
       pregunta: {
         value: '',
         keys: ['pregunta', 'tema']
       }
-    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _ref;
+    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "cuenta", 0), _ref;
   },
   props: {
     seccion: String
@@ -12512,20 +12582,12 @@ function checkRespuesta(opcion) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              document.getElementById("navUsuarios").classList.remove('active');
-              document.getElementById("liUsuarios").classList.remove('menu-open');
-              document.getElementById("navCuestionario").classList.remove('active');
-              document.getElementById("liCuestionario").classList.remove('menu-open');
-              document.getElementById("navGrafo").classList.remove('active');
-              document.getElementById("liGrafo").classList.remove('menu-open');
-              document.getElementById("navPreguntas").classList.add('active');
-              document.getElementById("liPreguntas").classList.add('menu-open');
-              _context.next = 10;
+              _context.next = 2;
               return _this.getpreguntas().then(function (data) {})["catch"](function (err) {
                 return console.log(err);
               });
 
-            case 10:
+            case 2:
               _this.getTemas();
 
               uri = window.location.href;
@@ -12536,7 +12598,7 @@ function checkRespuesta(opcion) {
                 _this.filters.pregunta.value = fil.replace(/%20/g, " ");
               }
 
-            case 13:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -12559,15 +12621,54 @@ function checkRespuesta(opcion) {
 
       return textoDePregunta;
     },
-    abrirModalCuestionario: function abrirModalCuestionario() {
-      this.getpreguntas();
-      this.getTemas();
+    eliminarCalculadas: function eliminarCalculadas(id, imagenes) {
+      var _this2 = this;
+
+      this.$swal.fire({
+        title: '¿Estas seguro de eliminar el registro?',
+        text: "Esto no podrá revertirse",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+      }).then(function (result) {
+        if (result.value) {
+          axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/preguntasCalculadas/delete", {
+            id: id,
+            imagenesAEliminar: imagenes
+          }).then(function (res) {
+            _this2.id = ""; //this.getPreguntaNumerica();
+            //console.log(res);
+
+            var Toast = _this2.$swal.mixin({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 3000
+            });
+
+            _this2.$swal.fire({
+              type: "success",
+              title: "¡Pregunta Eliminada!"
+            });
+          })["catch"](function (err) {
+            console.log(err);
+
+            _this2.$swal({
+              type: "info",
+              title: "Error al eliminar"
+            });
+          });
+        }
+      });
     },
     getpreguntas: function () {
       var _getpreguntas = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this2 = this;
+        var _this3 = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
@@ -12577,13 +12678,10 @@ function checkRespuesta(opcion) {
                   method: 'get',
                   url: 'pregunta/showMultiplesCalculadas'
                 }).then(function (result) {
-                  _this2.pregunta = result.data.banco_preguntas[0];
-                  _this2.opciones = result.data.opciones;
-                  _this2.respuestas = result.data.respuestas; //console.log(result.data.comodines[0]);
-
-                  _this2.cpreguntas = _this2.pregunta.length;
-                  _this2.comodines_raw = result.data.comodines[0]; //error
-                  //return result.data;
+                  _this3.pregunta = result.data.banco_preguntas[0];
+                  _this3.opciones = result.data.opciones;
+                  _this3.comodines = result.data.comodines;
+                  _this3.cpreguntas = _this3.pregunta.length; //return result.data;
                 }, function (error) {
                   console.error(error);
                 }));
@@ -12603,13 +12701,13 @@ function checkRespuesta(opcion) {
       return getpreguntas;
     }(),
     getTemas: function getTemas() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'GET',
         url: '/tema/all'
       }).then(function (result) {
-        _this3.temas = result.data;
+        _this4.temas = result.data;
       }, function (error) {
         console.error(error);
       });
@@ -12679,16 +12777,6 @@ function checkRespuesta(opcion) {
           numero++;
         }
       }
-      /*for( var j=0; j < this.respuestas[0].length; j++ ){
-        if(this.respuestas[0][j].id_pregunta == id){
-           for(var k = 0; k < opciones.length; k++){
-            if( opciones[k][0] == this.respuestas[0][j].respuesta  ){
-               opciones[k][2] = 1;
-            }
-          }
-        }
-      }  */
-
 
       for (var i = 0; i < opciones.length; i++) {
         var opcion = opciones[i][0];
@@ -12784,7 +12872,7 @@ function checkRespuesta(opcion) {
       var _btnGuardarPregunta = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _this4 = this;
+        var _this5 = this;
 
         var vacio, comodinesCorrecto, pregunta, total_opciones, tema, total_chequeados, errores, totalCifras, i, j, v_comodin, separada, incorrecto, number, regex, x, p;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -12803,21 +12891,6 @@ function checkRespuesta(opcion) {
 
                 if (!this.editarPreguntaVar) {
                   this.valorComodines = [];
-                  /*for(var i=0;i<this.opciones_comodines.length;i++)
-                  { 
-                       console.log("entra oe" + i);
-                      /*var input=document.getElementById(i+"-"+j).value;
-                      console.log("entra5 "+i);
-                      if(input=="")
-                          vacio=true;
-                    }
-                   }*/
-                  //console.log(this.opciones_comodines);
-
-                  /*for(var x = 0; x<this.opciones_comodines.length; x++){
-                    if(vacio==true ||pregunta=="" || this.opciones_comodines[x]==""){
-                      this.$swal({type: 'error',title: '¡Datos incompletos!'})
-                    }else{*/
 
                   for (i = 0; i < this.comodines.length; i++) {
                     this.vcomodin = [];
@@ -12904,7 +12977,7 @@ function checkRespuesta(opcion) {
                       valorComodines: this.valorComodines,
                       cifras: totalCifras
                     }).then(function (res) {
-                      _this4.$swal.fire({
+                      _this5.$swal.fire({
                         icon: 'success',
                         title: 'Pregunta guardada',
                         text: 'Pregunta guardada con exito'
@@ -12928,7 +13001,7 @@ function checkRespuesta(opcion) {
                         document.body.removeChild(modalsBackdrops[_i2]);
                       }
 
-                      _this4.getpreguntas();
+                      _this5.getpreguntas();
                     });
                   }
                 } else {
@@ -12940,7 +13013,7 @@ function checkRespuesta(opcion) {
                       tema: tema,
                       id: this.id_editar
                     }).then(function (res) {
-                      _this4.$swal.fire({
+                      _this5.$swal.fire({
                         icon: 'success',
                         title: 'Pregunta actualizada',
                         text: 'Pregunta actualizada con exito'
@@ -12963,7 +13036,7 @@ function checkRespuesta(opcion) {
                         document.body.removeChild(modalsBackdrops[_i4]);
                       }
 
-                      _this4.getpreguntas();
+                      _this5.getpreguntas();
                     })["catch"](function (err) {
                       console.log(err);
                     });
@@ -13320,7 +13393,7 @@ function checkRespuesta(opcion) {
       }
     },
     eliminar: function eliminar(id) {
-      var _this5 = this;
+      var _this6 = this;
 
       //Limpiar opciones
       opciones = []; //Obtener las opciones
@@ -13361,16 +13434,16 @@ function checkRespuesta(opcion) {
             id: id,
             opciones: opciones
           }).then(function (res) {
-            _this5.$swal({
+            _this6.$swal({
               type: 'success',
               title: '¡Pregunta Eliminada!'
             });
 
-            _this5.getpreguntas();
+            _this6.getpreguntas();
           })["catch"](function (err) {
             console.log(err);
 
-            _this5.$swal({
+            _this6.$swal({
               type: 'info',
               title: 'Error al eliminar'
             });
@@ -13404,6 +13477,26 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14073,14 +14166,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this7 = this;
 
       this.$swal.fire({
-        title: '¿Estas seguro de eliminar el registro?',
-        text: "Esto no podrá revertirse",
-        icon: 'warning',
+        html: "<h3 style=\"color:#212529;\">\xBFRealmente desea eliminar esta pregunta?</h3>",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/delete', {
@@ -14243,25 +14334,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -14287,14 +14359,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.add('active');
-    document.getElementById("liUsuarios").classList.add('menu-open');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
     this.getprofesor();
   },
   methods: {
@@ -14364,12 +14428,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   hideClass: {
                   	popup: '',                     // disable popup fade-out animation
                   },*/
-                  html: "\n            <h3 class=\"text-left\"> Registrar docente </h3>\n            <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n            <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Juan\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Mart\xEDnez\">\n\t\t\t      <p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Per\xE9z\">\n\t\t\t      <p class=\"text-left mt-0 mb-0\"> Correo<span style=\"color:red\">*</span>: </p>\n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"1234567\">\n            <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a<span style=\"color:red\">*</span>: </p>\n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\">\n\n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                  <span class=\"text-left\" id=\"msjError\">  </span>\n                </div>\n                <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n\n            ",
+                  html: "\n            \t\t<h3 class=\"text-left \"> Registrar docente </h3>\n            \t\t<p class=\"text-left  mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n            \t\t<input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Juan\">\n            \t\t<p class=\"text-left  mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n            \t\t<input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Mart\xEDnez\">\n\t\t\t      \t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n            \t\t<input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Per\xE9z\">\n\t\t\t    \t<p class=\"text-left  mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Correo<span style=\"color:red\">*</span>: </b> </p>\n            \t\t<input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"1234567\">\n            \t\t<p class=\"text-left  mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a<span style=\"color:red\">*</span>: </b> </p>\n            \t\t<input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\">\n\n            \t\t<div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                  \t\t<span class=\"text-left\" id=\"msjError\">  </span>\n                \t</div>\n                \t<p class=\"text-left  mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            \t\t",
                   focusConfirm: false,
                   showCancelButton: true,
                   confirmButtonText: '<i class="fas fa-save"></i> Guardar',
-                  confirmButtonColor: '#2196f3',
-                  cancelButtonColor: '#aaa',
+                  confirmButtonColor: '#007BFF',
+                  cancelButtonColor: '#6C757D',
                   cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                   allowOutsideClick: false,
                   allowEscapeKey: false,
@@ -14385,8 +14449,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               /*this.apellido_paterno=document.getElementById('apellido_paterno').value,
                               this.apellido_materno=document.getElementById('apellido_materno').value,
                               this.nombre=document.getElementById('nombre').value,
-                                     this.matricula=document.getElementById('matricula').value,
-                                     this.password=document.getElementById('password').value*/
+                              this.matricula=document.getElementById('matricula').value,
+                              this.password=document.getElementById('password').value*/
                               error = 0;
                               _this3.apellido_paterno = document.getElementById('apellido_paterno').value, _this3.apellido_materno = document.getElementById('apellido_materno').value, _this3.nombre = document.getElementById('nombre').value, _this3.matricula = document.getElementById('matricula').value, _this3.password = document.getElementById('password').value;
                               mensajeError = document.getElementById('msjError');
@@ -14503,20 +14567,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.next = 2;
                 return this.$swal({
-                  /*showClass: {
-                  	backdrop: 'swal2-noanimation',
-                  	popup: '',
-                  	icon: ''
-                  },
-                  hideClass: {
-                  	popup: ''
-                  },*/
-                  html: "\n            <h3 class=\"text-left\"> Actualizar docente </h3>\n\t\t\t      <p class=\"text-left mt-0 mb-0\"> Nombre<span style=\"color:red\">*</span>: </p>\n            <input id=\"nombre\" type=\"text\" class=\"swal2-input\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <p class=\"text-left mt-0 mb-0\"> Apellido paterno<span style=\"color:red\">*</span>: </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n             <p class=\"text-left mt-0 mb-0\"> Apellido materno: </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"swal2-input\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <p class=\"text-left mt-0 mb-0\"> Correo<span style=\"color:red\">*</span>: </p>  \n            <input id=\"matricula\" type=\"text\" class=\"swal2-input\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n            <p class=\"text-left mt-0 mb-0\"> Contrase\xF1a <span style=\"color:red\">**</span> : </p>\n            <input id=\"password\" type=\"password\" class=\"swal2-input\" placeholder=\"Contrase\xF1a\" >\n            \n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\n            ",
+                  html: "\n\t\t\t\t\t<h3 class=\"text-left\"> Actualizar docente </h3>\n\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n\t\t\t\t\t<p class=\"text-left  mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Correo<span style=\"color:red\">*</span>: </b> </p>  \n\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a <span style=\"color:red\">**</span> : </b> </p>\n\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\" >\n\t\t\t\t\t\n\t\t\t\t\t<div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n\t\t\t\t\t\t<span class=\"text-left\" id=\"msjError\">  </span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<p class=\"text-left  mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n\t\t\t\t\t<p class=\"text-left  mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\t\t\t\t\t",
                   focusConfirm: false,
                   showCancelButton: true,
                   confirmButtonText: '<i class="fas fa-save"></i> Guardar',
-                  confirmButtonColor: '#2196f3',
-                  cancelButtonColor: '#aaa',
+                  confirmButtonColor: '#007BFF',
+                  cancelButtonColor: '#6C757D',
                   cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                   preConfirm: function () {
                     var _preConfirm2 = _asyncToGenerator(
@@ -14527,14 +14583,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         while (1) {
                           switch (_context3.prev = _context3.next) {
                             case 0:
-                              /*return [
-                              	this.apellido_paterno=document.getElementById('apellido_paterno').value,
-                              	this.apellido_materno=document.getElementById('apellido_materno').value,
-                              	this.nombre=document.getElementById('nombre').value,
-                                      this.matricula=document.getElementById('matricula').value,
-                                      this.password=document.getElementById('password').value,
-                                      this.id = id
-                              ]*/
                               error = 0;
                               _this4.apellido_paterno = document.getElementById('apellido_paterno').value;
                               _this4.apellido_materno = document.getElementById('apellido_materno').value;
@@ -14687,7 +14735,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this5.password = '';
         _this5.id = '';
 
-        _this5.getprofesor(); //console.log(res)
+        _this5.getprofesor();
+
+        _this5.$swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Datos eliminados con éxito',
+          showConfirmButton: false,
+          timer: 1500,
+          toast: true
+        }); //console.log(res)
 
       })["catch"](function (err) {
         console.log(err);
@@ -14702,13 +14759,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log("Id " + id + " Estado " + estado);
       this.$swal.fire({
-        title: '¿Estas seguro de realizar esta acción?',
-        icon: 'warning',
+        html: "\n                        <h3 style=\"color:#212529;\">\xBFRealmente desea realizar est\xE1 acci\xF3n?</h3>\n\t\t\t        ",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#DC3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-check"></i> Aceptar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('user/delete3', {
@@ -14718,17 +14774,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             _this6.id = '';
 
             _this6.getprofesor();
-
-            var Toast = _this6.$swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000
+            /*const Toast = this.$swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
             });
+            this.$swal.fire({
+                type: 'success',
+                title: '¡Tarea realizada con exito!'
+            })*/
+
 
             _this6.$swal.fire({
-              type: 'success',
-              title: '¡Tarea realizada con exito!'
+              position: 'top-end',
+              icon: 'success',
+              title: 'Tarea realizada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
           })["catch"](function (err) {
             console.log(err);
@@ -15427,14 +15491,6 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.remove('active');
-    document.getElementById("liUsuarios").classList.remove('menu-open');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("navGrafo").classList.add('active');
-    document.getElementById("liGrafo").classList.add('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
     $('document').ready(function () {
       $('.js-example-basic-multiple').select2();
       $('#nodesSelect').select2();
@@ -15525,6 +15581,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu.vue */ "./resources/assets/js/components/layout/menu.vue");
 /* harmony import */ var _navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar.vue */ "./resources/assets/js/components/layout/navbar.vue");
+/* harmony import */ var _footer_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./footer.vue */ "./resources/assets/js/components/layout/footer.vue");
 //
 //
 //
@@ -15534,14 +15591,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     MyNavBar: _navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    MyHeader: _menu_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    MyHeader: _menu_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Footer: _footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   name: 'App'
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/layout/footer.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/layout/footer.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -15555,6 +15641,135 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -16429,14 +16644,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   mounted: function mounted() {
-    document.getElementById("navUsuarios").classList.remove('active');
-    document.getElementById("liUsuarios").classList.remove('menu-open');
-    document.getElementById("navCuestionario").classList.remove('active');
-    document.getElementById("liCuestionario").classList.remove('menu-open');
-    document.getElementById("navGrafo").classList.remove('active');
-    document.getElementById("liGrafo").classList.remove('menu-open');
-    document.getElementById("navPreguntas").classList.remove('active');
-    document.getElementById("liPreguntas").classList.remove('menu-open');
     this.getTemas(), this.getTemasOnlyNombreID();
     this.obtenerConfiguracion();
   },
@@ -16924,7 +17131,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\ndiv.gfg {\n      width: 100%;\n      height: 800px;\n      overflow: auto;\n      text-align:justify;\n}\n\n\n\n\n", ""]);
+exports.push([module.i, "\ndiv.gfg {\n    width: 100%;\n    height: 800px;\n    overflow: auto;\n    text-align: justify;\n}\n\n", ""]);
 
 // exports
 
@@ -16943,7 +17150,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.pregresp {\n\t  border: 2px solid #7da5e0;\n\t  margin: 5px;\n\t  font-family: Arial, Verdana, Helvetica, sans-serif;\n\t  font-size: 15px;\n\t  font-weight: bold;\n}\n.pregunta {\n\t  color: #7da5e0;\n}\n.respuestas {\n\t  color: #000000;\n}\n.grid {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t\tbackground-color: #fff;\n\t\tpadding: 10px 50px 50px 50px;\n}\n.grid h1 {\n\t\ttext-align: center;\n\t\tcolor: #000000;\n\t\tpadding: 2px 0px;\n\t\tborder-radius: 50px;\n}\n#score {\n\t\tcolor: #5A6772;\n\t\ttext-align: center;\n\t\tfont-size: 30px;\n}\n.buttons {\n\t\tmargin-top: 30px;\n}\n#btn0, #btn1, #btn2, #btn3, #next{\n\n\t\twidth: 250px;\n\t\tfont-size: 20px;\n\t\tmargin: 10px 40px 10px 0px;\n\t\tpadding: 10px 10px;\n}\n.container {\n\t\tdisplay: block;\n\t\tposition: relative;\n\t\tpadding-left: 35px;\n\t\tmargin-bottom: 12px;\n\t\tcursor: pointer;\n\t\tfont-size: 22px;\n\t\t-webkit-user-select: none;\n\t\t-moz-user-select: none;\n\t\t-ms-user-select: none;\n\t\tuser-select: none;\n}\n.container input {\n\t\tposition: absolute;\n\t\topacity: 0;\n\t\tcursor: pointer;\n\t\theight: 0;\n\t\twidth: 0;\n}\n.checkmark {\n    \tposition: absolute;\n    \ttop: 0;\n    \tleft: 0;\n    \theight: 25px;\n    \twidth: 25px;\n    \tbackground-color: #eee;\n}\n.container:hover input ~ .checkmark {\n\t\tbackground-color: #ccc;\n}\n.container  input:checked ~ .checkmark {\n\t\tbackground-color: #2196F3;\n}\n.checkmark:after {\n\t\tcontent: \"\";\n\t\tposition: absolute;\n\t\tdisplay: none;\n}\n.container input:checked ~ .checkmark:after {\n\t\tdisplay: block;\n}\n.container .checkmark:after {\n\t\tleft: 9px;\n\t\ttop: 5px;\n\t\twidth: 5px;\n\t\theight: 10px;\n\t\tborder: solid white;\n\t\tborder-width: 0 3px 3px 0;\n\t\t-webkit-transform: rotate(45deg);\n\t\t-ms-transform: rotate(45deg);\n\t\ttransform: rotate(45deg);\n}\n#carouselExampleIndicators {\n  margin-left: 200px;\n  margin-right: 200px;\n}\n.item img {\n  margin-left: auto;\n  margin-right: auto;\n}\n.selected img {\n\topacity:0.5;\n}\n.carousel-caption {\n    position: relative;\n    left: auto;\n    right: auto;\n}\n.carousel-control.left,\n.carousel-control.right {\n  background: none;\n  border: none;\n}\n.carousel-control.left {\n  margin-left: -300px;\n}\n.carousel-control.right {\n  margin-right: -300px;\n}\n.carousel-control {\n  width: 0%;\n}\n\t\n\t\n\t\n", ""]);
+exports.push([module.i, "\n.pregresp {\n    border: 2px solid #7da5e0;\n    margin: 5px;\n    font-family: Arial, Verdana, Helvetica, sans-serif;\n    font-size: 15px;\n    font-weight: bold;\n}\n.pregunta {\n    color: #7da5e0;\n}\n.respuestas {\n    color: #000000;\n}\n.grid {\n    width: 100%;\n    height: 100%;\n    margin: 0 auto;\n    background-color: #fff;\n    padding: 10px 50px 50px 50px;\n}\n.grid h1 {\n    text-align: center;\n    color: #000000;\n    padding: 2px 0px;\n    border-radius: 50px;\n}\n#score {\n    color: #5A6772;\n    text-align: center;\n    font-size: 30px;\n}\n.buttons {\n    margin-top: 30px;\n}\n#btn0,\n#btn1,\n#btn2,\n#btn3,\n#next {\n\n    width: 250px;\n    font-size: 20px;\n    margin: 10px 40px 10px 0px;\n    padding: 10px 10px;\n}\n.container {\n    display: block;\n    position: relative;\n    padding-left: 35px;\n    margin-bottom: 12px;\n    cursor: pointer;\n    font-size: 22px;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.container input {\n    position: absolute;\n    opacity: 0;\n    cursor: pointer;\n    height: 0;\n    width: 0;\n}\n.checkmark {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 25px;\n    width: 25px;\n    background-color: #eee;\n}\n.container:hover input~.checkmark {\n    background-color: #ccc;\n}\n.container input:checked~.checkmark {\n    background-color: #2196F3;\n}\n.checkmark:after {\n    content: \"\";\n    position: absolute;\n    display: none;\n}\n.container input:checked~.checkmark:after {\n    display: block;\n}\n.container .checkmark:after {\n    left: 9px;\n    top: 5px;\n    width: 5px;\n    height: 10px;\n    border: solid white;\n    border-width: 0 3px 3px 0;\n    -webkit-transform: rotate(45deg);\n    -ms-transform: rotate(45deg);\n    transform: rotate(45deg);\n}\n#carouselExampleIndicators {\n    margin-left: 200px;\n    margin-right: 200px;\n}\n.item img {\n    margin-left: auto;\n    margin-right: auto;\n}\n.selected img {\n    opacity: 0.5;\n}\n.carousel-caption {\n    position: relative;\n    left: auto;\n    right: auto;\n}\n.carousel-control.left,\n.carousel-control.right {\n    background: none;\n    border: none;\n}\n.carousel-control.left {\n    margin-left: -300px;\n}\n.carousel-control.right {\n    margin-right: -300px;\n}\n.carousel-control {\n    width: 0%;\n}\n\n", ""]);
 
 // exports
 
@@ -51223,109 +51430,133 @@ var render = function() {
   return _c("div", { staticClass: "content-wrapper" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "col-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "roles" } }, [
-            _vm._v("Tipo de usuario: ")
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.rol_sel,
-                  expression: "rol_sel"
-                }
-              ],
-              attrs: { name: "roles", id: "roles" },
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.rol_sel = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "roles" } }, [
+                  _vm._v("Tipo de usuario: ")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.rol_sel,
+                        expression: "rol_sel"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "roles", id: "roles" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.rol_sel = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        _vm.cambioRol
+                      ]
+                    }
                   },
-                  _vm.cambioRol
-                ]
-              }
-            },
-            [
-              _c("option", { attrs: { value: "2" } }, [_vm._v("Experto")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "3" } }, [_vm._v("Profesor")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "4" } }, [_vm._v("Alumno")])
-            ]
-          ),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "cars" } }, [
-            _vm._v("Tabla de acciones: ")
-          ]),
-          _vm._v(" "),
-          _c(
-            "table",
-            { staticStyle: { width: "100%" } },
-            [
-              _vm._m(3),
-              _vm._v(" "),
-              _vm._l(_vm.accesos, function(acceso) {
-                return _c("tr", [
-                  acceso.descripcion != ""
-                    ? _c("td", [
-                        _c(
-                          "span",
-                          { staticStyle: { "padding-left": "30px" } },
-                          [_vm._v(" " + _vm._s(acceso.nombre) + " ")]
-                        )
-                      ])
-                    : _c("td", [
-                        _c("b", [
-                          _vm._v(
-                            " " + _vm._s(acceso.nombre.toUpperCase()) + " "
-                          )
+                  [
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v("Experto")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v("Profesor")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [_vm._v("Alumno")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("label", [_vm._v("Tabla de acciones: ")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "table-responsive" }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-hover",
+                      staticStyle: { width: "100%" }
+                    },
+                    [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _vm._l(_vm.accesos, function(acceso) {
+                        return _c("tr", [
+                          acceso.descripcion != ""
+                            ? _c("td", [
+                                _c(
+                                  "span",
+                                  { staticStyle: { "padding-left": "30px" } },
+                                  [
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(acceso.nombre) +
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t"
+                                    )
+                                  ]
+                                )
+                              ])
+                            : _c("td", [
+                                _c("b", [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(acceso.nombre.toUpperCase()) +
+                                      " "
+                                  )
+                                ])
+                              ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(" " + _vm._s(acceso.descripcion) + " ")
+                          ]),
+                          _vm._v(" "),
+                          acceso.descripcion != ""
+                            ? _c(
+                                "td",
+                                [
+                                  _c("toggle-button", {
+                                    attrs: {
+                                      name: acceso.id.toString(),
+                                      value: acceso.estado,
+                                      color: "#82C7EB",
+                                      labels: true
+                                    },
+                                    on: { change: _vm.cambiarEstado }
+                                  })
+                                ],
+                                1
+                              )
+                            : _c("td")
                         ])
-                      ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(" " + _vm._s(acceso.descripcion) + " ")]),
-                  _vm._v(" "),
-                  acceso.descripcion != ""
-                    ? _c(
-                        "td",
-                        [
-                          _c("toggle-button", {
-                            attrs: {
-                              name: acceso.id.toString(),
-                              value: acceso.estado,
-                              color: "#82C7EB",
-                              labels: true
-                            },
-                            on: { change: _vm.cambiarEstado }
-                          })
-                        ],
-                        1
-                      )
-                    : _c("td")
+                      })
+                    ],
+                    2
+                  )
                 ])
-              })
-            ],
-            2
-          )
+              ])
+            ])
+          ])
         ])
       ])
     ])
@@ -51336,28 +51567,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Control de acceso ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v("   Acceso\n\t\t\t")
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v(" Accesos")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
+                _vm._v(" "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  Accesos  ")
               ])
             ])
-          ]
-        )
+          ])
+        ])
       ])
     ])
   },
@@ -51365,20 +51595,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "row",
-        staticStyle: { padding: "0 !important", margin: "0 !important" }
-      },
-      [
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("h3", [_vm._v(" Configuración acceso a rutas ")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" })
-      ]
-    )
+    return _c("div", { staticClass: "row " }, [
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("h1", { staticClass: "page-title m-0" }, [_vm._v(" Accesos ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("ol", {
+          staticClass: "breadcrumb float-sm-right",
+          staticStyle: { background: "white" }
+        })
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -51505,188 +51733,136 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-xl-12" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "page-header border-0",
-                  staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                    },
-                    [
-                      _c("h2", { staticClass: "page-title" }, [
-                        _vm._v(" Lista de administradores ")
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "quick-links ml-auto" }, [
-                        _c("li", [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary float-right btn-lg",
-                              staticStyle: { "border-radius": "25px" },
-                              attrs: { type: "button" },
-                              on: { click: _vm.btnGuardar }
-                            },
-                            [
-                              _c("i", { staticClass: "fas fa-user-plus" }),
-                              _vm._v(" Nuevo\n                          ")
-                            ]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "page-header ",
-                  staticStyle: {
-                    border: "1px solid #dee2e6",
-                    margin: "0px",
-                    background: "#f5f5f5"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v(" Termino de busqueda: ")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filters.nombre.value,
-                            expression: "filters.nombre.value"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        staticStyle: {
-                          "border-radius": "10px",
-                          height: "37px",
-                          margin: "0px"
-                        },
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row " }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
                         attrs: {
-                          type: "search",
-                          placeholder: "Ej. Juan Antonio"
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarPregunta"
                         },
-                        domProps: { value: _vm.filters.nombre.value },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.filters.nombre,
-                              "value",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v("Campo de busqueda: ")]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticStyle: {
-                            "border-radius": "10px",
-                            margin: "0px"
-                          },
-                          attrs: { name: "campoBusqueda", id: "campoBusqueda" },
-                          on: { change: _vm.cambiarCampoDeBusqueda }
-                        },
-                        [
-                          _c("option", { attrs: { value: "nombre" } }, [
-                            _vm._v("Nombre")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "apellido_paterno" } },
-                            [_vm._v("Apellido parterno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "apellido_materno" } },
-                            [_vm._v("Apellido materno")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "matricula" } }, [
-                            _vm._v("Correo")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
+                        on: { click: _vm.btnGuardar }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-plus" }),
+                        _vm._v(" Nuevo\n                                    ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "table-responsive" },
-                [
-                  _c(
-                    "v-table",
-                    {
-                      staticClass: "table table-hover",
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        data: _vm.admin,
-                        filters: _vm.filters,
-                        currentPage: _vm.currentPage,
-                        pageSize: 5
-                      },
-                      on: {
-                        "update:currentPage": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        "update:current-page": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        totalPagesChanged: function($event) {
-                          _vm.totalPages = $event
-                        }
-                      },
-                      scopedSlots: _vm._u([
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Término de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
                         {
-                          key: "body",
-                          fn: function(ref) {
-                            var displayData = ref.displayData
-                            return _c(
-                              "tbody",
-                              {},
-                              [
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.nombre.value,
+                          expression: "filters.nombre.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "2.35rem" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.nombre.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.nombre,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "nombre" } }, [
+                          _vm._v("Nombre")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "apellido_paterno" } }, [
+                          _vm._v("Apellido parterno")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "apellido_materno" } }, [
+                          _vm._v("Apellido materno")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "matricula" } }, [
+                          _vm._v("Correo")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.admin,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
                                 _vm._l(displayData, function(admin) {
                                   return _c("tr", { key: admin.id }, [
                                     _c("td", [_vm._v(_vm._s(admin.nombre))]),
@@ -51700,15 +51876,15 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s(admin.matricula) + " "
-                                      )
+                                      _vm._v(_vm._s(admin.matricula) + " ")
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
                                       _c(
                                         "a",
                                         {
+                                          staticClass:
+                                            "btn btn-outline-warning",
                                           on: {
                                             click: function($event) {
                                               return _vm.btnEditar(
@@ -51727,13 +51903,14 @@ var render = function() {
                                             staticStyle: { color: "#ffae00" }
                                           })
                                         ]
-                                      ),
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t|\n                        "
-                                      ),
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
                                       _c(
                                         "a",
                                         {
+                                          staticClass: "btn btn-outline-danger",
                                           on: {
                                             click: function($event) {
                                               return _vm.eliminar(admin.id)
@@ -51750,112 +51927,116 @@ var render = function() {
                                     ])
                                   ])
                                 }),
-                                _vm._v(" "),
-                                _c("tr", [
-                                  _c("td", [
-                                    _c("b", [
-                                      _c("p", [
-                                        _vm._v(
-                                          " Mostrando " +
-                                            _vm._s(displayData.length) +
-                                            " de " +
-                                            _vm._s(_vm.admin.length) +
-                                            " registros "
-                                        )
-                                      ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td")
-                                ])
-                              ],
-                              2
-                            )
+                                0
+                              )
+                            }
                           }
-                        }
-                      ])
-                    },
-                    [
-                      _c(
-                        "thead",
-                        { attrs: { slot: "head" }, slot: "head" },
-                        [
-                          _c(
-                            "v-th",
-                            {
-                              attrs: { sortKey: "nombre", defaultSort: "desc" }
-                            },
-                            [_vm._v("Nombre")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "apellido_paterno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Apellido Paterno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "apellido_materno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Apellido Materno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "matricula",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Correo")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Opciones")])
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "nombre",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Nombre")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "apellido_paterno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Apellido Paterno")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "apellido_materno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Apellido Materno")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "matricula",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Correo")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
               _vm._v(" "),
-              _c("smart-pagination", {
-                attrs: {
-                  currentPage: _vm.currentPage,
-                  totalPages: _vm.totalPages
-                },
-                on: {
-                  "update:currentPage": function($event) {
-                    _vm.currentPage = $event
-                  },
-                  "update:current-page": function($event) {
-                    _vm.currentPage = $event
-                  }
-                }
-              })
-            ],
-            1
-          )
-        ]
-      )
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " + _vm._s(_vm.admin.length) + " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -51864,35 +52045,41 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v("  Administradores ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v("  Usuarios "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(" "),
-                _c("b", [_vm._v("Administradores ")])
-              ])
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [
+              _vm._v("Administradores")
             ])
-          ]
-        )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
+                _vm._v(" "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  \n                            Usuarios "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Administradores ")])
+            ])
+          ])
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Lista de administradores ")])
     ])
   }
 ]
@@ -51918,194 +52105,140 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-lg-12" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "page-header border-0",
-                  staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                    },
-                    [
-                      _c("h2", { staticClass: "page-title" }, [
-                        _vm._v(" Lista de alumnos ")
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "quick-links ml-auto" }, [
-                        _c("li", [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary float-right btn-lg",
-                              staticStyle: { "border-radius": "25px" },
-                              attrs: { type: "button" },
-                              on: { click: _vm.btnGuardar }
-                            },
-                            [
-                              _c("i", { staticClass: "fas fa-user-plus" }),
-                              _vm._v(" Nuevo\n\t\t\t\t\t\t\t\t\t")
-                            ]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "page-header ",
-                  staticStyle: {
-                    border: "1px solid #dee2e6",
-                    margin: "0px",
-                    background: "#f5f5f5"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v(" Termino de busqueda: ")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filters.nombre.value,
-                            expression: "filters.nombre.value"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        staticStyle: {
-                          "border-radius": "10px",
-                          height: "37px",
-                          margin: "0px"
-                        },
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
                         attrs: {
-                          type: "search",
-                          placeholder: "Ej. Juan Antonio"
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarPregunta"
                         },
-                        domProps: { value: _vm.filters.nombre.value },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.filters.nombre,
-                              "value",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v("Campo de busqueda: ")]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticStyle: {
-                            "border-radius": "10px",
-                            margin: "0px"
-                          },
-                          attrs: { name: "campoBusqueda", id: "campoBusqueda" },
-                          on: { change: _vm.cambiarCampoDeBusqueda }
-                        },
-                        [
-                          _c("option", { attrs: { value: "nombre_alumno" } }, [
-                            _vm._v("Nombre")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "apellido_paterno" } },
-                            [_vm._v("Apellido")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "matricula" } }, [
-                            _vm._v("Matricula")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "nivel_academico" } },
-                            [_vm._v("Nivel academico")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "nombre_profesor" } },
-                            [_vm._v("Profesor")]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
+                        on: { click: _vm.btnGuardar }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-plus" }),
+                        _vm._v(" Nuevo\n\t\t\t\t\t\t\t\t\t\t")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "table-responsive" },
-                [
-                  _c(
-                    "v-table",
-                    {
-                      staticClass: "table table-hover",
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        data: _vm.alumnos,
-                        filters: _vm.filters,
-                        currentPage: _vm.currentPage,
-                        pageSize: 5
-                      },
-                      on: {
-                        "update:currentPage": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        "update:current-page": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        totalPagesChanged: function($event) {
-                          _vm.totalPages = $event
-                        }
-                      },
-                      scopedSlots: _vm._u([
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
                         {
-                          key: "body",
-                          fn: function(ref) {
-                            var displayData = ref.displayData
-                            return _c(
-                              "tbody",
-                              {},
-                              [
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.nombre.value,
+                          expression: "filters.nombre.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.nombre.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.nombre,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "nombre_alumno" } }, [
+                          _vm._v("Nombre")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "apellido_paterno" } }, [
+                          _vm._v("Apellido")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "matricula" } }, [
+                          _vm._v("Matricula")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nivel_academico" } }, [
+                          _vm._v("Nivel academico")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nombre_profesor" } }, [
+                          _vm._v("Profesor")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.alumnos,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
                                 _vm._l(displayData, function(alumnos) {
                                   return _c("tr", { key: alumnos.id }, [
                                     _c("td", { staticClass: "text-left" }, [
@@ -52113,10 +52246,12 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("td", { staticClass: "text-left" }, [
-                                      _vm._v(_vm._s(alumnos.apellido_paterno)),
-                                      _c("tr", [
-                                        _vm._v(_vm._s(alumnos.apellido_materno))
-                                      ])
+                                      _vm._v(
+                                        _vm._s(alumnos.apellido_paterno) +
+                                          " " +
+                                          _vm._s(alumnos.apellido_materno) +
+                                          " "
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("td", { staticClass: "text-left" }, [
@@ -52133,7 +52268,7 @@ var render = function() {
                                           alumnos.nombre_profesor +
                                             " " +
                                             alumnos.apellido_profesor
-                                        )
+                                        ) + " "
                                       )
                                     ]),
                                     _vm._v(" "),
@@ -52141,6 +52276,8 @@ var render = function() {
                                       _c(
                                         "a",
                                         {
+                                          staticClass:
+                                            "btn btn-outline-warning",
                                           on: {
                                             click: function($event) {
                                               return _vm.btnEditar(
@@ -52161,14 +52298,16 @@ var render = function() {
                                             staticStyle: { color: "#ffae00" }
                                           })
                                         ]
-                                      ),
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t  |\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t  "
-                                      ),
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
                                       alumnos.eliminado == "0"
                                         ? _c(
                                             "a",
                                             {
+                                              staticClass:
+                                                "btn btn-outline-danger",
                                               on: {
                                                 click: function($event) {
                                                   return _vm.eliminar(
@@ -52190,6 +52329,8 @@ var render = function() {
                                         : _c(
                                             "a",
                                             {
+                                              staticClass:
+                                                "btn btn-outline-success",
                                               on: {
                                                 click: function($event) {
                                                   return _vm.eliminar(
@@ -52209,119 +52350,120 @@ var render = function() {
                                     ])
                                   ])
                                 }),
-                                _vm._v(" "),
-                                _c("tr", [
-                                  _c("td", [
-                                    _c("b", [
-                                      _c("p", [
-                                        _vm._v(
-                                          " Mostrando " +
-                                            _vm._s(displayData.length) +
-                                            " de " +
-                                            _vm._s(_vm.alumnos.length) +
-                                            " registros "
-                                        )
-                                      ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td")
-                                ])
-                              ],
-                              2
-                            )
+                                0
+                              )
+                            }
                           }
-                        }
-                      ])
-                    },
-                    [
-                      _c(
-                        "thead",
-                        { attrs: { slot: "head" }, slot: "head" },
-                        [
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "nombre_alumno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Nombre")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "apellido_paterno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Apellido")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "matricula",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Matricula")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "nivel_academico",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Nivel academico")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Profesor")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Opciones")])
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "nombre_alumno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Nombre")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "apellido_paterno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Apellido")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "matricula",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Matricula")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "nivel_academico",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Nivel academico")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Profesor")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
               _vm._v(" "),
-              _c("smart-pagination", {
-                attrs: {
-                  currentPage: _vm.currentPage,
-                  totalPages: _vm.totalPages
-                },
-                on: {
-                  "update:currentPage": function($event) {
-                    _vm.currentPage = $event
-                  },
-                  "update:current-page": function($event) {
-                    _vm.currentPage = $event
-                  }
-                }
-              })
-            ],
-            1
-          )
-        ]
-      )
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.alumnos.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -52330,32 +52472,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [_vm._v("  Alumnos  ")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Alumnos")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Usuarios  \n\t\t\t\t\t\t\t\t"),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(" Alumnos\n\t\t\t\t\t\t\t")
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  \n                                Usuarios "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Alumnos ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Lista de alumnos ")])
     ])
   }
 ]
@@ -52381,694 +52530,419 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-lg-12" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "page-header border-0",
-                staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-4",
-                    staticStyle: {
-                      border: "0.5px solid black",
-                      "border-radius": "15px"
-                    }
-                  },
-                  [
-                    _c("h5", { staticClass: "page-title" }, [
-                      _vm._v(" Configuración de parametros del cuestionario")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { staticClass: "mb-2" }, [
-                        _vm._v("Numero de preguntas por tema")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.configuraciones.num_preguntas,
-                            expression: "configuraciones.num_preguntas"
-                          }
-                        ],
-                        staticClass: "form-control form-control-lg",
-                        attrs: {
-                          id: "numeroPreguntas",
-                          type: "number",
-                          placeholder: "# Preguntas",
-                          disabled: ""
-                        },
-                        domProps: { value: _vm.configuraciones.num_preguntas },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.configuraciones,
-                              "num_preguntas",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "mb-2",
-                          attrs: { for: "exampleFormControlSelect1" }
-                        },
-                        [
-                          _vm._v(
-                            "Total de preguntas\n                                    numericas"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.configuraciones.num_preguntas_numericas,
-                            expression:
-                              "configuraciones.num_preguntas_numericas"
-                          }
-                        ],
-                        staticClass: "form-control form-control-lg",
-                        attrs: { id: "numeroPreguntasNumericas" },
-                        domProps: {
-                          value: _vm.configuraciones.num_preguntas_numericas
-                        },
-                        on: {
-                          keyup: _vm.totalPreg,
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.configuraciones,
-                              "num_preguntas_numericas",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "mb-2",
-                          attrs: { for: "exampleFormControlSelect2" }
-                        },
-                        [_vm._v("Numero de preguntas abiertas")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.configuraciones.num_preguntas_abiertas,
-                            expression: "configuraciones.num_preguntas_abiertas"
-                          }
-                        ],
-                        staticClass: "form-control form-control-lg",
-                        attrs: { id: "numeroPreguntasBreves" },
-                        domProps: {
-                          value: _vm.configuraciones.num_preguntas_abiertas
-                        },
-                        on: {
-                          keyup: _vm.totalPreg,
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.configuraciones,
-                              "num_preguntas_abiertas",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "mb-2",
-                          attrs: { for: "exampleFormControlSelect2" }
-                        },
-                        [
-                          _vm._v(
-                            "Numero de preguntas\n                                    calculadas"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.configuraciones.num_preguntas_calculadas,
-                            expression:
-                              "configuraciones.num_preguntas_calculadas"
-                          }
-                        ],
-                        staticClass: "form-control form-control-lg",
-                        attrs: { id: "numeroPreguntasCalculadas" },
-                        domProps: {
-                          value: _vm.configuraciones.num_preguntas_calculadas
-                        },
-                        on: {
-                          keyup: _vm.totalPreg,
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.configuraciones,
-                              "num_preguntas_calculadas",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "mb-2",
-                          attrs: { for: "exampleFormControlSelect2" }
-                        },
-                        [
-                          _vm._v(
-                            "Numero de preguntas calculadas\n                                    multiples"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value:
-                              _vm.configuraciones
-                                .num_preguntas_calculadas_multiples,
-                            expression:
-                              "configuraciones.num_preguntas_calculadas_multiples"
-                          }
-                        ],
-                        staticClass: "form-control form-control-lg",
-                        attrs: { id: "numeroPreguntasCalculadasMultiples" },
-                        domProps: {
-                          value:
-                            _vm.configuraciones
-                              .num_preguntas_calculadas_multiples
-                        },
-                        on: {
-                          keyup: _vm.totalPreg,
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.configuraciones,
-                              "num_preguntas_calculadas_multiples",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "mb-2",
-                          attrs: { for: "exampleFormControlSelect3" }
-                        },
-                        [_vm._v("Numero de peguntas booleanas")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.configuraciones.num_preguntas_boleanas,
-                            expression: "configuraciones.num_preguntas_boleanas"
-                          }
-                        ],
-                        staticClass: "form-control form-control-lg",
-                        attrs: { id: "numeroPreguntasBooleanas" },
-                        domProps: {
-                          value: _vm.configuraciones.num_preguntas_boleanas
-                        },
-                        on: {
-                          keyup: _vm.totalPreg,
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.configuraciones,
-                              "num_preguntas_boleanas",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "mb-2",
-                          attrs: { for: "exampleFormControlSelect3" }
-                        },
-                        [
-                          _vm._v(
-                            "Numero de peguntas opcion\n                                    multiple"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.configuraciones.num_preguntas_multiples,
-                            expression:
-                              "configuraciones.num_preguntas_multiples"
-                          }
-                        ],
-                        staticClass: "form-control form-control-lg",
-                        attrs: { id: "numeroPreguntasMultiples" },
-                        domProps: {
-                          value: _vm.configuraciones.num_preguntas_multiples
-                        },
-                        on: {
-                          keyup: _vm.totalPreg,
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.configuraciones,
-                              "num_preguntas_multiples",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("b", [_vm._v(" Otras configuraciones ")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "mb-2",
-                          attrs: { for: "exampleFormControlSelect1" }
-                        },
-                        [_vm._v("Rango por defecto")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control form-control-lg",
-                        attrs: {
-                          min: "0",
-                          max: "1",
-                          step: "0.001",
-                          id: "rangoPorDefecto",
-                          type: "number",
-                          placeholder: "# Preguntas"
-                        },
-                        domProps: {
-                          value: _vm.configuraciones.rango_por_defecto
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary float-right btn-lg",
-                        attrs: { type: "button" },
-                        on: { click: _vm.guardarConfiguracion }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fas fa-save",
-                          staticStyle: { "border-radius": "25px" }
-                        }),
-                        _vm._v(" Guardar")
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-8" }, [
-                  _c("p", [
-                    _vm._v(
-                      "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tEstablecer configuración\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                    )
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-md-5" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "mb-2" }, [
+                    _vm._v("Total de preguntas por tema:")
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "page-header ",
-                      staticStyle: {
-                        border: "1px solid #dee2e6",
-                        margin: "0px",
-                        background: "#f5f5f5"
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.configuraciones.num_preguntas,
+                        expression: "configuraciones.num_preguntas"
                       }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      id: "numeroPreguntas",
+                      type: "number",
+                      placeholder: "# Preguntas",
+                      disabled: ""
                     },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-6",
-                          staticStyle: { padding: "5px" }
-                        },
-                        [
-                          _c("b", [_vm._v(" Termino de busqueda: ")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.filters.nombre.value,
-                                expression: "filters.nombre.value"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            staticStyle: {
-                              "border-radius": "10px",
-                              height: "37px",
-                              margin: "0px"
-                            },
-                            attrs: {
-                              type: "search",
-                              placeholder: "Ej. tablas de multiplicar"
-                            },
-                            domProps: { value: _vm.filters.nombre.value },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.filters.nombre,
-                                  "value",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ]
-                      )
-                    ]
+                    domProps: { value: _vm.configuraciones.num_preguntas },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.configuraciones,
+                          "num_preguntas",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "mb-2",
+                      attrs: { for: "exampleFormControlSelect1" }
+                    },
+                    [_vm._v("Cantidad de preguntas numericas: ")]
                   ),
                   _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.configuraciones.num_preguntas_numericas,
+                        expression: "configuraciones.num_preguntas_numericas"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "numeroPreguntasNumericas" },
+                    domProps: {
+                      value: _vm.configuraciones.num_preguntas_numericas
+                    },
+                    on: {
+                      keyup: _vm.totalPreg,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.configuraciones,
+                          "num_preguntas_numericas",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c(
-                    "div",
-                    { staticClass: "table-responsive" },
-                    [
+                    "label",
+                    {
+                      staticClass: "mb-2",
+                      attrs: { for: "exampleFormControlSelect2" }
+                    },
+                    [_vm._v("Cantidad de preguntas abiertas:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.configuraciones.num_preguntas_abiertas,
+                        expression: "configuraciones.num_preguntas_abiertas"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "numeroPreguntasBreves" },
+                    domProps: {
+                      value: _vm.configuraciones.num_preguntas_abiertas
+                    },
+                    on: {
+                      keyup: _vm.totalPreg,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.configuraciones,
+                          "num_preguntas_abiertas",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "mb-2",
+                      attrs: { for: "exampleFormControlSelect2" }
+                    },
+                    [_vm._v("Cantiodad de preguntas calculadas:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.configuraciones.num_preguntas_calculadas,
+                        expression: "configuraciones.num_preguntas_calculadas"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "numeroPreguntasCalculadas" },
+                    domProps: {
+                      value: _vm.configuraciones.num_preguntas_calculadas
+                    },
+                    on: {
+                      keyup: _vm.totalPreg,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.configuraciones,
+                          "num_preguntas_calculadas",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "mb-2",
+                      attrs: { for: "exampleFormControlSelect2" }
+                    },
+                    [_vm._v("Cantidad de preguntas calculadas multiples:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.configuraciones
+                            .num_preguntas_calculadas_multiples,
+                        expression:
+                          "configuraciones.num_preguntas_calculadas_multiples"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "numeroPreguntasCalculadasMultiples" },
+                    domProps: {
+                      value:
+                        _vm.configuraciones.num_preguntas_calculadas_multiples
+                    },
+                    on: {
+                      keyup: _vm.totalPreg,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.configuraciones,
+                          "num_preguntas_calculadas_multiples",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "mb-2",
+                      attrs: { for: "exampleFormControlSelect3" }
+                    },
+                    [_vm._v("Cantidad de preguntas verdadero / falso:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.configuraciones.num_preguntas_boleanas,
+                        expression: "configuraciones.num_preguntas_boleanas"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "numeroPreguntasBooleanas" },
+                    domProps: {
+                      value: _vm.configuraciones.num_preguntas_boleanas
+                    },
+                    on: {
+                      keyup: _vm.totalPreg,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.configuraciones,
+                          "num_preguntas_boleanas",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "mb-2",
+                      attrs: { for: "exampleFormControlSelect3" }
+                    },
+                    [_vm._v("Cantidad de preguntas opcion multiple:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.configuraciones.num_preguntas_multiples,
+                        expression: "configuraciones.num_preguntas_multiples"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "numeroPreguntasMultiples" },
+                    domProps: {
+                      value: _vm.configuraciones.num_preguntas_multiples
+                    },
+                    on: {
+                      keyup: _vm.totalPreg,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.configuraciones,
+                          "num_preguntas_multiples",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "mb-2",
+                      attrs: { for: "exampleFormControlSelect1" }
+                    },
+                    [_vm._v("Rango de error por defecto:")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      min: "0",
+                      max: "1",
+                      step: "0.001",
+                      id: "rangoPorDefecto",
+                      type: "number",
+                      placeholder: "# Preguntas"
+                    },
+                    domProps: { value: _vm.configuraciones.rango_por_defecto }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.preguntasPorTema.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("div", { staticClass: "float-right" }, [
                       _c(
-                        "v-table",
+                        "button",
                         {
-                          staticClass: "table table-hover",
-                          staticStyle: { width: "100%" },
-                          attrs: {
-                            data: _vm.preguntasPorTema,
-                            filters: _vm.filters,
-                            currentPage: _vm.currentPage,
-                            pageSize: 15
-                          },
-                          on: {
-                            "update:currentPage": function($event) {
-                              _vm.currentPage = $event
-                            },
-                            "update:current-page": function($event) {
-                              _vm.currentPage = $event
-                            },
-                            totalPagesChanged: function($event) {
-                              _vm.totalPages = $event
-                            }
-                          },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "body",
-                              fn: function(ref) {
-                                var displayData = ref.displayData
-                                return _c(
-                                  "tbody",
-                                  {},
-                                  _vm._l(displayData, function(tema) {
-                                    return tema.totalPreguntasAbiertas <
-                                      _vm.configuraciones
-                                        .num_preguntas_abiertas ||
-                                      tema.totalPreguntasNumericas <
-                                        _vm.configuraciones
-                                          .num_preguntas_numericas ||
-                                      tema.totalPreguntasBooleanas <
-                                        _vm.configuraciones
-                                          .num_preguntas_boleanas ||
-                                      tema.totalPreguntasMultiples <
-                                        _vm.configuraciones
-                                          .num_preguntas_multiples ||
-                                      tema.totalPreguntasCalculadas <
-                                        _vm.configuraciones
-                                          .num_preguntas_calculadas ||
-                                      tema.totalPreguntasCalculadasMultiples <
-                                        _vm.configuraciones
-                                          .num_preguntas_calculadas_multiples
-                                      ? _c("tr", [
-                                          _c("td", [
-                                            _vm._v(_vm._s(tema.nombre_tema))
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  tema.totalPreguntasAbiertas
-                                                ) +
-                                                "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                                            ),
-                                            tema.totalPreguntasAbiertas >=
-                                            _vm.configuraciones
-                                              .num_preguntas_abiertas
-                                              ? _c("i", {
-                                                  staticClass:
-                                                    "fas fa-check-circle",
-                                                  staticStyle: {
-                                                    color: "green"
-                                                  }
-                                                })
-                                              : _c("i", {
-                                                  staticClass:
-                                                    "fas fa-times-circle",
-                                                  staticStyle: { color: "red" }
-                                                })
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  tema.totalPreguntasNumericas
-                                                ) +
-                                                "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                                            ),
-                                            tema.totalPreguntasNumericas >=
-                                            _vm.configuraciones
-                                              .num_preguntas_numericas
-                                              ? _c("i", {
-                                                  staticClass:
-                                                    "fas fa-check-circle",
-                                                  staticStyle: {
-                                                    color: "green"
-                                                  }
-                                                })
-                                              : _c("i", {
-                                                  staticClass:
-                                                    "fas fa-times-circle",
-                                                  staticStyle: { color: "red" }
-                                                })
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  tema.totalPreguntasBooleanas
-                                                ) +
-                                                "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                                            ),
-                                            tema.totalPreguntasBooleanas >=
-                                            _vm.configuraciones
-                                              .num_preguntas_boleanas
-                                              ? _c("i", {
-                                                  staticClass:
-                                                    "fas fa-check-circle",
-                                                  staticStyle: {
-                                                    color: "green"
-                                                  }
-                                                })
-                                              : _c("i", {
-                                                  staticClass:
-                                                    "fas fa-times-circle",
-                                                  staticStyle: { color: "red" }
-                                                })
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  tema.totalPreguntasMultiples
-                                                ) +
-                                                "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                                            ),
-                                            tema.totalPreguntasMultiples >=
-                                            _vm.configuraciones
-                                              .num_preguntas_multiples
-                                              ? _c("i", {
-                                                  staticClass:
-                                                    "fas fa-check-circle",
-                                                  staticStyle: {
-                                                    color: "green"
-                                                  }
-                                                })
-                                              : _c("i", {
-                                                  staticClass:
-                                                    "fas fa-times-circle",
-                                                  staticStyle: { color: "red" }
-                                                })
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  tema.totalPreguntasCalculadas
-                                                ) +
-                                                "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                                            ),
-                                            tema.totalPreguntasCalculadas >=
-                                            _vm.configuraciones
-                                              .num_preguntas_calculadas
-                                              ? _c("i", {
-                                                  staticClass:
-                                                    "fas fa-check-circle",
-                                                  staticStyle: {
-                                                    color: "green"
-                                                  }
-                                                })
-                                              : _c("i", {
-                                                  staticClass:
-                                                    "fas fa-times-circle",
-                                                  staticStyle: { color: "red" }
-                                                })
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  tema.totalPreguntasCalculadasMultiples
-                                                ) +
-                                                "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                                            ),
-                                            tema.totalPreguntasCalculadasMultiples >=
-                                            _vm.configuraciones
-                                              .num_preguntas_calculadas_multiples
-                                              ? _c("i", {
-                                                  staticClass:
-                                                    "fas fa-check-circle",
-                                                  staticStyle: {
-                                                    color: "green"
-                                                  }
-                                                })
-                                              : _c("i", {
-                                                  staticClass:
-                                                    "fas fa-times-circle",
-                                                  staticStyle: { color: "red" }
-                                                })
-                                          ])
-                                        ])
-                                      : _vm._e()
-                                  }),
-                                  0
-                                )
-                              }
-                            }
-                          ])
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: { click: _vm.guardarConfiguracion }
                         },
                         [
-                          _c(
-                            "thead",
-                            { attrs: { slot: "head" }, slot: "head" },
-                            [
-                              _c("th", [_vm._v("Tema: ")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Abiertas ")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Numerica ")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Booleana")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Multiple")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Calculada")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Calculada Multiple")])
-                            ]
+                          _c("i", {
+                            staticClass: "fas fa-save",
+                            staticStyle: { "border-radius": "25px" }
+                          }),
+                          _vm._v(
+                            " Guardar\n                                            "
                           )
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c("smart-pagination", {
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-7" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("b", [_vm._v(" Término de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.nombre.value,
+                          expression: "filters.nombre.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "37px", margin: "0px" },
+                      attrs: {
+                        type: "search",
+                        placeholder: "Ej. tablas de multiplicar"
+                      },
+                      domProps: { value: _vm.filters.nombre.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.nombre,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
                         attrs: {
+                          data: _vm.preguntasPorTema,
+                          filters: _vm.filters,
                           currentPage: _vm.currentPage,
-                          totalPages: _vm.totalPages
+                          pageSize: 10
                         },
                         on: {
                           "update:currentPage": function($event) {
@@ -53076,20 +52950,258 @@ var render = function() {
                           },
                           "update:current-page": function($event) {
                             _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
                           }
-                        }
-                      })
-                    ],
-                    1
-                  )
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
+                                _vm._l(displayData, function(tema) {
+                                  return tema.totalPreguntasAbiertas <
+                                    _vm.configuraciones
+                                      .num_preguntas_abiertas ||
+                                    tema.totalPreguntasNumericas <
+                                      _vm.configuraciones
+                                        .num_preguntas_numericas ||
+                                    tema.totalPreguntasBooleanas <
+                                      _vm.configuraciones
+                                        .num_preguntas_boleanas ||
+                                    tema.totalPreguntasMultiples <
+                                      _vm.configuraciones
+                                        .num_preguntas_multiples ||
+                                    tema.totalPreguntasCalculadas <
+                                      _vm.configuraciones
+                                        .num_preguntas_calculadas ||
+                                    tema.totalPreguntasCalculadasMultiples <
+                                      _vm.configuraciones
+                                        .num_preguntas_calculadas_multiples
+                                    ? _c("tr", [
+                                        _c("td", [
+                                          _vm._v(_vm._s(tema.nombre_tema))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                tema.totalPreguntasAbiertas
+                                              ) +
+                                              "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                          ),
+                                          tema.totalPreguntasAbiertas >=
+                                          _vm.configuraciones
+                                            .num_preguntas_abiertas
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-check-circle",
+                                                staticStyle: { color: "green" }
+                                              })
+                                            : _c("i", {
+                                                staticClass:
+                                                  "fas fa-times-circle",
+                                                staticStyle: { color: "red" }
+                                              })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                tema.totalPreguntasNumericas
+                                              ) +
+                                              "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                          ),
+                                          tema.totalPreguntasNumericas >=
+                                          _vm.configuraciones
+                                            .num_preguntas_numericas
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-check-circle",
+                                                staticStyle: { color: "green" }
+                                              })
+                                            : _c("i", {
+                                                staticClass:
+                                                  "fas fa-times-circle",
+                                                staticStyle: { color: "red" }
+                                              })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                tema.totalPreguntasBooleanas
+                                              ) +
+                                              "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                          ),
+                                          tema.totalPreguntasBooleanas >=
+                                          _vm.configuraciones
+                                            .num_preguntas_boleanas
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-check-circle",
+                                                staticStyle: { color: "green" }
+                                              })
+                                            : _c("i", {
+                                                staticClass:
+                                                  "fas fa-times-circle",
+                                                staticStyle: { color: "red" }
+                                              })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                tema.totalPreguntasMultiples
+                                              ) +
+                                              "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                          ),
+                                          tema.totalPreguntasMultiples >=
+                                          _vm.configuraciones
+                                            .num_preguntas_multiples
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-check-circle",
+                                                staticStyle: { color: "green" }
+                                              })
+                                            : _c("i", {
+                                                staticClass:
+                                                  "fas fa-times-circle",
+                                                staticStyle: { color: "red" }
+                                              })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                tema.totalPreguntasCalculadas
+                                              ) +
+                                              "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                          ),
+                                          tema.totalPreguntasCalculadas >=
+                                          _vm.configuraciones
+                                            .num_preguntas_calculadas
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-check-circle",
+                                                staticStyle: { color: "green" }
+                                              })
+                                            : _c("i", {
+                                                staticClass:
+                                                  "fas fa-times-circle",
+                                                staticStyle: { color: "red" }
+                                              })
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                tema.totalPreguntasCalculadasMultiples
+                                              ) +
+                                              "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                          ),
+                                          tema.totalPreguntasCalculadasMultiples >=
+                                          _vm.configuraciones
+                                            .num_preguntas_calculadas_multiples
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-check-circle",
+                                                staticStyle: { color: "green" }
+                                              })
+                                            : _c("i", {
+                                                staticClass:
+                                                  "fas fa-times-circle",
+                                                staticStyle: { color: "red" }
+                                              })
+                                        ])
+                                      ])
+                                    : _vm._e()
+                                }),
+                                0
+                              )
+                            }
+                          }
+                        ])
+                      },
+                      [
+                        _c("thead", { attrs: { slot: "head" }, slot: "head" }, [
+                          _c("th", [_vm._v("Tema: ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Abiertas ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Numerica ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Booleana")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Multiple")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Calculada")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Calculada Multiple")])
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.preguntasPorTema.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
                 ])
-              ]
-            ),
-            _vm._v(" "),
-            _vm._m(3)
+              ])
+            ])
           ])
-        ]
-      )
+        ]),
+        _vm._v(" "),
+        _vm._m(4)
+      ])
     ])
   ])
 }
@@ -53098,33 +53210,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Configuración de cuestionario ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Cuestionario "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(" Configurar cuestionario\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t")
-              ])
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [
+              _vm._v("Configurar cuestionario")
             ])
-          ]
-        )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
+                _vm._v(" "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  \n                                Cuestionario "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Configuración ")])
+            ])
+          ])
+        ])
       ])
     ])
   },
@@ -53132,41 +53243,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "page-header border-0",
-        staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary float-right btn-lg",
-                    staticStyle: { "border-radius": "25px" },
-                    attrs: {
-                      type: "button",
-                      "data-toggle": "modal",
-                      "data-target": "#modalDeInformacion"
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-info-circle" }),
-                    _vm._v(" Información\n                                    ")
-                  ]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [_vm._v(" Configurar cuestionario ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c("div", { staticStyle: { width: "150px" } })
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -53174,7 +53259,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { staticClass: "mb-2" }, [
-        _vm._v("¿Ponderacion estricta en preguntas de opcion multiple?")
+        _vm._v("Ponderación estricta en preguntas de opcion multiple: ")
       ]),
       _vm._v(" "),
       _c("label", [
@@ -53185,7 +53270,7 @@ var staticRenderFns = [
             value: "first_checkbox"
           }
         }),
-        _vm._v(" Sí\n                                ")
+        _vm._v(" Sí\n\t\t\t\t\t\t\t\t\t")
       ])
     ])
   },
@@ -53193,62 +53278,80 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "modalDeInformacion",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [_vm._v(" Información  ")]
-                ),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [
+          _vm._v(" Temas que no cumplen con la configuración establecida ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c("div", { staticStyle: { width: "150px" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "modalDeInformacion",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" }
+                    },
+                    [_vm._v(" Información ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close"
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v(
-                  "\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tAlgo de información para el usuario \n\t\t\t\t\t\t\t\t\t\t\t\t\t"
-                )
+                _c("div", { staticClass: "modal-body" }, [
+                  _vm._v(
+                    "\n\t\t\t\t\t\t\t\t\tAlgo de información para el usuario\n\t\t\t\t\t\t\t\t"
+                  )
+                ])
               ])
-            ])
-          ]
-        )
-      ]
-    )
+            ]
+          )
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -53338,72 +53441,160 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-xl-12 mt-4" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-12 mt-2 pt-2" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("div", { attrs: { id: "quiz mt-3" } }, [
-                  _c("h3", { attrs: { id: "question" } }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "row mt-3" },
-                    _vm._l(this.imagenesPregunta, function(img, i) {
-                      return _c(
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row " }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("div", { attrs: { id: "quiz" } }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("p", { attrs: { id: "progress" } }),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("h3", { attrs: { id: "question" } }),
+                      _vm._v(" "),
+                      this.imagenesPregunta.length > 0
+                        ? _c("p", [_c("b", [_vm._v(" Imagenes: ")])])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
                         "div",
-                        {
-                          key: img,
-                          staticClass: "col-12 col-md-6",
-                          staticStyle: { "text-align": "center" }
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "ml-2 mr-2",
-                            staticStyle: {
-                              border: "0.5px solid black",
-                              width: "100%"
+                        { staticClass: "row mt-3" },
+                        _vm._l(this.imagenesPregunta, function(img, i) {
+                          return _c(
+                            "div",
+                            {
+                              key: img,
+                              staticClass: "col-12 col-md-1",
+                              staticStyle: { "text-align": "center" }
                             },
-                            attrs: { src: img }
-                          }),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c("b", [_vm._v(" Imagen " + _vm._s(i + 1) + " ")])
-                          ])
-                        ]
-                      )
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("p", { attrs: { id: "noOpciones" } }),
-                  _vm._v(" "),
-                  _c("div", {
-                    staticClass: "buttons",
-                    attrs: { id: "buttons" }
-                  }),
-                  _vm._v(" "),
-                  _c("hr", { staticStyle: { "margin-top": "50px" } })
-                ]),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4)
+                            [
+                              _c(
+                                "a",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      _vm.desplegarImagen(
+                                        img,
+                                        "imagen " + (i + 1)
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "ml-2 mr-2",
+                                    staticStyle: {
+                                      border: "0.5px solid black",
+                                      width: "100%"
+                                    },
+                                    attrs: { src: img }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("p", [
+                                _vm._v(
+                                  "\n                                                    Imagen " +
+                                    _vm._s(i + 1) +
+                                    "\n                                                "
+                                )
+                              ])
+                            ]
+                          )
+                        }),
+                        0
+                      ),
+                      _vm._v(" "),
+                      _c("p", { attrs: { id: "noOpciones" } }),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticClass: "buttons",
+                        staticStyle: { margin: "0px 0px 0px 0px" },
+                        attrs: { id: "buttons" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "row" },
+                      [
+                        _c("center", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary btn-lg float-right ",
+                              attrs: { type: "button", id: "next" }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-chevron-right" }),
+                              _vm._v(
+                                " Contestar\n                                            "
+                              )
+                            ]
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ])
               ])
             ])
           ])
-        ]
-      )
+        ])
+      ])
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal animated animate__bounceIn",
+        attrs: {
+          id: "modalParaVerImagenes",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("img", {
+                  staticStyle: { width: "100%" },
+                  attrs: { src: this.imagenActual }
+                }),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(this.imagenActualNombre) +
+                    "\n                    \n                    \n                    \n                "
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c(
@@ -53424,10 +53615,10 @@ var render = function() {
             { staticClass: "modal-dialog", attrs: { role: "document" } },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(5),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
-                  _vm._m(6),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c(
@@ -53685,7 +53876,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _vm._m(7),
+                          _vm._m(6),
                           _vm._v(" "),
                           _c("td", [
                             _c(
@@ -53763,7 +53954,7 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(8),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "row" }, [
@@ -54313,15 +54504,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "page-header" }, [
-      _c(
-        "div",
-        { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-        [
-          _c("h1", { staticClass: "page-title" }, [_vm._v(" Cuestionario ")]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [
+              _vm._v("Cuestionario")
+            ])
+          ]),
           _vm._v(" "),
-          _c("ul", { staticClass: "quick-links ml-auto" }, [
-            _c("li", [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
               _c("span", { staticStyle: { color: "#bdb9bd" } }, [
                 _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
@@ -54329,81 +54522,60 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                _vm._v(" Cuestionario "),
+                _vm._v("\n                            Cuestionario "),
                 _c("i", { staticClass: "fas fa-angle-right" })
               ]),
-              _vm._v(" Ver cuestionario\n              ")
+              _vm._v(" "),
+              _c("b", [_vm._v(" Contestar ")])
             ])
           ])
-        ]
-      )
+        ])
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "page-header border-0",
-        staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [_c("ul", { staticClass: "quick-links ml-auto" }, [_c("li")])]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-primary float-right ",
-        staticStyle: { "border-radius": "25px" },
-        attrs: {
-          type: "button",
-          "data-toggle": "modal",
-          "data-target": "#exampleModal"
-        }
-      },
-      [_c("i", { staticClass: "fas fa-calculator" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary float-right ",
-          staticStyle: { "border-radius": "25px" },
-          attrs: { type: "button", id: "next" }
-        },
-        [
-          _c("i", { staticClass: "fas fa-chevron-right" }),
-          _vm._v(" Siguiente ")
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("p", { attrs: { id: "tag_topic" } }, [_vm._v("Tema")]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [_vm._v(" Cuestionario ")])
+      ]),
       _vm._v(" "),
-      _c("p", { attrs: { id: "progress" } })
+      _c("div", { staticClass: "card-tools" }, [
+        _c("div", { staticStyle: { width: "150px" } }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary float-right ",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "#exampleModal"
+              }
+            },
+            [
+              _c("i", { staticClass: "fas fa-calculator" }),
+              _vm._v(" Calculadora\n                                    ")
+            ]
+          )
+        ])
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { attrs: { id: "tag_topic" } }, [
+      _c("b", [_vm._v(" Tema: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v(" Pregunta: ")])])
   },
   function() {
     var _vm = this
@@ -54492,190 +54664,136 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-lg-12" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "page-header border-0",
-                  staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                    },
-                    [
-                      _c("h2", { staticClass: "page-title" }, [
-                        _vm._v(" Lista de expertos ")
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "quick-links ml-auto" }, [
-                        _c("li", [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary float-right btn-lg",
-                              staticStyle: { "border-radius": "25px" },
-                              attrs: { type: "button" },
-                              on: { click: _vm.btnGuardar }
-                            },
-                            [
-                              _c("i", { staticClass: "fas fa-user-plus" }),
-                              _vm._v(
-                                " Registrar experto\n                                    "
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "page-header ",
-                  staticStyle: {
-                    border: "1px solid #dee2e6",
-                    margin: "0px",
-                    background: "#f5f5f5"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v(" Termino de busqueda: ")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filters.nombre.value,
-                            expression: "filters.nombre.value"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        staticStyle: {
-                          "border-radius": "10px",
-                          height: "37px",
-                          margin: "0px"
-                        },
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row " }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
                         attrs: {
-                          type: "search",
-                          placeholder: "Ej. Juan Antonio"
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarPregunta"
                         },
-                        domProps: { value: _vm.filters.nombre.value },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.filters.nombre,
-                              "value",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v("Campo de busqueda: ")]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticStyle: {
-                            "border-radius": "10px",
-                            margin: "0px"
-                          },
-                          attrs: { name: "campoBusqueda", id: "campoBusqueda" },
-                          on: { change: _vm.cambiarCampoDeBusqueda }
-                        },
-                        [
-                          _c("option", { attrs: { value: "nombre" } }, [
-                            _vm._v("Nombre")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "apellido_paterno" } },
-                            [_vm._v("Apellido paterno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "apellido_materno" } },
-                            [_vm._v("Apellido materno")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "matricula" } }, [
-                            _vm._v("Correo")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
+                        on: { click: _vm.btnGuardar }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-plus" }),
+                        _vm._v(" Nuevo\n                                    ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "table-responsive" },
-                [
-                  _c(
-                    "v-table",
-                    {
-                      staticClass: "table table-hover",
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        data: _vm.experto,
-                        filters: _vm.filters,
-                        currentPage: _vm.currentPage,
-                        pageSize: 5
-                      },
-                      on: {
-                        "update:currentPage": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        "update:current-page": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        totalPagesChanged: function($event) {
-                          _vm.totalPages = $event
-                        }
-                      },
-                      scopedSlots: _vm._u([
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Término de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
                         {
-                          key: "body",
-                          fn: function(ref) {
-                            var displayData = ref.displayData
-                            return _c(
-                              "tbody",
-                              {},
-                              [
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.nombre.value,
+                          expression: "filters.nombre.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "2.35rem" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.nombre.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.nombre,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "nombre" } }, [
+                          _vm._v("Nombre")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "apellido_paterno" } }, [
+                          _vm._v("Apellido parterno")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "apellido_materno" } }, [
+                          _vm._v("Apellido materno")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "matricula" } }, [
+                          _vm._v("Correo")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.experto,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
                                 _vm._l(displayData, function(experto) {
                                   return _c("tr", { key: experto.id }, [
                                     _c("td", [_vm._v(_vm._s(experto.nombre))]),
@@ -54696,6 +54814,8 @@ var render = function() {
                                       _c(
                                         "a",
                                         {
+                                          staticClass:
+                                            "btn btn-outline-warning",
                                           on: {
                                             click: function($event) {
                                               return _vm.btnEditar(
@@ -54714,15 +54834,16 @@ var render = function() {
                                             staticStyle: { color: "#ffae00" }
                                           })
                                         ]
-                                      ),
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n                                        "
-                                      ),
-                                      _vm._v(" "),
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
                                       experto.eliminado == "0"
                                         ? _c(
                                             "a",
                                             {
+                                              staticClass:
+                                                "btn btn-outline-danger",
                                               on: {
                                                 click: function($event) {
                                                   return _vm.eliminar(
@@ -54744,6 +54865,8 @@ var render = function() {
                                         : _c(
                                             "a",
                                             {
+                                              staticClass:
+                                                "btn btn-outline-success",
                                               on: {
                                                 click: function($event) {
                                                   return _vm.eliminar(
@@ -54765,112 +54888,118 @@ var render = function() {
                                     ])
                                   ])
                                 }),
-                                _vm._v(" "),
-                                _c("tr", [
-                                  _c("td", [
-                                    _c("b", [
-                                      _c("p", [
-                                        _vm._v(
-                                          " Mostrando " +
-                                            _vm._s(displayData.length) +
-                                            " de " +
-                                            _vm._s(_vm.experto.length) +
-                                            " registros "
-                                        )
-                                      ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td")
-                                ])
-                              ],
-                              2
-                            )
+                                0
+                              )
+                            }
                           }
-                        }
-                      ])
-                    },
-                    [
-                      _c(
-                        "thead",
-                        { attrs: { slot: "head" }, slot: "head" },
-                        [
-                          _c(
-                            "v-th",
-                            {
-                              attrs: { sortKey: "nombre", defaultSort: "desc" }
-                            },
-                            [_vm._v("Nombre")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "apellido_paterno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Apellido Paterno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "apellido_materno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Apellido Materno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "matricula",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Correo")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Opciones")])
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "nombre",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Nombre")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "apellido_paterno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Apellido Paterno")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "apellido_materno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Apellido Materno")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "matricula",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Correo")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Desactivar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
               _vm._v(" "),
-              _c("smart-pagination", {
-                attrs: {
-                  currentPage: _vm.currentPage,
-                  totalPages: _vm.totalPages
-                },
-                on: {
-                  "update:currentPage": function($event) {
-                    _vm.currentPage = $event
-                  },
-                  "update:current-page": function($event) {
-                    _vm.currentPage = $event
-                  }
-                }
-              })
-            ],
-            1
-          )
-        ]
-      )
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.experto.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -54879,34 +55008,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c("h1", { staticClass: "page-title" }, [_vm._v(" Expertos ")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Expertos")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Usuarios\n                                    "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(
-                  " \n                                Expertos\n                            "
-                )
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  \n                            Usuarios "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Expertos ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Lista de expertos ")])
     ])
   }
 ]
@@ -54938,66 +55072,110 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-6" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-semibold" }, [
-                _vm._v(_vm._s(_vm.alumnos))
-              ]),
-              _vm._v(" "),
-              _vm._m(2)
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "small-box bg-gradient-success" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.admins))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Administradores")])
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 mt-4 mt-md-0" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-semibold" }, [
-                _vm._v(_vm._s(_vm.admins))
-              ]),
-              _vm._v(" "),
-              _vm._m(4)
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "small-box bg-gradient-warning" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.experto))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Expertos")])
+                ]),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 mt-4 mt-md-0" }, [
-              _vm._m(5),
-              _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-semibold" }, [
-                _vm._v(_vm._s(_vm.profesor))
-              ]),
-              _vm._v(" "),
-              _vm._m(6)
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 mt-4 mt-md-0" }, [
-              _vm._m(7),
-              _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-semibold" }, [
-                _vm._v(_vm._s(_vm.experto))
-              ]),
-              _vm._v(" "),
-              _vm._m(8)
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 mt-4 mt-md-0" }, [
-              _vm._m(9),
-              _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-semibold" }, [
-                _vm._v(_vm._s(_vm.pregunta))
-              ]),
-              _vm._v(" "),
-              _vm._m(10)
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 mt-4 mt-md-0" }, [
-              _vm._m(11),
-              _vm._v(" "),
-              _c("h4", { staticClass: "font-weight-semibold" }, [
-                _vm._v(_vm._s(_vm.temas))
-              ]),
-              _vm._v(" "),
-              _vm._m(12)
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "small-box bg-gradient-primary" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.profesor))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Docentes")])
+                ]),
+                _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
+                _vm._m(6)
+              ])
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "small-box bg-gradient-primary" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.alumnos))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Alumnos")])
+                ]),
+                _vm._v(" "),
+                _vm._m(7),
+                _vm._v(" "),
+                _vm._m(8)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "small-box bg-gradient-secondary" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.temas))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Temas del area disciplinar")])
+                ]),
+                _vm._v(" "),
+                _vm._m(9),
+                _vm._v(" "),
+                _vm._m(10)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "small-box bg-gradient-info" }, [
+                _c("div", { staticClass: "inner" }, [
+                  _c("h3", [_vm._v(_vm._s(_vm.pregunta))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Preguntas")])
+                ]),
+                _vm._v(" "),
+                _vm._m(11),
+                _vm._v(" "),
+                _vm._m(12)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          this.id_rol == 4
+            ? _c("div", [
+                _c("h1", [
+                  _vm._v(
+                    "Bienvenido alumno: " +
+                      _vm._s(
+                        this.nombre +
+                          " " +
+                          this.apellidoPaterno +
+                          " " +
+                          this.apellidoMaterno
+                      ) +
+                      " "
+                  )
+                ])
+              ])
+            : _vm._e()
         ])
       ])
     ])
@@ -55030,162 +55208,102 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center pb-2" }, [
-      _c("div", { staticClass: "dot-indicator bg-danger mr-2" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [_vm._v("Alumnos")])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-user-shield" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress progress-md" }, [
-      _c("div", {
-        staticClass: "progress-bar bg-danger",
-        staticStyle: { width: "78%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "78",
-          "aria-valuemin": "0",
-          "aria-valuemax": "78"
-        }
-      })
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                    Más Información "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center pb-2" }, [
-      _c("div", { staticClass: "dot-indicator bg-success mr-2" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [_vm._v("Administradores")])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-user-tie" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress progress-md" }, [
-      _c("div", {
-        staticClass: "progress-bar bg-success",
-        staticStyle: { width: "45%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "45",
-          "aria-valuemin": "0",
-          "aria-valuemax": "45"
-        }
-      })
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                    Más Información "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center pb-2" }, [
-      _c("div", { staticClass: "dot-indicator bg-success mr-2" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [_vm._v("Docentes")])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-chalkboard-teacher" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress progress-md" }, [
-      _c("div", {
-        staticClass: "progress-bar bg-success",
-        staticStyle: { width: "45%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "45",
-          "aria-valuemin": "0",
-          "aria-valuemax": "45"
-        }
-      })
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                    Más Información "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center pb-2" }, [
-      _c("div", { staticClass: "dot-indicator bg-success mr-2" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [_vm._v("Expertos")])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-graduation-cap" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress progress-md" }, [
-      _c("div", {
-        staticClass: "progress-bar bg-success",
-        staticStyle: { width: "45%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "45",
-          "aria-valuemin": "0",
-          "aria-valuemax": "45"
-        }
-      })
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                    Más Información "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center pb-2" }, [
-      _c("div", { staticClass: "dot-indicator bg-success mr-2" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [_vm._v("Preguntas")])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-calculator" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress progress-md" }, [
-      _c("div", {
-        staticClass: "progress-bar bg-success",
-        staticStyle: { width: "45%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "45",
-          "aria-valuemin": "0",
-          "aria-valuemax": "45"
-        }
-      })
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                    Más Información "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center pb-2" }, [
-      _c("div", { staticClass: "dot-indicator bg-success mr-2" }),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-0" }, [_vm._v("Temas")])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-question" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "progress progress-md" }, [
-      _c("div", {
-        staticClass: "progress-bar bg-success",
-        staticStyle: { width: "45%" },
-        attrs: {
-          role: "progressbar",
-          "aria-valuenow": "45",
-          "aria-valuemin": "0",
-          "aria-valuemax": "45"
-        }
-      })
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                    Más Información"),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   }
 ]
@@ -56152,118 +56270,340 @@ var render = function() {
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _c(
-                "div",
-                { staticClass: "card-body" },
-                [
-                  _c("div", { staticClass: "row " }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-6" }, [
-                      _c(
-                        "ol",
-                        {
-                          staticClass: "breadcrumb float-sm-right",
-                          staticStyle: { background: "white" }
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarPregunta"
                         },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary float-right",
-                              attrs: {
-                                type: "button",
-                                "data-toggle": "modal",
-                                "data-target": "#registrarPregunta"
-                              },
-                              on: { click: _vm.cambiarModo }
-                            },
-                            [
-                              _c("i", { staticClass: "fas fa-edit" }),
-                              _vm._v(
-                                " Registrar pregunta\n                                        "
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row mb-2" }, [
-                    _c("div", { staticClass: "col-6" }, [
-                      _c("b", [_vm._v(" Termino de busqueda: ")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filters.pregunta.value,
-                            expression: "filters.pregunta.value"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        staticStyle: { height: "38px" },
-                        attrs: { type: "search", placeholder: "Término" },
-                        domProps: { value: _vm.filters.pregunta.value },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.filters.pregunta,
-                              "value",
-                              $event.target.value
-                            )
-                          }
+                        on: { click: _vm.cambiarModo }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-edit" }),
+                        _vm._v(" Nueva\n                                    ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.pregunta.value,
+                          expression: "filters.pregunta.value"
                         }
-                      })
-                    ]),
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.pregunta.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.pregunta,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-6" }, [
-                      _c("b", [_vm._v("Campo de busqueda: ")]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control",
-                          attrs: { name: "campoBusqueda", id: "campoBusqueda" },
-                          on: { change: _vm.cambiarCampoDeBusqueda }
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "pregunta" } }, [
+                          _vm._v("Pregunta")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tema" } }, [
+                          _vm._v("Tema")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "opcion" } }, [
+                          _vm._v("Respuesta")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.preguntaAbierta,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 10
                         },
-                        [
-                          _c("option", { attrs: { value: "pregunta" } }, [
-                            _vm._v("Pregunta")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "tema" } }, [
-                            _vm._v("Tema")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "opcion" } }, [
-                            _vm._v("Respuesta")
-                          ])
-                        ]
-                      )
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
+                                _vm._l(displayData, function(preguntaAbierta) {
+                                  return _c("tr", { key: preguntaAbierta.id }, [
+                                    _c(
+                                      "td",
+                                      { staticStyle: { width: "30%" } },
+                                      [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(preguntaAbierta.pregunta) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      { staticStyle: { width: "30%" } },
+                                      [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(preguntaAbierta.opcion) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      { staticStyle: { width: "25%" } },
+                                      [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(preguntaAbierta.tema) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("td", { staticStyle: { width: "5%" } }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn btn-outline-primary",
+                                          attrs: {
+                                            "data-toggle": "modal",
+                                            "data-target":
+                                              "#modalParaVerImagenes"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.desplegarImagenesEnModal(
+                                                preguntaAbierta.imagenes
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-eye",
+                                            staticStyle: { color: "#2196f3" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", {
+                                            staticStyle: { color: "#2196f3" }
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticStyle: { width: "5%" } }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn btn-outline-warning",
+                                          attrs: {
+                                            "data-toggle": "modal",
+                                            "data-target": "#registrarPregunta"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.btnEditar(
+                                                preguntaAbierta.id_pregunta,
+                                                preguntaAbierta.pregunta,
+                                                preguntaAbierta.opcion,
+                                                preguntaAbierta.tipo,
+                                                preguntaAbierta.id_tema,
+                                                preguntaAbierta.imagenes
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-pen",
+                                            staticStyle: { color: "#ffae00" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", {
+                                            staticStyle: { color: "#ffae00" }
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticStyle: { width: "5%" } }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-outline-danger",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.eliminar(
+                                                preguntaAbierta.id_pregunta,
+                                                preguntaAbierta.imagenes
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-trash",
+                                            staticStyle: { color: "#ff6258" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("span", {
+                                            staticStyle: { color: "#ff6258" }
+                                          })
+                                        ]
+                                      )
+                                    ])
+                                  ])
+                                }),
+                                0
+                              )
+                            }
+                          }
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "pregunta",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Pregunta")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "opcion",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Respuesta")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: { sortKey: "tema", defaultSort: "desc" }
+                              },
+                              [_vm._v("Tema")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Imagen ")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.preguntaAbierta.length) +
+                            " registros "
+                        )
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "table-responsive" },
-                    [
-                      _c(
-                        "v-table",
-                        {
-                          staticClass: "table table-hover",
-                          staticStyle: { width: "100%" },
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
                           attrs: {
-                            data: _vm.preguntaAbierta,
-                            filters: _vm.filters,
                             currentPage: _vm.currentPage,
-                            pageSize: 10
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
                           },
                           on: {
                             "update:currentPage": function($event) {
@@ -56271,668 +56611,390 @@ var render = function() {
                             },
                             "update:current-page": function($event) {
                               _vm.currentPage = $event
-                            },
-                            totalPagesChanged: function($event) {
-                              _vm.totalPages = $event
                             }
-                          },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "body",
-                              fn: function(ref) {
-                                var displayData = ref.displayData
-                                return _c(
-                                  "tbody",
-                                  {},
-                                  _vm._l(displayData, function(
-                                    preguntaAbierta
-                                  ) {
-                                    return _c(
-                                      "tr",
-                                      { key: preguntaAbierta.id },
-                                      [
-                                        _c(
-                                          "td",
-                                          { staticStyle: { width: "30%" } },
-                                          [
-                                            _vm._v(
-                                              "\n                                                " +
-                                                _vm._s(
-                                                  preguntaAbierta.pregunta
-                                                ) +
-                                                "\n                                            "
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "td",
-                                          { staticStyle: { width: "30%" } },
-                                          [
-                                            _vm._v(
-                                              "\n                                                " +
-                                                _vm._s(preguntaAbierta.opcion) +
-                                                "\n                                            "
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "td",
-                                          { staticStyle: { width: "25%" } },
-                                          [
-                                            _vm._v(
-                                              "\n                                                " +
-                                                _vm._s(preguntaAbierta.tema) +
-                                                "\n                                            "
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "td",
-                                          { staticStyle: { width: "5%" } },
-                                          [
-                                            _c(
-                                              "a",
-                                              {
-                                                staticClass:
-                                                  "btn btn-outline-primary",
-                                                attrs: {
-                                                  "data-toggle": "modal",
-                                                  "data-target":
-                                                    "#modalParaVerImagenes"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.desplegarImagenesEnModal(
-                                                      preguntaAbierta.imagenes
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fas fa-eye",
-                                                  staticStyle: {
-                                                    color: "#2196f3"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("span", {
-                                                  staticStyle: {
-                                                    color: "#2196f3"
-                                                  }
-                                                })
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "td",
-                                          { staticStyle: { width: "5%" } },
-                                          [
-                                            _c(
-                                              "a",
-                                              {
-                                                staticClass:
-                                                  "btn btn-outline-warning",
-                                                attrs: {
-                                                  "data-toggle": "modal",
-                                                  "data-target":
-                                                    "#registrarPregunta"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.btnEditar(
-                                                      preguntaAbierta.id_pregunta,
-                                                      preguntaAbierta.pregunta,
-                                                      preguntaAbierta.opcion,
-                                                      preguntaAbierta.tipo,
-                                                      preguntaAbierta.id_tema,
-                                                      preguntaAbierta.imagenes
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fas fa-pen",
-                                                  staticStyle: {
-                                                    color: "#ffae00"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("span", {
-                                                  staticStyle: {
-                                                    color: "#ffae00"
-                                                  }
-                                                })
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "td",
-                                          { staticStyle: { width: "5%" } },
-                                          [
-                                            _c(
-                                              "a",
-                                              {
-                                                staticClass:
-                                                  "btn btn-outline-danger",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.eliminar(
-                                                      preguntaAbierta.id_pregunta,
-                                                      preguntaAbierta.imagenes
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c("i", {
-                                                  staticClass: "fas fa-trash",
-                                                  staticStyle: {
-                                                    color: "#ff6258"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("span", {
-                                                  staticStyle: {
-                                                    color: "#ff6258"
-                                                  }
-                                                })
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  }),
-                                  0
-                                )
-                              }
-                            }
-                          ])
-                        },
-                        [
-                          _c(
-                            "thead",
-                            { attrs: { slot: "head" }, slot: "head" },
-                            [
-                              _c(
-                                "v-th",
-                                {
-                                  attrs: {
-                                    sortKey: "pregunta",
-                                    defaultSort: "desc"
-                                  }
-                                },
-                                [_vm._v("Pregunta")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-th",
-                                {
-                                  attrs: {
-                                    sortKey: "opcion",
-                                    defaultSort: "desc"
-                                  }
-                                },
-                                [_vm._v("Respuesta")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-th",
-                                {
-                                  attrs: {
-                                    sortKey: "tema",
-                                    defaultSort: "desc"
-                                  }
-                                },
-                                [_vm._v("Tema")]
-                              ),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Imagen ")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Editar")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Eliminar")])
-                            ],
-                            1
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(
-                    "\n                            \n                            Total: " +
-                      _vm._s(_vm.preguntaAbierta.length) +
-                      " registros\n                            "
-                  ),
-                  _c("smart-pagination", {
-                    attrs: {
-                      currentPage: _vm.currentPage,
-                      totalPages: _vm.totalPages,
-                      maxPageLinks: 3
-                    },
-                    on: {
-                      "update:currentPage": function($event) {
-                        _vm.currentPage = $event
-                      },
-                      "update:current-page": function($event) {
-                        _vm.currentPage = $event
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal animated animate__bounceIn",
+            attrs: {
+              id: "registrarPregunta",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true",
+              "data-focus": "false"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
                   _c(
                     "div",
-                    {
-                      staticClass: "modal animated animate__bounceIn",
-                      attrs: {
-                        id: "registrarPregunta",
-                        role: "dialog",
-                        "aria-labelledby": "exampleModalLabel",
-                        "aria-hidden": "true",
-                        "data-focus": "false"
-                      }
-                    },
+                    { staticClass: "modal-body" },
                     [
+                      _vm.modoEdicion
+                        ? _c(
+                            "h3",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [
+                              _vm._v(
+                                " Actualizar\n                                pregunta "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "h3",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v(" Registrar pregunta ")]
+                          ),
+                      _vm._v(" "),
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        staticClass: "form-control mt-0 mb-0",
+                        attrs: {
+                          rows: "4",
+                          id: "pregunta",
+                          type: "text",
+                          placeholder: "Pregunta"
+                        },
+                        on: {
+                          focus: function($event) {
+                            return _vm.limpiarCampos("pregunta")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { attrs: { id: "msjInputPregunta" } }),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        staticClass: "form-control mt-0 mb-0",
+                        attrs: {
+                          rows: "1",
+                          id: "respuesta",
+                          type: "text",
+                          placeholder: "Respuesta"
+                        },
+                        on: {
+                          focus: function($event) {
+                            return _vm.limpiarCampos("respuesta")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { attrs: { id: "msjInputRespuesta" } }),
+                      _vm._v(" "),
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("Select2", {
+                        attrs: { options: _vm.temas, id: "id_tema" },
+                        on: {
+                          select: function($event) {
+                            return _vm.cambioSelect($event)
+                          }
+                        },
+                        model: {
+                          value: _vm.id_tema,
+                          callback: function($$v) {
+                            _vm.id_tema = $$v
+                          },
+                          expression: "id_tema"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { attrs: { id: "msjSelectTema" } }),
+                      _vm._v(" "),
+                      _vm._m(5),
+                      _vm._v(" "),
                       _c(
                         "div",
                         {
-                          staticClass: "modal-dialog modal-dialog-centered",
-                          attrs: { role: "document" }
+                          staticStyle: {
+                            border: "0.5px dashed black",
+                            width: "100%"
+                          },
+                          on: {
+                            dragover: _vm.dragover,
+                            dragleave: _vm.dragleave,
+                            drop: _vm.drop
+                          }
                         },
                         [
-                          _c("div", { staticClass: "modal-content" }, [
-                            _c(
-                              "div",
-                              { staticClass: "modal-body" },
-                              [
-                                _vm.modoEdicion
-                                  ? _c(
-                                      "h3",
-                                      {
-                                        staticClass: "modal-title",
-                                        attrs: { id: "exampleModalLabel" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          " Actualizar\n                                                pregunta "
-                                        )
-                                      ]
-                                    )
-                                  : _c(
-                                      "h3",
-                                      {
-                                        staticClass: "modal-title",
-                                        attrs: { id: "exampleModalLabel" }
-                                      },
-                                      [_vm._v(" Registrar pregunta ")]
-                                    ),
-                                _vm._v(" "),
-                                _vm._m(2),
-                                _vm._v(" "),
-                                _c("textarea", {
-                                  staticClass: "form-control mt-0 mb-0",
-                                  attrs: {
-                                    rows: "4",
-                                    id: "pregunta",
-                                    type: "text",
-                                    placeholder: "Pregunta"
-                                  },
-                                  on: {
-                                    focus: function($event) {
-                                      return _vm.limpiarCampos("pregunta")
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("span", {
-                                  attrs: { id: "msjInputPregunta" }
-                                }),
-                                _vm._v(" "),
-                                _vm._m(3),
-                                _vm._v(" "),
-                                _c("textarea", {
-                                  staticClass: "form-control mt-0 mb-0",
-                                  attrs: {
-                                    rows: "1",
-                                    id: "respuesta",
-                                    type: "text",
-                                    placeholder: "Respuesta"
-                                  },
-                                  on: {
-                                    focus: function($event) {
-                                      return _vm.limpiarCampos("respuesta")
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("span", {
-                                  attrs: { id: "msjInputRespuesta" }
-                                }),
-                                _vm._v(" "),
-                                _vm._m(4),
-                                _vm._v(" "),
-                                _c("Select2", {
-                                  attrs: { options: _vm.temas, id: "id_tema" },
-                                  on: {
-                                    select: function($event) {
-                                      return _vm.cambioSelect($event)
-                                    }
-                                  },
-                                  model: {
-                                    value: _vm.id_tema,
-                                    callback: function($$v) {
-                                      _vm.id_tema = $$v
-                                    },
-                                    expression: "id_tema"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("span", { attrs: { id: "msjSelectTema" } }),
-                                _vm._v(" "),
-                                _vm._m(5),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticStyle: {
-                                      border: "0.5px dashed black",
-                                      width: "100%"
-                                    },
-                                    on: {
-                                      dragover: _vm.dragover,
-                                      dragleave: _vm.dragleave,
-                                      drop: _vm.drop
-                                    }
-                                  },
-                                  [
-                                    _c("input", {
-                                      ref: "file",
-                                      staticClass:
-                                        "w-px h-px opacity-0 overflow-hidden absolute",
-                                      attrs: {
-                                        type: "file",
-                                        id: "assetsFieldHandle",
-                                        accept: ".pdf,.jpg,.jpeg,.png",
-                                        hidden: ""
-                                      },
-                                      on: { change: _vm.onChange }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "row" }, [
-                                      _c("div", { staticClass: "col-md-12" }, [
+                          _c("input", {
+                            ref: "file",
+                            staticClass:
+                              "w-px h-px opacity-0 overflow-hidden absolute",
+                            attrs: {
+                              type: "file",
+                              id: "assetsFieldHandle",
+                              accept: ".pdf,.jpg,.jpeg,.png",
+                              hidden: ""
+                            },
+                            on: { change: _vm.onChange }
+                          }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-md-12" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "block cursor-pointer",
+                                  attrs: { for: "assetsFieldHandle" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    [
+                                      _c("center", [
                                         _c(
-                                          "label",
+                                          "p",
                                           {
-                                            staticClass: "block cursor-pointer",
-                                            attrs: { for: "assetsFieldHandle" }
+                                            staticClass: "text-center",
+                                            attrs: { id: "mensajito" }
                                           },
                                           [
-                                            _c(
-                                              "div",
-                                              [
-                                                _c("center", [
-                                                  _c(
-                                                    "p",
-                                                    {
-                                                      staticClass:
-                                                        "text-center",
-                                                      attrs: { id: "mensajito" }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fas fa-cloud-download-alt"
-                                                      }),
-                                                      _vm._v(
-                                                        " Arrastra la imagen\n                                                                    o da clic aquí para subir\n                                                                "
-                                                      )
-                                                    ]
-                                                  )
-                                                ])
-                                              ],
-                                              1
+                                            _c("i", {
+                                              staticClass:
+                                                "fas fa-cloud-download-alt"
+                                            }),
+                                            _vm._v(
+                                              " Arrastra la imagen\n                                                    o da clic aquí para subir\n                                                "
                                             )
                                           ]
                                         )
                                       ])
-                                    ]),
-                                    _vm._v(" "),
-                                    this.subidor.imagenesVistaPrevia.length
-                                      ? _c(
-                                          "table",
-                                          {
-                                            staticStyle: {
-                                              "list-style-type": "none",
-                                              width: "100%"
-                                            }
-                                          },
-                                          [
-                                            _vm._m(6),
-                                            _vm._v(" "),
-                                            _vm._l(
-                                              _vm.subidor.imagenesVistaPrevia,
-                                              function(imagen) {
-                                                return _c("tr", [
-                                                  _c(
-                                                    "td",
-                                                    {
-                                                      staticClass:
-                                                        "d-flex justify-content-center"
-                                                    },
-                                                    [
-                                                      _c("img", {
-                                                        staticStyle: {
-                                                          width: "15em"
-                                                        },
-                                                        attrs: {
-                                                          src: imagen.imagen
-                                                        }
-                                                      })
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c("td", [
-                                                    _c(
-                                                      "a",
-                                                      {
-                                                        attrs: {
-                                                          title:
-                                                            "Eliminar la imagen"
-                                                        },
-                                                        on: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            return _vm.remove(
-                                                              imagen
-                                                            )
-                                                          }
-                                                        }
-                                                      },
-                                                      [
-                                                        _c("i", {
-                                                          staticClass:
-                                                            "fas fa-trash-alt",
-                                                          staticStyle: {
-                                                            color: "#ff6258"
-                                                          }
-                                                        })
-                                                      ]
-                                                    )
-                                                  ])
-                                                ])
-                                              }
-                                            )
-                                          ],
-                                          2
-                                        )
-                                      : _vm._e()
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(7),
-                                _vm._v(" "),
-                                _vm._m(8),
-                                _vm._v(" "),
-                                _vm.modoEdicion
-                                  ? _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "btn btn-primary float-right btn-lg mt-4 mr-2",
-                                        staticStyle: {
-                                          "border-radius": "25px"
-                                        },
-                                        attrs: { type: "button" },
-                                        on: { click: _vm.editar }
-                                      },
-                                      [
-                                        _c("i", { staticClass: "fas fa-save" }),
-                                        _vm._v("  Guardar")
-                                      ]
-                                    )
-                                  : _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "btn btn-primary float-right btn-lg mt-4 mr-2",
-                                        staticStyle: {
-                                          "border-radius": "25px"
-                                        },
-                                        attrs: { type: "button" },
-                                        on: { click: _vm.btnGuardar }
-                                      },
-                                      [
-                                        _c("i", { staticClass: "fas fa-save" }),
-                                        _vm._v(
-                                          " Guardar\n                                            "
-                                        )
-                                      ]
-                                    )
-                              ],
-                              1
-                            )
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal animated animate__bounceIn",
-                      attrs: {
-                        id: "modalParaVerImagenes",
-                        tabindex: "-1",
-                        role: "dialog",
-                        "aria-labelledby": "exampleModalLabel",
-                        "aria-hidden": "true"
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "modal-dialog modal-dialog-centered",
-                          attrs: { role: "document" }
-                        },
-                        [
-                          _c("div", { staticClass: "modal-content" }, [
-                            _c("div", { staticClass: "modal-body" }, [
-                              _c(
-                                "h3",
-                                {
-                                  staticClass: "modal-title",
-                                  attrs: { id: "exampleModalLabel" }
-                                },
-                                [
-                                  _vm._v(
-                                    " Imagenes adjuntas en la pregunta\n                                            "
+                                    ],
+                                    1
                                   )
                                 ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticStyle: { width: "100%" } }, [
-                                _c(
-                                  "table",
-                                  {
-                                    staticStyle: {
-                                      "list-style-type": "none",
-                                      width: "100%"
-                                    }
-                                  },
-                                  [
-                                    _vm._m(9),
-                                    _vm._v(" "),
-                                    _vm._l(
-                                      _vm.imagenesParaDesplegarEnModal,
-                                      function(imagen) {
-                                        return _c("tr", [
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          this.subidor.imagenesVistaPrevia.length
+                            ? _c(
+                                "table",
+                                {
+                                  staticStyle: {
+                                    "list-style-type": "none",
+                                    width: "100%"
+                                  }
+                                },
+                                [
+                                  _vm._m(6),
+                                  _vm._v(" "),
+                                  _vm._l(
+                                    _vm.subidor.imagenesVistaPrevia,
+                                    function(imagen) {
+                                      return _c("tr", [
+                                        _c(
+                                          "td",
+                                          {
+                                            staticClass:
+                                              "d-flex justify-content-center"
+                                          },
+                                          [
+                                            _c("img", {
+                                              staticStyle: { width: "15em" },
+                                              attrs: { src: imagen.imagen }
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("td", [
                                           _c(
-                                            "td",
+                                            "a",
                                             {
-                                              staticClass:
-                                                "d-flex justify-content-center"
+                                              attrs: {
+                                                title: "Eliminar la imagen"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.remove(imagen)
+                                                }
+                                              }
                                             },
                                             [
-                                              _c("img", {
-                                                staticStyle: { width: "15em" },
-                                                attrs: {
-                                                  src:
-                                                    "/imagenes/preguntas/" +
-                                                    imagen.nombre
+                                              _c("i", {
+                                                staticClass: "fas fa-trash-alt",
+                                                staticStyle: {
+                                                  color: "#ff6258"
                                                 }
                                               })
                                             ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("td", [
-                                            _vm._v(
-                                              "\n                                                            " +
-                                                _vm._s(imagen.alias) +
-                                                "\n                                                        "
-                                            )
-                                          ])
+                                          )
                                         ])
-                                      }
-                                    )
-                                  ],
-                                  2
-                                ),
-                                _vm._v(" "),
-                                _vm.imagenesParaDesplegarEnModal.length == 0
-                                  ? _c("span", { staticClass: "text-center" }, [
-                                      _vm._v(
-                                        " Esta\n                                                    pregunta no tiene imagenes adjuntas "
-                                      )
-                                    ])
-                                  : _vm._e()
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(10)
-                            ])
-                          ])
+                                      ])
+                                    }
+                                  )
+                                ],
+                                2
+                              )
+                            : _vm._e()
                         ]
-                      )
-                    ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _vm.modoEdicion
+                        ? _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary float-right btn-lg mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: { click: _vm.editar }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-save" }),
+                              _vm._v("  Guardar")
+                            ]
+                          )
+                        : _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary float-right btn-lg mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: { click: _vm.btnGuardar }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-save" }),
+                              _vm._v(" Guardar\n                            ")
+                            ]
+                          )
+                    ],
+                    1
                   )
-                ],
-                1
-              )
-            ])
-          ])
-        ])
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal animated animate__bounceIn",
+            attrs: {
+              id: "modalParaVerImagenes",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "h3",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLabel" }
+                      },
+                      [
+                        _vm._v(
+                          " Imagenes adjuntas en la pregunta\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticStyle: { width: "100%" } }, [
+                      _c(
+                        "table",
+                        {
+                          staticStyle: {
+                            "list-style-type": "none",
+                            width: "100%"
+                          }
+                        },
+                        [
+                          _vm._m(9),
+                          _vm._v(" "),
+                          _vm._l(_vm.imagenesParaDesplegarEnModal, function(
+                            imagen
+                          ) {
+                            return _c("tr", [
+                              _c(
+                                "td",
+                                {
+                                  staticClass: "d-flex justify-content-center"
+                                },
+                                [
+                                  _c("img", {
+                                    staticStyle: { width: "15em" },
+                                    attrs: {
+                                      src:
+                                        "/imagenes/preguntas/" + imagen.nombre
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(imagen.alias) +
+                                    "\n                                        "
+                                )
+                              ])
+                            ])
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _vm.imagenesParaDesplegarEnModal.length == 0
+                        ? _c("span", { staticClass: "text-center" }, [
+                            _vm._v(
+                              " Esta\n                                    pregunta no tiene imagenes adjuntas "
+                            )
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(10)
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
       ])
     ])
   ])
@@ -56973,10 +57035,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c("h1", { staticClass: "page-title m-0" }, [
-        _vm._v("Preguntas abiertas")
-      ])
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Preguntas abiertas ")])
     ])
   },
   function() {
@@ -57057,12 +57117,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                                            ")
+        _vm._v(" Cerrar\n                            ")
       ]
     )
   },
@@ -57073,13 +57132,13 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [
         _vm._v(
-          "\n                                                            Imagen\n                                                        "
+          "\n                                            Imagen\n                                        "
         )
       ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                                                            Nombre\n                                                        "
+          "\n                                            Nombre\n                                        "
         )
       ])
     ])
@@ -57092,12 +57151,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "4px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                                            ")
+        _vm._v(" Cerrar\n                            ")
       ]
     )
   }
@@ -58487,130 +58545,91 @@ var render = function() {
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row  mb-2" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-6" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
                     _c(
-                      "ol",
+                      "button",
                       {
-                        staticClass: "breadcrumb float-sm-right",
-                        staticStyle: { background: "white" }
+                        staticClass: "btn btn-primary float-right",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarPregunta"
+                        },
+                        on: { click: _vm.cambiarModo }
                       },
                       [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary btn-lg float-right",
-                            staticStyle: { "border-radius": "25px" },
-                            attrs: {
-                              type: "button",
-                              "data-toggle": "modal",
-                              "data-target": "#registrarPregunta"
-                            },
-                            on: { click: _vm.cambiarModo }
-                          },
-                          [
-                            _c("i", { staticClass: "fas fa-edit" }),
-                            _vm._v(
-                              " Registrar\n                                      "
-                            )
-                          ]
-                        )
+                        _c("i", { staticClass: "fas fa-edit" }),
+                        _vm._v(" Nueva\n                                    ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.pregunta.value,
+                          expression: "filters.pregunta.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.pregunta.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.pregunta,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "pregunta" } }, [
+                          _vm._v("Pregunta")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tema" } }, [
+                          _vm._v("Tema")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "opcion" } }, [
+                          _vm._v("Respuesta")
+                        ])
                       ]
                     )
                   ])
                 ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "page-header ",
-                    staticStyle: {
-                      border: "1px solid #dee2e6",
-                      margin: "0px",
-                      background: "#f5f5f5"
-                    }
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                      [
-                        _c("b", [_vm._v(" Término de búsqueda: ")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.filters.pregunta.value,
-                              expression: "filters.pregunta.value"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          staticStyle: {
-                            "border-radius": "10px",
-                            height: "37px",
-                            margin: "0px"
-                          },
-                          attrs: { type: "search", placeholder: "Término" },
-                          domProps: { value: _vm.filters.pregunta.value },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.filters.pregunta,
-                                "value",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                      [
-                        _c("b", [_vm._v("Campo de búsqueda: ")]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            staticStyle: {
-                              "border-radius": "10px",
-                              margin: "0px"
-                            },
-                            attrs: {
-                              name: "campoBusqueda",
-                              id: "campoBusqueda"
-                            },
-                            on: { change: _vm.cambiarCampoDeBusqueda }
-                          },
-                          [
-                            _c("option", { attrs: { value: "pregunta" } }, [
-                              _vm._v("Pregunta")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "tema" } }, [
-                              _vm._v("Tema")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "opcion" } }, [
-                              _vm._v("Respuesta")
-                            ])
-                          ]
-                        )
-                      ]
-                    )
-                  ]
-                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -58679,7 +58698,7 @@ var render = function() {
                                                 "far fa-check-circle",
                                               staticStyle: { color: "#3bd949" }
                                             }),
-                                            _vm._v(" "),
+                                            _vm._v(" Si "),
                                             _c("span", {
                                               staticStyle: { color: "#3bd949" }
                                             })
@@ -58689,7 +58708,7 @@ var render = function() {
                                               staticClass: "fas fa-ban",
                                               staticStyle: { color: "#ff6258" }
                                             }),
-                                            _vm._v(" "),
+                                            _vm._v(" No "),
                                             _c("span", {
                                               staticStyle: { color: "#ff6258" }
                                             })
@@ -58702,7 +58721,7 @@ var render = function() {
                                                 "far fa-check-circle",
                                               staticStyle: { color: "#3bd949" }
                                             }),
-                                            _vm._v(" "),
+                                            _vm._v(" Si "),
                                             _c("span", {
                                               staticStyle: { color: "#3bd949" }
                                             })
@@ -58712,7 +58731,7 @@ var render = function() {
                                               staticClass: "fas fa-ban",
                                               staticStyle: { color: "#ff6258" }
                                             }),
-                                            _vm._v(" "),
+                                            _vm._v(" No "),
                                             _c("span", {
                                               staticStyle: { color: "#ff6258" }
                                             })
@@ -58722,6 +58741,8 @@ var render = function() {
                                         _c(
                                           "a",
                                           {
+                                            staticClass:
+                                              "btn btn-outline-primary",
                                             attrs: {
                                               "data-toggle": "modal",
                                               "data-target":
@@ -58756,6 +58777,8 @@ var render = function() {
                                         _c(
                                           "a",
                                           {
+                                            staticClass:
+                                              "btn btn-outline-warning",
                                             attrs: {
                                               "data-toggle": "modal",
                                               "data-target":
@@ -58788,13 +58811,15 @@ var render = function() {
                                               staticStyle: { color: "#ffae00" }
                                             })
                                           ]
-                                        ),
-                                        _vm._v(
-                                          "\n                                              |\n                                              "
-                                        ),
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
                                         _c(
                                           "a",
                                           {
+                                            staticClass:
+                                              "btn btn-outline-danger",
                                             on: {
                                               click: function($event) {
                                                 return _vm.eliminar(
@@ -58842,7 +58867,11 @@ var render = function() {
                                   defaultSort: "desc"
                                 }
                               },
-                              [_vm._v("Pregunta")]
+                              [
+                                _vm._v(
+                                  "Pregunta\n                                        "
+                                )
+                              ]
                             ),
                             _vm._v(" "),
                             _c(
@@ -58872,332 +58901,91 @@ var render = function() {
                             _vm._v(" "),
                             _c("th", [_vm._v("Imagenes")]),
                             _vm._v(" "),
-                            _c("th", [_vm._v("Opciones")])
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
                           ],
                           1
                         )
                       ]
-                    ),
-                    _vm._v(
-                      "\n                            \n                              Total: " +
-                        _vm._s(_vm.preguntaNumerica.length) +
-                        " registros\n                              "
-                    ),
-                    _c("smart-pagination", {
-                      attrs: {
-                        currentPage: _vm.currentPage,
-                        totalPages: _vm.totalPages,
-                        maxPageLinks: 3
-                      },
-                      on: {
-                        "update:currentPage": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        "update:current-page": function($event) {
-                          _vm.currentPage = $event
-                        }
-                      }
-                    })
+                    )
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "modal animated animate__bounceIn",
-                    attrs: {
-                      id: "registrarPregunta",
-                      role: "dialog",
-                      "aria-labelledby": "exampleModalLabel",
-                      "aria-hidden": "true",
-                      "data-focus": "false"
-                    }
-                  },
-                  [
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.preguntaNumerica.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
                     _c(
                       "div",
-                      {
-                        staticClass: "modal-dialog modal-dialog-centered",
-                        attrs: { role: "document" }
-                      },
+                      { staticClass: "float-right" },
                       [
-                        _c("div", { staticClass: "modal-content" }, [
-                          _c(
-                            "div",
-                            { staticClass: "modal-body" },
-                            [
-                              _vm.modoEdicion
-                                ? _c(
-                                    "h3",
-                                    {
-                                      staticClass: "modal-title",
-                                      attrs: { id: "exampleModalLabel" }
-                                    },
-                                    [_vm._v(" Actualizar pregunta ")]
-                                  )
-                                : _c(
-                                    "h3",
-                                    {
-                                      staticClass: "modal-title",
-                                      attrs: { id: "exampleModalLabel" }
-                                    },
-                                    [_vm._v(" Registrar pregunta ")]
-                                  ),
-                              _vm._v(" "),
-                              _vm._m(2),
-                              _vm._v(" "),
-                              _c("textarea", {
-                                staticClass: "form-control mt-0 mb-0",
-                                attrs: {
-                                  rows: "4",
-                                  id: "pregunta",
-                                  type: "text",
-                                  placeholder: "Pregunta"
-                                },
-                                on: {
-                                  focus: function($event) {
-                                    return _vm.limpiarCampos("pregunta")
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("span", { attrs: { id: "msjInputPregunta" } }),
-                              _vm._v(" "),
-                              _vm._m(3),
-                              _vm._v(" "),
-                              _c("textarea", {
-                                staticClass: "form-control mt-0 mb-0",
-                                attrs: {
-                                  rows: "1",
-                                  id: "respuesta",
-                                  type: "text",
-                                  placeholder: "Respuesta"
-                                },
-                                on: {
-                                  focus: function($event) {
-                                    return _vm.limpiarCampos("respuesta")
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("span", {
-                                attrs: { id: "msjInputRespuesta" }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(4),
-                              _vm._v(" "),
-                              _c("input", {
-                                staticClass: "form-control mt-0 mb-0",
-                                attrs: {
-                                  id: "margen",
-                                  placeholder: "margen",
-                                  type: "number"
-                                },
-                                on: {
-                                  focus: function($event) {
-                                    return _vm.limpiarCampos("margen")
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("span", { attrs: { id: "msjInputMargen" } }),
-                              _vm._v(" "),
-                              _vm._m(5),
-                              _vm._v(" "),
-                              _vm._m(6),
-                              _vm._v(" "),
-                              _vm._m(7),
-                              _vm._v(" "),
-                              _c("Select2", {
-                                attrs: { options: _vm.temas, id: "id_tema" },
-                                on: {
-                                  select: function($event) {
-                                    return _vm.cambioSelect($event)
-                                  }
-                                },
-                                model: {
-                                  value: _vm.id_tema,
-                                  callback: function($$v) {
-                                    _vm.id_tema = $$v
-                                  },
-                                  expression: "id_tema"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("span", { attrs: { id: "msjSelectTema" } }),
-                              _vm._v(" "),
-                              _vm._m(8),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticStyle: {
-                                    border: "0.5px dashed black",
-                                    width: "100%"
-                                  },
-                                  on: {
-                                    dragover: _vm.dragover,
-                                    dragleave: _vm.dragleave,
-                                    drop: _vm.drop
-                                  }
-                                },
-                                [
-                                  _c("input", {
-                                    ref: "file",
-                                    staticClass:
-                                      "w-px h-px opacity-0 overflow-hidden absolute",
-                                    attrs: {
-                                      type: "file",
-                                      id: "assetsFieldHandle",
-                                      accept: ".pdf,.jpg,.jpeg,.png",
-                                      hidden: ""
-                                    },
-                                    on: { change: _vm.onChange }
-                                  }),
-                                  _vm._v(" "),
-                                  _vm._m(9),
-                                  _vm._v(" "),
-                                  this.subidor.imagenesVistaPrevia.length
-                                    ? _c(
-                                        "table",
-                                        {
-                                          staticStyle: {
-                                            "list-style-type": "none",
-                                            width: "100%"
-                                          }
-                                        },
-                                        [
-                                          _vm._m(10),
-                                          _vm._v(" "),
-                                          _vm._l(
-                                            _vm.subidor.imagenesVistaPrevia,
-                                            function(imagen) {
-                                              return _c("tr", [
-                                                _c(
-                                                  "td",
-                                                  {
-                                                    staticClass:
-                                                      "d-flex justify-content-center"
-                                                  },
-                                                  [
-                                                    _c("img", {
-                                                      staticStyle: {
-                                                        width: "15em"
-                                                      },
-                                                      attrs: {
-                                                        src: imagen.imagen
-                                                      }
-                                                    })
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _c(
-                                                    "a",
-                                                    {
-                                                      attrs: {
-                                                        title:
-                                                          "Eliminar la imagen"
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          return _vm.remove(
-                                                            imagen
-                                                          )
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fas fa-trash-alt",
-                                                        staticStyle: {
-                                                          color: "#ff6258"
-                                                        }
-                                                      })
-                                                    ]
-                                                  )
-                                                ])
-                                              ])
-                                            }
-                                          )
-                                        ],
-                                        2
-                                      )
-                                    : _vm._e()
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(11),
-                              _vm._v(" "),
-                              _vm._m(12),
-                              _vm._v(" "),
-                              _vm.modoEdicion
-                                ? _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary float-right btn-lg mt-4 mr-2",
-                                      staticStyle: { "border-radius": "25px" },
-                                      attrs: { type: "button" },
-                                      on: { click: _vm.editar }
-                                    },
-                                    [
-                                      _c("i", { staticClass: "fas fa-save" }),
-                                      _vm._v("  Guardar ")
-                                    ]
-                                  )
-                                : _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary float-right btn-lg mt-4 mr-2",
-                                      staticStyle: { "border-radius": "25px" },
-                                      attrs: { type: "button" },
-                                      on: { click: _vm.btnGuardar }
-                                    },
-                                    [
-                                      _c("i", { staticClass: "fas fa-save" }),
-                                      _vm._v(
-                                        " Guardar\n                                          "
-                                      )
-                                    ]
-                                  )
-                            ],
-                            1
-                          )
-                        ])
-                      ]
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
                     )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "modal animated animate__bounceIn",
-                    attrs: {
-                      id: "modalParaVerImagenes",
-                      tabindex: "-1",
-                      role: "dialog",
-                      "aria-labelledby": "exampleModalLabel",
-                      "aria-hidden": "true"
-                    }
-                  },
-                  [
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            {
+              staticClass: "modal animated animate__bounceIn",
+              attrs: {
+                id: "registrarPregunta",
+                role: "dialog",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true",
+                "data-focus": "false"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" }
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
                     _c(
                       "div",
-                      {
-                        staticClass: "modal-dialog modal-dialog-centered",
-                        attrs: { role: "document" }
-                      },
+                      { staticClass: "modal-body" },
                       [
-                        _c("div", { staticClass: "modal-content" }, [
-                          _c("div", { staticClass: "modal-body" }, [
-                            _c(
+                        _vm.modoEdicion
+                          ? _c(
                               "h3",
                               {
                                 staticClass: "modal-title",
@@ -59205,80 +58993,340 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  " Imagenes adjuntas en la pregunta\n                                          "
+                                  "\n                                    Actualizar pregunta "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "h3",
+                              {
+                                staticClass: "modal-title",
+                                attrs: { id: "exampleModalLabel" }
+                              },
+                              [
+                                _vm._v(
+                                  " Registrar\n                                    pregunta "
                                 )
                               ]
                             ),
+                        _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          staticClass: "form-control mt-0 mb-0",
+                          attrs: {
+                            rows: "4",
+                            id: "pregunta",
+                            type: "text",
+                            placeholder: "Pregunta"
+                          },
+                          on: {
+                            focus: function($event) {
+                              return _vm.limpiarCampos("pregunta")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { attrs: { id: "msjInputPregunta" } }),
+                        _vm._v(" "),
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          staticClass: "form-control mt-0 mb-0",
+                          attrs: {
+                            rows: "1",
+                            id: "respuesta",
+                            type: "text",
+                            placeholder: "Respuesta"
+                          },
+                          on: {
+                            focus: function($event) {
+                              return _vm.limpiarCampos("respuesta")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { attrs: { id: "msjInputRespuesta" } }),
+                        _vm._v(" "),
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control mt-0 mb-0",
+                          attrs: {
+                            id: "margen",
+                            placeholder: "margen",
+                            type: "number"
+                          },
+                          on: {
+                            focus: function($event) {
+                              return _vm.limpiarCampos("margen")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { attrs: { id: "msjInputMargen" } }),
+                        _vm._v(" "),
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _vm._m(7),
+                        _vm._v(" "),
+                        _c("Select2", {
+                          attrs: { options: _vm.temas, id: "id_tema" },
+                          on: {
+                            select: function($event) {
+                              return _vm.cambioSelect($event)
+                            }
+                          },
+                          model: {
+                            value: _vm.id_tema,
+                            callback: function($$v) {
+                              _vm.id_tema = $$v
+                            },
+                            expression: "id_tema"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { attrs: { id: "msjSelectTema" } }),
+                        _vm._v(" "),
+                        _vm._m(8),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              border: "0.5px dashed black",
+                              width: "100%"
+                            },
+                            on: {
+                              dragover: _vm.dragover,
+                              dragleave: _vm.dragleave,
+                              drop: _vm.drop
+                            }
+                          },
+                          [
+                            _c("input", {
+                              ref: "file",
+                              staticClass:
+                                "w-px h-px opacity-0 overflow-hidden absolute",
+                              attrs: {
+                                type: "file",
+                                id: "assetsFieldHandle",
+                                accept: ".pdf,.jpg,.jpeg,.png",
+                                hidden: ""
+                              },
+                              on: { change: _vm.onChange }
+                            }),
                             _vm._v(" "),
-                            _c("div", { staticStyle: { width: "100%" } }, [
-                              _c(
-                                "table",
-                                {
-                                  staticStyle: {
-                                    "list-style-type": "none",
-                                    width: "100%"
-                                  }
-                                },
-                                [
-                                  _vm._m(13),
-                                  _vm._v(" "),
-                                  _vm._l(
-                                    _vm.imagenesParaDesplegarEnModal,
-                                    function(imagen) {
-                                      return _c("tr", [
-                                        _c(
-                                          "td",
-                                          {
-                                            staticClass:
-                                              "d-flex justify-content-center"
-                                          },
-                                          [
-                                            _c("img", {
-                                              staticStyle: { width: "15em" },
-                                              attrs: {
-                                                src:
-                                                  "/imagenes/preguntas/" +
-                                                  imagen.nombre
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("td", [
-                                          _vm._v(
-                                            "\n                                                          " +
-                                              _vm._s(imagen.alias) +
-                                              "\n                                                      "
-                                          )
-                                        ])
-                                      ])
+                            _vm._m(9),
+                            _vm._v(" "),
+                            this.subidor.imagenesVistaPrevia.length
+                              ? _c(
+                                  "table",
+                                  {
+                                    staticStyle: {
+                                      "list-style-type": "none",
+                                      width: "100%"
                                     }
-                                  )
-                                ],
-                                2
-                              ),
-                              _vm._v(" "),
-                              _vm.imagenesParaDesplegarEnModal.length == 0
-                                ? _c("span", { staticClass: "text-center" }, [
-                                    _c("b", [
-                                      _vm._v(
-                                        " Esta pregunta no tiene imagenes adjuntas "
-                                      )
-                                    ])
-                                  ])
-                                : _vm._e()
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(14)
-                          ])
-                        ])
-                      ]
+                                  },
+                                  [
+                                    _vm._m(10),
+                                    _vm._v(" "),
+                                    _vm._l(
+                                      _vm.subidor.imagenesVistaPrevia,
+                                      function(imagen) {
+                                        return _c("tr", [
+                                          _c(
+                                            "td",
+                                            {
+                                              staticClass:
+                                                "d-flex justify-content-center"
+                                            },
+                                            [
+                                              _c("img", {
+                                                staticStyle: { width: "15em" },
+                                                attrs: { src: imagen.imagen }
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "a",
+                                              {
+                                                attrs: {
+                                                  title: "Eliminar la imagen"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.remove(imagen)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-trash-alt",
+                                                  staticStyle: {
+                                                    color: "#ff6258"
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ])
+                                        ])
+                                      }
+                                    )
+                                  ],
+                                  2
+                                )
+                              : _vm._e()
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(11),
+                        _vm._v(" "),
+                        _vm._m(12),
+                        _vm._v(" "),
+                        _vm.modoEdicion
+                          ? _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-primary float-right btn-lg mt-4 mr-2",
+                                attrs: { type: "button" },
+                                on: { click: _vm.editar }
+                              },
+                              [
+                                _c("i", { staticClass: "fas fa-save" }),
+                                _vm._v(
+                                  " Guardar \n                                "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-primary float-right btn-lg mt-4 mr-2",
+                                attrs: { type: "button" },
+                                on: { click: _vm.btnGuardar }
+                              },
+                              [
+                                _c("i", { staticClass: "fas fa-save" }),
+                                _vm._v(
+                                  " Guardar\n                                "
+                                )
+                              ]
+                            )
+                      ],
+                      1
                     )
-                  ]
-                )
-              ])
-            ])
-          ])
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal animated animate__bounceIn",
+              attrs: {
+                id: "modalParaVerImagenes",
+                tabindex: "-1",
+                role: "dialog",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" }
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "modal-title",
+                          attrs: { id: "exampleModalLabel" }
+                        },
+                        [
+                          _vm._v(
+                            " Imagenes adjuntas en la\n                                    pregunta\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticStyle: { width: "100%" } }, [
+                        _c(
+                          "table",
+                          {
+                            staticStyle: {
+                              "list-style-type": "none",
+                              width: "100%"
+                            }
+                          },
+                          [
+                            _vm._m(13),
+                            _vm._v(" "),
+                            _vm._l(_vm.imagenesParaDesplegarEnModal, function(
+                              imagen
+                            ) {
+                              return _c("tr", [
+                                _c(
+                                  "td",
+                                  {
+                                    staticClass: "d-flex justify-content-center"
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticStyle: { width: "15em" },
+                                      attrs: {
+                                        src:
+                                          "/imagenes/preguntas/" + imagen.nombre
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    "\n                                                " +
+                                      _vm._s(imagen.alias) +
+                                      "\n                                            "
+                                  )
+                                ])
+                              ])
+                            })
+                          ],
+                          2
+                        ),
+                        _vm._v(" "),
+                        _vm.imagenesParaDesplegarEnModal.length == 0
+                          ? _c("span", { staticClass: "text-center" }, [
+                              _c("b", [
+                                _vm._v(
+                                  " Esta pregunta no tiene imagenes\n                                            adjuntas "
+                                )
+                              ])
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(14)
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
         ])
       ])
     ])
@@ -59305,7 +59353,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                _vm._v("  Preguntas "),
+                _vm._v(" Preguntas "),
                 _c("i", { staticClass: "fas fa-angle-right" })
               ]),
               _vm._v(" "),
@@ -59320,10 +59368,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c("h1", { staticClass: "page-title m-0" }, [
-        _vm._v("Preguntas numéricas")
-      ])
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Preguntas Numericas ")])
     ])
   },
   function() {
@@ -59376,13 +59422,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "table",
-      {
-        staticStyle: {
-          width: "100%",
-          "border-radius": "15px",
-          margin: "0px 0px 10px"
-        }
-      },
+      { staticStyle: { width: "100%", margin: "0px 0px 10px" } },
       [
         _c("tr", [
           _c("th", [
@@ -59392,7 +59432,6 @@ var staticRenderFns = [
                   staticStyle: {
                     width: "20px",
                     height: "20px",
-                    "border-radius": "5px",
                     border: "2px solid #555"
                   },
                   attrs: {
@@ -59404,7 +59443,7 @@ var staticRenderFns = [
                   }
                 }),
                 _vm._v(
-                  "  Aplicar hacia arriba\n                                          "
+                  "  Aplicar hacia\n                                                    arriba\n                                                "
                 )
               ])
             ])
@@ -59417,7 +59456,6 @@ var staticRenderFns = [
                   staticStyle: {
                     width: "20px",
                     height: "20px",
-                    "border-radius": "5px",
                     border: "2px solid #555"
                   },
                   attrs: {
@@ -59429,7 +59467,7 @@ var staticRenderFns = [
                   }
                 }),
                 _vm._v(
-                  "\n                                              Aplicar hacia abajo\n                                          "
+                  "\n                                                      Aplicar hacia abajo\n                                                "
                 )
               ])
             ])
@@ -59444,7 +59482,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-left mt-0 mb-0" }, [
       _c("b", [
-        _vm._v("Tema:  "),
+        _vm._v("Tema: "),
         _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
         _vm._v(": ")
       ])
@@ -59460,7 +59498,7 @@ var staticRenderFns = [
         staticClass: "text-left mt-0 mb-0",
         staticStyle: { "margin-top": "8px" }
       },
-      [_c("b", [_vm._v(" Imagenes:")])]
+      [_c("b", [_vm._v("\n                                        Imagenes:")])]
     )
   },
   function() {
@@ -59482,7 +59520,7 @@ var staticRenderFns = [
               [
                 _c("i", { staticClass: "fas fa-cloud-download-alt" }),
                 _vm._v(
-                  " Arrastra la imagen\n                                                                  o da clic aquí para subir\n                                                              "
+                  " Arrastra\n                                                    la imagen\n                                                    o da clic aquí para subir\n                                                "
                 )
               ]
             )
@@ -59525,12 +59563,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                                          ")
+        _vm._v(" Cerrar\n                                ")
       ]
     )
   },
@@ -59541,13 +59578,13 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [
         _vm._v(
-          "\n                                                          Imagen\n                                                      "
+          "\n                                                Imagen\n                                            "
         )
       ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                                                          Nombre\n                                                      "
+          "\n                                                Nombre\n                                            "
         )
       ])
     ])
@@ -59564,7 +59601,7 @@ var staticRenderFns = [
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                                          ")
+        _vm._v(" Cerrar\n                                ")
       ]
     )
   }
@@ -59593,74 +59630,40 @@ var render = function() {
   return _c("div", { staticClass: "content-wrapper" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "col-lg-12" }, [
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              {
-                staticClass: "page-header border-0",
-                staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                  },
-                  [
-                    _c("h2", { staticClass: "page-title" }, [
-                      _vm._v(" Listado de preguntas de opción multiple ")
-                    ]),
-                    _vm._v(" "),
-                    _c("ul", { staticClass: "quick-links ml-auto" }, [
-                      _c("li", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary float-right btn-lg",
-                            staticStyle: { "border-radius": "25px" },
-                            attrs: {
-                              type: "button",
-                              "data-toggle": "modal",
-                              "data-target": "#exampleModal"
-                            },
-                            on: { click: _vm.abrirModal }
-                          },
-                          [
-                            _c("i", { staticClass: "fas fa-edit" }),
-                            _vm._v(
-                              " Registrar pregunta\n                                "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "page-header ",
-                staticStyle: {
-                  border: "1px solid #dee2e6",
-                  margin: "0px",
-                  background: "#f5f5f5"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                  [
-                    _c("b", [_vm._v(" Término de búsqueda: ")]),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#exampleModal"
+                        },
+                        on: { click: _vm.abrirModal }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-edit" }),
+                        _vm._v(" Nueva\n                                    ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -59672,15 +59675,8 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      staticStyle: {
-                        "border-radius": "10px",
-                        height: "37px",
-                        margin: "0px"
-                      },
-                      attrs: {
-                        type: "search",
-                        placeholder: "Ej. ¿Cuánto es 2+2?"
-                      },
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
                       domProps: { value: _vm.filters.pregunta.value },
                       on: {
                         input: function($event) {
@@ -59695,19 +59691,15 @@ var render = function() {
                         }
                       }
                     })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                  [
-                    _c("b", [_vm._v("Campo de búsqueda: ")]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
                     _vm._v(" "),
                     _c(
                       "select",
                       {
-                        staticStyle: { "border-radius": "10px", margin: "0px" },
+                        staticClass: "form-control",
                         attrs: { name: "campoBusqueda", id: "campoBusqueda" },
                         on: { change: _vm.cambiarCampoDeBusqueda }
                       },
@@ -59725,571 +59717,312 @@ var render = function() {
                         ])
                       ]
                     )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "table-responsive" },
-              [
+                  ])
+                ]),
+                _vm._v(" "),
                 _c(
-                  "v-table",
-                  {
-                    staticClass: "table table-hover",
-                    staticStyle: { width: "100%" },
-                    attrs: {
-                      data: _vm.pregunta,
-                      filters: _vm.filters,
-                      currentPage: _vm.currentPage,
-                      pageSize: 5
-                    },
-                    on: {
-                      "update:currentPage": function($event) {
-                        _vm.currentPage = $event
-                      },
-                      "update:current-page": function($event) {
-                        _vm.currentPage = $event
-                      },
-                      totalPagesChanged: function($event) {
-                        _vm.totalPages = $event
-                      }
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "body",
-                        fn: function(ref) {
-                          var displayData = ref.displayData
-                          return _c(
-                            "tbody",
-                            {},
-                            [
-                              _vm._l(displayData, function(pregunta, preg) {
-                                return _c("tr", { key: pregunta.id_pregunta }, [
-                                  _c("td", {
-                                    domProps: {
-                                      innerHTML: _vm._s(
-                                        _vm.wrapText(pregunta.pregunta)
-                                      )
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "text-left" }, [
-                                    _c("p", [
-                                      _vm._v(" " + _vm._s(pregunta.tema) + " ")
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    _vm._l(pregunta.opciones, function(opc) {
-                                      return _c("p", [
-                                        _vm._v(
-                                          "\n                                            " +
-                                            _vm._s(opc.opcion) +
-                                            "\n                                        "
-                                        )
-                                      ])
-                                    }),
-                                    0
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    _vm._l(pregunta.opciones, function(opc) {
-                                      return opc.respuesta
-                                        ? _c("p", [
-                                            _vm._v(
-                                              "\n                                            " +
-                                                _vm._s(opc.opcion) +
-                                                "\n                                      \n                                        "
-                                            )
-                                          ])
-                                        : _vm._e()
-                                    }),
-                                    0
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#modalParaVerImagenes"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.desplegarImagenesEnModal(
-                                              pregunta.imagenes
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-eye",
-                                          staticStyle: { color: "#2196f3" }
-                                        })
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#exampleModal"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editarPregunta(
-                                              pregunta.id_pregunta,
-                                              pregunta.imagenes,
-                                              pregunta.opciones
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-pen",
-                                          staticStyle: { color: "#ffae00" }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(
-                                      "\n                                        |\n                                        "
-                                    ),
-                                    _c(
-                                      "a",
-                                      {
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.eliminar(
-                                              pregunta.id_pregunta
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-trash",
-                                          staticStyle: { color: "#ff6258" }
-                                        })
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _c("td", [
-                                  _c("b", [
-                                    _c("p", [
-                                      _vm._v(
-                                        " Mostrando " +
-                                          _vm._s(displayData.length) +
-                                          " de " +
-                                          _vm._s(_vm.pregunta.length) +
-                                          " registros "
-                                      )
-                                    ])
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td")
-                              ])
-                            ],
-                            2
-                          )
-                        }
-                      }
-                    ])
-                  },
+                  "div",
+                  { staticClass: "table-responsive" },
                   [
                     _c(
-                      "thead",
-                      { attrs: { slot: "head" }, slot: "head" },
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.pregunta,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
+                                _vm._l(displayData, function(pregunta, preg) {
+                                  return _c(
+                                    "tr",
+                                    { key: pregunta.id_pregunta },
+                                    [
+                                      _c("td", {
+                                        domProps: {
+                                          innerHTML: _vm._s(
+                                            _vm.wrapText(pregunta.pregunta)
+                                          )
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-left" }, [
+                                        _c("p", [
+                                          _vm._v(
+                                            " " + _vm._s(pregunta.tema) + " "
+                                          )
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        _vm._l(pregunta.opciones, function(
+                                          opc
+                                        ) {
+                                          return _c("p", [
+                                            _vm._v(
+                                              "\n                                                    " +
+                                                _vm._s(opc.opcion) +
+                                                "\n                                                "
+                                            )
+                                          ])
+                                        }),
+                                        0
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        _vm._l(pregunta.opciones, function(
+                                          opc
+                                        ) {
+                                          return opc.respuesta
+                                            ? _c("p", [
+                                                _vm._v(
+                                                  "\n                                                    " +
+                                                    _vm._s(opc.opcion) +
+                                                    "\n\n                                                "
+                                                )
+                                              ])
+                                            : _vm._e()
+                                        }),
+                                        0
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-outline-primary",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target":
+                                                "#modalParaVerImagenes"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.desplegarImagenesEnModal(
+                                                  pregunta.imagenes
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-eye",
+                                              staticStyle: { color: "#2196f3" }
+                                            })
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-outline-warning",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target": "#exampleModal"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.editarPregunta(
+                                                  pregunta.id_pregunta,
+                                                  pregunta.imagenes,
+                                                  pregunta.opciones
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-pen",
+                                              staticStyle: { color: "#ffae00" }
+                                            })
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-outline-danger",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.eliminar(
+                                                  pregunta.id_pregunta
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-trash",
+                                              staticStyle: { color: "#ff6258" }
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            }
+                          }
+                        ])
+                      },
                       [
                         _c(
-                          "v-th",
-                          {
-                            attrs: { sortKey: "pregunta", defaultSort: "desc" }
-                          },
-                          [_vm._v("Pregunta")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-th",
-                          { attrs: { sortKey: "tema", defaultSort: "desc" } },
-                          [_vm._v("Tema")]
-                        ),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Opciones")]),
-                        _vm._v(" "),
-                        _c(
-                          "v-th",
-                          { attrs: { sortKey: "opcion", defaultSort: "desc" } },
-                          [_vm._v("Respuestas")]
-                        ),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Imagenes")]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v("Gestión")])
-                      ],
-                      1
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("smart-pagination", {
-                  attrs: {
-                    currentPage: _vm.currentPage,
-                    totalPages: _vm.totalPages
-                  },
-                  on: {
-                    "update:currentPage": function($event) {
-                      _vm.currentPage = $event
-                    },
-                    "update:current-page": function($event) {
-                      _vm.currentPage = $event
-                    }
-                  }
-                })
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "modal animated animate__bounceIn",
-              attrs: {
-                id: "exampleModal",
-                role: "dialog",
-                "aria-labelledby": "exampleModalLabel",
-                "aria-hidden": "true",
-                "data-focus": "false"
-              }
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "modal-dialog modal-dialog-centered",
-                  attrs: { role: "document" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal-content",
-                      staticStyle: { "border-radius": "15px" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "modal-body" },
-                        [
-                          _vm.editarPreguntaVar == false
-                            ? _c(
-                                "h3",
-                                {
-                                  staticClass: "modal-title",
-                                  attrs: { id: "exampleModalLabel" }
-                                },
-                                [
-                                  _vm._v(
-                                    " \n                                    Registrar pregunta  "
-                                  )
-                                ]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.editarPreguntaVar == true
-                            ? _c(
-                                "h3",
-                                {
-                                  staticClass: "modal-title",
-                                  attrs: { id: "exampleModalLabel" }
-                                },
-                                [
-                                  _vm._v(
-                                    " \n                                    Editar pregunta  "
-                                  )
-                                ]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            staticClass: "form-control",
-                            staticStyle: {
-                              margin: "0px",
-                              "font-size": "15px",
-                              "line-height": "20px",
-                              border: "1px solid rgb(222, 226, 230)"
-                            },
-                            attrs: {
-                              id: "pregunta",
-                              rows: "4",
-                              placeholder: "Escribe el reactivo"
-                            },
-                            on: {
-                              focus: function($event) {
-                                return _vm.limpiarCampos("pregunta")
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { attrs: { id: "msjInputPregunta" } }),
-                          _vm._v(" "),
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c("Select2", {
-                            attrs: { options: _vm.temas, id: "id_tema" },
-                            on: {
-                              select: function($event) {
-                                return _vm.cambioSelect($event)
-                              }
-                            },
-                            model: {
-                              value: _vm.id_tema,
-                              callback: function($$v) {
-                                _vm.id_tema = $$v
-                              },
-                              expression: "id_tema"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { attrs: { id: "msjSelectTema" } }),
-                          _vm._v(" "),
-                          _vm._m(3),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "row" }, [
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
                             _c(
-                              "div",
+                              "v-th",
                               {
-                                staticClass: "col-md-8",
-                                staticStyle: { padding: "0px" }
+                                attrs: {
+                                  sortKey: "pregunta",
+                                  defaultSort: "desc"
+                                }
                               },
-                              [
-                                _c("input", {
-                                  staticClass: "form-control",
-                                  staticStyle: { margin: "0px 0px 10px" },
-                                  attrs: { id: "inputOpcion", type: "text" },
-                                  on: {
-                                    focus: function($event) {
-                                      return _vm.limpiarCampos("respuesta")
-                                    }
-                                  }
-                                })
-                              ]
+                              [_vm._v("Pregunta")]
                             ),
                             _vm._v(" "),
                             _c(
-                              "div",
+                              "v-th",
                               {
-                                staticClass: "col-md-4",
-                                staticStyle: { padding: "0px" }
+                                attrs: { sortKey: "tema", defaultSort: "desc" }
                               },
-                              [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-success",
-                                    staticStyle: {
-                                      "border-radius": "25px",
-                                      margin: "0px 0px 10px",
-                                      height: "37px"
-                                    },
-                                    attrs: {
-                                      id: "btnAgregarOption",
-                                      type: "button"
-                                    },
-                                    on: { click: _vm.btnAgregarOpcion }
-                                  },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fas fa-plus-circle"
-                                    }),
-                                    _vm._v(" Agregar opción ")
-                                  ]
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(4),
-                          _vm._v(" "),
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticStyle: {
-                                border: "0.5px dashed black",
-                                width: "100%"
-                              },
-                              on: {
-                                dragover: _vm.dragover,
-                                dragleave: _vm.dragleave,
-                                drop: _vm.drop
-                              }
-                            },
-                            [
-                              _c("input", {
-                                ref: "file",
-                                staticClass:
-                                  "w-px h-px opacity-0 overflow-hidden absolute",
+                              [_vm._v("Tema")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Opciones")]),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
                                 attrs: {
-                                  type: "file",
-                                  id: "assetsFieldHandle",
-                                  accept: ".pdf,.jpg,.jpeg,.png",
-                                  hidden: ""
-                                },
-                                on: { change: _vm.onChange }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(6),
-                              _vm._v(" "),
-                              this.subidor.imagenesVistaPrevia.length
-                                ? _c(
-                                    "table",
-                                    {
-                                      staticStyle: {
-                                        "list-style-type": "none",
-                                        width: "100%"
-                                      }
-                                    },
-                                    [
-                                      _vm._m(7),
-                                      _vm._v(" "),
-                                      _vm._l(
-                                        _vm.subidor.imagenesVistaPrevia,
-                                        function(imagen) {
-                                          return _c("tr", [
-                                            _c(
-                                              "td",
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-content-center"
-                                              },
-                                              [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "15em"
-                                                  },
-                                                  attrs: { src: imagen.imagen }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "a",
-                                                {
-                                                  attrs: {
-                                                    title: "Eliminar la imagen"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.remove(imagen)
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass:
-                                                      "fas fa-trash-alt",
-                                                    staticStyle: {
-                                                      color: "#ff6258"
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ])
-                                          ])
-                                        }
-                                      )
-                                    ],
-                                    2
-                                  )
-                                : _vm._e()
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm._m(8),
-                          _vm._v(" "),
-                          _vm._m(9),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "btn btn-primary float-right btn-lg mt-4 mr-2",
-                              staticStyle: { "border-radius": "25px" },
-                              attrs: { type: "button" },
-                              on: { click: _vm.btnGuardarPregunta }
+                                  sortKey: "opcion",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Respuestas")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Imagenes")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.pregunta.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
                             },
-                            [
-                              _c("i", { staticClass: "fas fa-save" }),
-                              _vm._v(" Guardar")
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass: "modal animated animate__bounceIn",
+          attrs: {
+            id: "exampleModal",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true",
+            "data-focus": "false"
+          }
+        },
+        [
           _c(
             "div",
             {
-              staticClass: "modal animated animate__bounceIn",
-              attrs: {
-                id: "modalParaVerImagenes",
-                role: "dialog",
-                "aria-labelledby": "exampleModalLabel",
-                "aria-hidden": "true",
-                "data-focus": "false"
-              }
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
             },
             [
-              _c(
-                "div",
-                {
-                  staticClass: "modal-dialog  modal-dialog-centered",
-                  attrs: { role: "document" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal-content",
-                      staticStyle: { "border-radius": "15px" }
-                    },
-                    [
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c(
+              _c("div", { staticClass: "modal-content" }, [
+                _c(
+                  "div",
+                  { staticClass: "modal-body" },
+                  [
+                    _vm.editarPreguntaVar == false
+                      ? _c(
                           "h3",
                           {
                             staticClass: "modal-title",
@@ -60297,73 +60030,330 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              " Imagenes adjuntas en la pregunta\n                            "
+                              "\n                            Registrar pregunta "
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { width: "100%" } }, [
-                          _c(
-                            "table",
-                            {
-                              staticStyle: {
-                                "list-style-type": "none",
-                                width: "100%"
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.editarPreguntaVar == true
+                      ? _c(
+                          "h3",
+                          {
+                            staticClass: "modal-title",
+                            attrs: { id: "exampleModalLabel" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Editar pregunta "
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      staticClass: "form-control",
+                      staticStyle: {
+                        margin: "0px",
+                        "font-size": "15px",
+                        "line-height": "20px",
+                        border: "1px solid rgb(222, 226, 230)"
+                      },
+                      attrs: {
+                        id: "pregunta",
+                        rows: "4",
+                        placeholder: "Escribe el reactivo"
+                      },
+                      on: {
+                        focus: function($event) {
+                          return _vm.limpiarCampos("pregunta")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { attrs: { id: "msjInputPregunta" } }),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("Select2", {
+                      attrs: { options: _vm.temas, id: "id_tema" },
+                      on: {
+                        select: function($event) {
+                          return _vm.cambioSelect($event)
+                        }
+                      },
+                      model: {
+                        value: _vm.id_tema,
+                        callback: function($$v) {
+                          _vm.id_tema = $$v
+                        },
+                        expression: "id_tema"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { attrs: { id: "msjSelectTema" } }),
+                    _vm._v(" "),
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-md-8",
+                          staticStyle: { padding: "0px" }
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-control",
+                            staticStyle: { margin: "0px 0px 10px" },
+                            attrs: { id: "inputOpcion", type: "text" },
+                            on: {
+                              focus: function($event) {
+                                return _vm.limpiarCampos("respuesta")
                               }
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-md-4",
+                          staticStyle: { padding: "0px" }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success",
+                              staticStyle: {
+                                margin: "0px 0px 10px",
+                                height: "37px"
+                              },
+                              attrs: { id: "btnAgregarOption", type: "button" },
+                              on: { click: _vm.btnAgregarOpcion }
                             },
                             [
-                              _vm._m(10),
-                              _vm._v(" "),
-                              _vm._l(_vm.imagenesParaDesplegarEnModal, function(
-                                imagen
-                              ) {
-                                return _c("tr", [
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass:
-                                        "d-flex justify-content-center"
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: { width: "15em" },
-                                        attrs: {
-                                          src:
-                                            "/imagenes/preguntas/" +
-                                            imagen.nombre
-                                        }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(imagen.alias) +
-                                        "\n                                        "
-                                    )
-                                  ])
-                                ])
-                              })
-                            ],
-                            2
-                          ),
-                          _vm._v(" "),
-                          _vm.imagenesParaDesplegarEnModal.length == 0
-                            ? _c("span", { staticClass: "text-center" }, [
-                                _vm._v(
-                                  " Está\n                                    pregunta no tiene imagenes adjuntas "
-                                )
-                              ])
-                            : _vm._e()
-                        ]),
+                              _c("i", { staticClass: "fas fa-plus-circle" }),
+                              _vm._v(" Agregar opción ")
+                            ]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "0.5px dashed black",
+                          width: "100%"
+                        },
+                        on: {
+                          dragover: _vm.dragover,
+                          dragleave: _vm.dragleave,
+                          drop: _vm.drop
+                        }
+                      },
+                      [
+                        _c("input", {
+                          ref: "file",
+                          staticClass:
+                            "w-px h-px opacity-0 overflow-hidden absolute",
+                          attrs: {
+                            type: "file",
+                            id: "assetsFieldHandle",
+                            accept: ".pdf,.jpg,.jpeg,.png",
+                            hidden: ""
+                          },
+                          on: { change: _vm.onChange }
+                        }),
                         _vm._v(" "),
-                        _vm._m(11)
-                      ])
+                        _vm._m(7),
+                        _vm._v(" "),
+                        this.subidor.imagenesVistaPrevia.length
+                          ? _c(
+                              "table",
+                              {
+                                staticStyle: {
+                                  "list-style-type": "none",
+                                  width: "100%"
+                                }
+                              },
+                              [
+                                _vm._m(8),
+                                _vm._v(" "),
+                                _vm._l(
+                                  _vm.subidor.imagenesVistaPrevia,
+                                  function(imagen) {
+                                    return _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticClass:
+                                            "d-flex justify-content-center"
+                                        },
+                                        [
+                                          _c("img", {
+                                            staticStyle: { width: "15em" },
+                                            attrs: { src: imagen.imagen }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              title: "Eliminar la imagen"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.remove(imagen)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-trash-alt",
+                                              staticStyle: { color: "#ff6258" }
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ])
+                                  }
+                                )
+                              ],
+                              2
+                            )
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-primary float-right btn-lg mt-4 mr-2",
+                        attrs: { type: "button" },
+                        on: { click: _vm.btnGuardarPregunta }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-save" }),
+                        _vm._v(" Guardar")
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal animated animate__bounceIn",
+          attrs: {
+            id: "modalParaVerImagenes",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true",
+            "data-focus": "false"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog  modal-dialog-centered",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" }
+                    },
+                    [
+                      _vm._v(
+                        " Imagenes adjuntas en la pregunta\n                        "
+                      )
                     ]
-                  )
-                ]
-              )
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticStyle: { width: "100%" } }, [
+                    _c(
+                      "table",
+                      {
+                        staticStyle: {
+                          "list-style-type": "none",
+                          width: "100%"
+                        }
+                      },
+                      [
+                        _vm._m(11),
+                        _vm._v(" "),
+                        _vm._l(_vm.imagenesParaDesplegarEnModal, function(
+                          imagen
+                        ) {
+                          return _c("tr", [
+                            _c(
+                              "td",
+                              { staticClass: "d-flex justify-content-center" },
+                              [
+                                _c("img", {
+                                  staticStyle: { width: "15em" },
+                                  attrs: {
+                                    src: "/imagenes/preguntas/" + imagen.nombre
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(imagen.alias) +
+                                  "\n                                    "
+                              )
+                            ])
+                          ])
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm.imagenesParaDesplegarEnModal.length == 0
+                      ? _c("span", { staticClass: "text-center" }, [
+                          _vm._v(
+                            " Está\n                                pregunta no tiene imagenes adjuntas "
+                          )
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(12)
+                ])
+              ])
             ]
           )
         ]
@@ -60376,36 +60366,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Preguntas opcion multiple ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Preguntas")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Preguntas "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(
-                  "\n                        Preguntas opcion multiple\n                    "
-                )
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v(" Preguntas "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Opción multiple ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Preguntas opcion multiple ")])
     ])
   },
   function() {
@@ -60438,7 +60431,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-left", attrs: { for: "opciones" } }, [
       _c("b", [
-        _vm._v(" Opciones  "),
+        _vm._v(" Opciones "),
         _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
         _vm._v(": ")
       ])
@@ -60476,7 +60469,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-left mt-2 mb-0" }, [
       _c("b", [
-        _vm._v(" Imagenes  "),
+        _vm._v(" Imagenes "),
         _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
         _vm._v(": ")
       ])
@@ -60502,7 +60495,7 @@ var staticRenderFns = [
                 [
                   _c("i", { staticClass: "fas fa-cloud-download-alt" }),
                   _vm._v(
-                    " Arrastra la imagen\n                                                    o da clic aquí para subir\n                                                "
+                    " Arrastra la imagen\n                                                o da clic aquí para subir\n                                            "
                   )
                 ]
               )
@@ -60534,7 +60527,7 @@ var staticRenderFns = [
       },
       [
         _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
-        _vm._v(" Datos obligatorios ")
+        _vm._v("\n                            Datos obligatorios ")
       ]
     )
   },
@@ -60546,10 +60539,12 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
-      [_c("i", { staticClass: "fas fa-ban" }), _vm._v(" Cerrar")]
+      [
+        _c("i", { staticClass: "fas fa-ban" }),
+        _vm._v("\n                            Cerrar")
+      ]
     )
   },
   function() {
@@ -60559,13 +60554,13 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [
         _vm._v(
-          "\n                                            Imagen\n                                        "
+          "\n                                        Imagen\n                                    "
         )
       ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                                            Nombre\n                                        "
+          "\n                                        Nombre\n                                    "
         )
       ])
     ])
@@ -60578,12 +60573,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                            ")
+        _vm._v(" Cerrar\n                        ")
       ]
     )
   }
@@ -60650,7 +60644,7 @@ var render = function() {
                         [
                           _c("i", { staticClass: "fas fa-edit" }),
                           _vm._v(
-                            " Registrar pregunta\n                        "
+                            " Registrar pregunta\n                                "
                           )
                         ]
                       )
@@ -60723,15 +60717,170 @@ var render = function() {
                             return _c(
                               "tbody",
                               {},
-                              _vm._l(_vm.cpreguntas, function(index) {
-                                return _c("tr", { key: index }, [
-                                  _c("td", {
-                                    domProps: {
-                                      innerHTML: _vm._s(
-                                        _vm.wrapText(_vm.pregunta)
+                              _vm._l(displayData, function(pregunta, cont) {
+                                return _c("tr", { key: pregunta.id }, [
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        width: "300px",
+                                        "white-space": "normal"
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(pregunta.pregunta))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        width: "300px",
+                                        "white-space": "normal"
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(pregunta.tema))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        width: "300px",
+                                        "white-space": "normal"
+                                      }
+                                    },
+                                    _vm._l(_vm.opciones[cont], function(
+                                      opcionA
+                                    ) {
+                                      return _c("span", [
+                                        opcionA.esrespuesta === 1
+                                          ? _c("p", [
+                                              _c("b", [
+                                                _vm._v(
+                                                  " " + _vm._s(opcionA.opcion)
+                                                )
+                                              ])
+                                            ])
+                                          : _c("p", [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(opcionA.opcion) +
+                                                  " "
+                                              )
+                                            ]),
+                                        _vm._v(" "),
+                                        _c("br")
+                                      ])
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticStyle: {
+                                        width: "300px",
+                                        "white-space": "normal"
+                                      }
+                                    },
+                                    _vm._l(_vm.opciones[cont], function(
+                                      opcionA,
+                                      cont2
+                                    ) {
+                                      return _c(
+                                        "span",
+                                        [
+                                          _c("b", [
+                                            _vm._v(
+                                              " " + _vm._s(opcionA.opcion) + " "
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _vm._l(
+                                            _vm.comodines[cont][cont2],
+                                            function(opcionAa, cont3) {
+                                              return _c(
+                                                "span",
+                                                [
+                                                  _vm._l(opcionAa, function(c) {
+                                                    return _c(
+                                                      "span",
+                                                      { attrs: { v: "" } },
+                                                      [
+                                                        _c("br"),
+                                                        _vm._v(
+                                                          _vm._s(c.comodin) +
+                                                            "=" +
+                                                            _vm._s(
+                                                              c.valor_comodin
+                                                            )
+                                                        )
+                                                      ]
+                                                    )
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("br")
+                                                ],
+                                                2
+                                              )
+                                            }
+                                          ),
+                                          _vm._v(" "),
+                                          _c("br")
+                                        ],
+                                        2
                                       )
-                                    }
-                                  })
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _c("td", { staticClass: "text-center" }, [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          "data-toggle": "modal",
+                                          "data-target": "#exampleModal"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.abrirModal(
+                                              pregunta.id_pregunta,
+                                              pregunta.imagenes
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fas fa-pen",
+                                          staticStyle: { color: "#ffae00" }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n                                        |\n                                        "
+                                    ),
+                                    _c(
+                                      "a",
+                                      {
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.eliminarCalculadas(
+                                              pregunta.id_pregunta,
+                                              pregunta.imagenes
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fas fa-trash",
+                                          staticStyle: { color: "#ff6258" }
+                                        })
+                                      ]
+                                    )
+                                  ])
                                 ])
                               }),
                               0
@@ -60771,20 +60920,12 @@ var render = function() {
                           _c(
                             "v-th",
                             {
-                              attrs: { sortKey: "opcion", defaultSort: "desc" }
-                            },
-                            [_vm._v("Respuestas")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
                               attrs: { sortKey: "comodin", defaultSort: "desc" }
                             },
                             [_vm._v("Comodines")]
                           ),
                           _vm._v(" "),
-                          _c("th", [_vm._v("Opciones")])
+                          _c("th", [_vm._v("Acciones")])
                         ],
                         1
                       )
@@ -60848,7 +60989,13 @@ var render = function() {
                             staticClass: "modal-title",
                             attrs: { id: "exampleModalLabel" }
                           },
-                          [_c("b", [_vm._v(" Registrar pregunta ")])]
+                          [
+                            _c("b", [
+                              _vm._v(
+                                "\n                                    Registrar pregunta "
+                              )
+                            ])
+                          ]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -60859,7 +61006,13 @@ var render = function() {
                             staticClass: "modal-title",
                             attrs: { id: "exampleModalLabel" }
                           },
-                          [_c("b", [_vm._v(" Editar pregunta ")])]
+                          [
+                            _c("b", [
+                              _vm._v(
+                                "\n                                    Editar pregunta "
+                              )
+                            ])
+                          ]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -60874,7 +61027,7 @@ var render = function() {
                           staticClass: "text-left mb-2",
                           attrs: { for: "pregunta" }
                         },
-                        [_vm._v("  Reactivo:  ")]
+                        [_vm._v(" Reactivo: ")]
                       ),
                       _vm._v(" "),
                       _c("textarea", {
@@ -60989,7 +61142,7 @@ var render = function() {
                           staticClass: "text-left mb-2",
                           attrs: { for: "opciones" }
                         },
-                        [_vm._v("  Opciones:  ")]
+                        [_vm._v(" Opciones: ")]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
@@ -61091,10 +61244,12 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v("  Preguntas  "),
+                  _vm._v(" Preguntas "),
                   _c("i", { staticClass: "fas fa-angle-right" })
                 ]),
-                _vm._v(" Preguntas opcion multiple\n            ")
+                _vm._v(
+                  "\n                        Preguntas opcion multiple\n                    "
+                )
               ])
             ])
           ]
@@ -61131,7 +61286,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { staticClass: "text-left mb-2" }, [
-        _vm._v("\n                Tema:\n              ")
+        _vm._v(
+          "\n                                    Tema:\n                                "
+        )
       ]),
       _vm._v(" "),
       _c("select", {
@@ -61218,186 +61375,132 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-lg-12 " }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "page-header border-0",
-                  staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                    },
-                    [
-                      _c("h2", { staticClass: "page-title" }, [
-                        _vm._v(" Listado de preguntas verdadero/falso ")
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "quick-links ml-auto" }, [
-                        _c("li", [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary float-right btn-lg",
-                              staticStyle: { "border-radius": "25px" },
-                              attrs: {
-                                type: "button",
-                                "data-toggle": "modal",
-                                "data-target": "#registrarPregunta"
-                              },
-                              on: { click: _vm.cambiarModo }
-                            },
-                            [
-                              _c("i", { staticClass: "fas fa-edit" }),
-                              _vm._v(
-                                " Registrar pregunta\n                                "
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "page-header ",
-                  staticStyle: {
-                    border: "1px solid #dee2e6",
-                    margin: "0px",
-                    background: "#f5f5f5"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v(" Término de búsqueda: ")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filters.pregunta.value,
-                            expression: "filters.pregunta.value"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        staticStyle: {
-                          "border-radius": "10px",
-                          height: "37px",
-                          margin: "0px"
-                        },
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 " }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
                         attrs: {
-                          type: "search",
-                          placeholder: "Ej. ¿Cuánto es 2+2?"
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarPregunta"
                         },
-                        domProps: { value: _vm.filters.pregunta.value },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.filters.pregunta,
-                              "value",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v("Campo de búsqueda: ")]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticStyle: {
-                            "border-radius": "10px",
-                            margin: "0px"
-                          },
-                          attrs: { name: "campoBusqueda", id: "campoBusqueda" },
-                          on: { change: _vm.cambiarCampoDeBusqueda }
-                        },
-                        [
-                          _c("option", { attrs: { value: "pregunta" } }, [
-                            _vm._v("Pregunta")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "tema" } }, [
-                            _vm._v("Tema")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "opcion" } }, [
-                            _vm._v("Respuesta")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
+                        on: { click: _vm.cambiarModo }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-edit" }),
+                        _vm._v(" Nueva\n                                    ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "table-responsive" },
-                [
-                  _c(
-                    "v-table",
-                    {
-                      staticClass: "table table-hover",
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        data: _vm.pregunta,
-                        filters: _vm.filters,
-                        currentPage: _vm.currentPage,
-                        pageSize: 5
-                      },
-                      on: {
-                        "update:currentPage": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        "update:current-page": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        totalPagesChanged: function($event) {
-                          _vm.totalPages = $event
-                        }
-                      },
-                      scopedSlots: _vm._u([
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
                         {
-                          key: "body",
-                          fn: function(ref) {
-                            var displayData = ref.displayData
-                            return _c(
-                              "tbody",
-                              {},
-                              [
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.pregunta.value,
+                          expression: "filters.pregunta.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.pregunta.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.pregunta,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "pregunta" } }, [
+                          _vm._v("Pregunta")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tema" } }, [
+                          _vm._v("Tema")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "opcion" } }, [
+                          _vm._v("Respuesta")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.pregunta,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
                                 _vm._l(displayData, function(pregunta) {
                                   return _c("tr", { key: pregunta.id }, [
                                     _c("td", {
@@ -61413,19 +61516,17 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
-                                      _c("tr", [
-                                        _vm._v(
-                                          " \n                                            " +
-                                            _vm._s(pregunta.opcion) +
-                                            " \n                                        "
-                                        )
-                                      ])
+                                      _vm._v(
+                                        " " + _vm._s(pregunta.opcion) + " "
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
                                       _c(
                                         "a",
                                         {
+                                          staticClass:
+                                            "btn btn-outline-primary",
                                           attrs: {
                                             "data-toggle": "modal",
                                             "data-target":
@@ -61443,7 +61544,12 @@ var render = function() {
                                           _c("i", {
                                             staticClass: "fas fa-eye",
                                             staticStyle: { color: "#2196f3" }
-                                          })
+                                          }),
+                                          _vm._v(
+                                            "\n                                                    " +
+                                              _vm._s(pregunta.imagenes) +
+                                              "\n                                                "
+                                          )
                                         ]
                                       )
                                     ]),
@@ -61452,6 +61558,8 @@ var render = function() {
                                       _c(
                                         "a",
                                         {
+                                          staticClass:
+                                            "btn btn-outline-warning",
                                           on: {
                                             click: function($event) {
                                               return _vm.editarPregunta(
@@ -61473,13 +61581,14 @@ var render = function() {
                                             staticStyle: { color: "#ffae00" }
                                           })
                                         ]
-                                      ),
-                                      _vm._v(
-                                        "\n                                        |\n                                        "
-                                      ),
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
                                       _c(
                                         "a",
                                         {
+                                          staticClass: "btn btn-outline-danger",
                                           on: {
                                             click: function($event) {
                                               return _vm.eliminarPregunta(
@@ -61498,478 +61607,316 @@ var render = function() {
                                     ])
                                   ])
                                 }),
-                                _vm._v(" "),
-                                _c("tr", [
-                                  _c("td", [
-                                    _c("b", [
-                                      _c("p", [
-                                        _vm._v(
-                                          " Mostrando " +
-                                            _vm._s(displayData.length) +
-                                            " de " +
-                                            _vm._s(_vm.pregunta.length) +
-                                            " registros "
-                                        )
-                                      ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td")
-                                ])
-                              ],
-                              2
-                            )
+                                0
+                              )
+                            }
                           }
-                        }
-                      ])
-                    },
-                    [
-                      _c(
-                        "thead",
-                        { attrs: { slot: "head" }, slot: "head" },
-                        [
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "pregunta",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Pregunta")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            { attrs: { sortKey: "tema", defaultSort: "desc" } },
-                            [_vm._v("Tema")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: { sortKey: "opcion", defaultSort: "desc" }
-                            },
-                            [_vm._v("Respuesta")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v(" Imagenes ")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Opciones")])
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("smart-pagination", {
-                attrs: {
-                  currentPage: _vm.currentPage,
-                  totalPages: _vm.totalPages
-                },
-                on: {
-                  "update:currentPage": function($event) {
-                    _vm.currentPage = $event
-                  },
-                  "update:current-page": function($event) {
-                    _vm.currentPage = $event
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "modal animated animate__bounceIn",
-                  attrs: {
-                    id: "registrarPregunta",
-                    role: "dialog",
-                    "aria-labelledby": "exampleModalLabel",
-                    "aria-hidden": "true",
-                    "data-focus": "false"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal-dialog modal-dialog-centered",
-                      attrs: { role: "document" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "modal-content",
-                          staticStyle: { "border-radius": "15px" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "modal-body" },
-                            [
-                              _vm.modoEdicion
-                                ? _c(
-                                    "h3",
-                                    {
-                                      staticClass: "modal-title",
-                                      attrs: { id: "exampleModalLabel" }
-                                    },
-                                    [_vm._v(" Actualizar pregunta ")]
-                                  )
-                                : _c(
-                                    "h3",
-                                    {
-                                      staticClass: "modal-title",
-                                      attrs: { id: "exampleModalLabel" }
-                                    },
-                                    [_vm._v(" Registrar pregunta ")]
-                                  ),
-                              _vm._v(" "),
-                              _vm._m(1),
-                              _vm._v(" "),
-                              _c("textarea", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.form.pregunta,
-                                    expression: "form.pregunta"
-                                  }
-                                ],
-                                staticClass: "form-control mt-0 mb-0",
-                                staticStyle: {
-                                  margin: "0px",
-                                  "font-size": "15px",
-                                  "line-height": "20px"
-                                },
-                                attrs: {
-                                  rows: "4",
-                                  id: "inpPregunta",
-                                  type: "text",
-                                  placeholder: "Pregunta"
-                                },
-                                domProps: { value: _vm.form.pregunta },
-                                on: {
-                                  focus: function($event) {
-                                    return _vm.limpiarCampo("pregunta")
-                                  },
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.form,
-                                      "pregunta",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("span", {
-                                staticStyle: { color: "#ff6258" },
-                                attrs: { id: "msjInputPregunta" }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(2),
-                              _vm._v(" "),
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.form.respuesta,
-                                      expression: "form.respuesta"
-                                    }
-                                  ],
-                                  staticClass: "form-control mt-0 mb-0",
-                                  attrs: { id: "selRespuesta" },
-                                  on: {
-                                    focus: function($event) {
-                                      return _vm.limpiarCampo("respuesta")
-                                    },
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.$set(
-                                        _vm.form,
-                                        "respuesta",
-                                        $event.target.multiple
-                                          ? $$selectedVal
-                                          : $$selectedVal[0]
-                                      )
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("option", { attrs: { value: "" } }, [
-                                    _vm._v("Respuesta")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "option",
-                                    { attrs: { value: "verdadero" } },
-                                    [_vm._v("Verdadero")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("option", { attrs: { value: "falso" } }, [
-                                    _vm._v("Falso")
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", {
-                                staticStyle: { color: "#ff6258" },
-                                attrs: { id: "msjInputRespuesta" }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(3),
-                              _vm._v(" "),
-                              _c("Select2", {
-                                attrs: { options: this.temas, id: "id_tema" },
-                                on: {
-                                  select: function($event) {
-                                    return _vm.cambioSelect($event)
-                                  }
-                                },
-                                model: {
-                                  value: _vm.id_tema,
-                                  callback: function($$v) {
-                                    _vm.id_tema = $$v
-                                  },
-                                  expression: "id_tema"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("span", {
-                                staticStyle: { color: "#ff6258" },
-                                attrs: { id: "msjSelectTema" }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(4),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticStyle: {
-                                    border: "0.5px dashed black",
-                                    width: "100%"
-                                  },
-                                  on: {
-                                    dragover: _vm.dragover,
-                                    dragleave: _vm.dragleave,
-                                    drop: _vm.drop
-                                  }
-                                },
-                                [
-                                  _c("input", {
-                                    ref: "file",
-                                    staticClass:
-                                      "w-px h-px opacity-0 overflow-hidden absolute",
-                                    attrs: {
-                                      type: "file",
-                                      id: "assetsFieldHandle",
-                                      accept: ".pdf,.jpg,.jpeg,.png",
-                                      hidden: ""
-                                    },
-                                    on: { change: _vm.onChange }
-                                  }),
-                                  _vm._v(" "),
-                                  _vm._m(5),
-                                  _vm._v(" "),
-                                  this.subidor.imagenesVistaPrevia.length
-                                    ? _c(
-                                        "table",
-                                        {
-                                          staticStyle: {
-                                            "list-style-type": "none",
-                                            width: "100%"
-                                          }
-                                        },
-                                        [
-                                          _vm._m(6),
-                                          _vm._v(" "),
-                                          _vm._l(
-                                            _vm.subidor.imagenesVistaPrevia,
-                                            function(imagen) {
-                                              return _c("tr", [
-                                                _c(
-                                                  "td",
-                                                  {
-                                                    staticClass:
-                                                      "d-flex justify-content-center"
-                                                  },
-                                                  [
-                                                    _c("img", {
-                                                      staticStyle: {
-                                                        width: "15em"
-                                                      },
-                                                      attrs: {
-                                                        src: imagen.imagen
-                                                      }
-                                                    })
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _c(
-                                                    "a",
-                                                    {
-                                                      attrs: {
-                                                        title:
-                                                          "Eliminar la imagen"
-                                                      },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          return _vm.remove(
-                                                            imagen
-                                                          )
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fas fa-trash-alt",
-                                                        staticStyle: {
-                                                          color: "#ff6258"
-                                                        }
-                                                      })
-                                                    ]
-                                                  )
-                                                ])
-                                              ])
-                                            }
-                                          )
-                                        ],
-                                        2
-                                      )
-                                    : _vm._e()
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(7),
-                              _vm._v(" "),
-                              _vm.modoEdicion
-                                ? _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary float-right btn-lg mt-4 mr-2",
-                                      staticStyle: { "border-radius": "25px" },
-                                      attrs: { type: "button" },
-                                      on: { click: _vm.actualizarPregunta }
-                                    },
-                                    [
-                                      _c("i", { staticClass: "fas fa-save" }),
-                                      _vm._v(
-                                        " Editar \n                                    "
-                                      )
-                                    ]
-                                  )
-                                : _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary float-right btn-lg mt-4 mr-2",
-                                      staticStyle: { "border-radius": "25px" },
-                                      attrs: { type: "button" },
-                                      on: { click: _vm.registrarPregunta }
-                                    },
-                                    [
-                                      _c("i", { staticClass: "fas fa-save" }),
-                                      _vm._v(
-                                        " Guardar\n                                    "
-                                      )
-                                    ]
-                                  )
-                            ],
-                            1
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "modal animated animate__bounceIn",
-                  attrs: {
-                    id: "modalParaVerImagenes",
-                    role: "dialog",
-                    "aria-labelledby": "exampleModalLabel",
-                    "aria-hidden": "true"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal-dialog modal-dialog-centered",
-                      attrs: { role: "document" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "modal-content",
-                          staticStyle: { "border-radius": "15px" }
-                        },
-                        [
-                          _c("div", { staticClass: "modal-body" }, [
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
                             _c(
-                              "h3",
+                              "v-th",
                               {
-                                staticClass: "modal-title",
-                                attrs: { id: "exampleModalLabel" }
+                                attrs: {
+                                  sortKey: "pregunta",
+                                  defaultSort: "desc"
+                                }
                               },
-                              [
-                                _vm._v(
-                                  " \n                                        Imagenes adjuntas en la pregunta\n                                    "
-                                )
-                              ]
+                              [_vm._v("Pregunta")]
                             ),
                             _vm._v(" "),
-                            _c("div", { staticStyle: { width: "100%" } }, [
-                              _c(
+                            _c(
+                              "v-th",
+                              {
+                                attrs: { sortKey: "tema", defaultSort: "desc" }
+                              },
+                              [_vm._v("Tema")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "opcion",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Respuesta")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Imagenes ")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.pregunta.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal animated animate__bounceIn",
+            attrs: {
+              id: "registrarPregunta",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true",
+              "data-focus": "false"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c(
+                    "div",
+                    { staticClass: "modal-body" },
+                    [
+                      _vm.modoEdicion
+                        ? _c(
+                            "h3",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [
+                              _vm._v(
+                                " Actualizar\n                                pregunta "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "h3",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v(" Registrar pregunta ")]
+                          ),
+                      _vm._v(" "),
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.pregunta,
+                            expression: "form.pregunta"
+                          }
+                        ],
+                        staticClass: "form-control mt-0 mb-0",
+                        staticStyle: {
+                          margin: "0px",
+                          "font-size": "15px",
+                          "line-height": "20px"
+                        },
+                        attrs: {
+                          rows: "4",
+                          id: "inpPregunta",
+                          type: "text",
+                          placeholder: "Pregunta"
+                        },
+                        domProps: { value: _vm.form.pregunta },
+                        on: {
+                          focus: function($event) {
+                            return _vm.limpiarCampo("pregunta")
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "pregunta", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", {
+                        staticStyle: { color: "#ff6258" },
+                        attrs: { id: "msjInputPregunta" }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.respuesta,
+                              expression: "form.respuesta"
+                            }
+                          ],
+                          staticClass: "form-control mt-0 mb-0",
+                          attrs: { id: "selRespuesta" },
+                          on: {
+                            focus: function($event) {
+                              return _vm.limpiarCampo("respuesta")
+                            },
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "respuesta",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Respuesta")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "verdadero" } }, [
+                            _vm._v("Verdadero")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "falso" } }, [
+                            _vm._v("Falso")
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", {
+                        staticStyle: { color: "#ff6258" },
+                        attrs: { id: "msjInputRespuesta" }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("Select2", {
+                        attrs: { options: this.temas, id: "id_tema" },
+                        on: {
+                          select: function($event) {
+                            return _vm.cambioSelect($event)
+                          }
+                        },
+                        model: {
+                          value: _vm.id_tema,
+                          callback: function($$v) {
+                            _vm.id_tema = $$v
+                          },
+                          expression: "id_tema"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", {
+                        staticStyle: { color: "#ff6258" },
+                        attrs: { id: "msjSelectTema" }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticStyle: {
+                            border: "0.5px solid #dee2e6",
+                            width: "100%"
+                          },
+                          on: {
+                            dragover: _vm.dragover,
+                            dragleave: _vm.dragleave,
+                            drop: _vm.drop
+                          }
+                        },
+                        [
+                          _c("input", {
+                            ref: "file",
+                            staticClass:
+                              "w-px h-px opacity-0 overflow-hidden absolute",
+                            attrs: {
+                              type: "file",
+                              id: "assetsFieldHandle",
+                              accept: ".pdf,.jpg,.jpeg,.png",
+                              hidden: ""
+                            },
+                            on: { change: _vm.onChange }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(6),
+                          _vm._v(" "),
+                          this.subidor.imagenesVistaPrevia.length
+                            ? _c(
                                 "table",
-                                {
-                                  staticStyle: {
-                                    "list-style-type": "none",
-                                    width: "100%"
-                                  }
-                                },
+                                { staticClass: "table table-hover" },
                                 [
-                                  _vm._m(8),
+                                  _vm._m(7),
                                   _vm._v(" "),
                                   _vm._l(
-                                    _vm.imagenesParaDesplegarEnModal,
+                                    _vm.subidor.imagenesVistaPrevia,
                                     function(imagen) {
                                       return _c("tr", [
                                         _c(
@@ -61981,20 +61928,34 @@ var render = function() {
                                           [
                                             _c("img", {
                                               staticStyle: { width: "15em" },
-                                              attrs: {
-                                                src:
-                                                  "/imagenes/preguntas/" +
-                                                  imagen.nombre
-                                              }
+                                              attrs: { src: imagen.imagen }
                                             })
                                           ]
                                         ),
                                         _vm._v(" "),
                                         _c("td", [
-                                          _vm._v(
-                                            "\n                                                    " +
-                                              _vm._s(imagen.alias) +
-                                              "\n                                                "
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass:
+                                                "btn btn-outline-danger",
+                                              attrs: {
+                                                title: "Eliminar la imagen"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.remove(imagen)
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fas fa-trash-alt",
+                                                staticStyle: {
+                                                  color: "#ff6258"
+                                                }
+                                              })
+                                            ]
                                           )
                                         ])
                                       ])
@@ -62002,30 +61963,145 @@ var render = function() {
                                   )
                                 ],
                                 2
+                              )
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _vm.modoEdicion
+                        ? _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary float-right btn-lg mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: { click: _vm.actualizarPregunta }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-save" }),
+                              _vm._v(" Editar\n                            ")
+                            ]
+                          )
+                        : _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary float-right btn-lg mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: { click: _vm.registrarPregunta }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-save" }),
+                              _vm._v(" Guardar\n                            ")
+                            ]
+                          )
+                    ],
+                    1
+                  )
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal animated animate__bounceIn",
+            attrs: {
+              id: "modalParaVerImagenes",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-dialog-centered",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "h3",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLabel" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Imagenes adjuntas en la pregunta\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticStyle: { width: "100%" } }, [
+                      _c(
+                        "table",
+                        {
+                          staticStyle: {
+                            "list-style-type": "none",
+                            width: "100%"
+                          }
+                        },
+                        [
+                          _vm._m(9),
+                          _vm._v(" "),
+                          _vm._l(_vm.imagenesParaDesplegarEnModal, function(
+                            imagen
+                          ) {
+                            return _c("tr", [
+                              _c(
+                                "td",
+                                {
+                                  staticClass: "d-flex justify-content-center"
+                                },
+                                [
+                                  _c("img", {
+                                    staticStyle: { width: "15em" },
+                                    attrs: {
+                                      src:
+                                        "/imagenes/preguntas/" + imagen.nombre
+                                    }
+                                  })
+                                ]
                               ),
                               _vm._v(" "),
-                              _vm.imagenesParaDesplegarEnModal.length == 0
-                                ? _c("span", { staticClass: "text-center" }, [
-                                    _vm._v(
-                                      "\n                                            Esta pregunta no tiene imagenes adjuntas \n                                        "
-                                    )
-                                  ])
-                                : _vm._e()
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(9)
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(imagen.alias) +
+                                    "\n                                        "
+                                )
+                              ])
+                            ])
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _vm.imagenesParaDesplegarEnModal.length == 0
+                        ? _c("span", { staticClass: "text-center" }, [
+                            _vm._v(
+                              "\n                                    Esta pregunta no tiene imagenes adjuntas\n                                "
+                            )
                           ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ],
-            1
-          )
-        ]
-      )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(10)
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -62034,36 +62110,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Preguntas verdadero/falso ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Preguntas")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Preguntas "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(
-                  "\n                            Preguntas verdadero/falso\n                        "
-                )
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v(" Preguntas "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v("Verdadero / Falso ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Preguntas verdadero / Falso ")])
     ])
   },
   function() {
@@ -62103,26 +62182,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "col-md-12 text-center" }, [
         _c(
           "label",
           {
             staticClass: "block cursor-pointer",
-            attrs: { for: "assetsFieldHandle" }
+            attrs: { for: "assetsFieldHandle", id: "mensajito" }
           },
           [
-            _c("div", [
-              _c(
-                "p",
-                { staticClass: "text-center", attrs: { id: "mensajito" } },
-                [
-                  _c("i", { staticClass: "fas fa-cloud-download-alt" }),
-                  _vm._v(
-                    " \n                                                            Arrastra la imagen o da clic aquí para subir\n                                                        "
-                  )
-                ]
-              )
-            ])
+            _c("i", { staticClass: "fas fa-cloud-download-alt" }),
+            _vm._v(
+              "\n                                            Arrastra la imagen o da clic aquí para subir\n                                        "
+            )
           ]
         )
       ])
@@ -62133,9 +62204,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("th", [_vm._v("Imagen")]),
+      _c("th", { staticClass: "text-center" }, [_vm._v("Imagen")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Acción")])
+      _c("th", { staticClass: "text-center" }, [_vm._v("Acción")])
     ])
   },
   function() {
@@ -62146,12 +62217,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cancelar\n                                    ")
+        _vm._v(" Cancelar\n                            ")
       ]
     )
   },
@@ -62162,13 +62232,13 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [
         _vm._v(
-          "\n                                                    Imagen\n                                                "
+          "\n                                            Imagen\n                                        "
         )
       ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                                                    Nombre\n                                                "
+          "\n                                            Nombre\n                                        "
         )
       ])
     ])
@@ -62181,12 +62251,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                                    ")
+        _vm._v(" Cerrar\n                            ")
       ]
     )
   }
@@ -62213,188 +62282,136 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-lg-12" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "page-header border-0",
-                  staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                    },
-                    [
-                      _c("h2", { staticClass: "page-title" }, [
-                        _vm._v(" Lista de docentes ")
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "quick-links ml-auto" }, [
-                        _c("li", [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary float-right btn-lg",
-                              staticStyle: { "border-radius": "25px" },
-                              attrs: { type: "button" },
-                              on: { click: _vm.btnGuardar }
-                            },
-                            [
-                              _c("i", { staticClass: "fas fa-user-plus" }),
-                              _vm._v(" Registrar docente\n\t\t\t\t\t\t\t\t\t")
-                            ]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "page-header ",
-                  staticStyle: {
-                    border: "1px solid #dee2e6",
-                    margin: "0px",
-                    background: "#f5f5f5"
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v(" Termino de busqueda: ")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filters.nombre.value,
-                            expression: "filters.nombre.value"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        staticStyle: {
-                          "border-radius": "10px",
-                          height: "37px",
-                          margin: "0px"
-                        },
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row " }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
                         attrs: {
-                          type: "search",
-                          placeholder: "Ej. Juan Antonio"
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarPregunta"
                         },
-                        domProps: { value: _vm.filters.nombre.value },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.filters.nombre,
-                              "value",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                    [
-                      _c("b", [_vm._v("Campo de busqueda: ")]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticStyle: {
-                            "border-radius": "10px",
-                            margin: "0px"
-                          },
-                          attrs: { name: "campoBusqueda", id: "campoBusqueda" },
-                          on: { change: _vm.cambiarCampoDeBusqueda }
-                        },
-                        [
-                          _c("option", { attrs: { value: "nombre" } }, [
-                            _vm._v("Nombre")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "apellido_paterno" } },
-                            [_vm._v("Apellido paterno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "apellido_materno" } },
-                            [_vm._v("Apellido materno")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "matricula" } }, [
-                            _vm._v("Correo")
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              ),
+                        on: { click: _vm.btnGuardar }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-plus" }),
+                        _vm._v(" Nuevo\n\t\t\t\t\t\t\t\t\t\t")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "table-responsive" },
-                [
-                  _c(
-                    "v-table",
-                    {
-                      staticClass: "table table-hover",
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        data: _vm.profesor,
-                        filters: _vm.filters,
-                        currentPage: _vm.currentPage,
-                        pageSize: 5
-                      },
-                      on: {
-                        "update:currentPage": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        "update:current-page": function($event) {
-                          _vm.currentPage = $event
-                        },
-                        totalPagesChanged: function($event) {
-                          _vm.totalPages = $event
-                        }
-                      },
-                      scopedSlots: _vm._u([
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Término de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
                         {
-                          key: "body",
-                          fn: function(ref) {
-                            var displayData = ref.displayData
-                            return _c(
-                              "tbody",
-                              {},
-                              [
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.nombre.value,
+                          expression: "filters.nombre.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "2.35rem" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.nombre.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.nombre,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "nombre" } }, [
+                          _vm._v("Nombre")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "apellido_paterno" } }, [
+                          _vm._v("Apellido parterno")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "apellido_materno" } }, [
+                          _vm._v("Apellido materno")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "matricula" } }, [
+                          _vm._v("Correo")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.profesor,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
                                 _vm._l(displayData, function(profesor) {
                                   return _c("tr", { key: profesor.id }, [
                                     _c("td", [_vm._v(_vm._s(profesor.nombre))]),
@@ -62417,6 +62434,8 @@ var render = function() {
                                       _c(
                                         "a",
                                         {
+                                          staticClass:
+                                            "btn btn-outline-warning",
                                           on: {
                                             click: function($event) {
                                               return _vm.btnEditar(
@@ -62435,14 +62454,16 @@ var render = function() {
                                             staticStyle: { color: "#ffae00" }
                                           })
                                         ]
-                                      ),
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t  \n\t\t\t\t\t\t\t  |\n\t\t\t\t\t\t\t  \n\t\t\t\t\t\t\t "
-                                      ),
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
                                       profesor.eliminado == "0"
                                         ? _c(
                                             "a",
                                             {
+                                              staticClass:
+                                                "btn btn-outline-danger",
                                               on: {
                                                 click: function($event) {
                                                   return _vm.eliminar(
@@ -62464,6 +62485,8 @@ var render = function() {
                                         : _c(
                                             "a",
                                             {
+                                              staticClass:
+                                                "btn btn-outline-success",
                                               on: {
                                                 click: function($event) {
                                                   return _vm.eliminar(
@@ -62485,112 +62508,118 @@ var render = function() {
                                     ])
                                   ])
                                 }),
-                                _vm._v(" "),
-                                _c("tr", [
-                                  _c("td", [
-                                    _c("b", [
-                                      _c("p", [
-                                        _vm._v(
-                                          " Mostrando " +
-                                            _vm._s(displayData.length) +
-                                            " de " +
-                                            _vm._s(_vm.profesor.length) +
-                                            " registros "
-                                        )
-                                      ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td"),
-                                  _vm._v(" "),
-                                  _c("td")
-                                ])
-                              ],
-                              2
-                            )
+                                0
+                              )
+                            }
                           }
-                        }
-                      ])
-                    },
-                    [
-                      _c(
-                        "thead",
-                        { attrs: { slot: "head" }, slot: "head" },
-                        [
-                          _c(
-                            "v-th",
-                            {
-                              attrs: { sortKey: "nombre", defaultSort: "desc" }
-                            },
-                            [_vm._v("Nombre")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "apellido_paterno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Apellido Paterno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "apellido_materno",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Apellido Materno")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "matricula",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Correo")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Opciones")])
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "nombre",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Nombre")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "apellido_paterno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Apellido Paterno")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "apellido_materno",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Apellido Materno")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "matricula",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Correo")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Desactivar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
               _vm._v(" "),
-              _c("smart-pagination", {
-                attrs: {
-                  currentPage: _vm.currentPage,
-                  totalPages: _vm.totalPages
-                },
-                on: {
-                  "update:currentPage": function($event) {
-                    _vm.currentPage = $event
-                  },
-                  "update:current-page": function($event) {
-                    _vm.currentPage = $event
-                  }
-                }
-              })
-            ],
-            1
-          )
-        ]
-      )
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.profesor.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -62599,32 +62628,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [_vm._v(" Docentes ")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Docentes")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Usuarios  "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(" Docentes\n\t\t\t\t\t\t")
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  \n                                Usuarios "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Docentes ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Lista de docentes ")])
     ])
   }
 ]
@@ -63915,12 +63951,59 @@ var render = function() {
       _vm._v(" "),
       _c("MyHeader"),
       _vm._v(" "),
-      _c("router-view")
+      _c("router-view"),
+      _vm._v(" "),
+      _c("Footer")
     ],
     1
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/layout/footer.vue?vue&type=template&id=3f2900ce&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/layout/footer.vue?vue&type=template&id=3f2900ce& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "main-footer" }, [
+      _c("div", { staticClass: "float-right d-none d-sm-inline" }, [
+        _vm._v("\n         Desarrollado por "),
+        _c(
+          "a",
+          {
+            attrs: { href: "http://www.upvictoria.edu.mx/", target: "_blank" }
+          },
+          [_vm._v("Universidad Politécnica de Victoria")]
+        ),
+        _vm._v(".\n    ")
+      ]),
+      _vm._v(" "),
+      _c("strong")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -63944,7 +64027,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "aside",
-    { staticClass: "main-sidebar sidebar-dark-primary elevation-4" },
+    {
+      staticClass: "main-sidebar sidebar-dark-primary elevation-4",
+      staticStyle: { "overflow-x": "scroll" }
+    },
     [
       _c(
         "router-link",
@@ -63966,7 +64052,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "sidebar" }, [
+      _c("div", { staticClass: "sidebar " }, [
         _c("div", { staticClass: "user-panel mt-3 pb-3 mb-3 d-flex" }, [
           _c("div", { staticClass: "image" }, [
             _c("img", {
@@ -64004,7 +64090,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("nav", { staticClass: "mt-2" }, [
+        _c("nav", { staticClass: "mt-2", attrs: { id: "menuPrincipal" } }, [
           _c(
             "ul",
             {
@@ -64041,6 +64127,12 @@ var render = function() {
               ),
               _vm._v(" "),
               this.id_rol == 1
+                ? _c("li", { staticClass: "nav-header" }, [
+                    _c("b", [_vm._v(" ACCESO ")])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1
                 ? _c(
                     "li",
                     { staticClass: "nav-item" },
@@ -64065,177 +64157,358 @@ var render = function() {
                 : _vm._e(),
               _vm._v(" "),
               this.id_rol == 1
+                ? _c("li", { staticClass: "nav-header" }, [
+                    _c("b", [_vm._v(" USUARIOS ")])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1
                 ? _c(
                     "li",
-                    { staticClass: "nav-item", attrs: { id: "liUsuarios" } },
+                    { staticClass: "nav-item" },
                     [
-                      _vm._m(0),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "nav nav-treeview" }, [
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/usuariosAdministrador",
-                                  id: "aAdmin"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-users-cog nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tAdministradores\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            id: "navAccesos",
+                            to: "/usuariosAdministrador"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-users-cog nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tAdministradores\n\t\t\t\t\t\t\t"
                             )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/usuariosProfesor",
-                                  id: "aDocentes"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass:
-                                    "fas fa-chalkboard-teacher nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tDocentes\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: "/usuariosAlumno", id: "aAlumnos" }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-graduation-cap nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tAlumnos\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/usuariosExperto",
-                                  id: "aExpertos"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-user-tie nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tExpertos\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    ]
+                          ])
+                        ]
+                      )
+                    ],
+                    1
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item", attrs: { id: "liCuestionario" } },
-                [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "nav nav-treeview" }, [
-                    this.id_rol == 1 || this.id_rol == 3
-                      ? _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/configurarCuestionario",
-                                  id: "aConfigurar"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-cogs nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tConfigurar\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      { staticClass: "nav-item" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: "/cuestionario", id: "aVer" }
-                          },
-                          [
-                            _c("i", { staticClass: "fas fa-eye nav-icon" }),
-                            _vm._v(
-                              " \n\t\t\t\t\t\t\t\t\t\tVer\n\t\t\t\t\t\t\t\t\t"
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
+              this.id_rol == 1
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navAccesos", to: "/usuariosProfesor" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-chalkboard-teacher nav-icon"
+                          }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("\n\t\t\t\t\t\t\t\tDocentes\n\t\t\t\t\t\t\t")
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navAccesos", to: "/usuariosAlumno" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-graduation-cap nav-icon"
+                          }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("\n\t\t\t\t\t\t\t\tAlumnos\n\t\t\t\t\t\t\t")
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navAccesos", to: "/usuariosExperto" }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-user-tie nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("\n\t\t\t\t\t\t\t\tExpertos\n\t\t\t\t\t\t\t")
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 4
+                ? _c("li", { staticClass: "nav-header" }, [
+                    _c("b", [_vm._v("CUESTIONARIO ")])
                   ])
-                ]
-              ),
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            id: "navAccesos",
+                            to: "/configurarCuestionario"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-cogs nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tConfiguración\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 4
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navAccesos", to: "/cuestionario" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-clipboard-check nav-icon"
+                          }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tContestar\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+                ? _c("li", { staticClass: "nav-header" }, [
+                    _c("b", [_vm._v(" PREGUNTAS ")])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navAccesos", to: "/preguntasAbiertas" }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-keyboard nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("\n\t\t\t\t\t\t\t\tAbiertas\n\t\t\t\t\t\t\t")
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navAccesos", to: "/preguntasNumericas" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-sort-numeric-down nav-icon"
+                          }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tNúmericas\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            id: "navAccesos",
+                            to: "/preguntasVerdaderoFalso"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-toggle-on nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tVerdadero / Falso\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            id: "navAccesos",
+                            to: "/preguntasOpcionMultiple"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-stream nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tOpción Múltiple\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            id: "navAccesos",
+                            to: "/preguntasCalculadas"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-keyboard nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tCalculadas\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            id: "navAccesos",
+                            to: "/PreguntasOpcionMultipleCalculadas"
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-stream nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tCalculadas múltiples\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 2
+                ? _c("li", { staticClass: "nav-header" }, [
+                    _c("b", [_vm._v(" AREA DISCIPLINAR ")])
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               this.id_rol == 1 || this.id_rol == 2
                 ? _c(
@@ -64263,235 +64536,36 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 2
+              this.id_rol == 1 || this.id_rol == 2
                 ? _c(
                     "li",
-                    { staticClass: "nav-item", attrs: { id: "liPreguntas" } },
+                    { staticClass: "nav-item" },
                     [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "nav nav-treeview" }, [
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/preguntasAbiertas",
-                                  id: "aAbiertas"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-keyboard nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tAbiertas\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navTemas", to: "/grafo" }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-user-tie nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tGrafo de conocimiento\n\t\t\t\t\t\t\t"
                             )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/preguntasNumericas",
-                                  id: "aNumericas"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass:
-                                    "fas fa-sort-numeric-down nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tNúmericas\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/preguntasVerdaderoFalso",
-                                  id: "aVerdaderoFalso"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-toggle-on nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tVerdadero / Falso\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/preguntasOpcionMultiple",
-                                  id: "aMultiple"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-stream nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tOpción Múltiple\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/preguntasCalculadas",
-                                  id: "aCalculadas"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-keyboard nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tCalculadas\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/PreguntasOpcionMultipleCalculadas",
-                                  id: "aMCalculadas"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-stream nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tCalculadas múltiples\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    ]
+                          ])
+                        ]
+                      )
+                    ],
+                    1
                   )
                 : _vm._e(),
               _vm._v(" "),
               this.id_rol == 1 || this.id_rol == 2
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item", attrs: { id: "liGrafo" } },
-                    [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "nav nav-treeview" }, [
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: "/grafo", id: "aExperto" }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-user-tie nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tExperto\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: {
-                                  to: "/historialprofesor",
-                                  id: "aDocentes"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass:
-                                    "fas fa-chalkboard-teacher nav-icon"
-                                }),
-                                _vm._v(
-                                  " \n\t\t\t\t\t\t\t\t\t\tDocente\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    ]
-                  )
+                ? _c("li", { staticClass: "nav-header" }, [
+                    _c("b", [_vm._v(" RECURSOS ")])
+                  ])
                 : _vm._e(),
               _vm._v(" "),
               this.id_rol == 1 || this.id_rol == 2
@@ -64511,7 +64585,7 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("p", [
-                            _vm._v("\n\t\t\t\t\t\t\t\tRecursos\n\t\t\t\t\t\t\t")
+                            _vm._v("\n\t\t\t\t\t\t\t\timagenes\n\t\t\t\t\t\t\t")
                           ])
                         ]
                       )
@@ -64527,76 +64601,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "nav-link", attrs: { id: "navUsuarios", href: "#" } },
-      [
-        _c("i", { staticClass: "nav-icon fas fa-users" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n\t\t\t\t\t\t\t\t\tUsuarios\n\t\t\t\t\t\t\t\t\t"),
-          _c("i", { staticClass: "right fas fa-angle-left" })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "nav-link", attrs: { id: "navCuestionario", href: "#" } },
-      [
-        _c("i", { staticClass: "nav-icon far fa-file-alt" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n\t\t\t\t\t\t\t\t\tCuestionario\n\t\t\t\t\t\t\t\t\t"),
-          _c("i", { staticClass: "right fas fa-angle-left" })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "nav-link", attrs: { id: "navPreguntas", href: "#" } },
-      [
-        _c("i", { staticClass: "nav-icon fas fa-question" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n\t\t\t\t\t\t\t\t\tPreguntas\n\t\t\t\t\t\t\t\t\t"),
-          _c("i", { staticClass: "right fas fa-angle-left" })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "nav-link", attrs: { id: "navGrafo", href: "#" } },
-      [
-        _c("i", { staticClass: "nav-icon fas fa-project-diagram" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n\t\t\t\t\t\t\t\t\tGC\n\t\t\t\t\t\t\t\t\t"),
-          _c("i", { staticClass: "right fas fa-angle-left" })
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -64658,7 +64663,7 @@ var render = function() {
                 { staticClass: "dropdown-item", attrs: { to: "/perfil" } },
                 [
                   _c("i", { staticClass: "fas fa-user-alt mr-2" }),
-                  _vm._v(" Perfil\n            "),
+                  _vm._v(" Perfil\n                    "),
                   _c("span", { staticClass: "float-right text-muted text-sm" })
                 ]
               ),
@@ -64732,7 +64737,7 @@ var staticRenderFns = [
       { staticClass: "dropdown-item", attrs: { href: "/logout" } },
       [
         _c("i", { staticClass: "fas fa-sign-out-alt mr-2" }),
-        _vm._v(" Cerrar sesión\n            "),
+        _vm._v(" Cerrar sesión\n                    "),
         _c("span", { staticClass: "float-right text-muted text-sm" })
       ]
     )
@@ -82798,6 +82803,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_0d0e08f3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_0d0e08f3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/layout/footer.vue":
+/*!**********************************************************!*\
+  !*** ./resources/assets/js/components/layout/footer.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _footer_vue_vue_type_template_id_3f2900ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./footer.vue?vue&type=template&id=3f2900ce& */ "./resources/assets/js/components/layout/footer.vue?vue&type=template&id=3f2900ce&");
+/* harmony import */ var _footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./footer.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/layout/footer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _footer_vue_vue_type_template_id_3f2900ce___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _footer_vue_vue_type_template_id_3f2900ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/layout/footer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/layout/footer.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/assets/js/components/layout/footer.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./footer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/layout/footer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/layout/footer.vue?vue&type=template&id=3f2900ce&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/assets/js/components/layout/footer.vue?vue&type=template&id=3f2900ce& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_footer_vue_vue_type_template_id_3f2900ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./footer.vue?vue&type=template&id=3f2900ce& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/layout/footer.vue?vue&type=template&id=3f2900ce&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_footer_vue_vue_type_template_id_3f2900ce___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_footer_vue_vue_type_template_id_3f2900ce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
