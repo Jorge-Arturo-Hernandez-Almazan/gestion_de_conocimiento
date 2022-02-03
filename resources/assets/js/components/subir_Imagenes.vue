@@ -1,38 +1,44 @@
 <template>
 
         <div class="content-wrapper">
-          <!-- <div class="col-lg-12 "> -->
-
-      <!-- Breadcrumb -->
-			<div class="col-12 mt-4">
-				<div class="page-header">
 					
-					<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-						<h1 class="page-title"> Repositorio de imagenes </h1>
-						<ul class="quick-links ml-auto">
-						<li>
-							<span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> </span>  <span style="color: #bdb9bd"> Recursos </span> 
-						</li>
-						</ul>
-				  </div>
-				</div>
-			</div>
-        <div class="card">
-          <div class="card-body">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">Recursos</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right" style="background: white">
-                        <button type="button" class="btn btn-primary btn-lg float-right" style="border-radius: 25px" data-toggle="modal"
+					
+					<div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="page-title m-0">Imagenes</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"> </i> </span> <span style="color: #bdb9bd">  Recursos <i class="fas fa-angle-right"> </i> </span> <b> Imagenes </b>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+					
+          <!-- <div class="col-lg-12 "> -->
+				<section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+        							<div class="card shadow">
+					
+					<div class="card-header">
+							<h3 class="card-title mt-2"> <b> Repositorio de imagenes </b> </h3>
+							<div class="card-tools">
+									<div class="" style="width: 150px;">
+											<button type="button" class="btn btn-primary float-right" data-toggle="modal"
                         data-target="#registrarImagen" @click="cambiarModo">
                             <i class="fas fa-cloud-upload-alt"></i> Cargar Imagen
                         </button>
-                    </ol>
-                </div><!-- /.col -->
-            </div>
-           
+									</div>
+							</div>
+					</div>
+					
+          <div class="card-body">
+            
 					<div class="table-responsive">
          
 				  	<v-table 
@@ -42,10 +48,10 @@
 							:pageSize="5"
 							@totalPagesChanged="totalPages = $event"
 						   style="width:100%"
-						   class="table mb-2"
+						   class="table table-hover"
 							 >
 					  
-					<thead slot="head" class="thead-dark">
+					<thead slot="head" >
 						<v-th sortKey="nombre" defaultSort="desc">Nombre</v-th>
 						<v-th sortKey="padre" defaultSort="desc"> Imagen </v-th>
 						
@@ -65,15 +71,21 @@
 						
 					</div>
 					
-					  <smart-pagination
-						:currentPage.sync="currentPage"
-						:totalPages="totalPages"
-					  />
-					  
-                    
-					  <p> Total de registros: {{ this.imagenes.length }} </p>
                     
                   </div>
+					
+					<div class="card-footer">
+							<div class="row">
+									<div class="col-6">
+											<label> <b> Total: {{ imagenes.length }} registros </b> </label>
+									</div>
+									<div class="col-6">
+											<div class="float-right">
+													<smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" :maxPageLinks="3" />
+											</div>
+									</div>
+							</div>
+					</div>
 					
 					<div class="modal animated animate__bounceIn" id="registrarImagen" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
@@ -125,9 +137,9 @@
                             </table>
                         </div>
 
-                        <button type="button" class="btn btn-secondary float-right btn-lg mt-4" data-dismiss="modal" style="border-radius: 25px">  <i class="fas fa-ban"></i> Cancelar
+                        <button type="button" class="btn btn-secondary float-right btn-lg mt-4" data-dismiss="modal">  <i class="fas fa-ban"></i> Cancelar
                         </button>
-                        <button type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" style="border-radius: 25px"> <i class="fas fa-save"></i> Guardar
+                        <button type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" > <i class="fas fa-save"></i> Guardar
                         </button>
 
                     </div>
@@ -136,7 +148,10 @@
           </div>
           
         </div>
-              <!--</div>-->
+										</div>
+								</div>
+						</div>
+				</section>
               
       </div>
 </template>

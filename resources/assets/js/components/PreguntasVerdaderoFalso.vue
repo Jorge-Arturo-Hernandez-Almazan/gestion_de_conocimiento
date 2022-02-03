@@ -76,7 +76,6 @@
                                                     <a data-toggle="modal" data-target="#modalParaVerImagenes"
                                                         @click="desplegarImagenesEnModal(pregunta.imagenes)" class="btn btn-outline-primary">
                                                         <i class="fas fa-eye" style="color: #2196f3"></i>
-                                                        {{ pregunta.imagenes }}
                                                     </a>
                                                 </td>
                                                 <td>

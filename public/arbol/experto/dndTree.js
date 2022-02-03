@@ -44,6 +44,9 @@ var e_init = 1;
 
 var nodos_ordenados = []
 var ramas = []
+
+var desplazamientoDeNodos = false;
+
 async function draw_tree(error, treeData) {
 	
 
@@ -359,7 +362,7 @@ async function draw_tree(error, treeData) {
             d3.event.sourceEvent.stopPropagation();
         })
         .on("drag", function (d) {
-            if (d == root) {
+            if (d == root || desplazamientoDeNodos === false ) {
                 return;
             }
             if (dragStarted) {
@@ -1144,6 +1147,9 @@ async function draw_tree(error, treeData) {
         });
     }
 
+
+    
+
     outer_update = update;
 
     // Append a group which holds all nodes and which the zoom Listener can act upon.
@@ -1196,7 +1202,12 @@ async function draw_tree(error, treeData) {
     nodeToListFlag = true;
 
     $('#modalDeCarga').modal('hide');
+
+
+    
 }
+
+ 
 
 
 window.addEventListener('resize', function(event) {

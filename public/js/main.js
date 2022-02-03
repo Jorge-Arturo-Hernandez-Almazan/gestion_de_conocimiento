@@ -2728,55 +2728,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2853,8 +2804,7 @@ __webpack_require__.r(__webpack_exports__);
           } else {
             _this.accesos[i].estado = false;
           }
-        } //console.log(result.data);
-
+        }
       }, function (error) {
         console.error(error);
       });
@@ -2883,11 +2833,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3218,14 +3163,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.next = 2;
                 return this.$swal({
-                  /*showClass: {
-                  backdrop: 'swal2-noanimation',
-                  popup: '',
-                  icon: ''
-                  },
-                  hideClass: {
-                  popup: ''
-                  },*/
                   html: "\n            <h3 class=\"text-left\" style=\"color:#212529;\"> Actualizar administrador </h3>\n\t\t\t      <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Nombre\" value=\"" + nombre + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Correo<span style=\"color:red\">*</span>: </b> </p>\n            <input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"ejemplo@ejemplo.com\" value=\"" + matricula + "\">\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a <span style=\"color:red\">**</span> : </b> </p> \n            <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\" >  \n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;color:#212529;\"> <b> <span style=\"color:red\">*</span> Datos obligatorios </b> </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;color:#212529;\"> <b> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </b> </p>\n\n            \n            ",
                   focusConfirm: false,
                   showCancelButton: true,
@@ -3395,8 +3332,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this5.password = '';
         _this5.id = '';
 
-        _this5.getAdmin(); //console.log(res)
-
+        _this5.getAdmin();
       })["catch"](function (err) {
         console.log(err);
       });
@@ -3405,8 +3341,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this6 = this;
 
       this.$swal.fire({
-        //title: '¿Realmente deseas eliminar este registro?',
-        //icon: 'warning',
         html: "\n                        <h3 style=\"color:#212529;\">\xBFRealmente desea eliminar este registro?</h3>\n\t\t\t        ",
         showCancelButton: true,
         confirmButtonColor: '#DC3545',
@@ -4601,28 +4535,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7245,6 +7157,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7375,435 +7309,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      pregunta: '',
-      experto: '',
-      profesor: '',
-      alumnos: '',
-      temas: '',
-      admins: ''
-    };
-  },
-  mounted: function mounted() {
-    this.getpregunta();
-    this.getTemas();
-    this.getadmins();
-    this.getprofesor();
-    this.getalumnos();
-    this.getexperto();
-  },
-  methods: {
-    getpregunta: function getpregunta() {
-      var _this = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/pregunta/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this.pregunta = result.data[0][0].totalPreguntas;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getTemas: function getTemas() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/temas/count'
-      }).then(function (result) {
-        //console.log("Los temas son "+ result.data)
-        _this2.temas = result.data[0][0].totalTemas;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getadmins: function getadmins() {
-      var _this3 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/admin/count'
-      }).then(function (result) {
-        //console.log("Admin",result.data)
-        _this3.admins = result.data[0][0].totalAdministradores;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getalumnos: function getalumnos() {
-      var _this4 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/alumno/count'
-      }).then(function (result) {
-        //console.log("hola como estas ", result.data)
-        _this4.alumnos = result.data[0][0].totalAlumnos;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getprofesor: function getprofesor() {
-      var _this5 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/profesor/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this5.profesor = result.data[0][0].totalDocentes;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getexperto: function getexperto() {
-      var _this6 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/experto/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this6.experto = result.data[0][0].totalExpertos;
-      }, function (error) {
-        console.error(error);
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexExpertos.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexExpertos.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      pregunta: '',
-      experto: '',
-      profesor: '',
-      alumnos: '',
-      temas: '',
-      admins: ''
-    };
-  },
-  mounted: function mounted() {
-    this.getpregunta();
-    this.getTemas();
-    this.getadmins();
-    this.getprofesor();
-    this.getalumnos();
-    this.getexperto();
-  },
-  methods: {
-    getpregunta: function getpregunta() {
-      var _this = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/pregunta/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this.pregunta = result.data[0][0].totalPreguntas;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getTemas: function getTemas() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/temas/count'
-      }).then(function (result) {
-        //console.log("Los temas son "+ result.data)
-        _this2.temas = result.data[0][0].totalTemas;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getadmins: function getadmins() {
-      var _this3 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/admin/count'
-      }).then(function (result) {
-        //console.log("Admin",result.data)
-        _this3.admins = result.data[0][0].totalAdministradores;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getalumnos: function getalumnos() {
-      var _this4 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/alumno/count'
-      }).then(function (result) {
-        //console.log("hola como estas ", result.data)
-        _this4.alumnos = result.data[0][0].totalAlumnos;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getprofesor: function getprofesor() {
-      var _this5 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/profesor/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this5.profesor = result.data[0][0].totalDocentes;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getexperto: function getexperto() {
-      var _this6 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/experto/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this6.experto = result.data[0][0].totalExpertos;
-      }, function (error) {
-        console.error(error);
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexProfesores.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexProfesores.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      pregunta: '',
-      experto: '',
-      profesor: '',
-      alumnos: '',
-      temas: '',
-      admins: ''
-    };
-  },
-  mounted: function mounted() {
-    this.getpregunta();
-    this.getTemas();
-    this.getadmins();
-    this.getprofesor();
-    this.getalumnos();
-    this.getexperto();
-  },
-  methods: {
-    getpregunta: function getpregunta() {
-      var _this = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/pregunta/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this.pregunta = result.data[0][0].totalPreguntas;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getTemas: function getTemas() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/temas/count'
-      }).then(function (result) {
-        //console.log("Los temas son "+ result.data)
-        _this2.temas = result.data[0][0].totalTemas;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getadmins: function getadmins() {
-      var _this3 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/admin/count'
-      }).then(function (result) {
-        //console.log("Admin",result.data)
-        _this3.admins = result.data[0][0].totalAdministradores;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getalumnos: function getalumnos() {
-      var _this4 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/alumno/count'
-      }).then(function (result) {
-        //console.log("hola como estas ", result.data)
-        _this4.alumnos = result.data[0][0].totalAlumnos;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getprofesor: function getprofesor() {
-      var _this5 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/profesor/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this5.profesor = result.data[0][0].totalDocentes;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getexperto: function getexperto() {
-      var _this6 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default()({
-        method: 'GET',
-        url: '/experto/count'
-      }).then(function (result) {
-        //console.log(result.data)
-        _this6.experto = result.data[0][0].totalExpertos;
-      }, function (error) {
-        console.error(error);
-      });
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/NotFound.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/NotFound.vue?vue&type=script&lang=js& ***!
@@ -7813,8 +7318,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -8027,21 +7530,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
   },
   created: function created() {
     this.metodoSaludame();
-  },
-  mounted: function mounted() {//this.metodoSaludame();
   },
   methods: {
     metodoSaludame: function metodoSaludame() {
@@ -8063,10 +7557,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
 //
 //
 //
@@ -8525,7 +8015,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var uri, fil;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -8535,16 +8024,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             case 2:
               _this.getTemas();
-
-              uri = window.location.href;
-
+              /*let uri = window.location.href;
               if (uri.includes("?")) {
-                uri = window.location.href.split('?');
-                fil = uri[1].split('=')[1];
-                _this.filters.pregunta.value = fil.replace(/%20/g, " ");
-              }
+                  uri = window.location.href.split('?');
+                  var fil = uri[1].split('=')[1];
+                  this.filters.pregunta.value = fil.replace(/%20/g, " ");
+              }*/
 
-            case 5:
+
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -9375,6 +8863,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9714,9 +9210,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   switch (_context4.prev = _context4.next) {
                     case 0:
                       _this6.$swal.fire({
+                        position: 'top-end',
                         icon: 'success',
-                        title: 'Proceso hecho',
-                        text: 'Pregunta guardada con exito'
+                        title: 'Información almacenada con éxito',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        toast: true
                       });
 
                       modals = document.getElementsByClassName('modal');
@@ -10237,14 +9736,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this10 = this;
 
       this.$swal.fire({
-        title: '¿Estas seguro de eliminar el registro?',
-        text: "Esto no podrá revertirse",
-        icon: 'warning',
+        html: "<h3 style=\"color:#212529;\">\xBFRealmente desea eliminar esta pregunta?</h3>",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar'
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6C757D',
+        confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/preguntaCalculada/delete", {
@@ -10256,16 +9753,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             _this10.getPreguntaNumerica(); //console.log(res);
 
 
-            var Toast = _this10.$swal.mixin({
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000
-            });
-
             _this10.$swal.fire({
-              type: "success",
-              title: "¡Pregunta Eliminada!"
+              position: 'top-end',
+              icon: 'success',
+              title: 'Información eliminada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+              toast: true
             });
           })["catch"](function (err) {
             console.log(err);
@@ -12476,6 +11970,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 var opciones = [];
 var noOpcion = 0; //var opcion_comodin = "";
@@ -12607,6 +12108,10 @@ function checkRespuesta(opcion) {
     }))();
   },
   methods: {
+    cambiarCampoDeBusqueda: function cambiarCampoDeBusqueda() {
+      var x = document.getElementById("campoBusqueda").value;
+      this.filters.pregunta.keys[0] = x;
+    },
     wrapText: function wrapText(str) {
       var palabrasSinEspacios = str.split(" ");
       var textoDePregunta = "";
@@ -13477,7 +12982,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -15486,6 +14990,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -15501,6 +15027,9 @@ __webpack_require__.r(__webpack_exports__);
       $("#horizontalVertical").change(function (e) {
         horizontalVertical = !horizontalVertical;
         outer_update(tree_root);
+      });
+      $("#moverNodosCheck").change(function (e) {
+        habilitarDesplazamiento(); //outer_update(tree_root);
       });
       $("#textPosition").change(function (e) {
         textPosition = !textPosition;
@@ -15856,148 +15385,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -16108,60 +15495,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/saludar.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/saludar.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {};
-  },
-  created: function created() {
-    this.metodoSaludame();
-  },
-  mounted: function mounted() {
-    //this.metodoSaludame();
-    console.log("ya se terminó de cargar");
-  },
-  methods: {
-    metodoSaludame: function metodoSaludame() {
-      console.log("Hola!");
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/subir_Imagenes.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/subir_Imagenes.vue?vue&type=script&lang=js& ***!
@@ -16182,6 +15515,21 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -16479,18 +15827,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -16621,38 +15959,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       verificarPreguntas: false,
       configuracion: [],
-      temasSeleccionado: {},
       temas: [],
-      temas_hijos: [],
       filters: {
         nombre_tema: {
           value: '',
           keys: ['nombre_tema']
-        } //nombre_tema: { value: '', keys: ['padre'] }
-
+        }
       },
       currentPage: 1,
       totalPages: 0,
-      temasOnlyNombreID: [],
-      id: '',
-      nombre_tema: '',
-      padre: '',
-      nivel: '',
-      id_padre: '',
-      freey: '',
-      freex: ''
+      temasOnlyNombreID: []
     };
   },
   mounted: function mounted() {
-    this.getTemas(), this.getTemasOnlyNombreID();
+    this.getTemas();
     this.obtenerConfiguracion();
   },
   methods: {
-    ordenar: function ordenar() {},
     obtenerConfiguracion: function obtenerConfiguracion() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default()({
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
         method: 'get',
         url: 'cuestionario/obtenerconfiguracion'
       }).then(function (result) {
@@ -16671,392 +15998,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.error(error);
       });
     },
-    hacerPadreAlAbuelo: function hacerPadreAlAbuelo(oldParent, newChildParent) {
+    getTemas: function getTemas() {
       var _this2 = this;
 
-      ///Eliminar tema y Hacer padre al abuelo
-      axios__WEBPACK_IMPORTED_MODULE_1___default()({
-        method: 'POST',
-        url: "/tema/deleteandcambiarPadre/" + oldParent + "?id=" + oldParent + "&id2=" + newChildParent
-      }).then(function (result) {
-        //console.log(result.data)
-        _this2.getTemas();
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    deleteTemaAndHijos: function deleteTemaAndHijos(id) {
-      var _this3 = this;
-
-      ///Funcion para eliminar tema y hijos
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/tema/deleteTema', {
-        id: id
-      }).then(function (res) {
-        _this3.getTemas();
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    },
-    getTemas: function getTemas() {
-      var _this4 = this;
-
-      ///Funcion para mostrar los temas
-      axios__WEBPACK_IMPORTED_MODULE_1___default()({
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
         method: 'GET',
-        url: '/tema/all'
+        url: 'tema/preguntas'
       }).then(function (result) {
-        //console.log(result.data)
-        _this4.temas = result.data[0];
+        console.log(result.data[0]);
+        _this2.temas = result.data[0];
       }, function (error) {
         console.error(error);
       });
-    },
-    getTemasOnlyNombreID: function getTemasOnlyNombreID() {
-      var _this5 = this;
-
-      ///Funcion para mostrar los temas
-      axios__WEBPACK_IMPORTED_MODULE_1___default()({
-        method: 'GET',
-        url: '/tema/showTemasOnlyNombreID'
-      }).then(function (result) {
-        _this5.temasOnlyNombreID = result.data;
-      }, function (error) {
-        console.error(error);
-      });
-    },
-    getTemasHijos: function getTemasHijos(id) {
-      ///Funcion para mostrar los temas
-      var i;
-
-      for (var temas in this.temas) {
-        if (this.temas[temas].id_padre == id) {
-          this.temas_hijos.push(this.temas[temas]);
-        } //console.log(this.temas[0][temas].nombre_tema);
-
-      } //console.log("Despues de obtener los padres");
-
-      /*for(var temas in this.temas_hijos){
-      	console.log(this.temas_hijos[temas].nombre_tema);
-      }*/
-
-    },
-    guardarTema: function guardarTema(nombre_tema, padre, textPosition) {
-      var _this6 = this;
-
-      ///Funcion para guardar los temas
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/experto/tema/addTema', {
-        nombre_tema: nombre_tema,
-        id_padre: padre,
-        textPosition: textPosition
-      }).then(function (res) {
-        _this6.padre = '';
-
-        _this6.getTemas(); //		console.log(res)
-
-
-        _this6.getTemasOnlyNombreID();
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    },
-    editarTema: function editarTema(id_tema, id_padre, nombre_tema) {
-      var _this7 = this;
-
-      ///Funcion para editar los temas
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/experto/tema/editarNodo', {
-        id_nodo: id_tema,
-        id_padre: id_padre,
-        nombre_nodo: nombre_tema
-      }).then(function (res) {
-        _this7.padre = '';
-        _this7.nivel_tema = '';
-
-        _this7.getTemas(); //console.log(res)
-
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    },
-    btnEliminarTemaAndHijos: function () {
-      var _btnEliminarTemaAndHijos = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                this.deleteTemaAndHijos(id);
-
-              case 1:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function btnEliminarTemaAndHijos(_x) {
-        return _btnEliminarTemaAndHijos.apply(this, arguments);
-      }
-
-      return btnEliminarTemaAndHijos;
-    }(),
-    btnGuardar: function () {
-      var _btnGuardar = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this8 = this;
-
-        var _ref, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                this.getTemasOnlyNombreID();
-                _context2.next = 3;
-                return this.$swal({
-                  title: 'Registrar Tema',
-                  html: "<input id=\"nombre_tema\" class=\"swal2-input\" placeholder=\"Nombre\">\n\t\t\t\t\t\t<br>\n          <select id=\"padre\" value=\"".concat(this.temasOnlyNombreID, "\" name=\"temas\" class=\"swal2-input\">\n           \n            ").concat(this.temasOnlyNombreID[0].map(function (cat) {
-                    return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre_tema, "</option>");
-                  }), "\n          </select>"),
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  cancelButtonText: 'Cancelar',
-                  preConfirm: function preConfirm() {
-                    return [_this8.nombre_tema = document.getElementById('nombre_tema').value, _this8.padre = document.getElementById('padre').value];
-                  }
-                });
-
-              case 3:
-                _ref = _context2.sent;
-                formValues = _ref.value;
-
-                if (this.nombre_tema == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos',
-                    confirmButtonText: 'Acepter'
-                  });
-                } else {
-                  this.guardarTema(this.nombre_tema, this.padre, 0); //funcion guardarTema
-
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
-                  this.$swal.fire({
-                    type: 'success',
-                    title: '¡Tema Registrado!'
-                  });
-                } //if (formValues) {
-                //this.$swal(JSON.stringify(formValues))
-                //}			
-
-
-              case 6:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function btnGuardar() {
-        return _btnGuardar.apply(this, arguments);
-      }
-
-      return btnGuardar;
-    }(),
-    btnEditar: function () {
-      var _btnEditar = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id, nombre, padre, id_padre) {
-        var _this9 = this;
-
-        var _ref2, formValues, Toast;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                this.getTemasOnlyNombreID();
-                _context3.next = 3;
-                return this.$swal({
-                  title: 'Actualizar Tema',
-                  html: "<input id=\"nombre_tema\" class=\"swal2-input\" value=\"" + nombre + "\">\n\t\t\t\t\t\t<br>\n          <select id=\"padre\" value=\"".concat(this.temasOnlyNombreID, "\" name=\"temas\" class=\"swal2-input\">\n          \n            ").concat(this.temasOnlyNombreID[0].map(function (cat) {
-                    return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre_tema, "</option>");
-                  }), "\n          </select>"),
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  preConfirm: function preConfirm() {
-                    return [_this9.nombre_tema = document.getElementById('nombre_tema').value, _this9.padre = document.getElementById('padre').value];
-                  }
-                });
-
-              case 3:
-                _ref2 = _context3.sent;
-                formValues = _ref2.value;
-
-                if (this.nombre_tema == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos',
-                    confirmButtonText: 'Guardar'
-                  });
-                } else {
-                  this.editarTema(id, this.padre, this.nombre_tema); //funcion guardarTema
-
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
-                  this.$swal.fire({
-                    type: 'success',
-                    title: '¡Tema Actualizado!'
-                  });
-                } //if (formValues) {
-                //this.$swal(JSON.stringify(formValues))
-                //}			
-
-
-              case 6:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this);
-      }));
-
-      function btnEditar(_x2, _x3, _x4, _x5) {
-        return _btnEditar.apply(this, arguments);
-      }
-
-      return btnEditar;
-    }(),
-    btnAbueloAPadre: function () {
-      var _btnAbueloAPadre = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id, id_padre) {
-        var _this10 = this;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                this.$swal.fire({
-                  title: '¿Esta Seguro que quiere eliminar este Tema?',
-                  text: "Se asignara el tema padre de este tema a padre de los hijos",
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Aceptar',
-                  cancelButtonText: 'Cancelar'
-                }).then(function (result) {
-                  //console.log(result);
-                  if (result) {
-                    _this10.hacerPadreAlAbuelo(id, id_padre);
-
-                    _this10.$swal.fire('Eliminado!', 'El tema ha sido Eliminado.', 'success');
-                  }
-                });
-
-              case 1:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, this);
-      }));
-
-      function btnAbueloAPadre(_x6, _x7) {
-        return _btnAbueloAPadre.apply(this, arguments);
-      }
-
-      return btnAbueloAPadre;
-    }(),
-    btnVolverHijoPadre: function () {
-      var _btnVolverHijoPadre = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id, id_padre) {
-        var _this11 = this;
-
-        var _ref3, formValues, Toast, tam;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                this.getTemasHijos(id);
-                _context5.next = 3;
-                return this.$swal({
-                  title: 'Seleccione Nuevo Padre',
-                  html: "<select id=\"padre\" value=\"".concat(this.temas, "\" name=\"temas\" class=\"swal2-input\">\n            ").concat(this.temas.map(function (cat) {
-                    return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre_tema, "</option>");
-                  }), "\n          </select>"),
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  confirmButtonText: 'Guardar',
-                  confirmButtonColor: '#1cc88a',
-                  cancelButttonColor: '#3085d6',
-                  preConfirm: function preConfirm() {
-                    return [_this11.padre = document.getElementById('padre').value];
-                  }
-                });
-
-              case 3:
-                _ref3 = _context5.sent;
-                formValues = _ref3.value;
-
-                if (this.padre == "") {
-                  this.$swal({
-                    type: 'info',
-                    title: 'Datos incompletos',
-                    confirmButtonText: 'Guardar'
-                  });
-                } else {
-                  //this.HijoAPadre(id_padre,this.padre);//funcion cambiar hijo a padre
-                  Toast = this.$swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                  });
-                  this.$swal.fire({
-                    type: 'success',
-                    title: '¡Tema Actualizado!'
-                  });
-                }
-
-                tam = this.temas_hijos.length;
-                this.temas_hijos.splice(0, tam);
-
-              case 8:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5, this);
-      }));
-
-      function btnVolverHijoPadre(_x8, _x9) {
-        return _btnVolverHijoPadre.apply(this, arguments);
-      }
-
-      return btnVolverHijoPadre;
-    }() //Fin metodos
-
+    }
   }
 });
 
@@ -51434,12 +50388,10 @@ var render = function() {
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(1),
+              _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
                 _c("label", { attrs: { for: "roles" } }, [
                   _vm._v("Tipo de usuario: ")
                 ]),
@@ -51489,7 +50441,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("label", [_vm._v("Tabla de acciones: ")]),
+                _c("label", [_vm._v("Tabla de accesos: ")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "table-responsive" }, [
                   _c(
@@ -51499,7 +50451,7 @@ var render = function() {
                       staticStyle: { width: "100%" }
                     },
                     [
-                      _vm._m(3),
+                      _vm._m(2),
                       _vm._v(" "),
                       _vm._l(_vm.accesos, function(acceso) {
                         return _c("tr", [
@@ -51554,7 +50506,9 @@ var render = function() {
                     2
                   )
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" })
             ])
           ])
         ])
@@ -51595,108 +50549,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row " }, [
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("h1", { staticClass: "page-title m-0" }, [_vm._v(" Accesos ")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("ol", {
-          staticClass: "breadcrumb float-sm-right",
-          staticStyle: { background: "white" }
-        })
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [_vm._v(" Configurar accesos al sistema ")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "exampleModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [_vm._v("Registrar ruta")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                    _vm._v(" Nombre de la ruta ")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      id: "exampleInputEmail1",
-                      "aria-describedby": "emailHelp",
-                      placeholder: "Enter email"
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save changes")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -52063,7 +50920,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                _vm._v("  \n                            Usuarios "),
+                _vm._v(" Usuarios "),
                 _c("i", { staticClass: "fas fa-angle-right" })
               ]),
               _vm._v(" "),
@@ -53585,9 +52442,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(
-                  "\n                        " +
+                  "\n                    " +
                     _vm._s(this.imagenActualNombre) +
-                    "\n                    \n                    \n                    \n                "
+                    "\n                "
                 )
               ])
             ])
@@ -53600,7 +52457,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "modal fade",
+          staticClass: "modal animated animate__bounceIn",
           attrs: {
             id: "exampleModal",
             tabindex: "-1",
@@ -53612,7 +52469,10 @@ var render = function() {
         [
           _c(
             "div",
-            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
             [
               _c("div", { staticClass: "modal-content" }, [
                 _vm._m(4),
@@ -53632,6 +52492,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53647,6 +52508,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53662,6 +52524,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53677,6 +52540,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53694,6 +52558,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53709,6 +52574,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53724,6 +52590,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53739,6 +52606,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53756,6 +52624,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53771,6 +52640,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53786,6 +52656,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53801,6 +52672,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53818,6 +52690,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53833,6 +52706,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53848,6 +52722,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53863,6 +52738,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53882,6 +52758,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53897,6 +52774,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53912,6 +52790,7 @@ var render = function() {
                             _c(
                               "button",
                               {
+                                staticClass: "btn btn-primary ",
                                 staticStyle: { width: "100%", height: "100%" },
                                 on: {
                                   click: function($event) {
@@ -53963,6 +52842,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" abs (")
@@ -53979,6 +52859,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" acos (")
@@ -53995,6 +52876,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" acosh (")
@@ -54011,6 +52893,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" asin (")
@@ -54027,6 +52910,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" asinh (")
@@ -54043,6 +52927,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" atan (")
@@ -54059,6 +52944,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" atan2 (")
@@ -54075,6 +52961,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" atanh (")
@@ -54091,6 +52978,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" bindec (")
@@ -54107,6 +52995,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" ceil (")
@@ -54123,6 +53012,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" cos (")
@@ -54141,6 +53031,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" cosh (")
@@ -54157,6 +53048,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" decbin (")
@@ -54173,6 +53065,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" decoct (")
@@ -54189,6 +53082,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" deg2rad (")
@@ -54205,6 +53099,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" exp (")
@@ -54221,6 +53116,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" expm1 (")
@@ -54237,6 +53133,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" floor (")
@@ -54253,6 +53150,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" log10 (")
@@ -54269,6 +53167,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" log1p (")
@@ -54285,6 +53184,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" log (")
@@ -54301,6 +53201,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" max (")
@@ -54319,6 +53220,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" min (")
@@ -54335,6 +53237,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 _vm.botonesCalculadora(" pi ( )")
@@ -54351,6 +53254,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" pow (")
@@ -54367,6 +53271,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" rad2deg (")
@@ -54383,6 +53288,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" round (")
@@ -54399,6 +53305,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" sin (")
@@ -54415,6 +53322,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" sinh (")
@@ -54431,6 +53339,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" sqrt (")
@@ -54447,6 +53356,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" tan (")
@@ -54463,6 +53373,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" tanh (")
@@ -54479,6 +53390,7 @@ var render = function() {
                         _c(
                           "button",
                           {
+                            staticClass: "btn btn-primary ",
                             on: {
                               click: function($event) {
                                 return _vm.botonesCalculadora(" ,")
@@ -54556,7 +53468,7 @@ var staticRenderFns = [
             },
             [
               _c("i", { staticClass: "fas fa-calculator" }),
-              _vm._v(" Calculadora\n                                    ")
+              _vm._v(" Calculadora \n                                    ")
             ]
           )
         ])
@@ -54622,6 +53534,7 @@ var staticRenderFns = [
       _c(
         "button",
         {
+          staticClass: "btn btn-primary ",
           staticStyle: { width: "100%", height: "100%" },
           attrs: { "data-toggle": "modal", "data-target": "#funciones" }
         },
@@ -55068,97 +53981,9 @@ var render = function() {
   return _c("div", { staticClass: "content-wrapper" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-12 " }, [
-      _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card shadow m-2" }, [
         _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "small-box bg-gradient-success" }, [
-                _c("div", { staticClass: "inner" }, [
-                  _c("h3", [_vm._v(_vm._s(_vm.admins))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Administradores")])
-                ]),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2)
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "small-box bg-gradient-warning" }, [
-                _c("div", { staticClass: "inner" }, [
-                  _c("h3", [_vm._v(_vm._s(_vm.experto))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Expertos")])
-                ]),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4)
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "small-box bg-gradient-primary" }, [
-                _c("div", { staticClass: "inner" }, [
-                  _c("h3", [_vm._v(_vm._s(_vm.profesor))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Docentes")])
-                ]),
-                _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
-                _vm._m(6)
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "small-box bg-gradient-primary" }, [
-                _c("div", { staticClass: "inner" }, [
-                  _c("h3", [_vm._v(_vm._s(_vm.alumnos))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Alumnos")])
-                ]),
-                _vm._v(" "),
-                _vm._m(7),
-                _vm._v(" "),
-                _vm._m(8)
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "small-box bg-gradient-secondary" }, [
-                _c("div", { staticClass: "inner" }, [
-                  _c("h3", [_vm._v(_vm._s(_vm.temas))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Temas del area disciplinar")])
-                ]),
-                _vm._v(" "),
-                _vm._m(9),
-                _vm._v(" "),
-                _vm._m(10)
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("div", { staticClass: "small-box bg-gradient-info" }, [
-                _c("div", { staticClass: "inner" }, [
-                  _c("h3", [_vm._v(_vm._s(_vm.pregunta))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v("Preguntas")])
-                ]),
-                _vm._v(" "),
-                _vm._m(11),
-                _vm._v(" "),
-                _vm._m(12)
-              ])
-            ])
-          ]),
-          _vm._v(" "),
           this.id_rol == 4
             ? _c("div", [
                 _c("h1", [
@@ -55175,6 +54000,160 @@ var render = function() {
                   )
                 ])
               ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.id_rol == 3
+            ? _c("div", [
+                _c("h1", [
+                  _vm._v(
+                    "Bienvenido profesor: " +
+                      _vm._s(
+                        this.nombre +
+                          " " +
+                          this.apellidoPaterno +
+                          " " +
+                          this.apellidoMaterno
+                      ) +
+                      " "
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.id_rol == 2
+            ? _c("div", [
+                _c("h1", [
+                  _vm._v(
+                    "Bienvenido experto: " +
+                      _vm._s(
+                        this.nombre +
+                          " " +
+                          this.apellidoPaterno +
+                          " " +
+                          this.apellidoMaterno
+                      ) +
+                      " "
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.id_rol == 1
+            ? _c("div", [
+                _c("h1", [
+                  _vm._v(
+                    "Bienvenido administrador: " +
+                      _vm._s(
+                        this.nombre +
+                          " " +
+                          this.apellidoPaterno +
+                          " " +
+                          this.apellidoMaterno
+                      ) +
+                      " "
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.id_rol == 1
+            ? _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "small-box bg-gradient-success" }, [
+                    _c("div", { staticClass: "inner" }, [
+                      _c("h3", [_vm._v(_vm._s(_vm.admins))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Administradores")])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "small-box bg-gradient-warning" }, [
+                    _c("div", { staticClass: "inner" }, [
+                      _c("h3", [_vm._v(_vm._s(_vm.experto))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Expertos")])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ])
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.id_rol == 1 || this.id_rol == 3
+            ? _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "small-box bg-gradient-primary" }, [
+                    _c("div", { staticClass: "inner" }, [
+                      _c("h3", [_vm._v(_vm._s(_vm.alumnos))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Alumnos")])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _vm._m(6)
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "small-box bg-gradient-info" }, [
+                    _c("div", { staticClass: "inner" }, [
+                      _c("h3", [_vm._v(_vm._s(_vm.pregunta))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Preguntas")])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _vm._m(8)
+                  ])
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          this.id_rol == 1
+            ? _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "small-box bg-gradient-secondary" },
+                    [
+                      _c("div", { staticClass: "inner" }, [
+                        _c("h3", [_vm._v(_vm._s(_vm.temas))]),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("Temas del area disciplinar")])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(9),
+                      _vm._v(" "),
+                      _vm._m(10)
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "small-box bg-gradient-primary" }, [
+                    _c("div", { staticClass: "inner" }, [
+                      _c("h3", [_vm._v(_vm._s(_vm.profesor))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Docentes")])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _vm._m(12)
+                  ])
+                ])
+              ])
             : _vm._e()
         ])
       ])
@@ -55188,7 +54167,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "content-header" }, [
       _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row mb-2" }, [
+        _c("div", { staticClass: "row mr-2 ml-2" }, [
           _c("div", { staticClass: "col-sm-6" }, [
             _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Inicio")])
           ]),
@@ -55217,7 +54196,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                    Más Información "),
+      _vm._v("\n                                Más Información "),
       _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
@@ -55234,24 +54213,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                    Más Información "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-chalkboard-teacher" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                    Más Información "),
+      _vm._v("\n                                Más Información "),
       _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
@@ -55268,24 +54230,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                    Más Información "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-calculator" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                    Más Información "),
+      _vm._v("\n                                Más Información "),
       _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   },
@@ -55302,189 +54247,42 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                    Más Información"),
+      _vm._v("\n                                Más Información"),
       _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4& ***!
-  \**********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "col-12 mt-2" }, [
-        _c("div", { staticClass: "page-header" }, [
-          _c("h1", { staticClass: "page-title" }, [_vm._v(" Dashboard  ")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-            [
-              _c("ul", { staticClass: "quick-links ml-auto" }, [
-                _c("li", [
-                  _c("span", [_c("i", { staticClass: "fas fa-home" })])
-                ])
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12 " }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("h1", [_vm._v("\n\t\t\t\t\t\t\tBienvenido\n\t\t\t\t\t\t")])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-calculator" })
     ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexExpertos.vue?vue&type=template&id=07f0a84e&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexExpertos.vue?vue&type=template&id=07f0a84e& ***!
-  \***********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-wrapper" }, [
-      _c("div", { staticClass: "col-12 mt-2" }, [
-        _c("div", { staticClass: "page-header" }, [
-          _c("h1", { staticClass: "page-title" }, [_vm._v(" Dashboard  ")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-            [
-              _c("ul", { staticClass: "quick-links ml-auto" }, [
-                _c("li", [
-                  _c("span", [_c("i", { staticClass: "fas fa-home" })])
-                ])
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12 " }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("h1", [
-                _vm._v("\n\t\t\t\t\t\t\t¡Bienvenido experto!\n\t\t\t\t\t\t")
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                Más Información "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexProfesores.vue?vue&type=template&id=1fc0e6ba&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/IndexProfesores.vue?vue&type=template&id=1fc0e6ba& ***!
-  \*************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-wrapper" }, [
-      _c("div", { staticClass: "col-12 mt-2" }, [
-        _c("div", { staticClass: "page-header" }, [
-          _c("h1", { staticClass: "page-title" }, [_vm._v(" Dashboard  ")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-            [
-              _c("ul", { staticClass: "quick-links ml-auto" }, [
-                _c("li", [
-                  _c("span", [_c("i", { staticClass: "fas fa-home" })])
-                ])
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12 " }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("h1", [
-                _vm._v("\n\t\t\t\t\t\t\t¡Bienvenido profesor!\n\t\t\t\t\t\t")
-              ])
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-chalkboard-teacher" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
+      _vm._v("\n                                Más Información "),
+      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   }
 ]
@@ -55510,489 +54308,467 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c("section", { staticClass: "content" }, [
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "col-12 " }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(1),
+              _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("h1", [
-                  _vm._v(
-                    "\n                                PÁGINA NO ENCONTRADA\n                              "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "svg",
-                  {
-                    staticStyle: { "enable-background": "new 0 0 510 510" },
-                    attrs: {
-                      version: "1.1",
-                      id: "Capa_1",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                      x: "0px",
-                      y: "0px",
-                      viewBox: "0 0 510 510",
-                      "xml:space": "preserve"
-                    }
-                  },
-                  [
-                    _c(
-                      "g",
-                      [
-                        _c(
-                          "g",
-                          [
-                            _c(
-                              "radialGradient",
-                              {
+                _c("div", { staticClass: "row m-5" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticStyle: { "enable-background": "new 0 0 510 510" },
+                      attrs: {
+                        version: "1.1",
+                        id: "Capa_1",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                        x: "0px",
+                        y: "0px",
+                        viewBox: "0 0 510 510",
+                        "xml:space": "preserve"
+                      }
+                    },
+                    [
+                      _c(
+                        "g",
+                        [
+                          _c(
+                            "g",
+                            [
+                              _c(
+                                "radialGradient",
+                                {
+                                  attrs: {
+                                    id: "SVGID_1_",
+                                    cx: "277.6526",
+                                    cy: "261.6994",
+                                    r: "248.0942",
+                                    gradientUnits: "userSpaceOnUse"
+                                  }
+                                },
+                                [
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FF4974" },
+                                    attrs: { offset: "0" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FE4772" },
+                                    attrs: { offset: "0.4073" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FB3F6D" },
+                                    attrs: { offset: "0.5963" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F73363" },
+                                    attrs: { offset: "0.7403" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F02055" },
+                                    attrs: { offset: "0.8615" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E70944" },
+                                    attrs: { offset: "0.9673" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E4003D" },
+                                    attrs: { offset: "1" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticStyle: { fill: "url(#SVGID_1_)" },
                                 attrs: {
-                                  id: "SVGID_1_",
-                                  cx: "277.6526",
-                                  cy: "261.6994",
-                                  r: "248.0942",
-                                  gradientUnits: "userSpaceOnUse"
+                                  d:
+                                    "M469.736,310.561h-3.728c-12.229,0-18.347-14.775-9.703-23.425l2.633-2.634\n                                        c5.362-5.362,5.362-14.045,0-19.407l-42.251-42.251c-5.362-5.362-14.045-5.362-19.407,0l-2.633,2.633\n                                        c-8.65,8.643-23.425,2.525-23.425-9.703v-3.727c0-7.576-6.145-13.721-13.721-13.721H297.74c-7.576,0-13.721,6.145-13.721,13.721\n                                        v3.727c0,12.229-14.775,18.347-23.425,9.703l-2.633-2.633c-5.362-5.362-14.045-5.362-19.407,0l-42.251,42.251\n                                        c-5.362,5.362-5.362,14.045,0,19.407l2.633,2.634c8.643,8.65,2.525,23.425-9.703,23.425h-3.728\n                                        c-7.576,0-13.721,6.145-13.721,13.721v59.761c0,7.576,6.145,13.721,13.721,13.721h3.728c12.229,0,18.347,14.775,9.703,23.425\n                                        l-2.633,2.633c-5.362,5.362-5.362,14.045,0,19.407l42.251,42.251c5.362,5.362,14.045,5.362,19.407,0l2.633-2.633\n                                        c8.65-8.643,23.425-2.526,23.425,9.703v3.728c0,7.576,6.145,13.721,13.721,13.721H357.5c5.677,0,10.538-3.453,12.621-8.368\n                                        c0.014-0.033,0.027-0.066,0.04-0.098c0.1-0.241,0.197-0.482,0.283-0.729c0.104-0.293,0.199-0.59,0.284-0.892\n                                        c0.04-0.142,0.074-0.29,0.115-0.439c0.074-0.29,0.135-0.587,0.182-0.885c0.027-0.155,0.047-0.304,0.068-0.452\n                                        c0.04-0.277,0.067-0.554,0.088-0.837c0.013-0.101,0.02-0.216,0.02-0.324c0.013-0.23,0.02-0.466,0.02-0.696v-3.728\n                                        c0-12.229,14.775-18.347,23.425-9.703l2.633,2.633c5.362,5.362,14.045,5.362,19.407,0l42.251-42.251\n                                        c5.362-5.362,5.362-14.045,0-19.407l-2.633-2.633c-8.643-8.65-2.525-23.425,9.703-23.425h3.728c0.23,0,0.466-0.007,0.696-0.02\n                                        c0.108,0,0.223-0.007,0.324-0.02c0.284-0.02,0.561-0.047,0.837-0.088c0.148-0.02,0.297-0.041,0.452-0.068\n                                        c0.297-0.047,0.594-0.108,0.885-0.182c0.149-0.041,0.297-0.074,0.439-0.115c0.302-0.084,0.6-0.18,0.893-0.284\n                                        c0.246-0.086,0.487-0.183,0.727-0.282c0.033-0.014,0.068-0.027,0.101-0.042c4.915-2.083,8.368-6.944,8.368-12.621v-59.761\n                                        C483.457,316.706,477.312,310.561,469.736,310.561z M283.694,354.163c0-24.262,19.664-43.926,43.926-43.926\n                                        s43.926,19.664,43.926,43.926s-19.664,43.926-43.926,43.926S283.694,378.425,283.694,354.163z"
                                 }
-                              },
-                              [
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FF4974" },
-                                  attrs: { offset: "0" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FE4772" },
-                                  attrs: { offset: "0.4073" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FB3F6D" },
-                                  attrs: { offset: "0.5963" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F73363" },
-                                  attrs: { offset: "0.7403" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F02055" },
-                                  attrs: { offset: "0.8615" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E70944" },
-                                  attrs: { offset: "0.9673" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E4003D" },
-                                  attrs: { offset: "1" }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("path", {
-                              staticStyle: { fill: "url(#SVGID_1_)" },
-                              attrs: {
-                                d:
-                                  "M469.736,310.561h-3.728c-12.229,0-18.347-14.775-9.703-23.425l2.633-2.634\n                                        c5.362-5.362,5.362-14.045,0-19.407l-42.251-42.251c-5.362-5.362-14.045-5.362-19.407,0l-2.633,2.633\n                                        c-8.65,8.643-23.425,2.525-23.425-9.703v-3.727c0-7.576-6.145-13.721-13.721-13.721H297.74c-7.576,0-13.721,6.145-13.721,13.721\n                                        v3.727c0,12.229-14.775,18.347-23.425,9.703l-2.633-2.633c-5.362-5.362-14.045-5.362-19.407,0l-42.251,42.251\n                                        c-5.362,5.362-5.362,14.045,0,19.407l2.633,2.634c8.643,8.65,2.525,23.425-9.703,23.425h-3.728\n                                        c-7.576,0-13.721,6.145-13.721,13.721v59.761c0,7.576,6.145,13.721,13.721,13.721h3.728c12.229,0,18.347,14.775,9.703,23.425\n                                        l-2.633,2.633c-5.362,5.362-5.362,14.045,0,19.407l42.251,42.251c5.362,5.362,14.045,5.362,19.407,0l2.633-2.633\n                                        c8.65-8.643,23.425-2.526,23.425,9.703v3.728c0,7.576,6.145,13.721,13.721,13.721H357.5c5.677,0,10.538-3.453,12.621-8.368\n                                        c0.014-0.033,0.027-0.066,0.04-0.098c0.1-0.241,0.197-0.482,0.283-0.729c0.104-0.293,0.199-0.59,0.284-0.892\n                                        c0.04-0.142,0.074-0.29,0.115-0.439c0.074-0.29,0.135-0.587,0.182-0.885c0.027-0.155,0.047-0.304,0.068-0.452\n                                        c0.04-0.277,0.067-0.554,0.088-0.837c0.013-0.101,0.02-0.216,0.02-0.324c0.013-0.23,0.02-0.466,0.02-0.696v-3.728\n                                        c0-12.229,14.775-18.347,23.425-9.703l2.633,2.633c5.362,5.362,14.045,5.362,19.407,0l42.251-42.251\n                                        c5.362-5.362,5.362-14.045,0-19.407l-2.633-2.633c-8.643-8.65-2.525-23.425,9.703-23.425h3.728c0.23,0,0.466-0.007,0.696-0.02\n                                        c0.108,0,0.223-0.007,0.324-0.02c0.284-0.02,0.561-0.047,0.837-0.088c0.148-0.02,0.297-0.041,0.452-0.068\n                                        c0.297-0.047,0.594-0.108,0.885-0.182c0.149-0.041,0.297-0.074,0.439-0.115c0.302-0.084,0.6-0.18,0.893-0.284\n                                        c0.246-0.086,0.487-0.183,0.727-0.282c0.033-0.014,0.068-0.027,0.101-0.042c4.915-2.083,8.368-6.944,8.368-12.621v-59.761\n                                        C483.457,316.706,477.312,310.561,469.736,310.561z M283.694,354.163c0-24.262,19.664-43.926,43.926-43.926\n                                        s43.926,19.664,43.926,43.926s-19.664,43.926-43.926,43.926S283.694,378.425,283.694,354.163z"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "radialGradient",
-                              {
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "radialGradient",
+                                {
+                                  attrs: {
+                                    id: "SVGID_2_",
+                                    cx: "3343.6545",
+                                    cy: "-3093.0195",
+                                    r: "152.5551",
+                                    gradientTransform:
+                                      "matrix(-1 0 0 -1 3702 -2682)",
+                                    gradientUnits: "userSpaceOnUse"
+                                  }
+                                },
+                                [
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FF4974" },
+                                    attrs: { offset: "0" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FE4772" },
+                                    attrs: { offset: "0.4073" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FB3F6D" },
+                                    attrs: { offset: "0.5963" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F73363" },
+                                    attrs: { offset: "0.7403" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F02055" },
+                                    attrs: { offset: "0.8615" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E70944" },
+                                    attrs: { offset: "0.9673" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E4003D" },
+                                    attrs: { offset: "1" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticStyle: { fill: "url(#SVGID_2_)" },
                                 attrs: {
-                                  id: "SVGID_2_",
-                                  cx: "3343.6545",
-                                  cy: "-3093.0195",
-                                  r: "152.5551",
-                                  gradientTransform:
-                                    "matrix(-1 0 0 -1 3702 -2682)",
-                                  gradientUnits: "userSpaceOnUse"
+                                  d:
+                                    "M327.62,449.988c52.925,0,95.825-42.9,95.825-95.825s-42.9-95.825-95.825-95.825\n                                        c-1.624,0-3.242,0.04-4.844,0.12c-49.071,2.442-88.42,41.791-90.862,90.862c-0.08,1.601-0.12,3.22-0.12,4.844\n                                        C231.795,407.088,274.695,449.988,327.62,449.988z M327.62,398.089c-24.262,0-43.926-19.664-43.926-43.926\n                                        s19.664-43.926,43.926-43.926s43.926,19.664,43.926,43.926S351.882,398.089,327.62,398.089z"
                                 }
-                              },
-                              [
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FF4974" },
-                                  attrs: { offset: "0" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FE4772" },
-                                  attrs: { offset: "0.4073" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FB3F6D" },
-                                  attrs: { offset: "0.5963" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F73363" },
-                                  attrs: { offset: "0.7403" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F02055" },
-                                  attrs: { offset: "0.8615" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E70944" },
-                                  attrs: { offset: "0.9673" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E4003D" },
-                                  attrs: { offset: "1" }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("path", {
-                              staticStyle: { fill: "url(#SVGID_2_)" },
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "linearGradient",
+                            {
                               attrs: {
-                                d:
-                                  "M327.62,449.988c52.925,0,95.825-42.9,95.825-95.825s-42.9-95.825-95.825-95.825\n                                        c-1.624,0-3.242,0.04-4.844,0.12c-49.071,2.442-88.42,41.791-90.862,90.862c-0.08,1.601-0.12,3.22-0.12,4.844\n                                        C231.795,407.088,274.695,449.988,327.62,449.988z M327.62,398.089c-24.262,0-43.926-19.664-43.926-43.926\n                                        s19.664-43.926,43.926-43.926s43.926,19.664,43.926,43.926S351.882,398.089,327.62,398.089z"
+                                id: "SVGID_3_",
+                                gradientUnits: "userSpaceOnUse",
+                                x1: "323.7844",
+                                y1: "351.3988",
+                                x2: "238.1266",
+                                y2: "265.7409"
                               }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "linearGradient",
-                          {
+                            },
+                            [
+                              _c("stop", {
+                                staticStyle: {
+                                  "stop-color": "#E4003D",
+                                  "stop-opacity": "0"
+                                },
+                                attrs: { offset: "0" }
+                              }),
+                              _vm._v(" "),
+                              _c("stop", {
+                                staticStyle: {
+                                  "stop-color": "#BD294B",
+                                  "stop-opacity": "0.5838"
+                                },
+                                attrs: { offset: "0.5838" }
+                              }),
+                              _vm._v(" "),
+                              _c("stop", {
+                                staticStyle: { "stop-color": "#A64153" },
+                                attrs: { offset: "1" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticStyle: { fill: "url(#SVGID_3_)" },
                             attrs: {
-                              id: "SVGID_3_",
-                              gradientUnits: "userSpaceOnUse",
-                              x1: "323.7844",
-                              y1: "351.3988",
-                              x2: "238.1266",
-                              y2: "265.7409"
+                              d:
+                                "M460.348,309.374c-3.098-1.383-5.451-3.86-6.8-6.8l-74.34-74.34\n                                    c-2.94-1.348-5.417-3.702-6.8-6.8L349.3,198.326h-51.56c-7.576,0-13.721,6.145-13.721,13.721v3.728\n                                    c0,12.229-14.775,18.347-23.425,9.703l-2.633-2.633c-5.362-5.362-14.045-5.362-19.407,0l-42.251,42.251\n                                    c-5.362,5.361-5.362,14.045,0,19.407l2.633,2.634c8.643,8.65,2.525,23.425-9.703,23.425h-3.728\n                                    c-7.576,0-13.721,6.145-13.721,13.721v53.703l1.588-2.981L308.367,510H357.5c5.677,0,10.538-3.453,12.621-8.369\n                                    c0.014-0.033,0.027-0.066,0.04-0.099c0.1-0.241,0.197-0.482,0.283-0.729c0.104-0.293,0.199-0.59,0.284-0.892\n                                    c0.04-0.142,0.074-0.29,0.115-0.439c0.074-0.29,0.135-0.587,0.182-0.885c0.027-0.155,0.047-0.304,0.068-0.452\n                                    c0.04-0.277,0.067-0.554,0.088-0.837c0.014-0.101,0.02-0.216,0.02-0.324c0.014-0.23,0.02-0.466,0.02-0.695v-3.728\n                                    c0-12.229,14.775-18.347,23.425-9.704l2.633,2.634c5.362,5.361,14.045,5.361,19.407,0l42.251-42.251\n                                    c5.362-5.361,5.362-14.045,0-19.407l-2.633-2.633c-8.643-8.65-2.525-23.425,9.703-23.425h3.728c0.23,0,0.466-0.007,0.695-0.02\n                                    c0.108,0,0.223-0.007,0.324-0.02c0.284-0.02,0.561-0.047,0.837-0.088c0.149-0.021,0.297-0.041,0.452-0.068\n                                    c0.297-0.047,0.594-0.108,0.885-0.182c0.148-0.04,0.297-0.074,0.439-0.115c0.302-0.084,0.6-0.18,0.893-0.284\n                                    c0.247-0.086,0.487-0.183,0.727-0.282c0.033-0.014,0.068-0.027,0.101-0.042c4.915-2.083,8.368-6.944,8.368-12.621v-51.56\n                                    L460.348,309.374z M327.62,398.089c-24.262,0-43.926-19.664-43.926-43.926c0-24.262,19.664-43.926,43.926-43.926\n                                    c24.262,0,43.926,19.664,43.926,43.926C371.546,378.425,351.882,398.089,327.62,398.089z"
                             }
-                          },
-                          [
-                            _c("stop", {
-                              staticStyle: {
-                                "stop-color": "#E4003D",
-                                "stop-opacity": "0"
-                              },
-                              attrs: { offset: "0" }
-                            }),
-                            _vm._v(" "),
-                            _c("stop", {
-                              staticStyle: {
-                                "stop-color": "#BD294B",
-                                "stop-opacity": "0.5838"
-                              },
-                              attrs: { offset: "0.5838" }
-                            }),
-                            _vm._v(" "),
-                            _c("stop", {
-                              staticStyle: { "stop-color": "#A64153" },
-                              attrs: { offset: "1" }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("path", {
-                          staticStyle: { fill: "url(#SVGID_3_)" },
-                          attrs: {
-                            d:
-                              "M460.348,309.374c-3.098-1.383-5.451-3.86-6.8-6.8l-74.34-74.34\n                                      c-2.94-1.348-5.417-3.702-6.8-6.8L349.3,198.326h-51.56c-7.576,0-13.721,6.145-13.721,13.721v3.728\n                                      c0,12.229-14.775,18.347-23.425,9.703l-2.633-2.633c-5.362-5.362-14.045-5.362-19.407,0l-42.251,42.251\n                                      c-5.362,5.361-5.362,14.045,0,19.407l2.633,2.634c8.643,8.65,2.525,23.425-9.703,23.425h-3.728\n                                      c-7.576,0-13.721,6.145-13.721,13.721v53.703l1.588-2.981L308.367,510H357.5c5.677,0,10.538-3.453,12.621-8.369\n                                      c0.014-0.033,0.027-0.066,0.04-0.099c0.1-0.241,0.197-0.482,0.283-0.729c0.104-0.293,0.199-0.59,0.284-0.892\n                                      c0.04-0.142,0.074-0.29,0.115-0.439c0.074-0.29,0.135-0.587,0.182-0.885c0.027-0.155,0.047-0.304,0.068-0.452\n                                      c0.04-0.277,0.067-0.554,0.088-0.837c0.014-0.101,0.02-0.216,0.02-0.324c0.014-0.23,0.02-0.466,0.02-0.695v-3.728\n                                      c0-12.229,14.775-18.347,23.425-9.704l2.633,2.634c5.362,5.361,14.045,5.361,19.407,0l42.251-42.251\n                                      c5.362-5.361,5.362-14.045,0-19.407l-2.633-2.633c-8.643-8.65-2.525-23.425,9.703-23.425h3.728c0.23,0,0.466-0.007,0.695-0.02\n                                      c0.108,0,0.223-0.007,0.324-0.02c0.284-0.02,0.561-0.047,0.837-0.088c0.149-0.021,0.297-0.041,0.452-0.068\n                                      c0.297-0.047,0.594-0.108,0.885-0.182c0.148-0.04,0.297-0.074,0.439-0.115c0.302-0.084,0.6-0.18,0.893-0.284\n                                      c0.247-0.086,0.487-0.183,0.727-0.282c0.033-0.014,0.068-0.027,0.101-0.042c4.915-2.083,8.368-6.944,8.368-12.621v-51.56\n                                      L460.348,309.374z M327.62,398.089c-24.262,0-43.926-19.664-43.926-43.926c0-24.262,19.664-43.926,43.926-43.926\n                                      c24.262,0,43.926,19.664,43.926,43.926C371.546,378.425,351.882,398.089,327.62,398.089z"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          [
-                            _c(
-                              "radialGradient",
-                              {
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            [
+                              _c(
+                                "radialGradient",
+                                {
+                                  attrs: {
+                                    id: "SVGID_4_",
+                                    cx: "199.535",
+                                    cy: "52.0508",
+                                    r: "203.7689",
+                                    gradientUnits: "userSpaceOnUse"
+                                  }
+                                },
+                                [
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FF4974" },
+                                    attrs: { offset: "0" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FE4772" },
+                                    attrs: { offset: "0.4073" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FB3F6D" },
+                                    attrs: { offset: "0.5963" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F73363" },
+                                    attrs: { offset: "0.7403" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F02055" },
+                                    attrs: { offset: "0.8615" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E70944" },
+                                    attrs: { offset: "0.9673" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E4003D" },
+                                    attrs: { offset: "1" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticStyle: { fill: "url(#SVGID_4_)" },
                                 attrs: {
-                                  id: "SVGID_4_",
-                                  cx: "199.535",
-                                  cy: "52.0508",
-                                  r: "203.7689",
-                                  gradientUnits: "userSpaceOnUse"
+                                  d:
+                                    "M357.3,92.183h-3.062c-10.044,0-15.069-12.135-7.97-19.24l2.163-2.163\n                                        c4.404-4.404,4.404-11.536,0-15.94l-34.702-34.702c-4.404-4.404-11.536-4.404-15.94,0l-2.163,2.163\n                                        c-7.105,7.099-19.24,2.074-19.24-7.97V11.27c0-6.223-5.047-11.27-11.27-11.27h-49.084c-6.223,0-11.27,5.047-11.27,11.27v3.062\n                                        c0,10.044-12.135,15.069-19.24,7.97l-2.163-2.163c-4.404-4.404-11.536-4.404-15.94,0l-34.702,34.702\n                                        c-4.404,4.404-4.404,11.536,0,15.94l2.163,2.163c7.099,7.105,2.074,19.24-7.97,19.24h-3.062c-6.223,0-11.27,5.047-11.27,11.27\n                                        v49.084c0,6.223,5.047,11.27,11.27,11.27h3.062c10.044,0,15.069,12.135,7.97,19.24l-2.163,2.163\n                                        c-4.404,4.404-4.404,11.536,0,15.94l34.702,34.702c4.404,4.404,11.536,4.404,15.94,0l2.163-2.163\n                                        c7.105-7.099,19.24-2.074,19.24,7.97v3.062c0,6.223,5.047,11.27,11.27,11.27h49.084c4.663,0,8.655-2.836,10.366-6.873\n                                        c0.011-0.027,0.022-0.054,0.033-0.081c0.082-0.198,0.162-0.396,0.233-0.599c0.085-0.241,0.164-0.485,0.233-0.733\n                                        c0.033-0.116,0.061-0.239,0.094-0.36c0.061-0.238,0.111-0.482,0.15-0.727c0.022-0.128,0.039-0.25,0.055-0.372\n                                        c0.033-0.227,0.055-0.455,0.072-0.688c0.011-0.083,0.017-0.178,0.017-0.266c0.011-0.189,0.017-0.383,0.017-0.571v-3.062\n                                        c0-10.044,12.135-15.069,19.24-7.97l2.163,2.163c4.404,4.404,11.536,4.404,15.94,0l34.702-34.702\n                                        c4.404-4.404,4.404-11.536,0-15.94l-2.163-2.163c-7.099-7.105-2.074-19.24,7.97-19.24h3.062c0.189,0,0.383-0.006,0.571-0.017\n                                        c0.089,0,0.183-0.006,0.266-0.017c0.233-0.017,0.46-0.039,0.688-0.072c0.122-0.017,0.244-0.033,0.372-0.055\n                                        c0.244-0.039,0.488-0.089,0.727-0.15c0.122-0.033,0.244-0.061,0.361-0.094c0.248-0.069,0.493-0.148,0.733-0.233\n                                        c0.202-0.071,0.4-0.15,0.597-0.232c0.027-0.012,0.056-0.022,0.083-0.034c4.037-1.711,6.873-5.703,6.873-10.366v-49.084\n                                        C368.57,97.23,363.523,92.183,357.3,92.183z M204.497,127.995c0-19.927,16.15-36.078,36.078-36.078s36.078,16.151,36.078,36.078\n                                        s-16.151,36.078-36.078,36.078S204.497,147.922,204.497,127.995z"
                                 }
-                              },
-                              [
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FF4974" },
-                                  attrs: { offset: "0" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FE4772" },
-                                  attrs: { offset: "0.4073" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FB3F6D" },
-                                  attrs: { offset: "0.5963" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F73363" },
-                                  attrs: { offset: "0.7403" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F02055" },
-                                  attrs: { offset: "0.8615" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E70944" },
-                                  attrs: { offset: "0.9673" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E4003D" },
-                                  attrs: { offset: "1" }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("path", {
-                              staticStyle: { fill: "url(#SVGID_4_)" },
-                              attrs: {
-                                d:
-                                  "M357.3,92.183h-3.062c-10.044,0-15.069-12.135-7.97-19.24l2.163-2.163\n                                        c4.404-4.404,4.404-11.536,0-15.94l-34.702-34.702c-4.404-4.404-11.536-4.404-15.94,0l-2.163,2.163\n                                        c-7.105,7.099-19.24,2.074-19.24-7.97V11.27c0-6.223-5.047-11.27-11.27-11.27h-49.084c-6.223,0-11.27,5.047-11.27,11.27v3.062\n                                        c0,10.044-12.135,15.069-19.24,7.97l-2.163-2.163c-4.404-4.404-11.536-4.404-15.94,0l-34.702,34.702\n                                        c-4.404,4.404-4.404,11.536,0,15.94l2.163,2.163c7.099,7.105,2.074,19.24-7.97,19.24h-3.062c-6.223,0-11.27,5.047-11.27,11.27\n                                        v49.084c0,6.223,5.047,11.27,11.27,11.27h3.062c10.044,0,15.069,12.135,7.97,19.24l-2.163,2.163\n                                        c-4.404,4.404-4.404,11.536,0,15.94l34.702,34.702c4.404,4.404,11.536,4.404,15.94,0l2.163-2.163\n                                        c7.105-7.099,19.24-2.074,19.24,7.97v3.062c0,6.223,5.047,11.27,11.27,11.27h49.084c4.663,0,8.655-2.836,10.366-6.873\n                                        c0.011-0.027,0.022-0.054,0.033-0.081c0.082-0.198,0.162-0.396,0.233-0.599c0.085-0.241,0.164-0.485,0.233-0.733\n                                        c0.033-0.116,0.061-0.239,0.094-0.36c0.061-0.238,0.111-0.482,0.15-0.727c0.022-0.128,0.039-0.25,0.055-0.372\n                                        c0.033-0.227,0.055-0.455,0.072-0.688c0.011-0.083,0.017-0.178,0.017-0.266c0.011-0.189,0.017-0.383,0.017-0.571v-3.062\n                                        c0-10.044,12.135-15.069,19.24-7.97l2.163,2.163c4.404,4.404,11.536,4.404,15.94,0l34.702-34.702\n                                        c4.404-4.404,4.404-11.536,0-15.94l-2.163-2.163c-7.099-7.105-2.074-19.24,7.97-19.24h3.062c0.189,0,0.383-0.006,0.571-0.017\n                                        c0.089,0,0.183-0.006,0.266-0.017c0.233-0.017,0.46-0.039,0.688-0.072c0.122-0.017,0.244-0.033,0.372-0.055\n                                        c0.244-0.039,0.488-0.089,0.727-0.15c0.122-0.033,0.244-0.061,0.361-0.094c0.248-0.069,0.493-0.148,0.733-0.233\n                                        c0.202-0.071,0.4-0.15,0.597-0.232c0.027-0.012,0.056-0.022,0.083-0.034c4.037-1.711,6.873-5.703,6.873-10.366v-49.084\n                                        C368.57,97.23,363.523,92.183,357.3,92.183z M204.497,127.995c0-19.927,16.15-36.078,36.078-36.078s36.078,16.151,36.078,36.078\n                                        s-16.151,36.078-36.078,36.078S204.497,147.922,204.497,127.995z"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "radialGradient",
-                              {
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "radialGradient",
+                                {
+                                  attrs: {
+                                    id: "SVGID_5_",
+                                    cx: "3436.189",
+                                    cy: "-2856.6931",
+                                    r: "125.2991",
+                                    gradientTransform:
+                                      "matrix(-1 0 0 -1 3702 -2682)",
+                                    gradientUnits: "userSpaceOnUse"
+                                  }
+                                },
+                                [
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FF4974" },
+                                    attrs: { offset: "0" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FE4772" },
+                                    attrs: { offset: "0.4073" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FB3F6D" },
+                                    attrs: { offset: "0.5963" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F73363" },
+                                    attrs: { offset: "0.7403" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F02055" },
+                                    attrs: { offset: "0.8615" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E70944" },
+                                    attrs: { offset: "0.9673" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E4003D" },
+                                    attrs: { offset: "1" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticStyle: { fill: "url(#SVGID_5_)" },
                                 attrs: {
-                                  id: "SVGID_5_",
-                                  cx: "3436.189",
-                                  cy: "-2856.6931",
-                                  r: "125.2991",
-                                  gradientTransform:
-                                    "matrix(-1 0 0 -1 3702 -2682)",
-                                  gradientUnits: "userSpaceOnUse"
+                                  d:
+                                    "M240.575,206.699c43.469,0,78.705-35.236,78.705-78.705S284.044,49.29,240.575,49.29\n                                        c-1.334,0-2.663,0.033-3.978,0.099c-40.304,2.006-72.622,34.324-74.628,74.628c-0.066,1.315-0.099,2.644-0.099,3.978\n                                        C161.87,171.464,197.106,206.699,240.575,206.699z M240.575,164.072c-19.927,0-36.078-16.151-36.078-36.078\n                                        s16.15-36.078,36.078-36.078s36.078,16.151,36.078,36.078S260.503,164.072,240.575,164.072z"
                                 }
-                              },
-                              [
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FF4974" },
-                                  attrs: { offset: "0" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FE4772" },
-                                  attrs: { offset: "0.4073" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FB3F6D" },
-                                  attrs: { offset: "0.5963" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F73363" },
-                                  attrs: { offset: "0.7403" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F02055" },
-                                  attrs: { offset: "0.8615" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E70944" },
-                                  attrs: { offset: "0.9673" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E4003D" },
-                                  attrs: { offset: "1" }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("path", {
-                              staticStyle: { fill: "url(#SVGID_5_)" },
-                              attrs: {
-                                d:
-                                  "M240.575,206.699c43.469,0,78.705-35.236,78.705-78.705S284.044,49.29,240.575,49.29\n                                        c-1.334,0-2.663,0.033-3.978,0.099c-40.304,2.006-72.622,34.324-74.628,74.628c-0.066,1.315-0.099,2.644-0.099,3.978\n                                        C161.87,171.464,197.106,206.699,240.575,206.699z M240.575,164.072c-19.927,0-36.078-16.151-36.078-36.078\n                                        s16.15-36.078,36.078-36.078s36.078,16.151,36.078,36.078S260.503,164.072,240.575,164.072z"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          [
-                            _c(
-                              "radialGradient",
-                              {
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            [
+                              _c(
+                                "radialGradient",
+                                {
+                                  attrs: {
+                                    id: "SVGID_6_",
+                                    cx: "95.4781",
+                                    cy: "229.2931",
+                                    r: "161.5425",
+                                    gradientUnits: "userSpaceOnUse"
+                                  }
+                                },
+                                [
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FF4974" },
+                                    attrs: { offset: "0" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FE4772" },
+                                    attrs: { offset: "0.4073" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FB3F6D" },
+                                    attrs: { offset: "0.5963" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F73363" },
+                                    attrs: { offset: "0.7403" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F02055" },
+                                    attrs: { offset: "0.8615" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E70944" },
+                                    attrs: { offset: "0.9673" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E4003D" },
+                                    attrs: { offset: "1" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticStyle: { fill: "url(#SVGID_6_)" },
                                 attrs: {
-                                  id: "SVGID_6_",
-                                  cx: "95.4781",
-                                  cy: "229.2931",
-                                  r: "161.5425",
-                                  gradientUnits: "userSpaceOnUse"
+                                  d:
+                                    "M220.55,261.109h-2.427c-7.963,0-11.946-9.62-6.318-15.253l1.715-1.715\n                                        c3.491-3.491,3.491-9.145,0-12.637l-27.511-27.511c-3.491-3.491-9.145-3.491-12.637,0l-1.715,1.715\n                                        c-5.632,5.628-15.253,1.644-15.253-6.318v-2.427c0-4.933-4.001-8.934-8.934-8.934h-38.912c-4.933,0-8.934,4.001-8.934,8.934v2.427\n                                        c0,7.963-9.62,11.946-15.253,6.318l-1.715-1.715c-3.491-3.491-9.145-3.491-12.637,0l-27.511,27.511\n                                        c-3.491,3.491-3.491,9.145,0,12.637l1.715,1.715c5.628,5.632,1.644,15.253-6.318,15.253h-2.427c-4.933,0-8.934,4.001-8.934,8.934\n                                        v38.912c0,4.933,4.001,8.934,8.934,8.934h2.427c7.963,0,11.946,9.62,6.318,15.253l-1.715,1.715c-3.491,3.491-3.491,9.145,0,12.637\n                                        l27.511,27.511c3.491,3.491,9.145,3.491,12.637,0l1.715-1.715c5.632-5.628,15.253-1.645,15.253,6.318v2.427\n                                        c0,4.933,4.001,8.934,8.934,8.934h38.912c3.696,0,6.862-2.249,8.218-5.449c0.009-0.021,0.017-0.043,0.026-0.064\n                                        c0.065-0.157,0.128-0.314,0.184-0.475c0.068-0.191,0.13-0.384,0.185-0.581c0.026-0.092,0.048-0.189,0.075-0.286\n                                        c0.048-0.189,0.088-0.382,0.119-0.576c0.018-0.101,0.031-0.198,0.044-0.295c0.026-0.18,0.044-0.361,0.057-0.545\n                                        c0.009-0.066,0.013-0.141,0.013-0.211c0.009-0.15,0.013-0.303,0.013-0.453v-2.427c0-7.963,9.62-11.946,15.253-6.318l1.715,1.715\n                                        c3.491,3.491,9.145,3.491,12.637,0l27.511-27.511c3.491-3.491,3.491-9.145,0-12.637l-1.715-1.715\n                                        c-5.628-5.632-1.644-15.253,6.318-15.253h2.427c0.15,0,0.303-0.004,0.453-0.013c0.07,0,0.145-0.004,0.211-0.013\n                                        c0.185-0.013,0.365-0.031,0.545-0.057c0.097-0.013,0.193-0.026,0.295-0.044c0.194-0.031,0.387-0.07,0.576-0.119\n                                        c0.097-0.026,0.193-0.048,0.286-0.075c0.197-0.055,0.391-0.117,0.581-0.185c0.16-0.056,0.317-0.119,0.473-0.184\n                                        c0.022-0.009,0.044-0.018,0.066-0.027c3.2-1.356,5.449-4.521,5.449-8.218v-38.912C229.484,265.11,225.483,261.109,220.55,261.109z\n                                        M99.412,289.499c0-15.798,12.804-28.602,28.602-28.602s28.602,12.804,28.602,28.602c0,15.798-12.804,28.602-28.602,28.602\n                                        S99.412,305.297,99.412,289.499z"
                                 }
-                              },
-                              [
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FF4974" },
-                                  attrs: { offset: "0" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FE4772" },
-                                  attrs: { offset: "0.4073" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FB3F6D" },
-                                  attrs: { offset: "0.5963" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F73363" },
-                                  attrs: { offset: "0.7403" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F02055" },
-                                  attrs: { offset: "0.8615" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E70944" },
-                                  attrs: { offset: "0.9673" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E4003D" },
-                                  attrs: { offset: "1" }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("path", {
-                              staticStyle: { fill: "url(#SVGID_6_)" },
-                              attrs: {
-                                d:
-                                  "M220.55,261.109h-2.427c-7.963,0-11.946-9.62-6.318-15.253l1.715-1.715\n                                        c3.491-3.491,3.491-9.145,0-12.637l-27.511-27.511c-3.491-3.491-9.145-3.491-12.637,0l-1.715,1.715\n                                        c-5.632,5.628-15.253,1.644-15.253-6.318v-2.427c0-4.933-4.001-8.934-8.934-8.934h-38.912c-4.933,0-8.934,4.001-8.934,8.934v2.427\n                                        c0,7.963-9.62,11.946-15.253,6.318l-1.715-1.715c-3.491-3.491-9.145-3.491-12.637,0l-27.511,27.511\n                                        c-3.491,3.491-3.491,9.145,0,12.637l1.715,1.715c5.628,5.632,1.644,15.253-6.318,15.253h-2.427c-4.933,0-8.934,4.001-8.934,8.934\n                                        v38.912c0,4.933,4.001,8.934,8.934,8.934h2.427c7.963,0,11.946,9.62,6.318,15.253l-1.715,1.715c-3.491,3.491-3.491,9.145,0,12.637\n                                        l27.511,27.511c3.491,3.491,9.145,3.491,12.637,0l1.715-1.715c5.632-5.628,15.253-1.645,15.253,6.318v2.427\n                                        c0,4.933,4.001,8.934,8.934,8.934h38.912c3.696,0,6.862-2.249,8.218-5.449c0.009-0.021,0.017-0.043,0.026-0.064\n                                        c0.065-0.157,0.128-0.314,0.184-0.475c0.068-0.191,0.13-0.384,0.185-0.581c0.026-0.092,0.048-0.189,0.075-0.286\n                                        c0.048-0.189,0.088-0.382,0.119-0.576c0.018-0.101,0.031-0.198,0.044-0.295c0.026-0.18,0.044-0.361,0.057-0.545\n                                        c0.009-0.066,0.013-0.141,0.013-0.211c0.009-0.15,0.013-0.303,0.013-0.453v-2.427c0-7.963,9.62-11.946,15.253-6.318l1.715,1.715\n                                        c3.491,3.491,9.145,3.491,12.637,0l27.511-27.511c3.491-3.491,3.491-9.145,0-12.637l-1.715-1.715\n                                        c-5.628-5.632-1.644-15.253,6.318-15.253h2.427c0.15,0,0.303-0.004,0.453-0.013c0.07,0,0.145-0.004,0.211-0.013\n                                        c0.185-0.013,0.365-0.031,0.545-0.057c0.097-0.013,0.193-0.026,0.295-0.044c0.194-0.031,0.387-0.07,0.576-0.119\n                                        c0.097-0.026,0.193-0.048,0.286-0.075c0.197-0.055,0.391-0.117,0.581-0.185c0.16-0.056,0.317-0.119,0.473-0.184\n                                        c0.022-0.009,0.044-0.018,0.066-0.027c3.2-1.356,5.449-4.521,5.449-8.218v-38.912C229.484,265.11,225.483,261.109,220.55,261.109z\n                                         M99.412,289.499c0-15.798,12.804-28.602,28.602-28.602s28.602,12.804,28.602,28.602c0,15.798-12.804,28.602-28.602,28.602\n                                        S99.412,305.297,99.412,289.499z"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "radialGradient",
-                              {
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "radialGradient",
+                                {
+                                  attrs: {
+                                    id: "SVGID_7_",
+                                    cx: "3553.98",
+                                    cy: "-3008.5205",
+                                    r: "99.3338",
+                                    gradientTransform:
+                                      "matrix(-1 0 0 -1 3702 -2682)",
+                                    gradientUnits: "userSpaceOnUse"
+                                  }
+                                },
+                                [
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FF4974" },
+                                    attrs: { offset: "0" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FE4772" },
+                                    attrs: { offset: "0.4073" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#FB3F6D" },
+                                    attrs: { offset: "0.5963" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F73363" },
+                                    attrs: { offset: "0.7403" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#F02055" },
+                                    attrs: { offset: "0.8615" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E70944" },
+                                    attrs: { offset: "0.9673" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("stop", {
+                                    staticStyle: { "stop-color": "#E4003D" },
+                                    attrs: { offset: "1" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticStyle: { fill: "url(#SVGID_7_)" },
                                 attrs: {
-                                  id: "SVGID_7_",
-                                  cx: "3553.98",
-                                  cy: "-3008.5205",
-                                  r: "99.3338",
-                                  gradientTransform:
-                                    "matrix(-1 0 0 -1 3702 -2682)",
-                                  gradientUnits: "userSpaceOnUse"
+                                  d:
+                                    "M128.014,351.894c34.461,0,62.395-27.934,62.395-62.395s-27.934-62.395-62.395-62.395\n                                        c-1.058,0-2.111,0.026-3.154,0.078c-31.952,1.59-57.573,27.211-59.163,59.163c-0.052,1.043-0.078,2.096-0.078,3.154\n                                        C65.619,323.961,93.552,351.894,128.014,351.894z M128.014,318.101c-15.798,0-28.602-12.804-28.602-28.602\n                                        c0-15.798,12.804-28.602,28.602-28.602s28.602,12.804,28.602,28.602C156.615,305.297,143.812,318.101,128.014,318.101z"
                                 }
-                              },
-                              [
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FF4974" },
-                                  attrs: { offset: "0" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FE4772" },
-                                  attrs: { offset: "0.4073" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#FB3F6D" },
-                                  attrs: { offset: "0.5963" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F73363" },
-                                  attrs: { offset: "0.7403" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#F02055" },
-                                  attrs: { offset: "0.8615" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E70944" },
-                                  attrs: { offset: "0.9673" }
-                                }),
-                                _vm._v(" "),
-                                _c("stop", {
-                                  staticStyle: { "stop-color": "#E4003D" },
-                                  attrs: { offset: "1" }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("path", {
-                              staticStyle: { fill: "url(#SVGID_7_)" },
-                              attrs: {
-                                d:
-                                  "M128.014,351.894c34.461,0,62.395-27.934,62.395-62.395s-27.934-62.395-62.395-62.395\n                                        c-1.058,0-2.111,0.026-3.154,0.078c-31.952,1.59-57.573,27.211-59.163,59.163c-0.052,1.043-0.078,2.096-0.078,3.154\n                                        C65.619,323.961,93.552,351.894,128.014,351.894z M128.014,318.101c-15.798,0-28.602-12.804-28.602-28.602\n                                        c0-15.798,12.804-28.602,28.602-28.602s28.602,12.804,28.602,28.602C156.615,305.297,143.812,318.101,128.014,318.101z"
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g"),
-                    _vm._v(" "),
-                    _c("g")
-                  ]
-                )
-              ])
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("h2", [
+                    _vm._v(
+                      "La página que está tratando de acceder no existe o está en reparación. Disculpe las molestias"
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" })
             ])
           ])
         ])
@@ -56000,7 +54776,40 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Error 404")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v(" Error 404 ")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [_vm._v(" Página no encontrada / en reparación ")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -56025,135 +54834,147 @@ var render = function() {
   return _c("div", { staticClass: "content-wrapper" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c(
-          "div",
-          {
-            staticClass: "row",
-            staticStyle: { padding: "0 !important", margin: "0 !important" }
-          },
-          [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("h5", [
-                _vm._v(
-                  "\n\t\t\t\t\t\t\t\tDATOS DEL PERFIL   \n\t\t\t\t\t\t\t\t"
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-md-4" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        method: "POST",
+                        action: "/subirfotoperfil",
+                        enctype: "multipart/form-data"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("img", {
+                          staticClass: "img-circle elevation-2 mt-2",
+                          staticStyle: { width: "150px" },
+                          attrs: {
+                            src: "/imagenes/fotosperfil/" + _vm.datos.foto,
+                            alt: "Profile image"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _vm._m(3)
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(4)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-8" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: {
+                      method: "POST",
+                      action: "/editardatos",
+                      enctype: "multipart/form-data"
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Nombre:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "nombre",
+                          name: "nombre",
+                          placeholder: "Nombre"
+                        },
+                        domProps: { value: _vm.datos.nombre }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Apellido Paterno:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "apellidopaterno",
+                          name: "apellidopaterno",
+                          placeholder: "Apellido Paterno"
+                        },
+                        domProps: { value: _vm.datos.apellido_paterno }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Apellido Materno:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "apellidomaterno",
+                          name: "apellidomaterno",
+                          placeholder: "Apellido materno"
+                        },
+                        domProps: { value: _vm.datos.apellido_materno }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Correo:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "email",
+                          id: "coreo",
+                          name: "correo",
+                          placeholder: "Correo",
+                          disabled: ""
+                        },
+                        domProps: {
+                          value: _vm.datos.matricula + "@upv.edu.com"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _vm._m(8)
+                  ]
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("h5", [_vm._v("Foto de perfil")]),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "rounded-circle",
-                  staticStyle: { width: "150px" },
-                  attrs: {
-                    src: "/images/fotosperfil/" + _vm.datos.foto,
-                    alt: "Profile image"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  attrs: {
-                    method: "POST",
-                    action: "/editardatos",
-                    enctype: "multipart/form-data"
-                  }
-                },
-                [
-                  _c("h5", [_vm._v("Otros datos personales")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                      _vm._v("Nombre:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "nombre",
-                        name: "nombre",
-                        placeholder: "Nombre"
-                      },
-                      domProps: { value: _vm.datos.nombre }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                      _vm._v("Apellido Paterno:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "apellidopaterno",
-                        name: "apellidopaterno",
-                        placeholder: "Apellido Paterno"
-                      },
-                      domProps: { value: _vm.datos.apellido_paterno }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                      _vm._v("Apellido Materno:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "apellidomaterno",
-                        name: "apellidomaterno",
-                        placeholder: "Apellido materno"
-                      },
-                      domProps: { value: _vm.datos.apellido_materno }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                      _vm._v("Correo:")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "email",
-                        id: "coreo",
-                        name: "correo",
-                        placeholder: "Correo",
-                        disabled: ""
-                      },
-                      domProps: { value: _vm.datos.matricula + "@upv.edu.com" }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Guardar")]
-                  )
-                ]
-              )
+              _vm._m(9)
             ])
-          ]
-        )
+          ])
+        ])
       ])
     ])
   ])
@@ -56163,21 +54984,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Perfil de usuario ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [_c("span", [_c("i", { staticClass: "fas fa-home" })])])
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Perfil")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
+                _vm._v(" "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Perfil ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
     ])
   },
@@ -56185,31 +55010,59 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      {
-        attrs: {
-          method: "POST",
-          action: "/subirfotoperfil",
-          enctype: "multipart/form-data"
-        }
-      },
-      [
-        _c("h5", [_vm._v("Cambiar foto de perfil")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            attrs: { type: "file", name: "profile_pic", required: "" }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v(" Subir imagen ")]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [_vm._v(" Cambiar foto de perfil ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c("div", { staticStyle: { width: "150px" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        attrs: { type: "file", name: "profile_pic", required: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_c("i", { staticClass: "fas fa-save" }), _vm._v(" Guardar ")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "row" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [_vm._v(" Datos del perfil de usuario ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c("div", { staticStyle: { width: "150px" } })
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -56239,6 +55092,24 @@ var staticRenderFns = [
         staticClass: "form-control",
         attrs: { type: "password", id: "contrasena2", name: "contrasena2" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+      [_c("i", { staticClass: "fas fa-save" }), _vm._v(" Guardar")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "row" })
     ])
   }
 ]
@@ -56369,7 +55240,7 @@ var render = function() {
                           data: _vm.preguntaAbierta,
                           filters: _vm.filters,
                           currentPage: _vm.currentPage,
-                          pageSize: 10
+                          pageSize: 5
                         },
                         on: {
                           "update:currentPage": function($event) {
@@ -57182,80 +56053,46 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("div", { staticClass: "col-lg-12" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card", staticStyle: { "border-radius": "15px" } },
-        [
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              {
-                staticClass: "page-header border-0",
-                staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                  },
-                  [
-                    _c("h2", { staticClass: "page-title" }, [
-                      _vm._v(" Listado de preguntas calculadas ")
-                    ]),
-                    _vm._v(" "),
-                    _c("ul", { staticClass: "quick-links ml-auto" }, [
-                      _c("li", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary float-right btn-lg",
-                            staticStyle: { "border-radius": "25px" },
-                            attrs: {
-                              type: "button",
-                              "data-toggle": "modal",
-                              "data-target": "#exampleModal"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.abrirModal(-1)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", { staticClass: "fas fa-edit" }),
-                            _vm._v(
-                              " Registrar pregunta\n                                "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "page-header ",
-                staticStyle: {
-                  border: "1px solid #dee2e6",
-                  margin: "0px",
-                  background: "#f5f5f5"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                  [
-                    _c("b", [_vm._v(" Término de búsqueda: ")]),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#exampleModal"
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.abrirModal(-1)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-edit" }),
+                        _vm._v(" Nueva\n                                    ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -57267,15 +56104,8 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      staticStyle: {
-                        "border-radius": "10px",
-                        height: "37px",
-                        margin: "0px"
-                      },
-                      attrs: {
-                        type: "search",
-                        placeholder: "Ej. ¿Cuánto es 2+2?"
-                      },
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
                       domProps: { value: _vm.filters.pregunta.value },
                       on: {
                         input: function($event) {
@@ -57290,19 +56120,15 @@ var render = function() {
                         }
                       }
                     })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-6", staticStyle: { padding: "5px" } },
-                  [
-                    _c("b", [_vm._v("Campo de búsqueda: ")]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
                     _vm._v(" "),
                     _c(
                       "select",
                       {
-                        staticStyle: { "border-radius": "10px", margin: "0px" },
+                        staticClass: "form-control",
                         attrs: { name: "campoBusqueda", id: "campoBusqueda" },
                         on: { change: _vm.cambiarCampoDeBusqueda }
                       },
@@ -57320,858 +56146,571 @@ var render = function() {
                         ])
                       ]
                     )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "table-responsive" },
-              [
+                  ])
+                ]),
+                _vm._v(" "),
                 _c(
-                  "v-table",
-                  {
-                    staticClass: "table table-hover",
-                    attrs: {
-                      data: _vm.preguntaNumerica,
-                      filters: _vm.filters,
-                      currentPage: _vm.currentPage,
-                      pageSize: 5
-                    },
-                    on: {
-                      "update:currentPage": function($event) {
-                        _vm.currentPage = $event
-                      },
-                      "update:current-page": function($event) {
-                        _vm.currentPage = $event
-                      },
-                      totalPagesChanged: function($event) {
-                        _vm.totalPages = $event
-                      }
-                    },
-                    scopedSlots: _vm._u([
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
                       {
-                        key: "body",
-                        fn: function(ref) {
-                          var displayData = ref.displayData
-                          return _c(
-                            "tbody",
-                            {},
-                            [
-                              _vm._l(displayData, function(preguntaNumerica) {
-                                return _c("tr", { key: preguntaNumerica.id }, [
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
+                        staticClass: "table table-hover",
+                        attrs: {
+                          data: _vm.preguntaNumerica,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
+                                _vm._l(displayData, function(preguntaNumerica) {
+                                  return _c(
+                                    "tr",
+                                    { key: preguntaNumerica.id },
                                     [
-                                      _vm._v(
-                                        _vm._s(preguntaNumerica.pregunta) +
-                                          "\n                                    "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(preguntaNumerica.tema)
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(preguntaNumerica.opcion)
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    _vm._l(_vm.valorComodines, function(
-                                      valorComodines
-                                    ) {
-                                      return preguntaNumerica.id_opcion ===
-                                        valorComodines.id_opcion
-                                        ? _c("p", [
-                                            _vm._v(
-                                              "\n                                            " +
-                                                _vm._s(valorComodines.comodin) +
-                                                "=" +
-                                                _vm._s(
-                                                  valorComodines.valor_comodin
+                                      _c("td", [
+                                        _vm._v(
+                                          _vm._s(preguntaNumerica.pregunta) +
+                                            "\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(preguntaNumerica.tema) +
+                                            "\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(preguntaNumerica.opcion) +
+                                            "\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        _vm._l(_vm.valorComodines, function(
+                                          valorComodines
+                                        ) {
+                                          return preguntaNumerica.id_opcion ===
+                                            valorComodines.id_opcion
+                                            ? _c("p", [
+                                                _vm._v(
+                                                  "\n                                                    " +
+                                                    _vm._s(
+                                                      valorComodines.comodin
+                                                    ) +
+                                                    "=" +
+                                                    _vm._s(
+                                                      valorComodines.valor_comodin
+                                                    ) +
+                                                    "\n                                                "
                                                 )
-                                            )
-                                          ])
-                                        : _vm._e()
-                                    }),
-                                    0
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(preguntaNumerica.rango)
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
+                                              ])
+                                            : _vm._e()
+                                        }),
+                                        0
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(_vm._s(preguntaNumerica.rango))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
                                           _vm._s(
                                             preguntaNumerica.aplicableArriba
                                           )
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
                                           _vm._s(
                                             preguntaNumerica.aplicableAnbajo
                                           )
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
                                           _vm._s(preguntaNumerica.decimales)
-                                      )
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-outline-primary",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target":
+                                                "#modalParaVerImagenes"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.desplegarImagenesEnModal(
+                                                  preguntaNumerica.imagenes
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-eye",
+                                              staticStyle: { color: "#2196f3" }
+                                            })
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-outline-warning",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target": "#exampleModal"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.abrirModal(
+                                                  preguntaNumerica.id_pregunta,
+                                                  preguntaNumerica.imagenes
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-pen",
+                                              staticStyle: { color: "#ffae00" }
+                                            })
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-outline-danger",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.eliminarCalculadas(
+                                                  preguntaNumerica.id_pregunta,
+                                                  preguntaNumerica.imagenes
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-trash",
+                                              staticStyle: { color: "#ff6258" }
+                                            })
+                                          ]
+                                        )
+                                      ])
                                     ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#modalParaVerImagenes"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.desplegarImagenesEnModal(
-                                              preguntaNumerica.imagenes
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-eye",
-                                          staticStyle: { color: "#2196f3" }
-                                        })
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "text-center" }, [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#exampleModal"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.abrirModal(
-                                              preguntaNumerica.id_pregunta,
-                                              preguntaNumerica.imagenes
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-pen",
-                                          staticStyle: { color: "#ffae00" }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(
-                                      "\n                                        |\n                                        "
-                                    ),
-                                    _c(
-                                      "a",
-                                      {
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.eliminarCalculadas(
-                                              preguntaNumerica.id_pregunta,
-                                              preguntaNumerica.imagenes
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-trash",
-                                          staticStyle: { color: "#ff6258" }
-                                        })
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              }),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _c("td", [
-                                  _c("b", [
-                                    _c("p", [
-                                      _vm._v(
-                                        " Mostrando " +
-                                          _vm._s(displayData.length) +
-                                          " de " +
-                                          _vm._s(_vm.preguntaNumerica.length) +
-                                          " registros "
-                                      )
-                                    ])
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td"),
-                                _vm._v(" "),
-                                _c("td")
-                              ])
-                            ],
-                            2
-                          )
-                        }
-                      }
-                    ])
-                  },
-                  [
-                    _c("thead", { attrs: { slot: "head" }, slot: "head" }, [
-                      _c("tr", [
-                        _c(
-                          "th",
-                          {
-                            staticClass: "font-weight-bold",
-                            staticStyle: {
-                              width: "300px",
-                              "white-space": "normal"
+                                  )
+                                }),
+                                0
+                              )
                             }
-                          },
-                          [_vm._v("Pregunta")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass: "font-weight-bold",
-                            staticStyle: {
-                              width: "300px",
-                              "white-space": "normal"
-                            }
-                          },
-                          [_vm._v("Tema")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass: "font-weight-bold",
-                            staticStyle: {
-                              width: "300px",
-                              "white-space": "normal"
-                            }
-                          },
-                          [_vm._v("Respuesta")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass: "font-weight-bold",
-                            staticStyle: {
-                              width: "300px",
-                              "white-space": "normal"
-                            }
-                          },
-                          [_vm._v("Valores")]
-                        ),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "font-weight-bold" }, [
-                          _vm._v("Margen")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "font-weight-bold" }, [
-                          _vm._v("Margen arriba")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "font-weight-bold" }, [
-                          _vm._v("Margen abajo")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "font-weight-bold" }, [
-                          _vm._v("Decimales")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", [_vm._v(" Imagenes ")]),
-                        _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass: "font-weight-bold",
-                            staticStyle: {
-                              width: "300px",
-                              "white-space": "normal"
-                            }
-                          },
-                          [_vm._v("Opciones")]
+                          }
+                        ])
+                      },
+                      [
+                        _c("thead", { attrs: { slot: "head" }, slot: "head" }, [
+                          _c("tr", [
+                            _c("th", [_vm._v("Pregunta ")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Tema")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Respuesta ")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Valores")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Margen")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Margen arriba")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Margen abajo")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Decimales")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Imagenes")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
+                          ])
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.preguntaNumerica.length) +
+                            " registros "
                         )
                       ])
                     ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("smart-pagination", {
-                  attrs: {
-                    currentPage: _vm.currentPage,
-                    totalPages: _vm.totalPages
-                  },
-                  on: {
-                    "update:currentPage": function($event) {
-                      _vm.currentPage = $event
-                    },
-                    "update:current-page": function($event) {
-                      _vm.currentPage = $event
-                    }
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "modal animated animate__bounceIn",
-                attrs: {
-                  id: "exampleModal",
-                  role: "dialog",
-                  "aria-labelledby": "exampleModalLabel",
-                  "aria-hidden": "true",
-                  "data-focus": "false"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "modal-dialog modal-dialog-centered",
-                    attrs: { role: "document" }
-                  },
-                  [
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
                     _c(
                       "div",
-                      {
-                        staticClass: "modal-content",
-                        staticStyle: { "border-radius": "15px" }
-                      },
+                      { staticClass: "float-right" },
                       [
-                        _c(
-                          "div",
-                          { staticClass: "modal-body" },
-                          [
-                            _c("h3", {
-                              staticClass: "modal-title",
-                              attrs: { id: "exampleModalLabel" }
-                            }),
-                            _vm._v(" "),
-                            _vm._m(1),
-                            _vm._v(" "),
-                            _c("textarea", {
-                              staticClass: "form-control",
-                              staticStyle: {
-                                margin: "0px",
-                                "font-size": "15px",
-                                "line-height": "20px"
-                              },
-                              attrs: {
-                                rows: "4",
-                                id: "pregunta",
-                                type: "text",
-                                placeholder: "pregunta"
-                              },
-                              on: {
-                                focus: function($event) {
-                                  return _vm.limpiarCampos("pregunta")
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { attrs: { id: "msjInputPregunta" } }),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { display: "table", width: "100%" }
-                              },
-                              [
-                                _vm._m(2),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "row" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "col-md-8",
-                                      staticStyle: { padding: "0px" }
-                                    },
-                                    [
-                                      _c("input", {
-                                        staticClass: "form-control",
-                                        staticStyle: {
-                                          margin: "0px",
-                                          "font-size": "15px",
-                                          "line-height": "20px",
-                                          height: "37px"
-                                        },
-                                        attrs: {
-                                          id: "respuesta",
-                                          placeholder: "respuesta"
-                                        },
-                                        on: {
-                                          focus: function($event) {
-                                            return _vm.limpiarCampos(
-                                              "respuesta"
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "col-md-4",
-                                      staticStyle: { padding: "0px" }
-                                    },
-                                    [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-success",
-                                          staticStyle: {
-                                            "border-radius": "25px",
-                                            margin: "0px 0px 10px",
-                                            height: "37px"
-                                          },
-                                          on: { click: _vm.ExpresionCorrecta }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fas fa-search"
-                                          }),
-                                          _vm._v(" Buscar comodines")
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("p", {
-                                  staticStyle: { color: "red" },
-                                  attrs: { id: "errorEncontrado" }
-                                }),
-                                _vm._v(" "),
-                                _c("span", {
-                                  attrs: { id: "msjInputRespuesta" }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._m(3),
-                            _vm._v(" "),
-                            _vm._m(4),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.decimales,
-                                    expression: "decimales"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                staticStyle: {
-                                  height: "37px",
-                                  margin: "0px 0px 10px 0px",
-                                  "font-size": "15px"
-                                },
-                                attrs: {
-                                  id: "totalCifras",
-                                  name: "totalCifras"
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.decimales = $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  }
-                                }
-                              },
-                              [
-                                _c("option", { attrs: { id: "0_decimal" } }, [
-                                  _vm._v("0")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "1_decimal" } }, [
-                                  _vm._v("1")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "2_decimal" } }, [
-                                  _vm._v("2")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "3_decimal" } }, [
-                                  _vm._v("3")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "4_decimal" } }, [
-                                  _vm._v("4")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "5_decimal" } }, [
-                                  _vm._v("5")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "6_decimal" } }, [
-                                  _vm._v("6")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "7_decimal" } }, [
-                                  _vm._v("7")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "8_decimal" } }, [
-                                  _vm._v("8")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { id: "9_decimal" } }, [
-                                  _vm._v("9")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._m(5),
-                            _vm._v(" "),
-                            _vm._m(6),
-                            _vm._v(" "),
-                            _vm._m(7),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "form-control",
-                              staticStyle: {
-                                height: "37px",
-                                margin: "0px 0px 10px 0px",
-                                "font-size": "15px"
-                              },
-                              attrs: {
-                                id: "margen",
-                                type: "number",
-                                placeholder: "margen"
-                              },
-                              on: {
-                                focus: function($event) {
-                                  return _vm.limpiarCampos("margen")
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { attrs: { id: "msjInputMargen" } }),
-                            _vm._v(" "),
-                            _vm._m(8),
-                            _vm._v(" "),
-                            _c("Select2", {
-                              attrs: { options: _vm.temas, id: "id_tema" },
-                              on: {
-                                select: function($event) {
-                                  return _vm.limpiarCampos("tema")
-                                }
-                              },
-                              model: {
-                                value: _vm.id_tema,
-                                callback: function($$v) {
-                                  _vm.id_tema = $$v
-                                },
-                                expression: "id_tema"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { attrs: { id: "msjSelectTema" } }),
-                            _vm._v(" "),
-                            _vm._m(9),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticStyle: {
-                                  border: "0.5px dashed black",
-                                  width: "100%"
-                                },
-                                on: {
-                                  dragover: _vm.dragover,
-                                  dragleave: _vm.dragleave,
-                                  drop: _vm.drop
-                                }
-                              },
-                              [
-                                _c("input", {
-                                  ref: "file",
-                                  staticClass:
-                                    "w-px h-px opacity-0 overflow-hidden absolute",
-                                  attrs: {
-                                    type: "file",
-                                    id: "assetsFieldHandle",
-                                    accept: ".pdf,.jpg,.jpeg,.png",
-                                    hidden: ""
-                                  },
-                                  on: { change: _vm.onChange }
-                                }),
-                                _vm._v(" "),
-                                _vm._m(10),
-                                _vm._v(" "),
-                                this.subidor.imagenesVistaPrevia.length
-                                  ? _c(
-                                      "table",
-                                      {
-                                        staticStyle: {
-                                          "list-style-type": "none",
-                                          width: "100%"
-                                        }
-                                      },
-                                      [
-                                        _vm._m(11),
-                                        _vm._v(" "),
-                                        _vm._l(
-                                          _vm.subidor.imagenesVistaPrevia,
-                                          function(imagen) {
-                                            return _c("tr", [
-                                              _c(
-                                                "td",
-                                                {
-                                                  staticClass:
-                                                    "d-flex justify-content-center"
-                                                },
-                                                [
-                                                  _c("img", {
-                                                    staticStyle: {
-                                                      width: "15em"
-                                                    },
-                                                    attrs: {
-                                                      src: imagen.imagen
-                                                    }
-                                                  })
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("td", [
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn btn-danger",
-                                                    attrs: {
-                                                      type: "button",
-                                                      title: "Remove file"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.remove(
-                                                          imagen
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c("i", {
-                                                      staticClass:
-                                                        "fas fa-trash-alt"
-                                                    })
-                                                  ]
-                                                )
-                                              ])
-                                            ])
-                                          }
-                                        )
-                                      ],
-                                      2
-                                    )
-                                  : _vm._e()
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._m(12),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "btn btn-primary float-right btn-lg mt-4 mr-2",
-                                staticStyle: { "border-radius": "25px" },
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.btnGuardarPregunta(
-                                      _vm.GuardarEditar
-                                    )
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", { staticClass: "fas fa-save" }),
-                                _vm._v(
-                                  " Guardar\n                                "
-                                )
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ]
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
                     )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "modal animated animate__bounceIn",
-                attrs: {
-                  id: "modalParaVerImagenes",
-                  tabindex: "-1",
-                  role: "dialog",
-                  "aria-labelledby": "exampleModalLabel",
-                  "aria-hidden": "true"
-                }
-              },
-              [
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass: "modal animated animate__bounceIn",
+          attrs: {
+            id: "exampleModal",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true",
+            "data-focus": "false"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
                 _c(
                   "div",
-                  {
-                    staticClass: "modal-dialog modal-dialog-centered",
-                    attrs: { role: "document" }
-                  },
+                  { staticClass: "modal-body" },
                   [
+                    _c("h3", {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      staticClass: "form-control",
+                      staticStyle: {
+                        margin: "0px",
+                        "font-size": "15px",
+                        "line-height": "20px"
+                      },
+                      attrs: {
+                        rows: "4",
+                        id: "pregunta",
+                        type: "text",
+                        placeholder: "pregunta"
+                      },
+                      on: {
+                        focus: function($event) {
+                          return _vm.limpiarCampos("pregunta")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { attrs: { id: "msjInputPregunta" } }),
+                    _vm._v(" "),
                     _c(
                       "div",
-                      {
-                        staticClass: "modal-content",
-                        staticStyle: { "border-radius": "15px" }
-                      },
+                      { staticStyle: { display: "table", width: "100%" } },
                       [
-                        _c("div", { staticClass: "modal-body" }, [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
                           _c(
-                            "h3",
+                            "div",
                             {
-                              staticClass: "modal-title",
-                              attrs: { id: "exampleModalLabel" }
+                              staticClass: "col-md-8",
+                              staticStyle: { padding: "0px" }
                             },
                             [
-                              _vm._v(
-                                " Imagenes adjuntas en la pregunta\n                                "
-                              )
+                              _c("input", {
+                                staticClass: "form-control",
+                                staticStyle: {
+                                  margin: "0px",
+                                  "font-size": "15px",
+                                  "line-height": "20px",
+                                  height: "37px"
+                                },
+                                attrs: {
+                                  id: "respuesta",
+                                  placeholder: "respuesta"
+                                },
+                                on: {
+                                  focus: function($event) {
+                                    return _vm.limpiarCampos("respuesta")
+                                  }
+                                }
+                              })
                             ]
                           ),
                           _vm._v(" "),
-                          _c("div", { staticStyle: { width: "100%" } }, [
-                            _c(
+                          _c(
+                            "div",
+                            {
+                              staticClass: "col-md-4",
+                              staticStyle: { padding: "0px" }
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success",
+                                  staticStyle: { height: "37px" },
+                                  on: { click: _vm.ExpresionCorrecta }
+                                },
+                                [
+                                  _c("i", { staticClass: "fas fa-search" }),
+                                  _vm._v(" Buscar comodines")
+                                ]
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", {
+                          staticStyle: { color: "red" },
+                          attrs: { id: "errorEncontrado" }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { attrs: { id: "msjInputRespuesta" } })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.decimales,
+                            expression: "decimales"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        staticStyle: {
+                          height: "37px",
+                          margin: "0px 0px 10px 0px",
+                          "font-size": "15px"
+                        },
+                        attrs: { id: "totalCifras", name: "totalCifras" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.decimales = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { id: "0_decimal" } }, [
+                          _vm._v("0")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "1_decimal" } }, [
+                          _vm._v("1")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "2_decimal" } }, [
+                          _vm._v("2")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "3_decimal" } }, [
+                          _vm._v("3")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "4_decimal" } }, [
+                          _vm._v("4")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "5_decimal" } }, [
+                          _vm._v("5")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "6_decimal" } }, [
+                          _vm._v("6")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "7_decimal" } }, [
+                          _vm._v("7")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "8_decimal" } }, [
+                          _vm._v("8")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { id: "9_decimal" } }, [
+                          _vm._v("9")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      staticStyle: {
+                        height: "37px",
+                        margin: "0px 0px 10px 0px",
+                        "font-size": "15px"
+                      },
+                      attrs: {
+                        id: "margen",
+                        type: "number",
+                        placeholder: "margen"
+                      },
+                      on: {
+                        focus: function($event) {
+                          return _vm.limpiarCampos("margen")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { attrs: { id: "msjInputMargen" } }),
+                    _vm._v(" "),
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _c("Select2", {
+                      attrs: { options: _vm.temas, id: "id_tema" },
+                      on: {
+                        select: function($event) {
+                          return _vm.limpiarCampos("tema")
+                        }
+                      },
+                      model: {
+                        value: _vm.id_tema,
+                        callback: function($$v) {
+                          _vm.id_tema = $$v
+                        },
+                        expression: "id_tema"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { attrs: { id: "msjSelectTema" } }),
+                    _vm._v(" "),
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          border: "0.5px dashed black",
+                          width: "100%"
+                        },
+                        on: {
+                          dragover: _vm.dragover,
+                          dragleave: _vm.dragleave,
+                          drop: _vm.drop
+                        }
+                      },
+                      [
+                        _c("input", {
+                          ref: "file",
+                          staticClass:
+                            "w-px h-px opacity-0 overflow-hidden absolute",
+                          attrs: {
+                            type: "file",
+                            id: "assetsFieldHandle",
+                            accept: ".pdf,.jpg,.jpeg,.png",
+                            hidden: ""
+                          },
+                          on: { change: _vm.onChange }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(11),
+                        _vm._v(" "),
+                        this.subidor.imagenesVistaPrevia.length
+                          ? _c(
                               "table",
                               {
                                 staticStyle: {
@@ -58180,10 +56719,10 @@ var render = function() {
                                 }
                               },
                               [
-                                _vm._m(13),
+                                _vm._m(12),
                                 _vm._v(" "),
                                 _vm._l(
-                                  _vm.imagenesParaDesplegarEnModal,
+                                  _vm.subidor.imagenesVistaPrevia,
                                   function(imagen) {
                                     return _c("tr", [
                                       _c(
@@ -58195,20 +56734,31 @@ var render = function() {
                                         [
                                           _c("img", {
                                             staticStyle: { width: "15em" },
-                                            attrs: {
-                                              src:
-                                                "/imagenes/preguntas/" +
-                                                imagen.nombre
-                                            }
+                                            attrs: { src: imagen.imagen }
                                           })
                                         ]
                                       ),
                                       _vm._v(" "),
                                       _c("td", [
-                                        _vm._v(
-                                          "\n                                                " +
-                                            _vm._s(imagen.alias) +
-                                            "\n                                            "
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-danger",
+                                            attrs: {
+                                              type: "button",
+                                              title: "Remove file"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.remove(imagen)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-trash-alt"
+                                            })
+                                          ]
                                         )
                                       ])
                                     ])
@@ -58216,26 +56766,130 @@ var render = function() {
                                 )
                               ],
                               2
-                            ),
-                            _vm._v(" "),
-                            _vm.imagenesParaDesplegarEnModal.length == 0
-                              ? _c("span", { staticClass: "text-center" }, [
-                                  _vm._v(
-                                    "\n                                        Esta pregunta no tiene imagenes adjuntas\n                                    "
-                                  )
-                                ])
-                              : _vm._e()
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(14)
-                        ])
+                            )
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-primary float-right btn-lg mt-4 mr-2",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.btnGuardarPregunta(_vm.GuardarEditar)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-save" }),
+                        _vm._v(" Guardar\n                        ")
                       ]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ]
-            )
-          ])
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal animated animate__bounceIn",
+          attrs: {
+            id: "modalParaVerImagenes",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" }
+                    },
+                    [
+                      _vm._v(
+                        " Imagenes adjuntas en la pregunta\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticStyle: { width: "100%" } }, [
+                    _c(
+                      "table",
+                      {
+                        staticStyle: {
+                          "list-style-type": "none",
+                          width: "100%"
+                        }
+                      },
+                      [
+                        _vm._m(14),
+                        _vm._v(" "),
+                        _vm._l(_vm.imagenesParaDesplegarEnModal, function(
+                          imagen
+                        ) {
+                          return _c("tr", [
+                            _c(
+                              "td",
+                              { staticClass: "d-flex justify-content-center" },
+                              [
+                                _c("img", {
+                                  staticStyle: { width: "15em" },
+                                  attrs: {
+                                    src: "/imagenes/preguntas/" + imagen.nombre
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(imagen.alias) +
+                                  "\n                                    "
+                              )
+                            ])
+                          ])
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm.imagenesParaDesplegarEnModal.length == 0
+                      ? _c("span", { staticClass: "text-center" }, [
+                          _vm._v(
+                            "\n                                Esta pregunta no tiene imagenes adjuntas\n                            "
+                          )
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(15)
+                ])
+              ])
+            ]
+          )
         ]
       )
     ])
@@ -58246,36 +56900,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Preguntas calculadas ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Preguntas")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Preguntas "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(
-                  "\n                            Preguntas calculadas\n                        "
-                )
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v(" Preguntas "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v("Calculadas ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Preguntas calculadas ")])
     ])
   },
   function() {
@@ -58338,13 +56995,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "table",
-      {
-        staticStyle: {
-          width: "100%",
-          "border-radius": "15px",
-          margin: "0px 0px 10px"
-        }
-      },
+      { staticStyle: { width: "100%", margin: "0px 0px 10px" } },
       [
         _c("tr", [
           _c("th", [
@@ -58354,7 +57005,6 @@ var staticRenderFns = [
                   staticStyle: {
                     width: "20px",
                     height: "20px",
-                    "border-radius": "5px",
                     border: "2px solid #555"
                   },
                   attrs: {
@@ -58366,7 +57016,7 @@ var staticRenderFns = [
                   }
                 }),
                 _vm._v(
-                  "  Aplicar hacia arriba\n                                          "
+                  "  Aplicar hacia arriba\n                                        "
                 )
               ])
             ])
@@ -58379,7 +57029,6 @@ var staticRenderFns = [
                   staticStyle: {
                     width: "20px",
                     height: "20px",
-                    "border-radius": "5px",
                     border: "2px solid #555"
                   },
                   attrs: {
@@ -58391,7 +57040,7 @@ var staticRenderFns = [
                   }
                 }),
                 _vm._v(
-                  "\n                                              Aplicar hacia abajo\n                                          "
+                  "\n                                              Aplicar hacia abajo\n                                        "
                 )
               ])
             ])
@@ -58444,7 +57093,7 @@ var staticRenderFns = [
                 [
                   _c("i", { staticClass: "fas fa-cloud-download-alt" }),
                   _vm._v(
-                    "\n                                                        Arrastra la imagen o da clic aquí para subir\n                                                    "
+                    "\n                                                Arrastra la imagen o da clic aquí para subir\n                                            "
                   )
                 ]
               )
@@ -58472,12 +57121,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                                ")
+        _vm._v("\n                            Cerrar\n                        ")
       ]
     )
   },
@@ -58488,13 +57136,13 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", [
         _vm._v(
-          "\n                                                Imagen\n                                            "
+          "\n                                        Imagen\n                                    "
         )
       ]),
       _vm._v(" "),
       _c("th", [
         _vm._v(
-          "\n                                                Nombre\n                                            "
+          "\n                                        Nombre\n                                    "
         )
       ])
     ])
@@ -58507,12 +57155,11 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
         _c("i", { staticClass: "fas fa-ban" }),
-        _vm._v(" Cerrar\n                                ")
+        _vm._v(" Cerrar\n                        ")
       ]
     )
   }
@@ -58644,7 +57291,7 @@ var render = function() {
                           data: _vm.preguntaNumerica,
                           filters: _vm.filters,
                           currentPage: _vm.currentPage,
-                          pageSize: 10
+                          pageSize: 5
                         },
                         on: {
                           "update:currentPage": function($event) {
@@ -60606,616 +59253,662 @@ var render = function() {
   return _c("div", { staticClass: "content-wrapper" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "col-lg-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c(
-            "div",
-            {
-              staticClass: "page-header border-0",
-              staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap"
-                },
-                [
-                  _c("h2", { staticClass: "page-title" }, [
-                    _vm._v(
-                      " Listado de preguntas calculadas de opcion mutliple "
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#exampleModal"
+                        },
+                        on: { click: _vm.abrirModal }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-edit" }),
+                        _vm._v(" Nueva\n                                    ")
+                      ]
                     )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.pregunta.value,
+                          expression: "filters.pregunta.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.pregunta.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.pregunta,
+                            "value",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
                   ]),
                   _vm._v(" "),
-                  _c("ul", { staticClass: "quick-links ml-auto" }, [
-                    _c("li", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary float-right btn-lg",
-                          attrs: {
-                            type: "button",
-                            "data-toggle": "modal",
-                            "data-target": "#exampleModal"
-                          },
-                          on: { click: _vm.abrirModal }
-                        },
-                        [
-                          _c("i", { staticClass: "fas fa-edit" }),
-                          _vm._v(
-                            " Registrar pregunta\n                                "
-                          )
-                        ]
-                      )
-                    ])
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("b", [_vm._v("Campo de busqueda: ")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { name: "campoBusqueda", id: "campoBusqueda" },
+                        on: { change: _vm.cambiarCampoDeBusqueda }
+                      },
+                      [
+                        _c("option", { attrs: { value: "pregunta" } }, [
+                          _vm._v("Pregunta")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tema" } }, [
+                          _vm._v("Tema")
+                        ])
+                      ]
+                    )
                   ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "table-responsive" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.filters.pregunta.value,
-                    expression: "filters.pregunta.value"
-                  }
-                ],
-                staticClass: "form-control mb-2",
-                attrs: { placeholder: "Ej. ¿Cuánto es 2+2?" },
-                domProps: { value: _vm.filters.pregunta.value },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.filters.pregunta, "value", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "table-responsive" },
-                [
-                  _c(
-                    "v-table",
-                    {
-                      staticClass: "table mb-2",
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        data: _vm.pregunta,
-                        filters: _vm.filters,
-                        currentPage: _vm.currentPage,
-                        pageSize: 5
-                      },
-                      on: {
-                        "update:currentPage": function($event) {
-                          _vm.currentPage = $event
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.pregunta,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
                         },
-                        "update:current-page": function($event) {
-                          _vm.currentPage = $event
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
                         },
-                        totalPagesChanged: function($event) {
-                          _vm.totalPages = $event
-                        }
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "body",
-                          fn: function(ref) {
-                            var displayData = ref.displayData
-                            return _c(
-                              "tbody",
-                              {},
-                              _vm._l(displayData, function(pregunta, cont) {
-                                return _c("tr", { key: pregunta.id }, [
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [_vm._v(_vm._s(pregunta.pregunta))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    [_vm._v(_vm._s(pregunta.tema))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    _vm._l(_vm.opciones[cont], function(
-                                      opcionA
-                                    ) {
-                                      return _c("span", [
-                                        opcionA.esrespuesta === 1
-                                          ? _c("p", [
-                                              _c("b", [
-                                                _vm._v(
-                                                  " " + _vm._s(opcionA.opcion)
-                                                )
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
+                                _vm._l(displayData, function(pregunta, cont) {
+                                  return _c("tr", { key: pregunta.id }, [
+                                    _c(
+                                      "td",
+                                      {
+                                        staticStyle: {
+                                          width: "300px",
+                                          "white-space": "normal"
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(pregunta.pregunta))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      {
+                                        staticStyle: {
+                                          width: "300px",
+                                          "white-space": "normal"
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(pregunta.tema))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      {
+                                        staticStyle: {
+                                          width: "300px",
+                                          "white-space": "normal"
+                                        }
+                                      },
+                                      _vm._l(_vm.opciones[cont], function(
+                                        opcionA
+                                      ) {
+                                        return _c("span", [
+                                          opcionA.esrespuesta === 1
+                                            ? _c("p", [
+                                                _c("b", [
+                                                  _vm._v(
+                                                    " " + _vm._s(opcionA.opcion)
+                                                  )
+                                                ])
                                               ])
-                                            ])
-                                          : _c("p", [
+                                            : _c("p", [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(opcionA.opcion) +
+                                                    " "
+                                                )
+                                              ]),
+                                          _vm._v(" "),
+                                          _c("br")
+                                        ])
+                                      }),
+                                      0
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      {
+                                        staticStyle: {
+                                          width: "300px",
+                                          "white-space": "normal"
+                                        }
+                                      },
+                                      _vm._l(_vm.opciones[cont], function(
+                                        opcionA,
+                                        cont2
+                                      ) {
+                                        return _c(
+                                          "span",
+                                          [
+                                            _c("b", [
                                               _vm._v(
                                                 " " +
                                                   _vm._s(opcionA.opcion) +
                                                   " "
                                               )
                                             ]),
-                                        _vm._v(" "),
-                                        _c("br")
-                                      ])
-                                    }),
-                                    0
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: {
-                                        width: "300px",
-                                        "white-space": "normal"
-                                      }
-                                    },
-                                    _vm._l(_vm.opciones[cont], function(
-                                      opcionA,
-                                      cont2
-                                    ) {
-                                      return _c(
-                                        "span",
-                                        [
-                                          _c("b", [
-                                            _vm._v(
-                                              " " + _vm._s(opcionA.opcion) + " "
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _vm._l(
-                                            _vm.comodines[cont][cont2],
-                                            function(opcionAa, cont3) {
-                                              return _c(
-                                                "span",
-                                                [
-                                                  _vm._l(opcionAa, function(c) {
-                                                    return _c(
-                                                      "span",
-                                                      { attrs: { v: "" } },
-                                                      [
-                                                        _c("br"),
-                                                        _vm._v(
-                                                          _vm._s(c.comodin) +
-                                                            "=" +
-                                                            _vm._s(
-                                                              c.valor_comodin
-                                                            )
-                                                        )
-                                                      ]
-                                                    )
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("br")
-                                                ],
-                                                2
+                                            _vm._v(" "),
+                                            _vm._l(
+                                              _vm.comodines[cont][cont2],
+                                              function(opcionAa, cont3) {
+                                                return _c(
+                                                  "span",
+                                                  [
+                                                    _vm._l(opcionAa, function(
+                                                      c
+                                                    ) {
+                                                      return _c(
+                                                        "span",
+                                                        { attrs: { v: "" } },
+                                                        [
+                                                          _c("br"),
+                                                          _vm._v(
+                                                            _vm._s(c.comodin) +
+                                                              "=" +
+                                                              _vm._s(
+                                                                c.valor_comodin
+                                                              )
+                                                          )
+                                                        ]
+                                                      )
+                                                    }),
+                                                    _vm._v(" "),
+                                                    _c("br")
+                                                  ],
+                                                  2
+                                                )
+                                              }
+                                            ),
+                                            _vm._v(" "),
+                                            _c("br")
+                                          ],
+                                          2
+                                        )
+                                      }),
+                                      0
+                                    ),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn btn-outline-warning",
+                                          attrs: {
+                                            "data-toggle": "modal",
+                                            "data-target": "#exampleModal"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.abrirModal(
+                                                pregunta.id_pregunta,
+                                                pregunta.imagenes
                                               )
                                             }
-                                          ),
-                                          _vm._v(" "),
-                                          _c("br")
-                                        ],
-                                        2
-                                      )
-                                    }),
-                                    0
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "text-center" }, [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#exampleModal"
+                                          }
                                         },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.abrirModal(
-                                              pregunta.id_pregunta,
-                                              pregunta.imagenes
-                                            )
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-pen",
+                                            staticStyle: { color: "#ffae00" }
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-outline-danger",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.eliminarCalculadas(
+                                                pregunta.id_pregunta,
+                                                pregunta.imagenes
+                                              )
+                                            }
                                           }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-pen",
-                                          staticStyle: { color: "#ffae00" }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(
-                                      "\n                                        |\n                                        "
-                                    ),
-                                    _c(
-                                      "a",
-                                      {
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.eliminarCalculadas(
-                                              pregunta.id_pregunta,
-                                              pregunta.imagenes
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-trash",
-                                          staticStyle: { color: "#ff6258" }
-                                        })
-                                      ]
-                                    )
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fas fa-trash",
+                                            staticStyle: { color: "#ff6258" }
+                                          })
+                                        ]
+                                      )
+                                    ])
                                   ])
-                                ])
-                              }),
-                              0
-                            )
-                          }
-                        }
-                      ])
-                    },
-                    [
-                      _c(
-                        "thead",
-                        {
-                          staticClass: "thead-dark",
-                          attrs: { slot: "head" },
-                          slot: "head"
-                        },
-                        [
-                          _c(
-                            "v-th",
-                            {
-                              attrs: {
-                                sortKey: "pregunta",
-                                defaultSort: "desc"
-                              }
-                            },
-                            [_vm._v("Pregunta")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            { attrs: { sortKey: "tema", defaultSort: "desc" } },
-                            [_vm._v("Tema")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Opciones")]),
-                          _vm._v(" "),
-                          _c(
-                            "v-th",
-                            {
-                              attrs: { sortKey: "comodin", defaultSort: "desc" }
-                            },
-                            [_vm._v("Comodines")]
-                          ),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Acciones")])
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("smart-pagination", {
-                attrs: {
-                  currentPage: _vm.currentPage,
-                  totalPages: _vm.totalPages
-                },
-                on: {
-                  "update:currentPage": function($event) {
-                    _vm.currentPage = $event
-                  },
-                  "update:current-page": function($event) {
-                    _vm.currentPage = $event
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  " Total de registros: " + _vm._s(this.pregunta.length) + " "
-                )
-              ])
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "modal fade",
-            attrs: {
-              id: "exampleModal",
-              tabindex: "-1",
-              role: "dialog",
-              "aria-labelledby": "exampleModalLabel",
-              "aria-hidden": "true"
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "modal-dialog modal-xl",
-                attrs: { role: "document" }
-              },
-              [
-                _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _vm.editarPreguntaVar == false
-                      ? _c(
-                          "h4",
-                          {
-                            staticClass: "modal-title",
-                            attrs: { id: "exampleModalLabel" }
-                          },
-                          [
-                            _c("b", [
-                              _vm._v(
-                                "\n                                    Registrar pregunta "
+                                }),
+                                0
                               )
-                            ])
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.editarPreguntaVar == true
-                      ? _c(
-                          "h4",
-                          {
-                            staticClass: "modal-title",
-                            attrs: { id: "exampleModalLabel" }
-                          },
-                          [
-                            _c("b", [
-                              _vm._v(
-                                "\n                                    Editar pregunta "
-                              )
-                            ])
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm._m(2)
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-left mb-2",
-                          attrs: { for: "pregunta" }
-                        },
-                        [_vm._v(" Reactivo: ")]
-                      ),
-                      _vm._v(" "),
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.reactivo,
-                            expression: "reactivo"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "pregunta",
-                          rows: "3",
-                          placeholder: "Escribe el reactivo"
-                        },
-                        domProps: { value: _vm.reactivo },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.reactivo = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("span", [_vm._v("Numero de cifras: ")]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.decimales,
-                              expression: "decimales"
-                            }
-                          ],
-                          staticClass: "swal2-input",
-                          attrs: { id: "totalCifras", name: "totalCifras" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.decimales = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
                             }
                           }
-                        },
-                        [
-                          _c("option", { attrs: { id: "0_decimal" } }, [
-                            _vm._v("0")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "1_decimal" } }, [
-                            _vm._v("1")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "2_decimal" } }, [
-                            _vm._v("2")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "3_decimal" } }, [
-                            _vm._v("3")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "4_decimal" } }, [
-                            _vm._v("4")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "5_decimal" } }, [
-                            _vm._v("5")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "6_decimal" } }, [
-                            _vm._v("6")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "7_decimal" } }, [
-                            _vm._v("7")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "8_decimal" } }, [
-                            _vm._v("8")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { id: "9_decimal" } }, [
-                            _vm._v("9")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "text-left mb-2",
-                          attrs: { for: "opciones" }
-                        },
-                        [_vm._v(" Opciones: ")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _c("p", {
-                          staticStyle: { color: "red" },
-                          attrs: { id: "errorEncontrado" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-4" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-success",
-                              attrs: { id: "btnAgregarOption", type: "button" },
-                              on: { click: _vm.ExpresionCorrecta }
-                            },
-                            [_vm._v(" Agregar opción ")]
-                          )
                         ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "table-responsive" }, [
-                        _vm._m(5),
-                        _vm._v(" "),
-                        _vm.bandera == 1
-                          ? _c("div", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success",
-                                  staticStyle: {
-                                    display: "table",
-                                    width: "100%"
-                                  },
-                                  on: { click: _vm.DetectarComodines }
-                                },
-                                [_vm._v("Buscar comodines")]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(6)
-                            ])
-                          : _vm._e()
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "pregunta",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Pregunta")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: { sortKey: "tema", defaultSort: "desc" }
+                              },
+                              [_vm._v("Tema")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Opciones")]),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "comodin",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Comodines")]
+                            ),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Editar")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Eliminar")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.pregunta.length) +
+                            " registros "
+                        )
                       ])
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
+                  _c("div", { staticClass: "col-6" }, [
                     _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-secondary",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cerrar")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "button" },
-                        on: { click: _vm.btnGuardarPregunta }
-                      },
-                      [_vm._v("Guardar")]
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
                     )
                   ])
                 ])
-              ]
-            )
-          ]
-        )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: {
+                    id: "exampleModal",
+                    tabindex: "-1",
+                    role: "dialog",
+                    "aria-labelledby": "exampleModalLabel",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-dialog modal-xl",
+                      attrs: { role: "document" }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _c("div", { staticClass: "modal-header" }, [
+                          _vm.editarPreguntaVar == false
+                            ? _c(
+                                "h4",
+                                {
+                                  staticClass: "modal-title",
+                                  attrs: { id: "exampleModalLabel" }
+                                },
+                                [
+                                  _c("b", [
+                                    _vm._v(
+                                      "\n                                                Registrar pregunta "
+                                    )
+                                  ])
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.editarPreguntaVar == true
+                            ? _c(
+                                "h4",
+                                {
+                                  staticClass: "modal-title",
+                                  attrs: { id: "exampleModalLabel" }
+                                },
+                                [
+                                  _c("b", [
+                                    _vm._v(
+                                      "\n                                                Editar pregunta "
+                                    )
+                                  ])
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm._m(2)
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-body" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "text-left mb-2",
+                                attrs: { for: "pregunta" }
+                              },
+                              [_vm._v(" Reactivo: ")]
+                            ),
+                            _vm._v(" "),
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.reactivo,
+                                  expression: "reactivo"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                id: "pregunta",
+                                rows: "3",
+                                placeholder: "Escribe el reactivo"
+                              },
+                              domProps: { value: _vm.reactivo },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.reactivo = $event.target.value
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("span", [_vm._v("Numero de cifras: ")]),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.decimales,
+                                    expression: "decimales"
+                                  }
+                                ],
+                                staticClass: "swal2-input",
+                                attrs: {
+                                  id: "totalCifras",
+                                  name: "totalCifras"
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.decimales = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { id: "0_decimal" } }, [
+                                  _vm._v("0")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "1_decimal" } }, [
+                                  _vm._v("1")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "2_decimal" } }, [
+                                  _vm._v("2")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "3_decimal" } }, [
+                                  _vm._v("3")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "4_decimal" } }, [
+                                  _vm._v("4")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "5_decimal" } }, [
+                                  _vm._v("5")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "6_decimal" } }, [
+                                  _vm._v("6")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "7_decimal" } }, [
+                                  _vm._v("7")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "8_decimal" } }, [
+                                  _vm._v("8")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { id: "9_decimal" } }, [
+                                  _vm._v("9")
+                                ])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "text-left mb-2",
+                                attrs: { for: "opciones" }
+                              },
+                              [_vm._v(" Opciones: ")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _vm._m(4),
+                              _vm._v(" "),
+                              _c("p", {
+                                staticStyle: { color: "red" },
+                                attrs: { id: "errorEncontrado" }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-4" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success",
+                                    attrs: {
+                                      id: "btnAgregarOption",
+                                      type: "button"
+                                    },
+                                    on: { click: _vm.ExpresionCorrecta }
+                                  },
+                                  [_vm._v(" Agregar opción ")]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "table-responsive" }, [
+                              _vm._m(5),
+                              _vm._v(" "),
+                              _vm.bandera == 1
+                                ? _c("div", [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-success",
+                                        staticStyle: {
+                                          display: "table",
+                                          width: "100%"
+                                        },
+                                        on: { click: _vm.DetectarComodines }
+                                      },
+                                      [_vm._v("Buscar comodines")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._m(6)
+                                  ])
+                                : _vm._e()
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-footer" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-secondary",
+                              attrs: { type: "button", "data-dismiss": "modal" }
+                            },
+                            [_vm._v("Cerrar")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { type: "button" },
+                              on: { click: _vm.btnGuardarPregunta }
+                            },
+                            [_vm._v("Guardar")]
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
       ])
     ])
   ])
@@ -61225,35 +59918,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Preguntas calculadas de opción multiple ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Preguntas")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Preguntas "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
-                _vm._v(
-                  "\n                        Preguntas opcion multiple\n                    "
-                )
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  Preguntas "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Calculadas de opcion mutliple ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
     ])
   },
@@ -61261,7 +59949,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("b", [_vm._v(" Busqueda por pregunta: ")])])
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Listado de preguntas calculadas de opcion mutliple ")])
+    ])
   },
   function() {
     var _vm = this
@@ -61287,7 +59977,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { staticClass: "text-left mb-2" }, [
         _vm._v(
-          "\n                                    Tema:\n                                "
+          "\n                                                Tema:\n                                            "
         )
       ]),
       _vm._v(" "),
@@ -61544,12 +60234,7 @@ var render = function() {
                                           _c("i", {
                                             staticClass: "fas fa-eye",
                                             staticStyle: { color: "#2196f3" }
-                                          }),
-                                          _vm._v(
-                                            "\n                                                    " +
-                                              _vm._s(pregunta.imagenes) +
-                                              "\n                                                "
-                                          )
+                                          })
                                         ]
                                       )
                                     ]),
@@ -62757,7 +61442,7 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(
-                                " \n\t\t\t\t\t\t\t\t\t\t\t\t Cargando\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t"
+                                "\n                                                Cargando\n\n                                            "
                               )
                             ])
                           ],
@@ -62904,11 +61589,36 @@ var staticRenderFns = [
                       _c("div", { staticClass: "form-group row" }, [
                         _c(
                           "label",
+                          { staticClass: "col-sm-6 col-form-label" },
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\t\t\t\t\t\tMover nodos:\n\t\t\t\t\t\t\t\t\t\t\t\t"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-6" }, [
+                          _c("input", {
+                            staticClass: "form-check-label",
+                            attrs: { type: "checkbox", id: "moverNodosCheck" }
+                          }),
+                          _vm._v(" "),
+                          _c("label", [_vm._v(" Activado ")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group row" }, [
+                        _c(
+                          "label",
                           {
                             staticClass: "col-sm-6 col-form-label",
                             attrs: { for: "staticEmail" }
                           },
-                          [_vm._v("Tamaño del nodo:")]
+                          [
+                            _vm._v(
+                              "Tamaño del\n                                                    nodo:"
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-6" }, [
@@ -62975,12 +61685,16 @@ var staticRenderFns = [
                             staticClass: "col-sm-6 col-form-label",
                             attrs: { for: "staticEmail" }
                           },
-                          [_vm._v("Nodos ponderados:")]
+                          [
+                            _vm._v(
+                              "Nodos\n                                                    ponderados:"
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-6" }, [
                           _c("span", { attrs: { id: "total_evaluados" } }),
-                          _vm._v(" de  "),
+                          _vm._v(" de "),
                           _c("span", {
                             attrs: { id: "total_nodos_por_ponderar" }
                           })
@@ -62994,14 +61708,18 @@ var staticRenderFns = [
                             staticClass: "col-sm-6 col-form-label",
                             attrs: { for: "staticEmail" }
                           },
-                          [_vm._v("Registro de evidencia:")]
+                          [
+                            _vm._v(
+                              "Registro de\n                                                    evidencia:"
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-sm-6" }, [
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-primary",
+                              staticClass: "d-block btn btn-primary",
                               attrs: {
                                 type: "button",
                                 onclick: "resetearConteo()",
@@ -63010,7 +61728,9 @@ var staticRenderFns = [
                             },
                             [
                               _c("i", { staticClass: "fas fa-edit" }),
-                              _vm._v(" Comenzar\n\t\t\t\t\t\t\t\t\t\t\t\t")
+                              _vm._v(
+                                " Comenzar\n                                                    "
+                              )
                             ]
                           )
                         ])
@@ -63026,7 +61746,9 @@ var staticRenderFns = [
                         },
                         [
                           _c("i", { staticClass: "fas fa-ban" }),
-                          _vm._v(" Cerrar\n\t\t\t\t\t\t\t\t\t\t")
+                          _vm._v(
+                            " Cerrar\n                                            "
+                          )
                         ]
                       )
                     ])
@@ -63285,7 +62007,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-ban" }),
-                    _vm._v(" Cerrar\n\t\t\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Cerrar\n                                            "
+                    )
                   ]
                 ),
                 _vm._v(" "),
@@ -63301,7 +62025,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-save" }),
-                    _vm._v(" Guardar\n\t\t\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Guardar\n                                            "
+                    )
                   ]
                 )
               ])
@@ -63365,7 +62091,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-ban" }),
-                    _vm._v(" Cerrar\n\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Cerrar\n                                            "
+                    )
                   ]
                 ),
                 _vm._v(" "),
@@ -63378,7 +62106,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-save" }),
-                    _vm._v(" Eliminar\n\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Eliminar\n                                            "
+                    )
                   ]
                 )
               ])
@@ -63487,7 +62217,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-save" }),
-                    _vm._v(" Guardar\n\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Guardar\n                                            "
+                    )
                   ]
                 )
               ])
@@ -63526,20 +62258,20 @@ var staticRenderFns = [
                 _c("h3", { attrs: { id: "modalTitle" } }, [
                   _c("b", [
                     _vm._v(
-                      " Estimación del experto sobre el grado de conocimiento de sus alumnos. "
+                      " Estimación del experto sobre el grado de\n                                                    conocimiento de sus alumnos. "
                     )
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticStyle: { "font-size": "30px" } }, [
+                _c("p", { staticStyle: { "font-size": "1.5rem" } }, [
                   _vm._v(
-                    "\n\t\t\t\t\t\t\t\t\t\t\t\tConsiderando todos los alumnos a los cuales ha impartido la clase de matemáticas. Realice una estimación de una distribución de porcentajes en los siguientes rangos.\n\t\t\t\t\t\t\t\t\t\t\t"
+                    "\n                                                Considerando todos los alumnos a los cuales ha impartido la clase de\n                                                matemáticas. Realice una estimación de una distribución de porcentajes\n                                                en los siguientes rangos.\n                                            "
                   )
                 ]),
                 _vm._v(" "),
                 _c("div", [_c("ol", { attrs: { id: "questionList" } })]),
                 _vm._v(" "),
-                _c("div", { attrs: { clas: "row" } }, [
+                _c("div", { attrs: { clas: "row mb-2" } }, [
                   _c("div", { staticClass: "col-12" }, [
                     _c(
                       "button",
@@ -63608,7 +62340,9 @@ var staticRenderFns = [
                       ]),
                       _vm._v(" "),
                       _c("td", { staticStyle: { "font-size": "20px" } }, [
-                        _vm._v("Mayor a 83 - Menor o igual a 100")
+                        _vm._v(
+                          "Mayor a 83 - Menor o igual a 100\n                                                        "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("td", { staticStyle: { "font-size": "20px" } }, [
@@ -63632,7 +62366,9 @@ var staticRenderFns = [
                       ]),
                       _vm._v(" "),
                       _c("td", { staticStyle: { "font-size": "20px" } }, [
-                        _vm._v(" Mayor a 66 -  Menor  o igual a 83 ")
+                        _vm._v(
+                          " Mayor a 66 - Menor o igual a 83\n                                                        "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("td", { staticStyle: { "font-size": "20px" } }, [
@@ -63725,7 +62461,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-save" }),
-                    _vm._v(" Guardar\n\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Guardar\n                                            "
+                    )
                   ]
                 )
               ])
@@ -63804,7 +62542,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-save" }),
-                    _vm._v(" Guardar\n\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Guardar\n                                            "
+                    )
                   ]
                 )
               ])
@@ -63912,7 +62652,9 @@ var staticRenderFns = [
                   },
                   [
                     _c("i", { staticClass: "fas fa-save" }),
-                    _vm._v(" Crear conexión\n\t\t\t\t\t\t\t\t\t\t\t")
+                    _vm._v(
+                      " Crear conexión\n                                            "
+                    )
                   ]
                 )
               ])
@@ -64028,7 +62770,7 @@ var render = function() {
   return _c(
     "aside",
     {
-      staticClass: "main-sidebar sidebar-dark-primary elevation-4",
+      staticClass: "main-sidebar sidebar-light-primary elevation-4",
       staticStyle: { "overflow-x": "scroll" }
     },
     [
@@ -64036,18 +62778,8 @@ var render = function() {
         "router-link",
         { staticClass: "brand-link", attrs: { to: "tablero" } },
         [
-          _c("img", {
-            staticClass: "brand-image elevation-3",
-            staticStyle: { opacity: ".8" },
-            attrs: {
-              src: "/imagenes/fondo/logo.png",
-              alt: "logo",
-              salt: "AdminLTE Logo"
-            }
-          }),
-          _vm._v(" "),
           _c("span", { staticClass: "brand-text font-weight-light" }, [
-            _vm._v("KMS")
+            _vm._v("Sistema KMS")
           ])
         ]
       ),
@@ -64082,7 +62814,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("span", { staticClass: "d-block text-white" }, [
+              _c("span", { staticClass: "d-block" }, [
                 _vm._v(" " + _vm._s(_vm.rol) + " ")
               ])
             ],
@@ -64141,7 +62873,10 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "nav-link",
-                          attrs: { id: "navAccesos", to: "/configurarAccesos" }
+                          attrs: {
+                            id: "navAccesos",
+                            to: "/accesos/configuracion"
+                          }
                         },
                         [
                           _c("i", { staticClass: "nav-icon fas fa-lock-open" }),
@@ -64156,7 +62891,7 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              this.id_rol == 1
+              this.id_rol == 1 || this.id_rol == 3
                 ? _c("li", { staticClass: "nav-header" }, [
                     _c("b", [_vm._v(" USUARIOS ")])
                   ])
@@ -64217,7 +62952,7 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              this.id_rol == 1
+              this.id_rol == 1 || this.id_rol == 3
                 ? _c(
                     "li",
                     { staticClass: "nav-item" },
@@ -64302,7 +63037,7 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              this.id_rol == 1 || this.id_rol == 3 || this.id_rol == 4
+              this.id_rol == 1 || this.id_rol == 4
                 ? _c(
                     "li",
                     { staticClass: "nav-item" },
@@ -64504,7 +63239,7 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              this.id_rol == 1 || this.id_rol == 2
+              this.id_rol == 1 || this.id_rol == 2 || this.id_rol == 3
                 ? _c("li", { staticClass: "nav-header" }, [
                     _c("b", [_vm._v(" AREA DISCIPLINAR ")])
                   ])
@@ -64562,13 +63297,7 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              this.id_rol == 1 || this.id_rol == 2
-                ? _c("li", { staticClass: "nav-header" }, [
-                    _c("b", [_vm._v(" RECURSOS ")])
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              this.id_rol == 1 || this.id_rol == 2
+              this.id_rol == 1 || this.id_rol == 2 || this.id_rol == 3
                 ? _c(
                     "li",
                     { staticClass: "nav-item" },
@@ -64577,15 +63306,15 @@ var render = function() {
                         "router-link",
                         {
                           staticClass: "nav-link",
-                          attrs: { id: "navRecursos", to: "/subirImagenes" }
+                          attrs: { id: "navTemas", to: "/grafo" }
                         },
                         [
-                          _c("i", {
-                            staticClass: "nav-icon fas fa-file-upload"
-                          }),
+                          _c("i", { staticClass: "fas fa-poll nav-icon" }),
                           _vm._v(" "),
                           _c("p", [
-                            _vm._v("\n\t\t\t\t\t\t\t\timagenes\n\t\t\t\t\t\t\t")
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tResultados por alumno\n\t\t\t\t\t\t\t"
+                            )
                           ])
                         ]
                       )
@@ -64764,46 +63493,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/saludar.vue?vue&type=template&id=a5ceb5d2&":
-/*!*****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/saludar.vue?vue&type=template&id=a5ceb5d2& ***!
-  \*****************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("\n    HOLAA ESTA ES EL COMPONENTE DE VUE\n  ")]),
-    _vm._v(" "),
-    _c("button", { on: { click: _vm.metodoSaludame } }, [
-      _vm._v("\n    saludo cuando me das click\n  ")
-    ]),
-    _vm._v(" "),
-    _c("iframe", {
-      attrs: {
-        id: "inlineFrameExample",
-        title: "Inline Frame Example",
-        width: "500",
-        height: "1000",
-        src: "/historialexperto"
-      }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/subir_Imagenes.vue?vue&type=template&id=57947624&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/subir_Imagenes.vue?vue&type=template&id=57947624& ***!
@@ -64822,348 +63511,385 @@ var render = function() {
   return _c("div", { staticClass: "content-wrapper" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "card" }, [
-      _c(
-        "div",
-        { staticClass: "card-body" },
-        [
-          _c("div", { staticClass: "row mb-2" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-6" }, [
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", { staticStyle: { width: "150px" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary float-right",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#registrarImagen"
+                        },
+                        on: { click: _vm.cambiarModo }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
+                        _vm._v(" Cargar Imagen\n                        ")
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.imagenes,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
+                        },
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
+                                _vm._l(displayData, function(imagenes) {
+                                  return _c("tr", { key: imagenes.id }, [
+                                    _c(
+                                      "td",
+                                      { attrs: { calss: "text-left" } },
+                                      [_vm._v(_vm._s(imagenes.alias))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      { attrs: { calss: "text-left" } },
+                                      [
+                                        _c("img", {
+                                          staticStyle: { width: "15em" },
+                                          attrs: {
+                                            src:
+                                              "/imagenes/preguntas/" +
+                                              imagenes.nombre
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ])
+                                }),
+                                0
+                              )
+                            }
+                          }
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "nombre",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Nombre")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: { sortKey: "padre", defaultSort: "desc" }
+                              },
+                              [_vm._v(" Imagen ")]
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " +
+                            _vm._s(_vm.imagenes.length) +
+                            " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
               _c(
-                "ol",
+                "div",
                 {
-                  staticClass: "breadcrumb float-sm-right",
-                  staticStyle: { background: "white" }
+                  staticClass: "modal animated animate__bounceIn",
+                  attrs: {
+                    id: "registrarImagen",
+                    role: "dialog",
+                    "aria-labelledby": "exampleModalLabel",
+                    "aria-hidden": "true",
+                    "data-focus": "false"
+                  }
                 },
                 [
                   _c(
-                    "button",
+                    "div",
                     {
-                      staticClass: "btn btn-primary btn-lg float-right",
-                      staticStyle: { "border-radius": "25px" },
-                      attrs: {
-                        type: "button",
-                        "data-toggle": "modal",
-                        "data-target": "#registrarImagen"
-                      },
-                      on: { click: _vm.cambiarModo }
+                      staticClass: "modal-dialog modal-dialog-centered",
+                      attrs: { role: "document" }
                     },
                     [
-                      _c("i", { staticClass: "fas fa-cloud-upload-alt" }),
-                      _vm._v(" Cargar Imagen\n                        ")
+                      _c("div", { staticClass: "modal-content" }, [
+                        _c("div", { staticClass: "modal-body" }, [
+                          _c(
+                            "h3",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "exampleModalLabel" }
+                            },
+                            [_vm._v(" Registrar imagen ")]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "1",
+                              id: "alias",
+                              name: "alias",
+                              type: "text",
+                              placeholder: "Nombre"
+                            },
+                            on: {
+                              focus: function($event) {
+                                return _vm.limpiarCampos("alias")
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { id: "msjInputNombre" } }),
+                          _vm._v(" "),
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticStyle: {
+                                border: "0.5px dashed black",
+                                width: "100%"
+                              },
+                              on: {
+                                dragover: _vm.dragover,
+                                dragleave: _vm.dragleave,
+                                drop: _vm.drop
+                              }
+                            },
+                            [
+                              _c("input", {
+                                ref: "file",
+                                staticClass:
+                                  "w-px h-px opacity-0 overflow-hidden absolute",
+                                attrs: {
+                                  type: "file",
+                                  id: "assetsFieldHandle",
+                                  name: "profile_pic",
+                                  accept: ".pdf,.jpg,.jpeg,.png",
+                                  hidden: ""
+                                },
+                                on: { change: _vm.onChange }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-md-12" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "block cursor-pointer",
+                                      attrs: { for: "assetsFieldHandle" }
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        [
+                                          _c("center", [
+                                            _c(
+                                              "p",
+                                              {
+                                                staticClass: "text-center",
+                                                attrs: { id: "mensajito" }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "fas fa-cloud-download-alt"
+                                                }),
+                                                _vm._v(
+                                                  " Arrastra la imagen\n                                                o da clic aquí para subir\n                                            "
+                                                )
+                                              ]
+                                            )
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              this.subidor.imagenesVistaPrevia.length
+                                ? _c(
+                                    "table",
+                                    {
+                                      staticStyle: {
+                                        "list-style-type": "none",
+                                        width: "100%"
+                                      }
+                                    },
+                                    [
+                                      _vm._m(4),
+                                      _vm._v(" "),
+                                      _vm._l(
+                                        _vm.subidor.imagenesVistaPrevia,
+                                        function(imagen) {
+                                          return _c("tr", [
+                                            _c(
+                                              "td",
+                                              {
+                                                staticClass:
+                                                  "d-flex justify-content-center"
+                                              },
+                                              [
+                                                _c("img", {
+                                                  staticStyle: {
+                                                    width: "15em"
+                                                  },
+                                                  attrs: { src: imagen.imagen }
+                                                })
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "a",
+                                                {
+                                                  attrs: {
+                                                    title: "Eliminar la imagen"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.remove(imagen)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass:
+                                                      "fas fa-trash-alt",
+                                                    staticStyle: {
+                                                      color: "#ff6258"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ])
+                                          ])
+                                        }
+                                      )
+                                    ],
+                                    2
+                                  )
+                                : _vm._e()
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary float-right btn-lg mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: { click: _vm.btnGuardar }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-save" }),
+                              _vm._v(" Guardar\n                        ")
+                            ]
+                          )
+                        ])
+                      ])
                     ]
                   )
                 ]
               )
             ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "table-responsive" },
-            [
-              _c(
-                "v-table",
-                {
-                  staticClass: "table mb-2",
-                  staticStyle: { width: "100%" },
-                  attrs: {
-                    data: _vm.imagenes,
-                    filters: _vm.filters,
-                    currentPage: _vm.currentPage,
-                    pageSize: 5
-                  },
-                  on: {
-                    "update:currentPage": function($event) {
-                      _vm.currentPage = $event
-                    },
-                    "update:current-page": function($event) {
-                      _vm.currentPage = $event
-                    },
-                    totalPagesChanged: function($event) {
-                      _vm.totalPages = $event
-                    }
-                  },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "body",
-                      fn: function(ref) {
-                        var displayData = ref.displayData
-                        return _c(
-                          "tbody",
-                          {},
-                          _vm._l(displayData, function(imagenes) {
-                            return _c("tr", { key: imagenes.id }, [
-                              _c("td", { attrs: { calss: "text-left" } }, [
-                                _vm._v(_vm._s(imagenes.alias))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { attrs: { calss: "text-left" } }, [
-                                _c("img", {
-                                  staticStyle: { width: "15em" },
-                                  attrs: {
-                                    src:
-                                      "/imagenes/preguntas/" + imagenes.nombre
-                                  }
-                                })
-                              ])
-                            ])
-                          }),
-                          0
-                        )
-                      }
-                    }
-                  ])
-                },
-                [
-                  _c(
-                    "thead",
-                    {
-                      staticClass: "thead-dark",
-                      attrs: { slot: "head" },
-                      slot: "head"
-                    },
-                    [
-                      _c(
-                        "v-th",
-                        { attrs: { sortKey: "nombre", defaultSort: "desc" } },
-                        [_vm._v("Nombre")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-th",
-                        { attrs: { sortKey: "padre", defaultSort: "desc" } },
-                        [_vm._v(" Imagen ")]
-                      )
-                    ],
-                    1
-                  )
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("smart-pagination", {
-            attrs: { currentPage: _vm.currentPage, totalPages: _vm.totalPages },
-            on: {
-              "update:currentPage": function($event) {
-                _vm.currentPage = $event
-              },
-              "update:current-page": function($event) {
-                _vm.currentPage = $event
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(" Total de registros: " + _vm._s(this.imagenes.length) + " ")
           ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal animated animate__bounceIn",
-          attrs: {
-            id: "registrarImagen",
-            role: "dialog",
-            "aria-labelledby": "exampleModalLabel",
-            "aria-hidden": "true",
-            "data-focus": "false"
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "modal-dialog modal-dialog-centered",
-              attrs: { role: "document" }
-            },
-            [
-              _c("div", { staticClass: "modal-content" }, [
-                _c("div", { staticClass: "modal-body" }, [
-                  _c(
-                    "h3",
-                    {
-                      staticClass: "modal-title",
-                      attrs: { id: "exampleModalLabel" }
-                    },
-                    [_vm._v(" Registrar imagen ")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      rows: "1",
-                      id: "alias",
-                      name: "alias",
-                      type: "text",
-                      placeholder: "Nombre"
-                    },
-                    on: {
-                      focus: function($event) {
-                        return _vm.limpiarCampos("alias")
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { attrs: { id: "msjInputNombre" } }),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticStyle: {
-                        border: "0.5px dashed black",
-                        width: "100%"
-                      },
-                      on: {
-                        dragover: _vm.dragover,
-                        dragleave: _vm.dragleave,
-                        drop: _vm.drop
-                      }
-                    },
-                    [
-                      _c("input", {
-                        ref: "file",
-                        staticClass:
-                          "w-px h-px opacity-0 overflow-hidden absolute",
-                        attrs: {
-                          type: "file",
-                          id: "assetsFieldHandle",
-                          name: "profile_pic",
-                          accept: ".pdf,.jpg,.jpeg,.png",
-                          hidden: ""
-                        },
-                        on: { change: _vm.onChange }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-md-12" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "block cursor-pointer",
-                              attrs: { for: "assetsFieldHandle" }
-                            },
-                            [
-                              _c(
-                                "div",
-                                [
-                                  _c("center", [
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass: "text-center",
-                                        attrs: { id: "mensajito" }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass:
-                                            "fas fa-cloud-download-alt"
-                                        }),
-                                        _vm._v(
-                                          " Arrastra la imagen\n                                                o da clic aquí para subir\n                                            "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ],
-                                1
-                              )
-                            ]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      this.subidor.imagenesVistaPrevia.length
-                        ? _c(
-                            "table",
-                            {
-                              staticStyle: {
-                                "list-style-type": "none",
-                                width: "100%"
-                              }
-                            },
-                            [
-                              _vm._m(4),
-                              _vm._v(" "),
-                              _vm._l(_vm.subidor.imagenesVistaPrevia, function(
-                                imagen
-                              ) {
-                                return _c("tr", [
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass:
-                                        "d-flex justify-content-center"
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: { width: "15em" },
-                                        attrs: { src: imagen.imagen }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: { title: "Eliminar la imagen" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.remove(imagen)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fas fa-trash-alt",
-                                          staticStyle: { color: "#ff6258" }
-                                        })
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              })
-                            ],
-                            2
-                          )
-                        : _vm._e()
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(5),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "btn btn-primary float-right btn-lg mt-4 mr-2",
-                      staticStyle: { "border-radius": "25px" },
-                      attrs: { type: "button" },
-                      on: { click: _vm.btnGuardar }
-                    },
-                    [
-                      _c("i", { staticClass: "fas fa-save" }),
-                      _vm._v(" Guardar\n                        ")
-                    ]
-                  )
-                ])
-              ])
-            ]
-          )
-        ]
-      )
+        ])
+      ])
     ])
   ])
 }
@@ -65172,31 +63898,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [
-              _vm._v(" Repositorio de imagenes ")
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Imagenes")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Recursos ")
-                ])
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v("  Recursos "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v(" Imagenes ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
     ])
   },
@@ -65204,15 +63929,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6" }, [
-      _c(
-        "h1",
-        {
-          staticClass: "page-header border-0",
-          staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-        },
-        [_vm._v("Recursos")]
-      )
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Repositorio de imagenes ")])
     ])
   },
   function() {
@@ -65249,7 +63967,6 @@ var staticRenderFns = [
       "button",
       {
         staticClass: "btn btn-secondary float-right btn-lg mt-4",
-        staticStyle: { "border-radius": "25px" },
         attrs: { type: "button", "data-dismiss": "modal" }
       },
       [
@@ -65283,197 +64000,358 @@ var render = function() {
   return _c("div", { staticClass: "content-wrapper" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "card" }, [
-      _c(
-        "div",
-        { staticClass: "card-body" },
-        [
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.filters.nombre_tema.value,
-                expression: "filters.nombre_tema.value"
-              }
-            ],
-            staticClass: "form-control mb-2",
-            attrs: { type: "search", placeholder: "Matemáticas" },
-            domProps: { value: _vm.filters.nombre_tema.value },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.filters.nombre_tema, "value", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _vm.verificarPreguntas != false
-            ? _c(
-                "div",
-                { staticClass: "alert alert-danger", attrs: { role: "alert" } },
-                [_vm._v(_vm._s(_vm.verificarPreguntas))]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "table-responsive" },
-            [
-              _c(
-                "v-table",
-                {
-                  staticClass: "table mb-2",
-                  staticStyle: { width: "100%" },
-                  attrs: {
-                    data: _vm.temas,
-                    filters: _vm.filters,
-                    currentPage: _vm.currentPage,
-                    pageSize: 5
-                  },
-                  on: {
-                    "update:currentPage": function($event) {
-                      _vm.currentPage = $event
-                    },
-                    "update:current-page": function($event) {
-                      _vm.currentPage = $event
-                    },
-                    totalPagesChanged: function($event) {
-                      _vm.totalPages = $event
-                    }
-                  },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "body",
-                      fn: function(ref) {
-                        var displayData = ref.displayData
-                        return _c(
-                          "tbody",
-                          {},
-                          _vm._l(displayData, function(temas) {
-                            return _c("tr", { key: temas.id }, [
-                              _c("td", { attrs: { calss: "text-left" } }, [
-                                _vm._v(_vm._s(temas.nombre_tema))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { attrs: { calss: "text-left" } }, [
-                                _vm._v(_vm._s(temas.padre))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { attrs: { calss: "text-left" } }, [
-                                _vm._v(
-                                  "\n                Breves: " +
-                                    _vm._s(temas.totalAbiertas) +
-                                    " "
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                Númericas: " +
-                                    _vm._s(temas.totalNumericas) +
-                                    " "
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                Verdadero/falso: " +
-                                    _vm._s(temas.totalBooleanas) +
-                                    " "
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                Multiples: " +
-                                    _vm._s(temas.totalMultiple) +
-                                    " "
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                Calculadas: " +
-                                    _vm._s(temas.totalCalculadas) +
-                                    " "
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                Calculadas multiples: " +
-                                    _vm._s(temas.totalCMultiple) +
-                                    " "
-                                ),
-                                _c("br")
-                              ])
-                            ])
-                          }),
-                          0
-                        )
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row mb-2" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("b", [_vm._v(" Termino de busqueda: ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.filters.nombre_tema.value,
+                          expression: "filters.nombre_tema.value"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "38px" },
+                      attrs: { type: "search", placeholder: "Término" },
+                      domProps: { value: _vm.filters.nombre_tema.value },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.filters.nombre_tema,
+                            "value",
+                            $event.target.value
+                          )
+                        }
                       }
-                    }
+                    })
                   ])
-                },
-                [
-                  _c(
-                    "thead",
-                    {
-                      staticClass: "thead-dark",
-                      attrs: { slot: "head" },
-                      slot: "head"
-                    },
-                    [
-                      _c(
-                        "v-th",
-                        {
-                          attrs: { sortKey: "nombre_tema", defaultSort: "desc" }
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "table-responsive" },
+                  [
+                    _c(
+                      "v-table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" },
+                        attrs: {
+                          data: _vm.temas,
+                          filters: _vm.filters,
+                          currentPage: _vm.currentPage,
+                          pageSize: 5
                         },
-                        [_vm._v("Tema")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-th",
-                        { attrs: { sortKey: "padre", defaultSort: "desc" } },
-                        [_vm._v(" Depende de ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-th",
-                        {
-                          attrs: {
-                            sortKey: "totalAbiertas",
-                            defaultSort: "desc"
+                        on: {
+                          "update:currentPage": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          "update:current-page": function($event) {
+                            _vm.currentPage = $event
+                          },
+                          totalPagesChanged: function($event) {
+                            _vm.totalPages = $event
                           }
                         },
-                        [_vm._v(" Total de preguntas ")]
-                      )
-                    ],
-                    1
-                  )
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("smart-pagination", {
-            attrs: { currentPage: _vm.currentPage, totalPages: _vm.totalPages },
-            on: {
-              "update:currentPage": function($event) {
-                _vm.currentPage = $event
-              },
-              "update:current-page": function($event) {
-                _vm.currentPage = $event
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(" Total de registros: " + _vm._s(this.temas.length) + " ")
+                        scopedSlots: _vm._u([
+                          {
+                            key: "body",
+                            fn: function(ref) {
+                              var displayData = ref.displayData
+                              return _c(
+                                "tbody",
+                                {},
+                                _vm._l(displayData, function(temas) {
+                                  return _c("tr", { key: temas.id }, [
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(temas.nombre_tema)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "span",
+                                        { staticClass: "badge badge-primary" },
+                                        [
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(temas.totalAbiertas) +
+                                              " "
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      temas.totalNumericas > 0
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-primary"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(temas.totalNumericas) +
+                                                  " "
+                                              )
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(temas.totalNumericas) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      temas.totalBooleanas > 0
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-primary"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(temas.totalBooleanas) +
+                                                  " "
+                                              )
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(temas.totalBooleanas) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      temas.totalMultiple > 0
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-primary"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(temas.totalMultiple) +
+                                                  " "
+                                              )
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-danger "
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(temas.totalMultiple) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      temas.totalCalculadas > 0
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-primary"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(
+                                                    temas.totalCalculadas
+                                                  ) +
+                                                  " "
+                                              )
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-danger "
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(
+                                                    temas.totalCalculadas
+                                                  ) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      temas.totalCMultiple > 0
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-primary"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(temas.totalCMultiple) +
+                                                  " "
+                                              )
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-danger "
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(
+                                                    temas.totalCalculadas
+                                                  ) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                    ])
+                                  ])
+                                }),
+                                0
+                              )
+                            }
+                          }
+                        ])
+                      },
+                      [
+                        _c(
+                          "thead",
+                          { attrs: { slot: "head" }, slot: "head" },
+                          [
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "nombre_tema",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Tema")]
+                            ),
+                            _vm._v(" "),
+                            _c("v-th", { attrs: { defaultSort: "desc" } }, [
+                              _vm._v(" Breves ")
+                            ]),
+                            _vm._v(" "),
+                            _c("v-th", { attrs: { defaultSort: "desc" } }, [
+                              _vm._v(" Númericas ")
+                            ]),
+                            _vm._v(" "),
+                            _c("v-th", { attrs: { defaultSort: "desc" } }, [
+                              _vm._v(" Verdadero / Falso ")
+                            ]),
+                            _vm._v(" "),
+                            _c("v-th", { attrs: { defaultSort: "desc" } }, [
+                              _vm._v(" Multiples ")
+                            ]),
+                            _vm._v(" "),
+                            _c("v-th", { attrs: { defaultSort: "desc" } }, [
+                              _vm._v(" Calculadas ")
+                            ]),
+                            _vm._v(" "),
+                            _c("v-th", { attrs: { defaultSort: "desc" } }, [
+                              _vm._v(" Calculadas multiples ")
+                            ])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("label", [
+                      _c("b", [
+                        _vm._v(
+                          " Total: " + _vm._s(_vm.temas.length) + " registros "
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      { staticClass: "float-right" },
+                      [
+                        _c("smart-pagination", {
+                          attrs: {
+                            currentPage: _vm.currentPage,
+                            totalPages: _vm.totalPages,
+                            maxPageLinks: 3
+                          },
+                          on: {
+                            "update:currentPage": function($event) {
+                              _vm.currentPage = $event
+                            },
+                            "update:current-page": function($event) {
+                              _vm.currentPage = $event
+                            }
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
           ])
-        ],
-        1
-      )
+        ])
+      ])
     ])
   ])
 }
@@ -65482,29 +64360,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 mt-4" }, [
-      _c("div", { staticClass: "page-header" }, [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h1", { staticClass: "page-title" }, [_vm._v(" Temas ")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "quick-links ml-auto" }, [
-              _c("li", [
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _c("i", { staticClass: "fas fa-home" }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-angle-right" })
-                ]),
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Temas")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _c("i", { staticClass: "fas fa-home" }),
                 _vm._v(" "),
-                _c("span", { staticStyle: { color: "#bdb9bd" } }, [
-                  _vm._v(" Temas ")
-                ])
-              ])
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "#bdb9bd" } }, [
+                _vm._v(" Area Disciplinar "),
+                _c("i", { staticClass: "fas fa-angle-right" })
+              ]),
+              _vm._v(" "),
+              _c("b", [_vm._v("Temas ")])
             ])
-          ]
-        )
+          ])
+        ])
       ])
     ])
   },
@@ -65512,53 +64391,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "page-header border-0",
-        staticStyle: { padding: "0 0 0", margin: "0 0 0" }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "quick-link-wrapper w-100 d-md-flex flex-md-wrap" },
-          [
-            _c("h2", { staticClass: "page-title" }, [
-              _vm._v(" Lista de temas ")
-            ])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "alert alert-primary", attrs: { role: "alert" } },
-      [
-        _c("h2", [_vm._v("\n                Atención\n              ")]),
-        _vm._v(" "),
-        _c("i", { staticClass: "fas fa-info-circle" }),
-        _vm._v(
-          " Los temas aquí mostrados son los pertenecientes al grafo de conocimineto, esta página es unicamente para mostrar la información de los mismos\n              "
-        ),
-        _c("br"),
-        _vm._v(" "),
-        _c("b", [_vm._v("Nota: ")]),
-        _vm._v(
-          " Si desea realizar una cambio en los temas, por favor diríjase a la interfaz del grafo de conocimineto. \n            "
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v(" Busqueda por nombre:  ")])])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title mt-2" }, [
+        _c("b", [_vm._v(" Número de preguntas por tema ")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c("div", { staticStyle: { width: "150px" } })
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -81842,213 +80683,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/IndexAlumnos.vue":
-/*!*********************************************************!*\
-  !*** ./resources/assets/js/components/IndexAlumnos.vue ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IndexAlumnos.vue?vue&type=template&id=70af75f4& */ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&");
-/* harmony import */ var _IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IndexAlumnos.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/assets/js/components/IndexAlumnos.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************!*\
-  !*** ./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexAlumnos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&":
-/*!****************************************************************************************!*\
-  !*** ./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4& ***!
-  \****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexAlumnos.vue?vue&type=template&id=70af75f4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexAlumnos.vue?vue&type=template&id=70af75f4&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexAlumnos_vue_vue_type_template_id_70af75f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexExpertos.vue":
-/*!**********************************************************!*\
-  !*** ./resources/assets/js/components/IndexExpertos.vue ***!
-  \**********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _IndexExpertos_vue_vue_type_template_id_07f0a84e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IndexExpertos.vue?vue&type=template&id=07f0a84e& */ "./resources/assets/js/components/IndexExpertos.vue?vue&type=template&id=07f0a84e&");
-/* harmony import */ var _IndexExpertos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IndexExpertos.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/IndexExpertos.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _IndexExpertos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _IndexExpertos_vue_vue_type_template_id_07f0a84e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _IndexExpertos_vue_vue_type_template_id_07f0a84e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/assets/js/components/IndexExpertos.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexExpertos.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************!*\
-  !*** ./resources/assets/js/components/IndexExpertos.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexExpertos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexExpertos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexExpertos.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexExpertos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexExpertos.vue?vue&type=template&id=07f0a84e&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/assets/js/components/IndexExpertos.vue?vue&type=template&id=07f0a84e& ***!
-  \*****************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexExpertos_vue_vue_type_template_id_07f0a84e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexExpertos.vue?vue&type=template&id=07f0a84e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexExpertos.vue?vue&type=template&id=07f0a84e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexExpertos_vue_vue_type_template_id_07f0a84e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexExpertos_vue_vue_type_template_id_07f0a84e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexProfesores.vue":
-/*!************************************************************!*\
-  !*** ./resources/assets/js/components/IndexProfesores.vue ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _IndexProfesores_vue_vue_type_template_id_1fc0e6ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IndexProfesores.vue?vue&type=template&id=1fc0e6ba& */ "./resources/assets/js/components/IndexProfesores.vue?vue&type=template&id=1fc0e6ba&");
-/* harmony import */ var _IndexProfesores_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IndexProfesores.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/IndexProfesores.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _IndexProfesores_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _IndexProfesores_vue_vue_type_template_id_1fc0e6ba___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _IndexProfesores_vue_vue_type_template_id_1fc0e6ba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/assets/js/components/IndexProfesores.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexProfesores.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************!*\
-  !*** ./resources/assets/js/components/IndexProfesores.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexProfesores_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexProfesores.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexProfesores.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexProfesores_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/IndexProfesores.vue?vue&type=template&id=1fc0e6ba&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/assets/js/components/IndexProfesores.vue?vue&type=template&id=1fc0e6ba& ***!
-  \*******************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexProfesores_vue_vue_type_template_id_1fc0e6ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./IndexProfesores.vue?vue&type=template&id=1fc0e6ba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/IndexProfesores.vue?vue&type=template&id=1fc0e6ba&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexProfesores_vue_vue_type_template_id_1fc0e6ba___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_IndexProfesores_vue_vue_type_template_id_1fc0e6ba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/assets/js/components/NotFound.vue":
 /*!*****************************************************!*\
   !*** ./resources/assets/js/components/NotFound.vue ***!
@@ -83015,75 +81649,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/saludar.vue":
-/*!****************************************************!*\
-  !*** ./resources/assets/js/components/saludar.vue ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _saludar_vue_vue_type_template_id_a5ceb5d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./saludar.vue?vue&type=template&id=a5ceb5d2& */ "./resources/assets/js/components/saludar.vue?vue&type=template&id=a5ceb5d2&");
-/* harmony import */ var _saludar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./saludar.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/saludar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _saludar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _saludar_vue_vue_type_template_id_a5ceb5d2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _saludar_vue_vue_type_template_id_a5ceb5d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/assets/js/components/saludar.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/saludar.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ./resources/assets/js/components/saludar.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_saludar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./saludar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/saludar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_saludar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/saludar.vue?vue&type=template&id=a5ceb5d2&":
-/*!***********************************************************************************!*\
-  !*** ./resources/assets/js/components/saludar.vue?vue&type=template&id=a5ceb5d2& ***!
-  \***********************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_saludar_vue_vue_type_template_id_a5ceb5d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./saludar.vue?vue&type=template&id=a5ceb5d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/saludar.vue?vue&type=template&id=a5ceb5d2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_saludar_vue_vue_type_template_id_a5ceb5d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_saludar_vue_vue_type_template_id_a5ceb5d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/assets/js/components/subirImagenes.js":
 /*!*********************************************************!*\
   !*** ./resources/assets/js/components/subirImagenes.js ***!
@@ -83597,7 +82162,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //import 'foundation-sites';
 
 
 
@@ -83612,15 +82176,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_js_toggle_button__WEBPACK_IMP
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_viewer__WEBPACK_IMPORTED_MODULE_7___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_select2__WEBPACK_IMPORTED_MODULE_8___default.a);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false; //Vue.prototype.idusuario = window.routes;
-
-/*Vue.prototype.Usuario.idusuario = idusuario;
-Vue.prototype.Usuario.nombre = nombre;
-Vue.prototype.Usuario.apellido_paterno = apellido_paterno;
-Vue.prototype.Usuario.apellido_materno = apellido_materno;
-Vue.prototype.Usuario.matricula = matricula;
-Vue.prototype.Usuario.foto = foto;*/
-
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -83661,23 +82217,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PreguntasCalculadas__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @/components/PreguntasCalculadas */ "./resources/assets/js/components/PreguntasCalculadas.vue");
 /* harmony import */ var _components_PreguntasOpcionMultipleCalculadas__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @/components/PreguntasOpcionMultipleCalculadas */ "./resources/assets/js/components/PreguntasOpcionMultipleCalculadas.vue");
 /* harmony import */ var _components_Perfil__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @/components/Perfil */ "./resources/assets/js/components/Perfil.vue");
-/* harmony import */ var _components_IndexAlumnos__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @/components/IndexAlumnos */ "./resources/assets/js/components/IndexAlumnos.vue");
-/* harmony import */ var _components_IndexExpertos__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @/components/IndexExpertos */ "./resources/assets/js/components/IndexExpertos.vue");
-/* harmony import */ var _components_IndexProfesores__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @/components/IndexProfesores */ "./resources/assets/js/components/IndexProfesores.vue");
-/* harmony import */ var _components_saludar__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @/components/saludar */ "./resources/assets/js/components/saludar.vue");
-/* harmony import */ var _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @/components/NotFound.vue */ "./resources/assets/js/components/NotFound.vue");
-/* harmony import */ var _components_grafo__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @/components/grafo */ "./resources/assets/js/components/grafo.vue");
-/* harmony import */ var _components_Contacto__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @/components/Contacto */ "./resources/assets/js/components/Contacto.vue");
-/* harmony import */ var _components_subir_Imagenes__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @/components/subir_Imagenes */ "./resources/assets/js/components/subir_Imagenes.vue");
+/* harmony import */ var _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @/components/NotFound.vue */ "./resources/assets/js/components/NotFound.vue");
+/* harmony import */ var _components_grafo__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @/components/grafo */ "./resources/assets/js/components/grafo.vue");
+/* harmony import */ var _components_Contacto__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @/components/Contacto */ "./resources/assets/js/components/Contacto.vue");
+/* harmony import */ var _components_subir_Imagenes__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @/components/subir_Imagenes */ "./resources/assets/js/components/subir_Imagenes.vue");
 // resources/assets/js/router/index.js
 
 
-
-
-
-
- //modulos extras que permiten resolver problemas
-//import historialalumnos from '@/components/historialalumnos'
 
 
 
@@ -83706,7 +82252,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'Index',
     component: _components_Index__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/configurarAccesos',
+    path: '/accesos/configuracion',
     name: 'AccesoRutas',
     component: _components_AccesoRutas__WEBPACK_IMPORTED_MODULE_14__["default"]
   }, {
@@ -83790,37 +82336,21 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'Perfil',
     component: _components_Perfil__WEBPACK_IMPORTED_MODULE_17__["default"]
   }, {
-    path: '/alumno/app',
-    name: 'Perfilalumno',
-    component: _components_IndexAlumnos__WEBPACK_IMPORTED_MODULE_18__["default"]
-  }, {
-    path: '/experto/app',
-    name: 'Dashboardexperto',
-    component: _components_IndexExpertos__WEBPACK_IMPORTED_MODULE_19__["default"]
-  }, {
-    path: '/profesor/app',
-    name: 'Dashboardprofesor',
-    component: _components_IndexProfesores__WEBPACK_IMPORTED_MODULE_20__["default"]
-  }, {
-    path: '/saludarvue',
-    name: 'saludar',
-    component: _components_saludar__WEBPACK_IMPORTED_MODULE_21__["default"]
-  }, {
     path: '/grafo',
     name: 'grafo',
-    component: _components_grafo__WEBPACK_IMPORTED_MODULE_23__["default"]
+    component: _components_grafo__WEBPACK_IMPORTED_MODULE_19__["default"]
   }, {
     path: '/contacto',
     name: 'contacto',
-    component: _components_Contacto__WEBPACK_IMPORTED_MODULE_24__["default"]
+    component: _components_Contacto__WEBPACK_IMPORTED_MODULE_20__["default"]
   }, {
     path: '/subirImagenes',
     name: 'subirImagenes',
-    component: _components_subir_Imagenes__WEBPACK_IMPORTED_MODULE_25__["default"]
+    component: _components_subir_Imagenes__WEBPACK_IMPORTED_MODULE_21__["default"]
   }, {
     path: '*',
     name: 'NotFound',
-    component: _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_22__["default"]
+    component: _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_18__["default"]
   }],
   linkActiveClass: "active",
   linkExactActiveClass: "active"

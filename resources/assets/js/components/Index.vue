@@ -3,40 +3,55 @@
 
         <div class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row mr-2 ml-2">
                     <div class="col-sm-6">
                         <h1 class="page-title m-0">Inicio</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-12 ">
-            <div class="card">
+        <div class="col-md-12">
+            <div class="card shadow m-2">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
+
+                    <div v-if="this.id_rol==4">
+                        <h1>Bienvenido alumno: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
+                    </div>
+
+                    <div v-if="this.id_rol==3">
+                        <h1>Bienvenido profesor: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
+                    </div>
+
+                    <div v-if="this.id_rol==2">
+                        <h1>Bienvenido experto: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
+                    </div>
+
+                    <div v-if="this.id_rol==1">
+                        <h1>Bienvenido administrador: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
+                    </div>
+
+                    <div class="row" v-if="this.id_rol==1">
+                        <div class="col-md-6">
                             <div class="small-box bg-gradient-success">
                                 <div class="inner">
                                     <h3>{{admins}}</h3>
                                     <p>Administradores</p>
                                 </div>
                                 <div class="icon">
-                                    <!--<i class="fas fa-user-plus"></i>-->
                                     <i class="fas fa-user-shield"></i>
-                                    
                                 </div>
                                 <a href="#" class="small-box-footer">
                                     Más Información <i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="small-box bg-gradient-warning">
                                 <div class="inner">
                                     <h3>{{experto}}</h3>
@@ -50,23 +65,11 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="small-box bg-gradient-primary">
-                                <div class="inner">
-                                    <h3>{{profesor}}</h3>
-                                    <p>Docentes</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-chalkboard-teacher"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    Más Información <i class="fas fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                    
+                    <div class="row" v-if="this.id_rol==1 || this.id_rol==3 ">
+                        <div class="col-md-6">
                             <div class="small-box bg-gradient-primary">
                                 <div class="inner">
                                     <h3>{{alumnos}}</h3>
@@ -80,21 +83,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="small-box bg-gradient-secondary">
-                                <div class="inner">
-                                    <h3>{{temas}}</h3>
-                                    <p>Temas del area disciplinar</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-calculator"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    Más Información <i class="fas fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="small-box bg-gradient-info">
                                 <div class="inner">
                                     <h3>{{pregunta}}</h3>
@@ -109,9 +98,42 @@
                             </div>
                         </div>
                     </div>
-					<div v-if="this.id_rol==4">
-						<h1>Bienvenido alumno: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
-					</div>
+
+
+                    <div class="row" v-if="this.id_rol==1">
+                        <div class="col-md-6">
+                            <div class="small-box bg-gradient-secondary">
+                                <div class="inner">
+                                    <h3>{{temas}}</h3>
+                                    <p>Temas del area disciplinar</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="small-box bg-gradient-primary">
+                                <div class="inner">
+                                    <h3>{{profesor}}</h3>
+                                    <p>Docentes</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Más Información <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+					
+
                 </div>
             </div>
         </div>

@@ -8,12 +8,11 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <span style="color: #bdb9bd">  
-                                <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 
-                            </span> 
-                            <span style="color: #bdb9bd">  
-                                Usuarios <i class="fas fa-angle-right"></i> 
-                            </span> 
+                            <span style="color: #bdb9bd">
+                                <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
+                            </span>
+                            <span style="color: #bdb9bd"> Usuarios <i class="fas fa-angle-right"></i>
+                            </span>
                             <b> Administradores </b>
                         </ol>
                     </div>
@@ -29,30 +28,29 @@
                                 <h3 class="card-title mt-2"> <b> Lista de administradores </b> </h3>
                                 <div class="card-tools">
                                     <div class="" style="width: 150px;">
-                                        <button type="button" class="btn btn-primary float-right"  data-toggle="modal"
+                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal"
                                             data-target="#registrarPregunta" @click="btnGuardar">
                                             <i class="fas fa-plus"></i> Nuevo
-                                        </button> 
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="card-body">
                                 <div class="row mb-2">
-                                    <div class="col-6" >
+                                    <div class="col-6">
                                         <b> Término de busqueda: </b>
-                                        <input class="form-control" type="search" 
-                                            placeholder="Término" 
-                                            v-model="filters.nombre.value" 
-                                            style="height: 2.35rem;" />
+                                        <input class="form-control" type="search" placeholder="Término"
+                                            v-model="filters.nombre.value" style="height: 2.35rem;" />
                                     </div>
-                                    <div class="col-6" >
+                                    <div class="col-6">
                                         <b>Campo de busqueda: </b>
-                                        <select class="form-control" name="campoBusqueda" id="campoBusqueda" @change="cambiarCampoDeBusqueda">
-                                        <option value="nombre">Nombre</option>
-                                        <option value="apellido_paterno">Apellido parterno</option>
-                                        <option value="apellido_materno">Apellido materno</option>
-                                        <option value="matricula">Correo</option>
+                                        <select class="form-control" name="campoBusqueda" id="campoBusqueda"
+                                            @change="cambiarCampoDeBusqueda">
+                                            <option value="nombre">Nombre</option>
+                                            <option value="apellido_paterno">Apellido parterno</option>
+                                            <option value="apellido_materno">Apellido materno</option>
+                                            <option value="matricula">Correo</option>
                                         </select>
                                     </div>
                                 </div>
@@ -60,8 +58,9 @@
 
                                 <div class="table-responsive">
 
-                                    <v-table :data="admin" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
-                                        @totalPagesChanged="totalPages = $event" style="width:100%" class="table table-hover">
+                                    <v-table :data="admin" :filters="filters" :currentPage.sync="currentPage"
+                                        :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
+                                        class="table table-hover">
 
                                         <thead slot="head">
                                             <v-th sortKey="nombre" defaultSort="desc">Nombre</v-th>
@@ -78,22 +77,20 @@
                                                 <td>{{ admin.apellido_materno }}</td>
                                                 <td>{{ admin.matricula }} </td>
                                                 <td>
-                                                    <a @click="btnEditar(admin.id,admin.nombre,admin.apellido_paterno, admin.apellido_materno,admin.matricula)" class="btn btn-outline-warning">
-                                                        <i class="fas fa-pen " style="color: #ffae00;" ></i> 
+                                                    <a @click="btnEditar(admin.id,admin.nombre,admin.apellido_paterno, admin.apellido_materno,admin.matricula)"
+                                                        class="btn btn-outline-warning">
+                                                        <i class="fas fa-pen " style="color: #ffae00;"></i>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a @click="eliminar(admin.id)"  class="btn btn-outline-danger"> 
-                                                        <i class="fas fa-trash " style="color: #ff6258"></i> 
+                                                    <a @click="eliminar(admin.id)" class="btn btn-outline-danger">
+                                                        <i class="fas fa-trash " style="color: #ff6258"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-
                                         </tbody>
                                     </v-table>
-
                                 </div>
-
                             </div>
                             <div class="card-footer">
                                 <div class="row">
@@ -102,26 +99,22 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="float-right">
-                                            <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" :maxPageLinks="3" />
+                                            <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages"
+                                                :maxPageLinks="3" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        
                     </div>
                 </div>
             </div>
         </section>
-
     </div>
 </template>
 <script>
     import axios from 'axios'
-
     export default {
-
         data() {
             return {
                 admin: [],
@@ -166,7 +159,7 @@
             },
 
             guardarAdmin(nombre, apellido_materno, apellido_paterno, matricula,
-            password) { ///Funcion para guardar los usuarios
+                password) { ///Funcion para guardar los usuarios
                 axios.post('registrar', {
                         nombre: nombre,
                         nivel_academico: "",
@@ -232,16 +225,16 @@
                             error = 2;
                         } else {
                             await axios.post('/verificarExistencia', {
-                                correo: this.matricula
-                            })
-                            .then((res) => {
-                                if (res.data[0].length !== 0) {
-                                    error = 1;
-                                }
-                            })
-                            .catch((err) => {
-                                console.log(err)
-                            })
+                                    correo: this.matricula
+                                })
+                                .then((res) => {
+                                    if (res.data[0].length !== 0) {
+                                        error = 1;
+                                    }
+                                })
+                                .catch((err) => {
+                                    console.log(err)
+                                })
                         }
 
                         if (error === 1) {
@@ -292,15 +285,6 @@
 
             btnEditar: async function (id, nombre, apellido_paterno, apellido_materno, matricula) {
                 const valores = await this.$swal({
-
-                    /*showClass: {
-						backdrop: 'swal2-noanimation',
-						popup: '',
-						icon: ''
-					},
-					hideClass: {
-						popup: ''
-					},*/
                     html: `
             <h3 class="text-left" style="color:#212529;"> Actualizar administrador </h3>
 			      <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Nombre<span style="color:red">*</span>: </b> </p>
@@ -459,7 +443,6 @@
                         this.password = ''
                         this.id = ''
                         this.getAdmin()
-                        //console.log(res)
                     })
                     .catch((err) => {
                         console.log(err)
@@ -471,8 +454,6 @@
             eliminar(id) {
 
                 this.$swal.fire({
-                    //title: '¿Realmente deseas eliminar este registro?',
-                    //icon: 'warning',
                     html: `
                         <h3 style="color:#212529;">¿Realmente desea eliminar este registro?</h3>
 			        `,
@@ -484,33 +465,34 @@
                 }).then((result) => {
                     if (result.value) {
                         axios.post('user/delete', {
-                            id: id
-                        }).then((res) => {
-                            this.nombre = ''
-                            this.id_rol = ''
-                            this.apellido_materno = ''
-                            this.apellido_paterno = ''
-                            this.matricula = ''
-                            this.password = ''
-                            this.id = ''
-                            this.getAdmin();
+                                id: id
+                            }).then((res) => {
+                                this.nombre = ''
+                                this.id_rol = ''
+                                this.apellido_materno = ''
+                                this.apellido_paterno = ''
+                                this.matricula = ''
+                                this.password = ''
+                                this.id = ''
+                                this.getAdmin();
 
-                            this.$swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'Datos eliminados con éxito',
-                                showConfirmButton: false,
-                                timer: 1500,
-                                toast: true
+                                this.$swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Datos eliminados con éxito',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    toast: true
+                                })
                             })
-                        })
-                        .catch((err) => {
-                            console.log(err)
+                            .catch((err) => {
+                                console.log(err)
 
-                        })
+                            })
                     }
                 })
             }
         }
     }
+
 </script>

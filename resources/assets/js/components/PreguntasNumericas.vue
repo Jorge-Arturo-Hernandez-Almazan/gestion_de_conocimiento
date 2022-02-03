@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="table-responsive">
                                     <v-table :data="preguntaNumerica" :filters="filters" :currentPage.sync="currentPage"
-                                        :pageSize="10" @totalPagesChanged="totalPages = $event" style="width:100%"
+                                        :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
                                         class="table table-hover">
                                         <thead slot="head">
                                             <v-th sortKey="pregunta" defaultSort="desc" style="width:10%">Pregunta

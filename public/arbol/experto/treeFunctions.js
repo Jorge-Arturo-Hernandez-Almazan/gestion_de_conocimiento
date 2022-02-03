@@ -1467,8 +1467,12 @@ async function cerrarModal(){
 		  title: 'No ha guardado los cambios. Perdera los datos. ¿Desea continuar?',
 		  showDenyButton: true,
 		  showCancelButton: true,
-		  confirmButtonText: 'Aceptar',
-			buttons: ["Cancelar", "Aceptar"]
+          confirmButtonText: '<i class="fas fa-save"></i> Aceptar',
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#6c757d',
+        cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
+
+		  
 		}).then((result) => {
 
 		  if (result ) {
@@ -1501,8 +1505,10 @@ async function siguienteRegistroEvidencia(){
 		  title: 'No ha guardado los cambios. Perdera los datos. ¿Desea continuar?',
 		  showDenyButton: true,
 		  showCancelButton: true,
-		  confirmButtonText: 'Aceptar',
-			buttons: ["Cancelar", "Aceptar"],
+		  confirmButtonText: '<i class="fas fa-save"></i> Aceptar',
+                    confirmButtonColor: '#007bff',
+                    cancelButtonColor: '#6c757d',
+                    cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
 			
 		}).then((result) => {
 			//console.log(result);
@@ -1518,8 +1524,10 @@ async function siguienteRegistroEvidencia(){
 		  title: '¿Desea continuar sin realizar un registro?',
 		  showDenyButton: true,
 		  showCancelButton: true,
-		  confirmButtonText: 'Aceptar',
-			buttons: ["Cancelar", "Aceptar"]
+		  confirmButtonText: '<i class="fas fa-save"></i> Aceptar',
+                    confirmButtonColor: '#007bff',
+                    cancelButtonColor: '#6c757d',
+                    cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
 		}).then((result) => {
 		  if (result && numero_nodo_ordenado < (nodos_ordenados.length-1) ) {
 			  
@@ -1543,8 +1551,10 @@ async function anteriorRegistroEvidencia(){
 		  title: 'No ha guardado los cambios. Perdera los datos. ¿Desea continuar?',
 		  showDenyButton: true,
 		  showCancelButton: true,
-		  confirmButtonText: 'Aceptar',
-			buttons: ["Cancelar", "Aceptar"],
+		  confirmButtonText: '<i class="fas fa-save"></i> Aceptar',
+                    confirmButtonColor: '#007bff',
+                    cancelButtonColor: '#6c757d',
+                    cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
 		}).then((result) => {
 			if (result && numero_nodo_ordenado > 0) {
 				haCambiadoInput = false;
@@ -1557,8 +1567,10 @@ async function anteriorRegistroEvidencia(){
 		  title: '¿Desea continuar sin realizar un registro?',
 		  showDenyButton: true,
 		  showCancelButton: true,
-		  confirmButtonText: 'Aceptar',
-			buttons: ["Cancelar", "Aceptar"]
+		  confirmButtonText: '<i class="fas fa-save"></i> Aceptar',
+                    confirmButtonColor: '#007bff',
+                    cancelButtonColor: '#6c757d',
+                    cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
 		}).then((result) => {
 			if (result && numero_nodo_ordenado > 0 ) {
 				haCambiadoInput = false
@@ -1692,11 +1704,23 @@ async function changeParent(){
     var children = document.getElementById("childrenSelect").value;
     var color = document.getElementById("colorParentConnection").value;
     color = color.slice(1);
-
     actualizarPadre(oldParent, newParent, children ,color);
-    //closeModal();
-
     $('#CambiarConexionPadre').modal('hide');
-    //location.reload();
 	window.location.href = "http://167.99.228.145/historialexperto?x="+x_init+"&y="+y_init+"&e="+e_init;
+}
+
+async function habilitarDesplazamiento(){
+    console.log("Desplazamiento de nodos ? " + desplazamientoDeNodos);
+
+    let checkMoverNodos = document.getElementById("moverNodosCheck");
+
+
+    //checkMoverNodos.checked = !checkMoverNodos.checked;
+    /*if (checkMoverNodos.checked) {
+        checkMoverNodos.checked = false;
+    } else {
+        checkMoverNodos.checked = true;
+    }*/
+
+    desplazamientoDeNodos = !desplazamientoDeNodos;
 }

@@ -24,7 +24,7 @@ class AccesosRutaController {
 		const idrol = Number(request.post().idrol);
 		
 		
-		const banco_preguntas = await Database.raw('UPDATE funcionalidad_rol SET estado = ? WHERE id_rol = ? AND id_funcionalidad = ? ',[valor, idrol, idruta ])
+		await Database.raw('UPDATE funcionalidad_rol SET estado = ? WHERE id_rol = ? AND id_funcionalidad = ? ',[valor, idrol, idruta ])
 	
 		
 		return "success";

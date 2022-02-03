@@ -4,7 +4,7 @@ import random
 import mysql.connector
 cptA=[]
 print("Cargando nodos...")
-URL = "http://159.203.185.170/arbol/caminoslibreria"
+URL = "http://localhost/arbol/caminoslibreria"
 r = requests.get(url = URL)
 data = r.json()
 numeros = []
@@ -51,6 +51,7 @@ cursor.execute("select id from users where id_rol=2 and eliminado=0")
 expertos=cursor.fetchall()
 expertosBuenos=[]
 cexpertos=0;
+probabilidadades=[]
 for i in range(len(expertos)):
   cursor = cnx.cursor()
   cursor.execute("select count(id) from evidencia_expertos where id_usuario ="+str(expertos[i][0])+";")
@@ -82,7 +83,7 @@ for i in range(len(probabilidadades[0])):
      pp[0]-=(pp[0]+pp[1]+pp[2])-100
   probabilidadadesP.append(pp)
 dataset = []
-evaluaciones=59049
+evaluaciones=50000
 for i in range(evaluaciones):
     r=[]
     for j in range(len(probabilidadadesP)):

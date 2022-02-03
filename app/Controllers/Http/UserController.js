@@ -130,8 +130,8 @@ class UserController {
 	
 	//traer todos los admin
 		async admins({response}){
-				const users = await Database.from('users').where('id_rol', 1)
-        return response.json(users)
+			const users = await Database.from('users').where('id_rol', 1)
+			return response.json(users)
         }  
   
   	//traer todos los experto

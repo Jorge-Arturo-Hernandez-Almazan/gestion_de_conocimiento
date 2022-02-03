@@ -29,7 +29,7 @@ def recorrer(cpi,estado,idh,idsp):
             cursor1.execute(sql, datos)
             print(idh,i+1,idsp,estado,cpi[i])
 cptA=[]
-URL = "http://159.203.185.170/arbol/caminoslibreria"
+URL = "http://localhost/arbol/caminoslibreria"
 r = requests.get(url = URL)
 data = r.json()
 numeros = []
@@ -78,7 +78,7 @@ for i in range(cPadres):
         spadresid.append([])
 PA =     [20,60,20]
 dataset = []
-with open("dataset.csv") as fname:
+with open("datasetSolo1eExperto.csv") as fname:
     lineas = fname.readlines()
     for linea in lineas:
         a= linea.split(sep=',')

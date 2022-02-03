@@ -5,14 +5,14 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="page-title m-0">Preguntas</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"> </i> </span> <span style="color: #bdb9bd">  Preguntas <i class="fas fa-angle-right"> </i> </span> <b>Abiertas </b>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
           
         <section class="content">
@@ -55,7 +55,7 @@
                                 <div class="table-responsive">
 
                                     <v-table :data="preguntaAbierta" :filters="filters" :currentPage.sync="currentPage"
-                                        :pageSize="10" @totalPagesChanged="totalPages = $event" style="width:100%"
+                                        :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
                                         class="table table-hover">
                                         <thead slot="head" >
                                             <v-th sortKey="pregunta" defaultSort="desc" >Pregunta</v-th>
@@ -292,12 +292,12 @@
         async mounted() {
             await this.getPreguntaAbierta();
             this.getTemas();
-            let uri = window.location.href;
+            /*let uri = window.location.href;
             if (uri.includes("?")) {
                 uri = window.location.href.split('?');
                 var fil = uri[1].split('=')[1];
                 this.filters.pregunta.value = fil.replace(/%20/g, " ");
-            }
+            }*/
         },
         methods: {
             cambioSelect(val){

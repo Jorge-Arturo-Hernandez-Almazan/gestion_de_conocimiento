@@ -20,72 +20,25 @@
             <div class="container-fluid">
                 <div class="row">
 					<div class="col-12">
-						<div class="card">
+						<div class="card shadow">
+                            <div class="card-header">
+                                <h3 class="card-title mt-2"> <b> Configurar accesos al sistema </b> </h3>
+                            </div>
 							<div class="card-body">
-
-								<div class="row ">
-                                    <div class="col-sm-6">
-                                        <h1 class="page-title m-0"> Accesos </h1>
-                                    </div><!-- /.col -->
-                                    <div class="col-sm-6">
-                                        <ol class="breadcrumb float-sm-right" style="background: white">
-                                              
-                                        </ol>
-                                    </div>
-                                </div>
-
-								<!-- Modal para registrar ruta -->
-								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-									aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Registrar ruta</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-
-											<div class="modal-body">
-
-												<div class="form-group">
-													<label for="exampleInputEmail1"> Nombre de la ruta </label>
-													<input type="email" class="form-control" id="exampleInputEmail1"
-														aria-describedby="emailHelp" placeholder="Enter email">
-
-												</div>
-
-
-											</div>
-
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Save changes</button>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
 								<label for="roles">Tipo de usuario: </label>
 								<select v-model="rol_sel" @change="cambioRol" name="roles" id="roles" class="form-control">
 									<option value="2">Experto</option>
 									<option value="3">Profesor</option>
 									<option value="4">Alumno</option>
 								</select>
-
-								<label >Tabla de acciones: </label>
-
+								<label >Tabla de accesos: </label>
 								<div class="table-responsive">
 									<table style="width:100%" class="table table-hover">
-
 										<tr>
 											<th>Acción</th>
 											<th>Descripción</th>
 											<th>Estado</th>
 										</tr>
-
 										<tr v-for="acceso in accesos">
 											<td v-if="acceso.descripcion != '' " > <span style="padding-left: 30px;"> {{ acceso.nombre }}
 												</span> </td>
@@ -100,11 +53,9 @@
 
 									</table>
 								</div>
-
-
-
-
 							</div>
+                            <div class="card-footer">
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -200,21 +151,15 @@
                                     rol: ''
                                 });
                             }
-
-
                         }
 
-
                         for (var i = 0; i < this.accesos.length; i++) {
-
                             if (this.accesos[i].estado == 1) {
                                 this.accesos[i].estado = true;
                             } else {
                                 this.accesos[i].estado = false;
                             }
                         }
-
-                        //console.log(result.data);
                     },
                     error => {
                         console.error(error)

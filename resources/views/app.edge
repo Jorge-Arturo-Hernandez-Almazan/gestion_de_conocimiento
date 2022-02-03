@@ -25,15 +25,12 @@
             align-items: right !important;
             justify-content: right !important;
         }
-
         .os-padding { 
             z-index: auto !important; 
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         .select2-container--default .select2-selection--single .select2-selection__arrow {
             height: 26px;
             position: absolute;
@@ -41,14 +38,12 @@
             right: 3px;
             width: 20px;
         }
-
         .select2-container--default .select2-selection--single {
             background-color: #fff;
             border: 1px solid #aaa;
             border-radius: 11px;
             height: 38px !important;
         }
-
     </style>
 
 </head>
@@ -57,7 +52,6 @@
     <div class="wrapper">
         <div id="app">
         </div>
-
     </div>
 
     <script>
@@ -68,10 +62,9 @@
         var matricula = "{{auth.user.matricula}}";
         var foto = "{{auth.user.foto}}";
         var rol = "{{auth.user.id_rol}}";
-
     </script>
 
-    {{ script('arbol/jquery.js') }}
+    {{script('arbol/jquery.js')}}
     {{script('adminlte/js/bootstrap/bootstrap.bundle.min.js')}}
     {{script('adminlte/js/OverlayScrollbars.min.js')}}
     {{script('adminlte/js/adminlte.min.js')}}
@@ -86,19 +79,12 @@
     {{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
     {{script('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}
     {{script('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js')}}
-    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> -->
-
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            //The first argument are the elements to which the plugin shall be initialized
-            //The second argument has to be at least a empty object or a object with your desired options
             OverlayScrollbars(document.querySelectorAll('body'), { });
         });
-
     </script>
-
 </body>
 
 </html>

@@ -3,7 +3,6 @@ import router from './router'
 import App from '@/components/layout/App'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'select2';
-//import 'foundation-sites';
 import ToggleButton from 'vue-js-toggle-button'
 import SmartTable from 'vuejs-smart-table'
 import VueViewer from 'v-viewer'
@@ -19,14 +18,6 @@ Vue.use(VueSweetalert2)
 Vue.use(VueViewer)
 Vue.use(vueselect2)
 Vue.config.productionTip = false
-
-//Vue.prototype.idusuario = window.routes;
-/*Vue.prototype.Usuario.idusuario = idusuario;
-Vue.prototype.Usuario.nombre = nombre;
-Vue.prototype.Usuario.apellido_paterno = apellido_paterno;
-Vue.prototype.Usuario.apellido_materno = apellido_materno;
-Vue.prototype.Usuario.matricula = matricula;
-Vue.prototype.Usuario.foto = foto;*/
 
 new Vue({
   el: '#app',

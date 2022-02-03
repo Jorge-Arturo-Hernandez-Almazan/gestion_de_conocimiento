@@ -1,221 +1,228 @@
 <template>
     <div class="content-wrapper">
 
-        <div class="col-12 mt-4">
-            <div class="page-header">
-
-                <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                    <h1 class="page-title"> Preguntas calculadas de opción multiple </h1>
-                    <ul class="quick-links ml-auto">
-                        <li>
-                            <span style="color: #bdb9bd"> <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
-                            </span> <span style="color: #bdb9bd"> Preguntas <i class="fas fa-angle-right"></i> </span>
-                            Preguntas opcion multiple
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="page-title m-0">Preguntas</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <span style="color: #bdb9bd">  <i class="fas fa-home"></i> <i class="fas fa-angle-right"> </i> </span> <span style="color: #bdb9bd">  Preguntas <i class="fas fa-angle-right"> </i> </span> <b> Calculadas de opcion mutliple </b>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
 
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-
-                    <!-- <div class="row" style="padding: 0 !important; margin: 0 !important; ">
-                  <div class="col-md-6">
-                    <h3> Lista de preguntas calculadas de opción multiple </h3>
-                  </div>
-                  <div class="col-md-6">
-
-                    <button type="button" @click="abrirModal" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal">
-                      <i class="fas fa-plus-circle"></i> Registrar pregunta
-                    </button>
-
-                  </div>	
-                </div> -->
-
-
-                    <div class="page-header border-0" style="padding: 0 0 0; margin: 0 0 0;">
-                        <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                            <h2 class="page-title"> Listado de preguntas calculadas de opcion mutliple </h2>
-                            <ul class="quick-links ml-auto">
-                                <li>
-                                    <button type="button" class="btn btn-primary float-right btn-lg" data-toggle="modal"
-                                        data-target="#exampleModal" @click="abrirModal">
-                                        <i class="fas fa-edit"></i> Registrar pregunta
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-
-                    <div class="table-responsive">
-
-                        <label><b> Busqueda por pregunta: </b> </label>
-                        <input class="form-control mb-2" v-model="filters.pregunta.value"
-                            placeholder="Ej. ¿Cuánto es 2+2?" />
-
-                        <div class="table-responsive">
-
-                            <v-table :data="pregunta" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
-                                @totalPagesChanged="totalPages = $event" style="width:100%" class="table mb-2">
-
-                                <thead slot="head" class="thead-dark">
-                                    <!--<v-th sortKey="tipo" defaultSort="desc">Tipo</v-th>-->
-                                    <v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
-                                    <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
-
-                                    <th>Opciones</th>
-
-                                    <v-th sortKey="comodin" defaultSort="desc">Comodines</v-th>
-
-                                    <th>Acciones</th>
-                                </thead>
-                                <tbody slot="body" slot-scope="{displayData}">
-                                    <tr v-for="(pregunta,cont) in displayData" v-bind:key="pregunta.id">
-                                        <td style="width: 300px; white-space: normal;">{{pregunta.pregunta}}</td>
-                                        <td style="width: 300px; white-space: normal;">{{pregunta.tema}}</td>
-                                        <td style="width: 300px; white-space: normal;">
-                                            <span v-for="(opcionA, in opciones[cont]">
-                                                <p v-if="opcionA.esrespuesta === 1"> <b> {{opcionA.opcion}}</b></p>
-                                                <p v-else> {{opcionA.opcion}} </p>
-                                                <br>
-                                            </span>
-                                        </td>
-                                        <td style="width: 300px; white-space: normal;">
-                                            <span v-for="(opcionA,cont2) in opciones[cont]">
-                                                <b> {{opcionA.opcion}} </b>
-                                                <span v-for="(opcionAa,cont3) in comodines[cont][cont2]">
-                                                    <span v-for="(c) in opcionAa" v>
-                                                        <br>{{c.comodin}}={{c.valor_comodin}}</span>
-
-                                                    <br> </span>
-
-                                                <br> </span>
-                                        </td>
-                                        <td class="text-center">
-                                            <a @click="abrirModal(pregunta.id_pregunta, pregunta.imagenes)"
-                                                data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-pen"
-                                                    style="color: #ffae00;"></i> </a>
-                                            |
-                                            <a @click="eliminarCalculadas(pregunta.id_pregunta, pregunta.imagenes)"> <i
-                                                    class="fas fa-trash" style="color: #ff6258"></i> </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </v-table>
-
-                        </div>
-
-                        <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" />
-
-                        <p> Total de registros: {{ this.pregunta.length }} </p>
-                    </div>
-
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-
-                                <h4 v-if="editarPreguntaVar == false" class="modal-title" id="exampleModalLabel"> <b>
-                                        Registrar pregunta </b> </h4>
-                                <h4 v-if="editarPreguntaVar == true" class="modal-title" id="exampleModalLabel"> <b>
-                                        Editar pregunta </b> </h4>
-
-
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-
-                                <div class="form-group">
-                                    <label class="text-left mb-2" for="pregunta"> Reactivo: </label>
-                                    <textarea v-model="reactivo" id="pregunta" class="form-control" rows="3"
-                                        placeholder="Escribe el reactivo">  </textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="text-left mb-2">
-                                        Tema:
-                                    </label>
-                                    <select id="id_tema" name="temas" class="form-control">
-
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <span>Numero de cifras: </span>
-                                    <select id="totalCifras" v-model="decimales" name="totalCifras" class="swal2-input">
-                                        <option id="0_decimal">0</option>
-                                        <option id="1_decimal">1</option>
-                                        <option id="2_decimal">2</option>
-                                        <option id="3_decimal">3</option>
-                                        <option id="4_decimal">4</option>
-                                        <option id="5_decimal">5</option>
-                                        <option id="6_decimal">6</option>
-                                        <option id="7_decimal">7</option>
-                                        <option id="8_decimal">8</option>
-                                        <option id="9_decimal">9</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-left mb-2" for="opciones"> Opciones: </label>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <input id="inputOpcion" class="form-control" type="text">
-                                        </div>
-                                        <p id="errorEncontrado" style="color:red;"></p>
-                                        <div class="col-md-4">
-                                            <button id="btnAgregarOption" @click="ExpresionCorrecta" type="button"
-                                                class="btn btn-success"> Agregar opción </button>
-                                        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <h3 class="card-title mt-2"> <b> Listado de preguntas calculadas de opcion mutliple </b> </h3>
+                                <div class="card-tools">
+                                    <div class="" style="width: 150px;">
+                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                                            data-target="#exampleModal" @click="abrirModal">
+                                            <i class="fas fa-edit"></i> Nueva
+                                        </button>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <div class="table-responsive">
-                                        <table class="table" id="opciones" style="text-align: center;">
-                                            <tr>
-                                                <th>Opcion</th>
-                                                <th>¿Respuesta?</th>
-                                                <th>Quitar</th>
+                            <div class="card-body">
+
+                                <div class="row mb-2">
+                                    <div class="col-6" >
+                                        <b> Termino de busqueda: </b>
+                                        <input class="form-control" type="search" 
+                                            placeholder="Término" 
+                                            v-model="filters.pregunta.value" 
+                                            style=" height: 38px;" />
+                                        
+                                    </div>
+                                    <div class="col-6" >
+                                        <b>Campo de busqueda: </b>
+                                        <select class="form-control" name="campoBusqueda" id="campoBusqueda" @change="cambiarCampoDeBusqueda">
+                                        <option value="pregunta">Pregunta</option>
+                                        <option value="tema">Tema</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+
+                                    <v-table :data="pregunta" :filters="filters" :currentPage.sync="currentPage" :pageSize="5"
+                                        @totalPagesChanged="totalPages = $event" style="width:100%" class="table table-hover">
+
+                                        <thead slot="head">
+                                            <v-th sortKey="pregunta" defaultSort="desc">Pregunta</v-th>
+                                            <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
+                                            <th>Opciones</th>
+                                            <v-th sortKey="comodin" defaultSort="desc">Comodines</v-th>
+                                            <th>Editar</th>
+                                            <th>Eliminar</th>
+                                        </thead>
+                                        <tbody slot="body" slot-scope="{displayData}">
+                                            <tr v-for="(pregunta,cont) in displayData" v-bind:key="pregunta.id">
+                                                <td style="width: 300px; white-space: normal;">{{pregunta.pregunta}}</td>
+                                                <td style="width: 300px; white-space: normal;">{{pregunta.tema}}</td>
+                                                <td style="width: 300px; white-space: normal;">
+                                                    <span v-for="(opcionA, in opciones[cont]">
+                                                        <p v-if="opcionA.esrespuesta === 1"> <b> {{opcionA.opcion}}</b></p>
+                                                        <p v-else> {{opcionA.opcion}} </p>
+                                                        <br>
+                                                    </span>
+                                                </td>
+                                                <td style="width: 300px; white-space: normal;">
+                                                    <span v-for="(opcionA,cont2) in opciones[cont]">
+                                                        <b> {{opcionA.opcion}} </b>
+                                                        <span v-for="(opcionAa,cont3) in comodines[cont][cont2]">
+                                                            <span v-for="(c) in opcionAa" v>
+                                                                <br>{{c.comodin}}={{c.valor_comodin}}</span>
+
+                                                            <br> </span>
+
+                                                        <br> </span>
+                                                </td>
+                                                <td>
+                                                    <a @click="abrirModal(pregunta.id_pregunta, pregunta.imagenes)" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-warning"> 
+                                                        <i class="fas fa-pen" style="color: #ffae00;"></i> 
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <a @click="eliminarCalculadas(pregunta.id_pregunta, pregunta.imagenes)" class="btn btn-outline-danger"> 
+                                                        <i class="fas fa-trash" style="color: #ff6258"></i> 
+                                                    </a>
+                                                </td>
                                             </tr>
-                                        </table>
-                                        <div v-if="bandera == 1">
-                                            <button class="btn btn-success" @click="DetectarComodines"
-                                                style="display: table; width:100%;">Buscar comodines</button>
-                                            <table class="table" id="tabla_opciones_comdines"
-                                                style="text-align: center;">
-                                                <tr>
-                                                    <th>Opción</th>
-                                                    <th>Comodín</th>
-                                                    <th>Valor</th>
-                                                </tr>
-                                            </table>
+                                        </tbody>
+                                    </v-table>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label> <b> Total: {{ pregunta.length }} registros </b> </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="float-right">
+                                            <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" :maxPageLinks="3" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button type="button" @click="btnGuardarPregunta"
-                                    class="btn btn-primary">Guardar</button>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+
+                                            <h4 v-if="editarPreguntaVar == false" class="modal-title" id="exampleModalLabel"> <b>
+                                                    Registrar pregunta </b> </h4>
+                                            <h4 v-if="editarPreguntaVar == true" class="modal-title" id="exampleModalLabel"> <b>
+                                                    Editar pregunta </b> </h4>
+
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="form-group">
+                                                <label class="text-left mb-2" for="pregunta"> Reactivo: </label>
+                                                <textarea v-model="reactivo" id="pregunta" class="form-control" rows="3"
+                                                    placeholder="Escribe el reactivo">  </textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="text-left mb-2">
+                                                    Tema:
+                                                </label>
+                                                <select id="id_tema" name="temas" class="form-control">
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <span>Numero de cifras: </span>
+                                                <select id="totalCifras" v-model="decimales" name="totalCifras" class="swal2-input">
+                                                    <option id="0_decimal">0</option>
+                                                    <option id="1_decimal">1</option>
+                                                    <option id="2_decimal">2</option>
+                                                    <option id="3_decimal">3</option>
+                                                    <option id="4_decimal">4</option>
+                                                    <option id="5_decimal">5</option>
+                                                    <option id="6_decimal">6</option>
+                                                    <option id="7_decimal">7</option>
+                                                    <option id="8_decimal">8</option>
+                                                    <option id="9_decimal">9</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-left mb-2" for="opciones"> Opciones: </label>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <input id="inputOpcion" class="form-control" type="text">
+                                                    </div>
+                                                    <p id="errorEncontrado" style="color:red;"></p>
+                                                    <div class="col-md-4">
+                                                        <button id="btnAgregarOption" @click="ExpresionCorrecta" type="button"
+                                                            class="btn btn-success"> Agregar opción </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="table-responsive">
+                                                    <table class="table" id="opciones" style="text-align: center;">
+                                                        <tr>
+                                                            <th>Opcion</th>
+                                                            <th>¿Respuesta?</th>
+                                                            <th>Quitar</th>
+                                                        </tr>
+                                                    </table>
+                                                    <div v-if="bandera == 1">
+                                                        <button class="btn btn-success" @click="DetectarComodines"
+                                                            style="display: table; width:100%;">Buscar comodines</button>
+                                                        <table class="table" id="tabla_opciones_comdines"
+                                                            style="text-align: center;">
+                                                            <tr>
+                                                                <th>Opción</th>
+                                                                <th>Comodín</th>
+                                                                <th>Valor</th>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" @click="btnGuardarPregunta"
+                                                class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+
+
+
                         </div>
+
                     </div>
                 </div>
-
-
-
-
             </div>
+        </section>
 
-        </div>
     </div>
     </div>
 
@@ -354,6 +361,11 @@
             }
         },
         methods: {
+
+            cambiarCampoDeBusqueda(){
+              let x = document.getElementById("campoBusqueda").value;
+              this.filters.pregunta.keys[0] = x;			
+            },
 
             wrapText(str) {
                 const palabrasSinEspacios = str.split(" ");
