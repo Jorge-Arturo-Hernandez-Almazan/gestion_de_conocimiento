@@ -43,6 +43,8 @@ for i in range( len(nodos) ):
         if(temas[j]['id'] == nodos[i]):
             letras.append(temas[j]['nombre'])
     numeros.append(i)
+
+print("Cargando nodos")
 indices = dict(zip(letras,numeros))
 padres_ids = []
 for i in range(len(nodos)): 
@@ -68,6 +70,8 @@ hijos=[]
 spadres=[]
 hijosid=[]
 spadresid=[]
+
+
 for i in range(cPadres):
     hijos.append(padres[i][0])
     hijosid.append(padres_ids[i][0])
@@ -78,6 +82,8 @@ for i in range(cPadres):
         spadresid.append([])
 PA =     [20,60,20]
 dataset = []
+
+print("Cargando dataset")
 with open("datasetSolo1eExperto.csv") as fname:
     lineas = fname.readlines()
     for linea in lineas:
@@ -88,6 +94,7 @@ with open("datasetSolo1eExperto.csv") as fname:
         dataset.append(b)
 evaluaciones=len(dataset)
 start_time = time() 
+print("Generando cpts")
 for ind in range(len(hijos)):       
     hijo=hijos[ind]
     padres=spadres[ind]
@@ -124,7 +131,8 @@ for ind in range(len(hijos)):
                 if dataset[j][indices[hijo]]==i+1:
                     pt[i]+=1
         pt=pt[:]/evaluaciones
-        cptA.append(pt) 
+        cptA.append(pt)
+print("Guardando cpts")
 for i in range(len(cptA)):
     print(hijos[i],"",spadres[i])
     idsp=""

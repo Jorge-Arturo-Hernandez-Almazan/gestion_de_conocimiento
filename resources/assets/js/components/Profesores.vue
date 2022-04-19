@@ -51,7 +51,7 @@
 										<b>Campo de busqueda: </b>
 										<select class="form-control" name="campoBusqueda" id="campoBusqueda" @change="cambiarCampoDeBusqueda">
 										<option value="nombre">Nombre</option>
-										<option value="apellido_paterno">Apellido parterno</option>
+										<option value="apellido_paterno">Apellido paterno</option>
 										<option value="apellido_materno">Apellido materno</option>
 										<option value="matricula">Correo</option>
 										</select>

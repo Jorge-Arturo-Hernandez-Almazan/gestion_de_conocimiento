@@ -7,195 +7,6 @@ const Database = use('Database')
 const Hash = use('Hash')
 
 
-Route.get('/subirimagen', async ({view}) =>{
-	const images = await Database.table('imagenes');
-	return view.render('subir_imagenes.edge', {imagenes:images})	
-});
-
-Route.get('images/all', async ({ request, response }) => {
-	const images = await Database.table('imagenes');
-	return response.json(images)
-	
-});
-
-Route.post('upload', async ({ request, response }) => {
-  const profilePic = request.file('profile_pic', {
-    types: ['image'],
-    size: '2mb'
-  })
-  const name_pic = request.input('alias');
-   const type=request.file('profile_pic').subtype;
-   const name= `${new Date().getTime()}.${type}`
-  await profilePic.move('public/preguntas/', {
-		name: name
-  })
-  await Database.insert({nombre: name, alias:name_pic}).into('imagenes')
-  if (!profilePic.moved()) {
-    return profilePic.error()
-  }
-  response.redirect('/subirImagen')
-})
-
-Route.post('editardatos', async ({ request, response, auth }) => {
-  
-	const nombre = request.input('nombre');
-	const apaterno = request.input('apellidopaterno');
-	const amaterno = request.input('apellidomaterno');
-	
-	const contrasena = await request.input('contrasena');
-	const repcontrasena = await request.input('contrasena2');
-	
-	if(contrasena || repcontrasena){
-	   
-		if( contrasena == repcontrasena ){
-
-		   const safePassword = await Hash.make(contrasena)
-
-		   await Database.raw('UPDATE users SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, password = ? WHERE id = ?',[nombre, apaterno, amaterno, safePassword ,auth.user.id])
-
-		   response.redirect('/perfil?e=1')
-
-		}else{
-
-			response.redirect('/perfil?e=2')
-		}
-		
-		
-	}else{
-		await Database.raw('UPDATE users SET nombre = ?, apellido_paterno = ?, apellido_materno = ? WHERE id = ?',[nombre, apaterno, amaterno ,auth.user.id])
-		response.redirect('/perfil?e=1')
-	}
-	
-})
-
-Route.post('subirfotoperfil', async ({ request, response, auth }) => {
-  const profilePic = request.file('profile_pic', {
-    types: ['image'],
-    size: '2mb'
-  })
-   const type=request.file('profile_pic').subtype;
-   const name= `${new Date().getTime()}.${type}`
-  await profilePic.move('public/images/fotosperfil', {
-		name: name
-  })
-	
-	await Database.raw('UPDATE users SET foto = ? WHERE id = ?',[name, auth.user.id])
-	
-  if (!profilePic.moved()) {
-    return profilePic.error()
-  }
-  response.redirect('/perfil')
-})
-
-
-// TODO ESTO ES UN TIPO DE FUNCIONALIDAD
-Route.group(()=>{
-	Route.get('/cuestionario', ({view})=> view.render('app') );
-	Route.get('/pregunta/showPreguntas/:id','PreguntaController.showPreguntas');
-	Route.get('/cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion');
-	Route.get('/topic/getopic','BayeController.NextTopic');
-	Route.post('/score/add','PreguntaController.addScore');
-}).middleware(['AccessValidator:1']);
-
-//Rutas generales 
-Route.group(()=>{
-	Route.any('/tablero', 'AccesosRutaController.pasarSession')		
-	Route.get('/usuario/geter','UserController.usuarioTipo')
-	Route.get('/accesos/configuracion', ({view}) =>  view.render('app'));
-	Route.get('/accesos/:id','AccesosRutaController.obtenerAccesosRol')
-	Route.post('/guardarAccesoRutas', 'AccesosRutaController.guardarconfiguracion');
-}).middleware(['VerificadorAuthRole:1,2,3,4'])
-
-//Rutas de Administrador, Experto, Profesor
-Route.group(()=>{
-	Route.get('/pregunta/showPN','PreguntaController.showPreguntasNumericas')
-	Route.get('/pregunta/showPAB','PreguntaController.showPreguntasAbiertas')
-	Route.get('/preguntasNumericas', ({view}) =>  view.render('app'))
-}).middleware(['VerificadorAuthRole:1,2,3]'])
-
-Route.group(()=>{
-	Route.post('tema/addTema','TemaController.registrar')
-}).middleware(['VerificadorAuthRole:1,2]'])
-
-//Grupo de solo los temas (nodos)
-Route.group(()=>{
-	Route.post('tema/deleteTema1/:id','TemaController.deleteTemaAndHijos')
-	Route.post('tema/deleteandcambiarPadre/:id','TemaController.deleteandcambiarPadre')//
-	Route.post('tema/deleteTema','TemaController.deleteTemaAndHijos')
-	Route.get('tema/all','TemaController.mostrarTemasConRelaciones')
-	Route.get('tema/preguntas','TemaController.mostrarPreguntasPorTema')
-	Route.get('tema/showTemasOnlyNombreID','TemaController.showTemasOnlyNombreID')
-	Route.post('tema/addTema','TemaController.registrar') //
-	Route.post('tema/editarNodo/:id','TemaController.editarNodo')//
-	Route.get('tema/deleteTema','TemaController.deleteTemaAndHijos')
-	Route.post('tema/deleteandcambiarPadre/:id','TemaController.deleteandcambiarPadre')
-	Route.post('tema/editarNodo','TemaController.editarNodo') 
-	Route.get('tema/relacionesPrimarias','TemaController.verrelacion')	
-	Route.get('/historialexperto','AccesosRutaController.AbirArbol')
-	Route.get('temas',({view})=> view.render('app'))
-}).middleware(['AccessValidator:2'])
-
-Route.group(()=>{
-	Route.get('profesor/count','UserController.profesorcount')
-	Route.get('alumno/count','UserController.alumnocount')
-	Route.get('admin/count','UserController.adminscount')
-	Route.get('experto/count','UserController.expertocount')
-	Route.get('pregunta/count','PreguntaController.preguntacount')
-	Route.get('temas/count','TemaController.temacount')
-	Route.get('/usuariosAdministrador', ({view}) =>  view.render('app'))
-	Route.get('/usuariosAlumno', ({view}) =>  view.render('app'))
-	Route.get('/usuariosExperto', ({view}) =>  view.render('app'))
-	Route.get('/usuariosProfesor', ({view}) =>  view.render('app'))
-	Route.get('/configurarCuestionario', ({view})=> view.render('app') );
-	Route.get('/preguntasAbiertas', ({view}) =>  view.render('app'))
-	Route.get('preguntasNumericas', ({view}) =>  view.render('app'))
-	Route.get('preguntasVerdaderoFalso', ({view}) =>  view.render('app'))
-	Route.get('preguntasOpcionMultiple', ({view}) => view.render('app'))
-	Route.get('resolverCuestionario',({view}) => view.render('app'))
-	Route.get('historial', ({view}) =>  view.render('app'))
-	Route.get('temas',({view})=> view.render('app'))
-	Route.post('app/pregunta/add','PreguntaController.store')//
-	Route.post('app/preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
-	Route.post('app/preguntaOpcionMultiple/update','PreguntaController.updateMultiple')
-	Route.get('pregunta/showMultiples','PreguntaController.mostrarPreguntasOpcionMultiple')
-	Route.post('tema/addsecundario','TemaController.registrar_secundario')
-	Route.post('tema/deleteNodoSecundario','TemaController.deleteNodoSecundarioRelation')
-	Route.post('alumno/add','UserController.realumno')
-	Route.get('alumno/show','UserController.alumnos')
-	Route.post('alumno/actualizar','UserController.actualizarA')
-	Route.get('alumno/showp','UserController.alumnosP')
-	Route.get('show/profesor','UserController.profesor')
-	Route.get('show/experto','UserController.experto')
-	Route.post('user/delete2','UserController.deletealumno')
-	Route.post('user/delete3','UserController.deleteprofesor')
-	Route.post('registrar','UserController.registrar')
-	Route.get('admin/show','UserController.admins')
-	Route.post('user/actualizar','UserController.actualizar')
-	Route.post('user/delete','UserController.delete')
-	Route.get('app/nodos', ({view}) =>  view.render('app'))
-	Route.get('app/preguntas/contestar', ({view}) =>  view.render('app'))
-	Route.get('app/preguntas/nodo', ({view}) =>  view.render('app'))
-	Route.post('tema/deleteandcambiarPadre/:id','TemaController.deleteandcambiarPadre')//
-	Route.get('tema/editarNodo/:id:id2:nombre','TemaController.editarNodo')//
-	Route.get('temas/arbol','TemaController.arbol')//
-	Route.get('temas/:id','TemaController.show')//
-	Route.post('pregunta/update','PreguntaController.updateAN')
-	Route.post('pregunta/updateAbierta','PreguntaController.updateAbierta')
-	Route.post('pregunta/add','PreguntaController.store')//
-	Route.post('preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
-	Route.post('preguntaOpcionMultiple/update','PreguntaController.updateMultiple')
-	Route.get('/pregunta/showMultiples','PreguntaController.mostrarPreguntasOpcionMultiple')
-	Route.post('pregunta/eliminar','PreguntaController.delete')
-	Route.post('preguntaOpcionMultiple/update', 'PreguntaController.updateMultiple')	
-	Route.post('app/pregunta/delete','PreguntaController.delete')//
-	Route.get('tema/hijos/:id','TemaController.showTemasHijos')
-	Route.get('tema/arbolu','TemaController.showausuario')
-	Route.get('obtenerconfiguracion', 'ConfiguracionController.obtenerConfiguracionCuestionario');
-	Route.get('obtenerTotalPorPregunta', 'ConfiguracionController.obtenerTotalPreguntas');
-	Route.post('guardarconfiguracion', 'ConfiguracionController.guardarconfiguracion');
-}).middleware(['VerificadorAuthRole:1'])
-
-
 Route.get('/preguntas/nodo','PreguntaController.preguntanodo')
 Route.get('/arbol',({view})=> view.render('arbol'))
 Route.post('tema/cambiarPadre/:id','TemaController.cambiarPadre')//
@@ -269,7 +80,14 @@ Route.get('/pruebapython', 'PonderacionController.pruebaPython');
 Route.get('temas/count','TemaController.temacount') 
 Route.get('/grafo', ({view}) =>  view.render('app') );
 Route.get('/contacto', ({view}) =>  view.render('app')  );
+
 Route.get('/arbol/obtenerCaminos/:id', 'PonderacionController.getPaths');
+
+Route.get('/mdp/caminos/:id/:saltos', 'PonderacionController.obtenerCaminosPonderacion');
+
+Route.get('/mdp/caminos/dificultad', 'TemaController.obtenerDificultadTemas');
+
+
 Route.get('/arbol/obtenerResultados', 'PonderacionController.getResults');
 Route.get('/arbol/obtenerRamas', 'PonderacionController.obtener_ramas');
 Route.get('/imagen/pregunta/:id', 'PreguntaController.obtenerImagenesPregunta')
@@ -281,12 +99,203 @@ Route.get('/arbol/caminos', 'PonderacionController.obtener_caminos')
 Route.get('/arbol/simulador/caminos', 'PonderacionController.obtener_caminos_simulador')
 Route.get('/arbol/caminoslibreria', 'PonderacionController.obtener_caminos_red_bayesiana')
 Route.post('/temas/guardarProbabilidades', 'TemaController.storeProbabilidades');
-Route.get('/temas/obtenerEvidencias', 'TemaController.obtenerEvidencias')
-Route.get('/temas/obtenerTotalTemas', 'TemaController.obtenerTotalNodos')
+Route.get('/obtenerEvidencias', 'TemaController.obtenerEvidencias')
+Route.get('/obtenerTotalTemas', 'TemaController.obtenerTotalNodos')
 Route.get('/preguntas/obtenerNumeroRespuestas/:id', 'PreguntaController.obtenerNumeroRespuestas');
 Route.post('/preguntasCalculadas/delete', 'PreguntaController.preguntasCalculadasDelete');
 Route.post('/subirr', 'UserController.subirimagen');
 Route.post('/subirr2', 'UserController.subirimagenes');
+
+
+
+Route.get('/subirimagen', async ({view}) =>{
+	const images = await Database.table('imagenes');
+	return view.render('subir_imagenes.edge', {imagenes:images})	
+});
+
+Route.get('images/all', async ({ request, response }) => {
+	const images = await Database.table('imagenes');
+	return response.json(images)
+	
+});
+
+Route.post('upload', async ({ request, response }) => {
+  const profilePic = request.file('profile_pic', {
+    types: ['image'],
+    size: '2mb'
+  })
+  const name_pic = request.input('alias');
+   const type=request.file('profile_pic').subtype;
+   const name= `${new Date().getTime()}.${type}`
+  await profilePic.move('public/preguntas/', {
+		name: name
+  })
+  await Database.insert({nombre: name, alias:name_pic}).into('imagenes')
+  if (!profilePic.moved()) {
+    return profilePic.error()
+  }
+  response.redirect('/subirImagen')
+})
+
+Route.post('editardatos', async ({ request, response, auth }) => {
+  
+	const nombre = request.input('nombre');
+	const apaterno = request.input('apellidopaterno');
+	const amaterno = request.input('apellidomaterno');
+	
+	const contrasena = await request.input('contrasena');
+	const repcontrasena = await request.input('contrasena2');
+	
+	if(contrasena || repcontrasena){
+	   
+		if( contrasena == repcontrasena ){
+
+		   const safePassword = await Hash.make(contrasena)
+
+		   await Database.raw('UPDATE users SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, password = ? WHERE id = ?',[nombre, apaterno, amaterno, safePassword ,auth.user.id])
+
+		   response.redirect('/perfil?e=1')
+
+		}else{
+
+			response.redirect('/perfil?e=2')
+		}
+		
+		
+	}else{
+		await Database.raw('UPDATE users SET nombre = ?, apellido_paterno = ?, apellido_materno = ? WHERE id = ?',[nombre, apaterno, amaterno ,auth.user.id])
+		response.redirect('/perfil?e=1')
+	}
+	
+})
+
+Route.post('subirfotoperfil', async ({ request, response, auth }) => {
+  const profilePic = request.file('profile_pic', {
+    types: ['image'],
+    size: '2mb'
+  })
+   const type=request.file('profile_pic').subtype;
+   const name= `${new Date().getTime()}.${type}`
+  await profilePic.move('public/imagenes/fotosperfil', {
+		name: name
+  })
+	
+	await Database.raw('UPDATE users SET foto = ? WHERE id = ?',[name, auth.user.id])
+	
+  if (!profilePic.moved()) {
+    return profilePic.error()
+  }
+  response.redirect('/perfil')
+})
+
+
+// TODO ESTO ES UN TIPO DE FUNCIONALIDAD
+Route.group(()=>{
+	Route.get('/cuestionario', ({view})=> view.render('app') );
+	Route.get('/pregunta/showPreguntas/:id','PreguntaController.showPreguntas');
+	Route.get('/cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion');
+	Route.get('/topic/getopic','BayeController.NextTopic');
+	Route.post('/score/add','PreguntaController.addScore');
+}).middleware(['AccessValidator:1']);
+
+//Rutas generales 
+Route.group(()=>{
+	Route.any('/tablero', 'AccesosRutaController.pasarSession')		
+	Route.get('/usuario/geter','UserController.usuarioTipo')
+	Route.get('/accesos/configuracion', ({view}) =>  view.render('app'));
+	Route.get('/accesos/:id','AccesosRutaController.obtenerAccesosRol')
+	Route.post('/guardarAccesoRutas', 'AccesosRutaController.guardarconfiguracion');
+}).middleware(['VerificadorAuthRole:1,2,3,4'])
+
+//Rutas de Administrador, Experto, Profesor
+Route.group(()=>{
+	Route.get('/pregunta/showPN','PreguntaController.showPreguntasNumericas')
+	Route.get('/pregunta/showPAB','PreguntaController.showPreguntasAbiertas')
+	Route.get('/preguntasNumericas', ({view}) =>  view.render('app'))
+}).middleware(['VerificadorAuthRole:1,2,3]'])
+
+Route.group(()=>{
+	Route.post('tema/addTema','TemaController.registrar')
+}).middleware(['VerificadorAuthRole:1,2]'])
+
+//Grupo de solo los temas (nodos)
+Route.group(()=>{
+	Route.post('tema/deleteTema1/:id','TemaController.deleteTemaAndHijos')
+	Route.post('tema/deleteandcambiarPadre/:id','TemaController.deleteandcambiarPadre')//
+	Route.post('tema/deleteTema','TemaController.deleteTemaAndHijos')
+	Route.get('tema/all','TemaController.mostrarTemasConRelaciones')
+	Route.get('tema/preguntas','TemaController.mostrarPreguntasPorTema')
+	Route.get('tema/showTemasOnlyNombreID','TemaController.showTemasOnlyNombreID')
+	Route.post('tema/addTema','TemaController.registrar') //
+	Route.post('tema/editarNodo/:id','TemaController.editarNodo')//
+	Route.get('tema/deleteTema','TemaController.deleteTemaAndHijos')
+	Route.post('tema/deleteandcambiarPadre/:id','TemaController.deleteandcambiarPadre')
+	Route.post('tema/editarNodo','TemaController.editarNodo') 
+	Route.get('tema/relacionesPrimarias','TemaController.verrelacion')	
+	Route.get('/historialexperto','AccesosRutaController.AbirArbol')
+	Route.get('temas',({view})=> view.render('app'))
+}).middleware(['AccessValidator:2'])
+
+Route.group(()=>{
+	Route.get('profesor/count','UserController.profesorcount')
+	Route.get('alumno/count','UserController.alumnocount')
+	Route.get('admin/count','UserController.adminscount')
+	Route.get('experto/count','UserController.expertocount')
+	Route.get('pregunta/count','PreguntaController.preguntacount')
+	Route.get('/temascount','TemaController.temacount')
+	Route.get('/usuariosAdministrador', ({view}) =>  view.render('app'))
+	Route.get('/usuariosAlumno', ({view}) =>  view.render('app'))
+	Route.get('/usuariosExperto', ({view}) =>  view.render('app'))
+	Route.get('/usuariosProfesor', ({view}) =>  view.render('app'))
+	Route.get('/configurarCuestionario', ({view})=> view.render('app') );
+	Route.get('/preguntasAbiertas', ({view}) =>  view.render('app'))
+	Route.get('preguntasNumericas', ({view}) =>  view.render('app'))
+	Route.get('preguntasVerdaderoFalso', ({view}) =>  view.render('app'))
+	Route.get('preguntasOpcionMultiple', ({view}) => view.render('app'))
+	Route.get('resolverCuestionario',({view}) => view.render('app'))
+	Route.get('historial', ({view}) =>  view.render('app'))
+	Route.get('temas',({view})=> view.render('app'))
+	Route.post('app/pregunta/add','PreguntaController.store')//
+	Route.post('app/preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
+	Route.post('app/preguntaOpcionMultiple/update','PreguntaController.updateMultiple')
+	Route.get('pregunta/showMultiples','PreguntaController.mostrarPreguntasOpcionMultiple')
+	Route.post('tema/addsecundario','TemaController.registrar_secundario')
+	Route.post('tema/deleteNodoSecundario','TemaController.deleteNodoSecundarioRelation')
+	Route.post('alumno/add','UserController.realumno')
+	Route.get('alumno/show','UserController.alumnos')
+	Route.post('alumno/actualizar','UserController.actualizarA')
+	Route.get('alumno/showp','UserController.alumnosP')
+	Route.get('show/profesor','UserController.profesor')
+	Route.get('show/experto','UserController.experto')
+	Route.post('user/delete2','UserController.deletealumno')
+	Route.post('user/delete3','UserController.deleteprofesor')
+	Route.post('registrar','UserController.registrar')
+	Route.get('admin/show','UserController.admins')
+	Route.post('user/actualizar','UserController.actualizar')
+	Route.post('user/delete','UserController.delete')
+	Route.get('app/nodos', ({view}) =>  view.render('app'))
+	Route.get('app/preguntas/contestar', ({view}) =>  view.render('app'))
+	Route.get('app/preguntas/nodo', ({view}) =>  view.render('app'))
+	Route.post('tema/deleteandcambiarPadre/:id','TemaController.deleteandcambiarPadre')//
+	Route.get('tema/editarNodo/:id:id2:nombre','TemaController.editarNodo')//
+	Route.get('temas/arbol','TemaController.arbol')//
+	Route.get('temas/:id','TemaController.show')//
+	Route.post('pregunta/update','PreguntaController.updateAN')
+	Route.post('pregunta/updateAbierta','PreguntaController.updateAbierta')
+	Route.post('pregunta/add','PreguntaController.store')//
+	Route.post('preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
+	Route.post('preguntaOpcionMultiple/update','PreguntaController.updateMultiple')
+	Route.get('/pregunta/showMultiples','PreguntaController.mostrarPreguntasOpcionMultiple')
+	Route.post('pregunta/eliminar','PreguntaController.delete')
+	Route.post('preguntaOpcionMultiple/update', 'PreguntaController.updateMultiple')	
+	Route.post('app/pregunta/delete','PreguntaController.delete')//
+	Route.get('tema/hijos/:id','TemaController.showTemasHijos')
+	Route.get('tema/arbolu','TemaController.showausuario')
+	Route.get('obtenerconfiguracion', 'ConfiguracionController.obtenerConfiguracionCuestionario');
+	Route.get('obtenerTotalPorPregunta', 'ConfiguracionController.obtenerTotalPreguntas');
+	Route.post('guardarconfiguracion', 'ConfiguracionController.guardarconfiguracion');
+}).middleware(['VerificadorAuthRole:1'])
+
 
 
 

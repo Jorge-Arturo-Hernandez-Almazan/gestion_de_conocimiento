@@ -62,24 +62,21 @@ for i in range(len(expertos)):
 probabilidadades=[]
 for i in range(len(padres)):
   cursor = cnx.cursor()
-  cursor.execute("SELECT *  from evidencia_expertos where id_usuario = 85 and id_tema = "+str(padres_ids[i][0])+" ;")
+  cursor.execute("SELECT *  from evidencia_expertos where id_usuario = 136 and id_tema = "+str(padres_ids[i][0])+" ;")
   ponderaciones=cursor.fetchall()
   probabilidadades.append(ponderaciones[0][5::])
 
-#for i in range(len(padres)):
-#  print(probabilidadades[i])
-#exit()
+print("Generando dataset...")      
+
 dataset = []
-evaluaciones=50000
+evaluaciones=177147
 for i in range(evaluaciones):
     r=[]
     for j in range(len(probabilidadades)):
         A = random.choices(mylist, weights = probabilidadades[j])[0]
         r.append(A)
     dataset.append(r)
-#for i in range(evaluaciones):
-#  print(dataset[i])
-#exit()
+
 print("Guardando dataset...")      
 f = open ("datasetSolo1eExperto.csv",'wb')
 for i in range(len(dataset)):

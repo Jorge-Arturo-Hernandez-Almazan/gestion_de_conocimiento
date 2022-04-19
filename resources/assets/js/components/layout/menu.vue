@@ -185,14 +185,14 @@
 					</li>
 
 
-					<li v-if="this.id_rol==1 || this.id_rol==2 || this.id_rol==3"  class="nav-item">							
+					<!-- <li v-if="this.id_rol==1 || this.id_rol==2 || this.id_rol==3"  class="nav-item">							
 						<router-link class="nav-link" id="navTemas" to="/grafo">
 							<i class="fas fa-poll nav-icon"></i>
 							<p>
 								Resultados por alumno
 							</p>
 						</router-link>
-					</li>
+					</li> -->
 
 					<!--<li v-if="this.id_rol==1 || this.id_rol==2" class="nav-header"> <b> RECURSOS </b> </li>
 

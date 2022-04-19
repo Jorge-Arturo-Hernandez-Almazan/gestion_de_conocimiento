@@ -214,7 +214,7 @@
             getTemas() {
                 axios({
                     method: 'GET',
-                    url: '/temas/count'
+                    url: '/temascount'
                 }).then(
                     result => {
                         this.temas = result.data[0][0].totalTemas

@@ -721,51 +721,31 @@ class TemaController {
 
         var datos = request.all()
         //const{id_tema,bajo_req,insuficiente_req,regular_req,bueno_req,excelente_req} = request.only(['excelente','bueno','regular','ineficiente','malo','id_tema']) 
-
         var id_tema = datos.id_tema;
         var bueno = datos.bueno;
         var regular = datos.regular;
         var bajo = datos.bajo;
         var evidencia = datos.evidencia;
         var id_usuario = auth.user.id;
-
         //consultar si el tema ya está registrado
         var existe_tema = await Database.raw('SELECT id_usuario, id_tema FROM evidencia_expertos where id_usuario = ? and id_tema = ?;', [id_usuario, id_tema])
-
-
         if (existe_tema[0].length == 0) {
-
-            var evidencia_almacenada = await Database.insert({
+            await Database.insert({
                 id_tema: id_tema,
                 bajo: bajo,
                 regular: regular,
                 bueno: bueno,
                 id_usuario: id_usuario
             }).into('evidencia_expertos')
-
-
             return response.json({
                 message: 'Se ha guardado el porcentaje del tema'
             })
-
         } else {
-
-
-            const evidencia_actualizada = await Database.raw("UPDATE evidencia_expertos SET bajo = '" + bajo + "', regular = '" + regular + "', bueno = '" + bueno + "' WHERE id_tema = '" + id_tema + "' and id_usuario = '" + id_usuario + "'");
-
+            await Database.raw("UPDATE evidencia_expertos SET bajo = '" + bajo + "', regular = '" + regular + "', bueno = '" + bueno + "' WHERE id_tema = '" + id_tema + "' and id_usuario = '" + id_usuario + "'");
             return response.json({
                 message: 'Se ha actualizado el porcentaje del tema'
             })
         }
-
-
-
-
-
-        //var bajo = request.only(['bajo']) ;
-        //return request
-
-        //return response.json({message:request})
 
     }
 
@@ -791,6 +771,12 @@ class TemaController {
     }
 
 
+    async obtenerDificultadTemas({
+        response
+    }) {
+        const temas = await Database.raw('SELECT id, nombre_tema, nivel, dificultad FROM temas')
+        return response.json(temas)
+    }
 
 
 }

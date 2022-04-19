@@ -7249,7 +7249,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       axios__WEBPACK_IMPORTED_MODULE_0___default()({
         method: 'GET',
-        url: '/temas/count'
+        url: '/temascount'
       }).then(function (result) {
         _this2.temas = result.data[0][0].totalTemas;
       }, function (error) {
@@ -61048,7 +61048,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "apellido_paterno" } }, [
-                          _vm._v("Apellido parterno")
+                          _vm._v("Apellido paterno")
                         ]),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "apellido_materno" } }, [
@@ -63288,32 +63288,6 @@ var render = function() {
                           _c("p", [
                             _vm._v(
                               "\n\t\t\t\t\t\t\t\tGrafo de conocimiento\n\t\t\t\t\t\t\t"
-                            )
-                          ])
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              this.id_rol == 1 || this.id_rol == 2 || this.id_rol == 3
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { id: "navTemas", to: "/grafo" }
-                        },
-                        [
-                          _c("i", { staticClass: "fas fa-poll nav-icon" }),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t\tResultados por alumno\n\t\t\t\t\t\t\t"
                             )
                           ])
                         ]
