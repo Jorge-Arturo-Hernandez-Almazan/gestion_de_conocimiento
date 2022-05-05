@@ -524,7 +524,7 @@
 
                                                     <tr>
                                                         <td style="font-size:20px;">Bajo</td>
-                                                        <td style="font-size:20px;"> 0 - Menor o igual a 66 </td>
+                                                        <td style="font-size:20px;"> Mayor a 0 - Menor o igual a 66 </td>
                                                         <td style="font-size:20px;"> <input onkeyup="cambioInput(id)"
                                                                 onchange="cambioInput(id)" type="number" min="0"
                                                                 max="100" class="form-control" id="inp_bajo"> </td>
@@ -543,7 +543,8 @@
                                                 </tbody>
                                             </table>
 
-                                            <label id="msg_porcentaje"></label>
+                                            <label id="msg_porcentaje"></label><br>
+                                            <label id="msg_cero"></label>
 
 
 

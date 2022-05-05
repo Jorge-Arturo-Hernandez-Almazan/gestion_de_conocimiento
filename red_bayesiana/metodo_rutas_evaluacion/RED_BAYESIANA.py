@@ -126,13 +126,17 @@ class RED_BAYESIANA:
                     sr.append(m[i])
             return sr
 
-    def obtenerCaminosSubRed(self, nodo, saltos, caminos):
+    def obtenerCaminosSubRed(self, nodo, saltos, caminos): 
+      
+        #print(nodo, saltos, caminos)
+        
+        saltos = int(saltos)
         caminos_ordenados = {}
         adelante = []
         atras = []
         for a in caminos:
             for i in range(len(a)):
-                if a[i] == nodo:
+                if str(a[i]) == nodo:
                     if len(a) - 1 - i >= saltos:
                         adelante.append(a[i + 1:i + saltos + 1])
                     else:
@@ -140,8 +144,8 @@ class RED_BAYESIANA:
                     if i >= saltos:
                         atras.append(a[i - saltos:i])
                     else:
-                        atras.append(a[0:i])
-
+                        atras.append(a[0:i]) 
+    
         eadelante = []
         if len(adelante) > 0:
             eadelante = self.eliminarRepetidos(adelante)
@@ -169,6 +173,9 @@ class RED_BAYESIANA:
         caminos_ordenados['arriba'] = eatras
         caminos_ordenados['abajo'] = eadelante
 
+        
+        print(caminos_ordenados)
+        
         return caminos_ordenados
 
     '''def eliminarRepetidos(self, arreglo):

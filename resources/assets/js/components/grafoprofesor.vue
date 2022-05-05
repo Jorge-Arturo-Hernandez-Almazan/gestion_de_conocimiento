@@ -378,10 +378,11 @@
 												
 												
 												</tbody>
+                        
 											</table>
-									
+																		
+											<label id="msg_cero"></label>
 											<label id="msg_porcentaje"></label>
-									
 											
 											
 													

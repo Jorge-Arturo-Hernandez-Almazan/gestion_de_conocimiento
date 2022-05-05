@@ -15012,6 +15012,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -62392,7 +62393,7 @@ var staticRenderFns = [
                       ]),
                       _vm._v(" "),
                       _c("td", { staticStyle: { "font-size": "20px" } }, [
-                        _vm._v(" 0 - Menor o igual a 66 ")
+                        _vm._v(" Mayor a 0 - Menor o igual a 66 ")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticStyle: { "font-size": "20px" } }, [
@@ -62433,6 +62434,9 @@ var staticRenderFns = [
                 ]),
                 _vm._v(" "),
                 _c("label", { attrs: { id: "msg_porcentaje" } }),
+                _c("br"),
+                _vm._v(" "),
+                _c("label", { attrs: { id: "msg_cero" } }),
                 _vm._v(" "),
                 _c(
                   "button",

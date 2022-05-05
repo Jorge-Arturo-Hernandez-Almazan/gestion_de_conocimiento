@@ -9,17 +9,16 @@ class MPCN:
         self.tema_objetivo = str(tema_objetivo)
         self.ponderacion_objetiva = ponderacion_objetiva
 
-    def ponderarNodos(self):
-
+    def ponderarNodos(self,SRB):
         orden_evaluados=-1
         for nodo in self.NODOS:
             if self.NODOS[nodo].orden_evaluacion != -1:
                 orden_evaluados=orden_evaluados+1
 
         self.NODOS[self.tema_objetivo].ponderacion = self.ponderacion_objetiva
-        self.NODOS[self.tema_objetivo].orden_evaluacion = orden_evaluados+1
-
+        self.NODOS[self.tema_objetivo].orden_evaluacion = orden_evaluados + 1
         self.NODOS[self.tema_objetivo].clasificacion = 3
+        
         for camino in self.caminos_ordenados['abajo']:
             ponderacion = self.ponderacion_objetiva
             saltos = 1
@@ -37,9 +36,10 @@ class MPCN:
                         self.NODOS[nodo_str].contador = 1
                     else:
                         self.NODOS[nodo_str].sumatoria_ponderaciones = self.NODOS[nodo_str].sumatoria_ponderaciones + ponderacion
-                        self.NODOS[nodo_str].contador = self.NODOS[nodo_str].contador + 1
+                        
                     self.NODOS[nodo_str].ponderacion = self.NODOS[nodo_str].sumatoria_ponderaciones / self.NODOS[nodo_str].contador
                     self.NODOS[nodo_str].clasificacion = 4
+                    self.NODOS[nodo_str].contador = self.NODOS[nodo_str].contador + 1
                 saltos = saltos + 1
 
         for camino in self.caminos_ordenados['arriba']:
@@ -54,16 +54,18 @@ class MPCN:
                 self.NODOS[nodo_str].ponderacion = self.NODOS[nodo_str].sumatoria_ponderaciones / self.NODOS[nodo_str].contador
                 self.NODOS[nodo_str].contador = self.NODOS[nodo_str].contador + 1
 
-        for nodo in self.NODOS:
-            if self.NODOS[nodo].ponderacion >= 0 and self.NODOS[nodo].ponderacion <= 66:
-                self.NODOS[nodo].matriz_ponderacion[0] = 100
-                self.NODOS[nodo].grado_de_conocimiento = 0
-            elif self.NODOS[nodo].ponderacion > 66 and self.NODOS[nodo].ponderacion <= 83:
-                self.NODOS[nodo].matriz_ponderacion[1] = 100
-                self.NODOS[nodo].grado_de_conocimiento = 1
+        for nodo in SRB.nodes():
+            nodoSRB = SRB.variable(nodo).name()  
+            self.NODOS[nodoSRB].matriz_ponderacion = [0,0,0] #Resetear la matriz de ponderación
+            if self.NODOS[nodoSRB].ponderacion >= 0.0 and self.NODOS[nodoSRB].ponderacion <= 66.0:
+                self.NODOS[nodoSRB].matriz_ponderacion[0] = 100
+                self.NODOS[nodoSRB].grado_de_conocimiento = 0
+            elif self.NODOS[nodoSRB].ponderacion > 66.0 and self.NODOS[nodoSRB].ponderacion <= 83.0:
+                self.NODOS[nodoSRB].matriz_ponderacion[1] = 100
+                self.NODOS[nodoSRB].grado_de_conocimiento = 1
             else:
-                self.NODOS[nodo].matriz_ponderacion[2] = 100
-                self.NODOS[nodo].grado_de_conocimiento = 2
+                self.NODOS[nodoSRB].matriz_ponderacion[2] = 100
+                self.NODOS[nodoSRB].grado_de_conocimiento = 2
 
     def hacerInferencias(self, RB):
         ie = gum.LazyPropagation(RB)
@@ -95,9 +97,9 @@ class MPCN:
             self.NODOS[nodo].discriminacion = 1  #
 
             if self.NODOS[nodo].matriz_inferencia[0] == 0 and self.NODOS[nodo].matriz_inferencia[1] == 0 and self.NODOS[nodo].matriz_inferencia[2] == 0:
-                self.NODOS[nodo].adivinacion = self.NODOS[nodo].matriz_inferencia_final[2] / 100
+                self.NODOS[nodo].adivinacion = self.NODOS[nodo].matriz_inferencia_final[0] / 100
             else:
-                self.NODOS[nodo].adivinacion = self.NODOS[nodo].matriz_inferencia[2] / 100
+                self.NODOS[nodo].adivinacion = self.NODOS[nodo].matriz_inferencia[0] / 100
 
             self.NODOS[nodo].asintota = 1  #
 

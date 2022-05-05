@@ -6,6 +6,8 @@ cptA=[]
 print("Cargando nodos...")
 URL = "http://localhost/arbol/caminoslibreria"
 r = requests.get(url = URL)
+
+exit()
 data = r.json()
 numeros = []
 letras = []

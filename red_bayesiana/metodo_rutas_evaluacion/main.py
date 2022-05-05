@@ -11,101 +11,140 @@ import matplotlib.pyplot as plt
 from NODO import NODO
 from RED_BAYESIANA import RED_BAYESIANA
 from MPCN import MPCN
+import pickle
+import os.path
+from os import path
+import pyAgrum as gum
+import random
+from PRIMER_TEMA import PRIMER_TEMA
+import sys
 
-URL = "http://159.223.190.216/arbol/caminoslibreria"
+URL = "http://localhost/arbol/caminoslibreria"
 respuestaDelServidor = requests.get(url = URL).json()
 caminos = respuestaDelServidor['caminos']
+CONTRUCTOR_BN = RED_BAYESIANA()
 
-saltos = 1
-tema_objetivo = 73
-ponderacion_objetiva = 90
+if len(sys.argv) == 2:
+    id_alumno = sys.argv[1] # Matricula del alumno
+    primer_tema = PRIMER_TEMA(URL)
+    tema_elegido = primer_tema.calcularPrimerTema()
+    print(tema_elegido)
 
-CONTRUCTOR_BN = RED_BAYESIANA(['MPCN',tema_objetivo,ponderacion_objetiva,saltos])
-SRB = CONTRUCTOR_BN.obtenerSubRed()
-RBM = CONTRUCTOR_BN.obtenerRedCompleta()
+elif len(sys.argv) == 6:
+    ###### Información a ser pasada al módulo #####
+    #id_alumno = 20
+    #saltos = 1
+    #tema_objetivo = 80
+    #ponderacion_objetiva = 70
+    ##############################################
 
-CAMINOS_SRB = CONTRUCTOR_BN.obtenerCaminosSubRed(tema_objetivo, saltos, caminos)
-RBMA = {}
+    id_alumno = sys.argv[1]                 #Matricula del alumno
+    saltos = sys.argv[2]                    #Número de saltos que compone los subgrafos
+    tema_objetivo = sys.argv[3]      #Tema objetivo, nodo central del subgrafo
+    ponderacion_objetiva = int(sys.argv[4]) #Ponderación objetiva que obtuvo en el último tema evaluado
+    version_rbm = sys.argv[5]               #Versión de la red bayesiana maestra a utilizar
 
-#Inicialización de la RBMA
-for nodo in RBM.nodes():
-    nodo_rbm = NODO(RBM.variable(nodo).name(), 1)
-    if RBM.variable(nodo).name() == str(tema_objetivo):
-        nodo_rbm.poderacion = ponderacion_objetiva
-        nodo_rbm.clasificacion = 3
-    for tema in respuestaDelServidor['temas']:
-        if RBM.variable(nodo).name() == str(tema['id']):
-            nodo_rbm.dificultad = tema['dificultad']
-    RBMA[RBM.variable(nodo).name()] = nodo_rbm
+    nombre_rbma = "rbma_xml/rbma_alumno_"+str(id_alumno)+".bifxml" #RBMA
+    nombre_rbma_pickle = "rbma_pickle/rbma_alumno_"+str(id_alumno)+".pkl" #pickle
+    nombre_rmb = "rbm/rbm_"+version_rbm+".bifxml" #RBM
+    
+    CONTRUCTOR_BN = RED_BAYESIANA()
 
-INSTANCIA_MPCN = MPCN(RBMA, CAMINOS_SRB, tema_objetivo, ponderacion_objetiva)
-INSTANCIA_MPCN.ponderarNodos()
-INSTANCIA_MPCN.hacerInferencias(RBM)
-INSTANCIA_MPCN.promediarInferencias(SRB)
-NODOS = INSTANCIA_MPCN.obtenerNodos()
-
-items = []
-#RBMA
-for nodo in NODOS:
-    NODOS[nodo].discriminacion = 1 #
-    NODOS[nodo].adivinacion = NODOS[nodo].matriz_inferencia[2] / 100
-    NODOS[nodo].asintota = 1 #
-    if not (NODOS[nodo].id == "1" or NODOS[nodo].id == "2" or NODOS[nodo].id == "14" or NODOS[nodo].id == "20" or NODOS[nodo].id == "13" or NODOS[nodo].id == "17" or NODOS[nodo].id == "40" or NODOS[nodo].id == "51" or NODOS[nodo].id == "52"):
-        item = [ NODOS[nodo].discriminacion, NODOS[nodo].dificultad, NODOS[nodo].adivinacion, NODOS[nodo].asintota, 0.0  ]
-        items.append(item)
-
-items = numpy.array(items)
-
-# ==================== OBTENER LOS TEMAS EVALUADOS CON LA SRB ==========
-temas_evaluados = []
-respuestas = []
-for nodo in SRB.nodes():
-    nombre_nodo = SRB.variable(nodo).name()
-    i=0
-    for nodo in NODOS:
-        if NODOS[nodo].id == nombre_nodo:
-            temas_evaluados.append(i)
-        i=i+1
-    if (NODOS[nombre_nodo].matriz_inferencia_final[0] >= NODOS[nombre_nodo].matriz_inferencia_final[1]) and (NODOS[nombre_nodo].matriz_inferencia_final[0] >= NODOS[nombre_nodo].matriz_inferencia_final[2]):
-        respuestas.append(False)
+    CONTRUCTOR_BN.configurarRBM(nombre_rmb) # Asignamos el nombre de la Red Bayesiana Maestra a utilizar
+    RBMA = {}
+    RBMA_XML = ""
+    if not path.exists(nombre_rbma_pickle):
+        RBMA_XML = CONTRUCTOR_BN.obtenerRedCompleta() # se realiza una copia de la RBM
+        for nodo in RBMA_XML.nodes():
+            nodo_rbm = NODO(RBMA_XML.variable(nodo).name(), 1)
+            for tema in respuestaDelServidor['temas']:
+                if RBMA_XML.variable(nodo).name() == str(tema['id']):
+                    nodo_rbm.dificultad = tema['dificultad']
+            RBMA[RBMA_XML.variable(nodo).name()] = nodo_rbm
+        with open(nombre_rbma_pickle, 'wb') as outp: # Almacenar la RBMA de manera persistente
+            pickle.dump( RBMA, outp, pickle.HIGHEST_PROTOCOL)
+        gum.saveBN(RBMA_XML, nombre_rbma)
     else:
-        respuestas.append(True)
-# ==============================
+        with open(nombre_rbma_pickle, 'rb') as inp:
+            RBMA = pickle.load(inp)
+        RBMA_XML = gum.loadBN(nombre_rbma)
+    
+    CONTRUCTOR_BN.configurarParametros([tema_objetivo,ponderacion_objetiva,saltos])
+    SRB = CONTRUCTOR_BN.obtenerSubRed() # 508
+    CAMINOS_SRB = CONTRUCTOR_BN.obtenerCaminosSubRed(tema_objetivo, saltos, caminos)
+       
+    INSTANCIA_MPCN = MPCN(RBMA, CAMINOS_SRB, tema_objetivo, ponderacion_objetiva)
+    INSTANCIA_MPCN.ponderarNodos(SRB) #
+    INSTANCIA_MPCN.hacerInferencias(RBMA_XML)
+    INSTANCIA_MPCN.promediarInferencias(SRB)
+    RBMA = INSTANCIA_MPCN.obtenerNodos()  #Se obtiene la RBMA actualizada con las inferenicas promediadas de la SRB
+    
+    for nodo in RBMA:
+      
+      if RBMA[nodo].matriz_inferencia_final != [0,0,0]
+        print( RBMA[nodo].matriz_inferencia_final )
+      
+    
+    exit()
+    items = INSTANCIA_MPCN.obtenerItems() #Calcula las caracteristicas de Seudoadivinacion, Discriminzacion y Dificultad
 
-# Los temas que han sido evaluados
-initializer = RandomInitializer()
-selector = MaxInfoSelector()
-estimator = NumericalSearchEstimator()
-stopper = MaxItemStopper(10)
-
-#temas_evaluados = [31, 109, 42]
-#respuestas = [False, False, True]
-#est_theta = initializer.initialize()
-est_theta = 0.0
-new_theta = estimator.estimate(items=items, administered_items=temas_evaluados, response_vector=respuestas, est_theta=est_theta)
-_stop = stopper.stop(administered_items=items[temas_evaluados], theta=est_theta)
-sig_tema = selector.select(items=items, administered_items=temas_evaluados, est_theta=est_theta)
-
-print("NODOS EVALUADOS ==================================")
-for evaluado in temas_evaluados:
-    print("ID NODO: " + str( NODOS[ list(NODOS)[evaluado] ].id ) )
-    print("DIFICULTAD: " + str( NODOS[ list(NODOS)[evaluado] ].dificultad ) )
-    print("RESPUESTA: " + str(respuestas[ temas_evaluados.index(evaluado) ]))
-    print("_____________________")
-print("NODO SIGUIENTE ==================================")
-print("ID NODO: " + str(  NODOS[ list(NODOS)[sig_tema] ].id )  )
-print("DIFICULTAD: " + str(  NODOS[ list(NODOS)[sig_tema] ].dificultad )  )
-
-temas_evaluados = []
-respuestas = []
-for nodo in SRB.nodes():
-    nombre_nodo = SRB.variable(nodo).name()
+    temas_evaluados = []
+    temas_evaluados_ids = []
+    respuestas = []
+    for nodo in RBMA:
+        if RBMA[nodo].clasificacion == 3:
+            temas_evaluados.append(0)
+            temas_evaluados_ids.append(0)
+            respuestas.append(0)
     i=0
     for nodo in RBMA:
-        if RBMA[nodo].id == nombre_nodo:
-            temas_evaluados.append(i)
+        if RBMA[nodo].clasificacion == 3:
+            temas_evaluados_ids[RBMA[nodo].orden_evaluacion] =  RBMA[nodo].id
+            temas_evaluados[RBMA[nodo].orden_evaluacion] = i
+            if RBMA[nodo].ponderacion > 70:
+                respuestas[RBMA[nodo].orden_evaluacion] = True
+            else:
+                respuestas[RBMA[nodo].orden_evaluacion] = False
         i=i+1
-    if (RBMA[nombre_nodo].matriz_inferencia_final[0] >= RBMA[nombre_nodo].matriz_inferencia_final[1]) and (RBMA[nombre_nodo].matriz_inferencia_final[0] >= RBMA[nombre_nodo].matriz_inferencia_final[2]):
-        respuestas.append(False)
-    else:
-        respuestas.append(True)
+
+    # Elementos de CAT
+    initializer = RandomInitializer()
+    selector = MaxInfoSelector()
+    estimator = NumericalSearchEstimator()
+    stopper = MinErrorStopper(0.3) # Error estandar 0.3. Entre menos valor, más precision en la estimación
+
+    est_theta = 0.0
+
+    #primera_evluacion = True
+
+    print(temas_evaluados)
+    
+    if temas_evaluados == 0:
+        print("Primer tema a evaluar")
+
+    #if primera_evluacion:
+    #    nueva_theta = estimator.estimate(items=items, administered_items=temas_evaluados, response_vector=respuestas, est_theta=est_theta)
+    #    primera_evluacion = False
+    #else:
+    #    nueva_theta = estimator.estimate(items=items, administered_items=temas_evaluados, response_vector=respuestas, est_theta=nueva_theta)
+    #
+    #_stop = stopper.stop(administered_items=items[temas_evaluados], theta=nueva_theta)
+    #
+    #sig_tema = selector.select(items=items, administered_items=temas_evaluados, est_theta=nueva_theta)
+
+    #print("Debe detenerse la evaluacion? ", _stop)
+
+    #with open(nombre_rbma_pickle, 'wb') as outp:
+    #    pickle.dump( RBMA, outp, pickle.HIGHEST_PROTOCOL)
+
+    #gum.saveBN(RBMA_XML, nombre_rbma) '''
+
+
+else:
+    print("-1")
+
+
+
+
+
+
