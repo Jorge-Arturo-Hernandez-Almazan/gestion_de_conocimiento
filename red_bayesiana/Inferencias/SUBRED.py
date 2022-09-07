@@ -60,7 +60,7 @@ class SUB_RED_BAYESIANA:
         atras=[]
         self.subRedBayesiana = gum.BayesNet('subred')
         self.subRedBayesiana.add(gum.LabelizedVariable(str(self.nodoEvidencia),str(self.nodoEvidencia),3))
-        URL = "http://159.223.190.216/arbol/caminoslibreria"
+        URL = "http://104.248.232.150/arbol/caminoslibreria"
         respuestaServidor = requests.get(url = URL)
         data = respuestaServidor.json()
         caminos = data['caminos']

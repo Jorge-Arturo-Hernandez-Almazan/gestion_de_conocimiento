@@ -557,11 +557,11 @@ class PreguntaController {
   
   async preguntasCalculadasDelete({request,response})
   {
-	//const banco_preguntas5 = await Database.raw('DELETE FROM banco_preguntas WHERE id = '+request.post().id)
+	  const banco_preguntas5 = await Database.raw('DELETE FROM banco_preguntas WHERE id = '+request.post().id)
     
     //return response.json({a:request..id)
     //})
-		//return response.json({message:'Se ha eliminado la pregunta'})
+		return response.json({message:'Se ha eliminado la pregunta'})
   }
 	
 	async getComodines({request,response})

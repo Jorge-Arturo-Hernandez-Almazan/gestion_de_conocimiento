@@ -138,24 +138,16 @@ async function draw_tree(error, treeData) {
                 node_to_delete = d
                 makeListSons(node_to_delete)
                 updateNodeToListToDelete()
-
-                //$('#DeleteNodeModal').foundation('reveal', 'open');
-
                 $('#DeleteNodeModal').modal('show');
 
-                //delete_node(d);
             }
         },
         {
             title: 'Crear nodo hijo',
             action: function (elm, d, i) {
-                //debugger;
                 create_node_parent = d;
                 create_node_modal_active = true;
-                //$('#CreateNodeModal').foundation('reveal', 'open');
                 $('#CreateNodeModal').modal('show');
-
-                //$('#CreateNodeName').focus();
             }
         },
         {
@@ -163,8 +155,6 @@ async function draw_tree(error, treeData) {
             action: function (elm, d, i) {
                 create_parent_relation = d;
                 create_parent_modal_active = true;
-                //$('#NewParentModal').foundation('reveal', 'open');
-                //$('#CreateNodeName').focus();
                 $('#NewParentModal').modal('show');
                 listarNodos(d);
             }
@@ -178,7 +168,7 @@ async function draw_tree(error, treeData) {
                 let padres = [];
                 await axios({
                     method: 'get',
-                    url: "http://159.223.190.216/temas/obtenerPadresConNombre/" + d.id,
+                    url: "http://104.248.232.150/temas/obtenerPadresConNombre/" + d.id,
                     headers: { 'content-type': 'application/x-www-form-urlencoded' },
                 }).then(function (response) {
                     padres = response.data[0];
@@ -286,8 +276,6 @@ async function draw_tree(error, treeData) {
 			e_init = scale;
 			zoomListener.scale(zoomListener.scale());
             zoomListener.translate([(translateX), (translateY)]);
-			//console.log("Estoy en la funcion pan");
-			
             panTimer = setTimeout(function () {
                 pan(domNode, speed, direction);
             }, 50);
@@ -1178,33 +1166,15 @@ async function draw_tree(error, treeData) {
             .duration(duration)
             .attr("transform", "translate(" + x_init + "," + y_init + ")scale(" + e_init + ")");
 		
-		zoomListener.scale(e_init);
+		    zoomListener.scale(e_init);
         zoomListener.translate([x_init, y_init]);
-		
-		/*console.log("x " + x_init);
-		console.log("y " + y_init);
-		console.log("e " + e_init);*/
-	   }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-    tree_root = root;
-
-    if (!nodeToListFlag) {
-        updateNodeToList();
-    }
-    nodeToListFlag = true;
-
-    $('#modalDeCarga').modal('hide');
-
-
-    
+	    }
+      tree_root = root;
+      if (!nodeToListFlag) {
+          updateNodeToList();
+      }
+      nodeToListFlag = true;
+      $('#modalDeCarga').modal('hide');
 }
 
  

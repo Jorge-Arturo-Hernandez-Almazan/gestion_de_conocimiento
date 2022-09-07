@@ -24,8 +24,8 @@
       var name = $('#RenameNodeName').val();
 
       var primer_char = name.charAt(0);
-
-      if (name == "" || primer_char == '1' || primer_char == '2' || primer_char == '3' || primer_char == '4' || primer_char == '5' || primer_char == '6' || primer_char == '7' || primer_char == '8' || primer_char == '8' || primer_char == '9' || primer_char == '0') {
+      var longitud = 90; //Longitud del nuevo nombre del tema en nodo
+      if (name == "" || name.length > longitud || primer_char == '1' || primer_char == '2' || primer_char == '3' || primer_char == '4' || primer_char == '5' || primer_char == '6' || primer_char == '7' || primer_char == '8' || primer_char == '8' || primer_char == '9' || primer_char == '0') {
 
         $('#mensaje_3').text("Por favor ingresa un nombre valido")
       } else {
@@ -55,8 +55,6 @@
                   saveNewName(node_to_rename)
                 }
 
-
-                //closeModal();
                 $('#RenameNodeModal').modal('hide');
 
                 outer_update(node_to_rename);
@@ -88,7 +86,7 @@
     async function saveNewName(node_to_rename) {
       await axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/editarNodo/" + node_to_rename.id + "?id_nodo=" + node_to_rename.id + "&nombre_nodo=" + node_to_rename.name + "&textPosition=" + node_to_rename.textPosition,
+        url: "http://104.248.232.150/tema/editarNodo/" + node_to_rename.id + "?id_nodo=" + node_to_rename.id + "&nombre_nodo=" + node_to_rename.name + "&textPosition=" + node_to_rename.textPosition,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -260,7 +258,7 @@
     function registerParentConection(parent, child, color) {
       axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/addsecundario?id_padre=" + parent.id + "&id_hijo=" + child.id + "&color=" + color,
+        url: "http://104.248.232.150/tema/addsecundario?id_padre=" + parent.id + "&id_hijo=" + child.id + "&color=" + color,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -321,7 +319,7 @@
 
       await axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/deleteNodoSecundario?id_hijo=" + child + "&id_padre=" + parent + "&tipo=" + tipo_numerico,
+        url: "http://104.248.232.150/tema/deleteNodoSecundario?id_hijo=" + child + "&id_padre=" + parent + "&tipo=" + tipo_numerico,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -334,7 +332,7 @@
         //console.log("funciono");
         //console.log(response)
         //location.reload();
-        window.location.href = "http://159.223.190.216/grafo";
+        window.location.href = "http://104.248.232.150/grafo";
       }).catch(function(error) {
         console.log('Error: ' + error)
       })
@@ -344,10 +342,10 @@
       name = $('#CreateNodeName').val();
 
       var primer_char = name.charAt(0);
+      var longitud = 90; //Longitud de caracteres para el nombre del nodo
 
-
-      if (name == "" || primer_char == '1' || primer_char == '2' || primer_char == '3' || primer_char == '4' || primer_char == '5' || primer_char == '6' || primer_char == '7' || primer_char == '8' || primer_char == '8' || primer_char == '9' || primer_char == '0') {
-        $('#mensaje_4').text("Por favor ingresa un nombre valido")
+      if (name == "" || name.length > longitud || primer_char == '1' || primer_char == '2' || primer_char == '3' || primer_char == '4' || primer_char == '5' || primer_char == '6' || primer_char == '7' || primer_char == '8' || primer_char == '8' || primer_char == '9' || primer_char == '0') {
+        $('#mensaje_4').text("Por favor ingresa un nombre valido, el nombre no debe empezar con número ni tener más de 90 caracteres.")
       } else {
 
         let hasDuplicated = checkhasDuplicated(name, null);
@@ -618,7 +616,7 @@
     function hacerHijoPadre(oldParent, newChildParent) {
       axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/hacerHijoPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newChildParent.id,
+        url: "http://104.248.232.150/tema/hacerHijoPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newChildParent.id,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -637,7 +635,7 @@
     function cambiarPadre(nodeToChange, newParent) {
       axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/cambiarPadre/" + nodeToChange.id + "?id=" + nodeToChange.id + "&id2=" + newParent.id,
+        url: "http://104.248.232.150/tema/cambiarPadre/" + nodeToChange.id + "?id=" + nodeToChange.id + "&id2=" + newParent.id,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -655,7 +653,7 @@
     function actualizarPadre(oldParent, newParent, children, color) {
       axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/cambiarPadre/" + oldParent + "?id=" + oldParent + "&id2=" + newParent + "&hijo=" + children + "&color=" + color,
+        url: "http://104.248.232.150/tema/cambiarPadre/" + oldParent + "?id=" + oldParent + "&id2=" + newParent + "&hijo=" + children + "&color=" + color,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -676,7 +674,7 @@
     function deleteandcambiarPadre(oldParent, newParent) {
       axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/deleteandcambiarPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newParent.id,
+        url: "http://104.248.232.150/tema/deleteandcambiarPadre/" + oldParent.id + "?id=" + oldParent.id + "&id2=" + newParent.id,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -697,7 +695,7 @@
       //debugger;
       axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/deleteTema1/" + idNode + "?id=" + idNode,
+        url: "http://104.248.232.150/tema/deleteTema1/" + idNode + "?id=" + idNode,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -796,7 +794,7 @@
     async function updatePosition(draggingNode) {
       await axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/posicion?newx=" + draggingNode.freex + "&newy=" + draggingNode.freey + "&id=" + draggingNode.id,
+        url: "http://104.248.232.150/tema/posicion?newx=" + draggingNode.freex + "&newy=" + draggingNode.freey + "&id=" + draggingNode.id,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -821,7 +819,7 @@
       var newId;
       await axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/addTema?nombre_tema=" + new_node.name + "&nivel_tema=" + (create_node_parent.level2 + 1) + "&id_padre=" + create_node_parent.id +
+        url: "http://104.248.232.150/tema/addTema?nombre_tema=" + new_node.name + "&nivel_tema=" + (create_node_parent.level2 + 1) + "&id_padre=" + create_node_parent.id +
           "&freex=" + new_node.freex + "&freey=" + new_node.freey + "&textPosition=" + new_node.textPosition + "&color=" + color,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
@@ -856,7 +854,7 @@
       //Consultar la base de datos
       await axios({
         method: 'get',
-        url: "http://159.223.190.216/temas/arbol",
+        url: "http://104.248.232.150/temas/arbol",
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -899,7 +897,7 @@
       mensaje_uno.innerHTML = "";
       axios({
         method: 'get',
-        url: "http://159.223.190.216/temas/posiblesNodosPadres/" + d.level2,
+        url: "http://104.248.232.150/temas/posiblesNodosPadres/" + d.level2,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -912,7 +910,7 @@
         }
         axios({
           method: 'get',
-          url: "http://159.223.190.216/temas/obtenerPadres/" + d.id,
+          url: "http://104.248.232.150/temas/obtenerPadres/" + d.id,
           headers: {
             'content-type': 'application/x-www-form-urlencoded'
           },
@@ -950,7 +948,7 @@
       mensaje_uno.innerHTML = "";
       axios({
         method: 'get',
-        url: "http://159.223.190.216/temas/posiblesNodosPadres/" + d.level2,
+        url: "http://104.248.232.150/temas/posiblesNodosPadres/" + d.level2,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -963,7 +961,7 @@
         }
         axios({
           method: 'get',
-          url: "http://159.223.190.216/temas/obtenerPadres/" + d.id,
+          url: "http://104.248.232.150/temas/obtenerPadres/" + d.id,
           headers: {
             'content-type': 'application/x-www-form-urlencoded'
           },
@@ -996,7 +994,7 @@
       $('#oldParentSelect').empty().trigger("change");
       axios({
         method: 'get',
-        url: "http://159.223.190.216/obtenerConexiones/" + d.id,
+        url: "http://104.248.232.150/obtenerConexiones/" + d.id,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1026,7 +1024,7 @@
       let relaciones_secundarias = [];
       await axios({
         method: 'get',
-        url: "http://159.223.190.216/tema/relacionesPrimarias",
+        url: "http://104.248.232.150/tema/relacionesPrimarias",
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1061,7 +1059,7 @@
       nuevo_color = nuevo_color.slice(1);
       await axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/actualizarColor?id=" + id_conexion + "&color=" + nuevo_color,
+        url: "http://104.248.232.150/tema/actualizarColor?id=" + id_conexion + "&color=" + nuevo_color,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1096,7 +1094,7 @@
 
       await axios({
         method: 'post',
-        url: "http://159.223.190.216/tema/actualizarRadio/" + ratio,
+        url: "http://104.248.232.150/tema/actualizarRadio/" + ratio,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1122,7 +1120,7 @@
       let respuesta;
       await axios({
         method: 'get',
-        url: "http://159.223.190.216/tema/obtenerRadio",
+        url: "http://104.248.232.150/tema/obtenerRadio",
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1190,7 +1188,7 @@
 
       axios({
         method: 'get',
-        url: "http://159.223.190.216/preguntas/nodo?id=" + id_tema,
+        url: "http://104.248.232.150/preguntas/nodo?id=" + id_tema,
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1317,12 +1315,16 @@
 
       document.getElementById("lbl_total_porcentaje").innerHTML = total
 
-      if (Number(total) != 100 ) {
+       if (total != 100 ) {
         document.getElementById("msg_porcentaje").innerHTML = "La suma de los porcentajes debe ser 100"
         document.getElementById("msg_porcentaje").style.color = "red";
         document.getElementById("btn_guardar_porcentajes").disabled = true;
       } else if (bandera == true || bandera2 == true || bandera3==true) {
         document.getElementById("btn_guardar_porcentajes").disabled = true;
+        document.getElementById("msg_cero").innerHTML = "Ingrese número mayor a 0"
+        document.getElementById("msg_cero").style.color = "red";
+        document.getElementById("msg_porcentaje").innerHTML = ""
+
       } 
       else {
         document.getElementById("btn_guardar_porcentajes").disabled = false;
@@ -1330,6 +1332,7 @@
         document.getElementById("msg_cero").innerHTML = ""
 
       }
+
 
 
     };
@@ -1344,7 +1347,7 @@
 
         await axios({
           method: 'post',
-          url: "http://159.223.190.216/temas/guardarProbabilidades",
+          url: "http://104.248.232.150/temas/guardarProbabilidades",
           data: {
             bueno: total_bueno,
             regular: total_regular,
@@ -1422,7 +1425,7 @@
     async function siguienteNodoNoRegistrado() {
       axios({
         method: 'get',
-        url: "http://159.223.190.216/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
+        url: "http://104.248.232.150/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1448,7 +1451,7 @@
       var evidencia = []
       await axios({
         method: 'get',
-        url: "http://159.223.190.216/obtenerEvidencias",
+        url: "http://104.248.232.150/obtenerEvidencias",
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1527,7 +1530,7 @@
 
       axios({
         method: 'get',
-        url: "http://159.223.190.216/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
+        url: "http://104.248.232.150/preguntas/nodo?id=" + nodos_ordenados[numero_nodo_ordenado],
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1684,7 +1687,7 @@
       var total_temas = 0
       await axios({
         method: 'get',
-        url: "http://159.223.190.216/obtenerTotalTemas",
+        url: "http://104.248.232.150/obtenerTotalTemas",
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1704,7 +1707,7 @@
       //await obtiene los datos del servidor
       await axios({
         method: 'get',
-        url: "http://159.223.190.216/arbol/caminos",
+        url: "http://104.248.232.150/arbol/caminos",
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1785,7 +1788,7 @@
       var ramas = []
       await axios({
         method: 'get',
-        url: "http://159.223.190.216/arbol/obtenerRamas",
+        url: "http://104.248.232.150/arbol/obtenerRamas",
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -1807,21 +1810,37 @@
       color = color.slice(1);
       actualizarPadre(oldParent, newParent, children, color);
       $('#CambiarConexionPadre').modal('hide');
-      window.location.href = "http://159.223.190.216/historialexperto?x=" + x_init + "&y=" + y_init + "&e=" + e_init;
+      window.location.href = "http://104.248.232.150/historialexperto?x=" + x_init + "&y=" + y_init + "&e=" + e_init;
     }
 
     async function habilitarDesplazamiento() {
-      console.log("Desplazamiento de nodos ? " + desplazamientoDeNodos);
-
       let checkMoverNodos = document.getElementById("moverNodosCheck");
-
-
-      //checkMoverNodos.checked = !checkMoverNodos.checked;
-      /*if (checkMoverNodos.checked) {
-          checkMoverNodos.checked = false;
-      } else {
-          checkMoverNodos.checked = true;
-      }*/
-
       desplazamientoDeNodos = !desplazamientoDeNodos;
+    }
+
+    async function saludarDesdeGrafoNodos(){
+      console.log("Saludos desde la vista de grafo de alumnos");
+    }
+
+
+    async function obtenerPoderacionesNodos() 
+   {
+
+    
+      var ramas = []
+      await axios({
+        method: 'get',
+        url: "http://104.248.232.150/arbol/poderacionesNodos",
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+      }).then(function(response) {
+        //console.log(response);
+        ramas = response.data
+      }).catch(function(error) {
+        console.log('Error: ' + error)
+      });
+      return ramas;
+
+     // return 0;
     }

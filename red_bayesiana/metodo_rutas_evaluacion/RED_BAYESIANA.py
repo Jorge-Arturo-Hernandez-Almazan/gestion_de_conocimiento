@@ -4,21 +4,20 @@ from NODO import NODO
 
 #En bash <python MPCN.py 'id_nodo' 'ponderación' 'saltos'>
 class RED_BAYESIANA:
-    def __init__(self):
+    def __init__(self, nombre_rbm):
         self.nodoEvidencia = ""
         self.ponderacionEvidencia = 0
         self.saltos = 0
         self.rangoDeAprovechamiento = 0
         self.subRedBayesiana = ""
-        self.redBayesiana = ""
-
-    def configurarRBM(self, nombre_rbm):
         self.redBayesiana = gum.loadBN(nombre_rbm)
+        self.caminos = ""
 
     def configurarParametros(self,parametros):
         self.nodoEvidencia = parametros[0]
         self.ponderacionEvidencia = int(parametros[1])
         self.saltos = int(parametros[2])
+        self.caminos = parametros[3]
         if self.ponderacionEvidencia > 0 and self.ponderacionEvidencia <= 66:
             self.rangoDeAprovechamiento = 0
         elif self.ponderacionEvidencia > 66 and self.ponderacionEvidencia <= 83:
@@ -51,12 +50,12 @@ class RED_BAYESIANA:
         atras=[]
         self.subRedBayesiana = gum.BayesNet('subred')
         self.subRedBayesiana.add(gum.LabelizedVariable(str(self.nodoEvidencia),str(self.nodoEvidencia),3))
-        URL = "http://159.223.190.216/arbol/caminoslibreria"
-        respuestaServidor = requests.get(url = URL)
-        data = respuestaServidor.json()
-        caminos = data['caminos']
+        #URL = "http://104.248.232.150/arbol/caminoslibreria"
+        #respuestaServidor = requests.get(url = URL)
+        #data = respuestaServidor.json()
+        #caminos = data['caminos']
 
-        for a in caminos:
+        for a in self.caminos:
             for i in range(len(a)):
                 if a[i] == int(self.nodoEvidencia):
                     if len(a)-1-i >=self.saltos:
@@ -70,6 +69,7 @@ class RED_BAYESIANA:
 
         caminosAbajo = self.eliminarRepetidos(adelante)
         caminosArriba = self.eliminarRepetidos(atras)
+        
         for camino in caminosAbajo: nodosDeLaSubRed += camino
         for camino in caminosArriba: nodosDeLaSubRed += camino
 
@@ -86,9 +86,9 @@ class RED_BAYESIANA:
 
         nodosSubRed = self.subRedBayesiana.nodes()
         for nodo in nodosSubRed:
-            nombreNodo = str(self.subRedBayesiana.variable(nodo).name())
+            nombreNodo = str( self.subRedBayesiana.variable(nodo).name() )
+            
             padresSubRedBayesiana = self.subRedBayesiana.parents(self.subRedBayesiana.idFromName(nombreNodo))
-
             padresRedBayesianaMaestra = self.redBayesiana.parents(nombreNodo)
 
             for padreRBM in padresRedBayesianaMaestra:
@@ -99,10 +99,10 @@ class RED_BAYESIANA:
                     if nodoPadreRedBayesiana == nodoPadreSubRedBayesiana:
                         coincidecia = True
                         break
-
+            
                 if not coincidecia:
                     copiaRedBayesiana.eraseArc(copiaRedBayesiana.idFromName(nodoPadreRedBayesiana), copiaRedBayesiana.idFromName(nombreNodo))
-
+            
             self.subRedBayesiana.cpt(nombreNodo).fillWith(copiaRedBayesiana.cpt(nombreNodo))
 
     def obtenerSubRed(self):
@@ -126,23 +126,19 @@ class RED_BAYESIANA:
                     sr.append(m[i])
             return sr
 
-    def obtenerCaminosSubRed(self, nodo, saltos, caminos): 
-      
-        #print(nodo, saltos, caminos)
-        
-        saltos = int(saltos)
+    def obtenerCaminosSubRed(self):
         caminos_ordenados = {}
         adelante = []
         atras = []
-        for a in caminos:
+        for a in self.caminos:
             for i in range(len(a)):
-                if str(a[i]) == nodo:
-                    if len(a) - 1 - i >= saltos:
-                        adelante.append(a[i + 1:i + saltos + 1])
+                if str(a[i]) == self.nodoEvidencia:
+                    if len(a) - 1 - i >= self.saltos:
+                        adelante.append(a[i + 1:i + self.saltos + 1])
                     else:
                         adelante.append(a[i + 1:i + len(a) - i])
-                    if i >= saltos:
-                        atras.append(a[i - saltos:i])
+                    if i >= self.saltos:
+                        atras.append(a[i - self.saltos:i])
                     else:
                         atras.append(a[0:i]) 
     
@@ -172,9 +168,6 @@ class RED_BAYESIANA:
 
         caminos_ordenados['arriba'] = eatras
         caminos_ordenados['abajo'] = eadelante
-
-        
-        print(caminos_ordenados)
         
         return caminos_ordenados
 

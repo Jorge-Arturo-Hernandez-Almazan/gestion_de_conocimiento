@@ -1,8 +1,10 @@
-'''1.- Nodo virgen
-    2.- Nodo subjetivo virgen
-    3.- Nodo Objetivo
-    4.- Nodo subjetivo
-    5.- Nodo subjetivo lejano'''
+'''
+1.- Nodo virgen
+2.- Nodo subjetivo virgen
+3.- Nodo Objetivo
+4.- Nodo subjetivo
+5.- Nodo subjetivo lejano    
+'''
 class NODO:
     def __init__(self, id, clasificacion):
         self.id = id

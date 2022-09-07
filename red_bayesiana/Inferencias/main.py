@@ -4,7 +4,7 @@ import requests
 from nodo import NODO
 from subredbayesiana import SUB_RED_BAYESIANA
 
-URL = "http://159.223.190.216/arbol/caminoslibreria"
+URL = "http://104.248.232.150/arbol/caminoslibreria"
 respuestaDelServidor = requests.get(url = URL).json()
 caminos = respuestaDelServidor['caminos']
 saltos = 1

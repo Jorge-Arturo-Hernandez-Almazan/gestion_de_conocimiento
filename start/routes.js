@@ -9,12 +9,12 @@ const Hash = use('Hash')
 
 Route.get('/preguntas/nodo','PreguntaController.preguntanodo')
 Route.get('/arbol',({view})=> view.render('arbol'))
-Route.post('tema/cambiarPadre/:id','TemaController.cambiarPadre')//
-Route.post('tema/hacerHijoPadre/:id','TemaController.hacerHijoPadre')// 
-Route.get('temas/arbol','TemaController.arbol') //
-Route.get('temas/:id','TemaController.show') //
-Route.post('tema/posicion','TemaController.posicion')// 
-Route.post('pregunta/add','PreguntaController.store')//
+Route.post('tema/cambiarPadre/:id','TemaController.cambiarPadre')
+Route.post('tema/hacerHijoPadre/:id','TemaController.hacerHijoPadre')
+Route.get('temas/arbol','TemaController.arbol')
+Route.get('temas/:id','TemaController.show')
+Route.post('tema/posicion','TemaController.posicion') 
+Route.post('pregunta/add','PreguntaController.store')
 Route.post('pregunta/addNumerica','PreguntaController.storeNumerica')
 Route.post('pregunta/delete','PreguntaController.delete')
 Route.get('configuracionCuestionario/margen','ConfiguracionController.cargarMargen')
@@ -77,9 +77,11 @@ Route.post('login','UserController.login')
 Route.get('logout','UserController.logout')
 Route.get('/saludame/:nombre/:edad', 'SaludarController.metodoSaludar');
 Route.get('/pruebapython', 'PonderacionController.pruebaPython');
-Route.get('temas/count','TemaController.temacount') 
+Route.get('temas/count','TemaController.temacount')
+
 Route.get('/grafo', ({view}) =>  view.render('app') );
 Route.get('/contacto', ({view}) =>  view.render('app')  );
+Route.get('/grafoalumnos', ({view}) => view.render('app') );
 
 Route.get('/arbol/obtenerCaminos/:id', 'PonderacionController.getPaths');
 
@@ -97,7 +99,18 @@ Route.get('/obtenerDatos', 'UserController.obtenerDatos');
 Route.post('/verificarExistencia', 'UserController.verificarExistencia');
 Route.get('/arbol/caminos', 'PonderacionController.obtener_caminos')
 Route.get('/arbol/simulador/caminos', 'PonderacionController.obtener_caminos_simulador')
+
 Route.get('/arbol/caminoslibreria', 'PonderacionController.obtener_caminos_red_bayesiana')
+
+
+
+Route.get('/arbol/caminosmodulo/:matricula/:rbm', 'PonderacionController.obtener_caminos_modulo')
+
+Route.get('/obtenerTema/:matricula/:saltos/:tema/:ponderacion', 'PonderacionController.obtener_tema')
+
+
+
+
 Route.post('/temas/guardarProbabilidades', 'TemaController.storeProbabilidades');
 Route.get('/obtenerEvidencias', 'TemaController.obtenerEvidencias')
 Route.get('/obtenerTotalTemas', 'TemaController.obtenerTotalNodos')
@@ -105,7 +118,7 @@ Route.get('/preguntas/obtenerNumeroRespuestas/:id', 'PreguntaController.obtenerN
 Route.post('/preguntasCalculadas/delete', 'PreguntaController.preguntasCalculadasDelete');
 Route.post('/subirr', 'UserController.subirimagen');
 Route.post('/subirr2', 'UserController.subirimagenes');
-
+Route.get('/arbol/poderacionesNodos', 'PonderacionController.obtenerPoderacionesNodos')
 
 
 Route.get('/subirimagen', async ({view}) =>{
@@ -248,6 +261,11 @@ Route.group(()=>{
 	Route.get('/usuariosExperto', ({view}) =>  view.render('app'))
 	Route.get('/usuariosProfesor', ({view}) =>  view.render('app'))
 	Route.get('/configurarCuestionario', ({view})=> view.render('app') );
+  
+  // 01/07/2022
+  Route.get('/configuracion/modulo', ({view})=> view.render('app') );
+  
+  
 	Route.get('/preguntasAbiertas', ({view}) =>  view.render('app'))
 	Route.get('preguntasNumericas', ({view}) =>  view.render('app'))
 	Route.get('preguntasVerdaderoFalso', ({view}) =>  view.render('app'))
@@ -294,10 +312,19 @@ Route.group(()=>{
 	Route.get('obtenerconfiguracion', 'ConfiguracionController.obtenerConfiguracionCuestionario');
 	Route.get('obtenerTotalPorPregunta', 'ConfiguracionController.obtenerTotalPreguntas');
 	Route.post('guardarconfiguracion', 'ConfiguracionController.guardarconfiguracion');
+  
+  // Se esta trabajando aqui para el módulo MOGRE
+  Route.get('/obtenerrbs', 'CuestionarioController.obtenerrbs');
+  
+  Route.get('/obtenerConfiguracionRedBayesiana', 'ParametrosController.obtenerConfiguracion');
+  
+  Route.post('/guardarConfiguracionRB', 'ParametrosController.guardarconfiguracion');
+  
+  
 }).middleware(['VerificadorAuthRole:1'])
 
 
-
+Route.get('/obtenerPrimerTema/:matricula/:rbm', 'CuestionarioController.obtenerPrimerTema');
 
 
 Route.get('/recuperarPass', async ({view}) =>{

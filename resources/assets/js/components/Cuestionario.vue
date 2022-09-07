@@ -1,6 +1,5 @@
 <template>
     <div class="content-wrapper">
-
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -33,12 +32,41 @@
                                     <div class="" style="width: 150px;">
                                         <button type="button" class="btn btn-primary float-right " data-toggle="modal"
                                             data-target="#exampleModal">
-                                            <i class="fas fa-calculator"></i> Calculadora 
+                                            <i class="fas fa-calculator"></i>  
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        
+                                        <div class="form-group">
+                                            <label for="lblTema">Tema</label>
+                                            <input type="text" class="form-control" id="inpTema" placeholder="Id tema" v-model="ordenEvaluacion[ordenEvaluacion.length - 1]">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lblPonderacion">Ponderación</label>
+                                            <input type="text" class="form-control" id="inpPonderacion" placeholder="Ponderación" v-model="ponderacion">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" @click="enviarPonderacion">
+                                            Eviar ponderación
+                                        </button>
+                                        <button type="button" class="btn btn-success" @click="obtenerPrimerTema">
+                                            Primer tema
+                                        </button>
+                                      
+                                        <br> 
+                                        
+                                        <label id="respuestaModulo" v-model="ordenEvaluacion">
+                                            
+                                        </label>
+                                        
+                                    </div>    
+                                </div>
+                                
+                                
                                 <div class="row">
                                     <div class="col-12">
                                         <div id="quiz">
@@ -65,12 +93,12 @@
                                             <center>
                                                 <button type="button" class="btn btn-primary btn-lg float-right "
                                                     id="next">
-                                                    <i class="fas fa-chevron-right"></i> Contestar
+                                                    <i class="fas fa-chevron-right"></i> Siguiente
                                                 </button>
                                             </center>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -92,7 +120,8 @@
         </div>
 
 
-        <div class="row">
+       <div class="row">
+          
             <div class="modal animated animate__bounceIn" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -109,7 +138,6 @@
                                 <input type="text" class="form-control" id="campo_calculadora"
                                     style="text-align:right;font-size:35px;">
                             </div>
-
                             <div class="form-group">
                                 <table style="table-layout: fixed; width: 100%;">
                                     <tr>
@@ -163,17 +191,14 @@
                                         <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('=')"
                                                 style="width: 100%; height: 100%;">=</button></td>
                                     </tr>
-
                                 </table>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog"
+            {{-- <div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog"
                 aria-labelledby="funcionesModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -295,7 +320,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
 
 
@@ -306,7 +331,6 @@
     import axios from "axios";
 
     export default {
-
         data() {
             return {
                 pregunta: [],
@@ -319,13 +343,46 @@
                 numero_tema: 0,
                 imagenesPregunta: [],
                 imagenActual: '',
-                imagenActualNombre: ''
+                imagenActualNombre: '',
+                salidaModulo: '',
+                ordenEvaluacion: [],
+                ponderacion: 0
             };
         },
         created() {
             this.confirmAttempt();
         },
         methods: {
+          
+            enviarPonderacion: async function () {
+                let parametros =  matricula + "/3/" + this.ordenEvaluacion[this.ordenEvaluacion.length - 1] + "/" + this.ponderacion;
+                
+                await axios({
+                    method: 'get',
+                    url: "/obtenerTema/"+parametros
+                }).then(result => {
+                    //console.log(result.data);
+                    //this.ordenEvaluacion = [result.data]
+                    ///this.ordenEvaluacion += [result.data]
+                    console.log(result);
+                }, error => {
+                    console.error(error)
+                })
+                
+            },
+          
+            obtenerPrimerTema: async function() {
+                let parametros = this.configuracion.rbm + "/" + matricula;
+                await axios({
+                    method: 'get',
+                    url: "/arbol/caminosmodulo/"+parametros
+                }).then(result => {
+                    console.log(result.data);
+                    this.ordenEvaluacion = [result.data];
+                }, error => {
+                    console.error(error)
+                })
+            },
 
             confirmAttempt: function () {
                 this.$swal.fire({
@@ -388,6 +445,8 @@
                 }).then(
                     result => {
                         this.configuracion = result.data;
+                        console.log("Configuración del cuestionario");
+                        console.log(result.data);
                     }, error => {
                         console.error(error)
                     })

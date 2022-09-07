@@ -16,6 +16,7 @@ class PonderacionController {
         }); // the default is 'buffer'
         return response.json(output);
     }
+  
     async arrayEquals(a, b) {
         if (a === b) return true;
         if (a == null || b == null) return false;
@@ -26,6 +27,7 @@ class PonderacionController {
         }
         return true;
     }
+  
     async getResults({
         params,
         response,
@@ -35,6 +37,7 @@ class PonderacionController {
 
         return response.json(temas[0]);
     }
+  
     async obtener_caminos({
         response,
         auth
@@ -101,6 +104,7 @@ class PonderacionController {
         return response.json(paths);
         //return paths.caminos[0];
     }
+  
     async obtener_caminos_simulador({
         response
     }) {
@@ -176,6 +180,7 @@ class PonderacionController {
         });
 
     }
+  
     async obtener_caminos_red_bayesiana({ response }) {
 
         let i = 0;
@@ -206,7 +211,7 @@ class PonderacionController {
 
         fs.writeFileSync('nodos', texto);
 
-        var output = execSync('g++ dag.cpp -o dag', {
+        var output = execSync('g++ dag.cpp -o dag &', {
             encoding: 'utf-8'
         }); // the default is 'buffer'
         var caminos = execSync('./dag ' + total_temas, {
@@ -217,15 +222,6 @@ class PonderacionController {
 
         var caminoss = paths.caminos //respuesta de servidor
 
-        /*var caminos_primera_rama = []
-        
-        
-        for(i=0;i<caminoss.length;i++){
-        	if( caminoss[i][1] == 2 ){
-        		caminos_primera_rama.push( caminoss[i].slice(2, caminoss[i].length) ); 
-        	}
-        }*/
-
 
         var solo_arreglo = []
         for (j = 0; j < caminoss.length; j++) {
@@ -233,20 +229,119 @@ class PonderacionController {
                 solo_arreglo.push(caminoss[j][k]);
             }
         }
-
-
-
+        
         let uniqueArray = solo_arreglo.filter((c, index) => {
             return solo_arreglo.indexOf(c) === index;
         });
 
+        /*const caminos = 
+
+        // convert JSON object to string
+        const data = JSON.stringify(user);
+
+        // write JSON string to a file
+        fs.writeFile('user.json', data, (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log("JSON data is saved.");
+        });*/
+      
+      
         return response.json({
             caminos: caminoss,
             nodos: uniqueArray,
             temas: temas
         });
-
+      
     }
+  
+    // OBTENER CAMINOS PARA EL MÓDULO EN PYTHON
+    async obtener_caminos_modulo({ response, params }) {
+        let i = 0;
+        let j = 0;
+        let k = 0;
+        let temas = await Database.raw('select temas.id as id, temas.nombre_tema as nombre, temas.nivel as nivel, dificultad from temas order by nivel desc;');
+        temas = temas[0];
+        const relaciones = await Database.select('id_padre', 'id_hijo').from('relacion_primarias');
+        let total_relaciones = relaciones.length;
+        let total_temas = temas.length;
+        var texto = "nodos\n";
+        for (i = 0; i < total_temas; i++) {
+            if (i == total_temas - 1) {
+                texto = texto + temas[i].id;
+            } else {
+                texto = texto + temas[i].id + ",";
+            }
+        }
+        texto = texto + "\nrelaciones\n";
+        for (i = 0; i < total_relaciones; i++) {
+            var padre = relaciones[i].id_padre;
+            var hijo = relaciones[i].id_hijo;
+            texto = texto + padre + "-" + hijo + "\n";
+        }
+        fs.writeFileSync('nodos', texto);
+        var output = execSync('g++ dag.cpp -o dag &', {
+            encoding: 'utf-8'
+        });
+        var caminos = execSync('./dag ' + total_temas, {
+            encoding: 'utf-8'
+        });
+        var paths = JSON.parse(caminos);
+        var caminoss = paths.caminos;
+        var solo_arreglo = [];
+        for (j = 0; j < caminoss.length; j++) {
+            for (k = 0; k < caminoss[j].length; k++) {
+                solo_arreglo.push(caminoss[j][k]);
+            }
+        }
+        let uniqueArray = solo_arreglo.filter((c, index) => {
+            return solo_arreglo.indexOf(c) === index;
+        });
+        const caminosModulo = {
+            caminos: caminoss,
+            nodos: uniqueArray,
+            temas: temas
+        }
+
+        // convert JSON object to string
+        const data = JSON.stringify(caminosModulo);
+
+        // write JSON string to a file
+        await fs.writeFile('caminos.txt', data, (err) => {
+            if (err) {
+                throw err;
+            }
+        });
+      
+        let matricula = params.matricula;
+        let rbm = params.rbm;
+        let parametros = " " + matricula + " " + rbm;
+        
+        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros, {encoding: 'utf-8'});
+        
+        return response.json(salidaPython);
+    }
+  
+  
+    async obtener_tema({ response, params }){
+      
+        let matricula = params.matricula;
+        let saltos = params.saltos;
+        let tema = params.tema;
+        let ponderacion = params.ponderacion;
+      
+        let parametros = " " + matricula + " " + saltos + " " + tema + " " + ponderacion;
+      
+        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros, {encoding: 'utf-8'});
+        return response.json(salidaPython);
+      
+      
+        //return response.json(parametros);
+    }
+  
+  
+  
     async obtener_ramas({ response, auth }) {
         let ramas = await Database.raw('select id, nivel from temas where nivel = 1;');
         return response.json(ramas);
@@ -715,7 +810,25 @@ class PonderacionController {
 
    
     }
+  
+    async obtenerPoderacionesNodos({ response, auth }) 
+    {
+        var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/abrirRed.py', { encoding: 'utf-8' }); // the default is 'buffer'
+        var nodos = []
+        var gdc=[]
+        output=output.split(",")
+        for( let i=0; i<output.length; i++)
+        {
+          output[i] = output[i].replace(/(\r\n|\n|\r)/gm,"");  
+          var output2=output[i].split("/")
+          nodos.push(output2[0])
+          gdc.push(output2[1])
 
+         }
+        return response.json({nodos, gdc})
+
+
+      }
 
 }
 

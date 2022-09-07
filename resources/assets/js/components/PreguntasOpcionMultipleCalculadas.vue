@@ -89,11 +89,18 @@
                                                         <br> </span>
                                                 </td>
                                                 <td>
-                                                    <a @click="abrirModal(pregunta.id_pregunta, pregunta.imagenes)" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-warning"> 
+                                                   <!-- <a @click="abrirModal(pregunta.id_pregunta, pregunta.imagenes)" data-toggle="modal" data-target="#exampleModal"  class="btn btn-outline-warning"> 
                                                         <i class="fas fa-pen" style="color: #ffae00;"></i> 
                                                     </a>
+                                                  </td>-->
+                                                <td>
+                                                    <a @click="editarPregunta(pregunta.id_pregunta,pregunta.pregunta,pregunta.tema,pregunta.id_tema, pregunta.decimales)"
+                                                        data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-warning"><i
+                                                            class="fas fa-pen" style="color: #ffae00;"
+                                                            title="Editar la pregunta"></i> <span
+                                                            style="color: #ffae00;"></span>
+                                                    </a>
                                                 </td>
-
                                                 <td>
                                                     <a @click="eliminarCalculadas(pregunta.id_pregunta, pregunta.imagenes)" class="btn btn-outline-danger"> 
                                                         <i class="fas fa-trash" style="color: #ff6258"></i> 
@@ -392,12 +399,13 @@
                 }).then((result) => {
                     if (result.value) 
                     {
+                        console.log("Eliminando "+id)
                         axios.post("/preguntasCalculadas/delete", {id: id,imagenesAEliminar: imagenes
                             })
                             .then(res => {
                                 this.id = "";
-                                //this.getPreguntaNumerica();
-                                //console.log(res);
+                                this.getpreguntas();
+                                console.log(res);
                                 const Toast = this.$swal.mixin({
                                     toast: true,
                                     position: "top-end",
@@ -452,26 +460,31 @@
                 )
             },
 
-            editarPregunta(id, reactivo, tema, idtema) {
+          editarPregunta(id, reactivo, tema, idtema, decimales) 
+          {
                 this.editarPreguntaVar = true;
                 this.id_editar = id;
-                var x = document.getElementById("id_tema");
-                //console.log(x);
-                var length = x.options.length;
-                for (i = length - 1; i >= 0; i--) {
-                    x.options[i] = null;
-                }
+                
+                //seleccionar tema por defecto(no sirve)
+            /*
+                var temas = document.getElementById("id_tema");
+                var length = temas.options.length;
+                for (i = length - 1; i >= 0; i--) 
+                 temas.options[i] = null;       
+                //console.log("id del tema ",idtema)
+                //document.getElementById("id_tema").value=idtema;
                 var option_selected = document.createElement("option");
                 option_selected.text = tema;
                 option_selected.value = idtema;
-                x.add(option_selected);
-
-                for (var i = 0; i < this.temas[0].length; i++) {
-                    var option = document.createElement("option");
-                    option.text = this.temas[0][i].nombre_tema;
-                    option.value = this.temas[0][i].id;
-                    x.add(option);
-                }
+                temas.add(option_selected);*/
+                
+            
+              /*  var cifras= document.getElementById("totalCifras")
+                var cifra_selected = document.createElement("option");
+                cifra_selected.text = decimales;
+                cifra_selected.value = decimales+"_decimales";
+                cifras.add(cifra_selected);
+            */
 
                 //Limpiar opciones
                 opciones = [];
@@ -564,6 +577,8 @@
                 noOpcion = 0;
 
             },
+          
+       
 
             abrirModal: async function () {
                 this.editarPreguntaVar = false;

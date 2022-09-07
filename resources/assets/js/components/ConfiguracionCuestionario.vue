@@ -93,6 +93,17 @@
                                         <input id="ponderacionEstricta" type="checkbox" value="first_checkbox"> Sí
 									</label>
 								</div>
+                                
+                                <div class="form-group">
+									<label class="mb-2" for="exampleFormControlSelect1">Versión de RBN:</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option v-for="rb in rbs" :value="rb.id">{{rb.nombre}}</option>
+                                    </select>
+								</div>
+                                
+                                
+                                
+                                
 							</div>
 							<div class="card-footer">
 
@@ -264,6 +275,7 @@
         data() {
             return {
                 id: "",
+                rbs: [],
                 numero_preguntas: [],
                 configuraciones: {
                     num_preguntas_numericas: 0,
@@ -294,9 +306,31 @@
 
             this.obtenerConfiguraciones();
             this.obtenerTotales();
+            this.obtenerRbs();
 
         },
         methods: {
+            
+            obtenerRbs(){
+                
+                // Obtiene toda la información del a tabla donde se almacenan las versiones de la red bayesiana
+                axios({
+                    method: 'GET',
+                    url: '/obtenerrbs'
+                }).then(
+                    result => {
+
+                        
+                        //console.log(result.data[0])
+                        
+                        this.rbs = result.data[0]
+
+                    },
+                    error => {
+                        console.error(error)
+                    }
+                )
+            },
 
             totalPreg() {
 

@@ -49,7 +49,8 @@
 							</div>
 						</div>
 					</div>
-
+                
+             
 					<div class="col-12 col-md-8">
 						<div class="card shadow">
 							<div class="card-header">
@@ -98,6 +99,37 @@
 							</div>
 						</div>
 					</div>
+                
+               <div class="col-12 col-md-12">
+						<div class="card shadow">
+							<div class="card-header">
+								<h3 class="card-title mt-2"> <b> Historial de cambios </b> </h3>
+								<div class="card-tools">
+									<div class="" style="width: 150px;">
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<form method="POST" action="/subirfotoperfil" enctype="multipart/form-data">
+										<div class="form-group">
+											
+										</div>
+										<div class="form-group">
+										
+										</div>
+										<div class="form-group">
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="card-footer">
+								<div class="row">
+								</div>
+							</div>
+						</div>
+					</div>
+                  
 
 				</div>
 			</div>

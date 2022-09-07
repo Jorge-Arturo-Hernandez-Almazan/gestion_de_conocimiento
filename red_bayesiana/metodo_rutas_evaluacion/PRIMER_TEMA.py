@@ -3,18 +3,9 @@ import random
 
 class PRIMER_TEMA:
 
-    def __init__(self, url):
-        self.URL = url
-        self.caminos = []
-        self.temas = []
-        self.obtenerDatosServidor()
-
-    def obtenerDatosServidor(self):
-        # Caminos del grafo de conocimiento que parten desde el nodo padre hasta los nodos hoja
-        respuestaDelServidor = requests.get(url = self.URL).json()
-        self.caminos = respuestaDelServidor['caminos']
-        # Temas del grafo de conocimiento, junto con sus caracteristicas
-        self.temas = respuestaDelServidor['temas'] 
+    def __init__(self, caminosModulo):
+        self.caminos = caminosModulo['caminos']
+        self.temas = caminosModulo['temas']
 
     def elegirTema(self, lista):
             tamanioLista = len(lista)

@@ -97,6 +97,17 @@
 							</p>
 						</router-link>
 					</li>
+          
+          
+          <li v-if="this.id_rol==1 || this.id_rol==3" class="nav-item">							
+						<router-link class="nav-link" id="navAccesos" to="/configuracion/modulo">
+							<i class="fas fa-cogs nav-icon"></i> 
+							<p>
+								Configuración Módulo
+							</p>
+						</router-link>
+					</li>
+          
 
 					<li v-if="this.id_rol==1 || this.id_rol==4" class="nav-item">							
 						<router-link class="nav-link" id="navAccesos" to="/cuestionario">
@@ -180,6 +191,16 @@
 							<i class="fas fa-user-tie nav-icon"></i> 
 							<p>
 								Grafo de conocimiento
+							</p>
+						</router-link>
+					</li>
+          
+          
+          <li v-if="this.id_rol==1 || this.id_rol==2"  class="nav-item">							
+						<router-link class="nav-link" id="navTemas" to="/grafoalumnos">
+							<i class="fas fa-user-tie nav-icon"></i> 
+							<p>
+								Grafo de alumnos
 							</p>
 						</router-link>
 					</li>

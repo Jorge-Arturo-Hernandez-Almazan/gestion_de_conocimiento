@@ -21,6 +21,8 @@ import NotFound from '@/components/NotFound.vue'
 import Grafo from '@/components/grafo'
 import Contacto from '@/components/Contacto'
 import subirImagenes from '@/components/subir_Imagenes'
+import GrafoAlumnos from '@/components/GrafoAlumnos'
+import configuracionModulo from '@/components/configuracionModulo'
 
 Vue.use(Router)
 
@@ -155,6 +157,16 @@ export default new Router({
         name: 'subirImagenes',
         component: subirImagenes
     },
+     {
+       path:'/grafoalumnos',
+       name: 'grafoAlumnos',
+       component: GrafoAlumnos
+     },
+     {
+       path:'/configuracion/modulo',
+       name: 'configuracionModulo',
+       component: configuracionModulo
+     },
 	{
         path: '*',
         name: 'NotFound',

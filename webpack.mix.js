@@ -19,7 +19,7 @@ mix.setPublicPath('public')
 	'public/adminlte/js/adminlte.min.js',
 	'public/js/principal.js')
 .js(
-    'resources/assets/js/main.js'
+     'resources/assets/js/main.js'
     ,'public/js/main.js')
 
 .styles([

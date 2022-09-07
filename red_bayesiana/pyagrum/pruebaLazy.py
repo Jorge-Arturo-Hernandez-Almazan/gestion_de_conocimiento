@@ -1,5 +1,9 @@
 import pyAgrum as gum
-bn=gum.loadBN("redes bayesianas/alarm.dsl")
+bn=gum.loadBN("rbm_1.bifxml")
 ie=gum.LazyPropagation(bn)
 ie.makeInference()
-print(ie.posterior(bn.idFromName("CATECHOL")))
+
+for nodo in bn.nodes():
+  
+
+print(ie.posterior(bn.idFromName("30")))
