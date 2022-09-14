@@ -104,9 +104,14 @@ Route.get('/arbol/caminoslibreria', 'PonderacionController.obtener_caminos_red_b
 
 
 
+
+
 Route.get('/arbol/caminosmodulo/:matricula/:rbm', 'PonderacionController.obtener_caminos_modulo')
 
-Route.get('/obtenerTema/:matricula/:saltos/:tema/:ponderacion', 'PonderacionController.obtener_tema')
+Route.get('/obtenerTema/:matricula/:rbm/:saltos/:tema/:ponderacion', 'PonderacionController.obtener_tema')
+
+
+
 
 
 

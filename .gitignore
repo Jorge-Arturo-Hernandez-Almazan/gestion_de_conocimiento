@@ -5,3 +5,4 @@ tmp
 # VSCode & Webstorm history directories
 .history
 .idea
+.dataset.csv

@@ -39,6 +39,7 @@ RBMA = {}
 versionRbm = sys.argv[1]       # Version de la rbm
 matriculaAlumno = sys.argv[2]  # Matricula del alumno    
 
+
 # Especificación de rutas de almacenamiento
 rutaRbma = "red_bayesiana/metodo_rutas_evaluacion/rbma/rbma_"+str(matriculaAlumno)+".pkl"  #RBMA
 rutaRbm = "red_bayesiana/metodo_rutas_evaluacion/rbm/rbm_"+str(versionRbm)+".bifxml"       #RBM
@@ -54,11 +55,9 @@ RBM = CONTRUCTOR_BN.obtenerRedCompleta()
 #  2do - Matricula del alumno
 #  3ero - Versión de la Red Bayesiana Maestra
 if len(sys.argv) == 3:
-    
+  
     # Obtención del primer tema a evaluar
     primerTema = PRIMER_TEMA(data).calcularPrimerTema()
-    
-    
     
     # Inicialización de la RBMA del alumno
     for nodo in RBM.nodes():
@@ -82,11 +81,8 @@ if len(sys.argv) == 3:
     print(str(primerTema))
 
 # <Matricula> <Saltos> <Tema objetivo> <Ponderación>
-elif len(sys.argv) == 5:
+elif len(sys.argv) == 6:
     
-    
-    print("Estoy en la segunda opcion del módulo ")
-    exit()
     # Parametros de entada por medio de la terminal 
     saltos = sys.argv[3]                    # Número de saltos que compone los subgrafos
     temaObjetivo = sys.argv[4]              # Tema objetivo, nodo central del subgrafo
@@ -114,8 +110,13 @@ elif len(sys.argv) == 5:
     SRB = CONTRUCTOR_BN.obtenerSubRed()
     CAMINOS_SRB = CONTRUCTOR_BN.obtenerCaminosSubRed()
     
+    # Pasa 
+    
     INSTANCIA_MPCN = MPCN(RBMA, SRB, CAMINOS_SRB, temaObjetivo, ponderacionObjetiva, rutaRbm)
     INSTANCIA_MPCN.hacerInferencias()
+    
+    print("No hay error aqui")
+    exit()
     
     # Se obtiene la RBMA actualizada con las inferenicas promediadas de la SRB  
     RBMA = INSTANCIA_MPCN.obtenerRBMA()

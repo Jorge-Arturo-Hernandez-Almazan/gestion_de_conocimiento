@@ -354,8 +354,11 @@
         },
         methods: {
           
-            enviarPonderacion: async function () {
-                let parametros =  matricula + "/3/" + this.ordenEvaluacion[this.ordenEvaluacion.length - 1] + "/" + this.ponderacion;
+            enviarPonderacion: async function () 
+            {
+                //let parametros = this.configuracion.rbm + "/" + matricula + "/3/" + this.ordenEvaluacion[this.ordenEvaluacion.length - 1] + "/" + this.ponderacion;
+              
+                let parametros = this.configuracion.rbm + "/" + matricula + "/3/180/" + this.ponderacion;
                 
                 await axios({
                     method: 'get',
@@ -378,7 +381,7 @@
                     url: "/arbol/caminosmodulo/"+parametros
                 }).then(result => {
                     console.log(result.data);
-                    this.ordenEvaluacion = [result.data];
+                    //this.ordenEvaluacion = [result.data];
                 }, error => {
                     console.error(error)
                 })

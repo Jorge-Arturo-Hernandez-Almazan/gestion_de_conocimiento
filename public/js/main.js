@@ -4924,7 +4924,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                parametros = matricula + "/3/" + this.ordenEvaluacion[this.ordenEvaluacion.length - 1] + "/" + this.ponderacion;
+                //let parametros = this.configuracion.rbm + "/" + matricula + "/3/" + this.ordenEvaluacion[this.ordenEvaluacion.length - 1] + "/" + this.ponderacion;
+                parametros = this.configuracion.rbm + "/" + matricula + "/3/180/" + this.ponderacion;
                 _context.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
@@ -4956,8 +4957,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _obtenerPrimerTema = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this2 = this;
-
         var parametros;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
@@ -4969,8 +4968,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   method: 'get',
                   url: "/arbol/caminosmodulo/" + parametros
                 }).then(function (result) {
-                  console.log(result.data);
-                  _this2.ordenEvaluacion = [result.data];
+                  console.log(result.data); //this.ordenEvaluacion = [result.data];
                 }, function (error) {
                   console.error(error);
                 });
@@ -4990,7 +4988,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return obtenerPrimerTema;
     }(),
     confirmAttempt: function confirmAttempt() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.$swal.fire({
         //title: 'Comenzar cuestionario',
@@ -5019,22 +5017,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
 
                   _context3.next = 3;
-                  return _this3.obtenerConfiguracion();
+                  return _this2.obtenerConfiguracion();
 
                 case 3:
                   _context3.next = 5;
-                  return _this3.getopic();
+                  return _this2.getopic();
 
                 case 5:
                   _context3.next = 7;
-                  return _this3.getpreguntas();
+                  return _this2.getpreguntas();
 
                 case 7:
                   _context3.next = 10;
                   break;
 
                 case 9:
-                  _this3.$router.push('tablero');
+                  _this2.$router.push('tablero');
 
                 case 10:
                 case "end":
@@ -5094,7 +5092,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _getopic = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _this4 = this;
+        var _this3 = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
@@ -5104,7 +5102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   method: 'get',
                   url: 'topic/getopic'
                 }).then(function (result) {
-                  _this4.topic = result.data[0];
+                  _this3.topic = result.data[0];
                 }, function (error) {
                   console.error(error);
                 }));
@@ -5124,13 +5122,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return getopic;
     }(),
     obtenerConfiguracion: function obtenerConfiguracion() {
-      var _this5 = this;
+      var _this4 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'get',
         url: 'cuestionario/obtenerconfiguracion'
       }).then(function (result) {
-        _this5.configuracion = result.data;
+        _this4.configuracion = result.data;
         console.log("Configuración del cuestionario");
         console.log(result.data);
       }, function (error) {
@@ -5141,7 +5139,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _getpreguntas = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var _this6 = this;
+        var _this5 = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context9) {
           while (1) {
@@ -5162,7 +5160,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       while (1) {
                         switch (_context8.prev = _context8.next) {
                           case 0:
-                            _this6.pregunta = result.data.banco_preguntas;
+                            _this5.pregunta = result.data.banco_preguntas;
                             _loop =
                             /*#__PURE__*/
                             _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _loop(_i) {
@@ -5170,11 +5168,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                 while (1) {
                                   switch (_context7.prev = _context7.next) {
                                     case 0:
-                                      _this6.pregunta[_i].imagenes = [];
+                                      _this5.pregunta[_i].imagenes = [];
                                       _context7.next = 3;
                                       return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                                         method: 'get',
-                                        url: '/imagen/pregunta/' + _this6.pregunta[_i].id_pregunta
+                                        url: '/imagen/pregunta/' + _this5.pregunta[_i].id_pregunta
                                       }).then(
                                       /*#__PURE__*/
                                       function () {
@@ -5185,7 +5183,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                             while (1) {
                                               switch (_context6.prev = _context6.next) {
                                                 case 0:
-                                                  _this6.pregunta[_i].imagenes = resultado.data.imagenes[0];
+                                                  _this5.pregunta[_i].imagenes = resultado.data.imagenes[0];
 
                                                 case 1:
                                                 case "end":
@@ -5212,7 +5210,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             _i = 0;
 
                           case 3:
-                            if (!(_i < _this6.pregunta.length)) {
+                            if (!(_i < _this5.pregunta.length)) {
                               _context8.next = 8;
                               break;
                             }
@@ -5225,14 +5223,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
 
                           case 8:
-                            console.log(_this6.pregunta);
+                            console.log(_this5.pregunta);
 
-                            for (i = 0; i < _this6.pregunta.length; i++) {
-                              if (_this6.pregunta[i].tipo == 5) _this6.pCalculadas[i] = _this6.pregunta[i].id_pregunta;else if (_this6.pregunta[i].tipo == 6) _this6.pCalculadasMultiples[i] = _this6.pregunta[i].id_pregunta;
+                            for (i = 0; i < _this5.pregunta.length; i++) {
+                              if (_this5.pregunta[i].tipo == 5) _this5.pCalculadas[i] = _this5.pregunta[i].id_pregunta;else if (_this5.pregunta[i].tipo == 6) _this5.pCalculadasMultiples[i] = _this5.pregunta[i].id_pregunta;
                             }
 
                             _context8.next = 12;
-                            return _this6.getComodines();
+                            return _this5.getComodines();
 
                           case 12:
                             return _context8.abrupt("return", result.data);
@@ -5270,7 +5268,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _getComodines = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-        var _this7 = this;
+        var _this6 = this;
 
         var preguntasCalculadas;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
@@ -5290,9 +5288,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       while (1) {
                         switch (_context10.prev = _context10.next) {
                           case 0:
-                            _this7.comodines = result.data.comodines;
+                            _this6.comodines = result.data.comodines;
                             _context10.next = 3;
-                            return _this7.convertirComodines();
+                            return _this6.convertirComodines();
 
                           case 3:
                           case "end":
