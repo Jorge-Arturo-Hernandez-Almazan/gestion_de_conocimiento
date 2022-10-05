@@ -8,6 +8,11 @@ const Hash = use('Hash')
 
 
 Route.get('/preguntas/nodo','PreguntaController.preguntanodo')
+
+Route.get('/saludar', 'SaludarController.metodoSaludar')
+
+
+
 Route.get('/arbol',({view})=> view.render('arbol'))
 Route.post('tema/cambiarPadre/:id','TemaController.cambiarPadre')
 Route.post('tema/hacerHijoPadre/:id','TemaController.hacerHijoPadre')
@@ -103,15 +108,15 @@ Route.get('/arbol/simulador/caminos', 'PonderacionController.obtener_caminos_sim
 Route.get('/arbol/caminoslibreria', 'PonderacionController.obtener_caminos_red_bayesiana')
 
 
-
-
-
 Route.get('/arbol/caminosmodulo/:matricula/:rbm', 'PonderacionController.obtener_caminos_modulo')
-
 Route.get('/obtenerTema/:matricula/:rbm/:saltos/:tema/:ponderacion', 'PonderacionController.obtener_tema')
+Route.get('/obtenerPonderaciones/:matricula', 'PonderacionController.obtener_ponderaciones')
 
 
 
+//Ruta para acceder al nuevo componente
+
+Route.get('/ejemplo', ({view}) =>  view.render('app') );
 
 
 
@@ -212,7 +217,7 @@ Route.group(()=>{
 	Route.get('/cuestionario', ({view})=> view.render('app') );
 	Route.get('/pregunta/showPreguntas/:id','PreguntaController.showPreguntas');
 	Route.get('/cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion');
-	Route.get('/topic/getopic','BayeController.NextTopic');
+	Route.get('/topic/getopic/:id','BayeController.NextTopic');
 	Route.post('/score/add','PreguntaController.addScore');
 }).middleware(['AccessValidator:1']);
 

@@ -325,20 +325,26 @@ class PonderacionController {
   
   
     async obtener_tema({ response, params }){
-      
         let rbm = params.rbm;
         let matricula = params.matricula;
         let saltos = params.saltos;
         let tema = params.tema;
         let ponderacion = params.ponderacion;
-      
         let parametros = " " + matricula + " " + rbm + " " + saltos + " " + tema + " " + ponderacion;
-        
         const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros, 
                                       {encoding: 'utf-8'} );
-      
         return response.json(salidaPython);
-        //return response.json(parametros);
+    }
+  
+    async obtener_ponderaciones({response, params}){
+        
+        let matricula = params.matricula;
+        
+        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/ponderaciones.py " + matricula, 
+                                      {encoding: 'utf-8'} )
+        
+        return response.json(salidaPython);
+      
     }
   
   

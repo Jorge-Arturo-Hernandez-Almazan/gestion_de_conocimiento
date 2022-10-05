@@ -23,6 +23,7 @@ import Contacto from '@/components/Contacto'
 import subirImagenes from '@/components/subir_Imagenes'
 import GrafoAlumnos from '@/components/GrafoAlumnos'
 import configuracionModulo from '@/components/configuracionModulo'
+import Ejemplo from '@/components/Ejemplo'
 
 Vue.use(Router)
 
@@ -166,6 +167,11 @@ export default new Router({
        path:'/configuracion/modulo',
        name: 'configuracionModulo',
        component: configuracionModulo
+     },
+     {
+       path:'/ejemplo',
+       name:'componenteejemplo',
+       component: Ejemplo
      },
 	{
         path: '*',

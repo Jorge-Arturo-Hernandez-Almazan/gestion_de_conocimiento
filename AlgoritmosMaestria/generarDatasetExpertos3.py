@@ -83,7 +83,7 @@ for i in range(len(probabilidadades[0])):
      pp[0]-=(pp[0]+pp[1]+pp[2])-100
   probabilidadadesP.append(pp)
 dataset = []
-evaluaciones=531441
+evaluaciones=59049
 for i in range(evaluaciones):
     r=[]
     for j in range(len(probabilidadadesP)):

@@ -19,8 +19,10 @@
         <div class="col-md-12">
             <div class="card shadow m-2">
                 <div class="card-body">
+                  
+                    {{ saludo }}
 
-                    <div v-if="this.id_rol==4">
+                    <!-- <div v-if="this.id_rol==4">
                         <h1>Bienvenido alumno: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
                     </div>
 
@@ -100,7 +102,7 @@
                     </div>
 
 
-                    <div class="row" v-if="this.id_rol==1">
+                     <div class="row" v-if="this.id_rol==1">
                         <div class="col-md-6">
                             <div class="small-box bg-gradient-secondary">
                                 <div class="inner">
@@ -120,6 +122,8 @@
                             <div class="small-box bg-gradient-primary">
                                 <div class="inner">
                                     <h3>{{profesor}}</h3>
+                                  
+                                  
                                     <p>Docentes</p>
                                 </div>
                                 <div class="icon">
@@ -131,7 +135,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div>  -->
 					
 
                 </div>
@@ -154,18 +158,20 @@
                 admins: '',
                 id_rol: '',
                 rol: '',
-				nombre: '',
-				apellidoPaterno: '',
-				apellidoMaterno: '',
-				matricula: '',
-				foto: '',
-				id_rol: '',
-				rol: '',
+                nombre: '',
+                apellidoPaterno: '',
+                apellidoMaterno: '',
+                matricula: '',
+                foto: '',
+                id_rol: '',
+                rol: '',
+              
+                saludo: ''
             }
         },
         mounted() {
 
-            this.getpregunta();
+           /* this.getpregunta();
             this.getTemas();
             this.getadmins();
             this.getprofesor();
@@ -195,9 +201,28 @@
 
             if (this.id_rol === '4') {
                 this.rol = "Alumno"
-            }
+            }*/
+            this.obtenerSaludo();
         },
         methods: {
+          
+          
+            obtenerSaludo(){
+              axios({method:'get', url:'saludar'})
+                .then(result=>{
+                  console.log(result.data.saludo);
+                  //this.saludo = result.data;
+                },
+                error => {
+                    console.error(error)
+                }
+                )
+            },
+          
+          
+          
+          
+            
             getpregunta() {
                 axios({
                     method: 'GET',
@@ -210,6 +235,7 @@
                         console.error(error)
                     }
                 )
+              
             },
             getTemas() {
                 axios({

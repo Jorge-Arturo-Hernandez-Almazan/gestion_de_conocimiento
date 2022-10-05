@@ -2,7 +2,7 @@ import pyAgrum as gum
 import numpy as numpy
 
 class MPCN:
-    def __init__(self, NODOS, SRB , caminos_ordenados, tema_objetivo, ponderacion_objetiva, RBM_nombre):
+    def __init__(self, NODOS, SRB, caminos_ordenados, tema_objetivo, ponderacion_objetiva, RBM_nombre):
         self.NODOS = NODOS
         self.SRB = SRB
         self.caminos_ordenados = caminos_ordenados

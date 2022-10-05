@@ -4,7 +4,6 @@
 # Programa para la obtención de una ruta de evaluación  #
 # Froylán M. Wbario Martínez                            #
 #########################################################
-
 import requests
 import matplotlib.pyplot as plt
 import catsim.plot as catplot
@@ -28,7 +27,6 @@ from RED_BAYESIANA import RED_BAYESIANA
 from MPCN import MPCN
 from PRIMER_TEMA import PRIMER_TEMA
 
-
 caminos = open('caminos.json')
 data = json.load(caminos)
 caminos.close()
@@ -39,10 +37,12 @@ RBMA = {}
 versionRbm = sys.argv[1]       # Version de la rbm
 matriculaAlumno = sys.argv[2]  # Matricula del alumno    
 
-
 # Especificación de rutas de almacenamiento
 rutaRbma = "red_bayesiana/metodo_rutas_evaluacion/rbma/rbma_"+str(matriculaAlumno)+".pkl"  #RBMA
 rutaRbm = "red_bayesiana/metodo_rutas_evaluacion/rbm/rbm_"+str(versionRbm)+".bifxml"       #RBM
+
+#rutaRbma = "rbma/rbma_"+str(matriculaAlumno)+".pkl"  #RBMA
+#rutaRbm = "rbm/rbm_"+str(versionRbm)+".bifxml"       #RBM
 
 # Instancia de la clase que gestiona la Red Bayesiana
 CONTRUCTOR_BN = RED_BAYESIANA(rutaRbm)
@@ -55,7 +55,6 @@ RBM = CONTRUCTOR_BN.obtenerRedCompleta()
 #  2do - Matricula del alumno
 #  3ero - Versión de la Red Bayesiana Maestra
 if len(sys.argv) == 3:
-  
     # Obtención del primer tema a evaluar
     primerTema = PRIMER_TEMA(data).calcularPrimerTema()
     
@@ -72,17 +71,20 @@ if len(sys.argv) == 3:
     est_theta = initializer.initialize()
     
     # Datos del archivo de configuración
-    redAlumno = [{'matricula':matriculaAlumno,'theta': est_theta,'versionrbm':versionRbm},RBMA]
+    redAlumno = [{'ultimo': primerTema,'matricula':matriculaAlumno,'theta': est_theta,'versionrbm':versionRbm, 
+                  'theta_anterior': 0, 'detenerse': False },RBMA]
     
     # Almacenamiento de la RBMA de manera persistente
     with open(rutaRbma, 'wb') as outp:
         pickle.dump(redAlumno, outp, pickle.HIGHEST_PROTOCOL)
         
-    print(str(primerTema))
-
+    primerTema = {
+      "tema": primerTema
+    }
+    print( json.dumps(primerTema) )
+    
 # <Matricula> <Saltos> <Tema objetivo> <Ponderación>
 elif len(sys.argv) == 6:
-    
     # Parametros de entada por medio de la terminal 
     saltos = sys.argv[3]                    # Número de saltos que compone los subgrafos
     temaObjetivo = sys.argv[4]              # Tema objetivo, nodo central del subgrafo
@@ -95,12 +97,10 @@ elif len(sys.argv) == 6:
     if path.exists(rutaRbma):
         with open(rutaRbma, 'rb') as inp:
             RBMA = pickle.load(inp)
-        
         alumno = RBMA[0]
         RBMA   = RBMA[1]
-        
-        rutaRbm = "rbm/rbm_" + alumno['versionrbm'] + ".bifxml"
-        
+        rutaRbm = "red_bayesiana/metodo_rutas_evaluacion/rbm/rbm_" + alumno['versionrbm'] + ".bifxml"
+        #rutaRbm = "rbm/rbm_" + alumno['versionrbm'] + ".bifxml"
     else:
         print("Error al abrir la rbma")
         exit()
@@ -111,18 +111,14 @@ elif len(sys.argv) == 6:
     CAMINOS_SRB = CONTRUCTOR_BN.obtenerCaminosSubRed()
     
     # Pasa 
-    
     INSTANCIA_MPCN = MPCN(RBMA, SRB, CAMINOS_SRB, temaObjetivo, ponderacionObjetiva, rutaRbm)
     INSTANCIA_MPCN.hacerInferencias()
-    
-    print("No hay error aqui")
-    exit()
     
     # Se obtiene la RBMA actualizada con las inferenicas promediadas de la SRB  
     RBMA = INSTANCIA_MPCN.obtenerRBMA()
     
     # Calcula y normaliza las caracteristicas de Pseudoadivinacion, Discriminzacion y Dificultad
-    items = INSTANCIA_MPCN.obtenerItems() 
+    items = INSTANCIA_MPCN.obtenerItems()
     
     temasEvaluados = []
     temasEvaluadosIds = []
@@ -146,6 +142,7 @@ elif len(sys.argv) == 6:
                 respuestas[RBMA[nodo].orden_evaluacion] = False
             
         i=i+1
+        
     
     # Elementos del CAT
     #   RandomInitializer: Inincializa la habilidad del alumno
@@ -154,23 +151,28 @@ elif len(sys.argv) == 6:
     estimator = NumericalSearchEstimator()
     
     # Error estandar - entre menos valor, más precisión en la estimación
-    stopper = MinErrorStopper(0.6)
+    stopper = MinErrorStopper(0.7)
     
-    # 
     nuevaHabilidad = estimator.estimate(items=items, administered_items=temasEvaluados, response_vector=respuestas, est_theta= alumno['theta'])
     detenerse = stopper.stop(administered_items=items[temasEvaluados], theta=nuevaHabilidad)
     siguienteItem = selector.select(items=items, administered_items=temasEvaluados, est_theta=nuevaHabilidad)
-
-    print("-------------------------------------")
-    print("Temas: ", temasEvaluadosIds )
-    print("Respuestas: ", respuestas)
-    print("Habilidad ant: ", alumno["theta"])
-    print("Habilidad Sig: ", nuevaHabilidad)
-    print("Siguiente tema (ID): ", RBMA[ list(RBMA)[siguienteItem] ].id)
-    print("detener evaluacion?: ", detenerse)
-    print("-------------------------------------")
     
+    ''' evaluacion = {
+      "tema": RBMA[ list(RBMA)[siguienteItem] ].id,
+      "detenerse": detenerse,
+      "habilidad_anterior": alumno["theta"],
+      "habilidad_siguiente": nuevaHabilidad
+    }
+    
+    print(json.dumps(evaluacion)) '''
+    
+    print( json.dumps({"mensaje": "Tema evaluado correctamente"}) )
+    
+    alumno['theta_anterior'] = alumno['theta']
     alumno['theta'] = nuevaHabilidad
+    alumno['ultimo'] = RBMA[ list(RBMA)[siguienteItem] ].id
+    alumno['detenerse'] = detenerse
+    
     redAlumno = [alumno,RBMA]
     
     # Almacena el estatus de evaluación

@@ -4891,6 +4891,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4908,43 +4916,118 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       imagenActualNombre: '',
       salidaModulo: '',
       ordenEvaluacion: [],
-      ponderacion: 0
+      ponderacion: 0,
+      estatus: [],
+      ultimoTema: 0
     };
   },
   created: function created() {
-    this.confirmAttempt();
+    var _this2 = this;
+
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this2.obtenerConfiguracion();
+
+            case 2:
+              _context.next = 4;
+              return _this2.obtenerPonderaciones();
+
+            case 4:
+              _context.next = 6;
+              return _this2.getopic();
+
+            case 6:
+              _context.next = 8;
+              return _this2.getpreguntas();
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   },
   methods: {
-    enviarPonderacion: function () {
-      var _enviarPonderacion = _asyncToGenerator(
+    obtenerPonderaciones: function () {
+      var _obtenerPonderaciones = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var parametros;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this3 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                //let parametros = this.configuracion.rbm + "/" + matricula + "/3/" + this.ordenEvaluacion[this.ordenEvaluacion.length - 1] + "/" + this.ponderacion;
-                parametros = this.configuracion.rbm + "/" + matricula + "/3/180/" + this.ponderacion;
-                _context.next = 3;
+                _context2.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
-                  url: "/obtenerTema/" + parametros
+                  url: "/obtenerPonderaciones/" + matricula
                 }).then(function (result) {
-                  //console.log(result.data);
-                  //this.ordenEvaluacion = [result.data]
-                  ///this.ordenEvaluacion += [result.data]
-                  console.log(result);
+                  if (result.data == -1) {
+                    _this3.obtenerPrimerTema();
+
+                    console.log("Debe crearce la RBMA");
+                  } else if (result.data.temas_evaluados.length === 0) {
+                    _this3.ultimoTema = result.data.ultimo;
+                  } else {
+                    _this3.estatus = result.data;
+                    _this3.ultimoTema = result.data.ultimo;
+                  }
                 }, function (error) {
                   console.error(error);
                 });
 
-              case 3:
+              case 2:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2);
+      }));
+
+      function obtenerPonderaciones() {
+        return _obtenerPonderaciones.apply(this, arguments);
+      }
+
+      return obtenerPonderaciones;
+    }(),
+    enviarPonderacion: function () {
+      var _enviarPonderacion = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this4 = this;
+
+        var saltos, tema, parametros;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                saltos = 3;
+                tema = this.ultimoTema;
+                parametros = this.configuracion.rbm + "/" + matricula + "/" + saltos + "/" + tema + "/" + this.ponderacion;
+                _context3.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: 'get',
+                  url: "/obtenerTema/" + parametros
+                }).then(function (result) {
+                  _this4.obtenerPonderaciones();
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
       }));
 
       function enviarPonderacion() {
@@ -4956,29 +5039,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     obtenerPrimerTema: function () {
       var _obtenerPrimerTema = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var _this5 = this;
+
         var parametros;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 parametros = this.configuracion.rbm + "/" + matricula;
-                _context2.next = 3;
+                console.log(parametros);
+                _context4.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: "/arbol/caminosmodulo/" + parametros
                 }).then(function (result) {
-                  console.log(result.data); //this.ordenEvaluacion = [result.data];
+                  _this5.ultimoTema = result.data.tema;
                 }, function (error) {
                   console.error(error);
                 });
 
-              case 3:
+              case 4:
               case "end":
-                return _context2.stop();
+                return _context4.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee4, this);
       }));
 
       function obtenerPrimerTema() {
@@ -4987,76 +5073,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return obtenerPrimerTema;
     }(),
-    confirmAttempt: function confirmAttempt() {
-      var _this2 = this;
-
-      this.$swal.fire({
-        //title: 'Comenzar cuestionario',
-        text: "Para empezar a responder el cuestionario, presiona el boton iniciar ",
-        //icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: '<i class="fas fa-play-circle"></i> Iniciar',
-        confirmButtonColor: '#007BFF',
-        cancelButtonColor: '#6C757D',
-        cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
-        allowOutsideClick: false,
-        allowEscapeKey: false
-      }).then(
-      /*#__PURE__*/
-      function () {
-        var _ref = _asyncToGenerator(
-        /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(result) {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  if (!result.value) {
-                    _context3.next = 9;
-                    break;
-                  }
-
-                  _context3.next = 3;
-                  return _this2.obtenerConfiguracion();
-
-                case 3:
-                  _context3.next = 5;
-                  return _this2.getopic();
-
-                case 5:
-                  _context3.next = 7;
-                  return _this2.getpreguntas();
-
-                case 7:
-                  _context3.next = 10;
-                  break;
-
-                case 9:
-                  _this2.$router.push('tablero');
-
-                case 10:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3);
-        }));
-
-        return function (_x) {
-          return _ref.apply(this, arguments);
-        };
-      }());
-    },
     storeResult: function () {
       var _storeResult = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(ponderacion) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(ponderacion) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 this.pregunta = [];
-                _context4.next = 3;
+                _context5.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/score/add', {
                   id_tema: this.topic[this.numero_tema].id,
                   ponderacion: ponderacion,
@@ -5066,7 +5092,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
-                _context4.next = 5;
+                _context5.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: '/arbol/obtenerCaminos/' + this.topic[this.numero_tema].id
@@ -5076,13 +5102,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee5, this);
       }));
 
-      function storeResult(_x2) {
+      function storeResult(_x) {
         return _storeResult.apply(this, arguments);
       }
 
@@ -5091,28 +5117,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getopic: function () {
       var _getopic = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _this3 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var _this6 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
-                return _context5.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                return _context6.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
-                  url: 'topic/getopic'
+                  url: 'topic/getopic/' + this.ultimoTema
                 }).then(function (result) {
-                  _this3.topic = result.data[0];
+                  _this6.topic = result.data[0];
+                  console.log(result);
                 }, function (error) {
                   console.error(error);
                 }));
 
               case 1:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5);
+        }, _callee6, this);
       }));
 
       function getopic() {
@@ -5122,13 +5149,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return getopic;
     }(),
     obtenerConfiguracion: function obtenerConfiguracion() {
-      var _this4 = this;
+      var _this7 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'get',
         url: 'cuestionario/obtenerconfiguracion'
       }).then(function (result) {
-        _this4.configuracion = result.data;
+        _this7.configuracion = result.data;
         console.log("Configuración del cuestionario");
         console.log(result.data);
       }, function (error) {
@@ -5138,63 +5165,63 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getpreguntas: function () {
       var _getpreguntas = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var _this5 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var _this8 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context9) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
           while (1) {
-            switch (_context9.prev = _context9.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
-                return _context9.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                return _context10.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: 'pregunta/showPreguntas/' + this.topic[this.numero_tema].id
                 }).then(
                 /*#__PURE__*/
                 function () {
-                  var _ref2 = _asyncToGenerator(
+                  var _ref = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(result) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(result) {
                     var _loop, _i, i;
 
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context8) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context9) {
                       while (1) {
-                        switch (_context8.prev = _context8.next) {
+                        switch (_context9.prev = _context9.next) {
                           case 0:
-                            _this5.pregunta = result.data.banco_preguntas;
+                            _this8.pregunta = result.data.banco_preguntas;
                             _loop =
                             /*#__PURE__*/
                             _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _loop(_i) {
-                              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop$(_context7) {
+                              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop$(_context8) {
                                 while (1) {
-                                  switch (_context7.prev = _context7.next) {
+                                  switch (_context8.prev = _context8.next) {
                                     case 0:
-                                      _this5.pregunta[_i].imagenes = [];
-                                      _context7.next = 3;
+                                      _this8.pregunta[_i].imagenes = [];
+                                      _context8.next = 3;
                                       return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                                         method: 'get',
-                                        url: '/imagen/pregunta/' + _this5.pregunta[_i].id_pregunta
+                                        url: '/imagen/pregunta/' + _this8.pregunta[_i].id_pregunta
                                       }).then(
                                       /*#__PURE__*/
                                       function () {
-                                        var _ref3 = _asyncToGenerator(
+                                        var _ref2 = _asyncToGenerator(
                                         /*#__PURE__*/
-                                        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(resultado) {
-                                          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+                                        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(resultado) {
+                                          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
                                             while (1) {
-                                              switch (_context6.prev = _context6.next) {
+                                              switch (_context7.prev = _context7.next) {
                                                 case 0:
-                                                  _this5.pregunta[_i].imagenes = resultado.data.imagenes[0];
+                                                  _this8.pregunta[_i].imagenes = resultado.data.imagenes[0];
 
                                                 case 1:
                                                 case "end":
-                                                  return _context6.stop();
+                                                  return _context7.stop();
                                               }
                                             }
-                                          }, _callee6);
+                                          }, _callee7);
                                         }));
 
-                                        return function (_x4) {
-                                          return _ref3.apply(this, arguments);
+                                        return function (_x3) {
+                                          return _ref2.apply(this, arguments);
                                         };
                                       }(), function (error) {
                                         console.error(error);
@@ -5202,7 +5229,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                                     case 3:
                                     case "end":
-                                      return _context7.stop();
+                                      return _context8.stop();
                                   }
                                 }
                               }, _loop);
@@ -5210,41 +5237,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             _i = 0;
 
                           case 3:
-                            if (!(_i < _this5.pregunta.length)) {
-                              _context8.next = 8;
+                            if (!(_i < _this8.pregunta.length)) {
+                              _context9.next = 8;
                               break;
                             }
 
-                            return _context8.delegateYield(_loop(_i), "t0", 5);
+                            return _context9.delegateYield(_loop(_i), "t0", 5);
 
                           case 5:
                             _i++;
-                            _context8.next = 3;
+                            _context9.next = 3;
                             break;
 
                           case 8:
-                            console.log(_this5.pregunta);
+                            console.log(_this8.pregunta);
 
-                            for (i = 0; i < _this5.pregunta.length; i++) {
-                              if (_this5.pregunta[i].tipo == 5) _this5.pCalculadas[i] = _this5.pregunta[i].id_pregunta;else if (_this5.pregunta[i].tipo == 6) _this5.pCalculadasMultiples[i] = _this5.pregunta[i].id_pregunta;
+                            for (i = 0; i < _this8.pregunta.length; i++) {
+                              if (_this8.pregunta[i].tipo == 5) _this8.pCalculadas[i] = _this8.pregunta[i].id_pregunta;else if (_this8.pregunta[i].tipo == 6) _this8.pCalculadasMultiples[i] = _this8.pregunta[i].id_pregunta;
                             }
 
-                            _context8.next = 12;
-                            return _this5.getComodines();
+                            _context9.next = 12;
+                            return _this8.getComodines();
 
                           case 12:
-                            return _context8.abrupt("return", result.data);
+                            return _context9.abrupt("return", result.data);
 
                           case 13:
                           case "end":
-                            return _context8.stop();
+                            return _context9.stop();
                         }
                       }
-                    }, _callee7);
+                    }, _callee8);
                   }));
 
-                  return function (_x3) {
-                    return _ref2.apply(this, arguments);
+                  return function (_x2) {
+                    return _ref.apply(this, arguments);
                   };
                 }(), function (error) {
                   console.error(error);
@@ -5252,10 +5279,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 1:
               case "end":
-                return _context9.stop();
+                return _context10.stop();
             }
           }
-        }, _callee8, this);
+        }, _callee9, this);
       }));
 
       function getpreguntas() {
@@ -5267,13 +5294,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getComodines: function () {
       var _getComodines = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-        var _this6 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+        var _this9 = this;
 
         var preguntasCalculadas;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
           while (1) {
-            switch (_context11.prev = _context11.next) {
+            switch (_context12.prev = _context12.next) {
               case 0:
                 preguntasCalculadas = this.pCalculadas.concat(this.pCalculadasMultiples);
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/getComodines/', {
@@ -5281,27 +5308,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(
                 /*#__PURE__*/
                 function () {
-                  var _ref4 = _asyncToGenerator(
+                  var _ref3 = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(result) {
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(result) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
                       while (1) {
-                        switch (_context10.prev = _context10.next) {
+                        switch (_context11.prev = _context11.next) {
                           case 0:
-                            _this6.comodines = result.data.comodines;
-                            _context10.next = 3;
-                            return _this6.convertirComodines();
+                            _this9.comodines = result.data.comodines;
+                            _context11.next = 3;
+                            return _this9.convertirComodines();
 
                           case 3:
                           case "end":
-                            return _context10.stop();
+                            return _context11.stop();
                         }
                       }
-                    }, _callee9);
+                    }, _callee10);
                   }));
 
-                  return function (_x5) {
-                    return _ref4.apply(this, arguments);
+                  return function (_x4) {
+                    return _ref3.apply(this, arguments);
                   };
                 }())["catch"](function (err) {
                   console.log(err);
@@ -5309,10 +5336,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
           }
-        }, _callee10, this);
+        }, _callee11, this);
       }));
 
       function getComodines() {
@@ -5324,11 +5351,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     convertirComodines: function () {
       var _convertirComodines = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
         var i, valor, separado, random, j, power;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
           while (1) {
-            switch (_context12.prev = _context12.next) {
+            switch (_context13.prev = _context13.next) {
               case 0:
                 for (i = 0; i < this.comodines.length; i++) {
                   valor = this.comodines[i].valor;
@@ -5349,15 +5376,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-                _context12.next = 3;
+                _context13.next = 3;
                 return this.reemplazarComodinesEnPregunta();
 
               case 3:
               case "end":
-                return _context12.stop();
+                return _context13.stop();
             }
           }
-        }, _callee11, this);
+        }, _callee12, this);
       }));
 
       function convertirComodines() {
@@ -5369,11 +5396,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     reemplazarComodinesEnPregunta: function () {
       var _reemplazarComodinesEnPregunta = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
         var i, comodinesPregunta, j, k;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context14) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
                 for (i = 0; i < this.pregunta.length; i++) {
                   if (this.pregunta[i].tipo == 5) {
@@ -5409,15 +5436,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 } //}
 
 
-                _context13.next = 3;
+                _context14.next = 3;
                 return this.cargarCuestionario(this.topic.nombre_tema, this.pregunta);
 
               case 3:
               case "end":
-                return _context13.stop();
+                return _context14.stop();
             }
           }
-        }, _callee12, this);
+        }, _callee13, this);
       }));
 
       function reemplazarComodinesEnPregunta() {
@@ -5439,12 +5466,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getrespuestas: function () {
       var _getrespuestas = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context14) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14(id) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context15) {
           while (1) {
-            switch (_context14.prev = _context14.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
-                return _context14.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                return _context15.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: '/pregunta/respuestas/' + id
                 }).then(function (result) {
@@ -5455,13 +5482,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 1:
               case "end":
-                return _context14.stop();
+                return _context15.stop();
             }
           }
-        }, _callee13);
+        }, _callee14);
       }));
 
-      function getrespuestas(_x6) {
+      function getrespuestas(_x5) {
         return _getrespuestas.apply(this, arguments);
       }
 
@@ -5475,26 +5502,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     cargarCuestionario: function () {
       var _cargarCuestionario = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17(topic, prguntass) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18(topic, prguntass) {
         var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, quiz, _this, populate, _populate, guess, showProgress, showScores, _showScores;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee17$(_context18) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee18$(_context19) {
           while (1) {
-            switch (_context18.prev = _context18.next) {
+            switch (_context19.prev = _context19.next) {
               case 0:
-                _showScores = function _ref13() {
+                _showScores = function _ref12() {
                   _showScores = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16() {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17() {
                     var gameOverHTML, element;
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context17) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee17$(_context18) {
                       while (1) {
-                        switch (_context17.prev = _context17.next) {
+                        switch (_context18.prev = _context18.next) {
                           case 0:
                             gameOverHTML = "<h1>Resultados</h1>";
                             gameOverHTML += "<center> <h4>Estos son tus resultados</h4> </center>";
                             gameOverHTML += "<center> <table><tr><th>Tema</th><th>Dominio</th></tr>";
-                            _context17.next = 5;
+                            _context18.next = 5;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/arbol/obtenerResultados').then(function (res) {
                               for (var i = 0; i < res.data.length; i++) {
                                 if (res.data[i].clasificacion == 1) {
@@ -5522,25 +5549,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 7:
                           case "end":
-                            return _context17.stop();
+                            return _context18.stop();
                         }
                       }
-                    }, _callee16);
+                    }, _callee17);
                   }));
                   return _showScores.apply(this, arguments);
                 };
 
-                showScores = function _ref12() {
+                showScores = function _ref11() {
                   return _showScores.apply(this, arguments);
                 };
 
-                showProgress = function _ref11() {
+                showProgress = function _ref10() {
                   var currentQuestionNumber = quiz.questionIndex + 1;
                   var element = document.getElementById("progress");
                   element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + quiz.questions.length;
                 };
 
-                guess = function _ref10() {
+                guess = function _ref9() {
                   var answers = quiz.getQuestionIndex().answer;
                   var choices = quiz.getQuestionIndex().choices;
                   opc_check = 0;
@@ -5560,53 +5587,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 };
 
-                _populate = function _ref9() {
+                _populate = function _ref8() {
                   _populate = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15() {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16() {
                     var total, element, imgstr, ii, tema, opcionesAux, choices, input_respuesta, zona_botones, div_verdadero, div_falso, label_verdadero, label_falso, input_verdadero, input_falso, i, label, span, button, power;
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context16) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context17) {
                       while (1) {
-                        switch (_context16.prev = _context16.next) {
+                        switch (_context17.prev = _context17.next) {
                           case 0:
                             if (!quiz.isEnded()) {
-                              _context16.next = 16;
+                              _context17.next = 17;
                               break;
                             }
 
                             if (!(quiz.questions.length > 0)) {
-                              _context16.next = 14;
+                              _context17.next = 15;
                               break;
                             }
 
                             total = Math.round(quiz.score / quiz.questions.length * 100);
-                            _context16.next = 5;
+                            _context17.next = 5;
                             return _this.storeResult(total);
 
                           case 5:
                             if (!(_this.numero_tema <= _this.pregunta.length - 1)) {
-                              _context16.next = 13;
+                              _context17.next = 14;
                               break;
                             }
 
                             quiz = "";
                             questions = [];
                             _this.numero_tema = _this.numero_tema + 1;
-                            _context16.next = 11;
+                            console.log("Estoy en la linea 1029");
+                            _context17.next = 12;
                             return _this.getpreguntas();
 
-                          case 11:
-                            _context16.next = 14;
+                          case 12:
+                            _context17.next = 15;
                             break;
-
-                          case 13:
-                            showScores();
 
                           case 14:
-                            _context16.next = 87;
+                            showScores();
+
+                          case 15:
+                            _context17.next = 88;
                             break;
 
-                          case 16:
+                          case 17:
                             console.log();
                             document.getElementById("buttons").innerHTML = "";
                             element = document.getElementById("question").innerHTML = quiz.getQuestionIndex().text;
@@ -5626,11 +5654,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             tema.innerHTML = " <b> Tema: </b> " + _this.topic[_this.numero_tema].nombre_tema;
 
                             if (!(quiz.getQuestionIndex().type == 4)) {
-                              _context16.next = 28;
+                              _context17.next = 29;
                               break;
                             }
 
-                            _context16.next = 28;
+                            _context17.next = 29;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opciones/' + quiz.getQuestionIndex().id
@@ -5646,15 +5674,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 28:
+                          case 29:
                             opcionesAux = [];
 
                             if (!(quiz.getQuestionIndex().type == 6)) {
-                              _context16.next = 32;
+                              _context17.next = 33;
                               break;
                             }
 
-                            _context16.next = 32;
+                            _context17.next = 33;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opcionescalculadasmultiples/' + quiz.getQuestionIndex().id
@@ -5671,31 +5699,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 32:
+                          case 33:
                             choices = quiz.getQuestionIndex().choices;
-                            _context16.t0 = quiz.getQuestionIndex().type;
-                            _context16.next = _context16.t0 === 1 ? 36 : _context16.t0 === 2 ? 43 : _context16.t0 === 3 ? 50 : _context16.t0 === 4 ? 73 : _context16.t0 === 5 ? 77 : _context16.t0 === 6 ? 84 : 86;
+                            _context17.t0 = quiz.getQuestionIndex().type;
+                            _context17.next = _context17.t0 === 1 ? 37 : _context17.t0 === 2 ? 44 : _context17.t0 === 3 ? 51 : _context17.t0 === 4 ? 74 : _context17.t0 === 5 ? 78 : _context17.t0 === 6 ? 85 : 87;
                             break;
 
-                          case 36:
+                          case 37:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "text";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context16.abrupt("break", 86);
+                            return _context17.abrupt("break", 87);
 
-                          case 43:
+                          case 44:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context16.abrupt("break", 86);
+                            return _context17.abrupt("break", 87);
 
-                          case 50:
+                          case 51:
                             div_verdadero = document.createElement("div");
                             div_falso = document.createElement("div");
                             label_verdadero = document.createElement("label");
@@ -5718,9 +5746,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(div_verdadero);
                             zona_botones.appendChild(div_falso);
-                            return _context16.abrupt("break", 86);
+                            return _context17.abrupt("break", 87);
 
-                          case 73:
+                          case 74:
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
 
@@ -5741,18 +5769,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context16.abrupt("break", 86);
+                            return _context17.abrupt("break", 87);
 
-                          case 77:
+                          case 78:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context16.abrupt("break", 86);
+                            return _context17.abrupt("break", 87);
 
-                          case 84:
+                          case 85:
                             for (i = 0; i < choices.length; i++) {
                               label = document.createElement("label"); //label.innerHTML = choices[i];
 
@@ -5774,26 +5802,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context16.abrupt("break", 86);
-
-                          case 86:
-                            showProgress();
+                            return _context17.abrupt("break", 87);
 
                           case 87:
+                            showProgress();
+
+                          case 88:
                           case "end":
-                            return _context16.stop();
+                            return _context17.stop();
                         }
                       }
-                    }, _callee15);
+                    }, _callee16);
                   }));
                   return _populate.apply(this, arguments);
                 };
 
-                populate = function _ref8() {
+                populate = function _ref7() {
                   return _populate.apply(this, arguments);
                 };
 
-                Question = function _ref7(id, text, choices, answer, type, up, down, value, decimales, imagenes) {
+                Question = function _ref6(id, text, choices, answer, type, up, down, value, decimales, imagenes) {
                   this.id = id;
                   this.text = text;
                   this.choices = choices;
@@ -5806,7 +5834,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   this.imagenes = imagenes;
                 };
 
-                Quiz = function _ref6(questions) {
+                Quiz = function _ref5(questions) {
                   this.score = 0;
                   this.questions = questions;
                   this.questionIndex = 0;
@@ -5921,13 +5949,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /*#__PURE__*/
                 _asyncToGenerator(
                 /*#__PURE__*/
-                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15() {
                   var respuestas_correctas, respuestas_incorretas, opc, resp, input_verdadero, input_falso, chequeada, i, lbl, opcion_text;
-                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context15) {
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context16) {
                     while (1) {
-                      switch (_context15.prev = _context15.next) {
+                      switch (_context16.prev = _context16.next) {
                         case 0:
-                          _context15.next = 2;
+                          _context16.next = 2;
                           return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                             method: 'get',
                             url: '/pregunta/respuestas/' + quiz.getQuestionIndex().id
@@ -5961,8 +5989,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           respuestas_correctas = 0;
                           respuestas_incorretas = 0; // COMPARA EL TIPO DE PREGUNTA
 
-                          _context15.t0 = quiz.getQuestionIndex().type;
-                          _context15.next = _context15.t0 === 1 ? 7 : _context15.t0 === 2 ? 16 : _context15.t0 === 3 ? 22 : _context15.t0 === 4 ? 32 : _context15.t0 === 5 ? 39 : _context15.t0 === 6 ? 48 : 55;
+                          _context16.t0 = quiz.getQuestionIndex().type;
+                          _context16.next = _context16.t0 === 1 ? 7 : _context16.t0 === 2 ? 16 : _context16.t0 === 3 ? 22 : _context16.t0 === 4 ? 32 : _context16.t0 === 5 ? 39 : _context16.t0 === 6 ? 48 : 55;
                           break;
 
                         case 7:
@@ -5972,11 +6000,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 
                           if (!(resp == "")) {
-                            _context15.next = 14;
+                            _context16.next = 14;
                             break;
                           }
 
-                          //_this.$swal.fire("Por favor ingresa una respuesta valida");
                           _this.$swal.fire({
                             position: 'center',
                             icon: 'warning',
@@ -5985,17 +6012,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context15.abrupt("return");
+                          return _context16.abrupt("return");
 
                         case 14:
                           if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context15.abrupt("break", 55);
+                          return _context16.abrupt("break", 55);
 
                         case 16:
                           opc = document.getElementById("input_respuesta");
 
                           if (!(opc.value == "")) {
-                            _context15.next = 20;
+                            _context16.next = 20;
                             break;
                           }
 
@@ -6008,11 +6035,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context15.abrupt("return");
+                          return _context16.abrupt("return");
 
                         case 20:
                           if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context15.abrupt("break", 55);
+                          return _context16.abrupt("break", 55);
 
                         case 22:
                           input_verdadero = document.getElementById("input_verdadero");
@@ -6022,7 +6049,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           if (input_falso.checked && !input_verdadero.checked) resp = "falso";
 
                           if (!(input_verdadero.checked === false && input_falso.checked === false)) {
-                            _context15.next = 30;
+                            _context16.next = 30;
                             break;
                           }
 
@@ -6035,11 +6062,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context15.abrupt("return");
+                          return _context16.abrupt("return");
 
                         case 30:
                           if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context15.abrupt("break", 55);
+                          return _context16.abrupt("break", 55);
 
                         case 32:
                           chequeada = false;
@@ -6053,7 +6080,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           }
 
                           if (chequeada) {
-                            _context15.next = 37;
+                            _context16.next = 37;
                             break;
                           }
 
@@ -6066,7 +6093,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context15.abrupt("return");
+                          return _context16.abrupt("return");
 
                         case 37:
                           for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
@@ -6084,7 +6111,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             }
                           }
 
-                          return _context15.abrupt("break", 55);
+                          return _context16.abrupt("break", 55);
 
                         case 39:
                           opc = document.getElementById("input_respuesta");
@@ -6093,7 +6120,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 
                           if (!(resp == "")) {
-                            _context15.next = 46;
+                            _context16.next = 46;
                             break;
                           }
 
@@ -6106,11 +6133,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context15.abrupt("return");
+                          return _context16.abrupt("return");
 
                         case 46:
                           if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context15.abrupt("break", 55);
+                          return _context16.abrupt("break", 55);
 
                         case 48:
                           chequeada = false;
@@ -6124,7 +6151,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           }
 
                           if (chequeada) {
-                            _context15.next = 53;
+                            _context16.next = 53;
                             break;
                           }
 
@@ -6137,7 +6164,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context15.abrupt("return");
+                          return _context16.abrupt("return");
 
                         case 53:
                           for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
@@ -6155,7 +6182,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             }
                           }
 
-                          return _context15.abrupt("break", 55);
+                          return _context16.abrupt("break", 55);
 
                         case 55:
                           if (respuestas_correctas == quiz.getQuestionIndex().answer.length && respuestas_incorretas == 0) {
@@ -6194,10 +6221,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                         case 58:
                         case "end":
-                          return _context15.stop();
+                          return _context16.stop();
                       }
                     }
-                  }, _callee14);
+                  }, _callee15);
                 })));
                 _this = this;
                 ; //Asegurar que solo sean checkeados las posibles respuestas
@@ -6210,13 +6237,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 25:
               case "end":
-                return _context18.stop();
+                return _context19.stop();
             }
           }
-        }, _callee17, this);
+        }, _callee18, this);
       }));
 
-      function cargarCuestionario(_x7, _x8) {
+      function cargarCuestionario(_x6, _x7) {
         return _cargarCuestionario.apply(this, arguments);
       }
 
@@ -6613,6 +6640,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Ejemplo.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Ejemplo.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {},
+  methods: {}
 });
 
 /***/ }),
@@ -7768,6 +7847,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7787,40 +7870,47 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       apellidoMaterno: '',
       matricula: '',
       foto: ''
-    }, _defineProperty(_ref, "id_rol", ''), _defineProperty(_ref, "rol", ''), _ref;
+    }, _defineProperty(_ref, "id_rol", ''), _defineProperty(_ref, "rol", ''), _defineProperty(_ref, "saludo", ''), _ref;
   },
   mounted: function mounted() {
-    this.getpregunta();
-    this.getTemas();
-    this.getadmins();
-    this.getprofesor();
-    this.getalumnos();
-    this.getexperto();
-    this.id = window.idUsuario;
-    this.id_rol = window.rol;
+    /* this.getpregunta();
+     this.getTemas();
+     this.getadmins();
+     this.getprofesor();
+     this.getalumnos();
+     this.getexperto();
+      this.id = window.idUsuario;
+     this.id_rol = window.rol;
     this.nombre = window.nombre;
     this.apellidoPaterno = window.apellido_paterno;
     this.apellidoMaterno = window.apellido_materno;
     this.matricula = window.matricula;
     this.foto = window.foto;
-
-    if (this.id_rol === '1') {
-      this.rol = "Administrador";
-    }
-
-    if (this.id_rol === '2') {
-      this.rol = "Experto";
-    }
-
-    if (this.id_rol === '3') {
-      this.rol = "Profesor";
-    }
-
-    if (this.id_rol === '4') {
-      this.rol = "Alumno";
-    }
+      if (this.id_rol === '1') {
+         this.rol = "Administrador"
+     }
+      if (this.id_rol === '2') {
+         this.rol = "Experto"
+     }
+      if (this.id_rol === '3') {
+         this.rol = "Profesor"
+     }
+      if (this.id_rol === '4') {
+         this.rol = "Alumno"
+     }*/
+    this.obtenerSaludo();
   },
   methods: {
+    obtenerSaludo: function obtenerSaludo() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        method: 'get',
+        url: 'saludar'
+      }).then(function (result) {
+        console.log(result.data.saludo); //this.saludo = result.data;
+      }, function (error) {
+        console.error(error);
+      });
+    },
     getpregunta: function getpregunta() {
       var _this = this;
 
@@ -16317,6 +16407,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -17036,7 +17137,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.pregresp {\n    border: 2px solid #7da5e0;\n    margin: 5px;\n    font-family: Arial, Verdana, Helvetica, sans-serif;\n    font-size: 15px;\n    font-weight: bold;\n}\n.pregunta {\n    color: #7da5e0;\n}\n.respuestas {\n    color: #000000;\n}\n.grid {\n    width: 100%;\n    height: 100%;\n    margin: 0 auto;\n    background-color: #fff;\n    padding: 10px 50px 50px 50px;\n}\n.grid h1 {\n    text-align: center;\n    color: #000000;\n    padding: 2px 0px;\n    border-radius: 50px;\n}\n#score {\n    color: #5A6772;\n    text-align: center;\n    font-size: 30px;\n}\n.buttons {\n    margin-top: 30px;\n}\n#btn0,\n#btn1,\n#btn2,\n#btn3,\n#next {\n\n    width: 250px;\n    font-size: 20px;\n    margin: 10px 40px 10px 0px;\n    padding: 10px 10px;\n}\n.container {\n    display: block;\n    position: relative;\n    padding-left: 35px;\n    margin-bottom: 12px;\n    cursor: pointer;\n    font-size: 22px;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n}\n.container input {\n    position: absolute;\n    opacity: 0;\n    cursor: pointer;\n    height: 0;\n    width: 0;\n}\n.checkmark {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 25px;\n    width: 25px;\n    background-color: #eee;\n}\n.container:hover input~.checkmark {\n    background-color: #ccc;\n}\n.container input:checked~.checkmark {\n    background-color: #2196F3;\n}\n.checkmark:after {\n    content: \"\";\n    position: absolute;\n    display: none;\n}\n.container input:checked~.checkmark:after {\n    display: block;\n}\n.container .checkmark:after {\n    left: 9px;\n    top: 5px;\n    width: 5px;\n    height: 10px;\n    border: solid white;\n    border-width: 0 3px 3px 0;\n    -webkit-transform: rotate(45deg);\n    -ms-transform: rotate(45deg);\n    transform: rotate(45deg);\n}\n#carouselExampleIndicators {\n    margin-left: 200px;\n    margin-right: 200px;\n}\n.item img {\n    margin-left: auto;\n    margin-right: auto;\n}\n.selected img {\n    opacity: 0.5;\n}\n.carousel-caption {\n    position: relative;\n    left: auto;\n    right: auto;\n}\n.carousel-control.left,\n.carousel-control.right {\n    background: none;\n    border: none;\n}\n.carousel-control.left {\n    margin-left: -300px;\n}\n.carousel-control.right {\n    margin-right: -300px;\n}\n.carousel-control {\n    width: 0%;\n}\n\n", ""]);
+exports.push([module.i, "\n.pregresp {\n  border: 2px solid #7da5e0;\n  margin: 5px;\n  font-family: Arial, Verdana, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: bold;\n}\n.pregunta {\n  color: #7da5e0;\n}\n.respuestas {\n  color: #000000;\n}\n.grid {\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n  background-color: #fff;\n  padding: 10px 50px 50px 50px;\n}\n.grid h1 {\n  text-align: center;\n  color: #000000;\n  padding: 2px 0px;\n  border-radius: 50px;\n}\n#score {\n  color: #5A6772;\n  text-align: center;\n  font-size: 30px;\n}\n.buttons {\n  margin-top: 30px;\n}\n#btn0,\n#btn1,\n#btn2,\n#btn3,\n#next {\n  width: 250px;\n  font-size: 20px;\n  margin: 10px 40px 10px 0px;\n  padding: 10px 10px;\n}\n.container {\n  display: block;\n  position: relative;\n  padding-left: 35px;\n  margin-bottom: 12px;\n  cursor: pointer;\n  font-size: 22px;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n.checkmark {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 25px;\n  width: 25px;\n  background-color: #eee;\n}\n.container:hover input~.checkmark {\n  background-color: #ccc;\n}\n.container input:checked~.checkmark {\n  background-color: #2196F3;\n}\n.checkmark:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n.container input:checked~.checkmark:after {\n  display: block;\n}\n.container .checkmark:after {\n  left: 9px;\n  top: 5px;\n  width: 5px;\n  height: 10px;\n  border: solid white;\n  border-width: 0 3px 3px 0;\n  -webkit-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  transform: rotate(45deg);\n}\n#carouselExampleIndicators {\n  margin-left: 200px;\n  margin-right: 200px;\n}\n.item img {\n  margin-left: auto;\n  margin-right: auto;\n}\n.selected img {\n  opacity: 0.5;\n}\n.carousel-caption {\n  position: relative;\n  left: auto;\n  right: auto;\n}\n.carousel-control.left,\n.carousel-control.right {\n  background: none;\n  border: none;\n}\n.carousel-control.left {\n  margin-left: -300px;\n}\n.carousel-control.right {\n  margin-right: -300px;\n}\n.carousel-control {\n  width: 0%;\n}\n", ""]);
 
 // exports
 
@@ -53314,125 +53415,7 @@ var render = function() {
               _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "lblTema" } }, [
-                        _vm._v("Tema")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value:
-                              _vm.ordenEvaluacion[
-                                _vm.ordenEvaluacion.length - 1
-                              ],
-                            expression:
-                              "ordenEvaluacion[ordenEvaluacion.length - 1]"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "inpTema",
-                          placeholder: "Id tema"
-                        },
-                        domProps: {
-                          value:
-                            _vm.ordenEvaluacion[_vm.ordenEvaluacion.length - 1]
-                        },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.ordenEvaluacion,
-                              _vm.ordenEvaluacion.length - 1,
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "lblPonderacion" } }, [
-                        _vm._v("Ponderación")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.ponderacion,
-                            expression: "ponderacion"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "inpPonderacion",
-                          placeholder: "Ponderación"
-                        },
-                        domProps: { value: _vm.ponderacion },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.ponderacion = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" },
-                        on: { click: _vm.enviarPonderacion }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Eviar ponderación\n                                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: { click: _vm.obtenerPrimerTema }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Primer tema\n                                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("label", {
-                      attrs: { id: "respuestaModulo" },
-                      model: {
-                        value: _vm.ordenEvaluacion,
-                        callback: function($$v) {
-                          _vm.ordenEvaluacion = $$v
-                        },
-                        expression: "ordenEvaluacion"
-                      }
-                    })
-                  ])
-                ]),
+                _c("div", { staticClass: "row" }),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-12" }, [
@@ -53937,7 +53920,7 @@ var render = function() {
           )
         ]
       ),
-      _vm._v("\n\n        {{-- "),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -54533,8 +54516,7 @@ var render = function() {
             ]
           )
         ]
-      ),
-      _vm._v(" --}}\n    ")
+      )
     ])
   ])
 }
@@ -54676,6 +54658,65 @@ var staticRenderFns = [
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
         [_vm._v("Funciones")]
       )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Ejemplo.vue?vue&type=template&id=79da4042&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Ejemplo.vue?vue&type=template&id=79da4042& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content-wrapper" }, [
+      _c("div", { staticClass: "content-header" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row mr-2 ml-2" }, [
+            _c("div", { staticClass: "col-sm-6" }, [
+              _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Inicio")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6" }, [
+              _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
+                _c("li", { staticClass: "breadcrumb-item" }, [
+                  _c("a", { attrs: { href: "#" } }, [_vm._v("Inicio")])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card shadow m-2" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h1", [
+              _vm._v("\n                  Este es el componente de Ejemplo \n")
+            ])
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -55985,177 +56026,11 @@ var render = function() {
     _c("div", { staticClass: "col-md-12" }, [
       _c("div", { staticClass: "card shadow m-2" }, [
         _c("div", { staticClass: "card-body" }, [
-          this.id_rol == 4
-            ? _c("div", [
-                _c("h1", [
-                  _vm._v(
-                    "Bienvenido alumno: " +
-                      _vm._s(
-                        this.nombre +
-                          " " +
-                          this.apellidoPaterno +
-                          " " +
-                          this.apellidoMaterno
-                      ) +
-                      " "
-                  )
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.id_rol == 3
-            ? _c("div", [
-                _c("h1", [
-                  _vm._v(
-                    "Bienvenido profesor: " +
-                      _vm._s(
-                        this.nombre +
-                          " " +
-                          this.apellidoPaterno +
-                          " " +
-                          this.apellidoMaterno
-                      ) +
-                      " "
-                  )
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.id_rol == 2
-            ? _c("div", [
-                _c("h1", [
-                  _vm._v(
-                    "Bienvenido experto: " +
-                      _vm._s(
-                        this.nombre +
-                          " " +
-                          this.apellidoPaterno +
-                          " " +
-                          this.apellidoMaterno
-                      ) +
-                      " "
-                  )
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.id_rol == 1
-            ? _c("div", [
-                _c("h1", [
-                  _vm._v(
-                    "Bienvenido administrador: " +
-                      _vm._s(
-                        this.nombre +
-                          " " +
-                          this.apellidoPaterno +
-                          " " +
-                          this.apellidoMaterno
-                      ) +
-                      " "
-                  )
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.id_rol == 1
-            ? _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("div", { staticClass: "small-box bg-gradient-success" }, [
-                    _c("div", { staticClass: "inner" }, [
-                      _c("h3", [_vm._v(_vm._s(_vm.admins))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Administradores")])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _vm._m(2)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("div", { staticClass: "small-box bg-gradient-warning" }, [
-                    _c("div", { staticClass: "inner" }, [
-                      _c("h3", [_vm._v(_vm._s(_vm.experto))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Expertos")])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _vm._m(4)
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.id_rol == 1 || this.id_rol == 3
-            ? _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("div", { staticClass: "small-box bg-gradient-primary" }, [
-                    _c("div", { staticClass: "inner" }, [
-                      _c("h3", [_vm._v(_vm._s(_vm.alumnos))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Alumnos")])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _vm._m(6)
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("div", { staticClass: "small-box bg-gradient-info" }, [
-                    _c("div", { staticClass: "inner" }, [
-                      _c("h3", [_vm._v(_vm._s(_vm.pregunta))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Preguntas")])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _vm._m(8)
-                  ])
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          this.id_rol == 1
-            ? _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "div",
-                    { staticClass: "small-box bg-gradient-secondary" },
-                    [
-                      _c("div", { staticClass: "inner" }, [
-                        _c("h3", [_vm._v(_vm._s(_vm.temas))]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("Temas del area disciplinar")])
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(9),
-                      _vm._v(" "),
-                      _vm._m(10)
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("div", { staticClass: "small-box bg-gradient-primary" }, [
-                    _c("div", { staticClass: "inner" }, [
-                      _c("h3", [_vm._v(_vm._s(_vm.profesor))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v("Docentes")])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _vm._m(12)
-                  ])
-                ])
-              ])
-            : _vm._e()
+          _vm._v(
+            "\n              \n                " +
+              _vm._s(_vm.saludo) +
+              "\n\n                "
+          )
         ])
       ])
     ])
@@ -56182,108 +56057,6 @@ var staticRenderFns = [
           ])
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-user-shield" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                Más Información "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-user-tie" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                Más Información "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-graduation-cap" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                Más Información "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-question" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                Más Información"),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-calculator" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                Más Información "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("i", { staticClass: "fas fa-chalkboard-teacher" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n                                Más Información "),
-      _c("i", { staticClass: "fas fa-arrow-circle-right" })
     ])
   }
 ]
@@ -65733,6 +65506,32 @@ var render = function() {
                           _c("p", [
                             _vm._v(
                               "\n\t\t\t\t\t\t\t\tGrafo de alumnos\n\t\t\t\t\t\t\t"
+                            )
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              this.id_rol == 1 || this.id_rol == 2
+                ? _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: { id: "navTemas", to: "/ejemplo" }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-user-tie nav-icon" }),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\tComponente Ejemplo\n\t\t\t\t\t\t\t"
                             )
                           ])
                         ]
@@ -82964,6 +82763,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Ejemplo.vue":
+/*!****************************************************!*\
+  !*** ./resources/assets/js/components/Ejemplo.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Ejemplo_vue_vue_type_template_id_79da4042___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Ejemplo.vue?vue&type=template&id=79da4042& */ "./resources/assets/js/components/Ejemplo.vue?vue&type=template&id=79da4042&");
+/* harmony import */ var _Ejemplo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Ejemplo.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/Ejemplo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Ejemplo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Ejemplo_vue_vue_type_template_id_79da4042___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Ejemplo_vue_vue_type_template_id_79da4042___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/Ejemplo.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Ejemplo.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/assets/js/components/Ejemplo.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ejemplo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Ejemplo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Ejemplo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ejemplo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/Ejemplo.vue?vue&type=template&id=79da4042&":
+/*!***********************************************************************************!*\
+  !*** ./resources/assets/js/components/Ejemplo.vue?vue&type=template&id=79da4042& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ejemplo_vue_vue_type_template_id_79da4042___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Ejemplo.vue?vue&type=template&id=79da4042& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Ejemplo.vue?vue&type=template&id=79da4042&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ejemplo_vue_vue_type_template_id_79da4042___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ejemplo_vue_vue_type_template_id_79da4042___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/Expertos.vue":
 /*!*****************************************************!*\
   !*** ./resources/assets/js/components/Expertos.vue ***!
@@ -84798,7 +84666,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_subir_Imagenes__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @/components/subir_Imagenes */ "./resources/assets/js/components/subir_Imagenes.vue");
 /* harmony import */ var _components_GrafoAlumnos__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @/components/GrafoAlumnos */ "./resources/assets/js/components/GrafoAlumnos.vue");
 /* harmony import */ var _components_configuracionModulo__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @/components/configuracionModulo */ "./resources/assets/js/components/configuracionModulo.vue");
+/* harmony import */ var _components_Ejemplo__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @/components/Ejemplo */ "./resources/assets/js/components/Ejemplo.vue");
 // resources/assets/js/router/index.js
+
 
 
 
@@ -84934,6 +84804,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/configuracion/modulo',
     name: 'configuracionModulo',
     component: _components_configuracionModulo__WEBPACK_IMPORTED_MODULE_23__["default"]
+  }, {
+    path: '/ejemplo',
+    name: 'componenteejemplo',
+    component: _components_Ejemplo__WEBPACK_IMPORTED_MODULE_24__["default"]
   }, {
     path: '*',
     name: 'NotFound',

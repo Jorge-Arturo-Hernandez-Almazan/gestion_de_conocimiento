@@ -204,6 +204,17 @@
 							</p>
 						</router-link>
 					</li>
+          
+          
+          <li v-if="this.id_rol==1 || this.id_rol==2"  class="nav-item">							
+						<router-link class="nav-link" id="navTemas" to="/ejemplo">
+							<i class="fas fa-user-tie nav-icon"></i> 
+							<p>
+								Componente Ejemplo
+							</p>
+						</router-link>
+					</li>
+          
 
 
 					<!-- <li v-if="this.id_rol==1 || this.id_rol==2 || this.id_rol==3"  class="nav-item">							
