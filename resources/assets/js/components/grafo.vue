@@ -701,6 +701,12 @@
             }
         },
         mounted() {
+          
+            let dndTree = document.createElement('script')
+            dndTree.setAttribute('src', 'arbol/experto/dndTree.js')
+            document.head.appendChild(dndTree)
+          
+          
 
 
             $('document').ready(function () {

@@ -5,12 +5,12 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="page-title m-0">
-                          Grafo de conocimiento de Alumno
+                          Rutas de aprendizaje
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#"> Grafo de conocimiento</a></li>
+                            <li class="breadcrumb-item"><a href="#"> Rutas de aprendizaje </a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -343,13 +343,10 @@
                                         <div class="modal-body">
 
                                             <center>
-
-
                                                 <div class="spinner-border text-primary" role="status">
                                                     <span class="sr-only">Loading...</span>
                                                 </div>
                                                 Cargando
-
                                             </center>
 
 
@@ -357,14 +354,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-                            
-
-
-                           
                         </div>
                     </div>
                 </div>
@@ -380,99 +369,35 @@
 
             }
         },
-        mounted() {
+
+        async mounted() {
           
             
           
             $('document').ready(function () {
-                $('.js-example-basic-multiple').select2();
-                $('#nodesSelect').select2();
-                $('#nodesSelectAllDelete').select2();
-                $('#nodesSelectChildNewParent').select2();
-                $('#nodesSelectAllDelete').next(".select2-container").hide();
-                $('#nodesSelectChildNewParent').next(".select2-container").hide();
-
                 $("#horizontalVertical").change(function (e) {
                     horizontalVertical = !horizontalVertical;
                     outer_update(tree_root);
                 });
-                
 				        $("#moverNodosCheck").change(function (e) {
 					          habilitarDesplazamiento();
                 });
-
-                $("#textPosition").change(function (e) {
-                    textPosition = !textPosition;
-                });
-
-                $("#textPositionRename").change(function (e) {
-                    textPosition = !textPosition;
-                });
-
                 $("#orienta").change(function (e) {
                     outer_update(tree_root);
-
                 });
-
-                $("#showNames").change(function (e) {
-                    showNames = !showNames;
-                    outer_update(tree_root);
-
-                });
-
-                $("#showNumber").change(function (e) {
-                    showNumber = !showNumber;
-                    outer_update(tree_root);
-                });
-
-
-
-                var $optionsDelete = $("#optionsDelete").select2().on("change", function (e) {
-                    var optionsS = $('#optionsDelete').select2('data')
-                    let deleteOption = optionsS[0]['id'];
-                    if (deleteOption == 4) {
-                        $('#nodesSelectAllDelete').next(".select2-container").show();
-                        $('#nodesSelectChildNewParent').next(".select2-container").hide();
-                    } else if (deleteOption == 3) {
-                        $('#nodesSelectChildNewParent').next(".select2-container").show();
-                        $('#nodesSelectAllDelete').next(".select2-container").hide();
-                    } else {
-                        $('#nodesSelectAllDelete').next(".select2-container").hide();
-                        $('#nodesSelectChildNewParent').next(".select2-container").hide();
-                    }
-
-                });
-
-                $(document).on('opened', '[data-reveal]', function () {
-                    var element = $(".inputName:visible").first();
-                    element.focus(function () {
-                        this.selectionStart = this.selectionEnd = this.value.length;
-                    });
-                    element.focus();
-                });
-                $('#RenameNodeForm').submit(function (e) {
-                    rename_node();
-                    return false;
-                });
-                $('#CreateNodeForm').submit(function (e) {
-                    create_node();
-                    return false;
-                });
-
-
-
-                d3.json("arbol/tree.json'", draw_tree);
-
+                d3.json("arbol/tree.json'", draw_tree_rutas);
                 $('#modalDeCarga').modal('show');
               
-                saludarDesdeGrafoNodos();
 
             });
 
         },
-        methods: {
+      created(){
+        
+      },
+      methods: {
 
-        }
+      }
     }
 
 </script>

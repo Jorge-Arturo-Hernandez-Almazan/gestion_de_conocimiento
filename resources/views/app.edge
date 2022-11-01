@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    
     {{style('adminlte/css/fontawesome-free/css/all.min.css') }}
     {{style('css/main.css') }}
     {{style('arbol/app.css')}}
@@ -72,9 +73,7 @@
     {{script('arbol/d3.v3.min.js')}}
     {{script('arbol/experto/treeFunctions.js')}}
     
-    {{ script('arbol/experto/dndTree.js') }}
-    {{-- script('arbol/grafo_alumno/dndTreeAlumnos.js') --}}
-  
+    
     
   
     {{script('arbol/d3-context-menu.js')}}
@@ -84,6 +83,10 @@
     {{script('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}
     {{script('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}
     {{script('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js')}}
+  
+  
+    {{ script('arbol/experto/dndTree.js') }}
+    {{ script('arbol/grafo_alumno/dndTreeAlumnos.js') }}
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

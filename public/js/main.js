@@ -7241,17 +7241,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -7621,72 +7618,37 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   mounted: function mounted() {
-    $('document').ready(function () {
-      $('.js-example-basic-multiple').select2();
-      $('#nodesSelect').select2();
-      $('#nodesSelectAllDelete').select2();
-      $('#nodesSelectChildNewParent').select2();
-      $('#nodesSelectAllDelete').next(".select2-container").hide();
-      $('#nodesSelectChildNewParent').next(".select2-container").hide();
-      $("#horizontalVertical").change(function (e) {
-        horizontalVertical = !horizontalVertical;
-        outer_update(tree_root);
-      });
-      $("#moverNodosCheck").change(function (e) {
-        habilitarDesplazamiento();
-      });
-      $("#textPosition").change(function (e) {
-        textPosition = !textPosition;
-      });
-      $("#textPositionRename").change(function (e) {
-        textPosition = !textPosition;
-      });
-      $("#orienta").change(function (e) {
-        outer_update(tree_root);
-      });
-      $("#showNames").change(function (e) {
-        showNames = !showNames;
-        outer_update(tree_root);
-      });
-      $("#showNumber").change(function (e) {
-        showNumber = !showNumber;
-        outer_update(tree_root);
-      });
-      var $optionsDelete = $("#optionsDelete").select2().on("change", function (e) {
-        var optionsS = $('#optionsDelete').select2('data');
-        var deleteOption = optionsS[0]['id'];
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              $('document').ready(function () {
+                $("#horizontalVertical").change(function (e) {
+                  horizontalVertical = !horizontalVertical;
+                  outer_update(tree_root);
+                });
+                $("#moverNodosCheck").change(function (e) {
+                  habilitarDesplazamiento();
+                });
+                $("#orienta").change(function (e) {
+                  outer_update(tree_root);
+                });
+                d3.json("arbol/tree.json'", draw_tree_rutas);
+                $('#modalDeCarga').modal('show');
+              });
 
-        if (deleteOption == 4) {
-          $('#nodesSelectAllDelete').next(".select2-container").show();
-          $('#nodesSelectChildNewParent').next(".select2-container").hide();
-        } else if (deleteOption == 3) {
-          $('#nodesSelectChildNewParent').next(".select2-container").show();
-          $('#nodesSelectAllDelete').next(".select2-container").hide();
-        } else {
-          $('#nodesSelectAllDelete').next(".select2-container").hide();
-          $('#nodesSelectChildNewParent').next(".select2-container").hide();
+            case 1:
+            case "end":
+              return _context.stop();
+          }
         }
-      });
-      $(document).on('opened', '[data-reveal]', function () {
-        var element = $(".inputName:visible").first();
-        element.focus(function () {
-          this.selectionStart = this.selectionEnd = this.value.length;
-        });
-        element.focus();
-      });
-      $('#RenameNodeForm').submit(function (e) {
-        rename_node();
-        return false;
-      });
-      $('#CreateNodeForm').submit(function (e) {
-        create_node();
-        return false;
-      });
-      d3.json("arbol/tree.json'", draw_tree);
-      $('#modalDeCarga').modal('show');
-      saludarDesdeGrafoNodos();
-    });
+      }, _callee);
+    }))();
   },
+  created: function created() {},
   methods: {}
 });
 
@@ -16018,6 +15980,9 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   mounted: function mounted() {
+    var dndTree = document.createElement('script');
+    dndTree.setAttribute('src', 'arbol/experto/dndTree.js');
+    document.head.appendChild(dndTree);
     $('document').ready(function () {
       $('.js-example-basic-multiple').select2();
       $('#nodesSelect').select2();
@@ -16171,16 +16136,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -55213,7 +55168,7 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(
-                                "\n                                                Cargando\n\n                                            "
+                                "\n                                                Cargando\n                                            "
                               )
                             ])
                           ],
@@ -55242,7 +55197,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "col-sm-6" }, [
             _c("h1", { staticClass: "page-title m-0" }, [
               _vm._v(
-                "\n                          Grafo de conocimiento de Alumno\n                        "
+                "\n                          Rutas de aprendizaje\n                        "
               )
             ])
           ]),
@@ -55251,7 +55206,7 @@ var staticRenderFns = [
             _c("ol", { staticClass: "breadcrumb float-sm-right" }, [
               _c("li", { staticClass: "breadcrumb-item" }, [
                 _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(" Grafo de conocimiento")
+                  _vm._v(" Rutas de aprendizaje ")
                 ])
               ])
             ])
@@ -65492,7 +65447,7 @@ var render = function() {
               this.id_rol == 1 || this.id_rol == 2
                 ? _c(
                     "li",
-                    { staticClass: "nav-item" },
+                    { staticClass: "nav-item mb-5" },
                     [
                       _c(
                         "router-link",
@@ -65501,37 +65456,11 @@ var render = function() {
                           attrs: { id: "navTemas", to: "/grafoalumnos" }
                         },
                         [
-                          _c("i", { staticClass: "fas fa-user-tie nav-icon" }),
+                          _c("i", { staticClass: "fas fa-route nav-icon" }),
                           _vm._v(" "),
                           _c("p", [
                             _vm._v(
-                              "\n\t\t\t\t\t\t\t\tGrafo de alumnos\n\t\t\t\t\t\t\t"
-                            )
-                          ])
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              this.id_rol == 1 || this.id_rol == 2
-                ? _c(
-                    "li",
-                    { staticClass: "nav-item" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link",
-                          attrs: { id: "navTemas", to: "/ejemplo" }
-                        },
-                        [
-                          _c("i", { staticClass: "fas fa-user-tie nav-icon" }),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t\tComponente Ejemplo\n\t\t\t\t\t\t\t"
+                              "\n\t\t\t\t\t\t\t\tRutas de aprendizaje\n\t\t\t\t\t\t\t"
                             )
                           ])
                         ]

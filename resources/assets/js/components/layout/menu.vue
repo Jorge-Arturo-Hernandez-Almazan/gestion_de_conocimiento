@@ -196,21 +196,11 @@
 					</li>
           
           
-          <li v-if="this.id_rol==1 || this.id_rol==2"  class="nav-item">							
+          <li v-if="this.id_rol==1 || this.id_rol==2"  class="nav-item mb-5">							
 						<router-link class="nav-link" id="navTemas" to="/grafoalumnos">
-							<i class="fas fa-user-tie nav-icon"></i> 
+							<i class="fas fa-route nav-icon"></i> 
 							<p>
-								Grafo de alumnos
-							</p>
-						</router-link>
-					</li>
-          
-          
-          <li v-if="this.id_rol==1 || this.id_rol==2"  class="nav-item">							
-						<router-link class="nav-link" id="navTemas" to="/ejemplo">
-							<i class="fas fa-user-tie nav-icon"></i> 
-							<p>
-								Componente Ejemplo
+								Rutas de aprendizaje
 							</p>
 						</router-link>
 					</li>

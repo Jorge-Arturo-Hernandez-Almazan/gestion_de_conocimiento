@@ -20,53 +20,29 @@ var horizontalVertical = false;
 var textPosition = false;
 var showNames = true;
 var showNumber = true;
-
 var newPosition = [];
-
-outer_update = null;
-
-
-
+var outer_update = null;
 var ratio = 0;
 var lista_nodos_eliminar = [];
-
-/*var x_init = document.getElementById("x_input").value;
-var y_init = document.getElementById("y_input").value;
-var e_init = document.getElementById("e_input").value;*/
-
 var x_init = 0;
 var y_init = 0;
 var e_init = 1;
-
 var nodos_ordenados = []
 var ramas = []
-
 var desplazamientoDeNodos = false;
 
-async function draw_tree(error, treeData) {
-	
+async function draw_tree_rutas(error, treeData) {
 
-	if( x_init == "undefined" ){
-	    x_init = 0;
-		y_init = 0;
-		e_init = 1;
-	}
 	
-    //debugger;
-    await getSizeNode();
-	//await obtenerCaminos();    
-	await obtenerTotalTemas();
-	ramas = await obtenerRamas();
+    await getSizeNode();   
+	  await obtenerTotalTemas();
+	  ramas = await obtenerRamas();
     ramas = ramas[0];
-	nodos_ordenados = await obtenerCaminos();
+	  nodos_ordenados = await obtenerCaminos();
 	
-    //$('#slider').foundation('slider', 'set_value', ratio);
     $('#slider').val(ratio);
     treeData = await getTreeFromBD(); // Await espera a que se termine de ejecutar la funcion para continuar a las demas lineas
 	
-	
-	//console.log(treeData);
-
     var totalNodes = 0;
     // Calculate total nodes, max label length
     var maxLabelLength = 0;
@@ -200,7 +176,7 @@ async function draw_tree(error, treeData) {
         .attr("width", "100%")
         .attr("height", "100%")
         .attr("fill", "white")
-		.attr("style","fill:rgb(12, 196, 242);stroke-width:5;stroke:rgb(0,0,0)")
+		.attr("style","fill:rgb(255,255,255);stroke-width:5;stroke:rgb(0,0,0)")
 
     baseSvgStudent.call(zoomListener);
 
@@ -419,11 +395,6 @@ async function draw_tree(error, treeData) {
             x = x * scale + viewerHeight / 2;
         }
 
-        /*d3.select('g').transition()
-            .duration(duration)
-            .attr("transform", "translate(" + x + "," + 60 + ")scale(" + scale + ")");*/
-        //zoomListener.scale(scale);
-        //zoomListener.translate([x, y]);
     }
 
     // Toggle children on click.
@@ -1016,6 +987,12 @@ async function draw_tree(error, treeData) {
                 }).on("click", function(d) { click_conexion({padre:multiPair.parent.id, hijo:multiPair.child.id }); });
         });
     }
+
+  
+    function saludo(param){
+      console.log("Hola desde " + param);
+    }
+  
 
 
     
