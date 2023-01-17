@@ -129,7 +129,8 @@ Route.post('/preguntasCalculadas/delete', 'PreguntaController.preguntasCalculada
 Route.post('/subirr', 'UserController.subirimagen');
 Route.post('/subirr2', 'UserController.subirimagenes');
 Route.get('/arbol/poderacionesNodos', 'PonderacionController.obtenerPoderacionesNodos')
-
+Route.get('/arbol/obtenerRA', 'PonderacionController.obtenerRA')
+ 
 
 Route.get('/subirimagen', async ({view}) =>{
 	const images = await Database.table('imagenes');

@@ -826,17 +826,32 @@ class PonderacionController {
         output=output.split(",")
         for( let i=0; i<output.length; i++)
         {
-          output[i] = output[i].replace(/(\r\n|\n|\r)/gm,"");  
-          var output2=output[i].split("/")
-          nodos.push(output2[0])
-          gdc.push(output2[1])
+            output[i] = output[i].replace(/(\r\n|\n|\r)/gm,"");  
+            var output2=output[i].split("/")
+            nodos.push(output2[0])
+            gdc.push(output2[1])
 
          }
         return response.json({nodos, gdc})
 
 
       }
+      async obtenerRA({ response, auth }) 
+    {
+       
+        var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/GenerarRA.py', { encoding: 'utf-8' }); // the default is 'buffer'
+        output=output.split(",\n")
+        var caminos=[]  
+        for( let i=0; i<output.length; i++)
+        {
+          caminos.push(output[i].split(","))  
+          
+        }
+       //var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/abrirRed.py', { encoding: 'utf-8' });
+        return response.json(caminos.slice(0,caminos.length-1))
 
+
+      }
 }
 
 module.exports = PonderacionController

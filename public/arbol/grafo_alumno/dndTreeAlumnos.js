@@ -417,7 +417,7 @@ async function draw_tree_rutas(error, treeData) {
 		
 		  var clasificacion_colores_nodos = await obtenerEvidenciaExpertos();
       var ponderacion= await obtenerPoderacionesNodos()
-		  
+		  var RA= await obtenerRA()
         //d3.selectAll("defs").remove();
         d3.selectAll("marker").remove();
 
@@ -715,27 +715,37 @@ async function draw_tree_rutas(error, treeData) {
 						}
 					}
 				}*/
-					gdc=ponderacion.gdc[ponderacion.nodos.indexOf(d.id.toString())]
+         // RA
+			 /*	
+          gdc=ponderacion.gdc[ponderacion.nodos.indexOf(d.id.toString())]
           if(gdc == 2){
 						   return "#0ec472"
-							
 						}
           if(gdc == 1){
 						   return "	#FF8000"
-							
 						}
           if(gdc == 0){
 						   return "#FF0000"
-							
 						}
           if(gdc == -1){
 						   return "#FFFF00"
-							
 						}
+           
+            console.log(RA)*/
+            //r colores=["#031DFA","#051CE7","#0117CE","#0416AE","#020E74","#000A5C","#010846","#000528"]
+            var colores=["#FA0303","#FAA403","#FAFA03","#55FA03","#03FAA8","#034EFA","#8D03FA","#FA03E7"]
+            //r colores=["#031DFA","#031DFA","#031DFA","#031DFA","#031DFA","#031DFA","#031DFA","#031DFA"]
+          color="#FFFFFF"
+            for( let i=0; i<RA.length; i++)
+            {
+              if(RA[i].indexOf(d.id.toString()) != -1)
+               {
+                   color=colores[i]
+               }
+            }
+             return color
                 
-
-                
-            });
+});
 		
 
         // Transition nodes to their new position.

@@ -34,6 +34,27 @@
 
                                 <i class="fas fa-cogs"></i>
                             </button>
+                          
+                            <br>
+                          
+                            <div class="row">
+                              <div class="col-6">
+                                
+                                  <select name="cars" id="cars">
+                                    <option value="grafo1">Grafo 1</option>
+                                    <option value="grafo2">Grafo 2</option>
+                                  </select>
+                                
+                              </div>
+                              <div class="col-6">
+                                  <button type="button" class="btn btn-success float-right mb-3" data-toggle="modal" data-target="#configuracionGrafo">
+                                      <i class="fas fa-cogs"></i>
+                                  </button>
+                              </div>
+                            </div>
+                            
+                            
+                          
 
                             <div class="modal animate__bounceIn" id="configuracionGrafo" role="dialog"
                                 aria-labelledby="configuracionGrafo" aria-hidden="true" data-focus="false">

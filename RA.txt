@@ -1,0 +1,53 @@
+Fórmula general para ecuaciones de segundo grado
+Suma de números racionales 
+Radicales
+Ley de exponentes
+Porcentajes
+Factorización 
+Productos notables
+Solución de problemas reales con ecuaciones de segundo grado
+Solución de problemas reales con sistemas de ecuaciones
+
+Sistema de n ecuaciones lineales con n incógnitas
+Matrices
+Operaciones  con  matrices
+Método de Gauss Jordan
+Matriz  Inversa
+Regla  de  Cramer
+Solución de  sistemas de  ecuaciones  por matrices
+Solución de problemas reales con álgebra lineal
+
+Factorización 
+División de polinomio entre polinomio
+Productos notables
+Solución de problemas reales con ecuaciones de segundo grado
+Solución de problemas reales con sistemas de ecuaciones
+
+Tríangulos  oblicuángulos
+Razones  trigonométricas
+Ángulos y sus  razones  trigonométricas
+Identidades  trigonométricas
+Ecuaciones trigonometricas
+
+Cuadrilateros
+Elipse
+Postulados y teoremas
+Hipérbola
+Perímetros áreas y volúmenes
+
+Intervalos
+Desigualdades - inecuaciones
+Funciones Trigonométricas
+Función  Exponencial
+Funciones  Logarítmicas
+Modelado de funciones
+
+Derivada
+Razón de cambio
+Reglas de derivación
+Razones de cambio relacionadas
+Optimizacion
+
+Antiderivadas
+Definición de la integral
+

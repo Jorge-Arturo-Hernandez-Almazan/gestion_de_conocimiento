@@ -378,13 +378,16 @@
           if (result.data == -1) {
             this.obtenerPrimerTema();
             
-            console.log("Debe crearce la RBMA");
+            console.log("Debe crearse la RBMA");
           } else if (result.data.temas_evaluados.length === 0) {
              this.ultimoTema = result.data.ultimo;
           }else{
             this.estatus = result.data;
             this.ultimoTema = result.data.ultimo;
           }
+          
+          console.log( result );
+          
         }, error => {
           console.error(error)
         })

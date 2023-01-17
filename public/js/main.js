@@ -4973,13 +4973,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   if (result.data == -1) {
                     _this3.obtenerPrimerTema();
 
-                    console.log("Debe crearce la RBMA");
+                    console.log("Debe crearse la RBMA");
                   } else if (result.data.temas_evaluados.length === 0) {
                     _this3.ultimoTema = result.data.ultimo;
                   } else {
                     _this3.estatus = result.data;
                     _this3.ultimoTema = result.data.ultimo;
                   }
+
+                  console.log(result);
                 }, function (error) {
                   console.error(error);
                 });
@@ -7249,6 +7251,27 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55236,6 +55259,37 @@ var staticRenderFns = [
             },
             [_c("i", { staticClass: "fas fa-cogs" })]
           ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-6" }, [
+              _c("select", { attrs: { name: "cars", id: "cars" } }, [
+                _c("option", { attrs: { value: "grafo1" } }, [
+                  _vm._v("Grafo 1")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "grafo2" } }, [
+                  _vm._v("Grafo 2")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success float-right mb-3",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#configuracionGrafo"
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-cogs" })]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "div",
