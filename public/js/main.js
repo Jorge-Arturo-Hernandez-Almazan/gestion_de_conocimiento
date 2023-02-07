@@ -4899,6 +4899,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5131,6 +5132,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   url: 'topic/getopic/' + this.ultimoTema
                 }).then(function (result) {
                   _this6.topic = result.data[0];
+                  console.log("Get topic");
                   console.log(result);
                 }, function (error) {
                   console.error(error);
@@ -5599,12 +5601,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         switch (_context17.prev = _context17.next) {
                           case 0:
                             if (!quiz.isEnded()) {
-                              _context17.next = 17;
+                              _context17.next = 19;
                               break;
                             }
 
                             if (!(quiz.questions.length > 0)) {
-                              _context17.next = 15;
+                              _context17.next = 17;
                               break;
                             }
 
@@ -5614,7 +5616,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 5:
                             if (!(_this.numero_tema <= _this.pregunta.length - 1)) {
-                              _context17.next = 14;
+                              _context17.next = 16;
                               break;
                             }
 
@@ -5623,20 +5625,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             _this.numero_tema = _this.numero_tema + 1;
                             console.log("Estoy en la linea 1029");
                             _context17.next = 12;
-                            return _this.getpreguntas();
+                            return _this.enviarPonderacion();
 
                           case 12:
-                            _context17.next = 15;
-                            break;
+                            _context17.next = 14;
+                            return _this.getpreguntas();
 
                           case 14:
-                            showScores();
-
-                          case 15:
-                            _context17.next = 88;
+                            _context17.next = 17;
                             break;
 
+                          case 16:
+                            showScores();
+
                           case 17:
+                            _context17.next = 90;
+                            break;
+
+                          case 19:
                             console.log();
                             document.getElementById("buttons").innerHTML = "";
                             element = document.getElementById("question").innerHTML = quiz.getQuestionIndex().text;
@@ -5656,11 +5662,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             tema.innerHTML = " <b> Tema: </b> " + _this.topic[_this.numero_tema].nombre_tema;
 
                             if (!(quiz.getQuestionIndex().type == 4)) {
-                              _context17.next = 29;
+                              _context17.next = 31;
                               break;
                             }
 
-                            _context17.next = 29;
+                            _context17.next = 31;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opciones/' + quiz.getQuestionIndex().id
@@ -5676,15 +5682,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 29:
+                          case 31:
                             opcionesAux = [];
 
                             if (!(quiz.getQuestionIndex().type == 6)) {
-                              _context17.next = 33;
+                              _context17.next = 35;
                               break;
                             }
 
-                            _context17.next = 33;
+                            _context17.next = 35;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opcionescalculadasmultiples/' + quiz.getQuestionIndex().id
@@ -5701,31 +5707,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 33:
+                          case 35:
                             choices = quiz.getQuestionIndex().choices;
                             _context17.t0 = quiz.getQuestionIndex().type;
-                            _context17.next = _context17.t0 === 1 ? 37 : _context17.t0 === 2 ? 44 : _context17.t0 === 3 ? 51 : _context17.t0 === 4 ? 74 : _context17.t0 === 5 ? 78 : _context17.t0 === 6 ? 85 : 87;
+                            _context17.next = _context17.t0 === 1 ? 39 : _context17.t0 === 2 ? 46 : _context17.t0 === 3 ? 53 : _context17.t0 === 4 ? 76 : _context17.t0 === 5 ? 80 : _context17.t0 === 6 ? 87 : 89;
                             break;
 
-                          case 37:
+                          case 39:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "text";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 87);
+                            return _context17.abrupt("break", 89);
 
-                          case 44:
+                          case 46:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 87);
+                            return _context17.abrupt("break", 89);
 
-                          case 51:
+                          case 53:
                             div_verdadero = document.createElement("div");
                             div_falso = document.createElement("div");
                             label_verdadero = document.createElement("label");
@@ -5748,9 +5754,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(div_verdadero);
                             zona_botones.appendChild(div_falso);
-                            return _context17.abrupt("break", 87);
+                            return _context17.abrupt("break", 89);
 
-                          case 74:
+                          case 76:
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
 
@@ -5771,18 +5777,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context17.abrupt("break", 87);
+                            return _context17.abrupt("break", 89);
 
-                          case 78:
+                          case 80:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 87);
+                            return _context17.abrupt("break", 89);
 
-                          case 85:
+                          case 87:
                             for (i = 0; i < choices.length; i++) {
                               label = document.createElement("label"); //label.innerHTML = choices[i];
 
@@ -5804,12 +5810,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context17.abrupt("break", 87);
+                            return _context17.abrupt("break", 89);
 
-                          case 87:
+                          case 89:
                             showProgress();
 
-                          case 88:
+                          case 90:
                           case "end":
                             return _context17.stop();
                         }
@@ -53393,7 +53399,164 @@ var render = function() {
               _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "lblTema" } }, [
+                        _vm._v("Tema")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.ultimoTema,
+                            expression: "ultimoTema"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "inpTema",
+                          placeholder: "Id tema"
+                        },
+                        domProps: { value: _vm.ultimoTema },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.ultimoTema = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "lblPonderacion" } }, [
+                        _vm._v("Ponderación")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.ponderacion,
+                            expression: "ponderacion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "inpPonderacion",
+                          placeholder: "Ponderación"
+                        },
+                        domProps: { value: _vm.ponderacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.ponderacion = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" },
+                        on: { click: _vm.enviarPonderacion }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                        Eviar ponderación\n                                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: { click: _vm.obtenerPrimerTema }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                        Primer tema\n                                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(" Tema: " + _vm._s(_vm.estatus.ultimo) + " ")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        " Habilidad anterior: " +
+                          _vm._s(_vm.estatus.habilidad_anterior) +
+                          " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        " Habilidad: " + _vm._s(_vm.estatus.habilidad) + " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        " ¿Debe detenerse el cuestionario?: " +
+                          _vm._s(_vm.estatus.detenerse) +
+                          " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "table",
+                      {
+                        staticClass: "table table-hover",
+                        staticStyle: { width: "100%" }
+                      },
+                      [
+                        _c("thead", { attrs: { slot: "head" }, slot: "head" }, [
+                          _c("th", [_vm._v("Tema (id) ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Dominio ")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Calificación")])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.estatus.temas_evaluados, function(
+                            ponderacion
+                          ) {
+                            return _c("tr", { key: ponderacion.id }, [
+                              _c("td", [_vm._v(_vm._s(ponderacion.id))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(ponderacion.respuesta) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(ponderacion.ponderacion))
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-12" }, [

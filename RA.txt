@@ -1,4 +1,3 @@
-Fórmula general para ecuaciones de segundo grado
 Suma de números racionales 
 Radicales
 Ley de exponentes
@@ -17,29 +16,29 @@ Regla  de  Cramer
 Solución de  sistemas de  ecuaciones  por matrices
 Solución de problemas reales con álgebra lineal
 
-Factorización 
 División de polinomio entre polinomio
 Productos notables
 Solución de problemas reales con ecuaciones de segundo grado
 Solución de problemas reales con sistemas de ecuaciones
 
-Tríangulos  oblicuángulos
 Razones  trigonométricas
 Ángulos y sus  razones  trigonométricas
 Identidades  trigonométricas
 Ecuaciones trigonometricas
 
-Cuadrilateros
-Elipse
-Postulados y teoremas
 Hipérbola
-Perímetros áreas y volúmenes
+Postulados y teoremas
 
-Intervalos
-Desigualdades - inecuaciones
+Conceptos de  funciones  matemáticas
+Formas de expresar funciones matemáticas
+Dominio y rango de una función
 Funciones Trigonométricas
+Función  Lineal
+Función Cuadrática
+Función Polinomial
 Función  Exponencial
 Funciones  Logarítmicas
+Función  Valor absoluto
 Modelado de funciones
 
 Derivada
@@ -48,6 +47,11 @@ Reglas de derivación
 Razones de cambio relacionadas
 Optimizacion
 
-Antiderivadas
 Definición de la integral
+Reglas de integración inmediatas
+Métodos de integración
+Integral definida
+Áreas bajo la curva
+Sólido de revolución
+Volúmen de un sólido en revolución
 

@@ -28,9 +28,9 @@ def guardar(cpi,estado,idh,idsp):
     else:
         for i in range(3):
             cursor1=conexion1.cursor()
-            #sql="insert into cpts(id_hijo,estado,id_padres,estados_padres,probabilidad) values (%s,%s,%s,%s,%s)"
-            #datos=(idh ,i+1 ,idsp,estado,float(cpi[i]))
-            #cursor1.execute(sql, datos)
+            sql="insert into cpts(id_hijo,estado,id_padres,estados_padres,probabilidad) values (%s,%s,%s,%s,%s)"
+            datos=(idh ,i+1 ,idsp,estado,float(cpi[i]))
+            cursor1.execute(sql, datos)
             print(idh,i+1,idsp,estado,cpi[i])
  
 

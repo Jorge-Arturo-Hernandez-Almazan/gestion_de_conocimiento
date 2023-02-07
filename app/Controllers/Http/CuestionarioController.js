@@ -14,7 +14,7 @@ class PonderacionController {
         let rbm = params.rbm;
         let parametros = " " + matricula + " " + rbm;
       
-        const output = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/pruebas.py " + parametros, {encoding: 'utf-8'});
+        const output = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros, {encoding: 'utf-8'});
         
         return response.json(output);
     }

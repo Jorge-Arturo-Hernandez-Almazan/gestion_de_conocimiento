@@ -39,7 +39,8 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <!-- <div class="col-12">
+                                    
+                                  <div class="col-12">
                                         <div class="form-group">
                                             <label for="lblTema">Tema</label>
                                             <input type="text" class="form-control" id="inpTema" placeholder="Id tema" v-model="ultimoTema">
@@ -75,7 +76,7 @@
                                           </tr>
                                         </tbody>
                                       </table>
-                                    </div> -->    
+                                    </div>     
                                 </div> 
                                 
                                 
@@ -375,6 +376,7 @@
           method: 'get',
           url: "/obtenerPonderaciones/" + matricula
         }).then(result => {
+          
           if (result.data == -1) {
             this.obtenerPrimerTema();
             
@@ -445,6 +447,7 @@
         }).then(
           result => {
             this.topic = result.data[0];
+            console.log("Get topic");
             console.log(result);
           }, error => {
             console.error(error)
@@ -1030,6 +1033,7 @@
                 _this.numero_tema = _this.numero_tema + 1;
                 
                 console.log("Estoy en la linea 1029");
+                await _this.enviarPonderacion();
                 await _this.getpreguntas();
               } else {
                 showScores();
