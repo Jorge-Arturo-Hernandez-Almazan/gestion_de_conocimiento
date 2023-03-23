@@ -7,13 +7,16 @@ const Database = use('Database')
 
 class UserController {
 		async registrar({request,response}){
-        const{nombre,apellido_paterno,apellido_materno,matricula,password,nivel_academico,id_rol} = request.only(
+        const{nombre,apellido_paterno,apellido_materno,edad,matricula,genero,password,nivel_academico,periodo,id_rol} = request.only(
         [
             'nombre',
 			'apellido_paterno',
 			'apellido_materno',
+      'edad',
 			'matricula','password',
+      'genero',
 			'nivel_academico',
+      'periodo',
 			'id_rol'
         ]) 
         
@@ -21,9 +24,12 @@ class UserController {
             nombre,
 			apellido_paterno,
 			apellido_materno,
+      edad,
 			matricula,
+      genero,
 			password,
 			nivel_academico,
+      periodo,      
 			id_rol
         })
         return response.send({message:'El usuario ha sido creado'})
@@ -149,19 +155,19 @@ class UserController {
 		async alumnos({response}){
 			
 	const alumnos =	await Database 
-  .select('u.nombre as nombre_alumno, u.id as id_alumnos, u.apellido_paterno as apellido_paterno, u.apellido_materno as apellido_materno,u.matricula as matricula,u.nivel_academico as nivel_academico,rp.id_profesor as id_profesor,u2.nombre as nombre_profesor,u2.apellido_paterno as apellido_profesor')
+  .select('u.nombre as nombre_alumno, u.id as id_alumnos, u.apellido_paterno as apellido_paterno, u.apellido_materno as apellido_materno,u.edad as edad,u.matricula as matricula,u.genero as genero, u.nivel_academico as nivel_academico,u.periodo as periodo,rp.id_profesor as id_profesor,u2.nombre as nombre_profesor,u2.apellido_paterno as apellido_profesor')
   .from('users as u')
   .innerJoin('relacion_profesors as rp', 'u.id', 'rp.id_alumno')
   .leftJoin('users as u2', 'u2.id', 'rp.id_profesor')
   
 	  const alumno = await Database.
-	  raw('SELECT u.eliminado as eliminado, u.nombre as nombre_alumno, u.id as id_alumnos, u.apellido_paterno as apellido_paterno, u.apellido_materno as apellido_materno,u.matricula as matricula,u.nivel_academico as nivel_academico,rp.id_profesor as id_profesor,u2.nombre as nombre_profesor,u2.apellido_paterno as apellido_profesor from users u inner join relacion_profesors rp on rp.id_alumno = u.id  left join users u2 on u2.id = rp.id_profesor')
+	  raw('SELECT u.eliminado as eliminado, u.nombre as nombre_alumno, u.id as id_alumnos, u.apellido_paterno as apellido_paterno, u.apellido_materno as apellido_materno,u.edad as edad,u.matricula as matricula,u.genero as genero, u.nivel_academico as nivel_academico,u.periodo as periodo,rp.id_profesor as id_profesor,u2.nombre as nombre_profesor,u2.apellido_paterno as apellido_profesor from users u inner join relacion_profesors rp on rp.id_alumno = u.id  left join users u2 on u2.id = rp.id_profesor')
         return response.json(alumno)
 			
         }   
   async alumnosP({response}){
       
-  const alumno = await Database.raw('SELECT u.nombre as nombre_alumno, u.id as id_alumnos, u.apellido_paterno as apellido_paterno, u.apellido_materno as apellido_materno,u.matricula as matricula,u.nivel_academico as nivel_academico,rp.id_profesor as id_profesor,u2.nombre as nombre_profesor,u2.apellido_paterno as apellido_profesor from users u inner join relacion_profesors rp on rp.id_alumno = u.id  left join users u2 on u2.id = rp.id_profesor WHERE rp.id_profesor = ?',[auth.user.id])
+  const alumno = await Database.raw('SELECT u.nombre as nombre_alumno, u.id as id_alumnos, u.apellido_paterno as apellido_paterno, u.apellido_materno as apellido_materno,u.edad as edad,u.matricula as matricula,u.genero as genero, u.nivel_academico as nivel_academico,u.periodo as periodo,rp.id_profesor as id_profesor,u2.nombre as nombre_profesor,u2.apellido_paterno as apellido_profesor from users u inner join relacion_profesors rp on rp.id_alumno = u.id  left join users u2 on u2.id = rp.id_profesor WHERE rp.id_profesor = ?',[auth.user.id])
        
 				  
        return response.json(alumno)
@@ -183,20 +189,23 @@ class UserController {
   async realumno({request,response}){
      const safePassword = await Hash.make(request.input('password'))
   
-        const{nombre,nivel_academico,apellido_materno,apellido_paterno,password,matricula,id_profesor,id_rol} = request.only(
+        const{nombre,nivel_academico,apellido_materno,edad,apellido_paterno,password,matricula,genero,periodo,id_profesor,id_rol} = request.only(
         [
             'nombre',
 						'apellido_paterno',
 						'apellido_materno',
+            'edad',
 						'matricula' ,
+            'genero',
             'password',
 						'nivel_academico',
+            'periodo',
             'id_profesor',
 						'id_rol'
           
         ]) 
         
-     const user = await Database.raw('INSERT INTO users(nombre,apellido_materno,apellido_paterno,matricula,nivel_academico,id_rol,password) VALUES(?,?,?,?,?,?,?)',[nombre,apellido_materno,apellido_paterno,matricula,nivel_academico,id_rol,safePassword])
+     const user = await Database.raw('INSERT INTO users(nombre,apellido_materno,apellido_paterno,edad,matricula,genero,nivel_academico,periodo,id_rol,password) VALUES(?,?,?,?,?,?,?,?,?,?)',[nombre,apellido_materno,apellido_paterno,edad,matricula,genero,nivel_academico,periodo,id_rol,safePassword])
     // const damealumno = await Database.from('users').getMax('id').where('id_rol',id_rol) 
 		 //const users = await Database.from('users').where('matricula', matricula)
 		 const ids = await Database.select('id').from('users').where('matricula', matricula);
@@ -307,15 +316,18 @@ class UserController {
     let contrasena = request.input('password');
     
     
-    const{id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_rol}= request.only(
+    const{id,nombre,apellido_paterno,apellido_materno,edad,password,matricula,genero,nivel_academico,periodo,id_rol}= request.only(
     [
         'id',
         'nombre',
         'apellido_paterno',
         'apellido_materno',
+        'edad',
         'password',
         'matricula',
+        'genero',
         'nivel_academico',
+        'periodo',
         'id_rol',
 
     ])  
@@ -325,7 +337,7 @@ class UserController {
       await User
       .query()
       .where('id', id)
-      .update({ nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,matricula:matricula,nivel_academico:nivel_academico,id_rol:id_rol})
+      .update({ nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,edad:edad,matricula:matricula,genero:genero,nivel_academico:nivel_academico,periodo:periodo,id_rol:id_rol})
       
     }else{
       
@@ -334,7 +346,7 @@ class UserController {
       await User
       .query()
       .where('id', id)
-      .update({ nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,password:safePassword,matricula:matricula,nivel_academico:nivel_academico,id_rol:id_rol})
+      .update({ nombre:nombre,apellido_paterno:apellido_paterno,apellido_materno:apellido_materno,edad:edad,password:safePassword,matricula:matricula,genero:genero,nivel_academico:nivel_academico,periodo:periodo,id_rol:id_rol})
     
     }
     
@@ -345,7 +357,7 @@ class UserController {
    
     //return response.json({message:'Actualizado', })  
     
-    return response.json({id,nombre,apellido_paterno,apellido_materno,password,matricula,nivel_academico,id_rol})
+    return response.json({id,nombre,apellido_paterno,apellido_materno,edad,password,matricula,genero,nivel_academico,periodo,id_rol})
   }
   
    // actualizar usuario alumno
@@ -353,23 +365,24 @@ class UserController {
    
     const safePassword = await Hash.make(request.input('password'))
     
-    const{id,nombre,nivel_academico,apellido_materno,apellido_paterno,matricula,password,id_profesor}= request.only(
+    const{id,nombre,nivel_academico,apellido_materno,apellido_paterno,edad,matricula,genero,periodo,password,id_profesor}= request.only(
         [
             'id',
             'nombre',
             'apellido_paterno',
             'apellido_materno',
-
+            'edad',
             'password',
             'matricula',
+            'genero',
             'nivel_academico',
-      
+            'periodo',
             'id_profesor'
            
         ])  
  
     
-   const update =  await Database.raw('UPDATE users SET nombre = ?,apellido_paterno = ?, apellido_materno = ?, password = ?,matricula = ?, nivel_academico = ? WHERE id =  ? ',[nombre,apellido_paterno,apellido_materno,safePassword,matricula,nivel_academico,id])
+   const update =  await Database.raw('UPDATE users SET nombre = ?,apellido_paterno = ?, apellido_materno = ?,edad = ?, password = ?, matricula = ?, genero = ?, nivel_academico = ?, periodo = ? WHERE id =  ? ',[nombre,apellido_paterno,apellido_materno,edad,safePassword,matricula,genero,nivel_academico,periodo,id])
   
    const update_relacion =  await Database.raw('UPDATE relacion_profesors SET id_profesor = ? WHERE id_alumno = ?', [id_profesor,id])
     return response.json({message:'Actualizado'})  

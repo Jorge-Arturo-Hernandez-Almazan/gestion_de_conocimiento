@@ -1,7 +1,7 @@
 import pickle
 import mysql.connector
 
-nombre_rbma_pickle = "rbma/rbma_1530004.pkl" #pickle
+nombre_rbma_pickle = "rbma/rbma_1730335.pkl" #pickle
 infile = open(nombre_rbma_pickle,'rb')
 RBMA = pickle.load(infile)
 infile.close()

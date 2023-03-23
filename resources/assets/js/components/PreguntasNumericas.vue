@@ -669,12 +669,15 @@
                     confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
                     cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                 }).then((result) => {
+      //              console.log(result.value);
                     if (result.value) {
                         axios.post("/pregunta/delete", {
                             id: id,
                             imagenesAEliminar: imagenes
+                            
                         })
                         .then(() => {
+                            console.log("entre "+id);
                             this.id = "";
                             this.getPreguntaNumerica();
                             this.$swal.fire({

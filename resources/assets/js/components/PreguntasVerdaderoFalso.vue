@@ -85,7 +85,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a @click="eliminarPregunta(pregunta.id_pregunta)" class="btn btn-outline-danger">
+                                                    <a @click="eliminarPregunta(pregunta.id_pregunta, pregunta.imagenes )" class="btn btn-outline-danger">
                                                         <i class="fas fa-trash" style="color: #ff6258"></i>
                                                     </a>
                                                 </td>
@@ -266,10 +266,11 @@
                 imagenesParaDesplegarEnModal: [],
                 subidor: {},
                 pregunta: [],
+                
                 currentPage: 1,
                 totalPages: 0,
                 temas: [],
-                id_tema: '',
+                id_tema:'' ,
                 filters: {
                     pregunta: {
                         value: '',
@@ -535,8 +536,9 @@
                         })
                 }
             },
-            eliminarPregunta(id) {
+            eliminarPregunta(id,imagenes) {
                 this.$swal.fire({
+                    
                     html: `<h3 style="color:#212529;">¿Realmente desea eliminar esta pregunta?</h3>`,
                     showCancelButton: true,
                     confirmButtonColor: '#dc3545',
@@ -544,10 +546,16 @@
                     confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
                     cancelButtonText: '<i class="fas fa-ban"></i> Cancelar',
                 }).then((result) => {
+                          //console.log("soy pregunta:" + id);
                     if (result.value) {
                         axios.post('pregunta/delete', {
-                                id
-                            }).then((res) => {
+                                id: id,
+                                imagenesAEliminar: imagenes
+                        }).then((res) => {      
+                                
+                            //    console.log("entre");
+                                this.id = "";
+                                
                                 this.obtenerPreguntasVerdaderoFalso();
                                 this.$swal.fire({
                                     position: 'top-end',
@@ -560,8 +568,9 @@
 
                             })
                             .catch((err) => {
+                                console.log(err);
                                 this.$swal({
-                                    type: 'info',
+                                    icon: 'info',
                                     title: 'Error al eliminar',
                                 })
                             })

@@ -102,7 +102,7 @@
                                                             style="color: #ffae00;" ></i> </a>
                                                 </td>
                                                 <td>
-                                                    <a @click="eliminar(pregunta.id_pregunta)" class="btn btn-outline-danger"> <i class="fas fa-trash"
+                                                    <a @click="eliminar(pregunta.id_pregunta, pregunta.imagenes )" class="btn btn-outline-danger"> <i class="fas fa-trash"
                                                             style="color: #ff6258"></i> </a>
                                                 </td>
                                             </tr>
@@ -698,11 +698,13 @@
                                 opciones: opciones,
                                 rectivo: pregunta.value,
                                 tema: tema,
-                                id: this.id_editar
+                                id: this.id_editar,
+                                
+                                imagenesAEliminar: this.subidor.iamgenesAEliminar
                             })
                             .then(async (res) => {
+                                //await this.subidor.subirImagenes(this.form.id_editar);
                                 
-
                                 this.$swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
@@ -810,7 +812,7 @@
                 }
             },
 
-            eliminar(id) {
+            eliminar(id, imagenes) {
                 this.$swal.fire({
                     html: `<h3 style="color:#212529;">¿Realmente desea eliminar esta pregunta?</h3>`,
                     showCancelButton: true,
@@ -821,7 +823,8 @@
                 }).then((result) => {
                     if (result.value) {
                         axios.post('pregunta/eliminar', {
-                                id: id
+                                id: id,
+                                imagenesAEliminar: imagenes
                             }).then(() => {
                                 this.$swal.fire({
                                     position: 'top-end',

@@ -65,9 +65,15 @@
 										<thead slot="head">
 											<v-th sortKey="nombre_alumno" defaultSort="desc">Nombre</v-th>
 											<v-th sortKey="apellido_paterno" defaultSort="desc">Apellido</v-th>
-											<v-th sortKey="matricula" defaultSort="desc">Matricula</v-th>
+											<v-th sortKey="edad" defaultSort="desc">Edad</v-th>											
+
+                      <v-th sortKey="matricula" defaultSort="desc">Matricula</v-th>
+                      <v-th sortKey="genero" defaultSort="desc">Género</v-th>											
+
 											<v-th sortKey="nivel_academico" defaultSort="desc">Nivel academico</v-th>
-											<th>Profesor</th>
+											<v-th sortKey="periodo" defaultSort="desc">Período</v-th>
+
+                      <th>Profesor</th>
 											<th>Editar</th>
 											<th>Eliminar</th>
 										</thead>
@@ -75,11 +81,17 @@
 											<tr v-for="alumnos in displayData" :key="alumnos.id">
 												<td class="text-left">{{alumnos.nombre_alumno}}</td>
 												<td class="text-left">{{alumnos.apellido_paterno}} {{alumnos.apellido_materno}} </td>
-												<td class="text-left">{{alumnos.matricula}}</td>
-												<td class="text-left">{{alumnos.nivel_academico}}</td>
-												<td class="text-left">{{alumnos.nombre_profesor + ' ' + alumnos.apellido_profesor }} </td>
+												<td class="text-left">{{alumnos.edad}}</td>
+
+                        <td class="text-left">{{alumnos.matricula}}</td>
+
+												<td class="text-left">{{alumnos.genero}}</td>
+                        <td class="text-left">{{alumnos.nivel_academico}}</td>
+                        <td class="text-left">{{alumnos.periodo}}</td>
+
+                        <td class="text-left">{{alumnos.nombre_profesor + ' ' + alumnos.apellido_profesor }} </td>
 												<td>
-													<a @click="btnEditar(alumnos.id_alumnos,alumnos.nombre_alumno,alumnos.apellido_paterno,alumnos.apellido_materno,alumnos.matricula,alumnos.nivel_academico,alumnos.id_profesor)" class="btn btn-outline-warning">
+													<a @click="btnEditar(alumnos.id_alumnos,alumnos.nombre_alumno,alumnos.apellido_paterno,alumnos.apellido_materno,alumnos.edad,alumnos.matricula,alumnos.genero,alumnos.nivel_academico,alumnos.periodo,alumnos.id_profesor)" class="btn btn-outline-warning">
 														<i class="fas fa-pen" style="color: #ffae00;"></i> </a>
 												</td>
 												<td>
@@ -128,9 +140,12 @@
                 apellido_paterno: '',
                 apellido_materno: '',
                 apellidos: '',
+                edad: '',
                 nivel_academico: '',
+                periodo: '',
                 id_profesor: '',
                 matricula: '',
+                genero: '',
                 password: '',
                 id_rol: '',
                 filters: {
@@ -181,14 +196,18 @@
                     }
                 )
             },
-            guardarAlumno(nombre, apellido_paterno, apellido_materno, matricula, password, nivel_academico, id_profesor, id_rol) { ///Funcion para guardar los usuarios
+          
+            guardarAlumno(nombre, apellido_paterno, apellido_materno, edad,matricula, genero, password, nivel_academico, periodo,id_profesor, id_rol) { ///Funcion para guardar los usuarios
                 axios.post('/alumno/add', {
                         nombre: nombre,
                         apellido_paterno: apellido_paterno,
                         apellido_materno: apellido_materno,
+                        edad: edad,
                         matricula: matricula,
+                        genero: genero,
                         password: password,
                         nivel_academico: nivel_academico,
+                        periodo: periodo,
                         id_profesor: id_profesor,
                         id_rol: id_rol
                     })
@@ -196,11 +215,14 @@
                         this.nombre = '';
                         this.apellido_materno = '';
                         this.apellido_paterno = '';
+                        this.edad='';
                         this.matricula = '';
+                        this.genero='';
                         this.password = '';
                         this.id_profesor = '';
                         this.id_rol = '';
                         this.nivel_academico = '';
+                        this.periodo = '';
                         this.getAlumnos();
                     })
                     .catch((err) => {
@@ -217,20 +239,49 @@
                     <input id="apellido_paterno" type="text" class="form-control" placeholder="Martínez">
                     <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Apellido materno: </b> </p>
                     <input id="apellido_materno" type="text" class="form-control" placeholder="Peréz">
+                    <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Edad<span style="color:red">*</span>:  </b> </p>
+                    <input type="number" class="form-control" id="edad" name="edad" min="10" max="85" placeholder="10~85" >                    
                     <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Matricula<span style="color:red">*</span>:  </b> </p>
                     <input id="matricula" type="text" class="form-control" placeholder="1234567">
-                    <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Contrseña<span style="color:red">*</span>:  </b> </p>
+                    <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Género: </b> </p>
+                    <select id="genero" value="" name="genero" class="form-control">
+                          <option value="Femenino">Femenino</option>
+                          <option value="Masculino">Masculino</option>
+
+                    </select>
+
+                    <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Contraseña<span style="color:red">*</span>:  </b> </p>
                     <input id="password" type="password" class="form-control" placeholder="Contraseña">
 
                     <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Nivel academico<span style="color:red">*</span>: </b> </p>
-                    <input id="nivel_academico" type="text" class="form-control" placeholder="Nivel academico">
-                
+                    <input id="nivel_academico" type="text" class="form-control" placeholder="Superior">
+               
+                    <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b>Período<span style="color:red">*</span>: </b> </p>
+                    <select id="periodo" value="" name="periodo" class="form-control">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                    </select>
                     <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Profesor: </b> </p>
                     <select id="id_profesor" value="${this.profesor}" name="profesor" class="form-control">
                         ${this.profesor.map(
                         cat => `<option value="${cat.id}">${cat.nombre}</option>`
                         )}
-                    </select>
+                    </select>   
+                    
+
 
 
                     <div id="div_error_matricula" style="display: none;" class="alert alert-danger" role="alert">
@@ -246,6 +297,8 @@
                     cancelButtonText: '<i class="fas fa-ban"></i> Cerrar',
                     allowOutsideClick: false,
                     allowEscapeKey: false,
+                    
+                    
                     preConfirm: async () => {
                         let error = 0;
 
@@ -253,17 +306,23 @@
                         this.nombre = document.getElementById('nombre').value;
                         this.apellido_paterno = document.getElementById('apellido_paterno').value;
                         this.apellido_materno = document.getElementById('apellido_materno').value;
+                        this.edad = document.getElementById('edad').value;
+
                         this.matricula = document.getElementById('matricula').value;
+                        this.genero = document.getElementById('genero').value;
                         this.password = document.getElementById('password').value;
                         this.nivel_academico = document.getElementById('nivel_academico').value;
+                        this.periodo = document.getElementById('periodo').value;
                         this.id_profesor = document.getElementById('id_profesor').value;
 
                         let mensajeError = document.getElementById('msjError');
 
-                        if (this.nombre == "" || this.apellido_paterno == "" || this.password == "" ||
-                            this.matricula == "" || this.nivel_academico == "" || this.id_profesor == ""
+                        if (this.nombre == "" || this.apellido_paterno == "" ||  this.edad == "" || this.password == "" ||
+                            this.matricula == "" || this.genero == "" || this.nivel_academico == "" || this.id_profesor == ""
                             ) {
                             error = 2;
+                        }  else if(this.edad <10 || this.edad>85){
+                            error=3;
                         } else {
                             await axios.post('/verificarExistencia', {
                                     correo: this.matricula
@@ -288,14 +347,21 @@
                             mensajeError.innerHTML = "Por favor complete todos los campos requeridos";
                             document.getElementById('div_error_matricula').style.display = "block";
                             return false;
+                        }else if(error===3){
+                            mensajeError.innerHTML = "Por favor, ingrese una edad dentro del rango de 10 a 85 años";
+                            document.getElementById('div_error_matricula').style.display = "block";
+                            return false;
                         } else {
                             return [
                                 this.nombre,
                                 this.apellido_paterno,
                                 this.apellido_materno,
+                                this.edad,
                                 this.matricula,
+                                this.genero,
                                 this.password,
                                 this.nivel_academico,
+                                this.periodo,
                                 this.id_profesor,
                                 error
                             ]
@@ -306,8 +372,8 @@
                 })
 
                 if (valores.hasOwnProperty('value')) {
-                    this.guardarAlumno(this.nombre, this.apellido_paterno, this.apellido_materno, this.matricula,
-                        this.password, this.nivel_academico, this.id_profesor, 4);
+                    this.guardarAlumno(this.nombre, this.apellido_paterno, this.apellido_materno, this.edad,this.matricula, this.genero,
+                        this.password, this.nivel_academico, this.periodo,this.id_profesor, 4);
                     this.$swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -319,15 +385,19 @@
                     this.apellido_paterno = "";
                     this.apellido_materno = "";
                     this.nombre = "";
+                    this.edad="";
                     this.matricula = "";
+                    this.genero = "";
                     this.password = "";
                     this.id_profesor = "";
                     this.nivel_academico = "";
+                    this.periodo = "";
+
                 }
 
             },
-            btnEditar: async function (id, nombre_alumno, apellido_paterno, apellido_materno, matricula,
-                nivel_academico, idProfesor) {
+            btnEditar: async function (id, nombre_alumno, apellido_paterno, apellido_materno,edad, matricula,genero,
+                nivel_academico, periodo, idProfesor) {
                 const valores = await this.$swal({
                     confirmButtonText: '<i class="fa fa-thumbs-o-up"></i> Text',
                     html: `<h3 class="text-left" style="color:#212529;"> Actualizar alumno </h3>
@@ -339,18 +409,55 @@
 						<p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Apellido materno: </b> </p>
 						<input id="apellido_materno" type="text" class="form-control" placeholder="Apellido Materno" value="` +
                         apellido_materno + `">
-						<p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Matricula<span style="color:red">*</span>: </b> </p>
+
+						<p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Edad<span style="color:red">*</span>: </b> </p>
+						<input id="edad" type="number" class="form-control" placeholder="10~85" value="` + edad + `">
+			   
+            <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Matricula<span style="color:red">*</span>: </b> </p>
 						<input id="matricula" type="text" class="form-control" placeholder="Matricula" value="` + matricula + `">
-						<p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Contrseña<span style="color:red">*</span>: </b> </p>
+
+            <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Género<span style="color:red">*</span>: </b> </p>
+            
+            <select id="genero" value="` + genero + `" name="genero" class="form-control">
+              <option value="` + genero + `">` + genero + `</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+
+            </select>
+
+     
+            <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Contraseña<span style="color:red">*</span>: </b> </p>
 						<input id="password" type="password" class="form-control" placeholder="Contraseña" value="secret">
 						<p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Nivel academico<span style="color:red">*</span>: </b> </p>
-						<input id="nivel_academico" type="text" class="form-control" placeholder="Nivel academico" value="` +
+						<input id="nivel_academico" type="text" class="form-control" placeholder="Superior" value="` +
                         nivel_academico + `" >
-						<p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Profesor<span style="color:red">*</span>: </b> </p>
+						
+            <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b>Período<span style="color:red">*</span>: </b> </p>
+                    <select id="periodo" value="" name="periodo" class="form-control">
+                         <option value="` + periodo + `">` + periodo + `</option>
+                   
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                    </select>
+            <p class="text-left mt-0 mb-0" style="color:#212529; font-size:16px;"> <b> Profesor<span style="color:red">*</span>: </b> </p>
 						<select id="id_profesor" value="${
 							this.profesor
 						}" name="profesor" class="form-control">
-							${this.profesor.map(
+							
+              ${this.profesor.map(
 							cat => `<option value="${cat.id}">${cat.nombre}</option>`
 							)}
 						</select>
@@ -378,19 +485,26 @@
                         this.apellido_paterno = document.getElementById('apellido_paterno').value,
                             this.apellido_materno = document.getElementById('apellido_materno').value,
                             this.nombre = document.getElementById('nombre').value,
+                            this.edad = document.getElementById('edad').value,
+
                             this.matricula = document.getElementById('matricula').value,
+                            this.genero = document.getElementById('genero').value,
                             this.password = document.getElementById('password').value,
                             this.nivel_academico = document.getElementById('nivel_academico').value,
+                            this.periodo = document.getElementById('periodo').value,
+
                             this.id_profesor = document.getElementById('id_profesor').value,
                             this.id = id
 
                         let mensajeError = document.getElementById('msjError');
 
-                        if (this.nombre == "" || this.apellido_paterno == "" || this.password == "" ||
-                            this.matricula == "" || this.nivel_academico == "" || this.id_profesor == ""
+                        if (this.nombre == "" || this.apellido_paterno == "" || this.edad == "" || this.password == "" ||
+                            this.matricula == "" || this.genero == "" || this.nivel_academico == "" || this.id_profesor == ""
                             ) {
                             error = 2;
-                        } else {
+                        }  else if(this.edad <10 || this.edad>85){
+                            error=3;
+                        }else {
 
                             if (matricula !== this.matricula) {
                                 await axios.post('/verificarExistencia', {
@@ -419,23 +533,34 @@
                             mensajeError.innerHTML = "Por favor, complete todos los campos requeridos";
                             document.getElementById('div_error_matricula').style.display = "block";
                             return false;
-                        } else {
+                        }else if(error===3){
+                            mensajeError.innerHTML = "Por favor, ingrese una edad dentro del rango de 10 a 85 años";
+                            document.getElementById('div_error_matricula').style.display = "block";
+                            return false;
+                        }
+                        else {
                             return [
                                 this.apellido_paterno = document.getElementById('apellido_paterno')
                                 .value,
                                 this.apellido_materno = document.getElementById('apellido_materno')
                                 .value,
                                 this.nombre = document.getElementById('nombre').value,
+                                this.edad = document.getElementById('edad').value,
+  
                                 this.matricula = document.getElementById('matricula').value,
+                                this.genero = document.getElementById('genero').value,
                                 this.password = document.getElementById('password').value,
-                                this.nivel_academico = document.getElementById('nivel_academico')
-                                .value,
+                                this.nivel_academico = document.getElementById('nivel_academico').value,
+                                this.periodo = document.getElementById('periodo').value,
+
                                 this.id_profesor = document.getElementById('id_profesor').value,
                                 this.id = id,
                                 error
 
                             ]
                         }
+                       
+                     
 
 
 
@@ -443,23 +568,26 @@
                 })
 
                 if (valores.hasOwnProperty('value')) {
-                    this.editar(this.id, this.nombre, this.apellido_paterno, this.apellido_materno, this.password,
-                        this.matricula, this.nivel_academico, this.id_profesor);
+                    this.editar(this.id, this.nombre, this.apellido_paterno, this.apellido_materno, this.edad,this.password,
+                        this.matricula, this.genero,this.nivel_academico, this.periodo, this.id_profesor);
                 }
 
             },
 
 
 
-            editar(id, nombre, apellido_paterno, apellido_materno, password, matricula, nivel_academico, id_profesor) {
+            editar(id, nombre, apellido_paterno, apellido_materno, edad,password, matricula, genero, nivel_academico, periodo,id_profesor) {
                 axios.post('/alumno/actualizar', {
                         id: id,
                         nombre: nombre,
                         apellido_paterno: apellido_paterno,
                         apellido_materno: apellido_materno,
+                        edad:edad,
                         password: password,
                         matricula: matricula,
+                        genero:genero,
                         nivel_academico: nivel_academico,
+                        periodo:periodo,
                         id_profesor: id_profesor
                     })
                     .then((res) => {
@@ -467,7 +595,10 @@
                         this.nivel_academico = ''
                         this.apellido_materno = ''
                         this.apellido_paterno = ''
+                        this.edad=''
                         this.matricula = ''
+                        this.genero = ''
+                        this.periodo=''
                         this.password = ''
                         this.id = ''
                         this.id_profesor = ''

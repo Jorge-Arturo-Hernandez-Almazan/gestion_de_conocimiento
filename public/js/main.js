@@ -3520,6 +3520,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3530,9 +3542,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       apellido_paterno: '',
       apellido_materno: '',
       apellidos: '',
+      edad: '',
       nivel_academico: '',
+      periodo: '',
       id_profesor: '',
       matricula: '',
+      genero: '',
       password: '',
       id_rol: '',
       filters: {
@@ -3579,7 +3594,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.error(error);
       });
     },
-    guardarAlumno: function guardarAlumno(nombre, apellido_paterno, apellido_materno, matricula, password, nivel_academico, id_profesor, id_rol) {
+    guardarAlumno: function guardarAlumno(nombre, apellido_paterno, apellido_materno, edad, matricula, genero, password, nivel_academico, periodo, id_profesor, id_rol) {
       var _this3 = this;
 
       ///Funcion para guardar los usuarios
@@ -3587,20 +3602,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         nombre: nombre,
         apellido_paterno: apellido_paterno,
         apellido_materno: apellido_materno,
+        edad: edad,
         matricula: matricula,
+        genero: genero,
         password: password,
         nivel_academico: nivel_academico,
+        periodo: periodo,
         id_profesor: id_profesor,
         id_rol: id_rol
       }).then(function () {
         _this3.nombre = '';
         _this3.apellido_materno = '';
         _this3.apellido_paterno = '';
+        _this3.edad = '';
         _this3.matricula = '';
+        _this3.genero = '';
         _this3.password = '';
         _this3.id_profesor = '';
         _this3.id_rol = '';
         _this3.nivel_academico = '';
+        _this3.periodo = '';
 
         _this3.getAlumnos();
       })["catch"](function (err) {
@@ -3620,9 +3641,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return this.$swal({
-                  html: "\n                    <h3 class=\"text-left\" style=\"color:#212529;\"> Registrar alumno </h3>\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Juan\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Mart\xEDnez\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n                    <input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Per\xE9z\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Matricula<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"1234567\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrse\xF1a<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\">\n\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nivel academico<span style=\"color:red\">*</span>: </b> </p>\n                    <input id=\"nivel_academico\" type=\"text\" class=\"form-control\" placeholder=\"Nivel academico\">\n                \n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Profesor: </b> </p>\n                    <select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n                        ").concat(this.profesor.map(function (cat) {
+                  html: "\n                    <h3 class=\"text-left\" style=\"color:#212529;\"> Registrar alumno </h3>\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Juan\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Mart\xEDnez\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n                    <input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Per\xE9z\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Edad<span style=\"color:red\">*</span>:  </b> </p>\n                    <input type=\"number\" class=\"form-control\" id=\"edad\" name=\"edad\" min=\"10\" max=\"85\" placeholder=\"10~85\" >                    \n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Matricula<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"1234567\">\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> G\xE9nero: </b> </p>\n                    <select id=\"genero\" value=\"\" name=\"genero\" class=\"form-control\">\n                          <option value=\"Femenino\">Femenino</option>\n                          <option value=\"Masculino\">Masculino</option>\n\n                    </select>\n\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a<span style=\"color:red\">*</span>:  </b> </p>\n                    <input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\">\n\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nivel academico<span style=\"color:red\">*</span>: </b> </p>\n                    <input id=\"nivel_academico\" type=\"text\" class=\"form-control\" placeholder=\"Superior\">\n               \n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b>Per\xEDodo<span style=\"color:red\">*</span>: </b> </p>\n                    <select id=\"periodo\" value=\"\" name=\"periodo\" class=\"form-control\">\n                          <option value=\"1\">1</option>\n                          <option value=\"2\">2</option>\n                          <option value=\"3\">3</option>\n                          <option value=\"4\">4</option>\n                          <option value=\"5\">5</option>\n                          <option value=\"6\">6</option>\n                          <option value=\"7\">7</option>\n                          <option value=\"8\">8</option>\n                          <option value=\"9\">9</option>\n                          <option value=\"10\">10</option>\n                          <option value=\"11\">11</option>\n                          <option value=\"12\">12</option>\n                          <option value=\"13\">13</option>\n                          <option value=\"14\">14</option>\n                          <option value=\"15\">15</option>\n                    </select>\n                    <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Profesor: </b> </p>\n                    <select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n                        ").concat(this.profesor.map(function (cat) {
                     return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre, "</option>");
-                  }), "\n                    </select>\n\n\n                    <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                        <span class=\"text-left\" id=\"msjError\">  </span>\n                    </div>\n                    <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n                    "),
+                  }), "\n                    </select>   \n                    \n\n\n\n                    <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n                        <span class=\"text-left\" id=\"msjError\">  </span>\n                    </div>\n                    <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n                    "),
                   focusConfirm: false,
                   showCancelButton: true,
                   confirmButtonText: '<i class="fas fa-save"></i> Guardar',
@@ -3644,23 +3665,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               _this4.nombre = document.getElementById('nombre').value;
                               _this4.apellido_paterno = document.getElementById('apellido_paterno').value;
                               _this4.apellido_materno = document.getElementById('apellido_materno').value;
+                              _this4.edad = document.getElementById('edad').value;
                               _this4.matricula = document.getElementById('matricula').value;
+                              _this4.genero = document.getElementById('genero').value;
                               _this4.password = document.getElementById('password').value;
                               _this4.nivel_academico = document.getElementById('nivel_academico').value;
+                              _this4.periodo = document.getElementById('periodo').value;
                               _this4.id_profesor = document.getElementById('id_profesor').value;
                               mensajeError = document.getElementById('msjError');
 
-                              if (!(_this4.nombre == "" || _this4.apellido_paterno == "" || _this4.password == "" || _this4.matricula == "" || _this4.nivel_academico == "" || _this4.id_profesor == "")) {
-                                _context.next = 13;
+                              if (!(_this4.nombre == "" || _this4.apellido_paterno == "" || _this4.edad == "" || _this4.password == "" || _this4.matricula == "" || _this4.genero == "" || _this4.nivel_academico == "" || _this4.id_profesor == "")) {
+                                _context.next = 16;
                                 break;
                               }
 
                               error = 2;
-                              _context.next = 15;
+                              _context.next = 22;
                               break;
 
-                            case 13:
-                              _context.next = 15;
+                            case 16:
+                              if (!(_this4.edad < 10 || _this4.edad > 85)) {
+                                _context.next = 20;
+                                break;
+                              }
+
+                              error = 3;
+                              _context.next = 22;
+                              break;
+
+                            case 20:
+                              _context.next = 22;
                               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/verificarExistencia', {
                                 correo: _this4.matricula
                               }).then(function (res) {
@@ -3671,9 +3705,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                 console.log(err);
                               });
 
-                            case 15:
+                            case 22:
                               if (!(error === 1)) {
-                                _context.next = 22;
+                                _context.next = 29;
                                 break;
                               }
 
@@ -3682,9 +3716,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               document.getElementById('div_error_matricula').style.display = "block";
                               return _context.abrupt("return", false);
 
-                            case 22:
+                            case 29:
                               if (!(error === 2)) {
-                                _context.next = 28;
+                                _context.next = 35;
                                 break;
                               }
 
@@ -3692,10 +3726,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               document.getElementById('div_error_matricula').style.display = "block";
                               return _context.abrupt("return", false);
 
-                            case 28:
-                              return _context.abrupt("return", [_this4.nombre, _this4.apellido_paterno, _this4.apellido_materno, _this4.matricula, _this4.password, _this4.nivel_academico, _this4.id_profesor, error]);
+                            case 35:
+                              if (!(error === 3)) {
+                                _context.next = 41;
+                                break;
+                              }
 
-                            case 29:
+                              mensajeError.innerHTML = "Por favor, ingrese una edad dentro del rango de 10 a 85 años";
+                              document.getElementById('div_error_matricula').style.display = "block";
+                              return _context.abrupt("return", false);
+
+                            case 41:
+                              return _context.abrupt("return", [_this4.nombre, _this4.apellido_paterno, _this4.apellido_materno, _this4.edad, _this4.matricula, _this4.genero, _this4.password, _this4.nivel_academico, _this4.periodo, _this4.id_profesor, error]);
+
+                            case 42:
                             case "end":
                               return _context.stop();
                           }
@@ -3715,7 +3759,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 valores = _context2.sent;
 
                 if (valores.hasOwnProperty('value')) {
-                  this.guardarAlumno(this.nombre, this.apellido_paterno, this.apellido_materno, this.matricula, this.password, this.nivel_academico, this.id_profesor, 4);
+                  this.guardarAlumno(this.nombre, this.apellido_paterno, this.apellido_materno, this.edad, this.matricula, this.genero, this.password, this.nivel_academico, this.periodo, this.id_profesor, 4);
                   this.$swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -3727,10 +3771,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   this.apellido_paterno = "";
                   this.apellido_materno = "";
                   this.nombre = "";
+                  this.edad = "";
                   this.matricula = "";
+                  this.genero = "";
                   this.password = "";
                   this.id_profesor = "";
                   this.nivel_academico = "";
+                  this.periodo = "";
                 }
 
               case 4:
@@ -3750,7 +3797,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     btnEditar: function () {
       var _btnEditar = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id, nombre_alumno, apellido_paterno, apellido_materno, matricula, nivel_academico, idProfesor) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id, nombre_alumno, apellido_paterno, apellido_materno, edad, matricula, genero, nivel_academico, periodo, idProfesor) {
         var _this5 = this,
             _this$$swal;
 
@@ -3762,7 +3809,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context4.next = 2;
                 return this.$swal((_this$$swal = {
                   confirmButtonText: '<i class="fa fa-thumbs-o-up"></i> Text',
-                  html: "<h3 class=\"text-left\" style=\"color:#212529;\"> Actualizar alumno </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Nombre\" value=\"" + nombre_alumno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Matricula<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrse\xF1a<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nivel academico<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"nivel_academico\" type=\"text\" class=\"form-control\" placeholder=\"Nivel academico\" value=\"" + nivel_academico + "\" >\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Profesor<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n\t\t\t\t\t\t\t").concat(this.profesor.map(function (cat) {
+                  html: "<h3 class=\"text-left\" style=\"color:#212529;\"> Actualizar alumno </h3>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nombre<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"nombre\" type=\"text\" class=\"form-control\" placeholder=\"Nombre\" value=\"" + nombre_alumno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido paterno<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_paterno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Paterno\" value=\"" + apellido_paterno + "\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Apellido materno: </b> </p>\n\t\t\t\t\t\t<input id=\"apellido_materno\" type=\"text\" class=\"form-control\" placeholder=\"Apellido Materno\" value=\"" + apellido_materno + "\">\n\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Edad<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"edad\" type=\"number\" class=\"form-control\" placeholder=\"10~85\" value=\"" + edad + "\">\n\t\t\t   \n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Matricula<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"matricula\" type=\"text\" class=\"form-control\" placeholder=\"Matricula\" value=\"" + matricula + "\">\n\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> G\xE9nero<span style=\"color:red\">*</span>: </b> </p>\n            \n            <select id=\"genero\" value=\"" + genero + "\" name=\"genero\" class=\"form-control\">\n              <option value=\"" + genero + "\">" + genero + "</option>\n              <option value=\"Masculino\">Masculino</option>\n              <option value=\"Femenino\">Femenino</option>\n\n            </select>\n\n     \n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Contrase\xF1a<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Contrase\xF1a\" value=\"secret\">\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Nivel academico<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<input id=\"nivel_academico\" type=\"text\" class=\"form-control\" placeholder=\"Superior\" value=\"" + nivel_academico + "\" >\n\t\t\t\t\t\t\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b>Per\xEDodo<span style=\"color:red\">*</span>: </b> </p>\n                    <select id=\"periodo\" value=\"\" name=\"periodo\" class=\"form-control\">\n                         <option value=\"" + periodo + "\">" + periodo + "</option>\n                   \n                          <option value=\"1\">1</option>\n                          <option value=\"2\">2</option>\n                          <option value=\"3\">3</option>\n                          <option value=\"4\">4</option>\n                          <option value=\"5\">5</option>\n                          <option value=\"6\">6</option>\n                          <option value=\"7\">7</option>\n                          <option value=\"8\">8</option>\n                          <option value=\"9\">9</option>\n                          <option value=\"10\">10</option>\n                          <option value=\"11\">11</option>\n                          <option value=\"12\">12</option>\n                          <option value=\"13\">13</option>\n                          <option value=\"14\">14</option>\n                          <option value=\"15\">15</option>\n                    </select>\n            <p class=\"text-left mt-0 mb-0\" style=\"color:#212529; font-size:16px;\"> <b> Profesor<span style=\"color:red\">*</span>: </b> </p>\n\t\t\t\t\t\t<select id=\"id_profesor\" value=\"".concat(this.profesor, "\" name=\"profesor\" class=\"form-control\">\n\t\t\t\t\t\t\t\n              ").concat(this.profesor.map(function (cat) {
                     return "<option value=\"".concat(cat.id, "\">").concat(cat.nombre, "</option>");
                   }), "\n\t\t\t\t\t\t</select>\n\n            <div id=\"div_error_matricula\" style=\"display: none;\" class=\"alert alert-danger\" role=\"alert\">\n              <span class=\"text-left\" id=\"msjError\">  </span>\n            </div>\n\t\t\t\t\t\t<p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px; color:#212529;\"> <span style=\"color:red\">*</span> Datos obligatorios </p>\n            <p class=\"text-left mt-0 mb-0\" style=\"font-size: 12px; color:#212529;\"> <span style=\"color:red\">**</span> Deje en blanco si no desea actualizar </p>\n\n\n\t\t\t\t\t\t\t"),
                   focusConfirm: false,
@@ -3777,25 +3824,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         switch (_context3.prev = _context3.next) {
                           case 0:
                             error = 0;
-                            _this5.apellido_paterno = document.getElementById('apellido_paterno').value, _this5.apellido_materno = document.getElementById('apellido_materno').value, _this5.nombre = document.getElementById('nombre').value, _this5.matricula = document.getElementById('matricula').value, _this5.password = document.getElementById('password').value, _this5.nivel_academico = document.getElementById('nivel_academico').value, _this5.id_profesor = document.getElementById('id_profesor').value, _this5.id = id;
+                            _this5.apellido_paterno = document.getElementById('apellido_paterno').value, _this5.apellido_materno = document.getElementById('apellido_materno').value, _this5.nombre = document.getElementById('nombre').value, _this5.edad = document.getElementById('edad').value, _this5.matricula = document.getElementById('matricula').value, _this5.genero = document.getElementById('genero').value, _this5.password = document.getElementById('password').value, _this5.nivel_academico = document.getElementById('nivel_academico').value, _this5.periodo = document.getElementById('periodo').value, _this5.id_profesor = document.getElementById('id_profesor').value, _this5.id = id;
                             mensajeError = document.getElementById('msjError');
 
-                            if (!(_this5.nombre == "" || _this5.apellido_paterno == "" || _this5.password == "" || _this5.matricula == "" || _this5.nivel_academico == "" || _this5.id_profesor == "")) {
+                            if (!(_this5.nombre == "" || _this5.apellido_paterno == "" || _this5.edad == "" || _this5.password == "" || _this5.matricula == "" || _this5.genero == "" || _this5.nivel_academico == "" || _this5.id_profesor == "")) {
                               _context3.next = 7;
                               break;
                             }
 
                             error = 2;
-                            _context3.next = 10;
+                            _context3.next = 14;
                             break;
 
                           case 7:
-                            if (!(matricula !== _this5.matricula)) {
-                              _context3.next = 10;
+                            if (!(_this5.edad < 10 || _this5.edad > 85)) {
+                              _context3.next = 11;
                               break;
                             }
 
-                            _context3.next = 10;
+                            error = 3;
+                            _context3.next = 14;
+                            break;
+
+                          case 11:
+                            if (!(matricula !== _this5.matricula)) {
+                              _context3.next = 14;
+                              break;
+                            }
+
+                            _context3.next = 14;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/verificarExistencia', {
                               correo: _this5.matricula
                             }).then(function (res) {
@@ -3806,9 +3863,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.log(err);
                             });
 
-                          case 10:
+                          case 14:
                             if (!(error === 1)) {
-                              _context3.next = 17;
+                              _context3.next = 21;
                               break;
                             }
 
@@ -3817,9 +3874,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             document.getElementById('div_error_matricula').style.display = "block";
                             return _context3.abrupt("return", false);
 
-                          case 17:
+                          case 21:
                             if (!(error === 2)) {
-                              _context3.next = 23;
+                              _context3.next = 27;
                               break;
                             }
 
@@ -3827,10 +3884,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             document.getElementById('div_error_matricula').style.display = "block";
                             return _context3.abrupt("return", false);
 
-                          case 23:
-                            return _context3.abrupt("return", [_this5.apellido_paterno = document.getElementById('apellido_paterno').value, _this5.apellido_materno = document.getElementById('apellido_materno').value, _this5.nombre = document.getElementById('nombre').value, _this5.matricula = document.getElementById('matricula').value, _this5.password = document.getElementById('password').value, _this5.nivel_academico = document.getElementById('nivel_academico').value, _this5.id_profesor = document.getElementById('id_profesor').value, _this5.id = id, error]);
+                          case 27:
+                            if (!(error === 3)) {
+                              _context3.next = 33;
+                              break;
+                            }
 
-                          case 24:
+                            mensajeError.innerHTML = "Por favor, ingrese una edad dentro del rango de 10 a 85 años";
+                            document.getElementById('div_error_matricula').style.display = "block";
+                            return _context3.abrupt("return", false);
+
+                          case 33:
+                            return _context3.abrupt("return", [_this5.apellido_paterno = document.getElementById('apellido_paterno').value, _this5.apellido_materno = document.getElementById('apellido_materno').value, _this5.nombre = document.getElementById('nombre').value, _this5.edad = document.getElementById('edad').value, _this5.matricula = document.getElementById('matricula').value, _this5.genero = document.getElementById('genero').value, _this5.password = document.getElementById('password').value, _this5.nivel_academico = document.getElementById('nivel_academico').value, _this5.periodo = document.getElementById('periodo').value, _this5.id_profesor = document.getElementById('id_profesor').value, _this5.id = id, error]);
+
+                          case 34:
                           case "end":
                             return _context3.stop();
                         }
@@ -3849,7 +3916,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 valores = _context4.sent;
 
                 if (valores.hasOwnProperty('value')) {
-                  this.editar(this.id, this.nombre, this.apellido_paterno, this.apellido_materno, this.password, this.matricula, this.nivel_academico, this.id_profesor);
+                  this.editar(this.id, this.nombre, this.apellido_paterno, this.apellido_materno, this.edad, this.password, this.matricula, this.genero, this.nivel_academico, this.periodo, this.id_profesor);
                 }
 
               case 4:
@@ -3860,13 +3927,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4, this);
       }));
 
-      function btnEditar(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
+      function btnEditar(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9, _x10) {
         return _btnEditar.apply(this, arguments);
       }
 
       return btnEditar;
     }(),
-    editar: function editar(id, nombre, apellido_paterno, apellido_materno, password, matricula, nivel_academico, id_profesor) {
+    editar: function editar(id, nombre, apellido_paterno, apellido_materno, edad, password, matricula, genero, nivel_academico, periodo, id_profesor) {
       var _this6 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/alumno/actualizar', {
@@ -3874,16 +3941,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         nombre: nombre,
         apellido_paterno: apellido_paterno,
         apellido_materno: apellido_materno,
+        edad: edad,
         password: password,
         matricula: matricula,
+        genero: genero,
         nivel_academico: nivel_academico,
+        periodo: periodo,
         id_profesor: id_profesor
       }).then(function (res) {
         _this6.nombre = '';
         _this6.nivel_academico = '';
         _this6.apellido_materno = '';
         _this6.apellido_paterno = '';
+        _this6.edad = '';
         _this6.matricula = '';
+        _this6.genero = '';
+        _this6.periodo = '';
         _this6.password = '';
         _this6.id = '';
         _this6.id_profesor = '';
@@ -4852,54 +4925,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4919,7 +4944,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       ordenEvaluacion: [],
       ponderacion: 0,
       estatus: [],
-      ultimoTema: 0
+      ultimoTema: 0,
+      datosEvaluacion: {
+        detenerse: false
+      },
+      temasAEvaluar: [96, 26, 44, 91],
+      temaAEvaluarActual: 0
     };
   },
   created: function created() {
@@ -4940,14 +4970,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _this2.obtenerPonderaciones();
 
             case 4:
-              _context.next = 6;
-              return _this2.getopic();
-
-            case 6:
-              _context.next = 8;
-              return _this2.getpreguntas();
-
-            case 8:
             case "end":
               return _context.stop();
           }
@@ -4960,39 +4982,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _obtenerPonderaciones = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this3 = this;
-
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                this.ultimoTema = this.temasAEvaluar[this.temaAEvaluarActual];
+                _context2.next = 3;
+                return this.getopic();
+
+              case 3:
+                _context2.next = 5;
+                return this.getpreguntas();
+
+              case 5:
+                this.temaAEvaluarActual++;
+                /*await axios({
                   method: 'get',
                   url: "/obtenerPonderaciones/" + matricula
-                }).then(function (result) {
+                }).then(async result => {
+                  
                   if (result.data == -1) {
-                    _this3.obtenerPrimerTema();
-
-                    console.log("Debe crearse la RBMA");
-                  } else if (result.data.temas_evaluados.length === 0) {
-                    _this3.ultimoTema = result.data.ultimo;
-                  } else {
-                    _this3.estatus = result.data;
-                    _this3.ultimoTema = result.data.ultimo;
+                    await this.obtenerPrimerTema();
+                    await this.getopic();
+                    await this.getpreguntas();
+                  } else if (result.data.detenerse === false ) {
+                      this.ultimoTema = result.data.ultimo;
+                      this.datosEvaluacion = result.data;
+                      await this.getopic();
+                      await this.getpreguntas();
+                  }else{
+                    console.log("Ya ha terminado el cuestionario");
                   }
+                }, error => {
+                  console.error(error)
+                })*/
 
-                  console.log(result);
-                }, function (error) {
-                  console.error(error);
-                });
-
-              case 2:
+              case 6:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, this);
       }));
 
       function obtenerPonderaciones() {
@@ -5005,7 +5035,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _enviarPonderacion = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this4 = this;
+        var _this3 = this;
 
         var saltos, tema, parametros;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -5020,7 +5050,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   method: 'get',
                   url: "/obtenerTema/" + parametros
                 }).then(function (result) {
-                  _this4.obtenerPonderaciones();
+                  _this3.obtenerPonderaciones();
                 }, function (error) {
                   console.error(error);
                 });
@@ -5043,31 +5073,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _obtenerPrimerTema = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _this5 = this;
-
-        var parametros;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                parametros = this.configuracion.rbm + "/" + matricula;
-                console.log(parametros);
-                _context4.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  method: 'get',
-                  url: "/arbol/caminosmodulo/" + parametros
-                }).then(function (result) {
-                  _this5.ultimoTema = result.data.tema;
-                }, function (error) {
-                  console.error(error);
-                });
-
-              case 4:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee4);
       }));
 
       function obtenerPrimerTema() {
@@ -5087,7 +5101,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 this.pregunta = [];
                 _context5.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/score/add', {
-                  id_tema: this.topic[this.numero_tema].id,
+                  id_tema: this.topic[0].id,
                   ponderacion: ponderacion,
                   clasificacion: 1
                 }).then(function (res) {})["catch"](function (err) {
@@ -5098,7 +5112,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context5.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
-                  url: '/arbol/obtenerCaminos/' + this.topic[this.numero_tema].id
+                  url: '/arbol/obtenerCaminos/' + this.topic[0].id
                 }).then(function (result) {}, function (error) {
                   console.error(error);
                 });
@@ -5121,24 +5135,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _getopic = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        var _this6 = this;
+        var _this4 = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                return _context6.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                _context6.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: 'topic/getopic/' + this.ultimoTema
                 }).then(function (result) {
-                  _this6.topic = result.data[0];
-                  console.log("Get topic");
-                  console.log(result);
+                  _this4.topic = result.data[0];
                 }, function (error) {
                   console.error(error);
-                }));
+                });
 
-              case 1:
+              case 2:
               case "end":
                 return _context6.stop();
             }
@@ -5153,15 +5166,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return getopic;
     }(),
     obtenerConfiguracion: function obtenerConfiguracion() {
-      var _this7 = this;
+      var _this5 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'get',
         url: 'cuestionario/obtenerconfiguracion'
       }).then(function (result) {
-        _this7.configuracion = result.data;
-        console.log("Configuración del cuestionario");
-        console.log(result.data);
+        _this5.configuracion = result.data;
+        console.log("Configuracion");
+        console.log(_this5.configuracion);
       }, function (error) {
         console.error(error);
       });
@@ -5170,15 +5183,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _getpreguntas = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-        var _this8 = this;
+        var _this6 = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
           while (1) {
             switch (_context10.prev = _context10.next) {
               case 0:
+                console.log("Obtener preguntas del tema: " + this.ultimoTema);
                 return _context10.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
-                  url: 'pregunta/showPreguntas/' + this.topic[this.numero_tema].id
+                  url: 'pregunta/showPreguntas/' + this.ultimoTema
                 }).then(
                 /*#__PURE__*/
                 function () {
@@ -5191,7 +5205,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       while (1) {
                         switch (_context9.prev = _context9.next) {
                           case 0:
-                            _this8.pregunta = result.data.banco_preguntas;
+                            _this6.pregunta = result.data.banco_preguntas;
                             _loop =
                             /*#__PURE__*/
                             _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _loop(_i) {
@@ -5199,11 +5213,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                 while (1) {
                                   switch (_context8.prev = _context8.next) {
                                     case 0:
-                                      _this8.pregunta[_i].imagenes = [];
+                                      _this6.pregunta[_i].imagenes = [];
                                       _context8.next = 3;
                                       return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                                         method: 'get',
-                                        url: '/imagen/pregunta/' + _this8.pregunta[_i].id_pregunta
+                                        url: '/imagen/pregunta/' + _this6.pregunta[_i].id_pregunta
                                       }).then(
                                       /*#__PURE__*/
                                       function () {
@@ -5214,7 +5228,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                             while (1) {
                                               switch (_context7.prev = _context7.next) {
                                                 case 0:
-                                                  _this8.pregunta[_i].imagenes = resultado.data.imagenes[0];
+                                                  _this6.pregunta[_i].imagenes = resultado.data.imagenes[0];
 
                                                 case 1:
                                                 case "end":
@@ -5241,7 +5255,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             _i = 0;
 
                           case 3:
-                            if (!(_i < _this8.pregunta.length)) {
+                            if (!(_i < _this6.pregunta.length)) {
                               _context9.next = 8;
                               break;
                             }
@@ -5254,14 +5268,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             break;
 
                           case 8:
-                            console.log(_this8.pregunta);
+                            console.log(_this6.pregunta);
 
-                            for (i = 0; i < _this8.pregunta.length; i++) {
-                              if (_this8.pregunta[i].tipo == 5) _this8.pCalculadas[i] = _this8.pregunta[i].id_pregunta;else if (_this8.pregunta[i].tipo == 6) _this8.pCalculadasMultiples[i] = _this8.pregunta[i].id_pregunta;
+                            for (i = 0; i < _this6.pregunta.length; i++) {
+                              if (_this6.pregunta[i].tipo == 5) _this6.pCalculadas[i] = _this6.pregunta[i].id_pregunta;else if (_this6.pregunta[i].tipo == 6) _this6.pCalculadasMultiples[i] = _this6.pregunta[i].id_pregunta;
                             }
 
                             _context9.next = 12;
-                            return _this8.getComodines();
+                            return _this6.getComodines();
 
                           case 12:
                             return _context9.abrupt("return", result.data);
@@ -5281,7 +5295,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.error(error);
                 }));
 
-              case 1:
+              case 2:
               case "end":
                 return _context10.stop();
             }
@@ -5299,7 +5313,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _getComodines = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
-        var _this9 = this;
+        var _this7 = this;
 
         var preguntasCalculadas;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
@@ -5319,9 +5333,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       while (1) {
                         switch (_context11.prev = _context11.next) {
                           case 0:
-                            _this9.comodines = result.data.comodines;
+                            _this7.comodines = result.data.comodines;
                             _context11.next = 3;
-                            return _this9.convertirComodines();
+                            return _this7.convertirComodines();
 
                           case 3:
                           case "end":
@@ -5441,7 +5455,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
                 _context14.next = 3;
-                return this.cargarCuestionario(this.topic.nombre_tema, this.pregunta);
+                return this.cargarCuestionario(this.topic[0].nombre_tema, this.pregunta);
 
               case 3:
               case "end":
@@ -5601,49 +5615,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         switch (_context17.prev = _context17.next) {
                           case 0:
                             if (!quiz.isEnded()) {
-                              _context17.next = 19;
+                              _context17.next = 4;
                               break;
                             }
 
-                            if (!(quiz.questions.length > 0)) {
-                              _context17.next = 17;
-                              break;
+                            if (quiz.questions.length > 0) {
+                              total = Math.round(quiz.score / quiz.questions.length * 100);
+
+                              if (!_this.datosEvaluacion.detenerse) {
+                                quiz = "";
+                                questions = [];
+                                _this.ponderacion = total;
+
+                                _this.enviarPonderacion(); //_this.getpreguntas();
+
+                              } else {
+                                showScores();
+                              }
                             }
 
-                            total = Math.round(quiz.score / quiz.questions.length * 100);
-                            _context17.next = 5;
-                            return _this.storeResult(total);
-
-                          case 5:
-                            if (!(_this.numero_tema <= _this.pregunta.length - 1)) {
-                              _context17.next = 16;
-                              break;
-                            }
-
-                            quiz = "";
-                            questions = [];
-                            _this.numero_tema = _this.numero_tema + 1;
-                            console.log("Estoy en la linea 1029");
-                            _context17.next = 12;
-                            return _this.enviarPonderacion();
-
-                          case 12:
-                            _context17.next = 14;
-                            return _this.getpreguntas();
-
-                          case 14:
-                            _context17.next = 17;
+                            _context17.next = 74;
                             break;
 
-                          case 16:
-                            showScores();
-
-                          case 17:
-                            _context17.next = 90;
-                            break;
-
-                          case 19:
-                            console.log();
+                          case 4:
                             document.getElementById("buttons").innerHTML = "";
                             element = document.getElementById("question").innerHTML = quiz.getQuestionIndex().text;
                             imgstr = "";
@@ -5659,14 +5653,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                             console.log(quiz.getQuestionIndex().imagenes);
                             tema = document.getElementById("tag_topic");
-                            tema.innerHTML = " <b> Tema: </b> " + _this.topic[_this.numero_tema].nombre_tema;
+                            tema.innerHTML = " <b> Tema: </b> " + _this.topic[0].nombre_tema;
 
                             if (!(quiz.getQuestionIndex().type == 4)) {
-                              _context17.next = 31;
+                              _context17.next = 15;
                               break;
                             }
 
-                            _context17.next = 31;
+                            _context17.next = 15;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opciones/' + quiz.getQuestionIndex().id
@@ -5682,15 +5676,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 31:
+                          case 15:
                             opcionesAux = [];
 
                             if (!(quiz.getQuestionIndex().type == 6)) {
-                              _context17.next = 35;
+                              _context17.next = 19;
                               break;
                             }
 
-                            _context17.next = 35;
+                            _context17.next = 19;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opcionescalculadasmultiples/' + quiz.getQuestionIndex().id
@@ -5707,31 +5701,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               console.error(error);
                             });
 
-                          case 35:
+                          case 19:
                             choices = quiz.getQuestionIndex().choices;
                             _context17.t0 = quiz.getQuestionIndex().type;
-                            _context17.next = _context17.t0 === 1 ? 39 : _context17.t0 === 2 ? 46 : _context17.t0 === 3 ? 53 : _context17.t0 === 4 ? 76 : _context17.t0 === 5 ? 80 : _context17.t0 === 6 ? 87 : 89;
+                            _context17.next = _context17.t0 === 1 ? 23 : _context17.t0 === 2 ? 30 : _context17.t0 === 3 ? 37 : _context17.t0 === 4 ? 60 : _context17.t0 === 5 ? 64 : _context17.t0 === 6 ? 71 : 73;
                             break;
 
-                          case 39:
+                          case 23:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "text";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 89);
+                            return _context17.abrupt("break", 73);
 
-                          case 46:
+                          case 30:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 89);
+                            return _context17.abrupt("break", 73);
 
-                          case 53:
+                          case 37:
                             div_verdadero = document.createElement("div");
                             div_falso = document.createElement("div");
                             label_verdadero = document.createElement("label");
@@ -5754,9 +5748,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(div_verdadero);
                             zona_botones.appendChild(div_falso);
-                            return _context17.abrupt("break", 89);
+                            return _context17.abrupt("break", 73);
 
-                          case 76:
+                          case 60:
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
 
@@ -5777,18 +5771,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context17.abrupt("break", 89);
+                            return _context17.abrupt("break", 73);
 
-                          case 80:
+                          case 64:
                             input_respuesta = document.createElement("input");
                             input_respuesta.type = "number";
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 89);
+                            return _context17.abrupt("break", 73);
 
-                          case 87:
+                          case 71:
                             for (i = 0; i < choices.length; i++) {
                               label = document.createElement("label"); //label.innerHTML = choices[i];
 
@@ -5810,12 +5804,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context17.abrupt("break", 89);
+                            return _context17.abrupt("break", 73);
 
-                          case 89:
+                          case 73:
                             showProgress();
 
-                          case 90:
+                          case 74:
                           case "end":
                             return _context17.stop();
                         }
@@ -5848,6 +5842,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   this.questionIndex = 0;
                 };
 
+                //console.log("Se va a cargar el cuestionario con el tema " + topic);
                 questions = [];
 
                 for (i = 0; i < prguntass.length; i++) {
@@ -5951,7 +5946,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 tipo = this.configuracion.ponde_estricta; //
 
-                quiz = new Quiz(questions); //Boton de siguiente pregunta
+                quiz = new Quiz(questions);
+                console.log(questions); //Boton de siguiente pregunta
 
                 document.getElementById("next").addEventListener("click",
                 /*#__PURE__*/
@@ -5963,7 +5959,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     while (1) {
                       switch (_context16.prev = _context16.next) {
                         case 0:
-                          _context16.next = 2;
+                          console.log("Quizz");
+                          console.log(quiz); //AQUI SE OBTIENE LA RESPUESTA A LA PREGUNTA
+
+                          _context16.next = 4;
                           return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                             method: 'get',
                             url: '/pregunta/respuestas/' + quiz.getQuestionIndex().id
@@ -5987,7 +5986,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             console.error(error);
                           });
 
-                        case 2:
+                        case 4:
                           //SE LO ASIGNAS A quiz.getQuestionIndex().answer
                           //quiz.getQuestionIndex().id <-- id de pregunta
                           //quiz.getQuestionIndex().type  <-- TIPO DE LA PREGUNTA
@@ -5998,17 +5997,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           respuestas_incorretas = 0; // COMPARA EL TIPO DE PREGUNTA
 
                           _context16.t0 = quiz.getQuestionIndex().type;
-                          _context16.next = _context16.t0 === 1 ? 7 : _context16.t0 === 2 ? 16 : _context16.t0 === 3 ? 22 : _context16.t0 === 4 ? 32 : _context16.t0 === 5 ? 39 : _context16.t0 === 6 ? 48 : 55;
+                          _context16.next = _context16.t0 === 1 ? 9 : _context16.t0 === 2 ? 18 : _context16.t0 === 3 ? 24 : _context16.t0 === 4 ? 34 : _context16.t0 === 5 ? 41 : _context16.t0 === 6 ? 50 : 57;
                           break;
 
-                        case 7:
+                        case 9:
                           opc = document.getElementById("input_respuesta");
                           resp = opc.value.toString().toLowerCase();
                           resp = resp.trim();
                           resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 
                           if (!(resp == "")) {
-                            _context16.next = 14;
+                            _context16.next = 16;
                             break;
                           }
 
@@ -6022,15 +6021,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           return _context16.abrupt("return");
 
-                        case 14:
-                          if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 55);
-
                         case 16:
+                          if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context16.abrupt("break", 57);
+
+                        case 18:
                           opc = document.getElementById("input_respuesta");
 
                           if (!(opc.value == "")) {
-                            _context16.next = 20;
+                            _context16.next = 22;
                             break;
                           }
 
@@ -6045,11 +6044,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           return _context16.abrupt("return");
 
-                        case 20:
-                          if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 55);
-
                         case 22:
+                          if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context16.abrupt("break", 57);
+
+                        case 24:
                           input_verdadero = document.getElementById("input_verdadero");
                           input_falso = document.getElementById("input_falso");
                           resp = "";
@@ -6057,7 +6056,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           if (input_falso.checked && !input_verdadero.checked) resp = "falso";
 
                           if (!(input_verdadero.checked === false && input_falso.checked === false)) {
-                            _context16.next = 30;
+                            _context16.next = 32;
                             break;
                           }
 
@@ -6072,11 +6071,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           return _context16.abrupt("return");
 
-                        case 30:
-                          if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 55);
-
                         case 32:
+                          if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context16.abrupt("break", 57);
+
+                        case 34:
                           chequeada = false;
 
                           for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
@@ -6088,7 +6087,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           }
 
                           if (chequeada) {
-                            _context16.next = 37;
+                            _context16.next = 39;
                             break;
                           }
 
@@ -6103,7 +6102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           return _context16.abrupt("return");
 
-                        case 37:
+                        case 39:
                           for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
                             opc = document.getElementById("opc_" + i);
 
@@ -6119,16 +6118,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             }
                           }
 
-                          return _context16.abrupt("break", 55);
+                          return _context16.abrupt("break", 57);
 
-                        case 39:
+                        case 41:
                           opc = document.getElementById("input_respuesta");
                           resp = opc.value.toString().toLowerCase();
                           resp = resp.trim();
                           resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 
                           if (!(resp == "")) {
-                            _context16.next = 46;
+                            _context16.next = 48;
                             break;
                           }
 
@@ -6143,11 +6142,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           return _context16.abrupt("return");
 
-                        case 46:
-                          if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 55);
-
                         case 48:
+                          if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context16.abrupt("break", 57);
+
+                        case 50:
                           chequeada = false;
 
                           for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
@@ -6159,11 +6158,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           }
 
                           if (chequeada) {
-                            _context16.next = 53;
+                            _context16.next = 55;
                             break;
                           }
 
-                          //_this.$swal.fire("Por favor selecciona una respuesta");
                           _this.$swal.fire({
                             position: 'center',
                             icon: 'warning',
@@ -6174,13 +6172,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           return _context16.abrupt("return");
 
-                        case 53:
+                        case 55:
                           for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
                             opc = document.getElementById("opc_" + i);
 
                             if (opc.checked) {
                               lbl = document.getElementById("opcl_" + i);
-                              opcion_text = lbl.innerHTML.split("<")[0]; //Obtener el texto del check
+                              opcion_text = lbl.innerHTML.split("<")[0];
 
                               if (quiz.guess(opcion_text)) {
                                 respuestas_correctas++;
@@ -6190,9 +6188,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             }
                           }
 
-                          return _context16.abrupt("break", 55);
+                          return _context16.abrupt("break", 57);
 
-                        case 55:
+                        case 57:
                           if (respuestas_correctas == quiz.getQuestionIndex().answer.length && respuestas_incorretas == 0) {
                             quiz.score = quiz.score + 1; //_this.$swal.fire('Correcta');
 
@@ -6227,7 +6225,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           quiz.nextQuestion();
                           populate();
 
-                        case 58:
+                        case 60:
                         case "end":
                           return _context16.stop();
                       }
@@ -6241,9 +6239,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 ;
                 ;
                 populate();
-                /*FIN DE LA PARTE DEL CUAESTIONARIO*/
 
-              case 25:
+              case 26:
               case "end":
                 return _context19.stop();
             }
@@ -6258,7 +6255,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return cargarCuestionario;
     }(),
     generarRespuesta: function generarRespuesta(id, res, id_opcion_actual) {
-      //console.log("respuesta "+res);
       res = res.trim();
       var count = 0;
 
@@ -6611,7 +6607,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var resultado = analizar(res.replace(/\s+/g, ' '));
       return evaluar(resultado);
     },
-    //AQUI VA LA CALCULADORA
     botonesCalculadora: function botonesCalculadora(boton) {
       var campo_calculadora = document.getElementById("campo_calculadora");
 
@@ -11290,11 +11285,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
         cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
+        //              console.log(result.value);
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/pregunta/delete", {
             id: id,
             imagenesAEliminar: imagenes
           }).then(function () {
+            console.log("entre " + id);
             _this9.id = "";
 
             _this9.getPreguntaNumerica();
@@ -12138,7 +12135,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       opciones: opciones,
                       rectivo: pregunta.value,
                       tema: tema,
-                      id: this.id_editar
+                      id: this.id_editar,
+                      imagenesAEliminar: this.subidor.iamgenesAEliminar
                     }).then(
                     /*#__PURE__*/
                     function () {
@@ -12151,6 +12149,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                           while (1) {
                             switch (_context7.prev = _context7.next) {
                               case 0:
+                                //await this.subidor.subirImagenes(this.form.id_editar);
                                 _this7.$swal.fire({
                                   position: 'top-end',
                                   icon: 'success',
@@ -12331,7 +12330,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return btnAgregarOpcion;
     }(),
-    eliminar: function eliminar(id) {
+    eliminar: function eliminar(id, imagenes) {
       var _this8 = this;
 
       this.$swal.fire({
@@ -12344,7 +12343,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }).then(function (result) {
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/eliminar', {
-            id: id
+            id: id,
+            imagenesAEliminar: imagenes
           }).then(function () {
             _this8.$swal.fire({
               position: 'top-end',
@@ -14379,7 +14379,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee7);
       }))();
     },
-    eliminarPregunta: function eliminarPregunta(id) {
+    eliminarPregunta: function eliminarPregunta(id, imagenes) {
       var _this7 = this;
 
       this.$swal.fire({
@@ -14390,10 +14390,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         confirmButtonText: '<i class="fas fa-trash"></i> Eliminar',
         cancelButtonText: '<i class="fas fa-ban"></i> Cancelar'
       }).then(function (result) {
+        //console.log("soy pregunta:" + id);
         if (result.value) {
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/delete', {
-            id: id
+            id: id,
+            imagenesAEliminar: imagenes
           }).then(function (res) {
+            //    console.log("entre");
+            _this7.id = "";
+
             _this7.obtenerPreguntasVerdaderoFalso();
 
             _this7.$swal.fire({
@@ -14405,8 +14410,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               toast: true
             });
           })["catch"](function (err) {
+            console.log(err);
+
             _this7.$swal({
-              type: 'info',
+              icon: 'info',
               title: 'Error al eliminar'
             });
           });
@@ -52178,11 +52185,23 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("td", { staticClass: "text-left" }, [
+                                      _vm._v(_vm._s(alumnos.edad))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticClass: "text-left" }, [
                                       _vm._v(_vm._s(alumnos.matricula))
                                     ]),
                                     _vm._v(" "),
                                     _c("td", { staticClass: "text-left" }, [
+                                      _vm._v(_vm._s(alumnos.genero))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticClass: "text-left" }, [
                                       _vm._v(_vm._s(alumnos.nivel_academico))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticClass: "text-left" }, [
+                                      _vm._v(_vm._s(alumnos.periodo))
                                     ]),
                                     _vm._v(" "),
                                     _c("td", { staticClass: "text-left" }, [
@@ -52208,8 +52227,11 @@ var render = function() {
                                                 alumnos.nombre_alumno,
                                                 alumnos.apellido_paterno,
                                                 alumnos.apellido_materno,
+                                                alumnos.edad,
                                                 alumnos.matricula,
+                                                alumnos.genero,
                                                 alumnos.nivel_academico,
+                                                alumnos.periodo,
                                                 alumnos.id_profesor
                                               )
                                             }
@@ -52309,6 +52331,14 @@ var render = function() {
                             _c(
                               "v-th",
                               {
+                                attrs: { sortKey: "edad", defaultSort: "desc" }
+                              },
+                              [_vm._v("Edad")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
                                 attrs: {
                                   sortKey: "matricula",
                                   defaultSort: "desc"
@@ -52321,11 +52351,33 @@ var render = function() {
                               "v-th",
                               {
                                 attrs: {
+                                  sortKey: "genero",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Género")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
                                   sortKey: "nivel_academico",
                                   defaultSort: "desc"
                                 }
                               },
                               [_vm._v("Nivel academico")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-th",
+                              {
+                                attrs: {
+                                  sortKey: "periodo",
+                                  defaultSort: "desc"
+                                }
+                              },
+                              [_vm._v("Período")]
                             ),
                             _vm._v(" "),
                             _c("th", [_vm._v("Profesor")]),
@@ -53399,165 +53451,6 @@ var render = function() {
               _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "lblTema" } }, [
-                        _vm._v("Tema")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.ultimoTema,
-                            expression: "ultimoTema"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "inpTema",
-                          placeholder: "Id tema"
-                        },
-                        domProps: { value: _vm.ultimoTema },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.ultimoTema = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "lblPonderacion" } }, [
-                        _vm._v("Ponderación")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.ponderacion,
-                            expression: "ponderacion"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "inpPonderacion",
-                          placeholder: "Ponderación"
-                        },
-                        domProps: { value: _vm.ponderacion },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.ponderacion = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" },
-                        on: { click: _vm.enviarPonderacion }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Eviar ponderación\n                                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: { click: _vm.obtenerPrimerTema }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                        Primer tema\n                                    "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(" Tema: " + _vm._s(_vm.estatus.ultimo) + " ")
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        " Habilidad anterior: " +
-                          _vm._s(_vm.estatus.habilidad_anterior) +
-                          " "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        " Habilidad: " + _vm._s(_vm.estatus.habilidad) + " "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        " ¿Debe detenerse el cuestionario?: " +
-                          _vm._s(_vm.estatus.detenerse) +
-                          " "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "table",
-                      {
-                        staticClass: "table table-hover",
-                        staticStyle: { width: "100%" }
-                      },
-                      [
-                        _c("thead", { attrs: { slot: "head" }, slot: "head" }, [
-                          _c("th", [_vm._v("Tema (id) ")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Dominio ")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Calificación")])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.estatus.temas_evaluados, function(
-                            ponderacion
-                          ) {
-                            return _c("tr", { key: ponderacion.id }, [
-                              _c("td", [_vm._v(_vm._s(ponderacion.id))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(ponderacion.respuesta) + " ")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(ponderacion.ponderacion))
-                              ])
-                            ])
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-12" }, [
                     _c("div", { attrs: { id: "quiz" } }, [
@@ -58896,7 +58789,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row mb-2" }, [
           _c("div", { staticClass: "col-sm-6" }, [
-            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Preguntas")])
+            _c("h1", { staticClass: "page-title m-0" }, [_vm._v("Preguntas ")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-6" }, [
@@ -60514,7 +60407,8 @@ var render = function() {
                                             on: {
                                               click: function($event) {
                                                 return _vm.eliminar(
-                                                  pregunta.id_pregunta
+                                                  pregunta.id_pregunta,
+                                                  pregunta.imagenes
                                                 )
                                               }
                                             }
@@ -62280,7 +62174,8 @@ var render = function() {
                                           on: {
                                             click: function($event) {
                                               return _vm.eliminarPregunta(
-                                                pregunta.id_pregunta
+                                                pregunta.id_pregunta,
+                                                pregunta.imagenes
                                               )
                                             }
                                           }

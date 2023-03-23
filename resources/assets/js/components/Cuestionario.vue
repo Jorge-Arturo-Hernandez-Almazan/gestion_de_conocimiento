@@ -20,7 +20,6 @@
                 </div>
             </div>
         </div>
-
         <section class="content">
             <div class="container-fluid">
                 <div class="row ">
@@ -30,56 +29,13 @@
                                 <h3 class="card-title mt-2"> <b> Cuestionario </b> </h3>
                                 <div class="card-tools">
                                     <div class="" style="width: 150px;">
-                                        <button type="button" class="btn btn-primary float-right " data-toggle="modal"
-                                            data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary float-right " data-toggle="modal" data-target="#exampleModal">
                                             <i class="fas fa-calculator"></i>  
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    
-                                  <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="lblTema">Tema</label>
-                                            <input type="text" class="form-control" id="inpTema" placeholder="Id tema" v-model="ultimoTema">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="lblPonderacion">Ponderación</label>
-                                            <input type="text" class="form-control" id="inpPonderacion" placeholder="Ponderación" v-model="ponderacion">
-                                        </div>
-                                      
-                                        <button type="submit" class="btn btn-primary" @click="enviarPonderacion">
-                                            Eviar ponderación
-                                        </button>
-                                        <button type="button" class="btn btn-success" @click="obtenerPrimerTema">
-                                            Primer tema
-                                        </button>
-                                        
-                                        <p> Tema: {{ estatus.ultimo }} </p>
-                                        <p> Habilidad anterior: {{ estatus.habilidad_anterior }} </p>
-                                        <p> Habilidad: {{ estatus.habilidad }} </p>
-                                        <p> ¿Debe detenerse el cuestionario?: {{ estatus.detenerse }} </p>
-                                                                              
-                                      <table style="width:100%" class="table table-hover">
-                                        <thead slot="head">
-                                          <th>Tema (id) </th>
-                                          <th>Dominio </th>
-                                          <th>Calificación</th>
-                                        </thead>
-                                        <tbody>
-                                          <tr v-for="ponderacion in estatus.temas_evaluados" :key="ponderacion.id">
-                                            <td>{{ponderacion.id}}</td>
-                                            <td>{{ponderacion.respuesta  }} </td>
-                                            <td>{{ponderacion.ponderacion}}</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>     
-                                </div> 
-                                
-                                
                                 <div class="row">
                                     <div class="col-12">
                                         <div id="quiz">
@@ -118,7 +74,6 @@
                 </div>
             </div>
         </section>
-
         <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -131,8 +86,6 @@
                 </div>
             </div>
         </div>
-
-
        <div class="row">
             <div class="modal animated animate__bounceIn" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -335,7 +288,6 @@
         </div>
     </div>
 </template>
-
 <script>
   import axios from "axios";
 
@@ -357,44 +309,43 @@
         ordenEvaluacion: [],
         ponderacion: 0,
         estatus: [],
-        ultimoTema: 0
+        ultimoTema: 0,
+        datosEvaluacion: {detenerse: false},
+        temasAEvaluar: [96, 26, 44, 91],
+        temaAEvaluarActual: 0,
       };
     },
     async created() {
-      //this.confirmAttempt();
       await this.obtenerConfiguracion();
-      await this.obtenerPonderaciones();
-      await this.getopic();
-      await this.getpreguntas();
-      //this.ultimoTema
-            
+      await this.obtenerPonderaciones();  
     },
     methods: {
-      
       obtenerPonderaciones: async function() {
-        await axios({
+        this.ultimoTema = this.temasAEvaluar[this.temaAEvaluarActual];
+        await this.getopic();
+        await this.getpreguntas();
+        this.temaAEvaluarActual++;
+        /*await axios({
           method: 'get',
           url: "/obtenerPonderaciones/" + matricula
-        }).then(result => {
+        }).then(async result => {
           
           if (result.data == -1) {
-            this.obtenerPrimerTema();
-            
-            console.log("Debe crearse la RBMA");
-          } else if (result.data.temas_evaluados.length === 0) {
-             this.ultimoTema = result.data.ultimo;
+            await this.obtenerPrimerTema();
+            await this.getopic();
+            await this.getpreguntas();
+          } else if (result.data.detenerse === false ) {
+              this.ultimoTema = result.data.ultimo;
+              this.datosEvaluacion = result.data;
+              await this.getopic();
+              await this.getpreguntas();
           }else{
-            this.estatus = result.data;
-            this.ultimoTema = result.data.ultimo;
+            console.log("Ya ha terminado el cuestionario");
           }
-          
-          console.log( result );
-          
         }, error => {
           console.error(error)
-        })
+        })*/
       },
-
       enviarPonderacion: async function() {
         let saltos = 3;
         let tema = this.ultimoTema;
@@ -409,24 +360,24 @@
           console.error(error)
         })
       },
-
       obtenerPrimerTema: async function() {
-        let parametros = this.configuracion.rbm + "/" + matricula;
+        /*let parametros = this.configuracion.rbm + "/" + matricula;
         console.log(parametros);
         await axios({
           method: 'get',
           url: "/arbol/caminosmodulo/" + parametros
         }).then(result => {
           this.ultimoTema = result.data.tema;
+          
         }, error => {
           console.error(error)
-        })
+        })*/
+        
       },
-
       storeResult: async function(ponderacion) {
         this.pregunta = [];
         await axios.post('/score/add', {
-          id_tema: this.topic[this.numero_tema].id,
+          id_tema: this.topic[0].id,
           ponderacion: ponderacion,
           clasificacion: 1
         }).then((res) => {}).catch((err) => {
@@ -434,27 +385,23 @@
         })
         await axios({
           method: 'get',
-          url: '/arbol/obtenerCaminos/' + this.topic[this.numero_tema].id
+          url: '/arbol/obtenerCaminos/' + this.topic[0].id
         }).then(result => {}, error => {
           console.error(error)
         })
       },
-
       getopic: async function() {
-        return axios({
+        await axios({
           method: 'get',
           url: 'topic/getopic/'+this.ultimoTema
         }).then(
           result => {
             this.topic = result.data[0];
-            console.log("Get topic");
-            console.log(result);
           }, error => {
             console.error(error)
           }
         )
       },
-
       obtenerConfiguracion() {
         axios({
           method: 'get',
@@ -462,18 +409,18 @@
         }).then(
           result => {
             this.configuracion = result.data;
-            console.log("Configuración del cuestionario");
-            console.log(result.data);
+            console.log("Configuracion");
+            console.log(this.configuracion);
           }, error => {
             console.error(error)
           })
       },
-
       getpreguntas: async function() {
-
-        return axios({
+        
+       console.log("Obtener preguntas del tema: " + this.ultimoTema );
+       return axios({
           method: 'get',
-          url: 'pregunta/showPreguntas/' + this.topic[this.numero_tema].id
+          url: 'pregunta/showPreguntas/' + this.ultimoTema
         }).then(
           async result => {
             this.pregunta = result.data.banco_preguntas;
@@ -508,7 +455,6 @@
             console.error(error)
           })
       },
-
       getComodines: async function() {
         const preguntasCalculadas = this.pCalculadas.concat(this.pCalculadasMultiples);
         axios.post('pregunta/getComodines/', {
@@ -522,7 +468,6 @@
           })
 
       },
-
       convertirComodines: async function() {
         for (var i = 0; i < this.comodines.length; i++) {
           var valor = this.comodines[i].valor;
@@ -546,7 +491,6 @@
         }
         await this.reemplazarComodinesEnPregunta();
       },
-
       reemplazarComodinesEnPregunta: async function() {
         for (var i = 0; i < this.pregunta.length; i++) {
 
@@ -582,10 +526,9 @@
           }
         }
         //}
-        await this.cargarCuestionario(this.topic.nombre_tema, this.pregunta);
+        await this.cargarCuestionario(this.topic[0].nombre_tema, this.pregunta);
 
       },
-
       getopciones(id) {
         return axios({
           method: 'get',
@@ -598,7 +541,6 @@
           }
         )
       },
-
       getrespuestas: async function(id) {
         return axios({
           method: 'get',
@@ -611,15 +553,15 @@
           }
         )
       },
-
       desplegarImagen(img, nombre) {
         this.imagenActual = img;
         this.imagenActualNombre = nombre;
         $("#modalParaVerImagenes").modal();
       },
-
       cargarCuestionario: async function(topic, prguntass) {
-
+        
+        //console.log("Se va a cargar el cuestionario con el tema " + topic);
+        
         var questions = [];
         for (var i = 0; i < prguntass.length; i++) {
           var pregunta = prguntass[i].pregunta
@@ -742,13 +684,18 @@
           }
           return correcta;
         }
-
         var tipo = this.configuracion.ponde_estricta; //
         var quiz = new Quiz(questions);
-
+        
+        console.log(questions);
+       
         //Boton de siguiente pregunta
+        
         document.getElementById("next").addEventListener("click", async function() {
 
+          console.log("Quizz");
+          console.log(quiz);
+          
           //AQUI SE OBTIENE LA RESPUESTA A LA PREGUNTA
           await axios({
             method: 'get',
@@ -951,7 +898,6 @@
               }
 
               if (!chequeada) {
-                //_this.$swal.fire("Por favor selecciona una respuesta");
                 _this.$swal.fire({
                   position: 'center',
                   icon: 'warning',
@@ -967,8 +913,7 @@
                 var opc = document.getElementById("opc_" + i);
                 if (opc.checked) {
                   var lbl = document.getElementById("opcl_" + i);
-                  var opcion_text = lbl.innerHTML.split("<")[
-                    0]; //Obtener el texto del check
+                  var opcion_text = lbl.innerHTML.split("<")[0];
                   if (quiz.guess(opcion_text)) {
                     respuestas_correctas++;
                   } else {
@@ -1017,31 +962,26 @@
           quiz.nextQuestion();
           populate();
         });
-
-
         let _this = this
-
         async function populate() {
           
           if (quiz.isEnded()) {
             if (quiz.questions.length > 0) {
               var total = Math.round((quiz.score / quiz.questions.length) * 100);
-              await _this.storeResult(total);
-              if (_this.numero_tema <= _this.pregunta.length - 1) {
+              
+              if ( ! _this.datosEvaluacion.detenerse ) {
                 quiz = "";
                 questions = [];
-                _this.numero_tema = _this.numero_tema + 1;
                 
-                console.log("Estoy en la linea 1029");
-                await _this.enviarPonderacion();
-                await _this.getpreguntas();
+                 _this.ponderacion = total;
+                 _this.enviarPonderacion();
+                 //_this.getpreguntas();
+                
               } else {
                 showScores();
               }
             }
           } else {
-
-            console.log();
 
             document.getElementById("buttons").innerHTML = "";
             var element = document.getElementById("question").innerHTML = quiz.getQuestionIndex()
@@ -1056,7 +996,7 @@
             }
             console.log(quiz.getQuestionIndex().imagenes);
             var tema = document.getElementById("tag_topic");
-            tema.innerHTML = " <b> Tema: </b> " + _this.topic[_this.numero_tema].nombre_tema;
+            tema.innerHTML = " <b> Tema: </b> " + _this.topic[0].nombre_tema;
 
 
             if (quiz.getQuestionIndex().type == 4) {
@@ -1199,7 +1139,6 @@
             showProgress();
           }
         };
-
         //Asegurar que solo sean checkeados las posibles respuestas
         function guess() {
           var answers = quiz.getQuestionIndex().answer;
@@ -1219,15 +1158,12 @@
           }
 
         };
-
-
         function showProgress() {
           var currentQuestionNumber = quiz.questionIndex + 1;
           var element = document.getElementById("progress");
           element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + quiz.questions
             .length;
         };
-
         async function showScores() {
 
           var gameOverHTML = "<h1>Resultados</h1>";
@@ -1271,14 +1207,9 @@
 
 
         };
-
         populate();
-        /*FIN DE LA PARTE DEL CUAESTIONARIO*/
       },
-
       generarRespuesta(id, res, id_opcion_actual) {
-        //console.log("respuesta "+res);
-
         res = res.trim();
         var count = 0;
 
@@ -1591,9 +1522,6 @@
         var resultado = analizar(res.replace(/\s+/g, ' '));
         return (evaluar(resultado));
       },
-
-
-      //AQUI VA LA CALCULADORA
       botonesCalculadora: function(boton) {
         var campo_calculadora = document.getElementById("campo_calculadora");
 
@@ -1634,13 +1562,9 @@
 
 
       }
-
     }
-
   };
 </script>
-
-
 <style>
   .pregresp {
     border: 2px solid #7da5e0;

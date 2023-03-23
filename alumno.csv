@@ -1,0 +1,2 @@
+id	nombre	apellido_paterno	apellido_materno	matricula	genero	password	nivel_academico	id_rol	created_at	updated_at	foto	eliminado
+148	Alumno	Ejemplo	1	2222	Femenino	$2a$10$D2iSToxaiM1Hl0dLW0RBOe8YvJn5WVZdq81W/K9GA6DEkb9alE9Yu	segundo	4	NULL	NULL	perfil.png	0
