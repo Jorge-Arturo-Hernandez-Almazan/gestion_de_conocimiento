@@ -4945,9 +4945,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       ponderacion: 0,
       estatus: [],
       ultimoTema: 0,
-      datosEvaluacion: {
-        detenerse: false
-      },
+      datosEvaluacion: {},
       temasAEvaluar: [96, 26, 44, 91],
       temaAEvaluarActual: 0
     };
@@ -4981,48 +4979,93 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     obtenerPonderaciones: function () {
       var _obtenerPonderaciones = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                this.ultimoTema = this.temasAEvaluar[this.temaAEvaluarActual];
-                _context2.next = 3;
-                return this.getopic();
-
-              case 3:
-                _context2.next = 5;
-                return this.getpreguntas();
-
-              case 5:
-                this.temaAEvaluarActual++;
-                /*await axios({
+                _context3.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: "/obtenerPonderaciones/" + matricula
-                }).then(async result => {
-                  
-                  if (result.data == -1) {
-                    await this.obtenerPrimerTema();
-                    await this.getopic();
-                    await this.getpreguntas();
-                  } else if (result.data.detenerse === false ) {
-                      this.ultimoTema = result.data.ultimo;
-                      this.datosEvaluacion = result.data;
-                      await this.getopic();
-                      await this.getpreguntas();
-                  }else{
-                    console.log("Ya ha terminado el cuestionario");
-                  }
-                }, error => {
-                  console.error(error)
-                })*/
+                }).then(
+                /*#__PURE__*/
+                function () {
+                  var _ref = _asyncToGenerator(
+                  /*#__PURE__*/
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(result) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+                      while (1) {
+                        switch (_context2.prev = _context2.next) {
+                          case 0:
+                            if (!(result.data == -1)) {
+                              _context2.next = 9;
+                              break;
+                            }
 
-              case 6:
+                            _context2.next = 3;
+                            return _this3.obtenerPrimerTema();
+
+                          case 3:
+                            _context2.next = 5;
+                            return _this3.getopic();
+
+                          case 5:
+                            _context2.next = 7;
+                            return _this3.getpreguntas();
+
+                          case 7:
+                            _context2.next = 22;
+                            break;
+
+                          case 9:
+                            if (!(result.data.detenerse === false)) {
+                              _context2.next = 20;
+                              break;
+                            }
+
+                            _this3.ultimoTema = result.data.ultimo;
+                            _this3.datosEvaluacion = result.data;
+                            console.log("Otro tema evaluado");
+                            console.log(result.data);
+                            _context2.next = 16;
+                            return _this3.getopic();
+
+                          case 16:
+                            _context2.next = 18;
+                            return _this3.getpreguntas();
+
+                          case 18:
+                            _context2.next = 22;
+                            break;
+
+                          case 20:
+                            console.log("Ya ha terminado el cuestionario");
+                            alert("Ya se ha terminao de evaluar");
+
+                          case 22:
+                          case "end":
+                            return _context2.stop();
+                        }
+                      }
+                    }, _callee2);
+                  }));
+
+                  return function (_x) {
+                    return _ref.apply(this, arguments);
+                  };
+                }(), function (error) {
+                  console.error(error);
+                });
+
+              case 2:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee3);
       }));
 
       function obtenerPonderaciones() {
@@ -5034,33 +5077,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     enviarPonderacion: function () {
       var _enviarPonderacion = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var _this3 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var _this4 = this;
 
         var saltos, tema, parametros;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 saltos = 3;
                 tema = this.ultimoTema;
                 parametros = this.configuracion.rbm + "/" + matricula + "/" + saltos + "/" + tema + "/" + this.ponderacion;
-                _context3.next = 5;
+                _context4.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: "/obtenerTema/" + parametros
                 }).then(function (result) {
-                  _this3.obtenerPonderaciones();
+                  _this4.obtenerPonderaciones();
                 }, function (error) {
                   console.error(error);
                 });
 
               case 5:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, this);
+        }, _callee4, this);
       }));
 
       function enviarPonderacion() {
@@ -5072,16 +5115,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     obtenerPrimerTema: function () {
       var _obtenerPrimerTema = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var _this5 = this;
+
+        var parametros;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
+                parametros = this.configuracion.rbm + "/" + matricula;
+                console.log(parametros);
+                _context5.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: 'get',
+                  url: "/arbol/caminosmodulo/" + parametros
+                }).then(function (result) {
+                  _this5.ultimoTema = result.data.tema;
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 4:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4);
+        }, _callee5, this);
       }));
 
       function obtenerPrimerTema() {
@@ -5093,13 +5152,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     storeResult: function () {
       var _storeResult = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(ponderacion) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(ponderacion) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
                 this.pregunta = [];
-                _context5.next = 3;
+                _context6.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/score/add', {
                   id_tema: this.topic[0].id,
                   ponderacion: ponderacion,
@@ -5109,7 +5168,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
-                _context5.next = 5;
+                _context6.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: '/arbol/obtenerCaminos/' + this.topic[0].id
@@ -5119,13 +5178,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee6, this);
       }));
 
-      function storeResult(_x) {
+      function storeResult(_x2) {
         return _storeResult.apply(this, arguments);
       }
 
@@ -5134,29 +5193,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getopic: function () {
       var _getopic = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        var _this4 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var _this6 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                _context6.next = 2;
+                _context7.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: 'topic/getopic/' + this.ultimoTema
                 }).then(function (result) {
-                  _this4.topic = result.data[0];
+                  _this6.topic = result.data[0];
                 }, function (error) {
                   console.error(error);
                 });
 
               case 2:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6, this);
+        }, _callee7, this);
       }));
 
       function getopic() {
@@ -5166,15 +5225,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return getopic;
     }(),
     obtenerConfiguracion: function obtenerConfiguracion() {
-      var _this5 = this;
+      var _this7 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: 'get',
         url: 'cuestionario/obtenerconfiguracion'
       }).then(function (result) {
-        _this5.configuracion = result.data;
+        _this7.configuracion = result.data;
         console.log("Configuracion");
-        console.log(_this5.configuracion);
+        console.log(_this7.configuracion);
       }, function (error) {
         console.error(error);
       });
@@ -5182,64 +5241,64 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getpreguntas: function () {
       var _getpreguntas = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-        var _this6 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        var _this8 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
           while (1) {
-            switch (_context10.prev = _context10.next) {
+            switch (_context11.prev = _context11.next) {
               case 0:
                 console.log("Obtener preguntas del tema: " + this.ultimoTema);
-                return _context10.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                return _context11.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: 'pregunta/showPreguntas/' + this.ultimoTema
                 }).then(
                 /*#__PURE__*/
                 function () {
-                  var _ref = _asyncToGenerator(
+                  var _ref2 = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(result) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(result) {
                     var _loop, _i, i;
 
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context9) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
                       while (1) {
-                        switch (_context9.prev = _context9.next) {
+                        switch (_context10.prev = _context10.next) {
                           case 0:
-                            _this6.pregunta = result.data.banco_preguntas;
+                            _this8.pregunta = result.data.banco_preguntas;
                             _loop =
                             /*#__PURE__*/
                             _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _loop(_i) {
-                              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop$(_context8) {
+                              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop$(_context9) {
                                 while (1) {
-                                  switch (_context8.prev = _context8.next) {
+                                  switch (_context9.prev = _context9.next) {
                                     case 0:
-                                      _this6.pregunta[_i].imagenes = [];
-                                      _context8.next = 3;
+                                      _this8.pregunta[_i].imagenes = [];
+                                      _context9.next = 3;
                                       return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                                         method: 'get',
-                                        url: '/imagen/pregunta/' + _this6.pregunta[_i].id_pregunta
+                                        url: '/imagen/pregunta/' + _this8.pregunta[_i].id_pregunta
                                       }).then(
                                       /*#__PURE__*/
                                       function () {
-                                        var _ref2 = _asyncToGenerator(
+                                        var _ref3 = _asyncToGenerator(
                                         /*#__PURE__*/
-                                        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(resultado) {
-                                          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+                                        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(resultado) {
+                                          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
                                             while (1) {
-                                              switch (_context7.prev = _context7.next) {
+                                              switch (_context8.prev = _context8.next) {
                                                 case 0:
-                                                  _this6.pregunta[_i].imagenes = resultado.data.imagenes[0];
+                                                  _this8.pregunta[_i].imagenes = resultado.data.imagenes[0];
 
                                                 case 1:
                                                 case "end":
-                                                  return _context7.stop();
+                                                  return _context8.stop();
                                               }
                                             }
-                                          }, _callee7);
+                                          }, _callee8);
                                         }));
 
-                                        return function (_x3) {
-                                          return _ref2.apply(this, arguments);
+                                        return function (_x4) {
+                                          return _ref3.apply(this, arguments);
                                         };
                                       }(), function (error) {
                                         console.error(error);
@@ -5247,7 +5306,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                                     case 3:
                                     case "end":
-                                      return _context8.stop();
+                                      return _context9.stop();
                                   }
                                 }
                               }, _loop);
@@ -5255,41 +5314,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             _i = 0;
 
                           case 3:
-                            if (!(_i < _this6.pregunta.length)) {
-                              _context9.next = 8;
+                            if (!(_i < _this8.pregunta.length)) {
+                              _context10.next = 8;
                               break;
                             }
 
-                            return _context9.delegateYield(_loop(_i), "t0", 5);
+                            return _context10.delegateYield(_loop(_i), "t0", 5);
 
                           case 5:
                             _i++;
-                            _context9.next = 3;
+                            _context10.next = 3;
                             break;
 
                           case 8:
-                            console.log(_this6.pregunta);
+                            console.log(_this8.pregunta);
 
-                            for (i = 0; i < _this6.pregunta.length; i++) {
-                              if (_this6.pregunta[i].tipo == 5) _this6.pCalculadas[i] = _this6.pregunta[i].id_pregunta;else if (_this6.pregunta[i].tipo == 6) _this6.pCalculadasMultiples[i] = _this6.pregunta[i].id_pregunta;
+                            for (i = 0; i < _this8.pregunta.length; i++) {
+                              if (_this8.pregunta[i].tipo == 5) _this8.pCalculadas[i] = _this8.pregunta[i].id_pregunta;else if (_this8.pregunta[i].tipo == 6) _this8.pCalculadasMultiples[i] = _this8.pregunta[i].id_pregunta;
                             }
 
-                            _context9.next = 12;
-                            return _this6.getComodines();
+                            _context10.next = 12;
+                            return _this8.getComodines();
 
                           case 12:
-                            return _context9.abrupt("return", result.data);
+                            return _context10.abrupt("return", result.data);
 
                           case 13:
                           case "end":
-                            return _context9.stop();
+                            return _context10.stop();
                         }
                       }
-                    }, _callee8);
+                    }, _callee9);
                   }));
 
-                  return function (_x2) {
-                    return _ref.apply(this, arguments);
+                  return function (_x3) {
+                    return _ref2.apply(this, arguments);
                   };
                 }(), function (error) {
                   console.error(error);
@@ -5297,10 +5356,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context10.stop();
+                return _context11.stop();
             }
           }
-        }, _callee9, this);
+        }, _callee10, this);
       }));
 
       function getpreguntas() {
@@ -5312,13 +5371,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getComodines: function () {
       var _getComodines = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
-        var _this7 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+        var _this9 = this;
 
         var preguntasCalculadas;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
           while (1) {
-            switch (_context12.prev = _context12.next) {
+            switch (_context13.prev = _context13.next) {
               case 0:
                 preguntasCalculadas = this.pCalculadas.concat(this.pCalculadasMultiples);
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/getComodines/', {
@@ -5326,27 +5385,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(
                 /*#__PURE__*/
                 function () {
-                  var _ref3 = _asyncToGenerator(
+                  var _ref4 = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(result) {
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(result) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
                       while (1) {
-                        switch (_context11.prev = _context11.next) {
+                        switch (_context12.prev = _context12.next) {
                           case 0:
-                            _this7.comodines = result.data.comodines;
-                            _context11.next = 3;
-                            return _this7.convertirComodines();
+                            _this9.comodines = result.data.comodines;
+                            _context12.next = 3;
+                            return _this9.convertirComodines();
 
                           case 3:
                           case "end":
-                            return _context11.stop();
+                            return _context12.stop();
                         }
                       }
-                    }, _callee10);
+                    }, _callee11);
                   }));
 
-                  return function (_x4) {
-                    return _ref3.apply(this, arguments);
+                  return function (_x5) {
+                    return _ref4.apply(this, arguments);
                   };
                 }())["catch"](function (err) {
                   console.log(err);
@@ -5354,10 +5413,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context12.stop();
+                return _context13.stop();
             }
           }
-        }, _callee11, this);
+        }, _callee12, this);
       }));
 
       function getComodines() {
@@ -5369,11 +5428,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     convertirComodines: function () {
       var _convertirComodines = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
         var i, valor, separado, random, j, power;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context14) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
                 for (i = 0; i < this.comodines.length; i++) {
                   valor = this.comodines[i].valor;
@@ -5394,15 +5453,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-                _context13.next = 3;
+                _context14.next = 3;
                 return this.reemplazarComodinesEnPregunta();
 
               case 3:
               case "end":
-                return _context13.stop();
+                return _context14.stop();
             }
           }
-        }, _callee12, this);
+        }, _callee13, this);
       }));
 
       function convertirComodines() {
@@ -5414,11 +5473,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     reemplazarComodinesEnPregunta: function () {
       var _reemplazarComodinesEnPregunta = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
         var i, comodinesPregunta, j, k;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context14) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context15) {
           while (1) {
-            switch (_context14.prev = _context14.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
                 for (i = 0; i < this.pregunta.length; i++) {
                   if (this.pregunta[i].tipo == 5) {
@@ -5454,15 +5513,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 } //}
 
 
-                _context14.next = 3;
+                _context15.next = 3;
                 return this.cargarCuestionario(this.topic[0].nombre_tema, this.pregunta);
 
               case 3:
               case "end":
-                return _context14.stop();
+                return _context15.stop();
             }
           }
-        }, _callee13, this);
+        }, _callee14, this);
       }));
 
       function reemplazarComodinesEnPregunta() {
@@ -5481,37 +5540,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         console.error(error);
       });
     },
-    getrespuestas: function () {
-      var _getrespuestas = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context15) {
-          while (1) {
-            switch (_context15.prev = _context15.next) {
-              case 0:
-                return _context15.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  method: 'get',
-                  url: '/pregunta/respuestas/' + id
-                }).then(function (result) {
-                  return result.data;
-                }, function (error) {
-                  console.error(error);
-                }));
-
-              case 1:
-              case "end":
-                return _context15.stop();
-            }
-          }
-        }, _callee14);
-      }));
-
-      function getrespuestas(_x5) {
-        return _getrespuestas.apply(this, arguments);
-      }
-
-      return getrespuestas;
-    }(),
     desplegarImagen: function desplegarImagen(img, nombre) {
       this.imagenActual = img;
       this.imagenActualNombre = nombre;
@@ -5521,13 +5549,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _cargarCuestionario = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18(topic, prguntass) {
-        var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, quiz, _this, populate, _populate, guess, showProgress, showScores, _showScores;
+        var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, cuestionarioTema, _this, populate, _populate, guess, showProgress, showScores, _showScores;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee18$(_context19) {
           while (1) {
             switch (_context19.prev = _context19.next) {
               case 0:
-                _showScores = function _ref12() {
+                _showScores = function _ref13() {
                   _showScores = _asyncToGenerator(
                   /*#__PURE__*/
                   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17() {
@@ -5575,19 +5603,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return _showScores.apply(this, arguments);
                 };
 
-                showScores = function _ref11() {
+                showScores = function _ref12() {
                   return _showScores.apply(this, arguments);
                 };
 
-                showProgress = function _ref10() {
-                  var currentQuestionNumber = quiz.questionIndex + 1;
+                showProgress = function _ref11() {
+                  var currentQuestionNumber = cuestionarioTema.questionIndex + 1;
                   var element = document.getElementById("progress");
-                  element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + quiz.questions.length;
+                  element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + questionIndex.questions.length;
                 };
 
-                guess = function _ref9() {
-                  var answers = quiz.getQuestionIndex().answer;
-                  var choices = quiz.getQuestionIndex().choices;
+                guess = function _ref10() {
+                  var answers = cuestionarioTema.getQuestionIndex().answer;
+                  var choices = cuestionarioTema.getQuestionIndex().choices;
                   opc_check = 0;
 
                   for (var i = 0; i < choices.length; i++) {
@@ -5605,7 +5633,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 };
 
-                _populate = function _ref8() {
+                _populate = function _ref9() {
                   _populate = _asyncToGenerator(
                   /*#__PURE__*/
                   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16() {
@@ -5614,16 +5642,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       while (1) {
                         switch (_context17.prev = _context17.next) {
                           case 0:
-                            if (!quiz.isEnded()) {
+                            if (!cuestionarioTema.isEnded()) {
                               _context17.next = 4;
                               break;
                             }
 
-                            if (quiz.questions.length > 0) {
-                              total = Math.round(quiz.score / quiz.questions.length * 100);
+                            if (cuestionarioTema.questions.length > 0) {
+                              total = Math.round(cuestionarioTema.score / cuestionarioTema.questions.length * 100);
 
                               if (!_this.datosEvaluacion.detenerse) {
-                                quiz = "";
+                                cuestionarioTema = "";
                                 questions = [];
                                 _this.ponderacion = total;
 
@@ -5639,23 +5667,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 4:
                             document.getElementById("buttons").innerHTML = "";
-                            element = document.getElementById("question").innerHTML = quiz.getQuestionIndex().text;
+                            element = document.getElementById("question").innerHTML = cuestionarioTema.getQuestionIndex().text;
                             imgstr = "";
                             _this.imagenesPregunta = [];
 
-                            for (ii = 0; ii < quiz.getQuestionIndex().imagenes.length; ii++) {
-                              imgstr = "/imagenes/preguntas/" + quiz.getQuestionIndex().imagenes[ii].nombre;
+                            for (ii = 0; ii < cuestionarioTema.getQuestionIndex().imagenes.length; ii++) {
+                              imgstr = "/imagenes/preguntas/" + cuestionarioTema.getQuestionIndex().imagenes[ii].nombre;
 
                               _this.imagenesPregunta.push(imgstr);
 
                               console.log(_this.imagenesPregunta);
                             }
 
-                            console.log(quiz.getQuestionIndex().imagenes);
+                            console.log(cuestionarioTema.getQuestionIndex().imagenes);
                             tema = document.getElementById("tag_topic");
                             tema.innerHTML = " <b> Tema: </b> " + _this.topic[0].nombre_tema;
 
-                            if (!(quiz.getQuestionIndex().type == 4)) {
+                            if (!(cuestionarioTema.getQuestionIndex().type == 4)) {
                               _context17.next = 15;
                               break;
                             }
@@ -5663,7 +5691,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             _context17.next = 15;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
-                              url: '/pregunta/opciones/' + quiz.getQuestionIndex().id
+                              url: '/pregunta/opciones/' + cuestionarioTema.getQuestionIndex().id
                             }).then(function (result) {
                               var ops = [];
 
@@ -5671,7 +5699,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                 ops.push(result.data[i].opcion);
                               }
 
-                              quiz.getQuestionIndex().choices = ops;
+                              cuestionarioTema.getQuestionIndex().choices = ops;
                             }, function (error) {
                               console.error(error);
                             });
@@ -5679,7 +5707,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           case 15:
                             opcionesAux = [];
 
-                            if (!(quiz.getQuestionIndex().type == 6)) {
+                            if (!(cuestionarioTema.getQuestionIndex().type == 6)) {
                               _context17.next = 19;
                               break;
                             }
@@ -5687,7 +5715,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             _context17.next = 19;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
-                              url: '/pregunta/opcionescalculadasmultiples/' + quiz.getQuestionIndex().id
+                              url: '/pregunta/opcionescalculadasmultiples/' + cuestionarioTema.getQuestionIndex().id
                             }).then(function (result) {
                               var ops = [];
 
@@ -5696,14 +5724,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                 opcionesAux.push(result.data[i]);
                               }
 
-                              quiz.getQuestionIndex().choices = ops;
+                              cuestionarioTema.getQuestionIndex().choices = ops;
                             }, function (error) {
                               console.error(error);
                             });
 
                           case 19:
-                            choices = quiz.getQuestionIndex().choices;
-                            _context17.t0 = quiz.getQuestionIndex().type;
+                            choices = cuestionarioTema.getQuestionIndex().choices;
+                            _context17.t0 = cuestionarioTema.getQuestionIndex().type;
                             _context17.next = _context17.t0 === 1 ? 23 : _context17.t0 === 2 ? 30 : _context17.t0 === 3 ? 37 : _context17.t0 === 4 ? 60 : _context17.t0 === 5 ? 64 : _context17.t0 === 6 ? 71 : 73;
                             break;
 
@@ -5787,7 +5815,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               label = document.createElement("label"); //label.innerHTML = choices[i];
 
                               power = Math.pow(10, opcionesAux[i].decimales);
-                              label.innerHTML = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id, choices[i], opcionesAux[i].id_opcion) * power) / power;
+                              label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id, choices[i], opcionesAux[i].id_opcion) * power) / power;
                               label.className = "container";
                               label.id = "opcl_" + i;
                               span = document.createElement("checkmark");
@@ -5795,7 +5823,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               button = document.createElement("input");
                               button.type = "checkbox"; //button.text = choices[i];
 
-                              button.text = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id, choices[i], opcionesAux[i].id_opcion) * power) / power;
+                              button.text = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id, choices[i], opcionesAux[i].id_opcion) * power) / power;
                               button.id = "opc_" + i;
                               label.appendChild(button);
                               label.appendChild(span);
@@ -5819,11 +5847,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return _populate.apply(this, arguments);
                 };
 
-                populate = function _ref7() {
+                populate = function _ref8() {
                   return _populate.apply(this, arguments);
                 };
 
-                Question = function _ref6(id, text, choices, answer, type, up, down, value, decimales, imagenes) {
+                Question = function _ref7(id, text, choices, answer, type, up, down, value, decimales, imagenes) {
                   this.id = id;
                   this.text = text;
                   this.choices = choices;
@@ -5836,7 +5864,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   this.imagenes = imagenes;
                 };
 
-                Quiz = function _ref5(questions) {
+                Quiz = function _ref6(questions) {
                   this.score = 0;
                   this.questions = questions;
                   this.questionIndex = 0;
@@ -5946,7 +5974,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 tipo = this.configuracion.ponde_estricta; //
 
-                quiz = new Quiz(questions);
+                cuestionarioTema = new Quiz(questions);
                 console.log(questions); //Boton de siguiente pregunta
 
                 document.getElementById("next").addEventListener("click",
@@ -5960,12 +5988,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       switch (_context16.prev = _context16.next) {
                         case 0:
                           console.log("Quizz");
-                          console.log(quiz); //AQUI SE OBTIENE LA RESPUESTA A LA PREGUNTA
+                          console.log(cuestionarioTema); //AQUI SE OBTIENE LA RESPUESTA A LA PREGUNTA
 
                           _context16.next = 4;
                           return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                             method: 'get',
-                            url: '/pregunta/respuestas/' + quiz.getQuestionIndex().id
+                            url: '/pregunta/respuestas/' + cuestionarioTema.getQuestionIndex().id
                           }).then(function (result) {
                             var res = [];
                             var id_opcion_correcta = [];
@@ -5975,28 +6003,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               id_opcion_correcta.push(result.data[i].id_opcion);
                             }
 
-                            if (quiz.getQuestionIndex().type == 5 || quiz.getQuestionIndex().type == 6) {
-                              var power = Math.pow(10, quiz.getQuestionIndex().decimales); //console.log("Respuesta antes de la funcion "+res[0]);
+                            if (cuestionarioTema.getQuestionIndex().type == 5 || cuestionarioTema.getQuestionIndex().type == 6) {
+                              var power = Math.pow(10, cuestionarioTema.getQuestionIndex().decimales); //console.log("Respuesta antes de la funcion "+res[0]);
 
-                              res = [Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id, res[0], id_opcion_correcta[0]) * power) / power]; //label.innerHTML = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
+                              res = [Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id, res[0], id_opcion_correcta[0]) * power) / power]; //label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
                             }
 
-                            quiz.getQuestionIndex().answer = res;
+                            cuestionarioTema.getQuestionIndex().answer = res;
                           }, function (error) {
                             console.error(error);
                           });
 
                         case 4:
-                          //SE LO ASIGNAS A quiz.getQuestionIndex().answer
-                          //quiz.getQuestionIndex().id <-- id de pregunta
-                          //quiz.getQuestionIndex().type  <-- TIPO DE LA PREGUNTA
-                          //quiz.getQuestionIndex().question <-- 
-                          //quiz.getQuestionIndex().answer = generarRespuesta();
-                          //Trae las opciones de la pregunta actual
                           respuestas_correctas = 0;
-                          respuestas_incorretas = 0; // COMPARA EL TIPO DE PREGUNTA
-
-                          _context16.t0 = quiz.getQuestionIndex().type;
+                          respuestas_incorretas = 0;
+                          _context16.t0 = cuestionarioTema.getQuestionIndex().type;
                           _context16.next = _context16.t0 === 1 ? 9 : _context16.t0 === 2 ? 18 : _context16.t0 === 3 ? 24 : _context16.t0 === 4 ? 34 : _context16.t0 === 5 ? 41 : _context16.t0 === 6 ? 50 : 57;
                           break;
 
@@ -6022,7 +6043,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           return _context16.abrupt("return");
 
                         case 16:
-                          if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
+                          if (cuestionarioTema.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
                           return _context16.abrupt("break", 57);
 
                         case 18:
@@ -6045,7 +6066,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           return _context16.abrupt("return");
 
                         case 22:
-                          if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
+                          if (cuestionarioTema.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
                           return _context16.abrupt("break", 57);
 
                         case 24:
@@ -6072,13 +6093,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           return _context16.abrupt("return");
 
                         case 32:
-                          if (quiz.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
+                          if (cuestionarioTema.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
                           return _context16.abrupt("break", 57);
 
                         case 34:
                           chequeada = false;
 
-                          for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                             opc = document.getElementById("opc_" + i);
 
                             if (opc.checked) {
@@ -6103,14 +6124,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           return _context16.abrupt("return");
 
                         case 39:
-                          for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                             opc = document.getElementById("opc_" + i);
 
                             if (opc.checked) {
                               lbl = document.getElementById("opcl_" + i);
                               opcion_text = lbl.innerHTML.split("<")[0]; //Obtener el texto del check
 
-                              if (quiz.guess(opcion_text)) {
+                              if (cuestionarioTema.guess(opcion_text)) {
                                 respuestas_correctas++;
                               } else {
                                 respuestas_incorretas++;
@@ -6143,13 +6164,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           return _context16.abrupt("return");
 
                         case 48:
-                          if (quiz.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
+                          if (cuestionarioTema.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
                           return _context16.abrupt("break", 57);
 
                         case 50:
                           chequeada = false;
 
-                          for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                             opc = document.getElementById("opc_" + i);
 
                             if (opc.checked) {
@@ -6173,14 +6194,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           return _context16.abrupt("return");
 
                         case 55:
-                          for (i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                             opc = document.getElementById("opc_" + i);
 
                             if (opc.checked) {
                               lbl = document.getElementById("opcl_" + i);
                               opcion_text = lbl.innerHTML.split("<")[0];
 
-                              if (quiz.guess(opcion_text)) {
+                              if (cuestionarioTema.guess(opcion_text)) {
                                 respuestas_correctas++;
                               } else {
                                 respuestas_incorretas++;
@@ -6191,8 +6212,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           return _context16.abrupt("break", 57);
 
                         case 57:
-                          if (respuestas_correctas == quiz.getQuestionIndex().answer.length && respuestas_incorretas == 0) {
-                            quiz.score = quiz.score + 1; //_this.$swal.fire('Correcta');
+                          if (respuestas_correctas == cuestionarioTema.getQuestionIndex().answer.length && respuestas_incorretas == 0) {
+                            cuestionarioTema.score = cuestionarioTema.score + 1; //_this.$swal.fire('Correcta');
 
                             _this.$swal.fire({
                               position: 'top-end',
@@ -6202,7 +6223,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               timer: 1500
                             });
                           } else if (respuestas_correctas > 0 && respuestas_incorretas == 0 && tipo == 0) {
-                            quiz.score = quiz.score + respuestas_correctas / quiz.getQuestionIndex().answer.length; //_this.$swal.fire("Parcialmente correcta");
+                            cuestionarioTema.score = cuestionarioTema.score + respuestas_correctas / cuestionarioTema.getQuestionIndex().answer.length; //_this.$swal.fire("Parcialmente correcta");
 
                             _this.$swal.fire({
                               position: 'top-end',
@@ -6222,7 +6243,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             });
                           }
 
-                          quiz.nextQuestion();
+                          cuestionarioTema.nextQuestion();
                           populate();
 
                         case 60:

@@ -22,36 +22,18 @@ Solución de problemas reales con ecuaciones de segundo grado
 Solución de problemas reales con sistemas de ecuaciones
 
 Razones  trigonométricas
-Ángulos y sus  razones  trigonométricas
-Identidades  trigonométricas
-Ecuaciones trigonometricas
+Solución de problemas reales con trigonometría
 
 Hipérbola
 Postulados y teoremas
 
-Conceptos de  funciones  matemáticas
-Formas de expresar funciones matemáticas
-Dominio y rango de una función
+Desigualdades - inecuaciones
 Funciones Trigonométricas
 Función  Lineal
-Función Cuadrática
-Función Polinomial
 Función  Exponencial
 Funciones  Logarítmicas
-Función  Valor absoluto
 Modelado de funciones
 
-Derivada
-Razón de cambio
-Reglas de derivación
-Razones de cambio relacionadas
-Optimizacion
 
-Definición de la integral
-Reglas de integración inmediatas
-Métodos de integración
-Integral definida
 Áreas bajo la curva
-Sólido de revolución
-Volúmen de un sólido en revolución
 

@@ -14,7 +14,7 @@
                             <span style="color: #bdb9bd">
                                 Cuestionario <i class="fas fa-angle-right"></i>
                             </span>
-                            <b> Contestar </b>
+                            <b> Contestar </b> 
                         </ol>
                     </div>
                 </div>
@@ -310,7 +310,7 @@
         ponderacion: 0,
         estatus: [],
         ultimoTema: 0,
-        datosEvaluacion: {detenerse: false},
+        datosEvaluacion: {},
         temasAEvaluar: [96, 26, 44, 91],
         temaAEvaluarActual: 0,
       };
@@ -321,11 +321,11 @@
     },
     methods: {
       obtenerPonderaciones: async function() {
-        this.ultimoTema = this.temasAEvaluar[this.temaAEvaluarActual];
+        /*this.ultimoTema = this.temasAEvaluar[this.temaAEvaluarActual];
         await this.getopic();
         await this.getpreguntas();
-        this.temaAEvaluarActual++;
-        /*await axios({
+        this.temaAEvaluarActual++;*/
+        await axios({
           method: 'get',
           url: "/obtenerPonderaciones/" + matricula
         }).then(async result => {
@@ -337,14 +337,18 @@
           } else if (result.data.detenerse === false ) {
               this.ultimoTema = result.data.ultimo;
               this.datosEvaluacion = result.data;
+              console.log("Otro tema evaluado");
+              console.log(result.data);
               await this.getopic();
               await this.getpreguntas();
+              
           }else{
             console.log("Ya ha terminado el cuestionario");
+            alert("Ya se ha terminao de evaluar");
           }
         }, error => {
           console.error(error)
-        })*/
+        })
       },
       enviarPonderacion: async function() {
         let saltos = 3;
@@ -361,7 +365,7 @@
         })
       },
       obtenerPrimerTema: async function() {
-        /*let parametros = this.configuracion.rbm + "/" + matricula;
+        let parametros = this.configuracion.rbm + "/" + matricula;
         console.log(parametros);
         await axios({
           method: 'get',
@@ -371,7 +375,7 @@
           
         }, error => {
           console.error(error)
-        })*/
+        })
         
       },
       storeResult: async function(ponderacion) {
@@ -541,18 +545,6 @@
           }
         )
       },
-      getrespuestas: async function(id) {
-        return axios({
-          method: 'get',
-          url: '/pregunta/respuestas/' + id
-        }).then(
-          result => {
-            return result.data;
-          }, error => {
-            console.error(error)
-          }
-        )
-      },
       desplegarImagen(img, nombre) {
         this.imagenActual = img;
         this.imagenActualNombre = nombre;
@@ -589,33 +581,26 @@
 
 
         /* ESTA ES LA PARTE DEL CUESTIONARIO */
-
         function Quiz(questions) {
           this.score = 0;
           this.questions = questions;
           this.questionIndex = 0;
         }
-
         Quiz.prototype.getQuestionIndex = function() {
           return this.questions[this.questionIndex];
         }
-
         Quiz.prototype.guess = function(answer) {
           return this.getQuestionIndex().isCorrectAnswer(answer);
         }
-
         Quiz.prototype.isEnded = function() {
           return this.questionIndex === this.questions.length;
         }
-
         Quiz.prototype.nextQuestion = function() {
           this.questionIndex++;
         }
-
         Quiz.prototype.getImages = function() {
           return this.getQuestionIndex().imagenes;
         }
-
         function Question(id, text, choices, answer, type, up, down, value, decimales, imagenes) {
           this.id = id;
           this.text = text;
@@ -628,7 +613,6 @@
           this.decimales = decimales;
           this.imagenes = imagenes;
         }
-
         Question.prototype.isCorrectAnswer = function(choice) {
           var correcta = false;
 
@@ -685,7 +669,7 @@
           return correcta;
         }
         var tipo = this.configuracion.ponde_estricta; //
-        var quiz = new Quiz(questions);
+        var cuestionarioTema = new Quiz(questions);
         
         console.log(questions);
        
@@ -694,12 +678,12 @@
         document.getElementById("next").addEventListener("click", async function() {
 
           console.log("Quizz");
-          console.log(quiz);
+          console.log(cuestionarioTema);
           
           //AQUI SE OBTIENE LA RESPUESTA A LA PREGUNTA
           await axios({
             method: 'get',
-            url: '/pregunta/respuestas/' + quiz.getQuestionIndex().id
+            url: '/pregunta/respuestas/' + cuestionarioTema.getQuestionIndex().id
           }).then(
             result => {
               var res = [];
@@ -709,39 +693,25 @@
                 id_opcion_correcta.push(result.data[i].id_opcion);
               }
 
-              if (quiz.getQuestionIndex().type == 5 || quiz.getQuestionIndex().type ==
+              if (cuestionarioTema.getQuestionIndex().type == 5 || cuestionarioTema.getQuestionIndex().type ==
                 6) {
-                var power = Math.pow(10, quiz.getQuestionIndex().decimales);
+                var power = Math.pow(10, cuestionarioTema.getQuestionIndex().decimales);
                 //console.log("Respuesta antes de la funcion "+res[0]);
-                res = [Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,
+                res = [Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,
                   res[0], id_opcion_correcta[0]) * power) / power];
-                //label.innerHTML = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
+                //label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
               }
 
-              quiz.getQuestionIndex().answer = res;
+              cuestionarioTema.getQuestionIndex().answer = res;
             }, error => {
               console.error(error)
             }
           )
 
-
-
-
-          //SE LO ASIGNAS A quiz.getQuestionIndex().answer
-          //quiz.getQuestionIndex().id <-- id de pregunta
-          //quiz.getQuestionIndex().type  <-- TIPO DE LA PREGUNTA
-          //quiz.getQuestionIndex().question <-- 
-          //quiz.getQuestionIndex().answer = generarRespuesta();
-
-
-          //Trae las opciones de la pregunta actual
-
-
           var respuestas_correctas = 0;
           var respuestas_incorretas = 0;
 
-          // COMPARA EL TIPO DE PREGUNTA
-          switch (quiz.getQuestionIndex().type) {
+          switch (cuestionarioTema.getQuestionIndex().type) {
 
             case 1:
 
@@ -762,7 +732,7 @@
                 return;
               }
 
-              if (quiz.guess(resp))
+              if (cuestionarioTema.guess(resp))
                 respuestas_correctas++;
               else
                 respuestas_incorretas++;
@@ -785,7 +755,7 @@
                 return;
               }
 
-              if (quiz.guess(opc.value))
+              if (cuestionarioTema.guess(opc.value))
                 respuestas_correctas++;
               else
                 respuestas_incorretas++;
@@ -817,7 +787,7 @@
                 return;
               }
 
-              if (quiz.guess(resp))
+              if (cuestionarioTema.guess(resp))
                 respuestas_correctas++;
               else
                 respuestas_incorretas++;
@@ -825,7 +795,7 @@
 
             case 4:
               var chequeada = false;
-              for (var i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+              for (var i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                 var opc = document.getElementById("opc_" + i);
                 if (opc.checked) {
                   chequeada = true;
@@ -846,13 +816,13 @@
               }
 
 
-              for (var i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+              for (var i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                 var opc = document.getElementById("opc_" + i);
                 if (opc.checked) {
                   var lbl = document.getElementById("opcl_" + i);
                   var opcion_text = lbl.innerHTML.split("<")[
                     0]; //Obtener el texto del check
-                  if (quiz.guess(opcion_text)) {
+                  if (cuestionarioTema.guess(opcion_text)) {
                     respuestas_correctas++;
                   } else {
                     respuestas_incorretas++;
@@ -881,7 +851,7 @@
                 return;
               }
 
-              if (quiz.guess(opc.value))
+              if (cuestionarioTema.guess(opc.value))
                 respuestas_correctas++;
               else
                 respuestas_incorretas++;
@@ -890,7 +860,7 @@
             case 6:
 
               var chequeada = false;
-              for (var i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+              for (var i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                 var opc = document.getElementById("opc_" + i);
                 if (opc.checked) {
                   chequeada = true;
@@ -909,12 +879,12 @@
                 return;
               }
 
-              for (var i = 0; i < quiz.getQuestionIndex().choices.length; i++) {
+              for (var i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
                 var opc = document.getElementById("opc_" + i);
                 if (opc.checked) {
                   var lbl = document.getElementById("opcl_" + i);
                   var opcion_text = lbl.innerHTML.split("<")[0];
-                  if (quiz.guess(opcion_text)) {
+                  if (cuestionarioTema.guess(opcion_text)) {
                     respuestas_correctas++;
                   } else {
                     respuestas_incorretas++;
@@ -925,9 +895,9 @@
               break;
 
           }
-          if (respuestas_correctas == quiz.getQuestionIndex().answer.length &&
+          if (respuestas_correctas == cuestionarioTema.getQuestionIndex().answer.length &&
             respuestas_incorretas == 0) {
-            quiz.score = quiz.score + 1;
+            cuestionarioTema.score = cuestionarioTema.score + 1;
             //_this.$swal.fire('Correcta');
             _this.$swal.fire({
               position: 'top-end',
@@ -937,7 +907,7 @@
               timer: 1500
             })
           } else if (respuestas_correctas > 0 && respuestas_incorretas == 0 && tipo == 0) {
-            quiz.score = quiz.score + (respuestas_correctas / quiz.getQuestionIndex().answer
+            cuestionarioTema.score = cuestionarioTema.score + (respuestas_correctas / cuestionarioTema.getQuestionIndex().answer
               .length);
             //_this.$swal.fire("Parcialmente correcta");
             _this.$swal.fire({
@@ -959,18 +929,18 @@
             })
           }
 
-          quiz.nextQuestion();
+          cuestionarioTema.nextQuestion();
           populate();
         });
         let _this = this
         async function populate() {
           
-          if (quiz.isEnded()) {
-            if (quiz.questions.length > 0) {
-              var total = Math.round((quiz.score / quiz.questions.length) * 100);
+          if (cuestionarioTema.isEnded()) {
+            if (cuestionarioTema.questions.length > 0) {
+              var total = Math.round((cuestionarioTema.score / cuestionarioTema.questions.length) * 100);
               
               if ( ! _this.datosEvaluacion.detenerse ) {
-                quiz = "";
+                cuestionarioTema = "";
                 questions = [];
                 
                  _this.ponderacion = total;
@@ -984,32 +954,32 @@
           } else {
 
             document.getElementById("buttons").innerHTML = "";
-            var element = document.getElementById("question").innerHTML = quiz.getQuestionIndex()
+            var element = document.getElementById("question").innerHTML = cuestionarioTema.getQuestionIndex()
               .text;
 
             let imgstr = "";
             _this.imagenesPregunta = [];
-            for (let ii = 0; ii < quiz.getQuestionIndex().imagenes.length; ii++) {
-              imgstr = "/imagenes/preguntas/" + quiz.getQuestionIndex().imagenes[ii].nombre;
+            for (let ii = 0; ii < cuestionarioTema.getQuestionIndex().imagenes.length; ii++) {
+              imgstr = "/imagenes/preguntas/" + cuestionarioTema.getQuestionIndex().imagenes[ii].nombre;
               _this.imagenesPregunta.push(imgstr);
               console.log(_this.imagenesPregunta);
             }
-            console.log(quiz.getQuestionIndex().imagenes);
+            console.log(cuestionarioTema.getQuestionIndex().imagenes);
             var tema = document.getElementById("tag_topic");
             tema.innerHTML = " <b> Tema: </b> " + _this.topic[0].nombre_tema;
 
 
-            if (quiz.getQuestionIndex().type == 4) {
+            if (cuestionarioTema.getQuestionIndex().type == 4) {
               await axios({
                 method: 'get',
-                url: '/pregunta/opciones/' + quiz.getQuestionIndex().id
+                url: '/pregunta/opciones/' + cuestionarioTema.getQuestionIndex().id
               }).then(
                 result => {
                   var ops = [];
                   for (var i = 0; i < result.data.length; i++) {
                     ops.push(result.data[i].opcion);
                   }
-                  quiz.getQuestionIndex().choices = ops;
+                  cuestionarioTema.getQuestionIndex().choices = ops;
 
                 }, error => {
                   console.error(error)
@@ -1018,10 +988,10 @@
             }
 
             var opcionesAux = [];
-            if (quiz.getQuestionIndex().type == 6) {
+            if (cuestionarioTema.getQuestionIndex().type == 6) {
               await axios({
                 method: 'get',
-                url: '/pregunta/opcionescalculadasmultiples/' + quiz.getQuestionIndex()
+                url: '/pregunta/opcionescalculadasmultiples/' + cuestionarioTema.getQuestionIndex()
                   .id
               }).then(
                 result => {
@@ -1030,17 +1000,17 @@
                     ops.push(result.data[i].opcion);
                     opcionesAux.push(result.data[i]);
                   }
-                  quiz.getQuestionIndex().choices = ops;
+                  cuestionarioTema.getQuestionIndex().choices = ops;
                 }, error => {
                   console.error(error)
                 }
               )
             }
 
-            var choices = quiz.getQuestionIndex().choices;
+            var choices = cuestionarioTema.getQuestionIndex().choices;
 
 
-            switch (quiz.getQuestionIndex().type) {
+            switch (cuestionarioTema.getQuestionIndex().type) {
 
               case 1:
                 var input_respuesta = document.createElement("input");
@@ -1116,7 +1086,7 @@
                   var label = document.createElement("label");
                   //label.innerHTML = choices[i];
                   var power = Math.pow(10, opcionesAux[i].decimales);
-                  label.innerHTML = Math.round(_this.generarRespuesta(quiz.getQuestionIndex()
+                  label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex()
                     .id, choices[i], opcionesAux[i].id_opcion) * power) / power;
                   label.className = "container";
                   label.id = "opcl_" + i;
@@ -1125,7 +1095,7 @@
                   var button = document.createElement("input");
                   button.type = "checkbox"
                   //button.text = choices[i];
-                  button.text = Math.round(_this.generarRespuesta(quiz.getQuestionIndex().id,
+                  button.text = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,
                     choices[i], opcionesAux[i].id_opcion) * power) / power;
                   button.id = "opc_" + i;
                   label.appendChild(button);
@@ -1141,8 +1111,8 @@
         };
         //Asegurar que solo sean checkeados las posibles respuestas
         function guess() {
-          var answers = quiz.getQuestionIndex().answer;
-          var choices = quiz.getQuestionIndex().choices;
+          var answers = cuestionarioTema.getQuestionIndex().answer;
+          var choices = cuestionarioTema.getQuestionIndex().choices;
           opc_check = 0;
 
           for (var i = 0; i < choices.length; i++) {
@@ -1159,9 +1129,9 @@
 
         };
         function showProgress() {
-          var currentQuestionNumber = quiz.questionIndex + 1;
+          var currentQuestionNumber = cuestionarioTema.questionIndex + 1;
           var element = document.getElementById("progress");
-          element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + quiz.questions
+          element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + questionIndex.questions
             .length;
         };
         async function showScores() {
