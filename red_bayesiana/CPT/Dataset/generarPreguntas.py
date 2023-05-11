@@ -7,7 +7,7 @@ import mysql.connector
 def preguntasAbiertas(conexion1,padres_ids):
   cursor1=conexion1.cursor()
   sql="insert into banco_preguntas(pregunta,tipo,id_tema) values (%s,%s,%s)"
-  datos=("xyz",1,padres_ids[0])
+  datos=("script xyz",1,padres_ids[0])
   cursor1.execute(sql, datos)
   cursor = conexion1.cursor()
   cursor.execute("select max(id) from banco_preguntas;")
@@ -16,27 +16,28 @@ def preguntasAbiertas(conexion1,padres_ids):
   sql="insert into opciones(opcion,id_pregunta,esrespuesta) values (%s,%s,%s)"
   datos=("xyz",(id[0][0]),1)
   cursor1.execute(sql, datos)
+
   
 def preguntasNumericas(conexion1,padres_ids):
   cursor1=conexion1.cursor()
   sql="insert into banco_preguntas(pregunta,tipo,id_tema) values (%s,%s,%s)"
-  datos=("xyz",2,padres_ids[0])
+  datos=("script xyz",2,padres_ids[0])
   cursor1.execute(sql, datos)
   cursor = conexion1.cursor()
   cursor.execute("select max(id) from banco_preguntas;")
   id=cursor.fetchall()
   cursor1=conexion1.cursor()
   sql="insert into opciones(opcion,id_pregunta,esrespuesta) values (%s,%s,%s)"
-  datos=(1,id[0][0],1)
+  datos=(5/10,id[0][0],1)
   cursor1.execute(sql, datos)
   sql="insert into margen_errors(id_pregunta,aplicableArriba,aplicableAnbajo,rango) values (%s,%s,%s,%s)"
-  datos=(id[0][0],1,1,0.25)
+  datos=(id[0][0],1,1,0)
   cursor1.execute(sql, datos)
- 
+
 def preguntasVF(conexion1,padres_ids):
   cursor1=conexion1.cursor()
   sql="insert into banco_preguntas(pregunta,tipo,id_tema) values (%s,%s,%s)"
-  datos=("xyz",3,padres_ids[0])
+  datos=("script xyz",3,padres_ids[0])
   cursor1.execute(sql, datos)
   cursor = conexion1.cursor()
   cursor.execute("select max(id) from banco_preguntas;")
@@ -49,7 +50,7 @@ def preguntasVF(conexion1,padres_ids):
 def preguntasOMultiple(conexion1,padres_ids):
   cursor1=conexion1.cursor()
   sql="insert into banco_preguntas(pregunta,tipo,id_tema) values (%s,%s,%s)"
-  datos=("xyz",4,padres_ids[0])
+  datos=("script xyz",4,padres_ids[0])
   cursor1.execute(sql, datos)
   cursor = conexion1.cursor()
   cursor.execute("select max(id) from banco_preguntas;")
@@ -64,21 +65,21 @@ def preguntasOMultiple(conexion1,padres_ids):
   sql="insert into opciones(opcion,id_pregunta,esrespuesta) values (%s,%s,%s)"
   datos=("def",(id[0][0]),0)
   cursor1.execute(sql, datos)
-  
+
 def preguntasCalculadasS(conexion1,padres_ids):
   cursor1=conexion1.cursor()
   sql="insert into banco_preguntas(pregunta,tipo,id_tema) values (%s,%s,%s)"
-  datos=("xyz {a}",5,padres_ids[0])
+  datos=("script xyz {a} + {b}  ",5,padres_ids[0])
   cursor1.execute(sql, datos)
   cursor = conexion1.cursor()
   cursor.execute("select max(id) from banco_preguntas;")
   id=cursor.fetchall()
+  
   cursor1=conexion1.cursor()
   sql="insert into opciones(opcion,id_pregunta,esrespuesta) values (%s,%s,%s)"
-  datos=("{a}",id[0][0],1)
+  datos=(" {a} + {b} ",id[0][0],1)
   cursor1.execute(sql, datos)
-   
-    
+  
   cursor = conexion1.cursor()
   cursor.execute("select max(id) from opciones;")
   idopcion=cursor.fetchall()
@@ -86,17 +87,23 @@ def preguntasCalculadasS(conexion1,padres_ids):
   
   cursor1=conexion1.cursor()
   sql="insert into comodines(comodin,valor_comodin,id_opcion) values (%s,%s,%s)"
-  datos=("{a}",1,idopcion[0][0])
+  datos=("{a}",'-1~100',idopcion[0][0])
   cursor1.execute(sql, datos)
+  
+  cursor1=conexion1.cursor()
+  sql="insert into comodines(comodin,valor_comodin,id_opcion) values (%s,%s,%s)"
+  datos=("{b}",'-1~100',idopcion[0][0])
+  cursor1.execute(sql, datos)
+  
   
   sql="insert into configuracion_preguntas_calculadas(id_pregunta,decimales) values (%s,%s)"
   datos=(id[0][0],0)
   cursor1.execute(sql, datos)
   
   sql="insert into margen_errors(id_pregunta,aplicableArriba,aplicableAnbajo,rango) values (%s,%s,%s,%s)"
-  datos=(id[0][0],1,1,0.25)
+  datos=(id[0][0],0,0,0)
   cursor1.execute(sql, datos)
-  
+"""
 def preguntasCalculadasM(conexion1,padres_ids):
   cursor1=conexion1.cursor()
   sql="insert into banco_preguntas(pregunta,tipo,id_tema) values (%s,%s,%s)"
@@ -168,9 +175,9 @@ def preguntasCalculadasM(conexion1,padres_ids):
   cursor1.execute(sql, datos)
   
   sql="insert into margen_errors(id_pregunta,aplicableArriba,aplicableAnbajo,rango) values (%s,%s,%s,%s)"
-  datos=(id[0][0],1,1,0.25)
+  datos=(id[0][0],1,1,0)
   cursor1.execute(sql, datos)
-  
+  """
 cptA=[]
 print("Cargando nodos...")
 URL = "http://localhost/arbol/simulador/caminos"
@@ -228,12 +235,13 @@ for i in range(len(nodos)):
 conexion1=mysql.connector.connect(user='root', password='PROYECTO1KMS', host='localhost', database='kms')   
 for i in range(len(padres)):
  
-  preguntasAbiertas(conexion1,padres_ids[i])
-  preguntasNumericas(conexion1,padres_ids[i])
-  preguntasVF(conexion1,padres_ids[i])
-  preguntasOMultiple(conexion1,padres_ids[i])
+
+   # preguntasNumericas(conexion1,padres_ids[i])
+ # preguntasAbiertas(conexion1,padres_ids[i])
+   #preguntasVF(conexion1,padres_ids[i])
+   #preguntasOMultiple(conexion1,padres_ids[i])
   preguntasCalculadasS(conexion1,padres_ids[i])
-  preguntasCalculadasM(conexion1,padres_ids[i])
+   #preguntasCalculadasM(conexion1,padres_ids[i])
 conexion1.commit()
 conexion1.close() 
 

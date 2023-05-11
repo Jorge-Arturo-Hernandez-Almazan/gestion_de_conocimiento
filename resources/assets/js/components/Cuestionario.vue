@@ -321,10 +321,6 @@
     },
     methods: {
       obtenerPonderaciones: async function() {
-        /*this.ultimoTema = this.temasAEvaluar[this.temaAEvaluarActual];
-        await this.getopic();
-        await this.getpreguntas();
-        this.temaAEvaluarActual++;*/
         await axios({
           method: 'get',
           url: "/obtenerPonderaciones/" + matricula
@@ -344,7 +340,7 @@
               
           }else{
             console.log("Ya ha terminado el cuestionario");
-            alert("Ya se ha terminao de evaluar");
+            alert("Ya se ha terminado de evaluar");
           }
         }, error => {
           console.error(error)
@@ -405,7 +401,7 @@
             console.error(error)
           }
         )
-      },
+      },  /*-------------------------------------------------------configuración del número de preguntas-----------------------------*/
       obtenerConfiguracion() {
         axios({
           method: 'get',
@@ -417,8 +413,8 @@
             console.log(this.configuracion);
           }, error => {
             console.error(error)
-          })
-      },
+          })/*-------------------------------------------------------Termina la configuración del número de preguntas-----------------------------*/
+      }, 
       getpreguntas: async function() {
         
        console.log("Obtener preguntas del tema: " + this.ultimoTema );
@@ -622,7 +618,18 @@
                 correcta = true;
               break;
             case 2:
-
+              //validar que si entra una fracción tomarla como texto 
+              var isfraccion = this.answer[0].search('/');
+              console.log("SI ES FRACCION "+isfraccion)
+                
+              if(isfraccion >= 0){
+                if(choice == this.answer[0].toString()){
+                  correcta = true;
+                }
+                
+              }else{
+              
+              
               this.answer[0] = Number(this.answer[0]);
               var arriba = this.answer[0] + Math.abs(Number(this.answer[0] * this.value * this
                 .up))
@@ -632,7 +639,7 @@
               if (choice >= abajo && choice <= arriba) {
                 correcta = true;
 
-              }
+              }}
 
 
               break;
@@ -737,7 +744,7 @@
               else
                 respuestas_incorretas++;
               break;
-
+/* Validación para la pregunta númerica */
             case 2:
               var opc = document.getElementById("input_respuesta");
 
@@ -1022,7 +1029,7 @@
                 break;
               case 2:
                 var input_respuesta = document.createElement("input");
-                input_respuesta.type = "number";
+                input_respuesta.type = "text"; // se cambió de number a text para que acepte fracciones
                 input_respuesta.id = "input_respuesta";
                 var zona_botones = document.getElementById("buttons");
                 zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
@@ -1428,7 +1435,7 @@
           }
           return resultado;
         }
-
+/*
         function analizar(expresion) {
           expresion.trim();
           var estracto = "";

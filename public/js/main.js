@@ -5043,7 +5043,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 20:
                             console.log("Ya ha terminado el cuestionario");
-                            alert("Ya se ha terminao de evaluar");
+                            alert("Ya se ha terminado de evaluar");
 
                           case 22:
                           case "end":
@@ -5746,7 +5746,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 30:
                             input_respuesta = document.createElement("input");
-                            input_respuesta.type = "number";
+                            input_respuesta.type = "text"; // se cambió de number a text para que acepte fracciones
+
                             input_respuesta.id = "input_respuesta";
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
@@ -5927,12 +5928,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       break;
 
                     case 2:
-                      this.answer[0] = Number(this.answer[0]);
-                      var arriba = this.answer[0] + Math.abs(Number(this.answer[0] * this.value * this.up));
-                      var abajo = this.answer[0] - Math.abs(Number(this.answer[0] * this.value * this.down));
+                      //validar quue si entra una fracción tomarla como texto 
+                      var isfraccion = this.answer[0].search('/');
+                      console.log("SI ES FRACCION " + isfraccion);
 
-                      if (choice >= abajo && choice <= arriba) {
-                        correcta = true;
+                      if (isfraccion >= 0) {
+                        if (choice == this.answer[0].toString()) {
+                          correcta = true;
+                        }
+                      } else {
+                        this.answer[0] = Number(this.answer[0]);
+                        var arriba = this.answer[0] + Math.abs(Number(this.answer[0] * this.value * this.up));
+                        var abajo = this.answer[0] - Math.abs(Number(this.answer[0] * this.value * this.down));
+
+                        if (choice >= abajo && choice <= arriba) {
+                          correcta = true;
+                        }
                       }
 
                       break;
@@ -66525,9 +66536,7 @@ var render = function() {
                                             [
                                               _vm._v(
                                                 " " +
-                                                  _vm._s(
-                                                    temas.totalCalculadas
-                                                  ) +
+                                                  _vm._s(temas.totalCMultiple) +
                                                   "\n                                                "
                                               )
                                             ]
@@ -66550,7 +66559,7 @@ var render = function() {
                               "v-th",
                               {
                                 attrs: {
-                                  sortKey: "nombre_tema",
+                                  sortKey: "nombre0_tema",
                                   defaultSort: "desc"
                                 }
                               },
@@ -66558,7 +66567,7 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("v-th", { attrs: { defaultSort: "desc" } }, [
-                              _vm._v(" Breves ")
+                              _vm._v(" Abiertas")
                             ]),
                             _vm._v(" "),
                             _c("v-th", { attrs: { defaultSort: "desc" } }, [
@@ -66570,7 +66579,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("v-th", { attrs: { defaultSort: "desc" } }, [
-                              _vm._v(" Multiples ")
+                              _vm._v(" Opción Múltiple ")
                             ]),
                             _vm._v(" "),
                             _c("v-th", { attrs: { defaultSort: "desc" } }, [
@@ -66578,7 +66587,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("v-th", { attrs: { defaultSort: "desc" } }, [
-                              _vm._v(" Calculadas multiples ")
+                              _vm._v(" Calculadas Múltiples ")
                             ])
                           ],
                           1

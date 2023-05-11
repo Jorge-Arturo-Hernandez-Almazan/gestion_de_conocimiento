@@ -46,13 +46,13 @@
                                         :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
                                         class="table table-hover">
                                         <thead slot="head">
-                                            <v-th sortKey="nombre_tema" defaultSort="desc">Tema</v-th>
-                                            <v-th defaultSort="desc"> Breves </v-th>
+                                            <v-th sortKey="nombre0_tema" defaultSort="desc">Tema</v-th>
+                                            <v-th defaultSort="desc"> Abiertas</v-th>
                                             <v-th defaultSort="desc"> Númericas </v-th>
                                             <v-th defaultSort="desc"> Verdadero / Falso </v-th>
-                                            <v-th defaultSort="desc"> Multiples </v-th>
+                                            <v-th defaultSort="desc"> Opción Múltiple </v-th>
                                             <v-th defaultSort="desc"> Calculadas </v-th>
-                                            <v-th defaultSort="desc"> Calculadas multiples </v-th>
+                                            <v-th defaultSort="desc"> Calculadas Múltiples </v-th>
                                         </thead>
                                         <tbody slot="body" slot-scope="{displayData}">
                                             <tr v-for="temas in displayData" :key="temas.id">
@@ -92,7 +92,7 @@
                                                 <td>
                                                     <span v-if="temas.totalCMultiple > 0" class="badge badge-primary">
                                                         {{temas.totalCMultiple}} </span>
-                                                    <span v-else class="badge badge-danger "> {{temas.totalCalculadas}}
+                                                    <span v-else class="badge badge-danger "> {{temas.totalCMultiple}}
                                                     </span>
                                                 </td>
 
