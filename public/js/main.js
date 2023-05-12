@@ -5224,6 +5224,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getopic;
     }(),
+
+    /*-------------------------------------------------------configuración del número de preguntas-----------------------------*/
     obtenerConfiguracion: function obtenerConfiguracion() {
       var _this7 = this;
 
@@ -5237,6 +5239,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, function (error) {
         console.error(error);
       });
+      /*-------------------------------------------------------Termina la configuración del número de preguntas-----------------------------*/
     },
     getpreguntas: function () {
       var _getpreguntas = _asyncToGenerator(
@@ -5928,7 +5931,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       break;
 
                     case 2:
-                      //validar quue si entra una fracción tomarla como texto 
+                      //validar que si entra una fracción tomarla como texto 
                       var isfraccion = this.answer[0].search('/');
                       console.log("SI ES FRACCION " + isfraccion);
 

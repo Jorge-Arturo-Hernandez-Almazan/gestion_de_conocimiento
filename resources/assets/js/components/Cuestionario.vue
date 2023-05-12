@@ -1435,7 +1435,7 @@
           }
           return resultado;
         }
-/*
+
         function analizar(expresion) {
           expresion.trim();
           var estracto = "";
@@ -1693,3 +1693,4 @@
     width: 0%;
   }
 </style>
+
