@@ -1,8 +1,8 @@
 id	nombre_tema	nivel	freex	freey	textPosition	created_at	updated_at	dificultad
-1	Matematicas	0	500.00	50.00	0	NULL	NULL	-3.00000000
-2	Aritmetica	1	-501.73	150.50	0	NULL	2022-01-03 23:53:32	-1.97142857
+1	Matemáticas	0	500.00	50.00	0	NULL	NULL	-3.00000000
+2	Aritmética	1	-501.73	150.50	0	NULL	2022-01-03 23:53:32	-1.97142857
 6	Suma aritmética de números enteros	3	-1053.92	584.93	0	NULL	2021-12-03 16:56:49	-2.82857143
-7	Conjuntos Numericos 	3	-1541.05	540.07	0	NULL	2021-11-30 03:25:17	-2.82857143
+7	Conjuntos Numéricos	3	-1541.05	540.07	0	NULL	2021-11-30 03:25:17	-2.82857143
 8	Tablas de  multiplicar	4	-1327.08	716.20	0	NULL	2021-12-03 16:56:48	-2.74285714
 9	Clasificación de los números	4	-1594.79	870.71	0	NULL	2021-07-05 21:36:23	-2.74285714
 10	Matrices	3	721.48	754.41	0	NULL	2021-11-30 03:25:10	-0.08571429
@@ -13,7 +13,7 @@ id	nombre_tema	nivel	freex	freey	textPosition	created_at	updated_at	dificultad
 17	Trigonometría	1	1400.07	405.65	0	NULL	2022-06-14 17:51:26	-2.22857143
 19	Triángulos rectángulos	2	1145.39	555.19	0	NULL	2022-01-03 23:13:23	0.51428571
 20	Geometría	1	426.28	283.35	0	NULL	2022-01-03 23:54:12	-2.14285714
-23	Principios de la Geometríaa	2	237.28	457.56	0	NULL	2022-01-05 17:55:01	-1.02857143
+23	Principios de la Geometría	2	394.71	394.71	0	NULL	2023-03-29 16:54:56	-1.02857143
 24	Expresiones algebraicas	2	51.58	501.62	0	NULL	2021-12-16 18:55:09	-1.88571429
 25	Números racionales 	5	-1768.70	1108.46	0	NULL	2021-11-25 14:26:44	-2.65714286
 26	Operaciones Aritméticas 	2	-801.41	481.33	0	NULL	2021-11-16 15:03:46	-2.91428571
@@ -40,14 +40,14 @@ id	nombre_tema	nivel	freex	freey	textPosition	created_at	updated_at	dificultad
 50	Función  Valor absoluto	8	2757.98	1899.75	0	NULL	2022-06-21 18:30:44	1.71428571
 51	Cálculo  Diferencial	1	1917.37	288.83	0	NULL	2021-08-05 16:40:33	-2.48571429
 52	Cálculo  Integral	1	2118.42	129.96	0	NULL	2021-11-30 03:24:30	-2.31428571
-53	Tríangulos  oblicuángulos	2	1759.61	709.94	0	NULL	2021-12-06 15:05:11	0.51428571
-54	Círculo  unitarioo	3	1034.15	762.70	0	NULL	2022-06-14 20:41:18	0.60000000
+53	Tríangulos Oblicuángulos	2	1759.61	709.94	0	NULL	2021-12-06 15:05:11	0.51428571
+54	Círculo Unitario	3	1034.15	762.70	0	NULL	2022-06-14 20:41:18	0.60000000
 55	Razones  trigonométricas	4	1366.63	690.53	0	NULL	2022-11-11 21:45:12	0.68571429
 57	Ángulos y sus  razones  trigonométricas	5	1357.37	916.08	0	NULL	2021-12-13 23:23:10	0.77142857
 58	Identidades  trigonométricas	6	1470.11	1114.28	0	NULL	2021-12-13 23:23:08	0.85714286
 59	Ecuaciones trigonometricas	7	1479.50	1373.64	0	NULL	2021-12-13 23:23:15	0.94285714
 60	Ley de los Cosenos	7	1773.14	1047.15	0	NULL	2021-08-05 16:38:57	0.94285714
-61	Ángulos	3	277.28	688.21	0	NULL	2022-06-14 17:49:38	-0.94285714
+61	Ángulos	3	484.95	484.95	0	NULL	2023-03-29 17:57:20	-0.94285714
 62	Polígonos	4	283.06	962.21	0	NULL	2022-01-04 15:31:38	-0.85714286
 63	Triángulos	5	423.28	1151.79	0	NULL	2021-11-23 17:36:01	-0.77142857
 71	Operaciones  con  matrices	4	672.18	1121.91	0	NULL	2021-11-14 16:51:37	0.00000000
@@ -69,7 +69,7 @@ id	nombre_tema	nivel	freex	freey	textPosition	created_at	updated_at	dificultad
 94	Fórmula general para ecuaciones de segundo grado	2	-618.08	1036.06	0	NULL	2021-12-29 22:27:37	-2.91428571
 95	División de  números  racionales	9	-948.78	2232.80	0	NULL	2021-08-06 16:58:35	-2.22857143
 96	Radicales	10	-888.26	2634.73	0	NULL	2021-07-05 21:37:02	-2.14285714
-97	Regla detres	10	-364.46	2260.50	0	NULL	2021-12-14 00:47:17	-2.05714286
+97	Regla de tres	10	-364.46	2260.50	0	NULL	2021-12-14 00:47:17	-2.05714286
 98	Porcentajes	11	-322.02	2550.74	0	NULL	2021-07-05 21:37:06	-1.97142857
 99	Multiplicación de  números  racionales	6	-609.41	1890.75	0	NULL	2021-11-05 16:59:01	-2.31428571
 100	Razón y proporciones	7	-584.69	2465.46	0	NULL	2021-08-06 16:58:23	-2.14285714
@@ -83,16 +83,16 @@ id	nombre_tema	nivel	freex	freey	textPosition	created_at	updated_at	dificultad
 168	Ecuaciones de segundo grado	9	4.85	1629.73	0	NULL	2021-12-09 18:20:01	-1.20000000
 169	Solución de problemas reales con ecuaciones de segundo grado	10	-154.60	1905.11	0	NULL	2021-12-09 18:18:55	-1.11428571
 170	Solución de problemas reales con sistemas de ecuaciones	6	147.73	147.73	0	NULL	2022-12-17 20:30:12	-1.11428571
-172	Cuadrilateros	6	491.11	1412.82	0	NULL	2021-11-23 17:35:58	-0.68571429
+172	Cuadriláteros	6	491.11	1412.82	0	NULL	2021-11-23 17:35:58	-0.68571429
 173	Postulados y teoremas	7	635.28	1701.95	0	NULL	2021-11-14 17:54:15	-0.60000000
 174	Perímetros áreas y volúmenes	8	823.36	1870.60	0	NULL	2022-05-06 12:55:40	-0.51428571
 175	Congruencia de trángulos	9	533.44	2165.79	0	NULL	2021-12-09 17:36:18	-0.42857143
 176	Relación métrica de la circunferencia	9	940.66	2174.45	0	NULL	2022-05-06 13:25:07	-0.42857143
-177	Semezanjas de triangulos	10	735.77	2425.41	0	NULL	2022-06-21 18:37:45	-0.34285714
+177	Semejanza de triángulos	10	735.77	2425.41	0	NULL	2022-06-21 18:37:45	-0.34285714
 178	Teorema de Thales de Mileto	11	854.70	2750.17	0	NULL	2022-05-03 12:10:11	-0.25714286
 179	Teorema de Pitágoras	11	1095.51	2389.70	0	NULL	2021-12-09 17:36:28	-0.25714286
 180	Teorema de Euclides	11	442.84	2462.82	0	NULL	2021-12-09 17:36:24	-0.25714286
-181	Plano cartesiano	3	561.21	606.59	0	NULL	2022-01-03 23:46:20	-0.94285714
+181	Plano cartesiano	3	634.76	634.76	0	NULL	2023-03-29 16:54:54	-0.94285714
 182	Recta	4	570.48	915.01	0	NULL	2021-11-11 21:45:37	-0.85714286
 183	Circunferencia	5	875.92	908.37	0	NULL	2021-11-14 16:51:40	-0.77142857
 184	Elipse	6	1151.83	945.13	0	NULL	2021-08-05 16:26:28	-0.68571429

@@ -8454,6 +8454,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/subirImagenes */ "./resources/assets/js/components/subirImagenes.js");
+/* harmony import */ var _components_PrevisualizarPregunta__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/PrevisualizarPregunta */ "./resources/assets/js/components/PrevisualizarPregunta.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -8717,13 +8718,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    visualizador: _components_PrevisualizarPregunta__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   data: function data() {
     var _ref;
 
     return _ref = {
+      preguntaPrevisualizar: {
+        id: 1,
+        id_tema: 1,
+        tipo: ''
+      },
       totalRegistros: "5",
       subidor: {},
       pregunta: [],
@@ -8756,13 +8808,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             case 2:
               _this.getTemas();
-              /*let uri = window.location.href;
-              if (uri.includes("?")) {
-                  uri = window.location.href.split('?');
-                  var fil = uri[1].split('=')[1];
-                  this.filters.pregunta.value = fil.replace(/%20/g, " ");
-              }*/
-
 
             case 3:
             case "end":
@@ -8773,6 +8818,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }))();
   },
   methods: {
+    previsualizarPreguntaMetodo: function previsualizarPreguntaMetodo(pregunta) {
+      console.log("Pregunta a previsualizar");
+      console.log(pregunta);
+      this.preguntaPrevisualizar = {
+        id: pregunta.id_pregunta,
+        id_tema: pregunta.id_tema,
+        tipo: pregunta.tipo
+      };
+    },
     cambioSelect: function cambioSelect(val) {
       this.limpiarCampos("tema");
     },
@@ -14460,6 +14514,1638 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['datosPregunta'],
+  data: function data() {
+    return {
+      pregunta: [],
+      pCalculadas: [],
+      pCalculadasMultiples: [],
+      opciones: [],
+      comodines: [],
+      configuracion: [],
+      topic: [],
+      numero_tema: 0,
+      imagenesPregunta: [],
+      imagenActual: '',
+      imagenActualNombre: '',
+      salidaModulo: '',
+      ordenEvaluacion: [],
+      ponderacion: 0,
+      estatus: [],
+      ultimoTema: 0,
+      datosEvaluacion: {},
+      temasAEvaluar: [96],
+      temaAEvaluarActual: 0
+    };
+  },
+  updated: function updated() {
+    var _this2 = this;
+
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this2.obtenerConfiguracion();
+
+            case 2:
+              _context.next = 4;
+              return _this2.getpreguntas();
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  methods: {
+    enviarPonderacion: function () {
+      var _enviarPonderacion = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this3 = this;
+
+        var saltos, tema, parametros;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                saltos = 3;
+                tema = this.ultimoTema;
+                parametros = this.configuracion.rbm + "/" + matricula + "/" + saltos + "/" + tema + "/" + this.ponderacion;
+                _context2.next = 5;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: 'get',
+                  url: "/obtenerTema/" + parametros
+                }).then(function (result) {
+                  _this3.obtenerPonderaciones();
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function enviarPonderacion() {
+        return _enviarPonderacion.apply(this, arguments);
+      }
+
+      return enviarPonderacion;
+    }(),
+    getopic: function () {
+      var _getopic = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this4 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: 'get',
+                  url: 'topic/getopic/' + this.ultimoTema
+                }).then(function (result) {
+                  _this4.topic = result.data[0];
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function getopic() {
+        return _getopic.apply(this, arguments);
+      }
+
+      return getopic;
+    }(),
+    obtenerConfiguracion: function obtenerConfiguracion() {
+      var _this5 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default()({
+        method: 'get',
+        url: 'cuestionario/obtenerconfiguracion'
+      }).then(function (result) {
+        _this5.configuracion = result.data;
+      }, function (error) {
+        console.error(error);
+      });
+    },
+    getpreguntas: function () {
+      var _getpreguntas = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                console.log("Obtener preguntas del tema: " + this.ultimoTema);
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/showUnicaPregunta', {
+                  datosPregunta: this.datosPregunta
+                }).then(
+                /*#__PURE__*/
+                function () {
+                  var _ref = _asyncToGenerator(
+                  /*#__PURE__*/
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(result) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+                      while (1) {
+                        switch (_context4.prev = _context4.next) {
+                          case 0:
+                            console.log(result);
+
+                          case 1:
+                          case "end":
+                            return _context4.stop();
+                        }
+                      }
+                    }, _callee4);
+                  }));
+
+                  return function (_x) {
+                    return _ref.apply(this, arguments);
+                  };
+                }())["catch"](function (err) {
+                  console.log(err);
+                });
+                /*return axios({
+                   method: 'post',
+                   url: '/showUnicaPregunta' + this.ultimoTema
+                 }).then(
+                   async result => {
+                     
+                     console.log("PREGUNTAS");
+                     console.log(result);
+                     
+                     
+                     this.pregunta = result.data.banco_preguntas;
+                      for (let i = 0; i < this.pregunta.length; i++) {
+                       this.pregunta[i].imagenes = [];
+                        await axios({
+                         method: 'get',
+                         url: '/imagen/pregunta/' + this.pregunta[i].id_pregunta
+                       }).then(
+                         async resultado => {
+                           this.pregunta[i].imagenes = resultado.data.imagenes[0];
+                         }, error => {
+                           console.error(error)
+                         })
+                     }
+                      for (var i = 0; i < this.pregunta.length; i++)
+                       if (this.pregunta[i].tipo == 5)
+                         this.pCalculadas[i] = this.pregunta[i].id_pregunta;
+                       else if (this.pregunta[i].tipo == 6)
+                       this.pCalculadasMultiples[i] = this.pregunta[i].id_pregunta;
+                     
+                     await this.getComodines();
+                        return result.data;
+                     
+                   }, error => {
+                     console.error(error)
+                   })*/
+
+              case 2:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function getpreguntas() {
+        return _getpreguntas.apply(this, arguments);
+      }
+
+      return getpreguntas;
+    }(),
+    getComodines: function () {
+      var _getComodines = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var _this6 = this;
+
+        var preguntasCalculadas;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                preguntasCalculadas = this.pCalculadas.concat(this.pCalculadasMultiples);
+                axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/getComodines/', {
+                  pregunta: preguntasCalculadas
+                }).then(
+                /*#__PURE__*/
+                function () {
+                  var _ref2 = _asyncToGenerator(
+                  /*#__PURE__*/
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(result) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+                      while (1) {
+                        switch (_context6.prev = _context6.next) {
+                          case 0:
+                            _this6.comodines = result.data.comodines;
+                            _context6.next = 3;
+                            return _this6.convertirComodines();
+
+                          case 3:
+                          case "end":
+                            return _context6.stop();
+                        }
+                      }
+                    }, _callee6);
+                  }));
+
+                  return function (_x2) {
+                    return _ref2.apply(this, arguments);
+                  };
+                }())["catch"](function (err) {
+                  console.log(err);
+                });
+
+              case 2:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this);
+      }));
+
+      function getComodines() {
+        return _getComodines.apply(this, arguments);
+      }
+
+      return getComodines;
+    }(),
+    convertirComodines: function () {
+      var _convertirComodines = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var i, valor, separado, random, j, power;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                for (i = 0; i < this.comodines.length; i++) {
+                  valor = this.comodines[i].valor;
+                  separado = valor.split("~");
+                  if (separado.length == 2) this.comodines[i].valor = Math.random() * (parseInt(separado[0]) - parseInt(separado[1])) + parseInt(separado[1]);else {
+                    separado = valor.split(",");
+                    random = Math.round(Math.random() * (separado.length - 1));
+                    this.comodines[i].valor = parseInt(separado[random]);
+                  }
+
+                  for (j = 0; j < this.pregunta.length; j++) {
+                    if (this.pregunta[j].tipo == 5 || this.pregunta[j].tipo == 6) {
+                      if (this.pregunta[j].id_pregunta == this.comodines[i].id_pregunta) {
+                        power = Math.pow(10, this.pregunta[j].decimales);
+                        this.comodines[i].valor = Math.round(this.comodines[i].valor * power) / power;
+                      }
+                    }
+                  }
+                }
+
+                _context8.next = 3;
+                return this.reemplazarComodinesEnPregunta();
+
+              case 3:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function convertirComodines() {
+        return _convertirComodines.apply(this, arguments);
+      }
+
+      return convertirComodines;
+    }(),
+    reemplazarComodinesEnPregunta: function () {
+      var _reemplazarComodinesEnPregunta = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var i, comodinesPregunta, j, k;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                for (i = 0; i < this.pregunta.length; i++) {
+                  if (this.pregunta[i].tipo == 5) {
+                    comodinesPregunta = [];
+
+                    for (j = 0; j < this.comodines.length; j++) {
+                      if (this.pregunta[i].id_pregunta == this.comodines[j].id_pregunta) {
+                        comodinesPregunta.push(this.comodines[j]);
+                      }
+                    }
+
+                    for (k = 0; k < comodinesPregunta.length; k++) {
+                      while (this.pregunta[i].pregunta.indexOf(comodinesPregunta[k].comodin) != -1) {
+                        this.pregunta[i].pregunta = this.pregunta[i].pregunta.replace(comodinesPregunta[k].comodin, comodinesPregunta[k].valor);
+                      }
+                    }
+                  } //console.log(this.pregunta[i].pregunta);
+
+
+                  if (this.pregunta[i].tipo == 6) {
+                    comodinesPregunta = [];
+
+                    for (j = 0; j < this.comodines.length; j++) {
+                      if (this.pregunta[i].id_pregunta == this.comodines[j].id_pregunta && this.comodines[j].esrespuesta == 1) comodinesPregunta.push(this.comodines[j]);
+                    }
+
+                    for (k = 0; k < comodinesPregunta.length; k++) {
+                      while (this.pregunta[i].pregunta.indexOf(comodinesPregunta[k].comodin) != -1) {
+                        this.pregunta[i].pregunta = this.pregunta[i].pregunta.replace(comodinesPregunta[k].comodin, comodinesPregunta[k].valor);
+                      }
+                    }
+                  }
+                } //}
+
+
+                _context9.next = 3;
+                return this.cargarCuestionario(this.topic.nombre_tema, this.pregunta);
+
+              case 3:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
+      function reemplazarComodinesEnPregunta() {
+        return _reemplazarComodinesEnPregunta.apply(this, arguments);
+      }
+
+      return reemplazarComodinesEnPregunta;
+    }(),
+    getopciones: function getopciones(id) {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+        method: 'get',
+        url: '/pregunta/opciones/' + id
+      }).then(function (result) {
+        return result.data;
+      }, function (error) {
+        console.error(error);
+      });
+    },
+    desplegarImagen: function desplegarImagen(img, nombre) {
+      this.imagenActual = img;
+      this.imagenActualNombre = nombre;
+      $("#modalParaVerImagenes").modal();
+    },
+    cargarCuestionario: function () {
+      var _cargarCuestionario = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13(topic, prguntass) {
+        var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, cuestionarioTema, _this, populate, _populate, guess, showProgress, showScores, _showScores;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _showScores = function _ref11() {
+                  _showScores = _asyncToGenerator(
+                  /*#__PURE__*/
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+                    var gameOverHTML, element;
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
+                      while (1) {
+                        switch (_context12.prev = _context12.next) {
+                          case 0:
+                            gameOverHTML = "<h1>Resultados</h1>";
+                            gameOverHTML += "<center> <h4>Estos son tus resultados</h4> </center>";
+                            gameOverHTML += "<center> <table><tr><th>Tema</th><th>Dominio</th></tr>";
+                            _context12.next = 5;
+                            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/arbol/obtenerResultados').then(function (res) {
+                              for (var i = 0; i < res.data.length; i++) {
+                                if (res.data[i].clasificacion == 1) {
+                                  gameOverHTML += "<tr style='background-color: rgb(0,195,255);' >";
+                                } else {
+                                  gameOverHTML += "<tr>";
+                                }
+
+                                gameOverHTML += "<td> " + res.data[i].nombre + "</td>";
+                                gameOverHTML += "<td> " + res.data[i].ponderacion + " % </td>";
+                                gameOverHTML += "</tr>";
+                              }
+
+                              gameOverHTML += "</table> </center>";
+                              gameOverHTML += " <center> <h4> Los temas <b style='color: rgb(0,195,255);'> azules</b> son los temas evaluados en el cuestionario </h4> </center>";
+                              gameOverHTML += " <br> <center> <h6> Muchas gracias por participar. </h6> </center>";
+                              gameOverHTML += "<center> <h6> Ya puedes cerrar esta ventana </h6> </center>";
+                            })["catch"](function (err) {
+                              console.log(err);
+                            });
+
+                          case 5:
+                            element = document.getElementById("quiz");
+                            element.innerHTML = gameOverHTML;
+
+                          case 7:
+                          case "end":
+                            return _context12.stop();
+                        }
+                      }
+                    }, _callee12);
+                  }));
+                  return _showScores.apply(this, arguments);
+                };
+
+                showScores = function _ref10() {
+                  return _showScores.apply(this, arguments);
+                };
+
+                showProgress = function _ref9() {
+                  var currentQuestionNumber = cuestionarioTema.questionIndex + 1;
+                  var element = document.getElementById("progress");
+                  element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + questionIndex.questions.length;
+                };
+
+                guess = function _ref8() {
+                  var answers = cuestionarioTema.getQuestionIndex().answer;
+                  var choices = cuestionarioTema.getQuestionIndex().choices;
+                  opc_check = 0;
+
+                  for (var i = 0; i < choices.length; i++) {
+                    var opc = document.getElementById("opc_" + i);
+
+                    if (opc.checked == true) {
+                      if (opc_check == answers.length) {
+                        opc.checked = false;
+                      } else {
+                        opc.checked = true;
+                      }
+
+                      opc_check++;
+                    }
+                  }
+                };
+
+                _populate = function _ref7() {
+                  _populate = _asyncToGenerator(
+                  /*#__PURE__*/
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+                    var total, element, imgstr, ii, tema, opcionesAux, choices, input_respuesta, zona_botones, div_verdadero, div_falso, label_verdadero, label_falso, input_verdadero, input_falso, i, label, span, button, power;
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+                      while (1) {
+                        switch (_context11.prev = _context11.next) {
+                          case 0:
+                            if (!cuestionarioTema.isEnded()) {
+                              _context11.next = 4;
+                              break;
+                            }
+
+                            if (cuestionarioTema.questions.length > 0) {
+                              total = Math.round(cuestionarioTema.score / cuestionarioTema.questions.length * 100);
+
+                              if (!_this.datosEvaluacion.detenerse) {
+                                cuestionarioTema = "";
+                                questions = [];
+                                _this.ponderacion = total;
+
+                                _this.enviarPonderacion(); //_this.getpreguntas();
+
+                              } else {
+                                showScores();
+                              }
+                            }
+
+                            _context11.next = 74;
+                            break;
+
+                          case 4:
+                            document.getElementById("buttons").innerHTML = "";
+                            element = document.getElementById("question").innerHTML = cuestionarioTema.getQuestionIndex().text;
+                            imgstr = "";
+                            _this.imagenesPregunta = [];
+
+                            for (ii = 0; ii < cuestionarioTema.getQuestionIndex().imagenes.length; ii++) {
+                              imgstr = "/imagenes/preguntas/" + cuestionarioTema.getQuestionIndex().imagenes[ii].nombre;
+
+                              _this.imagenesPregunta.push(imgstr);
+
+                              console.log(_this.imagenesPregunta);
+                            }
+
+                            console.log(cuestionarioTema.getQuestionIndex().imagenes);
+                            tema = document.getElementById("tag_topic");
+                            tema.innerHTML = " <b> Tema: </b> " + _this.topic[0].nombre_tema;
+
+                            if (!(cuestionarioTema.getQuestionIndex().type == 4)) {
+                              _context11.next = 15;
+                              break;
+                            }
+
+                            _context11.next = 15;
+                            return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                              method: 'get',
+                              url: '/pregunta/opciones/' + cuestionarioTema.getQuestionIndex().id
+                            }).then(function (result) {
+                              var ops = [];
+
+                              for (var i = 0; i < result.data.length; i++) {
+                                ops.push(result.data[i].opcion);
+                              }
+
+                              cuestionarioTema.getQuestionIndex().choices = ops;
+                            }, function (error) {
+                              console.error(error);
+                            });
+
+                          case 15:
+                            opcionesAux = [];
+
+                            if (!(cuestionarioTema.getQuestionIndex().type == 6)) {
+                              _context11.next = 19;
+                              break;
+                            }
+
+                            _context11.next = 19;
+                            return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                              method: 'get',
+                              url: '/pregunta/opcionescalculadasmultiples/' + cuestionarioTema.getQuestionIndex().id
+                            }).then(function (result) {
+                              var ops = [];
+
+                              for (var i = 0; i < result.data.length; i++) {
+                                ops.push(result.data[i].opcion);
+                                opcionesAux.push(result.data[i]);
+                              }
+
+                              cuestionarioTema.getQuestionIndex().choices = ops;
+                            }, function (error) {
+                              console.error(error);
+                            });
+
+                          case 19:
+                            choices = cuestionarioTema.getQuestionIndex().choices;
+                            _context11.t0 = cuestionarioTema.getQuestionIndex().type;
+                            _context11.next = _context11.t0 === 1 ? 23 : _context11.t0 === 2 ? 30 : _context11.t0 === 3 ? 37 : _context11.t0 === 4 ? 60 : _context11.t0 === 5 ? 64 : _context11.t0 === 6 ? 71 : 73;
+                            break;
+
+                          case 23:
+                            input_respuesta = document.createElement("input");
+                            input_respuesta.type = "text";
+                            input_respuesta.id = "input_respuesta";
+                            zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
+                            zona_botones.appendChild(input_respuesta);
+                            return _context11.abrupt("break", 73);
+
+                          case 30:
+                            input_respuesta = document.createElement("input");
+                            input_respuesta.type = "text"; // se cambió de number a text para que acepte fracciones
+
+                            input_respuesta.id = "input_respuesta";
+                            zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
+                            zona_botones.appendChild(input_respuesta);
+                            return _context11.abrupt("break", 73);
+
+                          case 37:
+                            div_verdadero = document.createElement("div");
+                            div_falso = document.createElement("div");
+                            label_verdadero = document.createElement("label");
+                            label_verdadero.innerHTML = " Verdadero";
+                            label_falso = document.createElement("label");
+                            label_falso.innerHTML = " Falso";
+                            input_verdadero = document.createElement("input");
+                            input_verdadero.type = "radio";
+                            input_verdadero.name = "truefalse";
+                            input_verdadero.id = "input_verdadero";
+                            input_falso = document.createElement("input");
+                            input_falso.type = "radio";
+                            input_falso.name = "truefalse";
+                            input_falso.id = "input_falso";
+                            div_verdadero.appendChild(input_verdadero);
+                            div_verdadero.appendChild(label_verdadero);
+                            div_falso.appendChild(input_falso);
+                            div_falso.appendChild(label_falso);
+                            zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
+                            zona_botones.appendChild(div_verdadero);
+                            zona_botones.appendChild(div_falso);
+                            return _context11.abrupt("break", 73);
+
+                          case 60:
+                            zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
+
+                            for (i = 0; i < choices.length; i++) {
+                              label = document.createElement("label");
+                              label.innerHTML = choices[i];
+                              label.className = "container";
+                              label.id = "opcl_" + i;
+                              span = document.createElement("checkmark");
+                              span.className = "checkmark";
+                              button = document.createElement("input");
+                              button.type = "checkbox";
+                              button.text = choices[i];
+                              button.id = "opc_" + i;
+                              label.appendChild(button);
+                              label.appendChild(span); //zona_botones.innerHTML = "Respuesta: <br>";
+
+                              zona_botones.appendChild(label);
+                            }
+
+                            return _context11.abrupt("break", 73);
+
+                          case 64:
+                            input_respuesta = document.createElement("input");
+                            input_respuesta.type = "number";
+                            input_respuesta.id = "input_respuesta";
+                            zona_botones = document.getElementById("buttons");
+                            zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
+                            zona_botones.appendChild(input_respuesta);
+                            return _context11.abrupt("break", 73);
+
+                          case 71:
+                            for (i = 0; i < choices.length; i++) {
+                              label = document.createElement("label"); //label.innerHTML = choices[i];
+
+                              power = Math.pow(10, opcionesAux[i].decimales);
+                              label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id, choices[i], opcionesAux[i].id_opcion) * power) / power;
+                              label.className = "container";
+                              label.id = "opcl_" + i;
+                              span = document.createElement("checkmark");
+                              span.className = "checkmark";
+                              button = document.createElement("input");
+                              button.type = "checkbox"; //button.text = choices[i];
+
+                              button.text = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id, choices[i], opcionesAux[i].id_opcion) * power) / power;
+                              button.id = "opc_" + i;
+                              label.appendChild(button);
+                              label.appendChild(span);
+                              zona_botones = document.getElementById("buttons");
+                              zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
+                              zona_botones.appendChild(label);
+                            }
+
+                            return _context11.abrupt("break", 73);
+
+                          case 73:
+                            showProgress();
+
+                          case 74:
+                          case "end":
+                            return _context11.stop();
+                        }
+                      }
+                    }, _callee11);
+                  }));
+                  return _populate.apply(this, arguments);
+                };
+
+                populate = function _ref6() {
+                  return _populate.apply(this, arguments);
+                };
+
+                Question = function _ref5(id, text, choices, answer, type, up, down, value, decimales, imagenes) {
+                  this.id = id;
+                  this.text = text;
+                  this.choices = choices;
+                  this.answer = answer;
+                  this.type = type;
+                  this.up = up;
+                  this.down = down;
+                  this.value = value;
+                  this.decimales = decimales;
+                  this.imagenes = imagenes;
+                };
+
+                Quiz = function _ref4(questions) {
+                  this.score = 0;
+                  this.questions = questions;
+                  this.questionIndex = 0;
+                };
+
+                //console.log("Se va a cargar el cuestionario con el tema " + topic);
+                questions = [];
+
+                for (i = 0; i < prguntass.length; i++) {
+                  pregunta = prguntass[i].pregunta;
+                  tipo = Number(prguntass[i].tipo);
+                  id = prguntass[i].id_pregunta;
+                  up = 0;
+                  down = 0;
+                  value = 0;
+                  decimales = 0;
+                  imagenesPregunta = prguntass[i].imagenes;
+
+                  if (prguntass[i].tipo == 2 || prguntass[i].tipo == 5 || prguntass[i].tipo == 6) {
+                    up = prguntass[i].aplicableArriba;
+                    down = prguntass[i].aplicableAnbajo;
+                    value = prguntass[i].rango;
+                  }
+
+                  if (prguntass[i].tipo == 5 || prguntass[i].tipo == 6) {
+                    decimales = prguntass[i].decimales;
+                  }
+
+                  questions.push(new Question(id, pregunta, [], [], tipo, up, down, value, decimales, imagenesPregunta));
+                }
+                /* ESTA ES LA PARTE DEL CUESTIONARIO */
+
+
+                Quiz.prototype.getQuestionIndex = function () {
+                  return this.questions[this.questionIndex];
+                };
+
+                Quiz.prototype.guess = function (answer) {
+                  return this.getQuestionIndex().isCorrectAnswer(answer);
+                };
+
+                Quiz.prototype.isEnded = function () {
+                  return this.questionIndex === this.questions.length;
+                };
+
+                Quiz.prototype.nextQuestion = function () {
+                  this.questionIndex++;
+                };
+
+                Quiz.prototype.getImages = function () {
+                  return this.getQuestionIndex().imagenes;
+                };
+
+                Question.prototype.isCorrectAnswer = function (choice) {
+                  var correcta = false;
+
+                  switch (this.type) {
+                    case 1:
+                      if (choice == this.answer[0].toString().toLowerCase()) correcta = true;
+                      break;
+
+                    case 2:
+                      //validar que si entra una fracción tomarla como texto 
+                      var isfraccion = this.answer[0].search('/');
+                      console.log("SI ES FRACCION " + isfraccion);
+
+                      if (isfraccion >= 0) {
+                        if (choice == this.answer[0].toString()) {
+                          correcta = true;
+                        }
+                      } else {
+                        this.answer[0] = Number(this.answer[0]);
+                        var arriba = this.answer[0] + Math.abs(Number(this.answer[0] * this.value * this.up));
+                        var abajo = this.answer[0] - Math.abs(Number(this.answer[0] * this.value * this.down));
+
+                        if (choice >= abajo && choice <= arriba) {
+                          correcta = true;
+                        }
+                      }
+
+                      break;
+
+                    case 3:
+                      if (choice == this.answer[0]) correcta = true;
+                      break;
+
+                    case 4:
+                      for (var i = 0; i < this.answer.length; i++) {
+                        if (choice == this.answer[i]) {
+                          correcta = true;
+                        }
+                      }
+
+                      break;
+
+                    case 5:
+                      this.answer[0] = Number(this.answer[0]);
+                      var arriba = this.answer[0] + Math.abs(Number(this.answer[0] * this.value * this.up));
+                      var abajo = this.answer[0] - Math.abs(Number(this.answer[0] * this.value * this.down));
+
+                      if (choice >= abajo && choice <= arriba) {
+                        correcta = true;
+                      }
+
+                      break;
+
+                    case 6:
+                      for (var i = 0; i < this.answer.length; i++) {
+                        if (choice == this.answer[i]) correcta = true;
+                      }
+
+                      break;
+                  }
+
+                  return correcta;
+                };
+
+                tipo = this.configuracion.ponde_estricta; //
+
+                cuestionarioTema = new Quiz(questions);
+                console.log(questions); //Boton de siguiente pregunta
+
+                document.getElementById("next").addEventListener("click",
+                /*#__PURE__*/
+                _asyncToGenerator(
+                /*#__PURE__*/
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+                  var respuestas_correctas, respuestas_incorretas, opc, resp, input_verdadero, input_falso, chequeada, i, lbl, opcion_text;
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+                    while (1) {
+                      switch (_context10.prev = _context10.next) {
+                        case 0:
+                          console.log("Quizz");
+                          console.log(cuestionarioTema); //AQUI SE OBTIENE LA RESPUESTA A LA PREGUNTA
+
+                          _context10.next = 4;
+                          return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                            method: 'get',
+                            url: '/pregunta/respuestas/' + cuestionarioTema.getQuestionIndex().id
+                          }).then(function (result) {
+                            var res = [];
+                            var id_opcion_correcta = [];
+
+                            for (var i = 0; i < result.data.length; i++) {
+                              res.push(result.data[i].opcion);
+                              id_opcion_correcta.push(result.data[i].id_opcion);
+                            }
+
+                            if (cuestionarioTema.getQuestionIndex().type == 5 || cuestionarioTema.getQuestionIndex().type == 6) {
+                              var power = Math.pow(10, cuestionarioTema.getQuestionIndex().decimales); //console.log("Respuesta antes de la funcion "+res[0]);
+
+                              res = [Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id, res[0], id_opcion_correcta[0]) * power) / power]; //label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
+                            }
+
+                            cuestionarioTema.getQuestionIndex().answer = res;
+                          }, function (error) {
+                            console.error(error);
+                          });
+
+                        case 4:
+                          respuestas_correctas = 0;
+                          respuestas_incorretas = 0;
+                          _context10.t0 = cuestionarioTema.getQuestionIndex().type;
+                          _context10.next = _context10.t0 === 1 ? 9 : _context10.t0 === 2 ? 18 : _context10.t0 === 3 ? 24 : _context10.t0 === 4 ? 34 : _context10.t0 === 5 ? 41 : _context10.t0 === 6 ? 50 : 57;
+                          break;
+
+                        case 9:
+                          opc = document.getElementById("input_respuesta");
+                          resp = opc.value.toString().toLowerCase();
+                          resp = resp.trim();
+                          resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
+
+                          if (!(resp == "")) {
+                            _context10.next = 16;
+                            break;
+                          }
+
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Por favor ingresa una respuesta válida',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+
+                          return _context10.abrupt("return");
+
+                        case 16:
+                          if (cuestionarioTema.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context10.abrupt("break", 57);
+
+                        case 18:
+                          opc = document.getElementById("input_respuesta");
+
+                          if (!(opc.value == "")) {
+                            _context10.next = 22;
+                            break;
+                          }
+
+                          //_this.$swal.fire("Por favor ingresa una respuesta valida");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Por favor ingresa una respuesta válida',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+
+                          return _context10.abrupt("return");
+
+                        case 22:
+                          if (cuestionarioTema.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context10.abrupt("break", 57);
+
+                        case 24:
+                          input_verdadero = document.getElementById("input_verdadero");
+                          input_falso = document.getElementById("input_falso");
+                          resp = "";
+                          if (input_verdadero.checked && !input_falso.checked) resp = "verdadero";
+                          if (input_falso.checked && !input_verdadero.checked) resp = "falso";
+
+                          if (!(input_verdadero.checked === false && input_falso.checked === false)) {
+                            _context10.next = 32;
+                            break;
+                          }
+
+                          //_this.$swal.fire("Por favor selecciona una respuesta");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Selecciona una respuesta',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+
+                          return _context10.abrupt("return");
+
+                        case 32:
+                          if (cuestionarioTema.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context10.abrupt("break", 57);
+
+                        case 34:
+                          chequeada = false;
+
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
+                            opc = document.getElementById("opc_" + i);
+
+                            if (opc.checked) {
+                              chequeada = true;
+                            }
+                          }
+
+                          if (chequeada) {
+                            _context10.next = 39;
+                            break;
+                          }
+
+                          //_this.$swal.fire("Por favor selecciona una respuesta");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Selecciona una respuesta',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+
+                          return _context10.abrupt("return");
+
+                        case 39:
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
+                            opc = document.getElementById("opc_" + i);
+
+                            if (opc.checked) {
+                              lbl = document.getElementById("opcl_" + i);
+                              opcion_text = lbl.innerHTML.split("<")[0]; //Obtener el texto del check
+
+                              if (cuestionarioTema.guess(opcion_text)) {
+                                respuestas_correctas++;
+                              } else {
+                                respuestas_incorretas++;
+                              }
+                            }
+                          }
+
+                          return _context10.abrupt("break", 57);
+
+                        case 41:
+                          opc = document.getElementById("input_respuesta");
+                          resp = opc.value.toString().toLowerCase();
+                          resp = resp.trim();
+                          resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
+
+                          if (!(resp == "")) {
+                            _context10.next = 48;
+                            break;
+                          }
+
+                          //_this.$swal.fire("Por favor ingresa una respuesta valida");
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Por favor ingresa una respuesta válida',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+
+                          return _context10.abrupt("return");
+
+                        case 48:
+                          if (cuestionarioTema.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
+                          return _context10.abrupt("break", 57);
+
+                        case 50:
+                          chequeada = false;
+
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
+                            opc = document.getElementById("opc_" + i);
+
+                            if (opc.checked) {
+                              chequeada = true;
+                            }
+                          }
+
+                          if (chequeada) {
+                            _context10.next = 55;
+                            break;
+                          }
+
+                          _this.$swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: 'Selecciona una respuesta',
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+
+                          return _context10.abrupt("return");
+
+                        case 55:
+                          for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
+                            opc = document.getElementById("opc_" + i);
+
+                            if (opc.checked) {
+                              lbl = document.getElementById("opcl_" + i);
+                              opcion_text = lbl.innerHTML.split("<")[0];
+
+                              if (cuestionarioTema.guess(opcion_text)) {
+                                respuestas_correctas++;
+                              } else {
+                                respuestas_incorretas++;
+                              }
+                            }
+                          }
+
+                          return _context10.abrupt("break", 57);
+
+                        case 57:
+                          if (respuestas_correctas == cuestionarioTema.getQuestionIndex().answer.length && respuestas_incorretas == 0) {
+                            cuestionarioTema.score = cuestionarioTema.score + 1; //_this.$swal.fire('Correcta');
+
+                            _this.$swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Respuesta correcta',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
+                          } else if (respuestas_correctas > 0 && respuestas_incorretas == 0 && tipo == 0) {
+                            cuestionarioTema.score = cuestionarioTema.score + respuestas_correctas / cuestionarioTema.getQuestionIndex().answer.length; //_this.$swal.fire("Parcialmente correcta");
+
+                            _this.$swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Respuesta parcialmente correcta',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
+                          } else {
+                            //_this.$swal.fire('Incorrecta');
+                            _this.$swal.fire({
+                              position: 'top-end',
+                              icon: 'warning',
+                              title: 'Respuesta incorrecta',
+                              showConfirmButton: false,
+                              timer: 1500
+                            });
+                          }
+
+                          cuestionarioTema.nextQuestion();
+                          populate();
+
+                        case 60:
+                        case "end":
+                          return _context10.stop();
+                      }
+                    }
+                  }, _callee10);
+                })));
+                _this = this;
+                ; //Asegurar que solo sean checkeados las posibles respuestas
+
+                ;
+                ;
+                ;
+                populate();
+
+              case 26:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13, this);
+      }));
+
+      function cargarCuestionario(_x3, _x4) {
+        return _cargarCuestionario.apply(this, arguments);
+      }
+
+      return cargarCuestionario;
+    }(),
+    generarRespuesta: function generarRespuesta(id, res, id_opcion_actual) {
+      res = res.trim();
+      var count = 0;
+
+      function deg2rad(valor) {
+        return valor / 180 * Math.PI;
+      }
+
+      function binTodecimal(binstr) {
+        return binstr.split('').reverse().reduce(function (x, y, i) {
+          return y === '1' ? x + Math.pow(2, i) : x;
+        }, 0);
+      }
+
+      function roundTo(value, places) {
+        var power = Math.pow(10, places);
+        return Math.round(value * power) / power;
+      }
+
+      function operacion(nombreOperacion, valor) {
+        valor = valor + "";
+        valor = valor.split(",");
+
+        switch (nombreOperacion) {
+          case "abs":
+            return Math.abs(valor[0]);
+            break;
+
+          case "acos":
+            return Math.acos(valor[0]);
+            break;
+
+          case "acosh":
+            return Math.acosh(valor[0]);
+            break;
+
+          case "asin":
+            return Math.asin(valor[0]);
+            break;
+
+          case "asinh":
+            return Math.asinh(valor[0]);
+            break;
+
+          case "atan2":
+            return Math.atan2(valor[0], valor[1]);
+            break;
+
+          case "atan":
+            return Math.atan(valor[0]);
+            break;
+
+          case "atanh":
+            return Math.atan(valor[0]);
+            break;
+
+          case "bindec":
+            return binTodecimal(valor[0]);
+            break;
+
+          case "ceil":
+            return Math.ceil(valor[0]);
+            break;
+
+          case "cos":
+            return Math.cos(valor[0]);
+            break;
+
+          case "cosh":
+            return Math.cosh(valor[0]);
+            break;
+
+          case "decbin":
+            return valor[0].toString(2);
+            break;
+
+          case "decoct":
+            return valor[0].toString(8);
+            break;
+
+          case "deg2rad":
+            return deg2rad(valor[0]);
+            break;
+
+          case "exp":
+            return Math.exp(valor[0]);
+            break;
+
+          case "expm1":
+            return Math.expm1(valor[0]);
+            break;
+
+          case "floor":
+            return Math.floor(valor[0]);
+            break;
+
+          case "is_finite":
+            return isFinite(valor[0]);
+            break;
+
+          case "is_infinite":
+            return !isFinite(valor[0]);
+            break;
+
+          case "is_nan":
+            return isNaN(valor[0]);
+            break;
+
+          case "log10":
+            return Math.log10(valor[0]);
+            break;
+
+          case "log1p":
+            return Math.log1p(valor[0]);
+            break;
+
+          case "log":
+            return Math.log(valor[0]);
+            break;
+
+          case "max":
+            return Math.max.apply(null, valor);
+            break;
+
+          case "min":
+            return Math.min.apply(null, valor);
+            break;
+
+          case "pi":
+            return Math.PI;
+            break;
+
+          case "pow":
+            return Math.pow(valor[0], valor[1]);
+
+          case "rad2deg":
+            return valor[0] * (180 / Math.PI);
+            break;
+
+          case "round":
+            return roundTo(valor[0], valor[1]);
+            break;
+
+          case "sin":
+            return Math.sin(valor[0]);
+            break;
+
+          case "sinh":
+            return Math.sinh(valor[0]);
+            break;
+
+          case "sqrt":
+            return Math.sqrt(valor[0]);
+            break;
+
+          case "tan":
+            return Math.tan(valor[0]);
+            break;
+
+          case "tanh":
+            return Math.tanh(valor[0]);
+            break;
+        }
+      }
+
+      var Pila =
+      /*#__PURE__*/
+      function () {
+        function Pila() {
+          _classCallCheck(this, Pila);
+
+          this.items = [];
+        }
+
+        _createClass(Pila, [{
+          key: "incluir",
+          value: function incluir(element) {
+            this.items.push(element);
+            return this.items;
+          }
+        }, {
+          key: "extraer",
+          value: function extraer() {
+            return this.items.pop();
+          }
+        }, {
+          key: "tamano",
+          value: function tamano() {
+            return this.items.length;
+          }
+        }, {
+          key: "estaVacia",
+          value: function estaVacia() {
+            if (this.items.length == 0) return true;else return false;
+          }
+        }, {
+          key: "inspeccionar",
+          value: function inspeccionar() {
+            return this.items[this.items.length - 1];
+          }
+        }, {
+          key: "print",
+          value: function print() {//console.log(this.items);
+          }
+        }]);
+
+        return Pila;
+      }();
+
+      function infija_a_sufija(expresionInfija) {
+        var precedencia = {};
+        precedencia["*"] = 3;
+        precedencia["/"] = 3;
+        precedencia["+"] = 2;
+        precedencia["-"] = 2;
+        precedencia["("] = 1;
+        var pilaOperadores = new Pila();
+        var listaSufija = [];
+        var listaSimbolos = expresionInfija.split(" ");
+
+        for (var simbolo in listaSimbolos) {
+          if ('+-*/()'.indexOf(listaSimbolos[simbolo]) == -1) listaSufija.push(listaSimbolos[simbolo]); //AÑADE ELEMENTO A LA LISTA
+          else if (listaSimbolos[simbolo] == '(') pilaOperadores.incluir(listaSimbolos[simbolo]);else if (listaSimbolos[simbolo] == ')') {
+              var simboloTope = pilaOperadores.extraer();
+
+              while (simboloTope != '(') {
+                listaSufija.push(simboloTope);
+                simboloTope = pilaOperadores.extraer();
+              }
+            } else {
+              while (!pilaOperadores.estaVacia() && precedencia[pilaOperadores.inspeccionar()] >= precedencia[listaSimbolos[simbolo]]) {
+                listaSufija.push(pilaOperadores.extraer());
+              }
+
+              pilaOperadores.incluir(listaSimbolos[simbolo]);
+            }
+        }
+
+        while (!pilaOperadores.estaVacia()) {
+          listaSufija.push(pilaOperadores.extraer());
+        }
+
+        return listaSufija.join(" ");
+      }
+
+      function evaluacionNotacionSufija(expresionSufija) {
+        var pilaOperandos = new Pila();
+        var listaSimbolos = expresionSufija.split(" ");
+        var operando2;
+        var operando1;
+        var resultado;
+
+        for (var simbolo in listaSimbolos) {
+          if ("+-*/()".indexOf(listaSimbolos[simbolo]) == -1) pilaOperandos.incluir(parseFloat(listaSimbolos[simbolo]));else {
+            operando2 = pilaOperandos.extraer();
+            operando1 = pilaOperandos.extraer();
+            resultado = hacerAritmetica(listaSimbolos[simbolo], operando1, operando2);
+            pilaOperandos.incluir(resultado);
+          }
+        }
+
+        return pilaOperandos.extraer();
+      }
+
+      function hacerAritmetica(operador, operandoIzquierda, operandoDerecha) {
+        if (operador == "*") return operandoIzquierda * operandoDerecha;else if (operador == "/") return operandoIzquierda / operandoDerecha;else if (operador == "+") return operandoIzquierda + operandoDerecha;else return operandoIzquierda - operandoDerecha;
+      }
+
+      function evaluar(expresion) {
+        var separado = expresion.split(",");
+
+        if (separado.length > 1) {
+          var sufija = infija_a_sufija(separado[0].trim());
+          resultado = evaluacionNotacionSufija(sufija) + " , ";
+
+          for (var i = 1; i < separado.length; i++) {
+            sufija = infija_a_sufija(separado[i].trim());
+            if (i < separado.length - 1) resultado += evaluacionNotacionSufija(sufija) + " , ";else resultado += evaluacionNotacionSufija(sufija);
+          }
+        } else {
+          var sufija = infija_a_sufija(expresion);
+          var resultado = evaluacionNotacionSufija(sufija.trim());
+        }
+
+        return resultado;
+      }
+
+      function analizar(expresion) {
+        expresion.trim();
+        var estracto = "";
+        var abiertos = 0;
+        var cerrados = 0;
+        var interior = "";
+        var reemplazar = "";
+        var activado = false;
+        var analizandoInterior = false;
+        var expresionNueva = expresion;
+
+        for (var i = 0; i < expresion.length; i++) {
+          if (expresion[i].charCodeAt() >= 97 && expresion[i].charCodeAt() <= 122) activado = true;
+          if (activado && expresion[i] != "(" && analizandoInterior == false) estracto += expresion[i];
+
+          if (activado && expresion[i] == "(" && analizandoInterior == false) {
+            analizandoInterior = true;
+            reemplazar = estracto;
+          }
+
+          if (analizandoInterior) {
+            reemplazar += expresion[i];
+            if (expresion[i] == "(") abiertos++;
+            if (expresion[i] == ")") cerrados++;
+
+            if (abiertos == cerrados) {
+              abiertos = 0;
+              cerrados = 0;
+              activado = false;
+              analizandoInterior = false;
+              interior = interior.substr(2, interior.length - 3);
+              interior = analizar(interior.trim());
+              var interiorEvaluado = evaluar(interior.trim());
+              if (!isNaN(interiorEvaluado)) expresionNueva = expresionNueva.replace(interior, interiorEvaluado);
+              if (!isNaN(interiorEvaluado)) reemplazar = reemplazar.replace(interior, interiorEvaluado);
+              var resultado = operacion(estracto.trim(), interiorEvaluado);
+              if (!isNaN(resultado)) expresionNueva = expresionNueva.replace(reemplazar, resultado);
+              interior = "";
+              estracto = "";
+              reemplazar = "";
+            } else interior += expresion[i];
+          }
+        }
+
+        return expresionNueva;
+      }
+
+      if (id != -1) {
+        var comodinesPregunta = [];
+
+        for (var j = 0; j < this.comodines.length; j++) {
+          if (id == this.comodines[j].id_pregunta && id_opcion_actual === this.comodines[j].id_opcion) comodinesPregunta.push(this.comodines[j]);
+        }
+
+        for (var k = 0; k < comodinesPregunta.length; k++) {
+          while (res.indexOf(comodinesPregunta[k].comodin) != -1) {
+            res = res.replace(comodinesPregunta[k].comodin, comodinesPregunta[k].valor);
+          }
+        }
+      }
+
+      var resultado = analizar(res.replace(/\s+/g, ' '));
+      return evaluar(resultado);
+    },
+    botonesCalculadora: function botonesCalculadora(boton) {
+      var campo_calculadora = document.getElementById("campo_calculadora");
+
+      function esNumero(entrada) {
+        var salida = false;
+
+        if (entrada == "1" || entrada == "2" || entrada == "3" || entrada == "4" || entrada == "5" || entrada == "6" || entrada == "7" || entrada == "8" || entrada == "9" || entrada == "0" || entrada == ".") {
+          salida = true;
+        }
+
+        return salida;
+      }
+
+      if (esNumero(boton)) {
+        //campo_calculadora.value = campo_calculadora.value + boton;
+        if (campo_calculadora.value.length == 0) {
+          campo_calculadora.value = boton;
+        } else {
+          if (esNumero(campo_calculadora.value.substr(campo_calculadora.value.length - 1, campo_calculadora.value.length))) {
+            campo_calculadora.value = campo_calculadora.value + boton;
+          } else {
+            campo_calculadora.value = campo_calculadora.value + " " + boton;
+          }
+        }
+      } else {
+        //campo_calculadora.value = campo_calculadora.value + " " + boton;
+        if (boton == "ac") {
+          campo_calculadora.value = "";
+        } else if (boton != "fun" && boton != "=") {
+          campo_calculadora.value = campo_calculadora.value + " " + boton;
+        } else if (boton = "=") {
+          campo_calculadora.value = this.generarRespuesta(-1, campo_calculadora.value, 0);
+        }
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/Profesores.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Profesores.vue?vue&type=script&lang=js& ***!
@@ -17155,6 +18841,25 @@ exports.push([module.i, "\ndiv.gfg {\n    width: 100%;\n    height: 800px;\n    
 /*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/Cuestionario.vue?vue&type=style&index=0&lang=css& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.pregresp {\n  border: 2px solid #7da5e0;\n  margin: 5px;\n  font-family: Arial, Verdana, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: bold;\n}\n.pregunta {\n  color: #7da5e0;\n}\n.respuestas {\n  color: #000000;\n}\n.grid {\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n  background-color: #fff;\n  padding: 10px 50px 50px 50px;\n}\n.grid h1 {\n  text-align: center;\n  color: #000000;\n  padding: 2px 0px;\n  border-radius: 50px;\n}\n#score {\n  color: #5A6772;\n  text-align: center;\n  font-size: 30px;\n}\n.buttons {\n  margin-top: 30px;\n}\n#btn0,\n#btn1,\n#btn2,\n#btn3,\n#next {\n  width: 250px;\n  font-size: 20px;\n  margin: 10px 40px 10px 0px;\n  padding: 10px 10px;\n}\n.container {\n  display: block;\n  position: relative;\n  padding-left: 35px;\n  margin-bottom: 12px;\n  cursor: pointer;\n  font-size: 22px;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.container input {\n  position: absolute;\n  opacity: 0;\n  cursor: pointer;\n  height: 0;\n  width: 0;\n}\n.checkmark {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 25px;\n  width: 25px;\n  background-color: #eee;\n}\n.container:hover input~.checkmark {\n  background-color: #ccc;\n}\n.container input:checked~.checkmark {\n  background-color: #2196F3;\n}\n.checkmark:after {\n  content: \"\";\n  position: absolute;\n  display: none;\n}\n.container input:checked~.checkmark:after {\n  display: block;\n}\n.container .checkmark:after {\n  left: 9px;\n  top: 5px;\n  width: 5px;\n  height: 10px;\n  border: solid white;\n  border-width: 0 3px 3px 0;\n  -webkit-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  transform: rotate(45deg);\n}\n#carouselExampleIndicators {\n  margin-left: 200px;\n  margin-right: 200px;\n}\n.item img {\n  margin-left: auto;\n  margin-right: auto;\n}\n.selected img {\n  opacity: 0.5;\n}\n.carousel-caption {\n  position: relative;\n  left: auto;\n  right: auto;\n}\n.carousel-control.left,\n.carousel-control.right {\n  background: none;\n  border: none;\n}\n.carousel-control.left {\n  margin-left: -300px;\n}\n.carousel-control.right {\n  margin-right: -300px;\n}\n.carousel-control {\n  width: 0%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -41614,6 +43319,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/configuracionModulo.vue?vue&type=style&index=0&lang=css&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/configuracionModulo.vue?vue&type=style&index=0&lang=css& ***!
@@ -57221,6 +58956,30 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("td", { staticStyle: { width: "5%" } }, [
                                       _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "btn btn-outline-success",
+                                          attrs: {
+                                            type: "button",
+                                            "data-toggle": "modal",
+                                            "data-target":
+                                              "#modalPrevisualizacion"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.previsualizarPreguntaMetodo(
+                                                preguntaAbierta
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [_c("i", { staticClass: "fas fa-eye" })]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticStyle: { width: "5%" } }, [
+                                      _c(
                                         "a",
                                         {
                                           staticClass:
@@ -57240,7 +58999,7 @@ var render = function() {
                                         },
                                         [
                                           _c("i", {
-                                            staticClass: "fas fa-eye",
+                                            staticClass: "fas fa-image",
                                             staticStyle: { color: "#2196f3" }
                                           }),
                                           _vm._v(" "),
@@ -57356,6 +59115,8 @@ var render = function() {
                               [_vm._v("Tema")]
                             ),
                             _vm._v(" "),
+                            _c("th", [_vm._v("Previsualizar")]),
+                            _vm._v(" "),
                             _c("th", [_vm._v("Imagen ")]),
                             _vm._v(" "),
                             _c("th", [_vm._v("Editar")]),
@@ -57447,11 +59208,7 @@ var render = function() {
                               staticClass: "modal-title",
                               attrs: { id: "exampleModalLabel" }
                             },
-                            [
-                              _vm._v(
-                                " Actualizar\n                                pregunta "
-                              )
-                            ]
+                            [_vm._v(" Actualizar pregunta ")]
                           )
                         : _c(
                             "h3",
@@ -57785,6 +59542,56 @@ var render = function() {
               ]
             )
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal animated",
+            attrs: {
+              id: "modalPrevisualizacion",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-lg",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "h3",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLabel" }
+                      },
+                      [_vm._v(" Previsualización de Pregunta ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticStyle: { width: "100%" } },
+                      [
+                        _c("visualizador", {
+                          attrs: { datosPregunta: _vm.preguntaPrevisualizar }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm._m(11)
+                  ])
+                ])
+              ]
+            )
+          ]
         )
       ])
     ])
@@ -57933,6 +59740,22 @@ var staticRenderFns = [
         )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary float-right btn-lg mt-4 ",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-ban" }),
+        _vm._v(" Cerrar\n                            ")
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -62876,6 +64699,230 @@ var staticRenderFns = [
         _vm._v(" Cerrar\n                            ")
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=template&id=594187b0&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=template&id=594187b0& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row " }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "card shadow" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._m(1),
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(_vm.datosPregunta) +
+                    "\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("div", { attrs: { id: "quiz" } }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("p", { attrs: { id: "progress" } }),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("h3", { attrs: { id: "question" } }),
+                      _vm._v(" "),
+                      this.imagenesPregunta.length > 0
+                        ? _c("p", [_c("b", [_vm._v(" Imagenes: ")])])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row mt-3" },
+                        _vm._l(this.imagenesPregunta, function(img, i) {
+                          return _c(
+                            "div",
+                            {
+                              key: img,
+                              staticClass: "col-12 col-md-1",
+                              staticStyle: { "text-align": "center" }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      _vm.desplegarImagen(
+                                        img,
+                                        "imagen " + (i + 1)
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "ml-2 mr-2",
+                                    staticStyle: {
+                                      border: "0.5px solid black",
+                                      width: "100%"
+                                    },
+                                    attrs: { src: img }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("p", [
+                                _vm._v(
+                                  "\n                                                    Imagen " +
+                                    _vm._s(i + 1) +
+                                    "\n                                                "
+                                )
+                              ])
+                            ]
+                          )
+                        }),
+                        0
+                      ),
+                      _vm._v(" "),
+                      _c("p", { attrs: { id: "noOpciones" } }),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticClass: "buttons",
+                        staticStyle: { margin: "0px 0px 0px 0px" },
+                        attrs: { id: "buttons" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "row" },
+                      [
+                        _c("center", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-primary btn-lg float-right ",
+                              attrs: { type: "button", id: "next" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                                 Evaluar\n                                            "
+                              )
+                            ]
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal animated animate__bounceIn",
+        attrs: {
+          id: "modalParaVerImagenes",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("img", {
+                  staticStyle: { width: "100%" },
+                  attrs: { src: this.imagenActual }
+                }),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(this.imagenActualNombre) +
+                    "\n                "
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "page-title m-0" }, [
+              _vm._v("Cuestionario")
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "card-title mt-2" }, [
+      _c("b", [_vm._v(" Cuestionario ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { attrs: { id: "tag_topic" } }, [
+      _c("b", [_vm._v(" Tema: ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v(" Pregunta: ")])])
   }
 ]
 render._withStripped = true
@@ -83660,6 +85707,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PreguntasVerdaderoFalso_vue_vue_type_template_id_78805731___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PreguntasVerdaderoFalso_vue_vue_type_template_id_78805731___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/PrevisualizarPregunta.vue":
+/*!******************************************************************!*\
+  !*** ./resources/assets/js/components/PrevisualizarPregunta.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PrevisualizarPregunta_vue_vue_type_template_id_594187b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrevisualizarPregunta.vue?vue&type=template&id=594187b0& */ "./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=template&id=594187b0&");
+/* harmony import */ var _PrevisualizarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrevisualizarPregunta.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PrevisualizarPregunta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css& */ "./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PrevisualizarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrevisualizarPregunta_vue_vue_type_template_id_594187b0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrevisualizarPregunta_vue_vue_type_template_id_594187b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/PrevisualizarPregunta.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrevisualizarPregunta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=template&id=594187b0&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=template&id=594187b0& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_template_id_594187b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PrevisualizarPregunta.vue?vue&type=template&id=594187b0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PrevisualizarPregunta.vue?vue&type=template&id=594187b0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_template_id_594187b0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrevisualizarPregunta_vue_vue_type_template_id_594187b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

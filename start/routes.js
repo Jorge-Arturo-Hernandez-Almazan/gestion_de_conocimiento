@@ -216,7 +216,15 @@ Route.post('subirfotoperfil', async ({ request, response, auth }) => {
 // TODO ESTO ES UN TIPO DE FUNCIONALIDAD
 Route.group(()=>{
 	Route.get('/cuestionario', ({view})=> view.render('app') );
+  
+  
+  // Obtiene las preguntas que son desplegadas en el cuestionario
 	Route.get('/pregunta/showPreguntas/:id','PreguntaController.showPreguntas');
+  
+  // Obtiene la información de una pregunta
+  Route.post('/showUnicaPregunta','PreguntaController.mostrarUnicaPregunta');
+  
+  
 	Route.get('/cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion');
 	Route.get('/topic/getopic/:id','BayeController.NextTopic');
 	Route.post('/score/add','PreguntaController.addScore');

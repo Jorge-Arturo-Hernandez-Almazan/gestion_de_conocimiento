@@ -61,6 +61,7 @@
                                             <v-th sortKey="pregunta" defaultSort="desc" >Pregunta</v-th>
                                             <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
                                             <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
+                                            <th>Previsualizar</th>
                                             <th>Imagen </th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
@@ -77,10 +78,16 @@
                                                     {{preguntaAbierta.tema}}
                                                 </td>
                                                 <td style="width:5%">
+                                                    <button type="button" class="btn btn-outline-success"  data-toggle="modal" data-target="#modalPrevisualizacion" @click="previsualizarPreguntaMetodo(preguntaAbierta)">
+                                                        <i class="fas fa-eye"></i> 
+                                                    </button> 
+                                                </td>
+                                                <td style="width:5%">
                                                     <a data-toggle="modal"
                                                         data-target="#modalParaVerImagenes"
                                                         @click="desplegarImagenesEnModal(preguntaAbierta.imagenes)" class="btn btn-outline-primary">
-                                                        <i class="fas fa-eye" style="color: #2196f3"></i> <span  style="color: #2196f3"></span>
+                                                        <i class="fas fa-image" style="color: #2196f3"></i> <span  style="color: #2196f3"></span>
+                                                      
                                                     </a>
                                                 </td>
 
@@ -124,8 +131,7 @@
                         <div class="modal-content" >
                             <div class="modal-body">
                             
-                                <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar
-                                    pregunta </h3>
+                                <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel"> Actualizar pregunta </h3>
                                 <h3 v-else class="modal-title" id="exampleModalLabel"> Registrar pregunta </h3>
                         
                                 
@@ -196,6 +202,13 @@
                                     <i class="fas fa-save"></i>  Guardar</button>
                                 <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2"> <i class="fas fa-save"></i> Guardar
                                 </button>
+                              
+                              
+                              
+                              
+                              
+                              
+                              
                             
                             </div>
                         </div>
@@ -248,6 +261,35 @@
                         </div>
                     </div>
                 </div>
+              
+              
+              <!-- Modal para previsualizar pregunta -->
+              
+              <div class="modal animated" id="modalPrevisualizacion" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            
+                            <div class="modal-body">
+                            
+                            <h3 class="modal-title" id="exampleModalLabel"> Previsualización de Pregunta </h3>
+
+                                <div style="width: 100%;">
+                                  
+                                    
+                                  <visualizador :datosPregunta="preguntaPrevisualizar"></visualizador>
+                                    
+
+                                </div>
+                                <button type="button" data-dismiss="modal" class="btn btn-secondary float-right btn-lg mt-4 "> <i class="fas fa-ban"></i> Cerrar
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+              
+              <!-- Fin modal para previsualizar pregunta -->
 
             </div>
         </section>   
@@ -256,9 +298,19 @@
 <script>
     import axios from "axios";
     import Cargador from '@/components/subirImagenes';
+    import visualizador from '@/components/PrevisualizarPregunta'
+  
     export default {
+        components: {
+          visualizador
+        },
         data() {
             return {
+                preguntaPrevisualizar: {
+                  id: 1,
+                  id_tema: 1,
+                  tipo: '',
+                },
                 totalRegistros: "5",
                 subidor: {},
                 pregunta: [],
@@ -292,14 +344,18 @@
         async mounted() {
             await this.getPreguntaAbierta();
             this.getTemas();
-            /*let uri = window.location.href;
-            if (uri.includes("?")) {
-                uri = window.location.href.split('?');
-                var fil = uri[1].split('=')[1];
-                this.filters.pregunta.value = fil.replace(/%20/g, " ");
-            }*/
+          
         },
         methods: {
+            previsualizarPreguntaMetodo(pregunta){
+              console.log("Pregunta a previsualizar");
+              console.log( pregunta );
+              this.preguntaPrevisualizar = {
+                id: pregunta.id_pregunta,
+                id_tema: pregunta.id_tema,
+                tipo: pregunta.tipo
+              }
+            },
             cambioSelect(val){
               this.limpiarCampos("tema");
             },

@@ -170,6 +170,75 @@ class PreguntaController {
     //return response.json({banco_preguntas:banco_preguntas})
 	}
 	
+  async mostrarUnicaPregunta({request, response, params}){
+    
+    
+    const datosPreguntas = request.only(['datosPregunta']);
+                                        
+    
+    if( datosPreguntas.tipo === "1" ){
+      
+      const preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema '+
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+			'WHERE b.tipo = 1 AND b.id = '+ datosPreguntas.id )
+       
+    }else if ( datosPreguntas.tipo === "2" ) {
+      
+      const preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, '+
+			't.nombre_tema as tema, m.aplicableArriba, m.aplicableAnbajo, rango ' +
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+			'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
+			'WHERE b.tipo = 2 AND b.id = '+ datosPreguntas.id)
+      
+    }else if ( datosPreguntas.tipo === "3" ) {
+      
+      const preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema '+
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+			'WHERE b.tipo = 3 AND b.id = '+ datosPreguntas.id)
+      
+    }else if ( datosPreguntas.tipo === "4" ) {
+      
+      const preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema '+
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+			'WHERE b.tipo = 4 AND b.id = '+ datosPreguntas.id)
+      
+    }else if ( datosPreguntas.tipo === "5" ) {
+      
+      const preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta,'+
+			' b.tipo as tipo, t.nombre_tema as tema ,c.decimales, m.aplicableArriba, m.aplicableAnbajo, rango '+
+      'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+      'INNER JOIN configuracion_preguntas_calculadas c on c.id_pregunta = b.id ' +
+      'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
+			'WHERE b.tipo = 5 AND b.id = '+ datosPreguntas.id)
+      
+    }else{
+      
+      const preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta,'+
+			' b.tipo as tipo, t.nombre_tema as tema ,c.decimales '+
+      'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+      'INNER JOIN configuracion_preguntas_calculadas c on c.id_pregunta = b.id ' +
+ 			'WHERE b.tipo = 6 AND b.id = '+ datosPreguntas.id)
+      
+    }
+    
+	
+		return response.json({banco_preguntas:preguntas}) 
+	}
+  
+  
+  
 	//Mostrar todas las preguntas
 	async showPreguntas({response, params}){
 		
@@ -237,30 +306,11 @@ class PreguntaController {
 		banco_preguntas = banco_preguntas.concat(preguntasAbiertas[0]);
 		banco_preguntas = banco_preguntas.concat(preguntaCalculadas[0]);
     banco_preguntas = banco_preguntas.concat(preguntaCalculadasMultiples[0]);
-    
-    // select * from banco_preguntas inner join pregunta_imagen on banco_preguntas.id = pregunta_imagen.id_imagen inner join imagenes on imagenes.id = pregunta_imagen.id_imagen;
-    
-    /*for(let i = 0; i < banco_preguntas.length; i++ ){
-        
-        
-        
-    }*/
-		
+
 		banco_preguntas.sort(() => Math.random() - 0.5);
 		
-		
-		/*const banco_preguntas = await Database.raw(
-			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema '+
-			'FROM banco_preguntas b ' +
-			'INNER JOIN temas t on t.id = b.id_tema ')*/
-		
-		//const opciones = await Database.raw('SELECT * FROM opciones')
-		
-		
-		//return response.json({banco_preguntas:banco_preguntas, opciones:opciones})
+	
 		return response.json({banco_preguntas:banco_preguntas})
-		
-		
 	}
 	
 	async showall({response}){
