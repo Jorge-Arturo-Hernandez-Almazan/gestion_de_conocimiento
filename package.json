@@ -42,6 +42,7 @@
     "jquery": "^3.5.0",
     "laravel-mix": "^5.0.1",
     "material-design-icons": "^3.0.1",
+    "mathquill": "^0.10.1-a",
     "mysql": "^2.18.1",
     "production": "0.0.2",
     "select2": "^4.0.3",

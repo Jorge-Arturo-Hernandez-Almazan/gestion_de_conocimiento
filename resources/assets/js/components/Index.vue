@@ -22,7 +22,7 @@
                   
                     {{ saludo }}
 
-                    <!-- <div v-if="this.id_rol==4">
+                    <!--<div v-if="this.id_rol==4">
                         <h1>Bienvenido alumno: {{this.nombre + ' ' + this.apellidoPaterno + ' ' + this.apellidoMaterno }} </h1>
                     </div>
 

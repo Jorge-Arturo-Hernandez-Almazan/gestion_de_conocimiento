@@ -174,6 +174,17 @@
 						</router-link>
 					</li>
 					
+          
+          <li v-if="this.id_rol==1 || this.id_rol==3 || this.id_rol==2" class="nav-item">							
+						<router-link class="nav-link" id="navAccesos" to="/PreguntasExpresiones">
+							<i class="fas fa-sort-numeric-down nav-icon"></i>
+    
+							<p>
+								Expresiones
+							</p>
+						</router-link>
+					</li>
+					
 					
 					<li v-if="this.id_rol==1 || this.id_rol==2 || this.id_rol==3" class="nav-header"> <b> AREA DISCIPLINAR </b> </li>
 					

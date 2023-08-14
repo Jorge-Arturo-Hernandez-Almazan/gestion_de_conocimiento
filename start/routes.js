@@ -130,7 +130,9 @@ Route.post('/subirr', 'UserController.subirimagen');
 Route.post('/subirr2', 'UserController.subirimagenes');
 Route.get('/arbol/poderacionesNodos', 'PonderacionController.obtenerPoderacionesNodos')
 Route.get('/arbol/obtenerRA', 'PonderacionController.obtenerRA')
- 
+Route.post('pregunta/addExpresiones','PreguntaController.storeExpresiones')
+//Route.get('pregunta/addExpresiones', ({view}) =>  view.render('toolbar') );
+
 
 Route.get('/subirimagen', async ({view}) =>{
 	const images = await Database.table('imagenes');
@@ -242,6 +244,7 @@ Route.group(()=>{
 //Rutas de Administrador, Experto, Profesor
 Route.group(()=>{
 	Route.get('/pregunta/showPN','PreguntaController.showPreguntasNumericas')
+ 	Route.get('/pregunta/showPE','PreguntaController.showPreguntasExpresiones')
 	Route.get('/pregunta/showPAB','PreguntaController.showPreguntasAbiertas')
 	Route.get('/preguntasNumericas', ({view}) =>  view.render('app'))
 }).middleware(['VerificadorAuthRole:1,2,3]'])
@@ -352,3 +355,9 @@ Route.get('/recuperarPass', async ({view}) =>{
 
 Route.get('/enviarCorreo', 'UserController.enviarCorreo');
 Route.get('/*', 'UserController.verificarLogin');
+
+
+//Route.get('/toolbar', ({view})=> view.render('toolbar'))
+Route.get('/toolbar', async ({view}) =>{
+	return view.render('toolbar')	
+});

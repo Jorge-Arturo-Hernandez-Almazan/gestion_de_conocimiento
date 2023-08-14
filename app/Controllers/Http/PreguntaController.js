@@ -50,7 +50,8 @@ class PreguntaController {
                                            '(SELECT COUNT(*) FROM banco_preguntas where tipo = 3 and id_tema=? ) as boleanas, '+
                                            '(SELECT COUNT(*) FROM banco_preguntas where tipo = 4 and id_tema=? ) as multiples, '+
                                            '(SELECT COUNT(*) FROM banco_preguntas where tipo = 5 and id_tema=? ) as calculadas, '+
-                                           '(SELECT COUNT(*) FROM banco_preguntas where tipo = 6 and id_tema=? ) as cmultiples'
+                                           '(SELECT COUNT(*) FROM banco_preguntas where tipo = 6 and id_tema=? ) as cmultiples, '+
+                                           '(SELECT COUNT(*) FROM banco_preguntas where tipo = 7 and id_tema=? ) as expresiones'
                                            ,[temas[0][i].id,temas[0][i].id,temas[0][i].id,temas[0][i].id,temas[0][i].id,temas[0][i].id]);
         if(preguntas[0][0].abiertas<conf[0][0].num_preguntas_abiertas)
              correcto=false;
@@ -64,7 +65,8 @@ class PreguntaController {
              correcto=false;
         if(preguntas[0][0].cmultiples<conf[0][0].num_preguntas_calculadas_multiples)
              correcto=false;
-       
+        if(preguntas[0][0].expresiones<conf[0][0].num_expresiones)
+             correcto=false;
      }
     if(conf[0][0].num_preguntas==0)
       correcto=false;
@@ -96,6 +98,27 @@ class PreguntaController {
 		return response.json({message:'Se ha registrado la pregunta', ultimo_id})
 	}
 	
+  //almacenar pregunta de tipo 7- expresiones
+    async storeExpresiones({request,response})
+  {
+		
+		const{pregunta,respuesta,margen,arriba,abajo,tipo,id_tema,id_imagen} = request.only(['pregunta','respuesta','margen','arriba','abajo','tipo','id_tema','id_imagen']) 
+		 
+		var preunta_guardada = await Database.insert({pregunta:pregunta,tipo:tipo,id_tema:id_tema,id_imagen:id_imagen}).into('banco_preguntas')
+		//OBTIENE EL ULTIMO ID GENERADO EN LA TABLA POR LA ULTIMA PREGUNTA GUARDADA
+		let ultimo_id = await Database.raw('SELECT MAX(id) as id FROM banco_preguntas')
+		
+		ultimo_id = ultimo_id[0][0].id;
+		
+		const op = await Database.insert({opcion:respuesta, id_pregunta: ultimo_id, esrespuesta: 1}).into('opciones');
+		const mar = await Database.insert({id_pregunta:ultimo_id, aplicableArriba:arriba, aplicableAnbajo:abajo, rango:margen}).into('margen_errors');
+		
+		return response.json({message:'Se ha registrado la pregunta', ultimo_id})
+	}
+  
+  
+  
+  
 	//actualiza pregunta de opcion multiple
 	async updateMultiple({request,response})
   {	
@@ -221,7 +244,7 @@ class PreguntaController {
       'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
 			'WHERE b.tipo = 5 AND b.id = '+ datosPreguntas.id)
       
-    }else{
+      }else /*if ( datosPreguntas.tipo === "6" ) */ {
       
       const preguntas = await Database.raw(
 			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta,'+
@@ -231,7 +254,17 @@ class PreguntaController {
       'INNER JOIN configuracion_preguntas_calculadas c on c.id_pregunta = b.id ' +
  			'WHERE b.tipo = 6 AND b.id = '+ datosPreguntas.id)
       
-    }
+    }/*else{
+      
+      const preguntas = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, '+
+			't.nombre_tema as tema, m.aplicableArriba, m.aplicableAnbajo, rango ' +
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+			'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
+			'WHERE b.tipo = 7 AND b.id = '+ datosPreguntas.id)
+      
+    }*/
     
 	
 		return response.json({banco_preguntas:preguntas}) 
@@ -298,7 +331,17 @@ class PreguntaController {
  			'WHERE b.tipo = 6 AND b.id_tema = '+ params.id + 
 			' ORDER BY RAND() ' +
 			'LIMIT ' + configuraciones[0][0].num_preguntas_calculadas_multiples)
-		
+    
+  /*  const preguntaExpresiones = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, '+
+			't.nombre_tema as tema, m.aplicableArriba, m.aplicableAnbajo, rango ' +
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema ' +
+			'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
+			'WHERE b.tipo = 7 AND b.id_tema = '+ params.id + 
+			' ORDER BY RAND() ' +
+			'LIMIT ' + configuraciones[0][0].num_expresiones)
+		*/
 		var banco_preguntas = [];
 		banco_preguntas = banco_preguntas.concat(preguntasBoleanas[0]);
 		banco_preguntas = banco_preguntas.concat(preguntasMultiples[0]);
@@ -306,6 +349,8 @@ class PreguntaController {
 		banco_preguntas = banco_preguntas.concat(preguntasAbiertas[0]);
 		banco_preguntas = banco_preguntas.concat(preguntaCalculadas[0]);
     banco_preguntas = banco_preguntas.concat(preguntaCalculadasMultiples[0]);
+//    banco_preguntas = banco_preguntas.concat(preguntaExpresiones[0]);
+
 
 		banco_preguntas.sort(() => Math.random() - 0.5);
 		
@@ -487,6 +532,20 @@ class PreguntaController {
 			'WHERE b.tipo = 2');
 		
 		return response.json(preguntas_numericas)
+		
+	}
+  
+  	async showPreguntasExpresiones({response}){
+		
+		const preguntas_expresiones = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema, o.id, o.opcion, o.esrespuesta,m.rango,m.aplicableArriba,m.aplicableAnbajo '+
+			'FROM banco_preguntas b ' +
+			'INNER JOIN temas t on t.id = b.id_tema '+
+			'INNER JOIN opciones o on b.id = o.id_pregunta '+
+      'INNER JOIN margen_errors m on b.id = m.id_pregunta '+
+			'WHERE b.tipo = 7');
+		
+		return response.json(preguntas_expresiones)
 		
 	}
 	

@@ -77,10 +77,17 @@
 								</div>
 
 								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas opcion multiple:</label>
+									<label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas opcion multiples:</label>
 									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_multiples"
 										id="numeroPreguntasMultiples" class="form-control">
 								</div>
+                
+                								<div class="form-group">
+									<label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas de expresiones:</label>
+									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_expresion"
+										id="numeroPreguntasExpresion" class="form-control">
+								</div>
+                
 								<div class="form-group">
 									<label class="mb-2" for="exampleFormControlSelect1">Rango de error por defecto:</label>
 									<input min="0" max="1" step="0.001" id="rangoPorDefecto" type="number"

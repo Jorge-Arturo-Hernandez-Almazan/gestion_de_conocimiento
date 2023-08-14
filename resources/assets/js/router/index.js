@@ -24,6 +24,7 @@ import subirImagenes from '@/components/subir_Imagenes'
 import GrafoAlumnos from '@/components/GrafoAlumnos'
 import configuracionModulo from '@/components/configuracionModulo'
 import Ejemplo from '@/components/Ejemplo'
+import PreguntasExpresiones from '@/components/PreguntasExpresiones'
 
 Vue.use(Router)
 
@@ -100,6 +101,11 @@ export default new Router({
 		path: '/PreguntasOpcionMultipleCalculadas',
         name: 'PreguntasOpcionMultipleCalculadas',
         component: PreguntasOpcionMultipleCalculadas
+	},
+         {
+		path: '/PreguntasExpresiones',
+        name: 'PreguntasExpresione',
+        component: PreguntasExpresiones
 	},
     {
          path:'/temas',

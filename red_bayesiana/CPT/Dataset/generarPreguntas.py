@@ -178,6 +178,23 @@ def preguntasCalculadasM(conexion1,padres_ids):
   datos=(id[0][0],1,1,0)
   cursor1.execute(sql, datos)
   """
+def preguntasExpresiones(conexion1,padres_ids):
+  cursor1=conexion1.cursor()
+  sql="insert into banco_preguntas(pregunta,tipo,id_tema) values (%s,%s,%s)"
+  datos=("\\frac{1}{2}+3",7,padres_ids[0])
+  cursor1.execute(sql, datos)
+  cursor = conexion1.cursor()
+  cursor.execute("select max(id) from banco_preguntas;")
+  id=cursor.fetchall()
+  cursor1=conexion1.cursor()
+  sql="insert into opciones(opcion,id_pregunta,esrespuesta) values (%s,%s,%s)"
+  datos=('7/2',id[0][0],1)
+  cursor1.execute(sql, datos)
+  sql="insert into margen_errors(id_pregunta,aplicableArriba,aplicableAnbajo,rango) values (%s,%s,%s,%s)"
+  datos=(id[0][0],1,1,0)
+  cursor1.execute(sql, datos)
+
+  
 cptA=[]
 print("Cargando nodos...")
 URL = "http://localhost/arbol/simulador/caminos"
@@ -236,12 +253,13 @@ conexion1=mysql.connector.connect(user='root', password='PROYECTO1KMS', host='lo
 for i in range(len(padres)):
  
 
-   # preguntasNumericas(conexion1,padres_ids[i])
+  preguntasNumericas(conexion1,padres_ids[i])
  # preguntasAbiertas(conexion1,padres_ids[i])
    #preguntasVF(conexion1,padres_ids[i])
    #preguntasOMultiple(conexion1,padres_ids[i])
-  preguntasCalculadasS(conexion1,padres_ids[i])
+  #preguntasCalculadasS(conexion1,padres_ids[i])
    #preguntasCalculadasM(conexion1,padres_ids[i])
+  #preguntasExpresiones(conexion1,padres_ids[i])
 conexion1.commit()
 conexion1.close() 
 
