@@ -102,16 +102,16 @@ class PreguntaController {
     async storeExpresiones({request,response})
   {
 		
-		const{pregunta,respuesta,margen,arriba,abajo,tipo,id_tema,id_imagen} = request.only(['pregunta','respuesta','margen','arriba','abajo','tipo','id_tema','id_imagen']) 
+		const{inputDescripcion,pregunta,respuesta,margen,arriba,abajo,tipo,id_tema,id_imagen} = request.only(['inputDescripcion','pregunta','respuesta','margen','arriba','abajo','tipo','id_tema','id_imagen']) 
 		 
-		var preunta_guardada = await Database.insert({pregunta:pregunta,tipo:tipo,id_tema:id_tema,id_imagen:id_imagen}).into('banco_preguntas')
+		var preunta_guardada = await Database.insert({descripcion:inputDescripcion,pregunta:pregunta,tipo:tipo,id_tema:id_tema,id_imagen:id_imagen}).into('banco_preguntas')
 		//OBTIENE EL ULTIMO ID GENERADO EN LA TABLA POR LA ULTIMA PREGUNTA GUARDADA
 		let ultimo_id = await Database.raw('SELECT MAX(id) as id FROM banco_preguntas')
 		
 		ultimo_id = ultimo_id[0][0].id;
 		
 		const op = await Database.insert({opcion:respuesta, id_pregunta: ultimo_id, esrespuesta: 1}).into('opciones');
-		const mar = await Database.insert({id_pregunta:ultimo_id, aplicableArriba:arriba, aplicableAnbajo:abajo, rango:margen}).into('margen_errors');
+	  const mar = await Database.insert({id_pregunta:ultimo_id, aplicableArriba:false, aplicableAnbajo:false, rango:0}).into('margen_errors');
 		
 		return response.json({message:'Se ha registrado la pregunta', ultimo_id})
 	}
@@ -443,6 +443,24 @@ class PreguntaController {
 		return response.json({message:'Se ha modificado la pregunta'})
     
   }
+  
+  async updateExpresiones({request,response}){
+    
+    const{id,descripcion,pregunta,respuesta,tipo,margen,mArriba,mAbajo,id_tema,imagenesAEliminar} = request.only(
+			['id','descripcion','pregunta','respuesta','tipo','margen','mArriba','mAbajo','id_tema', 'imagenesAEliminar']) 
+		const banco_preguntas = 
+          await Database.raw('UPDATE banco_preguntas SET descripcion = ?, pregunta = ?,tipo = ?, id_tema = ? WHERE id = ?',[descripcion,pregunta,tipo,id_tema,id])
+		const opcion = await Database.raw('UPDATE opciones SET opcion = ? WHERE id_pregunta = ?',[respuesta,id])
+		
+    const mergenes = await Database.raw('UPDATE margen_errors SET aplicableArriba=?, aplicableAnbajo=?, rango=? WHERE id_pregunta = ?',[mArriba,mAbajo,margen,id])
+    
+    for(let i = 0; i < imagenesAEliminar.length; i++){
+			await Database.raw('DELETE FROM imagenes WHERE id = ?', [imagenesAEliminar[i].idImagen]);
+			const output = execSync('rm /root/SistemaKMS/public/' + imagenesAEliminar[i].imagen , { encoding: 'utf-8' });
+		}
+		return response.json({message:'Se ha modificado la pregunta'})
+    
+  }
 	
   //Método para modificar las preguntas sin opciones múltiples
 	async updateAN({request,response}){
@@ -538,7 +556,7 @@ class PreguntaController {
   	async showPreguntasExpresiones({response}){
 		
 		const preguntas_expresiones = await Database.raw(
-			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema, o.id, o.opcion, o.esrespuesta,m.rango,m.aplicableArriba,m.aplicableAnbajo '+
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.descripcion as descripcion, b.pregunta as pregunta, b.tipo as tipo, t.nombre_tema as tema, o.id, o.opcion, o.esrespuesta,m.rango,m.aplicableArriba,m.aplicableAnbajo '+
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema '+
 			'INNER JOIN opciones o on b.id = o.id_pregunta '+

@@ -322,7 +322,9 @@ Route.group(()=>{
 	Route.get('temas/:id','TemaController.show')//
 	Route.post('pregunta/update','PreguntaController.updateAN')
 	Route.post('pregunta/updateAbierta','PreguntaController.updateAbierta')
-	Route.post('pregunta/add','PreguntaController.store')//
+	Route.post('pregunta/updateExpresiones','PreguntaController.updateExpresiones')//para actualizar las preguntas expresiones (tipo 7)
+	
+  Route.post('pregunta/add','PreguntaController.store')//
 	Route.post('preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
 	Route.post('preguntaOpcionMultiple/update','PreguntaController.updateMultiple')
 	Route.get('/pregunta/showMultiples','PreguntaController.mostrarPreguntasOpcionMultiple')

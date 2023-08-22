@@ -57,23 +57,26 @@
                                         :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
                                         class="table table-hover">
                                         <thead slot="head">
+                                            <v-th sortKey="descripcion" defaultSort="desc" style="width:10%">Descripción de pregunta
+                                            </v-th>
                                             <v-th sortKey="pregunta" defaultSort="desc" style="width:10%">Pregunta
                                             </v-th>
                                             <v-th sortKey="tema" defaultSort="desc">Tema</v-th>
                                             <v-th sortKey="opcion" defaultSort="desc">Respuesta</v-th>
-                                            <th>Margen</th>
+                                            <!--th>Margen</th>
                                             <th>Margen arriba</th>
-                                            <th>Margen abajo</th>
+                                            <th>Margen abajo</th-->
                                             <th>Imagenes</th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
                                         </thead>
                                         <tbody slot="body" slot-scope="{displayData}">
                                             <tr v-for="preguntaExpresiones in displayData" :key="preguntaExpresiones.id">
+                                                <td>{{preguntaExpresiones.descripcion}} </td>
                                                 <td>{{preguntaExpresiones.pregunta}} </td>
                                                 <td>{{preguntaExpresiones.tema}}</td>
                                                 <td>{{preguntaExpresiones.opcion}} </td>
-                                                <td>{{preguntaExpresiones.rango}}</td>
+                                                <!--td>{{preguntaExpresiones.rango}}</td>
                                                 <td v-if="preguntaExpresiones.aplicableArriba == true"> <i
                                                         class="far fa-check-circle" style="color: #3bd949;"></i> Si <span
                                                         style="color: #3bd949;"></span> </td>
@@ -84,7 +87,7 @@
                                                         style="color: #3bd949;"></span> </td>
                                                 <td v-else> <i class="fas fa-ban" style="color: #ff6258"> </i> No <span
                                                         style="color: #ff6258"></span> </td>
-                                                <td>
+                                                <td-->
                                                     <a data-toggle="modal" data-target="#modalParaVerImagenes"
                                                         @click="desplegarImagenesEnModal(preguntaExpresiones.imagenes)" class="btn btn-outline-primary">
                                                         <i class="fas fa-eye" style="color: #2196f3"
@@ -93,13 +96,12 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a @click="btnEditar(preguntaExpresiones.id_pregunta,preguntaExpresiones.pregunta,preguntaExpresiones.opcion,preguntaExpresiones.tipo,preguntaExpresiones.id_tema, preguntaExpresiones.rango ,preguntaExpresiones.imagenes)"
-                                                        data-toggle="modal" data-target="#registrarPregunta" class="btn btn-outline-warning"><i
-                                                            class="fas fa-pen" style="color: #ffae00;"
-                                                            title="Editar la pregunta"></i> <span
-                                                            style="color: #ffae00;"></span>
-                                                    </a>
-                                                </td>
+                                                  <a @click="btnEditar(preguntaExpresiones.id_pregunta, preguntaExpresiones.descripcion, preguntaExpresiones.pregunta, preguntaExpresiones.opcion, preguntaExpresiones.tipo, preguntaExpresiones.id_tema, preguntaExpresiones.rango, preguntaExpresiones.imagenes)"
+                                                     data-toggle="modal" data-target="#registrarPregunta" class="btn btn-outline-warning">
+                                                     <i class="fas fa-pen" style="color: #ffae00;" title="Editar la pregunta"></i>
+                                                     <span style="color: #ffae00;"></span>
+                                                  </a>
+                                                 </td>
                                                 <td>
                                                     <a @click="eliminar(preguntaExpresiones.id_pregunta, preguntaExpresiones.imagenes)" class="btn btn-outline-danger"><i
                                                             class="fas fa-trash" style="color: #ff6258"
@@ -129,10 +131,10 @@
                 </div>
 
                 <div class="row">
-                    <div class="modal animated animate__bounceIn" id="registrarPregunta" role="dialog"
+                    <div class="modal animated animate__bounceIn" data-backdrop="static" id="registrarPregunta" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true" data-focus="false">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
+                            <div class="modal-content" >
                                 <div class="modal-body">
                                     <h3 v-if="modoEdicion" class="modal-title" id="exampleModalLabel">
                                         Actualizar pregunta </h3>
@@ -143,16 +145,16 @@
                                   
                                   
                                   
-                                  <p class="text-left mt-0 mb-0"> <b>Pregunta <span
+                                  <p class="text-left mt-0 mb-0"> <b>Descripción de pregunta <span
                                                 style="color:red">*</span>:</b> </p>
                                     <textarea rows="4" id="pregunta" type="text"
-                                        class="form-control mt-0 mb-0" placeholder="Pregunta"
+                                        class="form-control mt-0 mb-0" placeholder="Resuelve la siguiente operación"
                                         @focus="limpiarCampos('pregunta')"></textarea>
-                                    <span id="msjInputPregunta"> </span>
-                                  <!--tool-bar />   <Aqui se manda llamar el componente que se va insertar desde otro archivo -->                               
-                                  <div ref="mathField"></div>
-
-                                  <tool-bar @latex-change="handleLatexChange"></tool-bar>
+                                    <span id="msjinputDescripcion"> </span>
+                      
+                                  <p class="text-left mt-0 mb-0"> <b>Pregunta <span
+                                                style="color:red">*</span>:</b> </p>
+                                  <tool-bar ref="hijoComponent" :dato="datoParaHijo" :banderaParaEdicion="banderaEdicion"  @mathquill-updated="handleMathquillUpdate"></tool-bar>
                                   
                                   <!--div v-html="bladeContent"></div-->
 
@@ -162,14 +164,14 @@
                                         class="form-control mt-0 mb-0" placeholder="Respuesta"
                                         @focus="limpiarCampos('respuesta')"></textarea>
                                     <span id="msjInputRespuesta"> </span>
-
-                                    <p class="text-left mt-0 mb-0"><b>Margen de error: <span
-                                                style="color:red">*</span>:</b></p>
-                                    <input id="margen" placeholder="margen" type="number"
+                                    
+                                    <!--p class="text-left mt-0 mb-0"><b>Margen de error: <span
+                                                style="color:red">*</span>:</b></p-->
+                                    <input id="margen" placeholder="margen" type="hidden"
                                         @focus="limpiarCampos('margen')" class="form-control mt-0 mb-0">
                                     <span id="msjInputMargen"> </span>
 
-                                    <p class="text-left mt-0 mb-0"> <b>Aplicar el margen:</b> </p>
+                                    <!--p class="text-left mt-0 mb-0"> <b>Aplicar el margen:</b> </p-->
 
                                     <table style="width: 100%; margin: 0px 0px 10px;">
                                         <tr>
@@ -178,9 +180,8 @@
                                                     <label>
                                                         <input
                                                             style="width:20px; height:20px; border:2px solid #555;"
-                                                            type="checkbox" id="arriba" name="arriba"
-                                                            value="si" checked>&nbsp;&nbsp;Aplicar hacia
-                                                        arriba
+                                                            type="hidden" id="arriba" name="arriba"
+                                                            value="si" checked>&nbsp;&nbsp;
                                                     </label>
                                                 </div>
 
@@ -189,9 +190,9 @@
                                                 <div class="checkbox">
                                                     <label><input
                                                             style="width:20px; height:20px; border:2px solid #555;"
-                                                            type="checkbox" id="abajo" name="abajo"
+                                                            type="hidden" id="abajo" name="abajo"
                                                             value="si" checked>
-                                                        &nbsp;&nbsp;Aplicar hacia abajo
+                                                        
                                                     </label>
                                                 </div>
                                             </th>
@@ -244,14 +245,18 @@
                                     <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span
                                             style="color:red">*</span> Datos obligatorios </p>
 
-                                    <button type="button" class="btn btn-secondary float-right btn-lg mt-4 "
+                                    <button @click="$refs.hijoComponent.limpiarCampoMathquill()" type="button" class="btn btn-secondary float-right btn-lg mt-4 "
                                         data-dismiss="modal"> <i
                                             class="fas fa-ban"></i> Cerrar
                                     </button>
+                                  
+                                  
+                                  
+                                  
                                     <button v-if="modoEdicion" type="button" @click="editar" class="btn btn-primary float-right btn-lg mt-4 mr-2" >
                                         <i class="fas fa-save"></i> Guardar 
                                     </button>
-                                    <button v-else type="button" @click="btnGuardar" class="btn btn-primary float-right btn-lg mt-4 mr-2" > 
+                                    <button v-else type="button" @click="btnGuardar "  class="btn btn-primary float-right btn-lg mt-4 mr-2" > 
                                         <i class="fas fa-save"></i> Guardar
                                     </button>
                                 </div>
@@ -331,10 +336,10 @@
                 id_tema: "",
                 respuesta: "",
                 pregunta: "",
-                margen: "",
-                margend: "",
-                arriba: null,
-                abajo: null,
+                margen: 0,
+                margend: 0,
+                arriba: false,
+                abajo: false,
                 tipo: 7,
                 temas: [],
                 id: "",
@@ -351,7 +356,10 @@
                 modoEdicion: 0,
                 todasLasImagenes: [],
                 totalImagenesEnPregunta: 0,
-                imagenesParaDesplegarEnModal: []                        
+                imagenesParaDesplegarEnModal: [],                        
+                parseoEnLatex:'',
+                datoParaHijo: '',
+                banderaEdicion:'',
             };
         },
         created() {
@@ -367,13 +375,22 @@
                 var fil = uri[1].split('=')[1];
                 this.filters.pregunta.value = fil.replace(/%20/g, " ");
             }
-           const MQ = MathQuill.getInterface(2); 
-           const mathField = MQ.MathField(this.$refs.mathField); 
-    
         },
         methods: {
-           handleLatexChange(latex) {
-              console.log('Latex change in parent component:', latex);
+            /*handleContentChange(newContent) {
+                console.log('Contenido actualizado desde Componente B:', this.newContent);
+            },*/
+            handleMathquillUpdate(mathquillText) {
+                console.log('texto de mathQuill en Componente A:', mathquillText);
+             //    return mathquillText;
+              this.parseoEnLatex=mathquillText;
+                
+            },
+            obtenerParseo(){
+                //let descripcion = this.handleMathquillUpdate(this.mathquillText);
+                //this.descripcion = this.mathquillText; // Almacena el contenido LaTeX
+                console.log("soy descripcion "+this.parseoEnLatex);
+                 
             },
             cambioSelect(val) {
                 this.limpiarCampos("tema");
@@ -470,9 +487,10 @@
                     }
                 );
             },
-            async guardarPregunta(pregunta, respuesta, margen, arriba, abajo, tipo, id_tema) {
+            async guardarPregunta(inputDescripcion,pregunta, respuesta, margen, arriba, abajo, tipo, id_tema) {
                 await axios
                     .post("/pregunta/addExpresiones", {
+                        inputDescripcion:inputDescripcion,
                         pregunta: pregunta,
                         respuesta: respuesta,
                         margen: margen,
@@ -482,6 +500,7 @@
                         id_tema: id_tema
                     })
                     .then(async res => {
+                        this.inputDescripcion="";
                         this.respuesta = "";
                         this.pregunta = "";
                         this.margen = "";
@@ -489,24 +508,29 @@
                         await this.subidor.subirImagenes(res.data.ultimo_id);
                         $('#registrarPregunta').modal('toggle');
                         this.getPreguntaExpresiones();
+      
                     })
                     .catch(err => {
                         console.log(err);
                     });
             },
             btnGuardar() {
-                let inputPregunta = document.getElementById("pregunta");
+                // this.obtenerParseo();
+                let inputDescripcion = document.getElementById("pregunta").value;
+                console.log("soy descripcion "+inputDescripcion);  
+                let preguntaParseada = this.parseoEnLatex;
+                console.log("preguntaParseada "+preguntaParseada);
                 let inputRespuesta = document.getElementById("respuesta");
                 let inputMargen = document.getElementById("margen");
                 let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
                 let msjInputMargen = document.getElementById("msjInputMargen");
-                let msjInputPregunta = document.getElementById("msjInputPregunta");
+                let msjinputDescripcion = document.getElementById("msjinputDescripcion");
                 this.margen = document.getElementById("margen").value;
                 this.arriba = document.getElementById("arriba").checked;
                 this.abajo = document.getElementById("abajo").checked;
-                this.pregunta = inputPregunta.value;
+                this.pregunta = preguntaParseada;
                 this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
                     /[\u0300-\u036f]/g, "").replace(/ /g, "")
                 if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "") {
@@ -516,9 +540,9 @@
                         msjSelectTema.style.color = "#ff6258";
                     }
                     if (this.pregunta == "") {
-                        inputPregunta.style.border = "1px solid #ff6258";
-                        msjInputPregunta.innerHTML = "Este dato es obligatorio";
-                        msjInputPregunta.style.color = "#ff6258";
+                        inputDescripcion.style.border = "1px solid #ff6258";
+                        msjinputDescripcion.innerHTML = "Este dato es obligatorio";
+                        msjinputDescripcion.style.color = "#ff6258";
                     }
                     if (this.respuesta == "") {
                         inputRespuesta.style.border = "1px solid #ff6258";
@@ -532,7 +556,9 @@
                         msjInputMargen.style.color = "#ff6258";
                     }
                 } else {
+          //          console.log("estoy enviando inputDescripcion "+inputDescripcion);
                     this.guardarPregunta(
+                        inputDescripcion,
                         this.pregunta,
                         this.respuesta,
                         this.margen,
@@ -542,23 +568,25 @@
                         this.id_tema
                     );
                 }
-            },
+                //this.handleContentChange(this.newContent);
+           //     this.handleMathquillUpdate()
+                            },
             limpiarCampos(id) {
-                let inputPregunta = document.getElementById("pregunta");
+                let inputDescripcion = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
                 let inputMargen = document.getElementById("margen");
                 let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
-                let msjInputPregunta = document.getElementById("msjInputPregunta");
+                let msjinputDescripcion = document.getElementById("msjinputDescripcion");
                 let msjInputMargen = document.getElementById("msjInputMargen");
                 if (id == "tema") {
                     selectTema.style.border = "1px solid #dee2e6";
                     msjSelectTema.innerHTML = "";
                 }
                 if (id == "pregunta") {
-                    inputPregunta.style.border = "1px solid #dee2e6";
-                    msjInputPregunta.innerHTML = "";
+                    inputDescripcion.style.border = "1px solid #dee2e6";
+                    msjinputDescripcion.innerHTML = "";
                 }
                 if (id == "respuesta") {
                     inputRespuesta.style.border = "1px solid #dee2e6";
@@ -570,16 +598,24 @@
 
                 }
             },
-            btnEditar(id, pregunta, respuesta, tipo, id_tema, margen, imagenes) {
+            btnEditar(id,pregunta, descripcion,respuesta, tipo, id_tema, margen, imagenes) {
                 this.totalImagenesEnPregunta = (imagenes.length + 1);
                 this.subidor.imagenesVistaPrevia = [];
-                let inputPregunta = document.getElementById("pregunta");
+                let inputDescripcion = document.getElementById("pregunta");
+                //console.log("soy inputDescripcion"+inputDescripcion.value);
                 let inputRespuesta = document.getElementById("respuesta");
                 let inputMargen = document.getElementById("margen");
                 this.modoEdicion = 1;
                 this.id = id;
                 inputRespuesta.value = respuesta;
-                inputPregunta.value = pregunta;
+                //this.aboutname=descripcion;          
+         //       this.$refs.hijoComponent.funcionEnHijo();
+                console.log("dato a enviar:" +descripcion); 
+                this.datoParaHijo=descripcion; //se envia la sintaxis de la expresion al componente hijo
+                this.banderaEdicion=true;
+                
+                
+                inputDescripcion.value = pregunta;
                 this.id_tema = id_tema;
                 inputMargen.value = margen;
 
@@ -596,12 +632,12 @@
                 this.limpiarCampos("respuesta");
             },
             cambiarModo() {
-                let inputPregunta = document.getElementById("pregunta");
+                let inputDescripcion = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
                 let inputMargen = document.getElementById("margen");
                 inputMargen.value = this.margend;
                 inputRespuesta.value = "";
-                inputPregunta.value = "";
+                inputDescripcion.value = "";
                 this.id_tema = "";
                 this.subidor.imagenesVistaPrevia = [];
                 this.subidor.imagenes = [];
@@ -614,16 +650,16 @@
                 this.limpiarCampos("margen");
             },
             editar() {
-                let inputPregunta = document.getElementById("pregunta");
+                let inputDescripcion = document.getElementById("pregunta");
                 let inputRespuesta = document.getElementById("respuesta");
                 let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
-                let msjInputPregunta = document.getElementById("msjInputPregunta");
+                let msjinputDescripcion = document.getElementById("msjinputDescripcion");
                 this.margen = document.getElementById("margen").value;
                 this.arriba = document.getElementById("arriba").checked;
                 this.abajo = document.getElementById("abajo").checked;
-                this.pregunta = inputPregunta.value;
+                this.pregunta = inputDescripcion.value;
                 this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
                     /[\u0300-\u036f]/g, "").replace(/ /g, "")
                 if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "") {
@@ -633,9 +669,9 @@
                         msjSelectTema.style.color = "#ff6258";
                     }
                     if (this.pregunta == "") {
-                        inputPregunta.style.border = "1px solid #ff6258";
-                        msjInputPregunta.innerHTML = "Este dato es obligatorio";
-                        msjInputPregunta.style.color = "#ff6258";
+                        inputDescripcion.style.border = "1px solid #ff6258";
+                        msjinputDescripcion.innerHTML = "Este dato es obligatorio";
+                        msjinputDescripcion.style.color = "#ff6258";
                     }
                     if (this.respuesta == "") {
                         inputRespuesta.style.border = "1px solid #ff6258";
@@ -649,9 +685,10 @@
                     }
 
                 } else {
-                    axios.post("/pregunta/updateAbierta", {
+                    axios.post("/pregunta/updateExpresiones", {
                         id: this.id,
-                        pregunta: this.pregunta,
+                        descripcion: this.pregunta,
+                        pregunta: this.parseoEnLatex, //aqui se debe de enviar lo escrito en el cuadro de mathquill
                         respuesta: this.respuesta,
                         tipo: this.tipo,
                         id_tema: this.id_tema,
@@ -684,6 +721,7 @@
                         console.error(err);
                     });
                 }
+               this.$refs.hijoComponent.limpiarCampoMathquill();
             },
             eliminar(id, imagenes) {
                 this.$swal.fire({
@@ -724,8 +762,11 @@
                         });
                     }
                 })
-            }
-        }
+            },
+  /*        ejecutarFuncionEnHijo() {
+            this.$refs.hijoComponent.funcionEnHijo(); // Llama a la función en el componente hijo
+          },*/
+       }
     };
 
 </script>

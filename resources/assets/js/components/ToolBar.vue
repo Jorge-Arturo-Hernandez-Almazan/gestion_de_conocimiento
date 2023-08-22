@@ -25,8 +25,14 @@
     </div>
        <!--div id="input2"></div> <!-- entrada de la expresión -->
        <div id="mathquill-editor"></div>
-      <div ref="mathField" id="input2"></div>
+      <div ref="mathField" id="input2" @input="handleInput"></div>
+      <!--p>Dato recibido del padre: {{ dato }}</p>
+      <p>Dato recibido del padre: {{ banderaParaEdicion}}</p>
+      <p>Mensaje desde el hijo: {{ mensaje }}</p-->
 
+      <!--h1>
+        {{aboutname}}
+      </h1-->
       <!--script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script-->
 
       
@@ -36,85 +42,572 @@
       <div v-for="buttonClass in buttonClasses" :key="buttonClass" :class="['menu-buttons', { active: buttonClass === activeButton }]">
 
         <!-- Los botones para Matemáticas Básicas -->
-        <button v-if="buttonClass === 'basic-buttons'" id="left-p">(</button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-left-p" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="right-p">)</button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-right-p" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="xexp"><img src="/imagenes/toolbar-buttons/^.png" /></button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-exp" class="texto-emergente"></div>        
-        <button v-if="buttonClass === 'basic-buttons'" id="xsub"><img src="/imagenes/toolbar-buttons/_.png" /></button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-xsub" class="texto-emergente"></div>        
-        <button v-if="buttonClass === 'basic-buttons'" id="sqrt"><img src="/imagenes/toolbar-buttons/sqrt.png" /></button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-sqrt" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="sqrt3"><img src="/imagenes/toolbar-buttons/sqrt3.png" /></button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-sqrt3" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="frac"><img src="/imagenes/toolbar-buttons/frac.png" /></button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-frac" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="times">×</button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-times" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="div">÷</button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-div" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="ln"><img src="/imagenes/toolbar-buttons/log.png" /></button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-ln" class="texto-emergente"></div>  
-        <button v-if="buttonClass === 'basic-buttons'" id="exp"><img src="/imagenes/toolbar-buttons/exp.png" /></button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-exp" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="leq">≤</button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-leq" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="geq">≥</button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-geq" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'basic-buttons'" id="equal">=</button>
-        <div v-if="buttonClass === 'basic-buttons'" id="textoEmergente-equal" class="texto-emergente"></div> 
-     
+        
+          <button
+            v-if="buttonClass === 'basic-buttons'"
+            id="left-p"
+            @click="insertLeftP"
+            @mouseover="showEtiqueta = true"
+            @mouseleave="showEtiqueta = false"
+            title="paréntesis izquierdo"
+          >(</button>
+                     
+        <button 
+            v-if="buttonClass === 'basic-buttons'" 
+            id="right-p" 
+            @click="insertRightP"
+            @mouseover="showEtiqueta = true"
+            @mouseleave="showEtiqueta = false"
+            title="paréntesis derecho"
+        >)</button>
+        
+        <button 
+            v-if="buttonClass === 'basic-buttons'" 
+            id="xexp" 
+            @click="insertXExp"
+            @mouseover="showEtiqueta = true"
+            @mouseleave="showEtiqueta = false"
+            title="potencia"    >
+            <img src="/imagenes/toolbar-buttons/^.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="xsub" 
+             @click="insertXSub"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="subíndice"   >
+             <img src="/imagenes/toolbar-buttons/_.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="sqrt" 
+             @click="insertSqrt"            
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="raíz cuadrada">
+             <img src="/imagenes/toolbar-buttons/sqrt.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="sqrt3" 
+             @click="insertNThroot"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="n-ésima raíz">
+             <img src="/imagenes/toolbar-buttons/sqrt3.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="frac" 
+             @click="insertFrac"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="fracción">
+             <img src="/imagenes/toolbar-buttons/frac.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="suma" 
+             @click="insertSuma"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="suma"
+         >+</button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="resta" 
+             @click="insertResta"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="resta"
+        >-</button>
+                
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="times" 
+             @click="insertTimes"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="multiplicación"
+        >×</button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="div" 
+             @click="insertDiv"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="división"
+        >÷</button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="ln" 
+             @click="insertLn"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="logaritmo natural">
+             <img src="/imagenes/toolbar-buttons/log.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="exp" 
+             @click="insertExp"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="función exponencial">
+             <img src="/imagenes/toolbar-buttons/exp.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="leq" 
+             @click="insertLeq"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="menor o igual que"
+        >≤</button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="geq" 
+             @click="insertGeq"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="mayor o igual que"
+        >≥</button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="equal" 
+             @click="insertEqual"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="igual"
+         >=</button>
+        
         <!-- Los botones para Cálculo y Sumas -->
         
-        <button v-if="buttonClass === 'logic-buttons'" id="derivadasimple"><img src="/imagenes/toolbar-buttons/derivada.png" /></button>
-        <div v-if="buttonClass === 'logic-buttons'" id="textoEmergente-derivadasimple" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'logic-buttons'" id="derivadasegundoorden"><img src="/imagenes/toolbar-buttons/derivada2orden.png" /></button>
-        <div v-if="buttonClass === 'logic-buttons'" id="textoEmergente-derivadasegundoorden" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'logic-buttons'" id="derivadaparcialsimple"><img src="/imagenes/toolbar-buttons/parcial.png" /></button>
-        <div v-if="buttonClass === 'logic-buttons'" id="textoEmergente-derivadaparcialsimple" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'logic-buttons'" id="derivadaparcialsegundoorden"><img src="/imagenes/toolbar-buttons/parcial2orden.png" /></button>
-        <div v-if="buttonClass === 'logic-buttons'" id="textoEmergente-derivadaparcialsegundoorden" class="texto-emergente"></div> 
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="derivadasimple"
+             @click="insertderivadasimple"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="derivada simple">
+             <img src="/imagenes/toolbar-buttons/derivada.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="derivadasegundoorden"
+             @click="insertderivadasegundoorden"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="derivada segundo orden">
+             <img src="/imagenes/toolbar-buttons/derivada2orden.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="derivadaparcialsimple"
+             @click="insertderivadaparcialsimple"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="derivada parcial simple">
+             <img src="/imagenes/toolbar-buttons/parcial.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="derivadaparcialsegundoorden"
+             @click="insertderivadaparcialsegundoorden"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="derivada parcial segundo orden">
+             <img src="/imagenes/toolbar-buttons/parcial2orden.png" />
+        </button>
         
         <!-- Los botones para Trigonometría -->
-        <button v-if="buttonClass === 'functions-buttons'" id="pi"><img src="/imagenes/toolbar-buttons/pi.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-pi" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'functions-buttons'" id="sin"><img src="/imagenes/toolbar-buttons/sin.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-sin" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'functions-buttons'" id="circ">°</button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-circ" class="texto-emergente"></div>        
-        <button v-if="buttonClass === 'functions-buttons'" id="sin"><img src="/imagenes/toolbar-buttons/sin.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-sin" class="texto-emergente"></div> 
-        <button v-if="buttonClass === 'functions-buttons'" id="cos"><img src="/imagenes/toolbar-buttons/cos.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-cos" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'functions-buttons'" id="tan"><img src="/imagenes/toolbar-buttons/tan.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-tan" class="texto-emergente"></div>   
-        <button v-if="buttonClass === 'functions-buttons'" id="sec"><img src="/imagenes/toolbar-buttons/sec.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-sec" class="texto-emergente"></div> 
-        <button v-if="buttonClass === 'functions-buttons'" id="csc"><img src="/imagenes/toolbar-buttons/csc.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-csc" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'functions-buttons'" id="cot"><img src="/imagenes/toolbar-buttons/cot.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-cot" class="texto-emergente"></div>  
-        <button v-if="buttonClass === 'functions-buttons'" id="arcsin"><img src="/imagenes/toolbar-buttons/arcsin.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-arcsin" class="texto-emergente"></div>   
-        <button v-if="buttonClass === 'functions-buttons'" id="arccos"><img src="/imagenes/toolbar-buttons/arccos.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-arccos" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'functions-buttons'" id="arctan"><img src="/imagenes/toolbar-buttons/arctan.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-arctan" class="texto-emergente"></div>
-        <button v-if="buttonClass === 'functions-buttons'" id="sinh"><img src="/imagenes/toolbar-buttons/sinh.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-sinh" class="texto-emergente"></div>  
-        <button v-if="buttonClass === 'functions-buttons'" id="cosh"><img src="/imagenes/toolbar-buttons/cosh.png" /></button>
-        <div v-if="buttonClass === 'functions-buttons'" id="textoEmergente-cosh" class="texto-emergente"></div>    
-   
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="pi"@click="insertpi"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="pi">
+             <img src="/imagenes/toolbar-buttons/pi.png" />
+        </button>
+        
+
+                     
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="circ" 
+             @click="insertcirc"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="grados"
+        >°</button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="sin"
+             @click="insertsin"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="seno">
+             <img src="/imagenes/toolbar-buttons/sin.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="cos"
+             @click="insertcos"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="cos">
+             <img src="/imagenes/toolbar-buttons/cos.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="tan"
+             @click="inserttan"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="tangente">
+             <img src="/imagenes/toolbar-buttons/tan.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="sec"
+              @click="insertsec"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="secante">
+             <img src="/imagenes/toolbar-buttons/sec.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="csc"
+             @click="insertcsc"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="cosecante">
+             <img src="/imagenes/toolbar-buttons/csc.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="cot"
+             @click="insertcot"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="cotangente">
+             <img src="/imagenes/toolbar-buttons/cot.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="arcsin"
+             @click="insertarcsin"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="arcoseno">
+                
+             <img src="/imagenes/toolbar-buttons/arcsin.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="arccos"
+             @click="insertarccos"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="arcocoseno">
+        
+             <img src="/imagenes/toolbar-buttons/arccos.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="arctan"
+             @click="insertarctan"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="arcotangente">
+             <img src="/imagenes/toolbar-buttons/arctan.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="sinh"
+             @click="insertsinh"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="seno hiperbólico">
+             <img src="/imagenes/toolbar-buttons/sinh.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="cosh"
+             @click="insertcosh"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="coseno hiperbólico">
+             <img src="/imagenes/toolbar-buttons/cosh.png" />
+        </button>
+        
+                <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="tanh"
+             @click="inserttanh"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="tangente hiperbólico">
+             <img src="/imagenes/toolbar-buttons/tanh.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="sech"
+             @click="insertsech"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="secante hiperbólico">
+             <img src="/imagenes/toolbar-buttons/sech.png" />
+        </button>
+                <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="csch"
+             @click="insertcsch"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="cosecante hiperbólico">
+             <img src="/imagenes/toolbar-buttons/csch.png" />
+        </button>
+                <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="coth"
+             @click="insertcoth"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="cotangente hiperbólico">
+             <img src="/imagenes/toolbar-buttons/coth.png" />
+        </button>
+                 <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="coth"
+             @click="insertarcsinh"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="arcoseno hiperbólico">
+             <img src="/imagenes/toolbar-buttons/coth.png" />
+        </button>
+        
+                 <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="coth"
+             @click="insertarccosh"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="arcocoseno hiperbólico">
+             <img src="/imagenes/toolbar-buttons/coth.png" />
+        </button>
+                 <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="coth"
+             @click="insertarctanh"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="arcotangente hiperbólico">
+             <img src="/imagenes/toolbar-buttons/coth.png" />
+        </button>
+        
+                 <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="coth"
+             @click="insertarcsech"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="arcosecante hiperbólico">
+             <img src="/imagenes/toolbar-buttons/coth.png" />
+        </button>
+        
+                 <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="coth"
+             @click="insertarccsch"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="cosecante hiperbólico">
+             <img src="/imagenes/toolbar-buttons/coth.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="coth"
+             @click="insertarccoth"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="contangente hiperbólico">
+             <img src="/imagenes/toolbar-buttons/coth.png" />
+        </button>
          <!-- Los botones para Símbolos-->
-       <button v-if="buttonClass === 'symbols-buttons'" id="theta">θ</button>
-       <div v-if="buttonClass === 'symbols-buttons'" id="textoEmergente-theta" class="texto-emergente"></div>     
- 
+       <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="theta"
+             @click="inserttheta"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="theta"
+       >θ</button>
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="infinito"
+             @click="insertinfinito"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="infinito"
+       >∞</button>
+                <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="pm"
+             @click="insertpm"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="pm"
+       >±</button>
+                 <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="pi2"
+             @click="insertpi"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="pi"
+       >π</button>
+                        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="alpha"
+             @click="insertalpha"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="alpha"
+       >α</button>
+                       <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="beta"
+             @click="insertbeta"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="beta"
+       >β</button>
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="gamma"
+             @click="insertgamma"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="gamma"
+       >γ</button>
+        
+                <button 
+             v-if="buttonClass === 'functions-buttons'" 
+             id="circ" 
+             @click="insertcirc"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="grados"
+        >°</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="deltaDif"
+             @click="insertdeltaDif"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="diferencia/delta"
+       >∇</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="delta"
+             @click="insertdeltaMin"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="delta minúscula"
+       >δ</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="in"
+             @click="insertin"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="in"
+       >∈</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="notin"
+             @click="insertnotin"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="notin"
+       >∉</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="lambda"
+             @click="insertlambda"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="lambda"
+       >λ</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="sigma"
+             @click="insertsigma"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="sigma"
+       >σ</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="ipsilon"
+             @click="insertipsilon"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="ipsilon"
+       >ϒ</button>
+
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="thetaMay"
+             @click="insertthetaMay"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="thetaMay"
+       >Θ</button>
+       
+       <button id="latex" @click="TraducirLatex">Borrar</button>
       
       
       </div>    
       </div>
-    </div>
   </div>
 </template>
 
@@ -135,6 +628,8 @@
   
   export default {
   name: 'ToolBar',
+  props: ['dato','banderaParaEdicion'], // variable recibida desde el padre
+
   created() {
     
   },
@@ -145,32 +640,255 @@
       activeButton: 'basic-buttons', // valor inicial para activeButton
       buttonClasses: ['basic-buttons', 'functions-buttons','logic-buttons','symbols-buttons'],// clases adicionales de los botones 
       inputValue: '', // nueva variable para manejar el valor del input
+      showEtiqueta: false,
+      mensaje: "Hola desde el hijo",
+      banderaLocal:'',
     };
   },
   mounted(){
 //      this.initMathQuill();
-      const MQ = MathQuill.getInterface(2); 
-      const mathField = MQ.MathField(this.$refs.mathField); 
-    
+      //const MQ = MathQuill.getInterface(2); 
+      //const mathField = MQ.MathField(this.$refs.mathField); 
+      const MQ = MathQuill.getInterface(2);
+      this.mathField = MQ.MathField(this.$refs.mathField);
+      this.handleInput();
+//      console.log('banderaLocal: '+this.banderaLocal);
+    //  this.funcionEnHijo();
   },
   watch:{
-   
+      dato: {
+      handler(newDatoValue, oldDatoValue) {
+      if (newDatoValue !== oldDatoValue) {
+        // Si el valor de dato ha cambiado, escribir en el campo MathQuill
+        this.mathField.write(this.dato);
+
+        // Realizar aquí alguna lógica adicional si es necesario cuando el dato cambia
+      } else {
+        console.log('no cambió');
+      }
+        },
      },
+  },
   methods: {
     toggleButtons() {
-      this.activeButton = this.selectedOption + '-buttons';
-      //this.MQ = MathQuill.getInterface(2);
-      //this.answerSpan = document.getElementById('input2');
-      //this.answerMathField = this.MQ.MathField(this.answerSpan);
-      },
-     /* initMathQuill() {
-      // Obtiene el elemento div con id "input2"
-     const input2 = document.getElementById('input2');
-      // Inicializa MathQuill en el elemento div
-      const mathField = MathQuill.getInterface(2).MathField(input2);
+      this.activeButton = this.selectedOption + '-buttons'; 
+     },
+    insertLeftP(){
+      this.mathField.cmd('(');
+    },
+    insertRightP(){
+      this.mathField.cmd(')');
+    },
+    insertFrac(){
+      this.mathField.cmd('\\frac')
+      //this.mathField.write('\\frac{}{}');
+    },
+    insertXExp(){
+      this.mathField.cmd('^');
+    },
+    insertXSub(){
+      this.mathField.cmd('_')
+    },
+    insertSqrt(){
+      this.mathField.cmd('\\sqrt')
+    },
+    insertNThroot(){
+      this.mathField.cmd('\\nthroot')
+    },
+    insertSuma(){
+      this.mathField.cmd('+')
+    },
+    insertResta(){
+      this.mathField.cmd('-')
+    },
+    insertTimes(){
+      this.mathField.cmd('\\times')
+    },
+    insertDiv(){
+      this.mathField.cmd('\\div')
+    },
+    insertLn(){
+      this.mathField.write("\\ln\\left(\\right)")
+    },
+    insertExp(){
+      this.mathField.write("\\exp\\left(\\right)")
+    },
+    insertLeq(){
+      this.mathField.write("\\left(\\right)\\leq\\left(\\right)")   
+    },
+    insertGeq(){
+      this.mathField.write("\\left(\\right)\\geq\\left(\\right)")
+    },
+    insertEqual(){
+      //this.mathField.cmd('\\equal')
+      this.mathField.write("\\left(\\right)\\=\\left(\\right)")
+    },
+    
+    insertderivadasimple(){
+      this.mathField.write("(d/d)()")
+    },
+    insertderivadasegundoorden(){
+      this.mathField.write("((d^2/d^2)()")
+    },
+    insertderivadaparcialsimple(){
+      this.mathField.write("(∂/∂)()")
+    },
+    insertderivadaparcialsegundoorden(){
+      this.mathField.write("(∂^2/∂^2)()")
+    },
+    insertpi(){
+      this.mathField.write("\\pi")
+    },
+    insertcirc(){
+      this.mathField.write("°")
+    },
+    insertsin(){
+      this.mathField.write("\\sin\\left(\\right)")
+    },
+    insertsec(){
+      this.mathField.write("\\sin\\left(\\right)")
+    },
+    insertcos(){
+      this.mathField.write("\\cos\\left(\\right)")
+    },
+    inserttan(){
+      this.mathField.write("\\tan\\left(\\right)")
+    },
+    insertcos(){
+      this.mathField.write("\\cos\\left(\\right)")
+    },
+    insertcsc(){
+      this.mathField.write("\\csc\\left(\\right)")
+    },
+    insertcot(){
+      this.mathField.write("\\cot\\left(\\right)")
+    },
+    insertarcsin(){
+      this.mathField.write("\\arcsin\\left(\\right)")
+    },
+    insertarccos(){
+      this.mathField.write("\\arccos\\left(\\right)")
+    },
+    insertarctan(){
+      this.mathField.write("\\arctan\\left(\\right)")
+    },
+    insertsinh(){
+      this.mathField.write("\\sinh\\left(\\right)")
+    },
+    insertcosh(){
+      this.mathField.write("\\cosh\\left(\\right)")
+    },
+    inserttanh(){
+      this.mathField.write("\\sin\\left(\\right)")
+    },
+    insertsech(){
+      this.mathField.write("\\sech\\left(\\right)")
+    },
+    insertcsch(){
+      this.mathField.write("\\csch\\left(\\right)")
+    },
+    insertcoth(){
+      this.mathField.write("\\coth\\left(\\right)")
+    },
+    insertarcsinh(){
+      this.mathField.write("\\arcsinh\\left(\\right)")
+    },
+    insertarccosh(){
+      this.mathField.write("\\arccosh\\left(\\right)")
+    },
+    insertarctanh(){
+      this.mathField.write("\\arctanh\\left(\\right)")
+    },
+    insertarcsech(){
+      this.mathField.write("\\arcsech\\left(\\right)")
+    },
+    insertarccsch(){
+      this.mathField.write("\\arccsch\\left(\\right)")
+    },
+    insertarccoth(){
+      this.mathField.write("\\arccoth\\left(\\right)")
+    },
+    inserttheta(){
+      this.mathField.write("\\theta")
+    },
+    insertinfinito(){
+      this.mathField.write("\\infty")
+    },
+    insertpm(){
+      this.mathField.write("\\pm")
+    },
+    insertalpha(){
+      this.mathField.write("\\alpha")
+    },
+    insertpm(){
+      this.mathField.write("\\pm")
+    },
+    insertbeta(){
+      this.mathField.write("\\beta")
+    },
+    insertgamma(){
+      this.mathField.write("\\gamma")
+    },
+    insertdeltaDif(){
+      this.mathField.write("\\Delta")
+    },
+    insertin(){
+      this.mathField.write("\\in")
+    },
+    insertnotin(){
+      this.mathField.write("\\notin")
+    },
+    insertdeltaMin(){
+      this.mathField.write("\\delta")
+    },
+    insertlambda(){
+     this.mathField.write("\\lambda")
+    },
+    insertsigma(){    
+     this.mathField.write("\\sigma")
+    },
+    insertipsilon(){
+    this.mathField.write("\\Upsilon")
+    },
+    insertthetaMay(){
+    this.mathField.write("\\Theta")
+    },
+    
+    TraducirLatex(){
+      //console.log(this.mathField.latex());
+      //const latexContent = this.mathField.latex();
+      //console.log('hola??');
+     this.mathField.latex(''); // Limpia el contenido del campo MathQuill
       
-  
-  },*/
+    },
+    handleInput(){
+      const mathquillText = this.mathField.latex();
+      console.log(mathquillText);
+      this.$emit('mathquill-updated', mathquillText);
+      
+    },
+    /*funcionEnHijo(){
+      this.banderaLocal= this.banderaParaEdicion,
+      console.log('banderaParaEdicion: '+this.banderaParaEdicion);
+      this.mensaje = "La función en el hijo fue ejecutada";
+            
+     // this.editarCampoMathquill();      
+    },   
+    editarCampoMathquill() {
+        if(this.banderaParaEdicion==true){
+        console.log('si edita');
+        this.mathField.write(this.dato)
+        }
+      this.banderaLocal=false;      
+            
+       //this.limpiarCampoMathquill();
+          
+     }, */
+    limpiarCampoMathquill(){
+      
+       this.mathField.latex(''); // Limpia el contenido del campo MathQuill
+      
+    },
   },
 };
 </script>
@@ -306,4 +1024,14 @@
   height: 40px;
   font-size: 16px; 
 }
+.tooltip {
+  position: relative;
+}
+
+
+
+
+
+
+
 </style>
