@@ -18470,6 +18470,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import MathQuill from 'mathquill';
 //import MathQuillDirective from './directives/MathQuillDirective';
 // import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
@@ -18618,6 +18676,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     insertint3: function insertint3() {
       this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ }");
     },
+    insertsigma: function insertsigma() {
+      this.mathField.write("\\sum_{ }^{ }");
+    },
+    insertprod: function insertprod() {
+      this.mathField.write("\\prod");
+    },
+    insertlaplace: function insertlaplace() {
+      this.mathField.write("LaplaceTransform[,,]");
+    },
+    insertlaplaceinv: function insertlaplaceinv() {
+      this.mathField.write("InverseLaplaceTransform[,,]");
+    },
+    insertfourier: function insertfourier() {
+      this.mathField.write("FourierTransform[,,]");
+    },
+    insertfourierinv: function insertfourierinv() {
+      this.mathField.write("InverseFourierTransform[,,]");
+    },
     insertpi: function insertpi() {
       this.mathField.write("\\pi");
     },
@@ -18696,7 +18772,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.mathField.write("\\delta");
   }), _defineProperty(_methods, "insertlambda", function insertlambda() {
     this.mathField.write("\\lambda");
-  }), _defineProperty(_methods, "insertsigma", function insertsigma() {
+  }), _defineProperty(_methods, "insertsigma2", function insertsigma2() {
     this.mathField.write("\\sigma");
   }), _defineProperty(_methods, "insertipsilon", function insertipsilon() {
     this.mathField.write("\\Upsilon");
@@ -69305,6 +69381,160 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sigma", title: "suma" },
+                      on: {
+                        click: _vm.insertsigma,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sigma.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "prod", title: "prod" },
+                      on: {
+                        click: _vm.insertprod,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/prod.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "laplace",
+                        title: "transformada de laplace"
+                      },
+                      on: {
+                        click: _vm.insertlaplace,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/laplace.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "laplaceinv",
+                        title: "transformada de laplace inversa"
+                      },
+                      on: {
+                        click: _vm.insertlaplaceinv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/laplaceinv.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "fourier",
+                        title: "transformada de fourier"
+                      },
+                      on: {
+                        click: _vm.insertfourier,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/fourier.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "fourierinv",
+                        title: "transformada de fourier inverisa"
+                      },
+                      on: {
+                        click: _vm.insertfourierinv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/fourierinv.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               buttonClass === "functions-buttons"
                 ? _c(
                     "button",
@@ -70083,7 +70313,7 @@ var render = function() {
                     {
                       attrs: { id: "sigma", title: "sigma" },
                       on: {
-                        click: _vm.insertsigma,
+                        click: _vm.insertsigma2,
                         mouseover: function($event) {
                           _vm.showEtiqueta = true
                         },

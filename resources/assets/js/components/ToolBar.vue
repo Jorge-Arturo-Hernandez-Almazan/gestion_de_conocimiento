@@ -332,7 +332,7 @@
              title="integral definida doble">
              <img src="/imagenes/toolbar-buttons/definidadoble.png" />
         </button>
-         <button 
+        <button 
              v-if="buttonClass === 'logic-buttons'" 
              id="int3"
              @click="insertint3"
@@ -340,6 +340,64 @@
              @mouseleave="showEtiqueta = false"
              title="integral definida triple">
              <img src="/imagenes/toolbar-buttons/definidatriple.png" />
+        </button>
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="sigma"
+             @click="insertsigma"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="suma">
+             <img src="/imagenes/toolbar-buttons/sigma.png" />
+        </button>
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="prod"
+             @click="insertprod"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="prod">
+             <img src="/imagenes/toolbar-buttons/prod.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="laplace"
+             @click="insertlaplace"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="transformada de laplace">
+             <img src="/imagenes/toolbar-buttons/laplace.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="laplaceinv"
+             @click="insertlaplaceinv"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="transformada de laplace inversa">
+             <img src="/imagenes/toolbar-buttons/laplaceinv.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="fourier"
+             @click="insertfourier"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="transformada de fourier">
+             <img src="/imagenes/toolbar-buttons/fourier.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="fourierinv"
+             @click="insertfourierinv"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="transformada de fourier inverisa">
+             <img src="/imagenes/toolbar-buttons/fourierinv.png" />
         </button>
         
         
@@ -687,7 +745,7 @@
         <button 
              v-if="buttonClass === 'symbols-buttons'" 
              id="sigma"
-             @click="insertsigma"
+             @click="insertsigma2"
              @mouseover="showEtiqueta = true"
              @mouseleave="showEtiqueta = false"
              title="sigma"
@@ -937,7 +995,26 @@
      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ }")
    },
     
-    insertpi(){
+   insertsigma(){
+     this.mathField.write("\\sum_{ }^{ }")
+   },
+    
+   insertprod(){
+     this.mathField.write("\\prod")
+   },
+   insertlaplace(){
+     this.mathField.write("LaplaceTransform[,,]")
+   },
+   insertlaplaceinv(){
+     this.mathField.write("InverseLaplaceTransform[,,]")
+   },
+   insertfourier(){
+     this.mathField.write("FourierTransform[,,]")
+   },
+   insertfourierinv(){
+     this.mathField.write("InverseFourierTransform[,,]")
+   },    
+   insertpi(){
       this.mathField.write("\\pi")
     },
     insertcirc(){
@@ -1045,7 +1122,7 @@
     insertlambda(){
      this.mathField.write("\\lambda")
     },
-    insertsigma(){    
+    insertsigma2(){    
      this.mathField.write("\\sigma")
     },
     insertipsilon(){
