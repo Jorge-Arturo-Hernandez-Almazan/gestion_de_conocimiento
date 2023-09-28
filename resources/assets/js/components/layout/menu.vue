@@ -37,7 +37,8 @@
 							</p>
 						</router-link>
 					</li>
-					
+          
+        	
 					<li v-if="this.id_rol==1" class="nav-header"> <b> ACCESO </b> </li>
 
 					<li v-if="this.id_rol==1" class="nav-item">							

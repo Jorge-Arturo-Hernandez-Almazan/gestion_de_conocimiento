@@ -236,6 +236,114 @@
              <img src="/imagenes/toolbar-buttons/parcial2orden.png" />
         </button>
         
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="derivadaparcialmixta"
+             @click="insertderivadaparcialmixta"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="derivada parcial mixta">
+             <img src="/imagenes/toolbar-buttons/derivadamixta.png" />
+        </button>
+        
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="intindeff"
+             @click="insertintindeff"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="integral indefinida">
+             <img src="/imagenes/toolbar-buttons/indefinida.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="intintindef"
+             @click="insertintintindef"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="integral doble indefinida">
+             <img src="/imagenes/toolbar-buttons/indefinidadoble.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="intintintindef"
+             @click="insertintintintindef"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="integral triple indefinida">
+             <img src="/imagenes/toolbar-buttons/indefinidatriple.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="limite"
+             @click="insertlimite"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="limite">
+             <img src="/imagenes/toolbar-buttons/lim.png" />
+        </button>
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="limiteizq"
+             @click="insertlimiteizq"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="limite por la izquierda">
+             <img src="/imagenes/toolbar-buttons/limizq.png" />
+        </button>
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="limiteder"
+             @click="insertlimiteder"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="limite por la derecha">
+             <img src="/imagenes/toolbar-buttons/limder.png" />
+        </button>
+        
+        <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="pasounitario"
+             @click="insertpasounitario"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="paso unitario">
+             <img src="/imagenes/toolbar-buttons/pasounit.png" />
+        </button>
+         <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="int"
+             @click="insertint"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="integral definida">
+             <img src="/imagenes/toolbar-buttons/definida.png" />
+        </button>
+         <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="int2"
+             @click="insertint2"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="integral definida doble">
+             <img src="/imagenes/toolbar-buttons/definidadoble.png" />
+        </button>
+         <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="int3"
+             @click="insertint3"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="integral definida triple">
+             <img src="/imagenes/toolbar-buttons/definidatriple.png" />
+        </button>
+        
+        
+        
         <!-- Los botones para Trigonometría -->
         <button 
              v-if="buttonClass === 'functions-buttons'" 
@@ -533,20 +641,20 @@
 
         <button 
              v-if="buttonClass === 'symbols-buttons'" 
-             id="deltaDif"
-             @click="insertdeltaDif"
+             id="deltaMay"
+             @click="insertdeltaMay"
              @mouseover="showEtiqueta = true"
              @mouseleave="showEtiqueta = false"
-             title="diferencia/delta"
-       >∇</button>
+             title="delta Mayúscula"
+       >Δ</button>
 
         <button 
              v-if="buttonClass === 'symbols-buttons'" 
              id="delta"
-             @click="insertdeltaMin"
+             @click="insertdelta"
              @mouseover="showEtiqueta = true"
              @mouseleave="showEtiqueta = false"
-             title="delta minúscula"
+             title="delta"
        >δ</button>
 
         <button 
@@ -602,6 +710,64 @@
              @mouseleave="showEtiqueta = false"
              title="thetaMay"
        >Θ</button>
+        
+         <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="paraTodo"
+             @click="insertParatodo"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Para todo"
+       >∀</button>
+        
+       <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="exist"
+             @click="insertExist"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Existe"
+       >∃</button>
+        
+        
+         <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="union"
+             @click="insertUnion"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Unión"
+       >∪</button>
+        
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="interseccion"
+             @click="insertIntersec"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Intersección"
+       >∩</button>
+        
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="zeta"
+             @click="insertZeta"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Zeta"
+       >ζ</button>
+        
+        
+        <button 
+             v-if="buttonClass === 'symbols-buttons'" 
+             id="eta"
+             @click="insertEta"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Eta"
+       >η</button>
+        
+        
        
        <button id="latex" @click="TraducirLatex">Borrar</button>
       
@@ -736,6 +902,41 @@
     insertderivadaparcialsegundoorden(){
       this.mathField.write("(∂^2/∂^2)()")
     },
+    insertderivadaparcialmixta(){
+      this.mathField.write("(∂^2/∂∂)()")
+    },
+    insertintindeff(){
+      this.mathField.write("\\int()")
+    },
+   insertintintindef(){
+      this.mathField.write("\\int\\int()")
+    },
+    insertintintintindef(){
+      this.mathField.write("\\int\\int\\int()")
+    },
+    insertlimite(){
+      this.mathField.write("lim_{() -> ()}()")
+    },
+   insertlimiteizq(){
+     this.mathField.write("lim_{() -> ()^-} ()")
+   },
+    
+   insertlimiteder(){
+     this.mathField.write("lim_{()->()^+}()")
+   },
+   insertpasounitario(){
+     this.mathField.write("UnitStep[]")
+   },
+   insertint(){
+     this.mathField.write("\\int_{ }^{ }")
+   },
+   insertint2(){
+     this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }")
+   },
+   insertint3(){
+     this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ }")
+   },
+    
     insertpi(){
       this.mathField.write("\\pi")
     },
@@ -829,7 +1030,7 @@
     insertgamma(){
       this.mathField.write("\\gamma")
     },
-    insertdeltaDif(){
+    insertdeltaMay(){
       this.mathField.write("\\Delta")
     },
     insertin(){
@@ -838,7 +1039,7 @@
     insertnotin(){
       this.mathField.write("\\notin")
     },
-    insertdeltaMin(){
+    insertdelta(){
       this.mathField.write("\\delta")
     },
     insertlambda(){
@@ -853,6 +1054,26 @@
     insertthetaMay(){
     this.mathField.write("\\Theta")
     },
+    insertParatodo(){
+    this.mathField.write("\\forall")
+    },
+    insertExist(){
+    this.mathField.write("\\exists")
+    },
+    insertUnion(){
+    this.mathField.write("\\union")
+    },
+    insertIntersec(){
+    this.mathField.write("\\intersection")
+    },
+    insertZeta(){
+    this.mathField.write("\\zeta")
+    },
+    insertEta(){
+    this.mathField.write("\\eta")
+    },
+    
+    
     
     TraducirLatex(){
       //console.log(this.mathField.latex());

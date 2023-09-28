@@ -1113,7 +1113,7 @@
                 }
                 break;
             }
-            showProgress();
+            //showProgress();
           }
         };
         //Asegurar que solo sean checkeados las posibles respuestas
@@ -1135,12 +1135,12 @@
           }
 
         };
-        function showProgress() {
+        /*function showProgress() {
           var currentQuestionNumber = cuestionarioTema.questionIndex + 1;
           var element = document.getElementById("progress");
           element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + questionIndex.questions
             .length;
-        };
+        };*/
         async function showScores() {
 
           var gameOverHTML = "<h1>Resultados</h1>";

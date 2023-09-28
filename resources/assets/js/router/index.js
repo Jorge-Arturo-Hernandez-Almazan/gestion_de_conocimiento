@@ -37,6 +37,9 @@ export default new Router({
         name:'Index',
         component:Index
     },
+     
+        
+     
 	{
         path:'/accesos/configuracion',
         name:'AccesoRutas',
@@ -102,7 +105,7 @@ export default new Router({
         name: 'PreguntasOpcionMultipleCalculadas',
         component: PreguntasOpcionMultipleCalculadas
 	},
-         {
+  {
 		path: '/PreguntasExpresiones',
         name: 'PreguntasExpresione',
         component: PreguntasExpresiones

@@ -158,13 +158,16 @@
                                   
                                   <!--div v-html="bladeContent"></div-->
 
-                                    <p class="text-left mt-0 mb-0"><b>Respuesta: <span
+                                    <!--p class="text-left mt-0 mb-0"><b>Respuesta: <span
                                                 style="color:red">*</span>:</b></p>
                                     <textarea rows="1" id="respuesta" type="text"
                                         class="form-control mt-0 mb-0" placeholder="Respuesta"
                                         @focus="limpiarCampos('respuesta')"></textarea>
-                                    <span id="msjInputRespuesta"> </span>
-                                    
+                                    <span id="msjInputRespuesta"> </span-->
+                               <p>                               
+                                  </p> 
+                                   <tool-bar @mathquill-updated="handleMathquillUpdateRespuesta"></tool-bar>
+                            
                                     <!--p class="text-left mt-0 mb-0"><b>Margen de error: <span
                                                 style="color:red">*</span>:</b></p-->
                                     <input id="margen" placeholder="margen" type="hidden"
@@ -360,6 +363,7 @@
                 parseoEnLatex:'',
                 datoParaHijo: '',
                 banderaEdicion:'',
+                parseoEnLatexRespuesta:'',
             };
         },
         created() {
@@ -384,6 +388,12 @@
                 console.log('texto de mathQuill en Componente A:', mathquillText);
              //    return mathquillText;
               this.parseoEnLatex=mathquillText;
+                
+            },
+            handleMathquillUpdateRespuesta(mathquillText) {
+                console.log('texto de mathQuill en Componente A:', mathquillText);
+             //    return mathquillText;
+              this.parseoEnLatexRespuesta=mathquillText;
                 
             },
             obtenerParseo(){
@@ -520,7 +530,7 @@
                 console.log("soy descripcion "+inputDescripcion);  
                 let preguntaParseada = this.parseoEnLatex;
                 console.log("preguntaParseada "+preguntaParseada);
-                let inputRespuesta = document.getElementById("respuesta");
+                let inputRespuesta = this.parseoEnLatexRespuesta;
                 let inputMargen = document.getElementById("margen");
                 let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
@@ -531,8 +541,9 @@
                 this.arriba = document.getElementById("arriba").checked;
                 this.abajo = document.getElementById("abajo").checked;
                 this.pregunta = preguntaParseada;
-                this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
-                    /[\u0300-\u036f]/g, "").replace(/ /g, "")
+                this.respuesta=this.parseoEnLatexRespuesta;
+                //this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
+                //    /[\u0300-\u036f]/g, "").replace(/ /g, "")
                 if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "") {
                     if (this.id_tema == "") {
                         selectTema.style.border = "1px solid #ff6258";
@@ -544,11 +555,11 @@
                         msjinputDescripcion.innerHTML = "Este dato es obligatorio";
                         msjinputDescripcion.style.color = "#ff6258";
                     }
-                    if (this.respuesta == "") {
+                    /*if (this.respuesta == "") {
                         inputRespuesta.style.border = "1px solid #ff6258";
                         msjInputRespuesta.innerHTML = "Este dato es obligatorio";
                         msjInputRespuesta.style.color = "#ff6258";
-                    }
+                    }*/
 
                     if (this.margen == "") {
                         inputMargen.style.border = "1px solid #ff6258";
@@ -573,7 +584,7 @@
                             },
             limpiarCampos(id) {
                 let inputDescripcion = document.getElementById("pregunta");
-                let inputRespuesta = document.getElementById("respuesta");
+         //       let inputRespuesta = document.getElementById("respuesta");
                 let inputMargen = document.getElementById("margen");
                 let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
@@ -588,26 +599,28 @@
                     inputDescripcion.style.border = "1px solid #dee2e6";
                     msjinputDescripcion.innerHTML = "";
                 }
-                if (id == "respuesta") {
+                /*if (id == "respuesta") {
                     inputRespuesta.style.border = "1px solid #dee2e6";
                     msjInputRespuesta.innerHTML = "";
-                }
+                }*/
                 if (id == "margen") {
                     inputMargen.style.border = "1px solid #dee2e6";
                     msjInputMargen.innerHTML = "";
 
                 }
+          //      this.$refs.hijoComponent.limpiarCampoMathquill();
+      
             },
             btnEditar(id,pregunta, descripcion,respuesta, tipo, id_tema, margen, imagenes) {
                 this.totalImagenesEnPregunta = (imagenes.length + 1);
                 this.subidor.imagenesVistaPrevia = [];
                 let inputDescripcion = document.getElementById("pregunta");
                 //console.log("soy inputDescripcion"+inputDescripcion.value);
-                let inputRespuesta = document.getElementById("respuesta");
+                //let inputRespuesta = document.getElementById("respuesta");
                 let inputMargen = document.getElementById("margen");
                 this.modoEdicion = 1;
                 this.id = id;
-                inputRespuesta.value = respuesta;
+                //inputRespuesta.value = respuesta;
                 //this.aboutname=descripcion;          
          //       this.$refs.hijoComponent.funcionEnHijo();
                 console.log("dato a enviar:" +descripcion); 
@@ -633,10 +646,10 @@
             },
             cambiarModo() {
                 let inputDescripcion = document.getElementById("pregunta");
-                let inputRespuesta = document.getElementById("respuesta");
+                //let inputRespuesta = document.getElementById("respuesta");
                 let inputMargen = document.getElementById("margen");
                 inputMargen.value = this.margend;
-                inputRespuesta.value = "";
+      //          inputRespuesta.value = "";
                 inputDescripcion.value = "";
                 this.id_tema = "";
                 this.subidor.imagenesVistaPrevia = [];
@@ -651,7 +664,7 @@
             },
             editar() {
                 let inputDescripcion = document.getElementById("pregunta");
-                let inputRespuesta = document.getElementById("respuesta");
+                //let inputRespuesta = document.getElementById("respuesta");
                 let selectTema = document.getElementById("id_tema");
                 let msjSelectTema = document.getElementById("msjSelectTema");
                 let msjInputRespuesta = document.getElementById("msjInputRespuesta");
@@ -660,9 +673,9 @@
                 this.arriba = document.getElementById("arriba").checked;
                 this.abajo = document.getElementById("abajo").checked;
                 this.pregunta = inputDescripcion.value;
-                this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
-                    /[\u0300-\u036f]/g, "").replace(/ /g, "")
-                if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "") {
+                //this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
+                  //  /[\u0300-\u036f]/g, "").replace(/ /g, "")
+                if (this.id_tema == "" || this.pregunta == "" || this.margen == "") {
                     if (this.id_tema == "") {
                         selectTema.style.border = "1px solid #ff6258";
                         msjSelectTema.innerHTML = "Este dato es obligatorio";
@@ -673,11 +686,11 @@
                         msjinputDescripcion.innerHTML = "Este dato es obligatorio";
                         msjinputDescripcion.style.color = "#ff6258";
                     }
-                    if (this.respuesta == "") {
+                 /*   if (this.respuesta == "") {
                         inputRespuesta.style.border = "1px solid #ff6258";
                         msjInputRespuesta.innerHTML = "Este dato es obligatorio";
                         msjInputRespuesta.style.color = "#ff6258";
-                    }
+                    }*/
                     if (this.margen == "") {
                         inputMargen.style.border = "1px solid #ff6258";
                         msjInputMargen.innerHTML = "Este dato es obligatorio";
@@ -689,7 +702,7 @@
                         id: this.id,
                         descripcion: this.pregunta,
                         pregunta: this.parseoEnLatex, //aqui se debe de enviar lo escrito en el cuadro de mathquill
-                        respuesta: this.respuesta,
+                        respuesta: this.parseoEnLatexRespuesta,
                         tipo: this.tipo,
                         id_tema: this.id_tema,
                         imagenesAEliminar: this.subidor.imagenesAEliminar,
@@ -700,7 +713,7 @@
                         await this.subidor.subirImagenes(this.id);
                         await this.getPreguntaExpresiones();
                         this.id = "";
-                        this.respuesta = "";
+                        //this.respuesta = "";
                         this.pregunta = "";
                         this.id_tema = "";
                         this.arriba = "";

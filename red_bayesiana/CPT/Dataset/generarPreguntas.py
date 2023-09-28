@@ -253,9 +253,9 @@ conexion1=mysql.connector.connect(user='root', password='PROYECTO1KMS', host='lo
 for i in range(len(padres)):
  
 
-  preguntasNumericas(conexion1,padres_ids[i])
- # preguntasAbiertas(conexion1,padres_ids[i])
-   #preguntasVF(conexion1,padres_ids[i])
+  #preguntasNumericas(conexion1,padres_ids[i])
+  preguntasAbiertas(conexion1,padres_ids[i])
+  preguntasVF(conexion1,padres_ids[i])
    #preguntasOMultiple(conexion1,padres_ids[i])
   #preguntasCalculadasS(conexion1,padres_ids[i])
    #preguntasCalculadasM(conexion1,padres_ids[i])

@@ -5559,13 +5559,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _cargarCuestionario = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18(topic, prguntass) {
-        var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, cuestionarioTema, _this, populate, _populate, guess, showProgress, showScores, _showScores;
+        var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, cuestionarioTema, _this, populate, _populate, guess, showScores, _showScores;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee18$(_context19) {
           while (1) {
             switch (_context19.prev = _context19.next) {
               case 0:
-                _showScores = function _ref13() {
+                _showScores = function _ref12() {
                   _showScores = _asyncToGenerator(
                   /*#__PURE__*/
                   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17() {
@@ -5613,14 +5613,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return _showScores.apply(this, arguments);
                 };
 
-                showScores = function _ref12() {
+                showScores = function _ref11() {
                   return _showScores.apply(this, arguments);
-                };
-
-                showProgress = function _ref11() {
-                  var currentQuestionNumber = cuestionarioTema.questionIndex + 1;
-                  var element = document.getElementById("progress");
-                  element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + questionIndex.questions.length;
                 };
 
                 guess = function _ref10() {
@@ -5672,7 +5666,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               }
                             }
 
-                            _context17.next = 74;
+                            _context17.next = 73;
                             break;
 
                           case 4:
@@ -5846,9 +5840,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             return _context17.abrupt("break", 73);
 
                           case 73:
-                            showProgress();
-
-                          case 74:
                           case "end":
                             return _context17.stop();
                         }
@@ -6275,14 +6266,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }, _callee15);
                 })));
                 _this = this;
+                //showProgress();
                 ; //Asegurar que solo sean checkeados las posibles respuestas
 
                 ;
-                ;
+                /*function showProgress() {
+                  var currentQuestionNumber = cuestionarioTema.questionIndex + 1;
+                  var element = document.getElementById("progress");
+                  element.innerHTML = "<b> Progreso: </b>" + currentQuestionNumber + " de " + questionIndex.questions
+                    .length;
+                };*/
+
                 ;
                 populate();
 
-              case 26:
+              case 24:
               case "end":
                 return _context19.stop();
             }
@@ -10913,6 +10911,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
  //importar el archivo donde se encuentra el toolbar
@@ -10941,7 +10942,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         value: '',
         keys: ['pregunta', 'tema']
       }
-    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "modoEdicion", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _defineProperty(_ref, "parseoEnLatex", ''), _defineProperty(_ref, "datoParaHijo", ''), _defineProperty(_ref, "banderaEdicion", ''), _ref;
+    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "modoEdicion", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _defineProperty(_ref, "parseoEnLatex", ''), _defineProperty(_ref, "datoParaHijo", ''), _defineProperty(_ref, "banderaEdicion", ''), _defineProperty(_ref, "parseoEnLatexRespuesta", ''), _ref;
   },
   created: function created() {
     this.subidor = new _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__["default"]();
@@ -10966,6 +10967,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log('texto de mathQuill en Componente A:', mathquillText); //    return mathquillText;
 
       this.parseoEnLatex = mathquillText;
+    },
+    handleMathquillUpdateRespuesta: function handleMathquillUpdateRespuesta(mathquillText) {
+      console.log('texto de mathQuill en Componente A:', mathquillText); //    return mathquillText;
+
+      this.parseoEnLatexRespuesta = mathquillText;
     },
     obtenerParseo: function obtenerParseo() {
       //let descripcion = this.handleMathquillUpdate(this.mathquillText);
@@ -11208,7 +11214,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log("soy descripcion " + inputDescripcion);
       var preguntaParseada = this.parseoEnLatex;
       console.log("preguntaParseada " + preguntaParseada);
-      var inputRespuesta = document.getElementById("respuesta");
+      var inputRespuesta = this.parseoEnLatexRespuesta;
       var inputMargen = document.getElementById("margen");
       var selectTema = document.getElementById("id_tema");
       var msjSelectTema = document.getElementById("msjSelectTema");
@@ -11219,7 +11225,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.arriba = document.getElementById("arriba").checked;
       this.abajo = document.getElementById("abajo").checked;
       this.pregunta = preguntaParseada;
-      this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
+      this.respuesta = this.parseoEnLatexRespuesta; //this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
+      //    /[\u0300-\u036f]/g, "").replace(/ /g, "")
 
       if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "") {
         if (this.id_tema == "") {
@@ -11233,12 +11240,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           msjinputDescripcion.innerHTML = "Este dato es obligatorio";
           msjinputDescripcion.style.color = "#ff6258";
         }
+        /*if (this.respuesta == "") {
+            inputRespuesta.style.border = "1px solid #ff6258";
+            msjInputRespuesta.innerHTML = "Este dato es obligatorio";
+            msjInputRespuesta.style.color = "#ff6258";
+        }*/
 
-        if (this.respuesta == "") {
-          inputRespuesta.style.border = "1px solid #ff6258";
-          msjInputRespuesta.innerHTML = "Este dato es obligatorio";
-          msjInputRespuesta.style.color = "#ff6258";
-        }
 
         if (this.margen == "") {
           inputMargen.style.border = "1px solid #ff6258";
@@ -11253,8 +11260,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     },
     limpiarCampos: function limpiarCampos(id) {
-      var inputDescripcion = document.getElementById("pregunta");
-      var inputRespuesta = document.getElementById("respuesta");
+      var inputDescripcion = document.getElementById("pregunta"); //       let inputRespuesta = document.getElementById("respuesta");
+
       var inputMargen = document.getElementById("margen");
       var selectTema = document.getElementById("id_tema");
       var msjSelectTema = document.getElementById("msjSelectTema");
@@ -11271,27 +11278,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         inputDescripcion.style.border = "1px solid #dee2e6";
         msjinputDescripcion.innerHTML = "";
       }
+      /*if (id == "respuesta") {
+          inputRespuesta.style.border = "1px solid #dee2e6";
+          msjInputRespuesta.innerHTML = "";
+      }*/
 
-      if (id == "respuesta") {
-        inputRespuesta.style.border = "1px solid #dee2e6";
-        msjInputRespuesta.innerHTML = "";
-      }
 
       if (id == "margen") {
         inputMargen.style.border = "1px solid #dee2e6";
         msjInputMargen.innerHTML = "";
-      }
+      } //      this.$refs.hijoComponent.limpiarCampoMathquill();
+
     },
     btnEditar: function btnEditar(id, pregunta, descripcion, respuesta, tipo, id_tema, margen, imagenes) {
       this.totalImagenesEnPregunta = imagenes.length + 1;
       this.subidor.imagenesVistaPrevia = [];
       var inputDescripcion = document.getElementById("pregunta"); //console.log("soy inputDescripcion"+inputDescripcion.value);
+      //let inputRespuesta = document.getElementById("respuesta");
 
-      var inputRespuesta = document.getElementById("respuesta");
       var inputMargen = document.getElementById("margen");
       this.modoEdicion = 1;
-      this.id = id;
-      inputRespuesta.value = respuesta; //this.aboutname=descripcion;          
+      this.id = id; //inputRespuesta.value = respuesta;
+      //this.aboutname=descripcion;          
       //       this.$refs.hijoComponent.funcionEnHijo();
 
       console.log("dato a enviar:" + descripcion);
@@ -11317,11 +11325,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.limpiarCampos("respuesta");
     },
     cambiarModo: function cambiarModo() {
-      var inputDescripcion = document.getElementById("pregunta");
-      var inputRespuesta = document.getElementById("respuesta");
+      var inputDescripcion = document.getElementById("pregunta"); //let inputRespuesta = document.getElementById("respuesta");
+
       var inputMargen = document.getElementById("margen");
-      inputMargen.value = this.margend;
-      inputRespuesta.value = "";
+      inputMargen.value = this.margend; //          inputRespuesta.value = "";
+
       inputDescripcion.value = "";
       this.id_tema = "";
       this.subidor.imagenesVistaPrevia = [];
@@ -11336,8 +11344,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     editar: function editar() {
       var _this8 = this;
 
-      var inputDescripcion = document.getElementById("pregunta");
-      var inputRespuesta = document.getElementById("respuesta");
+      var inputDescripcion = document.getElementById("pregunta"); //let inputRespuesta = document.getElementById("respuesta");
+
       var selectTema = document.getElementById("id_tema");
       var msjSelectTema = document.getElementById("msjSelectTema");
       var msjInputRespuesta = document.getElementById("msjInputRespuesta");
@@ -11345,10 +11353,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.margen = document.getElementById("margen").value;
       this.arriba = document.getElementById("arriba").checked;
       this.abajo = document.getElementById("abajo").checked;
-      this.pregunta = inputDescripcion.value;
-      this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
+      this.pregunta = inputDescripcion.value; //this.respuesta = inputRespuesta.value.toString().toLowerCase().normalize("NFD").replace(
+      //  /[\u0300-\u036f]/g, "").replace(/ /g, "")
 
-      if (this.id_tema == "" || this.pregunta == "" || this.respuesta == "" || this.margen == "") {
+      if (this.id_tema == "" || this.pregunta == "" || this.margen == "") {
         if (this.id_tema == "") {
           selectTema.style.border = "1px solid #ff6258";
           msjSelectTema.innerHTML = "Este dato es obligatorio";
@@ -11360,12 +11368,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           msjinputDescripcion.innerHTML = "Este dato es obligatorio";
           msjinputDescripcion.style.color = "#ff6258";
         }
+        /*   if (this.respuesta == "") {
+               inputRespuesta.style.border = "1px solid #ff6258";
+               msjInputRespuesta.innerHTML = "Este dato es obligatorio";
+               msjInputRespuesta.style.color = "#ff6258";
+           }*/
 
-        if (this.respuesta == "") {
-          inputRespuesta.style.border = "1px solid #ff6258";
-          msjInputRespuesta.innerHTML = "Este dato es obligatorio";
-          msjInputRespuesta.style.color = "#ff6258";
-        }
 
         if (this.margen == "") {
           inputMargen.style.border = "1px solid #ff6258";
@@ -11378,7 +11386,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           descripcion: this.pregunta,
           pregunta: this.parseoEnLatex,
           //aqui se debe de enviar lo escrito en el cuadro de mathquill
-          respuesta: this.respuesta,
+          respuesta: this.parseoEnLatexRespuesta,
           tipo: this.tipo,
           id_tema: this.id_tema,
           imagenesAEliminar: this.subidor.imagenesAEliminar,
@@ -11402,8 +11410,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   return _this8.getPreguntaExpresiones();
 
                 case 4:
-                  _this8.id = "";
-                  _this8.respuesta = "";
+                  _this8.id = ""; //this.respuesta = "";
+
                   _this8.pregunta = "";
                   _this8.id_tema = "";
                   _this8.arriba = "";
@@ -11420,7 +11428,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   $('#registrarPregunta').modal('toggle');
 
-                case 12:
+                case 11:
                 case "end":
                   return _context7.stop();
               }
@@ -18296,6 +18304,172 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import MathQuill from 'mathquill';
 //import MathQuillDirective from './directives/MathQuillDirective';
 // import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
@@ -18411,6 +18585,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     insertderivadaparcialsegundoorden: function insertderivadaparcialsegundoorden() {
       this.mathField.write("(∂^2/∂^2)()");
     },
+    insertderivadaparcialmixta: function insertderivadaparcialmixta() {
+      this.mathField.write("(∂^2/∂∂)()");
+    },
+    insertintindeff: function insertintindeff() {
+      this.mathField.write("\\int()");
+    },
+    insertintintindef: function insertintintindef() {
+      this.mathField.write("\\int\\int()");
+    },
+    insertintintintindef: function insertintintintindef() {
+      this.mathField.write("\\int\\int\\int()");
+    },
+    insertlimite: function insertlimite() {
+      this.mathField.write("lim_{() -> ()}()");
+    },
+    insertlimiteizq: function insertlimiteizq() {
+      this.mathField.write("lim_{() -> ()^-} ()");
+    },
+    insertlimiteder: function insertlimiteder() {
+      this.mathField.write("lim_{()->()^+}()");
+    },
+    insertpasounitario: function insertpasounitario() {
+      this.mathField.write("UnitStep[]");
+    },
+    insertint: function insertint() {
+      this.mathField.write("\\int_{ }^{ }");
+    },
+    insertint2: function insertint2() {
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }");
+    },
+    insertint3: function insertint3() {
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ }");
+    },
     insertpi: function insertpi() {
       this.mathField.write("\\pi");
     },
@@ -18479,13 +18686,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.mathField.write("\\beta");
   }), _defineProperty(_methods, "insertgamma", function insertgamma() {
     this.mathField.write("\\gamma");
-  }), _defineProperty(_methods, "insertdeltaDif", function insertdeltaDif() {
+  }), _defineProperty(_methods, "insertdeltaMay", function insertdeltaMay() {
     this.mathField.write("\\Delta");
   }), _defineProperty(_methods, "insertin", function insertin() {
     this.mathField.write("\\in");
   }), _defineProperty(_methods, "insertnotin", function insertnotin() {
     this.mathField.write("\\notin");
-  }), _defineProperty(_methods, "insertdeltaMin", function insertdeltaMin() {
+  }), _defineProperty(_methods, "insertdelta", function insertdelta() {
     this.mathField.write("\\delta");
   }), _defineProperty(_methods, "insertlambda", function insertlambda() {
     this.mathField.write("\\lambda");
@@ -18495,6 +18702,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.mathField.write("\\Upsilon");
   }), _defineProperty(_methods, "insertthetaMay", function insertthetaMay() {
     this.mathField.write("\\Theta");
+  }), _defineProperty(_methods, "insertParatodo", function insertParatodo() {
+    this.mathField.write("\\forall");
+  }), _defineProperty(_methods, "insertExist", function insertExist() {
+    this.mathField.write("\\exists");
+  }), _defineProperty(_methods, "insertUnion", function insertUnion() {
+    this.mathField.write("\\union");
+  }), _defineProperty(_methods, "insertIntersec", function insertIntersec() {
+    this.mathField.write("\\intersection");
+  }), _defineProperty(_methods, "insertZeta", function insertZeta() {
+    this.mathField.write("\\zeta");
+  }), _defineProperty(_methods, "insertEta", function insertEta() {
+    this.mathField.write("\\eta");
   }), _defineProperty(_methods, "TraducirLatex", function TraducirLatex() {
     //console.log(this.mathField.latex());
     //const latexContent = this.mathField.latex();
@@ -19654,6 +19873,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -63309,24 +63529,14 @@ var render = function() {
                           on: { "mathquill-updated": _vm.handleMathquillUpdate }
                         }),
                         _vm._v(" "),
-                        _vm._m(4),
+                        _c("p"),
                         _vm._v(" "),
-                        _c("textarea", {
-                          staticClass: "form-control mt-0 mb-0",
-                          attrs: {
-                            rows: "1",
-                            id: "respuesta",
-                            type: "text",
-                            placeholder: "Respuesta"
-                          },
+                        _c("tool-bar", {
                           on: {
-                            focus: function($event) {
-                              return _vm.limpiarCampos("respuesta")
-                            }
+                            "mathquill-updated":
+                              _vm.handleMathquillUpdateRespuesta
                           }
                         }),
-                        _vm._v(" "),
-                        _c("span", { attrs: { id: "msjInputRespuesta" } }),
                         _vm._v(" "),
                         _c("input", {
                           staticClass: "form-control mt-0 mb-0",
@@ -63344,9 +63554,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("span", { attrs: { id: "msjInputMargen" } }),
                         _vm._v(" "),
-                        _vm._m(5),
+                        _vm._m(4),
                         _vm._v(" "),
-                        _vm._m(6),
+                        _vm._m(5),
                         _vm._v(" "),
                         _c("Select2", {
                           attrs: { options: _vm.temas, id: "id_tema" },
@@ -63366,7 +63576,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("span", { attrs: { id: "msjSelectTema" } }),
                         _vm._v(" "),
-                        _vm._m(7),
+                        _vm._m(6),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -63395,7 +63605,7 @@ var render = function() {
                               on: { change: _vm.onChange }
                             }),
                             _vm._v(" "),
-                            _vm._m(8),
+                            _vm._m(7),
                             _vm._v(" "),
                             this.subidor.imagenesVistaPrevia.length
                               ? _c(
@@ -63407,7 +63617,7 @@ var render = function() {
                                     }
                                   },
                                   [
-                                    _vm._m(9),
+                                    _vm._m(8),
                                     _vm._v(" "),
                                     _vm._l(
                                       _vm.subidor.imagenesVistaPrevia,
@@ -63461,7 +63671,7 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._m(10),
+                        _vm._m(9),
                         _vm._v(" "),
                         _c(
                           "button",
@@ -63566,7 +63776,7 @@ var render = function() {
                             }
                           },
                           [
-                            _vm._m(11),
+                            _vm._m(10),
                             _vm._v(" "),
                             _vm._l(_vm.imagenesParaDesplegarEnModal, function(
                               imagen
@@ -63612,7 +63822,7 @@ var render = function() {
                           : _vm._e()
                       ]),
                       _vm._v(" "),
-                      _vm._m(12)
+                      _vm._m(11)
                     ])
                   ])
                 ]
@@ -63683,18 +63893,6 @@ var staticRenderFns = [
     return _c("p", { staticClass: "text-left mt-0 mb-0" }, [
       _c("b", [
         _vm._v("Pregunta "),
-        _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
-        _vm._v(":")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-left mt-0 mb-0" }, [
-      _c("b", [
-        _vm._v("Respuesta: "),
         _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
         _vm._v(":")
       ])
@@ -68827,6 +69025,286 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadaparcialmixta",
+                        title: "derivada parcial mixta"
+                      },
+                      on: {
+                        click: _vm.insertderivadaparcialmixta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivadamixta.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "intindeff", title: "integral indefinida" },
+                      on: {
+                        click: _vm.insertintindeff,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinida.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "intintindef",
+                        title: "integral doble indefinida"
+                      },
+                      on: {
+                        click: _vm.insertintintindef,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinidadoble.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "intintintindef",
+                        title: "integral triple indefinida"
+                      },
+                      on: {
+                        click: _vm.insertintintintindef,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinidatriple.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "limite", title: "limite" },
+                      on: {
+                        click: _vm.insertlimite,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/lim.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "limiteizq",
+                        title: "limite por la izquierda"
+                      },
+                      on: {
+                        click: _vm.insertlimiteizq,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/limizq.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "limiteder",
+                        title: "limite por la derecha"
+                      },
+                      on: {
+                        click: _vm.insertlimiteder,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/limder.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pasounitario", title: "paso unitario" },
+                      on: {
+                        click: _vm.insertpasounitario,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/pasounit.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int", title: "integral definida" },
+                      on: {
+                        click: _vm.insertint,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/definida.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int2", title: "integral definida doble" },
+                      on: {
+                        click: _vm.insertint2,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/definidadoble.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int3", title: "integral definida triple" },
+                      on: {
+                        click: _vm.insertint3,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/definidatriple.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               buttonClass === "functions-buttons"
                 ? _c(
                     "button",
@@ -69508,9 +69986,9 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      attrs: { id: "deltaDif", title: "diferencia/delta" },
+                      attrs: { id: "deltaMay", title: "delta Mayúscula" },
                       on: {
-                        click: _vm.insertdeltaDif,
+                        click: _vm.insertdeltaMay,
                         mouseover: function($event) {
                           _vm.showEtiqueta = true
                         },
@@ -69519,7 +69997,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("∇")]
+                    [_vm._v("Δ")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -69527,9 +70005,9 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      attrs: { id: "delta", title: "delta minúscula" },
+                      attrs: { id: "delta", title: "delta" },
                       on: {
-                        click: _vm.insertdeltaMin,
+                        click: _vm.insertdelta,
                         mouseover: function($event) {
                           _vm.showEtiqueta = true
                         },
@@ -69653,6 +70131,120 @@ var render = function() {
                       }
                     },
                     [_vm._v("Θ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "paraTodo", title: "Para todo" },
+                      on: {
+                        click: _vm.insertParatodo,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∀")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "exist", title: "Existe" },
+                      on: {
+                        click: _vm.insertExist,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∃")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "union", title: "Unión" },
+                      on: {
+                        click: _vm.insertUnion,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∪")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "interseccion", title: "Intersección" },
+                      on: {
+                        click: _vm.insertIntersec,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∩")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "zeta", title: "Zeta" },
+                      on: {
+                        click: _vm.insertZeta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("ζ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "eta", title: "Eta" },
+                      on: {
+                        click: _vm.insertEta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("η")]
                   )
                 : _vm._e(),
               _vm._v(" "),
