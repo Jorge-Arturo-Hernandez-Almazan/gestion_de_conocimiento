@@ -96,7 +96,8 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                  <a @click="btnEditar(preguntaExpresiones.id_pregunta, preguntaExpresiones.descripcion, preguntaExpresiones.pregunta, preguntaExpresiones.opcion, preguntaExpresiones.tipo, preguntaExpresiones.id_tema, preguntaExpresiones.rango, preguntaExpresiones.imagenes)"
+                                                  <!--, $refs.hijoComponent.editarCampoMathquill-->
+                                                  <a @click="btnEditar(preguntaExpresiones.id_pregunta, preguntaExpresiones.descripcion, preguntaExpresiones.pregunta, preguntaExpresiones.opcion, preguntaExpresiones.tipo, preguntaExpresiones.id_tema, preguntaExpresiones.rango, preguntaExpresiones.imagenes), $refs.hijoComponent.editarCampoMathquill(),$refs.hijoComponentRespuesta.editarCampoMathquill()"
                                                      data-toggle="modal" data-target="#registrarPregunta" class="btn btn-outline-warning">
                                                      <i class="fas fa-pen" style="color: #ffae00;" title="Editar la pregunta"></i>
                                                      <span style="color: #ffae00;"></span>
@@ -166,7 +167,9 @@
                                     <span id="msjInputRespuesta"> </span-->
                                <p>                               
                                   </p> 
-                                   <tool-bar @mathquill-updated="handleMathquillUpdateRespuesta"></tool-bar>
+                                   <!--tool-bar ref="hijoComponentRespuesta" @mathquill-updated="handleMathquillUpdateRespuesta"></tool-bar-->
+                                   
+                                   <tool-bar-res ref="hijoComponentRespuesta" :datoRespuesta="datoParaHijoRespuesta" @mathquill-updated="handleMathquillUpdateRespuesta"></tool-bar-res>
                             
                                     <!--p class="text-left mt-0 mb-0"><b>Margen de error: <span
                                                 style="color:red">*</span>:</b></p-->
@@ -248,7 +251,7 @@
                                     <p class="text-left mt-0 mb-0" style="font-size: 12px;"> <span
                                             style="color:red">*</span> Datos obligatorios </p>
 
-                                    <button @click="$refs.hijoComponent.limpiarCampoMathquill()" type="button" class="btn btn-secondary float-right btn-lg mt-4 "
+                                    <button @click="$refs.hijoComponent.limpiarCampoMathquill(), $refs.hijoComponentRespuesta.limpiarCampoMathquill()" type="button" class="btn btn-secondary float-right btn-lg mt-4 "
                                         data-dismiss="modal"> <i
                                             class="fas fa-ban"></i> Cerrar
                                     </button>
@@ -321,13 +324,16 @@
     import axios from "axios";
     import Cargador from '@/components/subirImagenes';
     import ToolBar from  "./ToolBar.vue" //importar el archivo donde se encuentra el toolbar
-    import '@/components/mathquill/mathquill.css';
+    import ToolBarRespuesta from  "./ToolBarRespuesta.vue" //importar el archivo donde se encuentra el toolbar
+ 
+  import '@/components/mathquill/mathquill.css';
   //importa el archivo JS de MathQuill desde la carpeta local
     import MathQuill from '@/components/mathquill/mathquill.js';
 
     export default {
        components: {
-        'tool-bar':ToolBar //definir el componente que se va insertar, en este caso el toolbar
+        'tool-bar':ToolBar, //definir el componente que se va insertar, en este caso el toolbar
+        'tool-bar-res':ToolBarRespuesta //componente de respuesta
         },
        // props: ['bladeContent'],
         data() {
@@ -362,6 +368,7 @@
                 imagenesParaDesplegarEnModal: [],                        
                 parseoEnLatex:'',
                 datoParaHijo: '',
+                datoParaHijoRespuesta:'',
                 banderaEdicion:'',
                 parseoEnLatexRespuesta:'',
             };
@@ -386,20 +393,24 @@
             },*/
             handleMathquillUpdate(mathquillText) {
                 console.log('texto de mathQuill en Componente A:', mathquillText);
-             //    return mathquillText;
-              this.parseoEnLatex=mathquillText;
+             //validación para quitar el comando de \frac cuando se usan fracciones como exponente
+              var modifiedText = mathquillText.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "$1/$2");
+
+              this.parseoEnLatex=modifiedText;
                 
             },
             handleMathquillUpdateRespuesta(mathquillText) {
                 console.log('texto de mathQuill en Componente A:', mathquillText);
-             //    return mathquillText;
-              this.parseoEnLatexRespuesta=mathquillText;
+             //   validación para quitar el comando de frac cuando se usan fracciones como exponentes y quitar los {} que encierran a los numeros y cambiarlos por () para que wolfram pueda comprenderlos.
+              var modifiedTextRespuesta = mathquillText.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "($1/$2)");
+
+              this.parseoEnLatexRespuesta=modifiedTextRespuesta;
                 
             },
             obtenerParseo(){
                 //let descripcion = this.handleMathquillUpdate(this.mathquillText);
                 //this.descripcion = this.mathquillText; // Almacena el contenido LaTeX
-                console.log("soy descripcion "+this.parseoEnLatex);
+                console.log(this.parseoEnLatex);
                  
             },
             cambioSelect(val) {
@@ -581,7 +592,9 @@
                 }
                 //this.handleContentChange(this.newContent);
            //     this.handleMathquillUpdate()
-                            },
+              this.$refs.hijoComponent.limpiarCampoMathquill();
+              this.$refs.hijoComponentRespuesta.limpiarCampoMathquill();
+            },
             limpiarCampos(id) {
                 let inputDescripcion = document.getElementById("pregunta");
          //       let inputRespuesta = document.getElementById("respuesta");
@@ -625,7 +638,8 @@
          //       this.$refs.hijoComponent.funcionEnHijo();
                 console.log("dato a enviar:" +descripcion); 
                 this.datoParaHijo=descripcion; //se envia la sintaxis de la expresion al componente hijo
-                this.banderaEdicion=true;
+                this.datoParaHijoRespuesta=respuesta;
+                this.banderaEdicion=false;
                 
                 
                 inputDescripcion.value = pregunta;
@@ -735,6 +749,7 @@
                     });
                 }
                this.$refs.hijoComponent.limpiarCampoMathquill();
+               this.$refs.hijoComponentRespuesta.limpiarCampoMathquill();
             },
             eliminar(id, imagenes) {
                 this.$swal.fire({

@@ -10583,10 +10583,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/subirImagenes */ "./resources/assets/js/components/subirImagenes.js");
 /* harmony import */ var _ToolBar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ToolBar.vue */ "./resources/assets/js/components/ToolBar.vue");
-/* harmony import */ var _components_mathquill_mathquill_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/mathquill/mathquill.css */ "./resources/assets/js/components/mathquill/mathquill.css");
-/* harmony import */ var _components_mathquill_mathquill_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_mathquill_mathquill_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_mathquill_mathquill_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/mathquill/mathquill.js */ "./resources/assets/js/components/mathquill/mathquill.js");
-/* harmony import */ var _components_mathquill_mathquill_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_mathquill_mathquill_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ToolBarRespuesta_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ToolBarRespuesta.vue */ "./resources/assets/js/components/ToolBarRespuesta.vue");
+/* harmony import */ var _components_mathquill_mathquill_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/mathquill/mathquill.css */ "./resources/assets/js/components/mathquill/mathquill.css");
+/* harmony import */ var _components_mathquill_mathquill_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_mathquill_mathquill_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_mathquill_mathquill_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/mathquill/mathquill.js */ "./resources/assets/js/components/mathquill/mathquill.js");
+/* harmony import */ var _components_mathquill_mathquill_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_mathquill_mathquill_js__WEBPACK_IMPORTED_MODULE_6__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -10914,7 +10915,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
+
+ //importar el archivo donde se encuentra el toolbar
 
  //importar el archivo donde se encuentra el toolbar
 
@@ -10923,7 +10929,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    'tool-bar': _ToolBar_vue__WEBPACK_IMPORTED_MODULE_3__["default"] //definir el componente que se va insertar, en este caso el toolbar
+    'tool-bar': _ToolBar_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    //definir el componente que se va insertar, en este caso el toolbar
+    'tool-bar-res': _ToolBarRespuesta_vue__WEBPACK_IMPORTED_MODULE_4__["default"] //componente de respuesta
 
   },
   // props: ['bladeContent'],
@@ -10942,7 +10950,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         value: '',
         keys: ['pregunta', 'tema']
       }
-    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "modoEdicion", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _defineProperty(_ref, "parseoEnLatex", ''), _defineProperty(_ref, "datoParaHijo", ''), _defineProperty(_ref, "banderaEdicion", ''), _defineProperty(_ref, "parseoEnLatexRespuesta", ''), _ref;
+    }), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "totalPages", 0), _defineProperty(_ref, "modoEdicion", 0), _defineProperty(_ref, "todasLasImagenes", []), _defineProperty(_ref, "totalImagenesEnPregunta", 0), _defineProperty(_ref, "imagenesParaDesplegarEnModal", []), _defineProperty(_ref, "parseoEnLatex", ''), _defineProperty(_ref, "datoParaHijo", ''), _defineProperty(_ref, "datoParaHijoRespuesta", ''), _defineProperty(_ref, "banderaEdicion", ''), _defineProperty(_ref, "parseoEnLatexRespuesta", ''), _ref;
   },
   created: function created() {
     this.subidor = new _components_subirImagenes__WEBPACK_IMPORTED_MODULE_2__["default"]();
@@ -10964,19 +10972,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         console.log('Contenido actualizado desde Componente B:', this.newContent);
     },*/
     handleMathquillUpdate: function handleMathquillUpdate(mathquillText) {
-      console.log('texto de mathQuill en Componente A:', mathquillText); //    return mathquillText;
+      console.log('texto de mathQuill en Componente A:', mathquillText); //validación para quitar el comando de \frac cuando se usan fracciones como exponente
 
-      this.parseoEnLatex = mathquillText;
+      var modifiedText = mathquillText.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "$1/$2");
+      this.parseoEnLatex = modifiedText;
     },
     handleMathquillUpdateRespuesta: function handleMathquillUpdateRespuesta(mathquillText) {
-      console.log('texto de mathQuill en Componente A:', mathquillText); //    return mathquillText;
+      console.log('texto de mathQuill en Componente A:', mathquillText); //   validación para quitar el comando de frac cuando se usan fracciones como exponentes y quitar los {} que encierran a los numeros y cambiarlos por () para que wolfram pueda comprenderlos.
 
-      this.parseoEnLatexRespuesta = mathquillText;
+      var modifiedTextRespuesta = mathquillText.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "($1/$2)");
+      this.parseoEnLatexRespuesta = modifiedTextRespuesta;
     },
     obtenerParseo: function obtenerParseo() {
       //let descripcion = this.handleMathquillUpdate(this.mathquillText);
       //this.descripcion = this.mathquillText; // Almacena el contenido LaTeX
-      console.log("soy descripcion " + this.parseoEnLatex);
+      console.log(this.parseoEnLatex);
     },
     cambioSelect: function cambioSelect(val) {
       this.limpiarCampos("tema");
@@ -11258,6 +11268,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       } //this.handleContentChange(this.newContent);
       //     this.handleMathquillUpdate()
 
+
+      this.$refs.hijoComponent.limpiarCampoMathquill();
+      this.$refs.hijoComponentRespuesta.limpiarCampoMathquill();
     },
     limpiarCampos: function limpiarCampos(id) {
       var inputDescripcion = document.getElementById("pregunta"); //       let inputRespuesta = document.getElementById("respuesta");
@@ -11305,7 +11318,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log("dato a enviar:" + descripcion);
       this.datoParaHijo = descripcion; //se envia la sintaxis de la expresion al componente hijo
 
-      this.banderaEdicion = true;
+      this.datoParaHijoRespuesta = respuesta;
+      this.banderaEdicion = false;
       inputDescripcion.value = pregunta;
       this.id_tema = id_tema;
       inputMargen.value = margen;
@@ -11440,6 +11454,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.$refs.hijoComponent.limpiarCampoMathquill();
+      this.$refs.hijoComponentRespuesta.limpiarCampoMathquill();
     },
     eliminar: function eliminar(id, imagenes) {
       var _this9 = this;
@@ -18528,6 +18543,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import MathQuill from 'mathquill';
 //import MathQuillDirective from './directives/MathQuillDirective';
 // import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
@@ -18554,7 +18580,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // nueva variable para manejar el valor del input
       showEtiqueta: false,
       mensaje: "Hola desde el hijo",
-      banderaLocal: ''
+      banderaLocal: '',
+      datorecibido: ''
     };
   },
   mounted: function mounted() {
@@ -18563,21 +18590,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     //const mathField = MQ.MathField(this.$refs.mathField); 
     var MQ = MathQuill.getInterface(2);
     this.mathField = MQ.MathField(this.$refs.mathField);
-    this.handleInput(); //      console.log('banderaLocal: '+this.banderaLocal);
-    //  this.funcionEnHijo();
+    this.handleInput(); // Obtener la referencia al campo de mathquill
+
+    var mathquillInput = this.$refs.mathField; // Agregar un evento de teclado al campo de matquill
+
+    mathquillInput.addEventListener('keydown', function (event) {
+      // Obtener el código de la tecla presionada
+      var keyCode = event.keyCode || event.which;
+      console.log("keycode:" + keyCode); // Permitir solo teclas de letras y números, el enter
+
+      if (!(keyCode >= 48 && keyCode <= 57 || keyCode >= 65 && keyCode <= 90 || keyCode >= 96 && keyCode <= 105 || keyCode === 13 || keyCode === 110 || keyCode === 190 || keyCode === 17 && keyCode === 18 && keyCode === 222 && keyCode === 50)) {
+        event.preventDefault(); // Evitar que la tecla se ingrese
+
+        console.log("tecla bloqueada");
+      }
+    });
   },
   watch: {
-    dato: {
-      handler: function handler(newDatoValue, oldDatoValue) {
-        if (newDatoValue !== oldDatoValue) {
-          // Si el valor de dato ha cambiado, escribir en el campo MathQuill
-          this.mathField.write(this.dato); // Realizar aquí alguna lógica adicional si es necesario cuando el dato cambia
-        } else {
-          console.log('no cambió');
-        }
-      }
-    }
+    /* dato(newVal,oldVal) {
+         if(newVal){
+         this.mathField.write(newVal); //newVal
+         //console.log("dato nuevo: " + newVal + "dato anterior "+oldVal);
+         this.banderaLocal=true;
+         console.log("soy bandera en watch "+this.banderaLocal)
+          }
+         this.datorecibido=oldVal;
+         console.log("soy datorecibido"+this.datorecibido);
+         
+     }*/
+    //console.log("dato anteriorrrr "+ this.oldVal)
   },
+  //},
+  //},
   methods: (_methods = {
     toggleButtons: function toggleButtons() {
       this.activeButton = this.selectedOption + '-buttons';
@@ -18631,6 +18675,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       //this.mathField.cmd('\\equal')
       this.mathField.write("\\left(\\right)\\=\\left(\\right)");
     },
+    insertderivadaY: function insertderivadaY() {
+      this.mathField.write("y'");
+    },
     insertderivadasimple: function insertderivadasimple() {
       this.mathField.write("(d/d)()");
     },
@@ -18668,13 +18715,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.mathField.write("UnitStep[]");
     },
     insertint: function insertint() {
-      this.mathField.write("\\int_{ }^{ }");
+      this.mathField.write("\\int_{ }^{ } ()");
     },
     insertint2: function insertint2() {
-      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }");
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ } () ");
     },
     insertint3: function insertint3() {
-      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ }");
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ } ()");
     },
     insertsigma: function insertsigma() {
       this.mathField.write("\\sum_{ }^{ }");
@@ -18799,6 +18846,1153 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var mathquillText = this.mathField.latex();
     console.log(mathquillText);
     this.$emit('mathquill-updated', mathquillText);
+  }), _defineProperty(_methods, "editarCampoMathquill", function editarCampoMathquill() {
+    var _this = this;
+
+    // Utiliza un temporizador para escribir el valor en MathQuill después de un breve retraso
+    setTimeout(function () {
+      _this.mathField.write(_this.dato);
+    }, 0);
+  }), _defineProperty(_methods, "limpiarCampoMathquill", function limpiarCampoMathquill() {
+    this.mathField.latex(''); // Limpia el contenido del campo MathQuill
+  }), _methods)
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//import MathQuill from 'mathquill';
+//import MathQuillDirective from './directives/MathQuillDirective';
+// import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
+// importa el archivo CSS de MathQuill desde la carpeta local
+//import '@/components/mathquill/mathquill.css';
+//importa el archivo JS de MathQuill desde la carpeta local
+//import MathQuill from '@/components/mathquill/mathquill.js';
+//import "https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css";
+//import MathQuill from "https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js";
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'ToolBar',
+  props: ['datoRespuesta', 'banderaParaEdicion'],
+  // variable recibida desde el padre
+  created: function created() {},
+  data: function data() {
+    return {
+      selectedOption: 'basic',
+      // opción inicial del menú desplegable
+      activeButton: 'basic-buttons',
+      // valor inicial para activeButton
+      buttonClasses: ['basic-buttons', 'functions-buttons', 'logic-buttons', 'symbols-buttons'],
+      // clases adicionales de los botones 
+      inputValue: '',
+      // nueva variable para manejar el valor del input
+      showEtiqueta: false,
+      mensaje: "Hola desde el hijo",
+      banderaLocal: true,
+      datorecibido: ''
+    };
+  },
+  mounted: function mounted() {
+    //      this.initMathQuill();
+    //const MQ = MathQuill.getInterface(2); 
+    //const mathField = MQ.MathField(this.$refs.mathField); 
+    var MQ = MathQuill.getInterface(2);
+    this.mathField = MQ.MathField(this.$refs.mathField);
+    this.handleInput(); // Obtener la referencia al campo de mathquill
+
+    var mathquillInput = this.$refs.mathField; // Agregar un evento de teclado al campo de matquill
+
+    mathquillInput.addEventListener('keydown', function (event) {
+      // Obtener el código de la tecla presionada
+      var keyCode = event.keyCode || event.which;
+      console.log("keycode:" + keyCode); // Permitir solo teclas de letras y números, el enter
+
+      if (!(keyCode >= 48 && keyCode <= 57 || keyCode >= 65 && keyCode <= 90 || keyCode >= 96 && keyCode <= 105 || keyCode === 13 || keyCode === 110 || keyCode === 190 || keyCode === 17 && keyCode === 18 && keyCode === 222 && keyCode === 50)) {
+        event.preventDefault(); // Evitar que la tecla se ingrese
+
+        console.log("tecla bloqueada");
+      }
+    });
+    this.datorecibido = this.datoRespuesta;
+  },
+  watch: {//console.log("dato anteriorrrr "+ this.oldVal)
+  },
+  methods: (_methods = {
+    toggleButtons: function toggleButtons() {
+      this.activeButton = this.selectedOption + '-buttons';
+    },
+    insertLeftP: function insertLeftP() {
+      this.mathField.cmd('(');
+    },
+    insertRightP: function insertRightP() {
+      this.mathField.cmd(')');
+    },
+    insertFrac: function insertFrac() {
+      this.mathField.cmd('\\frac'); //this.mathField.write('\\frac{}{}');
+    },
+    insertXExp: function insertXExp() {
+      this.mathField.cmd('^');
+    },
+    insertXSub: function insertXSub() {
+      this.mathField.cmd('_');
+    },
+    insertSqrt: function insertSqrt() {
+      this.mathField.cmd('\\sqrt');
+    },
+    insertNThroot: function insertNThroot() {
+      this.mathField.cmd('\\nthroot');
+    },
+    insertSuma: function insertSuma() {
+      this.mathField.cmd('+');
+    },
+    insertResta: function insertResta() {
+      this.mathField.cmd('-');
+    },
+    insertTimes: function insertTimes() {
+      this.mathField.cmd('\\times');
+    },
+    insertDiv: function insertDiv() {
+      this.mathField.cmd('\\div');
+    },
+    insertLn: function insertLn() {
+      this.mathField.write("\\ln\\left(\\right)");
+    },
+    insertExp: function insertExp() {
+      this.mathField.write("\\exp\\left(\\right)");
+    },
+    insertLeq: function insertLeq() {
+      this.mathField.write("\\left(\\right)\\leq\\left(\\right)");
+    },
+    insertGeq: function insertGeq() {
+      this.mathField.write("\\left(\\right)\\geq\\left(\\right)");
+    },
+    insertEqual: function insertEqual() {
+      //this.mathField.cmd('\\equal')
+      this.mathField.write("\\left(\\right)\\=\\left(\\right)");
+    },
+    insertderivadasimple: function insertderivadasimple() {
+      this.mathField.write("(d/d)()");
+    },
+    insertderivadasegundoorden: function insertderivadasegundoorden() {
+      this.mathField.write("((d^2/d^2)()");
+    },
+    insertderivadaparcialsimple: function insertderivadaparcialsimple() {
+      this.mathField.write("(∂/∂)()");
+    },
+    insertderivadaparcialsegundoorden: function insertderivadaparcialsegundoorden() {
+      this.mathField.write("(∂^2/∂^2)()");
+    },
+    insertderivadaparcialmixta: function insertderivadaparcialmixta() {
+      this.mathField.write("(∂^2/∂∂)()");
+    },
+    insertintindeff: function insertintindeff() {
+      this.mathField.write("\\int()");
+    },
+    insertintintindef: function insertintintindef() {
+      this.mathField.write("\\int\\int()");
+    },
+    insertintintintindef: function insertintintintindef() {
+      this.mathField.write("\\int\\int\\int()");
+    },
+    insertlimite: function insertlimite() {
+      this.mathField.write("lim_{() -> ()}()");
+    },
+    insertlimiteizq: function insertlimiteizq() {
+      this.mathField.write("lim_{() -> ()^-} ()");
+    },
+    insertlimiteder: function insertlimiteder() {
+      this.mathField.write("lim_{()->()^+}()");
+    },
+    insertpasounitario: function insertpasounitario() {
+      this.mathField.write("UnitStep[]");
+    },
+    insertint: function insertint() {
+      this.mathField.write("\\int_{ }^{ } ()");
+    },
+    insertint2: function insertint2() {
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ } () ");
+    },
+    insertint3: function insertint3() {
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ } ()");
+    },
+    insertsigma: function insertsigma() {
+      this.mathField.write("\\sum_{ }^{ }");
+    },
+    insertprod: function insertprod() {
+      this.mathField.write("\\prod");
+    },
+    insertlaplace: function insertlaplace() {
+      this.mathField.write("LaplaceTransform[,,]");
+    },
+    insertlaplaceinv: function insertlaplaceinv() {
+      this.mathField.write("InverseLaplaceTransform[,,]");
+    },
+    insertfourier: function insertfourier() {
+      this.mathField.write("FourierTransform[,,]");
+    },
+    insertfourierinv: function insertfourierinv() {
+      this.mathField.write("InverseFourierTransform[,,]");
+    },
+    insertpi: function insertpi() {
+      this.mathField.write("\\pi");
+    },
+    insertcirc: function insertcirc() {
+      this.mathField.write("°");
+    },
+    insertsin: function insertsin() {
+      this.mathField.write("\\sin\\left(\\right)");
+    },
+    insertsec: function insertsec() {
+      this.mathField.write("\\sin\\left(\\right)");
+    },
+    insertcos: function insertcos() {
+      this.mathField.write("\\cos\\left(\\right)");
+    },
+    inserttan: function inserttan() {
+      this.mathField.write("\\tan\\left(\\right)");
+    }
+  }, _defineProperty(_methods, "insertcos", function insertcos() {
+    this.mathField.write("\\cos\\left(\\right)");
+  }), _defineProperty(_methods, "insertcsc", function insertcsc() {
+    this.mathField.write("\\csc\\left(\\right)");
+  }), _defineProperty(_methods, "insertcot", function insertcot() {
+    this.mathField.write("\\cot\\left(\\right)");
+  }), _defineProperty(_methods, "insertarcsin", function insertarcsin() {
+    this.mathField.write("\\arcsin\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccos", function insertarccos() {
+    this.mathField.write("\\arccos\\left(\\right)");
+  }), _defineProperty(_methods, "insertarctan", function insertarctan() {
+    this.mathField.write("\\arctan\\left(\\right)");
+  }), _defineProperty(_methods, "insertsinh", function insertsinh() {
+    this.mathField.write("\\sinh\\left(\\right)");
+  }), _defineProperty(_methods, "insertcosh", function insertcosh() {
+    this.mathField.write("\\cosh\\left(\\right)");
+  }), _defineProperty(_methods, "inserttanh", function inserttanh() {
+    this.mathField.write("\\sin\\left(\\right)");
+  }), _defineProperty(_methods, "insertsech", function insertsech() {
+    this.mathField.write("\\sech\\left(\\right)");
+  }), _defineProperty(_methods, "insertcsch", function insertcsch() {
+    this.mathField.write("\\csch\\left(\\right)");
+  }), _defineProperty(_methods, "insertcoth", function insertcoth() {
+    this.mathField.write("\\coth\\left(\\right)");
+  }), _defineProperty(_methods, "insertarcsinh", function insertarcsinh() {
+    this.mathField.write("\\arcsinh\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccosh", function insertarccosh() {
+    this.mathField.write("\\arccosh\\left(\\right)");
+  }), _defineProperty(_methods, "insertarctanh", function insertarctanh() {
+    this.mathField.write("\\arctanh\\left(\\right)");
+  }), _defineProperty(_methods, "insertarcsech", function insertarcsech() {
+    this.mathField.write("\\arcsech\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccsch", function insertarccsch() {
+    this.mathField.write("\\arccsch\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccoth", function insertarccoth() {
+    this.mathField.write("\\arccoth\\left(\\right)");
+  }), _defineProperty(_methods, "inserttheta", function inserttheta() {
+    this.mathField.write("\\theta");
+  }), _defineProperty(_methods, "insertinfinito", function insertinfinito() {
+    this.mathField.write("\\infty");
+  }), _defineProperty(_methods, "insertpm", function insertpm() {
+    this.mathField.write("\\pm");
+  }), _defineProperty(_methods, "insertalpha", function insertalpha() {
+    this.mathField.write("\\alpha");
+  }), _defineProperty(_methods, "insertpm", function insertpm() {
+    this.mathField.write("\\pm");
+  }), _defineProperty(_methods, "insertbeta", function insertbeta() {
+    this.mathField.write("\\beta");
+  }), _defineProperty(_methods, "insertgamma", function insertgamma() {
+    this.mathField.write("\\gamma");
+  }), _defineProperty(_methods, "insertdeltaMay", function insertdeltaMay() {
+    this.mathField.write("\\Delta");
+  }), _defineProperty(_methods, "insertin", function insertin() {
+    this.mathField.write("\\in");
+  }), _defineProperty(_methods, "insertnotin", function insertnotin() {
+    this.mathField.write("\\notin");
+  }), _defineProperty(_methods, "insertdelta", function insertdelta() {
+    this.mathField.write("\\delta");
+  }), _defineProperty(_methods, "insertlambda", function insertlambda() {
+    this.mathField.write("\\lambda");
+  }), _defineProperty(_methods, "insertsigma2", function insertsigma2() {
+    this.mathField.write("\\sigma");
+  }), _defineProperty(_methods, "insertipsilon", function insertipsilon() {
+    this.mathField.write("\\Upsilon");
+  }), _defineProperty(_methods, "insertthetaMay", function insertthetaMay() {
+    this.mathField.write("\\Theta");
+  }), _defineProperty(_methods, "insertParatodo", function insertParatodo() {
+    this.mathField.write("\\forall");
+  }), _defineProperty(_methods, "insertExist", function insertExist() {
+    this.mathField.write("\\exists");
+  }), _defineProperty(_methods, "insertUnion", function insertUnion() {
+    this.mathField.write("\\union");
+  }), _defineProperty(_methods, "insertIntersec", function insertIntersec() {
+    this.mathField.write("\\intersection");
+  }), _defineProperty(_methods, "insertZeta", function insertZeta() {
+    this.mathField.write("\\zeta");
+  }), _defineProperty(_methods, "insertEta", function insertEta() {
+    this.mathField.write("\\eta");
+  }), _defineProperty(_methods, "TraducirLatex", function TraducirLatex() {
+    //console.log(this.mathField.latex());
+    //const latexContent = this.mathField.latex();
+    //console.log('hola??');
+    this.mathField.latex(''); // Limpia el contenido del campo MathQuill
+  }), _defineProperty(_methods, "handleInput", function handleInput() {
+    var mathquillText = this.mathField.latex();
+    console.log(mathquillText);
+    this.$emit('mathquill-updated', mathquillText);
+  }), _defineProperty(_methods, "editarCampoMathquill", function editarCampoMathquill() {
+    var _this = this;
+
+    // Utiliza un temporizador para escribir el valor en MathQuill después de un breve retraso
+    setTimeout(function () {
+      _this.mathField.write(_this.datoRespuesta);
+    }, 0);
   }), _defineProperty(_methods, "limpiarCampoMathquill", function limpiarCampoMathquill() {
     this.mathField.latex(''); // Limpia el contenido del campo MathQuill
   }), _methods)
@@ -20967,6 +22161,25 @@ exports.push([module.i, "\n.pregresp {\n  border: 2px solid #7da5e0;\n  margin: 
 /*!********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ToolBar.vue?vue&type=style&index=0&lang=css& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nbody {\n      font-family: Arial, sans-serif;\n}\n#container {\n      width: 600px;\n      height: 300px;\n      overflow: hidden;\n}\n#input2 {\n      width: 400px;\n      height: 90px;\n      margin: 20px;\n      padding: 10px;\n      font-size: 24px;\n      border: 1px solid #000000da;\n}\n.menu {\n      margin-bottom: 10px;\n}\n.menu select {\n      font-size: 18px;\n      padding: 5px;\n}\n.menu-buttons {\n      display: none;\n}\n.menu-buttons.active {\n      display: flex;\n      flex-wrap: wrap;\n}\nmenu-buttons .button-image {\n      width: 50px;\n      height: 50px;\n      padding: 5px;\n      background-color: #f1f1f1;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\n      transition: background-color 0.3s;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n}\n.menu-buttons .button-image img {\n      width: 100%;\n      height: 100%;\n      object-fit: contain;\n}\n.menu-buttons button:hover {\n      background-color: #e0e0e0;\n}\n.tooltip {\n      position: relative;\n      display: inline-block;\n      cursor: pointer;\n}\n.tooltip .tooltiptext {\n      visibility: hidden;\n      width: 120px;\n      background-color: #1485c9;\n      color: #fff;\n      text-align: center;\n      border-radius: 6px;\n      padding: 5px;\n      position: absolute;\n      z-index: 1;\n      bottom: 125%;\n      left: 50%;\n      margin-left: -60px;\n      opacity: 0;\n      transition: opacity 0.3s;\n}\n.tooltip:hover .tooltiptext {\n      visibility: visible;\n      opacity: 1;\n}\n#translate {\n      margin-top: 10px;\n      padding: 10px;\n      font-size: 18px;\n      background-color: #1485c9;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\n      transition: background-color 0.3s;\n}\n#translate:hover {\n      background-color: #1173a6;\n}\n.texto-emergente {\n      display: none;\n      position: absolute;\n      background-color: rgba(71, 180, 215, 0.56);\n      padding: 10px;\n      border-radius: 5px;\n      font-size: 12px;\n}\n.menu-buttons button img {\n      max-width: 140%;\n      max-height: 100%;\n}\n.menu-buttons.active {\n  display: grid;\n  grid-template-columns: repeat(8, 40px); \n  gap: 10px;\n}\n.menu-buttons button {\n  width: 40px;\n  height: 40px;\n  font-size: 16px;\n}\n.tooltip {\n  position: relative;\n}\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45513,6 +46726,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ToolBarRespuesta.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/configuracionModulo.vue?vue&type=style&index=0&lang=css&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/configuracionModulo.vue?vue&type=style&index=0&lang=css& ***!
@@ -63339,7 +64582,7 @@ var render = function() {
                                             },
                                             on: {
                                               click: function($event) {
-                                                return _vm.btnEditar(
+                                                _vm.btnEditar(
                                                   preguntaExpresiones.id_pregunta,
                                                   preguntaExpresiones.descripcion,
                                                   preguntaExpresiones.pregunta,
@@ -63348,7 +64591,9 @@ var render = function() {
                                                   preguntaExpresiones.id_tema,
                                                   preguntaExpresiones.rango,
                                                   preguntaExpresiones.imagenes
-                                                )
+                                                ),
+                                                  _vm.$refs.hijoComponent.editarCampoMathquill(),
+                                                  _vm.$refs.hijoComponentRespuesta.editarCampoMathquill()
                                               }
                                             }
                                           },
@@ -63607,7 +64852,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("p"),
                         _vm._v(" "),
-                        _c("tool-bar", {
+                        _c("tool-bar-res", {
+                          ref: "hijoComponentRespuesta",
+                          attrs: { datoRespuesta: _vm.datoParaHijoRespuesta },
                           on: {
                             "mathquill-updated":
                               _vm.handleMathquillUpdateRespuesta
@@ -63757,7 +65004,8 @@ var render = function() {
                             attrs: { type: "button", "data-dismiss": "modal" },
                             on: {
                               click: function($event) {
-                                return _vm.$refs.hijoComponent.limpiarCampoMathquill()
+                                _vm.$refs.hijoComponent.limpiarCampoMathquill(),
+                                  _vm.$refs.hijoComponentRespuesta.limpiarCampoMathquill()
                               }
                             }
                           },
@@ -68575,6 +69823,1958 @@ render._withStripped = true
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ToolBar.vue?vue&type=template&id=10ba09f4& ***!
   \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "container" } }, [
+    _c(
+      "div",
+      { attrs: { id: "div1" } },
+      [
+        _c("div", { staticClass: "menu" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectedOption,
+                  expression: "selectedOption"
+                }
+              ],
+              attrs: { id: "menu-options" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedOption = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.toggleButtons
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "basic" } }, [
+                _vm._v("Matemáticas Básicas")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "logic" } }, [
+                _vm._v("Cálculo y Sumas")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "functions" } }, [
+                _vm._v("Trigonometria")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "symbols" } }, [
+                _vm._v("Símbolos")
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div"),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "mathquill-editor" } }),
+        _vm._v(" "),
+        _c("div", {
+          ref: "mathField",
+          attrs: { id: "input2" },
+          on: { input: _vm.handleInput }
+        }),
+        _vm._v(" "),
+        _vm._l(_vm.buttonClasses, function(buttonClass) {
+          return _c(
+            "div",
+            {
+              key: buttonClass,
+              class: [
+                "menu-buttons",
+                { active: buttonClass === _vm.activeButton }
+              ]
+            },
+            [
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "left-p", title: "paréntesis izquierdo" },
+                      on: {
+                        click: _vm.insertLeftP,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("(")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "right-p", title: "paréntesis derecho" },
+                      on: {
+                        click: _vm.insertRightP,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v(")")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "xexp", title: "potencia" },
+                      on: {
+                        click: _vm.insertXExp,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/^.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "xsub", title: "subíndice" },
+                      on: {
+                        click: _vm.insertXSub,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/_.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sqrt", title: "raíz cuadrada" },
+                      on: {
+                        click: _vm.insertSqrt,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sqrt.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sqrt3", title: "n-ésima raíz" },
+                      on: {
+                        click: _vm.insertNThroot,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sqrt3.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "frac", title: "fracción" },
+                      on: {
+                        click: _vm.insertFrac,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/frac.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "suma", title: "suma" },
+                      on: {
+                        click: _vm.insertSuma,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("+")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "resta", title: "resta" },
+                      on: {
+                        click: _vm.insertResta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("-")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "times", title: "multiplicación" },
+                      on: {
+                        click: _vm.insertTimes,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("×")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "div", title: "división" },
+                      on: {
+                        click: _vm.insertDiv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("÷")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "ln", title: "logaritmo natural" },
+                      on: {
+                        click: _vm.insertLn,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/log.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "exp", title: "función exponencial" },
+                      on: {
+                        click: _vm.insertExp,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/exp.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "leq", title: "menor o igual que" },
+                      on: {
+                        click: _vm.insertLeq,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("≤")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "geq", title: "mayor o igual que" },
+                      on: {
+                        click: _vm.insertGeq,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("≥")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "equal", title: "igual" },
+                      on: {
+                        click: _vm.insertEqual,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("=")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "derivadasimple", title: "derivada simple" },
+                      on: {
+                        click: _vm.insertderivadasimple,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/derivada.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "derivadaY", title: "Derivada Y" },
+                      on: {
+                        click: _vm.insertderivadaY,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivadaY.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadasegundoorden",
+                        title: "derivada segundo orden"
+                      },
+                      on: {
+                        click: _vm.insertderivadasegundoorden,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivada2orden.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadaparcialsimple",
+                        title: "derivada parcial simple"
+                      },
+                      on: {
+                        click: _vm.insertderivadaparcialsimple,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/parcial.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadaparcialsegundoorden",
+                        title: "derivada parcial segundo orden"
+                      },
+                      on: {
+                        click: _vm.insertderivadaparcialsegundoorden,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/parcial2orden.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadaparcialmixta",
+                        title: "derivada parcial mixta"
+                      },
+                      on: {
+                        click: _vm.insertderivadaparcialmixta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivadamixta.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "intindeff", title: "integral indefinida" },
+                      on: {
+                        click: _vm.insertintindeff,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinida.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "intintindef",
+                        title: "integral doble indefinida"
+                      },
+                      on: {
+                        click: _vm.insertintintindef,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinidadoble.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "intintintindef",
+                        title: "integral triple indefinida"
+                      },
+                      on: {
+                        click: _vm.insertintintintindef,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinidatriple.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "limite", title: "limite" },
+                      on: {
+                        click: _vm.insertlimite,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/lim.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "limiteizq",
+                        title: "limite por la izquierda"
+                      },
+                      on: {
+                        click: _vm.insertlimiteizq,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/limizq.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "limiteder",
+                        title: "limite por la derecha"
+                      },
+                      on: {
+                        click: _vm.insertlimiteder,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/limder.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pasounitario", title: "paso unitario" },
+                      on: {
+                        click: _vm.insertpasounitario,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/pasounit.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int", title: "integral definida" },
+                      on: {
+                        click: _vm.insertint,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/definida.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int2", title: "integral definida doble" },
+                      on: {
+                        click: _vm.insertint2,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/definidadoble.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int3", title: "integral definida triple" },
+                      on: {
+                        click: _vm.insertint3,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/definidatriple.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sigma", title: "suma" },
+                      on: {
+                        click: _vm.insertsigma,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sigma.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "prod", title: "prod" },
+                      on: {
+                        click: _vm.insertprod,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/prod.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "laplace",
+                        title: "transformada de laplace"
+                      },
+                      on: {
+                        click: _vm.insertlaplace,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/laplace.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "laplaceinv",
+                        title: "transformada de laplace inversa"
+                      },
+                      on: {
+                        click: _vm.insertlaplaceinv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/laplaceinv.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "fourier",
+                        title: "transformada de fourier"
+                      },
+                      on: {
+                        click: _vm.insertfourier,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/fourier.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "fourierinv",
+                        title: "transformada de fourier inverisa"
+                      },
+                      on: {
+                        click: _vm.insertfourierinv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/fourierinv.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pi", title: "pi" },
+                      on: {
+                        click: _vm.insertpi,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/pi.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "circ", title: "grados" },
+                      on: {
+                        click: _vm.insertcirc,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("°")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sin", title: "seno" },
+                      on: {
+                        click: _vm.insertsin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sin.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "cos", title: "cos" },
+                      on: {
+                        click: _vm.insertcos,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/cos.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "tan", title: "tangente" },
+                      on: {
+                        click: _vm.inserttan,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/tan.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sec", title: "secante" },
+                      on: {
+                        click: _vm.insertsec,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sec.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "csc", title: "cosecante" },
+                      on: {
+                        click: _vm.insertcsc,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/csc.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "cot", title: "cotangente" },
+                      on: {
+                        click: _vm.insertcot,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/cot.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "arcsin", title: "arcoseno" },
+                      on: {
+                        click: _vm.insertarcsin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/arcsin.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "arccos", title: "arcocoseno" },
+                      on: {
+                        click: _vm.insertarccos,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/arccos.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "arctan", title: "arcotangente" },
+                      on: {
+                        click: _vm.insertarctan,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/arctan.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sinh", title: "seno hiperbólico" },
+                      on: {
+                        click: _vm.insertsinh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sinh.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "cosh", title: "coseno hiperbólico" },
+                      on: {
+                        click: _vm.insertcosh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/cosh.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "tanh", title: "tangente hiperbólico" },
+                      on: {
+                        click: _vm.inserttanh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/tanh.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sech", title: "secante hiperbólico" },
+                      on: {
+                        click: _vm.insertsech,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sech.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "csch", title: "cosecante hiperbólico" },
+                      on: {
+                        click: _vm.insertcsch,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/csch.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "cotangente hiperbólico" },
+                      on: {
+                        click: _vm.insertcoth,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcoseno hiperbólico" },
+                      on: {
+                        click: _vm.insertarcsinh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcocoseno hiperbólico" },
+                      on: {
+                        click: _vm.insertarccosh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcotangente hiperbólico" },
+                      on: {
+                        click: _vm.insertarctanh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcosecante hiperbólico" },
+                      on: {
+                        click: _vm.insertarcsech,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "cosecante hiperbólico" },
+                      on: {
+                        click: _vm.insertarccsch,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "contangente hiperbólico" },
+                      on: {
+                        click: _vm.insertarccoth,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "theta", title: "theta" },
+                      on: {
+                        click: _vm.inserttheta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("θ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "infinito", title: "infinito" },
+                      on: {
+                        click: _vm.insertinfinito,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∞")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pm", title: "pm" },
+                      on: {
+                        click: _vm.insertpm,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("±")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pi2", title: "pi" },
+                      on: {
+                        click: _vm.insertpi,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("π")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "alpha", title: "alpha" },
+                      on: {
+                        click: _vm.insertalpha,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("α")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "beta", title: "beta" },
+                      on: {
+                        click: _vm.insertbeta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("β")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "gamma", title: "gamma" },
+                      on: {
+                        click: _vm.insertgamma,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("γ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "circ", title: "grados" },
+                      on: {
+                        click: _vm.insertcirc,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("°")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "deltaMay", title: "delta Mayúscula" },
+                      on: {
+                        click: _vm.insertdeltaMay,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("Δ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "delta", title: "delta" },
+                      on: {
+                        click: _vm.insertdelta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("δ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "in", title: "in" },
+                      on: {
+                        click: _vm.insertin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∈")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "notin", title: "notin" },
+                      on: {
+                        click: _vm.insertnotin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∉")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "lambda", title: "lambda" },
+                      on: {
+                        click: _vm.insertlambda,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("λ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sigma", title: "sigma" },
+                      on: {
+                        click: _vm.insertsigma2,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("σ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "ipsilon", title: "ipsilon" },
+                      on: {
+                        click: _vm.insertipsilon,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("ϒ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "thetaMay", title: "thetaMay" },
+                      on: {
+                        click: _vm.insertthetaMay,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("Θ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "paraTodo", title: "Para todo" },
+                      on: {
+                        click: _vm.insertParatodo,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∀")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "exist", title: "Existe" },
+                      on: {
+                        click: _vm.insertExist,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∃")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "union", title: "Unión" },
+                      on: {
+                        click: _vm.insertUnion,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∪")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "interseccion", title: "Intersección" },
+                      on: {
+                        click: _vm.insertIntersec,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∩")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "zeta", title: "Zeta" },
+                      on: {
+                        click: _vm.insertZeta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("ζ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "eta", title: "Eta" },
+                      on: {
+                        click: _vm.insertEta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("η")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "button",
+                { attrs: { id: "latex" }, on: { click: _vm.TraducirLatex } },
+                [_vm._v("Borrar")]
+              )
+            ]
+          )
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=template&id=36691e5c&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=template&id=36691e5c& ***!
+  \**************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -91213,6 +94413,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBar_vue_vue_type_template_id_10ba09f4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBar_vue_vue_type_template_id_10ba09f4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/ToolBarRespuesta.vue":
+/*!*************************************************************!*\
+  !*** ./resources/assets/js/components/ToolBarRespuesta.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ToolBarRespuesta_vue_vue_type_template_id_36691e5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToolBarRespuesta.vue?vue&type=template&id=36691e5c& */ "./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=template&id=36691e5c&");
+/* harmony import */ var _ToolBarRespuesta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ToolBarRespuesta.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ToolBarRespuesta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToolBarRespuesta.vue?vue&type=style&index=0&lang=css& */ "./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ToolBarRespuesta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ToolBarRespuesta_vue_vue_type_template_id_36691e5c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ToolBarRespuesta_vue_vue_type_template_id_36691e5c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/ToolBarRespuesta.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ToolBarRespuesta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ToolBarRespuesta.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=template&id=36691e5c&":
+/*!********************************************************************************************!*\
+  !*** ./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=template&id=36691e5c& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_template_id_36691e5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ToolBarRespuesta.vue?vue&type=template&id=36691e5c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ToolBarRespuesta.vue?vue&type=template&id=36691e5c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_template_id_36691e5c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolBarRespuesta_vue_vue_type_template_id_36691e5c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

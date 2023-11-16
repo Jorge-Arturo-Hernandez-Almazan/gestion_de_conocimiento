@@ -27,7 +27,7 @@
        <div id="mathquill-editor"></div>
       <div ref="mathField" id="input2" @input="handleInput"></div>
       <!--p>Dato recibido del padre: {{ dato }}</p>
-      <p>Dato recibido del padre: {{ banderaParaEdicion}}</p>
+      <!--p>Dato recibido del padre: {{ banderaParaEdicion}}</p>
       <p>Mensaje desde el hijo: {{ mensaje }}</p-->
 
       <!--h1>
@@ -196,6 +196,7 @@
         
         <!-- Los botones para Cálculo y Sumas -->
         
+        
         <button 
              v-if="buttonClass === 'logic-buttons'" 
              id="derivadasimple"
@@ -204,6 +205,16 @@
              @mouseleave="showEtiqueta = false"
              title="derivada simple">
              <img src="/imagenes/toolbar-buttons/derivada.png" />
+        </button>
+        
+         <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="derivadaY"
+             @click="insertderivadaY"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Derivada Y">
+             <img src="/imagenes/toolbar-buttons/derivadaY.png" />
         </button>
         
         <button 
@@ -855,7 +866,6 @@
   props: ['dato','banderaParaEdicion'], // variable recibida desde el padre
 
   created() {
-    
   },
   data() {
     return {
@@ -866,7 +876,8 @@
       inputValue: '', // nueva variable para manejar el valor del input
       showEtiqueta: false,
       mensaje: "Hola desde el hijo",
-      banderaLocal:'',
+      banderaLocal: '',
+      datorecibido:'',
     };
   },
   mounted(){
@@ -876,24 +887,42 @@
       const MQ = MathQuill.getInterface(2);
       this.mathField = MQ.MathField(this.$refs.mathField);
       this.handleInput();
-//      console.log('banderaLocal: '+this.banderaLocal);
-    //  this.funcionEnHijo();
-  },
-  watch:{
-      dato: {
-      handler(newDatoValue, oldDatoValue) {
-      if (newDatoValue !== oldDatoValue) {
-        // Si el valor de dato ha cambiado, escribir en el campo MathQuill
-        this.mathField.write(this.dato);
+    
+    // Obtener la referencia al campo de mathquill
+    const mathquillInput = this.$refs.mathField;
 
-        // Realizar aquí alguna lógica adicional si es necesario cuando el dato cambia
-      } else {
-        console.log('no cambió');
+    // Agregar un evento de teclado al campo de matquill
+    mathquillInput.addEventListener('keydown', (event) => {
+      // Obtener el código de la tecla presionada
+      const keyCode = event.keyCode || event.which;
+      console.log("keycode:"+keyCode);
+            // Permitir solo teclas de letras y números, el enter
+      if (!((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode<=90) || (keyCode >= 96 && keyCode<=105) || keyCode===13 || keyCode===110 || keyCode===190 || ( keyCode === 17 && keyCode === 18 && keyCode===222 && keyCode===50))) { 
+            event.preventDefault(); // Evitar que la tecla se ingrese
+            console.log("tecla bloqueada");
       }
-        },
-     },
+    });
+    
   },
+  watch: {
+ /* dato(newVal,oldVal) {
+      if(newVal){
+      this.mathField.write(newVal); //newVal
+      //console.log("dato nuevo: " + newVal + "dato anterior "+oldVal);
+      this.banderaLocal=true;
+      console.log("soy bandera en watch "+this.banderaLocal)
+
+      }
+      this.datorecibido=oldVal;
+      console.log("soy datorecibido"+this.datorecibido);
+      
+  }*/
+      //console.log("dato anteriorrrr "+ this.oldVal)
+  },
+//},
+//},
   methods: {
+    
     toggleButtons() {
       this.activeButton = this.selectedOption + '-buttons'; 
      },
@@ -947,7 +976,9 @@
       //this.mathField.cmd('\\equal')
       this.mathField.write("\\left(\\right)\\=\\left(\\right)")
     },
-    
+    insertderivadaY(){
+      this.mathField.write("y'")
+    },
     insertderivadasimple(){
       this.mathField.write("(d/d)()")
     },
@@ -986,13 +1017,13 @@
      this.mathField.write("UnitStep[]")
    },
    insertint(){
-     this.mathField.write("\\int_{ }^{ }")
+     this.mathField.write("\\int_{ }^{ } ()")
    },
    insertint2(){
-     this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }")
+     this.mathField.write("\\int_{ }^{ }\\int_{ }^{ } () ")
    },
    insertint3(){
-     this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ }")
+     this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ } ()")
    },
     
    insertsigma(){
@@ -1165,23 +1196,14 @@
       this.$emit('mathquill-updated', mathquillText);
       
     },
-    /*funcionEnHijo(){
-      this.banderaLocal= this.banderaParaEdicion,
-      console.log('banderaParaEdicion: '+this.banderaParaEdicion);
-      this.mensaje = "La función en el hijo fue ejecutada";
-            
-     // this.editarCampoMathquill();      
-    },   
-    editarCampoMathquill() {
-        if(this.banderaParaEdicion==true){
-        console.log('si edita');
-        this.mathField.write(this.dato)
-        }
-      this.banderaLocal=false;      
-            
-       //this.limpiarCampoMathquill();
-          
-     }, */
+    
+  editarCampoMathquill() {
+    // Utiliza un temporizador para escribir el valor en MathQuill después de un breve retraso
+    setTimeout(() => {
+      this.mathField.write(this.dato);
+    }, 0);
+  },
+     
     limpiarCampoMathquill(){
       
        this.mathField.latex(''); // Limpia el contenido del campo MathQuill
