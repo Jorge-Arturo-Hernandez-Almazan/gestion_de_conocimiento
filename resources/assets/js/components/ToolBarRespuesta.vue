@@ -206,6 +206,17 @@
              <img src="/imagenes/toolbar-buttons/derivada.png" />
         </button>
         
+         <button 
+             v-if="buttonClass === 'logic-buttons'" 
+             id="derivadaY"
+             @click="insertderivadaY"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Derivada Y">
+             <img src="/imagenes/toolbar-buttons/derivadaY.png" />
+        </button>
+        
+        
         <button 
              v-if="buttonClass === 'logic-buttons'" 
              id="derivadasegundoorden"
@@ -952,7 +963,9 @@
       //this.mathField.cmd('\\equal')
       this.mathField.write("\\left(\\right)\\=\\left(\\right)")
     },
-    
+    insertderivadaY(){
+      this.mathField.write("y'")
+    },
     insertderivadasimple(){
       this.mathField.write("(d/d)()")
     },

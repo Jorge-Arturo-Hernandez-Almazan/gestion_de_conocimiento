@@ -19710,6 +19710,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import MathQuill from 'mathquill';
 //import MathQuillDirective from './directives/MathQuillDirective';
 // import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
@@ -19817,6 +19828,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     insertEqual: function insertEqual() {
       //this.mathField.cmd('\\equal')
       this.mathField.write("\\left(\\right)\\=\\left(\\right)");
+    },
+    insertderivadaY: function insertderivadaY() {
+      this.mathField.write("y'");
     },
     insertderivadasimple: function insertderivadasimple() {
       this.mathField.write("(d/d)()");
@@ -72214,6 +72228,31 @@ var render = function() {
                     [
                       _c("img", {
                         attrs: { src: "/imagenes/toolbar-buttons/derivada.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "derivadaY", title: "Derivada Y" },
+                      on: {
+                        click: _vm.insertderivadaY,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivadaY.png"
+                        }
                       })
                     ]
                   )
