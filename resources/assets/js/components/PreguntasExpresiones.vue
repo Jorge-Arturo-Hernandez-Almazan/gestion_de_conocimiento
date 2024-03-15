@@ -49,6 +49,7 @@
                                         <option value="pregunta">Pregunta</option>
                                         <option value="tema">Tema</option>
                                         <option value="opcion">Respuesta</option>
+                                          <option value="descripcion">Desripción de la pregunta</option>
                                         </select>
                                     </div>
                                 </div>
@@ -394,7 +395,7 @@
             handleMathquillUpdate(mathquillText) {
                 console.log('texto de mathQuill en Componente A:', mathquillText);
              //validación para quitar el comando de \frac cuando se usan fracciones como exponente
-              var modifiedText = mathquillText.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "$1/$2");
+              var modifiedText = mathquillText.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "$1/$2");
 
               this.parseoEnLatex=modifiedText;
                 

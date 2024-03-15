@@ -10918,6 +10918,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
  //importar el archivo donde se encuentra el toolbar
@@ -10974,7 +10975,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     handleMathquillUpdate: function handleMathquillUpdate(mathquillText) {
       console.log('texto de mathQuill en Componente A:', mathquillText); //validación para quitar el comando de \frac cuando se usan fracciones como exponente
 
-      var modifiedText = mathquillText.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "$1/$2");
+      var modifiedText = mathquillText.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "$1/$2");
       this.parseoEnLatex = modifiedText;
     },
     handleMathquillUpdateRespuesta: function handleMathquillUpdateRespuesta(mathquillText) {
@@ -18554,6 +18555,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import MathQuill from 'mathquill';
 //import MathQuillDirective from './directives/MathQuillDirective';
 // import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
@@ -18658,6 +18677,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     insertDiv: function insertDiv() {
       this.mathField.cmd('\\div');
+    },
+    insertVA: function insertVA() {
+      this.mathField.cmd('|');
     },
     insertLn: function insertLn() {
       this.mathField.write("\\ln\\left(\\right)");
@@ -18837,6 +18859,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.mathField.write("\\zeta");
   }), _defineProperty(_methods, "insertEta", function insertEta() {
     this.mathField.write("\\eta");
+  }), _defineProperty(_methods, "insertpuntoComa", function insertpuntoComa() {
+    this.mathField.write(";");
   }), _defineProperty(_methods, "TraducirLatex", function TraducirLatex() {
     //console.log(this.mathField.latex());
     //const latexContent = this.mathField.latex();
@@ -18873,6 +18897,25 @@ var _methods;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19813,6 +19856,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     insertDiv: function insertDiv() {
       this.mathField.cmd('\\div');
     },
+    insertVA: function insertVA() {
+      this.mathField.cmd('|');
+    },
     insertLn: function insertLn() {
       this.mathField.write("\\ln\\left(\\right)");
     },
@@ -19991,6 +20037,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.mathField.write("\\zeta");
   }), _defineProperty(_methods, "insertEta", function insertEta() {
     this.mathField.write("\\eta");
+  }), _defineProperty(_methods, "insertpuntoComa", function insertpuntoComa() {
+    this.mathField.write(";");
   }), _defineProperty(_methods, "TraducirLatex", function TraducirLatex() {
     //console.log(this.mathField.latex());
     //const latexContent = this.mathField.latex();
@@ -64476,6 +64524,10 @@ var render = function() {
                         _vm._v(" "),
                         _c("option", { attrs: { value: "opcion" } }, [
                           _vm._v("Respuesta")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "descripcion" } }, [
+                          _vm._v("Desripción de la pregunta")
                         ])
                       ]
                     )
@@ -70170,11 +70222,7 @@ var render = function() {
                         }
                       }
                     },
-                    [
-                      _c("img", {
-                        attrs: { src: "/imagenes/toolbar-buttons/log.png" }
-                      })
-                    ]
+                    [_vm._v("ln")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -70255,6 +70303,47 @@ var render = function() {
                       }
                     },
                     [_vm._v("=")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "valorAbosoluto",
+                        title: "Vinculo Vertical"
+                      },
+                      on: {
+                        click: _vm.insertVA,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("| |")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "puntoYComa", title: "Punto y coma" },
+                      on: {
+                        click: _vm.insertpuntoComa,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v(";")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -72122,11 +72211,7 @@ var render = function() {
                         }
                       }
                     },
-                    [
-                      _c("img", {
-                        attrs: { src: "/imagenes/toolbar-buttons/log.png" }
-                      })
-                    ]
+                    [_vm._v("ln")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -72207,6 +72292,47 @@ var render = function() {
                       }
                     },
                     [_vm._v("=")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "valorAbosoluto",
+                        title: "Vinculo Vertical"
+                      },
+                      on: {
+                        click: _vm.insertVA,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("| |")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "puntoYComa", title: "Punto y coma" },
+                      on: {
+                        click: _vm.insertpuntoComa,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v(";")]
                   )
                 : _vm._e(),
               _vm._v(" "),

@@ -153,9 +153,8 @@
              @click="insertLn"
              @mouseover="showEtiqueta = true"
              @mouseleave="showEtiqueta = false"
-             title="logaritmo natural">
-             <img src="/imagenes/toolbar-buttons/log.png" />
-        </button>
+             title="logaritmo natural"
+        >ln</button>
         
         <button 
              v-if="buttonClass === 'basic-buttons'" 
@@ -193,6 +192,25 @@
              @mouseleave="showEtiqueta = false"
              title="igual"
          >=</button>
+        
+         <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="valorAbosoluto" 
+             @click="insertVA"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Vinculo Vertical"
+         >| |</button>
+        
+        <button 
+             v-if="buttonClass === 'basic-buttons'" 
+             id="puntoYComa" 
+             @click="insertpuntoComa"
+             @mouseover="showEtiqueta = true"
+             @mouseleave="showEtiqueta = false"
+             title="Punto y coma"
+         >;</button>
+         
         
         <!-- Los botones para Cálculo y Sumas -->
         
@@ -960,6 +978,9 @@
     insertDiv(){
       this.mathField.cmd('\\div')
     },
+    insertVA(){
+      this.mathField.cmd('|')
+    },
     insertLn(){
       this.mathField.write("\\ln\\left(\\right)")
     },
@@ -1180,6 +1201,10 @@
     insertEta(){
     this.mathField.write("\\eta")
     },
+    insertpuntoComa(){
+    this.mathField.write(";")
+    },
+    
     
     
     
