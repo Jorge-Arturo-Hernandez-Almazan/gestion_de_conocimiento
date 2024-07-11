@@ -372,62 +372,61 @@ class TemaController {
         // const temas= await Database.select('*').from('temas').innerJoin('relacion_primarias', 'temas.id', 'relacion_primarias.id_hijo')
         return response.json(temas)
     }
-    //mostrar temas con sus temas padres
-    async mostrarPreguntasPorTema({
-        response
-    }) {
-        const temas = await Database.raw('SELECT t.id as id, t.nombre_tema as nombre_tema,t.freex,t.freey, t.nivel as nivel, t2.nombre_tema as padre, ' +
-            'rp.id_padre as id_padre, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 1 ) as totalAbiertas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 2 ) as totalNumericas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 3 ) as totalBooleanas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 4 ) as totalMultiple, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 5 ) as totalCalculadas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 6 ) as totalCMultiple, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPreguntas ' +
-            'FROM temas t INNER JOIN relacion_primarias rp ON t.id = rp.id_hijo INNER JOIN temas t2 ON t2.id = rp.id_padre  ' +
-            'WHERE rp.tipo = "primarias"')
+   async mostrarPreguntasPorTema({ response }) {
+    const temas = await Database.raw(
+        'SELECT t.id as id, t.nombre_tema as nombre_tema,t.freex,t.freey, t.nivel as nivel, t2.nombre_tema as padre, ' +
+        'rp.id_padre as id_padre, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 1 ) as totalAbiertas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 2 ) as totalNumericas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 3 ) as totalBooleanas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 4 ) as totalMultiple, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 5 ) as totalCalculadas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 6 ) as totalCMultiple, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 7 ) as totalExpresiones, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPreguntas ' +
+        'FROM temas t INNER JOIN relacion_primarias rp ON t.id = rp.id_hijo INNER JOIN temas t2 ON t2.id = rp.id_padre  ' +
+        'WHERE rp.tipo = "primarias"'
+    );
 
-        return response.json(temas)
-    }
+    return response.json(temas);
+}
 
-    async showall({
-        response
-    }) {
-        const relaciones = await Database.select('*').from('relacion_primarias').where('tipo', 'primarias');
-        const temas = await Database.raw('SELECT t.id as id, t.nombre_tema as nombre_tema,t.freex,t.freey, t.nivel as nivel, t2.nombre_tema as padre, ' +
-            'rp.id_padre as id_padre, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 1 ) as totalAbiertas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 2 ) as totalNumericas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 3 ) as totalBooleanas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 4 ) as totalMultiple, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 5 ) as totalCalculadas, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 6 ) as totalCMultiple, ' +
-            '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPreguntas ' +
-            'FROM temas t INNER JOIN relacion_primarias rp ON t.id = rp.id_hijo INNER JOIN temas t2 ON t2.id = rp.id_padre  ' +
-            'WHERE rp.tipo = "primarias"')
+async showall({ response }) {
+    const relaciones = await Database.select('*').from('relacion_primarias').where('tipo', 'primarias');
+    const temas = await Database.raw(
+        'SELECT t.id as id, t.nombre_tema as nombre_tema,t.freex,t.freey, t.nivel as nivel, t2.nombre_tema as padre, ' +
+        'rp.id_padre as id_padre, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 1 ) as totalAbiertas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 2 ) as totalNumericas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 3 ) as totalBooleanas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 4 ) as totalMultiple, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 5 ) as totalCalculadas, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 6 ) as totalCMultiple, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 7 ) as totalExpresiones, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPreguntas ' +
+        'FROM temas t INNER JOIN relacion_primarias rp ON t.id = rp.id_hijo INNER JOIN temas t2 ON t2.id = rp.id_padre  ' +
+        'WHERE rp.tipo = "primarias"'
+    );
 
-        return response.json(temas)
-    }
+    return response.json(temas);
+}
 
+async showOnlyTemas({ response }) {
+    const temas = await Database.raw(
+        'SELECT id, nombre_tema, nivel FROM temas WHERE nivel > 1'
+    );
 
-    //Ver solo los temas
-    async showOnlyTemas({
-        response
-    }) {
-        const temas = await Database.raw('SELECT id, nombre_tema, nivel FROM temas WHERE nivel > 1')
-        return response.json(temas)
-    }
-  
-    async mostrarTemasConRelaciones({response}){
-      //const relaciones =  await Database.select('*').from('relacion_primarias').where('tipo', 'primarias');
-        //await Tema.all()
-			const temas = await Database.raw('SELECT * FROM temas')
-    		
-       // const temas= await Database.select('*').from('temas').innerJoin('relacion_primarias', 'temas.id', 'relacion_primarias.id_hijo')
-        return response.json(temas)     
-    }
-  
+    return response.json(temas);
+}
+
+async mostrarTemasConRelaciones({ response }) {
+    const temas = await Database.raw(
+        'SELECT * FROM temas'
+    );
+
+    return response.json(temas);
+}
+
   
     //registrar nodo con padre principal - listo
     async registrar({

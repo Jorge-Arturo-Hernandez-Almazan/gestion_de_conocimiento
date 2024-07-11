@@ -244,7 +244,7 @@ class PreguntaController {
       'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
 			'WHERE b.tipo = 5 AND b.id = '+ datosPreguntas.id)
       
-      }else /*if ( datosPreguntas.tipo === "6" ) */ {
+      }else if ( datosPreguntas.tipo === "6" )  {
       
       const preguntas = await Database.raw(
 			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta,'+
@@ -254,17 +254,17 @@ class PreguntaController {
       'INNER JOIN configuracion_preguntas_calculadas c on c.id_pregunta = b.id ' +
  			'WHERE b.tipo = 6 AND b.id = '+ datosPreguntas.id)
       
-    }/*else{
+    }else{
       
       const preguntas = await Database.raw(
-			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, '+
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.descripcion as descripcion, b.pregunta as pregunta, b.tipo as tipo, '+
 			't.nombre_tema as tema, m.aplicableArriba, m.aplicableAnbajo, rango ' +
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema ' +
 			'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
 			'WHERE b.tipo = 7 AND b.id = '+ datosPreguntas.id)
       
-    }*/
+    }
     
 	
 		return response.json({banco_preguntas:preguntas}) 
@@ -333,7 +333,7 @@ class PreguntaController {
 			'LIMIT ' + configuraciones[0][0].num_preguntas_calculadas_multiples)
     
   /*  const preguntaExpresiones = await Database.raw(
-			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.tipo as tipo, '+
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.descripcion as descripcion, b.tipo as tipo, '+
 			't.nombre_tema as tema, m.aplicableArriba, m.aplicableAnbajo, rango ' +
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema ' +

@@ -35,22 +35,26 @@
                             
                                 <div class="row mb-2">
                                     <div class="col-6" >
+                                      <!-- //////////////////////////////////////////////////////////-->
                                         <b> Termino de busqueda: </b>
                                         <input class="form-control" type="search" 
                                             placeholder="Término" 
                                             v-model="filters.pregunta.value" 
                                             style=" height: 38px;" />
-                                        
+                                        <!-- //////////////////////////////////////////////////////////--> 
                                     </div>
                                     <div class="col-6" >
+                                       <!-- //////////////////////////////////////////////////////////-->
                                         <b>Campo de busqueda: </b>
                                         <select class="form-control" name="campoBusqueda" id="campoBusqueda" @change="cambiarCampoDeBusqueda">
                                         <option value="pregunta">Pregunta</option>
                                         <option value="tema">Tema</option>
                                         <option value="opcion">Respuesta</option>
                                         </select>
+                                       <!-- //////////////////////////////////////////////////////////-->
                                     </div>
                                 </div>
+                               <!-- /////////////////////////////////////////////////////////////////////////////////////-->
 
                                 <div class="table-responsive">
 
@@ -104,17 +108,20 @@
                                                 </td>
                                             </tr>
                                         
-                                        </tbody>
+                                      </tbody>
                                     </v-table>
+                                   <!-- ///////////////////////////////////////////////////////////////////////////////////////////-->
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-6">
+                                      <!-- Total: 75 registros -->
                                         <label> <b> Total: {{ preguntaAbierta.length }} registros </b> </label>
                                     </div>
                                     <div class="col-6">
                                         <div class="float-right">
+                                          <!-- Paginas-->
                                             <smart-pagination :currentPage.sync="currentPage" :totalPages="totalPages" :maxPageLinks="3" />
                                         </div>
                                     </div>
@@ -139,6 +146,7 @@
                                 <textarea rows="4" id="pregunta" type="text" class="form-control mt-0 mb-0" 
                                     placeholder="Pregunta" @focus="limpiarCampos('pregunta')" > </textarea>
                                 <span id="msjInputPregunta"> </span>
+              
                                 
                                                                                                                             
                                 <p class="text-left mt-0 mb-0"><b>Respuesta <span style="color:red">*</span>: </b></p>
@@ -311,7 +319,7 @@
                   id_tema: 1,
                   tipo: '',
                 },
-                totalRegistros: "5",
+                totalRegistros: "6",
                 subidor: {},
                 pregunta: [],
                 preguntaAbierta: [],
@@ -395,6 +403,7 @@
             async subirImagenes(id) {
                 this.subidor.subirImagenes(id);
             },
+          // -------------------------------GetPreguntaAbierta------------------------------------------
             async getPreguntaAbierta() {
                 await axios({
                     method: "GET",
@@ -427,6 +436,7 @@
                     }
                 }
             },
+          //-------------------------------Termina GetPreguntaAbierta-----------------------------------------
             getTemas() {
                 axios({
                     method: "GET",

@@ -53,6 +53,8 @@
                                             <v-th defaultSort="desc"> Opción Múltiple </v-th>
                                             <v-th defaultSort="desc"> Calculadas </v-th>
                                             <v-th defaultSort="desc"> Calculadas Múltiples </v-th>
+                                            <v-th defaultSort="desc"> Preguntas Expresiones </v-th>
+                                          
                                         </thead>
                                         <tbody slot="body" slot-scope="{displayData}">
                                             <tr v-for="temas in displayData" :key="temas.id">
@@ -95,7 +97,12 @@
                                                     <span v-else class="badge badge-danger "> {{temas.totalCMultiple}}
                                                     </span>
                                                 </td>
-
+                                                <td>
+                                                    <span v-if="temas.totalExpresiones > 0" class="badge badge-primary">
+                                                        {{temas.totalExpresiones}} </span>
+                                                    <span v-else class="badge badge-danger "> {{temas.totalExpresiones}}
+                                                    </span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </v-table>
@@ -104,7 +111,7 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-6">
-                                        <label> <b> Total: {{ temas.length }} registros </b> </label>
+                                        <label> <b> Total: {{ temas.length }} temas registros{{temas.totalPreguntas}} </b> </label>
                                     </div>
                                     <div class="col-6">
                                         <div class="float-right">
@@ -164,8 +171,7 @@
                                     this.configuracion.num_preguntas_boleanas > this.temas[i].totalBooleanas ||
                                     this.configuracion.num_preguntas_multiples > this.temas[i].totalCMultiple ||
                                     this.configuracion.num_preguntas_calculadas > this.temas[i].totalCalculadas ||
-                                    this.configuracion.num_preguntas_calculadas_multiples > this.temas[i]
-                                    .totalCMultiple) {
+                                    this.configuracion.num_preguntas_calculadas_multiples > this.temas[i].totalCMultiple) {
                                     this.verificarPreguntas =
                                         "El total de preguntas registradas por cada tema, no cumple los requerimientos para el inicio del cuestionario.";
                                     break;

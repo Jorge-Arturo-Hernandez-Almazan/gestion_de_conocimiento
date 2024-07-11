@@ -8765,6 +8765,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8908,6 +8916,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee3);
       }))();
     },
+    // -------------------------------GetPreguntaAbierta------------------------------------------
     getPreguntaAbierta: function getPreguntaAbierta() {
       var _this4 = this;
 
@@ -8959,6 +8968,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee4);
       }))();
     },
+    //-------------------------------Termina GetPreguntaAbierta-----------------------------------------
     getTemas: function getTemas() {
       var _this5 = this;
 
@@ -21898,6 +21908,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -77150,6 +77167,40 @@ var render = function() {
                                               )
                                             ]
                                           )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      temas.totalExpresiones > 0
+                                        ? _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-primary"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(
+                                                    temas.totalExpresiones
+                                                  ) +
+                                                  " "
+                                              )
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            {
+                                              staticClass: "badge badge-danger "
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(
+                                                    temas.totalExpresiones
+                                                  ) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
                                     ])
                                   ])
                                 }),
@@ -77197,6 +77248,10 @@ var render = function() {
                             _vm._v(" "),
                             _c("v-th", { attrs: { defaultSort: "desc" } }, [
                               _vm._v(" Calculadas Múltiples ")
+                            ]),
+                            _vm._v(" "),
+                            _c("v-th", { attrs: { defaultSort: "desc" } }, [
+                              _vm._v(" Preguntas Expresiones ")
                             ])
                           ],
                           1
@@ -77214,7 +77269,11 @@ var render = function() {
                     _c("label", [
                       _c("b", [
                         _vm._v(
-                          " Total: " + _vm._s(_vm.temas.length) + " registros "
+                          " Total: " +
+                            _vm._s(_vm.temas.length) +
+                            " temas registros" +
+                            _vm._s(_vm.temas.totalPreguntas) +
+                            " "
                         )
                       ])
                     ])
