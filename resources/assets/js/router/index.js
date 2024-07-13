@@ -25,6 +25,7 @@ import GrafoAlumnos from '@/components/GrafoAlumnos'
 import configuracionModulo from '@/components/configuracionModulo'
 import Ejemplo from '@/components/Ejemplo'
 import PreguntasExpresiones from '@/components/PreguntasExpresiones'
+import Recursos from '@/components/Recursos'
 
 Vue.use(Router)
 
@@ -186,6 +187,14 @@ export default new Router({
         path: '*',
         name: 'NotFound',
         component: NotFound,
+    },
+     {
+       //Ruta del archivo
+        path:'/recursos',
+       //Nombre del Componente
+        name:'recursos',
+       //El componente se encuentra como
+        component:Recursos
     },
 ],linkActiveClass:"active", linkExactActiveClass: "active",
 })
