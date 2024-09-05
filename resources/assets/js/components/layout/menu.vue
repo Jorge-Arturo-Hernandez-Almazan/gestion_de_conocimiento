@@ -208,6 +208,16 @@
 					</li>
           
           
+					<li v-if="this.id_rol == 4" class="nav-item mb-5">
+						<router-link class="nav-link" id="navAccesos" to="/statusGrafo">
+							<i class="fas fa-folder-open nav-icon"></i>
+							<p>
+								Status Grafo
+							</p>
+						</router-link>
+					</li>
+
+
           <li v-if="this.id_rol==1 || this.id_rol==2"  class="nav-item">							
 						<router-link class="nav-link" id="navTemas" to="/grafoalumnos">
 							<i class="fas fa-route nav-icon"></i> 

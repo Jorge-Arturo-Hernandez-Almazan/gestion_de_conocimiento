@@ -383,6 +383,7 @@ class TemaController {
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 5 ) as totalCalculadas, ' +
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 6 ) as totalCMultiple, ' +
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 7 ) as totalExpresiones, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPorTema, ' +
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPreguntas ' +
         'FROM temas t INNER JOIN relacion_primarias rp ON t.id = rp.id_hijo INNER JOIN temas t2 ON t2.id = rp.id_padre  ' +
         'WHERE rp.tipo = "primarias"'
@@ -403,6 +404,7 @@ async showall({ response }) {
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 5 ) as totalCalculadas, ' +
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 6 ) as totalCMultiple, ' +
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id AND tipo = 7 ) as totalExpresiones, ' +
+        '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPorTema, ' +
         '(SELECT COUNT(*) FROM banco_preguntas WHERE banco_preguntas.id_tema = t.id ) as totalPreguntas ' +
         'FROM temas t INNER JOIN relacion_primarias rp ON t.id = rp.id_hijo INNER JOIN temas t2 ON t2.id = rp.id_padre  ' +
         'WHERE rp.tipo = "primarias"'

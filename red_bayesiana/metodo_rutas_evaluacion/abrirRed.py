@@ -1,7 +1,11 @@
+import sys
 import pickle
 import mysql.connector
+
+matricula = sys.argv[1]
 cnx = mysql.connector.connect(user='root', password='PROYECTO1KMS', host='localhost', database='kms')
-nombre_rbma_pickle = "red_bayesiana/metodo_rutas_evaluacion/rbma/rbma_1530004.pkl" #pickle
+#nombre_rbma_pickle = "red_bayesiana/metodo_rutas_evaluacion/rbma/rbma_1530004.pkl"  #pickle
+nombre_rbma_pickle = "red_bayesiana/metodo_rutas_evaluacion/rbma/rbma_" + matricula + ".pkl"
 #nombre_rbma_pickle = "rbma/rbma_1530004.pkl" #pickle
 infile = open(nombre_rbma_pickle,'rb')
 RBMA = pickle.load(infile)

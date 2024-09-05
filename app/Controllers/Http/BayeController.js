@@ -16,11 +16,13 @@ class BayeController {
 		
 		
 
-        /*const temas = await Database.raw(
+        /*
+        const temas = await Database.raw(
           'SELECT DISTINCT r.ponderacion,  t.id, t.nombre_tema, t.nivel, r.clasificacion, r.id_alumno FROM temas t '+
           'INNER JOIN relacion_nodo_alumnos r on t.id = r.id_tema WHERE t.nivel > 1 AND r.clasificacion != 1 AND r.id_alumno = ? '+
           'ORDER BY RAND() LIMIT 5;', [auth.user.id]
-        )*/
+        )
+          */
 		    
       /*const temas = await Database.raw(
           'SELECT DISTINCT r.ponderacion,  t.id, t.nombre_tema, t.nivel, r.clasificacion, r.id_alumno ' +

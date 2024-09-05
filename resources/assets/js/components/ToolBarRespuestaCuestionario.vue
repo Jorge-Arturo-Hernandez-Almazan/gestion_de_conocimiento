@@ -1,11 +1,6 @@
-<template>
-<!--head>
-  <title>MathQuill Editor</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
-</head-->   
+<template>  
   <div id="container">
-    <div id="div1">
-      
+    <div id="div1">      
       <!-- menu desplegable para los botones  -->
       <div class="menu">
         <select id="menu-options" @change="toggleButtons" v-model="selectedOption">
@@ -15,34 +10,20 @@
           <option value="symbols">Símbolos</option>
         </select>
       </div>
-          <div>
-      <!--input
-        v-model="inputValue"
-        v-mathquill
-        type="text"
-        id="input2"
-        class="mathquill-input"
-      -->
+          <div>      
     </div>
-       <!--div id="input2"></div> <!-- entrada de la expresión -->
        <div id="mathquill-editor"></div>
       <div ref="mathField" id="input2" @input="handleInput"></div>
-      <!--p>Dato recibido del padre: {{ dato }}</p>
-      <p>Dato recibido del padre: {{ banderaParaEdicion}}</p>
-      <p>Mensaje desde el hijo: {{ mensaje }}</p-->
-
-      <!--h1>
-        {{aboutname}}
-      </h1-->
-      <!--script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script-->
-
-      
-  
-      
+     
       <div v-for="buttonClass in buttonClasses" :key="buttonClass" :class="['menu-buttons', { active: buttonClass === activeButton }]">
-
         <!-- Los botones para Matemáticas Básicas -->
-        
+        <button
+        v-if="buttonClass === 'basic-buttons'"
+        @click="insertEnter"
+        @mouseover="showEtiqueta = true"
+        @mouseleave="showEtiqueta = false"
+        title="Enter"
+      >Enter</button>
           <button
             v-if="buttonClass === 'basic-buttons'"
             id="left-p"
@@ -835,11 +816,8 @@
              @mouseleave="showEtiqueta = false"
              title="Eta"
        >η</button>
-        
-        
        
        <button id="latex" @click="TraducirLatex">Borrar</button>
-      
       
       </div>    
       </div>
@@ -847,19 +825,6 @@
 </template>
 
 <script>
-//import MathQuill from 'mathquill';
-//import MathQuillDirective from './directives/MathQuillDirective';
-// import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
-// importa el archivo CSS de MathQuill desde la carpeta local
-//import '@/components/mathquill/mathquill.css';
-//importa el archivo JS de MathQuill desde la carpeta local
-//import MathQuill from '@/components/mathquill/mathquill.js';
-  
-
-//import "https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css";
-
-//import MathQuill from "https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js";
-
   
   export default {
   name: 'ToolBar',
@@ -882,9 +847,7 @@
     };
   },
   mounted(){
-//      this.initMathQuill();
-      //const MQ = MathQuill.getInterface(2); 
-      //const mathField = MQ.MathField(this.$refs.mathField); 
+
       const MQ = MathQuill.getInterface(2);
       this.mathField = MQ.MathField(this.$refs.mathField);
       this.handleInput();
@@ -913,6 +876,7 @@
     toggleButtons() {
       this.activeButton = this.selectedOption + '-buttons'; 
      },
+    
     insertLeftP(){
       this.mathField.cmd('(');
     },
@@ -1167,15 +1131,19 @@
     insertEta(){
     this.mathField.write("\\eta")
     },
-    
-    
+   insertEnter() {
+      const event = new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13, which: 13 });
+      this.$refs.mathField.dispatchEvent(event);
+    },
     
     TraducirLatex(){
-      //console.log(this.mathField.latex());
-      //const latexContent = this.mathField.latex();
-      //console.log('hola??');
+
      this.mathField.latex(''); // Limpia el contenido del campo MathQuill
       
+    },
+    getToolbarValue() {
+      // Asumiendo que el valor que necesitas está dentro del elemento referenciado por `mathField`
+      return this.$refs.mathField.innerText; // O `innerHTML`, según corresponda
     },
     handleInput(){
       const mathquillText = this.mathField.latex();
@@ -1332,11 +1300,4 @@
 .tooltip {
   position: relative;
 }
-
-
-
-
-
-
-
 </style>

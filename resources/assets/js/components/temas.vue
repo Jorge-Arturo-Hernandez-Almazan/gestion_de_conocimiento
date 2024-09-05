@@ -54,6 +54,7 @@
                                             <v-th defaultSort="desc"> Calculadas </v-th>
                                             <v-th defaultSort="desc"> Calculadas Múltiples </v-th>
                                             <v-th defaultSort="desc"> Preguntas Expresiones </v-th>
+                                            <v-th defaultSort="desc"> Total por tema </v-th>
                                           
                                         </thead>
                                         <tbody slot="body" slot-scope="{displayData}">
@@ -101,6 +102,12 @@
                                                     <span v-if="temas.totalExpresiones > 0" class="badge badge-primary">
                                                         {{temas.totalExpresiones}} </span>
                                                     <span v-else class="badge badge-danger "> {{temas.totalExpresiones}}
+                                                    </span>
+                                                </td>
+                                              <td>
+                                                    <span v-if="temas.totalPorTema > 0" class="badge badge-primary">
+                                                        {{temas.totalPorTema}} </span>
+                                                    <span v-else class="badge badge-danger "> {{temas.totalPorTema}}
                                                     </span>
                                                 </td>
                                             </tr>

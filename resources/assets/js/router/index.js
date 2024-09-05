@@ -26,6 +26,8 @@ import configuracionModulo from '@/components/configuracionModulo'
 import Ejemplo from '@/components/Ejemplo'
 import PreguntasExpresiones from '@/components/PreguntasExpresiones'
 import Recursos from '@/components/Recursos'
+import StatusGrafo from '@/components/StatusGrafo'
+
 
 Vue.use(Router)
 
@@ -172,6 +174,11 @@ export default new Router({
        path:'/grafoalumnos',
        name: 'grafoAlumnos',
        component: GrafoAlumnos
+     },
+     {
+        path: '/statusGrafo',
+        name: 'statusGrafo',
+        component: StatusGrafo
      },
      {
        path:'/configuracion/modulo',

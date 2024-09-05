@@ -34,8 +34,11 @@
                                     </div>
                                 </div>
                             </div>
+                     
                             <div class="card-body">
+                              <!-- ----------------------------------------------Termino de búsqueda y campo de búsqueda--------------------------------------------------- -->
                                 <div class="row mb-2">
+                                  
                                     <div class="col-6" >
                                         <b> Termino de busqueda: </b>
                                         <input class="form-control" type="search" 
@@ -43,6 +46,7 @@
                                             v-model="filters.pregunta.value" 
                                             style=" height: 38px;" />
                                     </div>
+                                  
                                     <div class="col-6" >
                                         <b>Campo de busqueda: </b>
                                         <select class="form-control" name="campoBusqueda" id="campoBusqueda" @change="cambiarCampoDeBusqueda">
@@ -53,6 +57,7 @@
                                         </select>
                                     </div>
                                 </div>
+                              <!-- ----------------------------------------------Tabla que muestra los reactivos del tipo de preguntas expresiones--------------------------------------------------- -->
                                 <div class="table-responsive">
                                     <v-table :data="preguntaExpresiones" :filters="filters" :currentPage.sync="currentPage"
                                         :pageSize="5" @totalPagesChanged="totalPages = $event" style="width:100%"
@@ -115,7 +120,9 @@
                                         </tbody>
                                     </v-table>
                                 </div>
+                      <!-- ------------------------------------------------------------------------------------------------- -->
                             </div>
+                  <!-- -------------------------------------------------Total de registros--------------------------------------------------------------- -->
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-6">
@@ -128,6 +135,7 @@
                                     </div>
                                 </div>
                             </div>
+                  <!-- ------------------------------------------------------------------------------------------------- -->
                         </div>
                     </div>
                 </div>

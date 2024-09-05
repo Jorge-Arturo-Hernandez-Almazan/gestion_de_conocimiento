@@ -6,12 +6,12 @@ const Hash = use('Hash')
 const Database = use('Database')
 
 class ConfiguracionController {
-  
+ //Esta es la tabla que almacena la configuración de el cuestionario  
 	async cargarMargen({response}){
 		const margen = await Database.raw('SELECT rango_por_defecto	FROM configuracion_cuestionarios; ' );
 		return response.json(margen[0][0])
 	} 
- 
+ //Esta es la tabla que almacena la configuración de el cuestionario
 	async obtenerConfiguracionCuestionario({response}){
 		const configuraciones = await Database.raw('SELECT * FROM configuracion_cuestionarios; ');
 		return response.json(configuraciones[0]);
@@ -33,9 +33,10 @@ class ConfiguracionController {
 		const totalBooleanas = Number(request.post().totalBooleanas);
 		const totalMultiples = Number(request.post().totalMultiples);
     const totalCalculadasMultiples = Number(request.post().totalCalculadasMultiples);
+    const totalExpresiones = Number(request.post().totalExpresiones);
 		const ponderacionEstricta = Number(request.post().ponderacionEstricta);
 		
-		const banco_preguntas = await Database.raw('UPDATE configuracion_cuestionarios SET ponde_estricta = ?, num_preguntas = ?, num_preguntas_abiertas = ?, num_preguntas_boleanas = ?, num_preguntas_multiples = ?, num_preguntas_calculadas = ?, num_preguntas_numericas = ?, num_preguntas_calculadas_multiples = ?, rango_por_defecto = ? ',[ponderacionEstricta, totalPreguntas, totalBreves, totalBooleanas, totalMultiples, totalCalculadas, totalNumericas, totalCalculadasMultiples,  rangoDefecto ])
+		const banco_preguntas = await Database.raw('UPDATE configuracion_cuestionarios SET ponde_estricta = ?, num_preguntas = ?, num_preguntas_abiertas = ?, num_preguntas_boleanas = ?, num_preguntas_multiples = ?, num_preguntas_calculadas = ?, num_preguntas_numericas = ?, num_preguntas_calculadas_multiples = ?,num_preguntas_expresion = ?, rango_por_defecto = ? ',[ponderacionEstricta, totalPreguntas, totalBreves, totalBooleanas, totalMultiples, totalCalculadas, totalNumericas, totalCalculadasMultiples,totalExpresiones,  rangoDefecto ])
 	
 		
 		return "success";

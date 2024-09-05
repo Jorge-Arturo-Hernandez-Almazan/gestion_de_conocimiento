@@ -1,8 +1,4 @@
 <template>
-<!--head>
-  <title>MathQuill Editor</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
-</head-->   
   <div id="container">
     <div id="div1">
       <!-- menu desplegable para los botones  -->
@@ -15,34 +11,10 @@
         </select>
       </div>
           <div>
-      <!--input
-        v-model="inputValue"
-        v-mathquill
-        type="text"
-        id="input2"
-        class="mathquill-input"
-      -->
     </div>
-       <!--div id="input2"></div> <!-- entrada de la expresión -->
        <div id="mathquill-editor"></div>
       <div ref="mathField" id="input2" @input="handleInput"></div>
-      <!--p>Dato recibido del padre: {{ dato }}</p>
-      <p>Dato recibido del padre: {{ banderaParaEdicion}}</p>
-      <p>Mensaje desde el hijo: {{ mensaje }}</p-->
-
-      <!--h1>
-        {{aboutname}}
-      </h1-->
-      <!--script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script-->
-
-      
-      
-    
-      
-      <div v-for="buttonClass in buttonClasses" :key="buttonClass" :class="['menu-buttons', { active: buttonClass === activeButton }]">
-
-        <!-- Los botones para Matemáticas Básicas -->
-        
+      <div v-for="buttonClass in buttonClasses" :key="buttonClass" :class="['menu-buttons', { active: buttonClass === activeButton }]">    
           <button
             v-if="buttonClass === 'basic-buttons'"
             id="left-p"
@@ -153,8 +125,9 @@
              @click="insertLn"
              @mouseover="showEtiqueta = true"
              @mouseleave="showEtiqueta = false"
-             title="logaritmo natural"
-        >ln</button>
+             title="logaritmo natural">
+             <img src="/imagenes/toolbar-buttons/log.png" />
+        </button>
         
         <button 
              v-if="buttonClass === 'basic-buttons'" 
@@ -192,26 +165,6 @@
              @mouseleave="showEtiqueta = false"
              title="igual"
          >=</button>
-        
-        <button 
-             v-if="buttonClass === 'basic-buttons'" 
-             id="valorAbosoluto" 
-             @click="insertVA"
-             @mouseover="showEtiqueta = true"
-             @mouseleave="showEtiqueta = false"
-             title="Vinculo Vertical"
-         >| |</button>
-      
-        
-        
-                <button 
-             v-if="buttonClass === 'basic-buttons'" 
-             id="puntoYComa" 
-             @click="insertpuntoComa"
-             @mouseover="showEtiqueta = true"
-             @mouseleave="showEtiqueta = false"
-             title="Punto y coma"
-         >;</button>
         
         <!-- Los botones para Cálculo y Sumas -->
         
@@ -866,19 +819,6 @@
 </template>
 
 <script>
-//import MathQuill from 'mathquill';
-//import MathQuillDirective from './directives/MathQuillDirective';
-// import MathQuill from 'https://cdn.jsdelivr.net/npm/mathquill@0.10.1-a/build/mathquill.css';
-// importa el archivo CSS de MathQuill desde la carpeta local
-//import '@/components/mathquill/mathquill.css';
-//importa el archivo JS de MathQuill desde la carpeta local
-//import MathQuill from '@/components/mathquill/mathquill.js';
-  
-
-//import "https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css";
-
-//import MathQuill from "https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js";
-
   
   export default {
   name: 'ToolBar',
@@ -901,10 +841,7 @@
     };
   },
   mounted(){
-//      this.initMathQuill();
-      //const MQ = MathQuill.getInterface(2); 
-      //const mathField = MQ.MathField(this.$refs.mathField); 
-      const MQ = MathQuill.getInterface(2);
+ const MQ = MathQuill.getInterface(2);
       this.mathField = MQ.MathField(this.$refs.mathField);
       this.handleInput();
     
@@ -965,9 +902,6 @@
     },
     insertDiv(){
       this.mathField.cmd('\\div')
-    },
-    insertVA(){
-      this.mathField.cmd('|')
     },
     insertLn(){
       this.mathField.write("\\ln\\left(\\right)")
@@ -1188,25 +1122,14 @@
     },
     insertEta(){
     this.mathField.write("\\eta")
-    },
-    insertpuntoComa(){
-    this.mathField.write(";")
-    },
-    
-    
-    
+    },   
     TraducirLatex(){
-      //console.log(this.mathField.latex());
-      //const latexContent = this.mathField.latex();
-      //console.log('hola??');
      this.mathField.latex(''); // Limpia el contenido del campo MathQuill
-      
     },
     handleInput(){
       const mathquillText = this.mathField.latex();
       console.log(mathquillText);
       this.$emit('mathquill-updated', mathquillText);
-      
     },
      editarCampoMathquill() {
     // Utiliza un temporizador para escribir el valor en MathQuill después de un breve retraso
@@ -1215,9 +1138,7 @@
     }, 0);
   }, 
     limpiarCampoMathquill(){
-      
        this.mathField.latex(''); // Limpia el contenido del campo MathQuill
-      
     },
   },
 };
@@ -1232,7 +1153,6 @@
       width: 600px;
       height: 300px;
       overflow: hidden;
-
     }
     #input2 {
       width: 400px;
@@ -1242,25 +1162,20 @@
       font-size: 24px;
       border: 1px solid #000000da;
     }
-
     .menu {
       margin-bottom: 10px;
     }
-
     .menu select {
       font-size: 18px;
       padding: 5px;
     }
-
     .menu-buttons {
       display: none;
     }
-
     .menu-buttons.active {
       display: flex;
       flex-wrap: wrap;
     }
-
     menu-buttons .button-image {
       width: 50px;
       height: 50px;
@@ -1284,13 +1199,11 @@
     .menu-buttons button:hover {
       background-color: #e0e0e0;
     }
-
     .tooltip {
       position: relative;
       display: inline-block;
       cursor: pointer;
     }
-
     .tooltip .tooltiptext {
       visibility: hidden;
       width: 120px;
@@ -1307,7 +1220,6 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-
     .tooltip:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
@@ -1325,11 +1237,9 @@
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s;
     }
-
     #translate:hover {
       background-color: #1173a6;
     }
-
     .texto-emergente {
       display: none;
       position: absolute;
@@ -1357,11 +1267,4 @@
 .tooltip {
   position: relative;
 }
-
-
-
-
-
-
-
 </style>

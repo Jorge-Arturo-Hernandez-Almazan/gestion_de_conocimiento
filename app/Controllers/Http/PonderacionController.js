@@ -1,8 +1,11 @@
 'use strict'
 
+//const { execSync } = require('child_process');
+const User = use('App/Models/User')
 const Database = use('Database')
 const execSync = require('child_process').execSync;
 const fs = require('fs');
+//const UserController = require('./UserController');
 
 class PonderacionController {
     async pruebaDeFuncionamiento() {
@@ -16,7 +19,7 @@ class PonderacionController {
         }); // the default is 'buffer'
         return response.json(output);
     }
-  
+
     async arrayEquals(a, b) {
         if (a === b) return true;
         if (a == null || b == null) return false;
@@ -27,7 +30,7 @@ class PonderacionController {
         }
         return true;
     }
-  
+
     async getResults({
         params,
         response,
@@ -37,7 +40,7 @@ class PonderacionController {
 
         return response.json(temas[0]);
     }
-  
+
     async obtener_caminos({
         response,
         auth
@@ -104,7 +107,7 @@ class PonderacionController {
         return response.json(paths);
         //return paths.caminos[0];
     }
-  
+
     async obtener_caminos_simulador({
         response
     }) {
@@ -180,7 +183,7 @@ class PonderacionController {
         });
 
     }
-  
+
     async obtener_caminos_red_bayesiana({ response }) {
 
         let i = 0;
@@ -229,7 +232,7 @@ class PonderacionController {
                 solo_arreglo.push(caminoss[j][k]);
             }
         }
-        
+
         let uniqueArray = solo_arreglo.filter((c, index) => {
             return solo_arreglo.indexOf(c) === index;
         });
@@ -246,16 +249,16 @@ class PonderacionController {
             }
             console.log("JSON data is saved.");
         });*/
-      
-      
+
+
         return response.json({
             caminos: caminoss,
             nodos: uniqueArray,
             temas: temas
         });
-      
+
     }
-  
+
     // OBTENER CAMINOS PARA EL MÓDULO EN PYTHON
     async obtener_caminos_modulo({ response, params }) {
         let i = 0;
@@ -313,42 +316,42 @@ class PonderacionController {
                 throw err;
             }
         });
-      
+
         let matricula = params.matricula;
         let rbm = params.rbm;
         let parametros = " " + matricula + " " + rbm;
-        
-        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros, {encoding: 'utf-8'});
-        
+
+        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros, { encoding: 'utf-8' });
+
         return response.json(salidaPython);
     }
-  
-  
-    async obtener_tema({ response, params }){
+
+
+    async obtener_tema({ response, params }) {
         let rbm = params.rbm;
         let matricula = params.matricula;
         let saltos = params.saltos;
         let tema = params.tema;
         let ponderacion = params.ponderacion;
         let parametros = " " + matricula + " " + rbm + " " + saltos + " " + tema + " " + ponderacion;
-        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros, 
-                                      {encoding: 'utf-8'} );
+        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/main.py " + parametros,
+            { encoding: 'utf-8' });
         return response.json(salidaPython);
     }
-  
-    async obtener_ponderaciones({response, params}){
-        
+
+    async obtener_ponderaciones({ response, params }) {
+
         let matricula = params.matricula;
-        
-        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/ponderaciones.py " + matricula, 
-                                      {encoding: 'utf-8'} )
-        
+
+        const salidaPython = execSync("python3 red_bayesiana/metodo_rutas_evaluacion/ponderaciones.py " + matricula,
+            { encoding: 'utf-8' })
+
         return response.json(salidaPython);
-      
+
     }
-  
-  
-  
+
+
+
     async obtener_ramas({ response, auth }) {
         let ramas = await Database.raw('select id, nivel from temas where nivel = 1;');
         return response.json(ramas);
@@ -666,12 +669,12 @@ class PonderacionController {
 
         let temas = await Database.raw('select temas.id as id, temas.nombre_tema as nombre, temas.nivel as nivel from temas order by nivel desc;');
         temas = temas[0];
-        
+
         const relaciones = await Database.select('id_padre', 'id_hijo').from('relacion_primarias');
         let total_relaciones = relaciones.length;
         let total_temas = temas.length;
         let texto = "nodos\n";
-        
+
         for (i = 0; i < total_temas; i++) {
             if (i == total_temas - 1) {
                 texto = texto + temas[i].id;
@@ -691,12 +694,12 @@ class PonderacionController {
         execSync('g++ dag.cpp -o dag', {
             encoding: 'utf-8'
         });
-        
+
         const caminos = execSync('./dag ' + total_temas, {
             encoding: 'utf-8'
         });
 
-        
+
         paths = JSON.parse(caminos);
         total_caminos = paths.caminos.length;
         total = 0;
@@ -735,7 +738,7 @@ class PonderacionController {
             }
         }
 
-        
+
 
         //Ordenar caminos hacia arriba   
         for (i = 0; i < caminos_arriba.length; i++) {
@@ -813,45 +816,46 @@ class PonderacionController {
         //caminos_arriba = caminos_arriba.slice(0, params.saltos);
         //caminos_abajo = caminos_abajo.slice(0, params.saltos);
 
-        return response.json({caminos_arriba, caminos_abajo})
+        return response.json({ caminos_arriba, caminos_abajo })
 
-   
+
     }
-  
-    async obtenerPoderacionesNodos({ response, auth }) 
-    {
-        var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/abrirRed.py', { encoding: 'utf-8' }); // the default is 'buffer'
+
+    async obtenerPoderacionesNodos({ response, auth }) {
+        //let userRaw = await Database.raw('SELECT matricula FROM users WHERE id = ?', [User.id]);
+        //Extraer la matrícula desde el resultado de la consulta
+        //console.log(userRaw);
+        //const matricula = 1830290;
+      const matricula = 1830141;
+        var output = execSync(`python3 red_bayesiana/metodo_rutas_evaluacion/abrirRed.py ${matricula}`, { encoding: 'utf-8' }); // the default is 'buffer'
         var nodos = []
-        var gdc=[]
-        output=output.split(",")
-        for( let i=0; i<output.length; i++)
-        {
-            output[i] = output[i].replace(/(\r\n|\n|\r)/gm,"");  
-            var output2=output[i].split("/")
+        var gdc = []
+        output = output.split(",")
+        for (let i = 0; i < output.length; i++) {
+            output[i] = output[i].replace(/(\r\n|\n|\r)/gm, "");
+            var output2 = output[i].split("/")
             nodos.push(output2[0])
             gdc.push(output2[1])
 
-         }
-        return response.json({nodos, gdc})
-
-
-      }
-      async obtenerRA({ response, auth }) 
-    {
-       
-        var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/GenerarRA.py', { encoding: 'utf-8' }); // the default is 'buffer'
-        output=output.split(",\n")
-        var caminos=[]  
-        for( let i=0; i<output.length; i++)
-        {
-          caminos.push(output[i].split(","))  
-          
         }
-       //var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/abrirRed.py', { encoding: 'utf-8' });
-        return response.json(caminos.slice(0,caminos.length-1))
+        return response.json({ nodos, gdc })
+
+    }
+
+    async obtenerRA({ response, auth }) {
+
+        var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/GenerarRA.py', { encoding: 'utf-8' }); // the default is 'buffer'
+        output = output.split(",\n")
+        var caminos = []
+        for (let i = 0; i < output.length; i++) {
+            caminos.push(output[i].split(","))
+
+        }
+        //var output = execSync('python3 red_bayesiana/metodo_rutas_evaluacion/abrirRed.py', { encoding: 'utf-8' });
+        return response.json(caminos.slice(0, caminos.length - 1))
 
 
-      }
+    }
 }
 
 module.exports = PonderacionController

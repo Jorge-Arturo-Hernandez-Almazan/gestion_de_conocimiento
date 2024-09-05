@@ -65,7 +65,7 @@ class PreguntaController {
              correcto=false;
         if(preguntas[0][0].cmultiples<conf[0][0].num_preguntas_calculadas_multiples)
              correcto=false;
-        if(preguntas[0][0].expresiones<conf[0][0].num_expresiones)
+        if(preguntas[0][0].expresiones<conf[0][0].num_preguntas_expresion)
              correcto=false;
      }
     if(conf[0][0].num_preguntas==0)
@@ -254,10 +254,10 @@ class PreguntaController {
       'INNER JOIN configuracion_preguntas_calculadas c on c.id_pregunta = b.id ' +
  			'WHERE b.tipo = 6 AND b.id = '+ datosPreguntas.id)
       
-    }else{
+    }else if( datosPreguntas.tipo === "7" ){
       
       const preguntas = await Database.raw(
-			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.descripcion as descripcion, b.pregunta as pregunta, b.tipo as tipo, '+
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.descripcion as descripcion,b.pregunta as pregunta, b.tipo as tipo, '+
 			't.nombre_tema as tema, m.aplicableArriba, m.aplicableAnbajo, rango ' +
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema ' +
@@ -265,7 +265,7 @@ class PreguntaController {
 			'WHERE b.tipo = 7 AND b.id = '+ datosPreguntas.id)
       
     }
-    
+  
 	
 		return response.json({banco_preguntas:preguntas}) 
 	}
@@ -332,16 +332,16 @@ class PreguntaController {
 			' ORDER BY RAND() ' +
 			'LIMIT ' + configuraciones[0][0].num_preguntas_calculadas_multiples)
     
-  /*  const preguntaExpresiones = await Database.raw(
-			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.pregunta as pregunta, b.descripcion as descripcion, b.tipo as tipo, '+
+    const preguntaExpresiones = await Database.raw(
+			'SELECT b.id as id_pregunta, b.id_tema as id_tema, b.descripcion as descripcion,b.pregunta as pregunta, b.tipo as tipo, '+
 			't.nombre_tema as tema, m.aplicableArriba, m.aplicableAnbajo, rango ' +
 			'FROM banco_preguntas b ' +
 			'INNER JOIN temas t on t.id = b.id_tema ' +
 			'INNER JOIN margen_errors m on m.id_pregunta =  b.id ' +
 			'WHERE b.tipo = 7 AND b.id_tema = '+ params.id + 
 			' ORDER BY RAND() ' +
-			'LIMIT ' + configuraciones[0][0].num_expresiones)
-		*/
+			'LIMIT ' + configuraciones[0][0].num_preguntas_expresion)
+		
 		var banco_preguntas = [];
 		banco_preguntas = banco_preguntas.concat(preguntasBoleanas[0]);
 		banco_preguntas = banco_preguntas.concat(preguntasMultiples[0]);
@@ -349,7 +349,7 @@ class PreguntaController {
 		banco_preguntas = banco_preguntas.concat(preguntasAbiertas[0]);
 		banco_preguntas = banco_preguntas.concat(preguntaCalculadas[0]);
     banco_preguntas = banco_preguntas.concat(preguntaCalculadasMultiples[0]);
-//    banco_preguntas = banco_preguntas.concat(preguntaExpresiones[0]);
+    banco_preguntas = banco_preguntas.concat(preguntaExpresiones[0]);
 
 
 		banco_preguntas.sort(() => Math.random() - 0.5);

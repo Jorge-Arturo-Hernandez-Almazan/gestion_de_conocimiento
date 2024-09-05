@@ -1,300 +1,365 @@
 <template>
-    <div class="content-wrapper">
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="page-title m-0">Cuestionario</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <span style="color: #bdb9bd">
-                                <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
-                            </span>
-                            <span style="color: #bdb9bd">
-                                Cuestionario <i class="fas fa-angle-right"></i>
-                            </span>
-                            <b> Contestar </b> 
-                        </ol>
-                    </div>
-                </div>
-            </div>
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6"> 
+            <h1 class="page-title m-0">Cuestionario</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <span style="color: #bdb9bd">
+                <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
+              </span>
+              <span style="color: #bdb9bd">
+                Cuestionario <i class="fas fa-angle-right"></i>
+              </span>
+              <b> Contestar </b>
+            </ol>
+          </div>
         </div>
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row ">
-                    <div class="col-12">
-                        <div class="card shadow">
-                            <div class="card-header">
-                                <h3 class="card-title mt-2"> <b> Cuestionario </b> </h3>
-                                <div class="card-tools">
-                                    <div class="" style="width: 150px;">
-                                        <button type="button" class="btn btn-primary float-right " data-toggle="modal" data-target="#exampleModal">
-                                            <i class="fas fa-calculator"></i>  
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div id="quiz">
-                                            <p id="tag_topic"> <b> Tema: </b> </p>
-                                            <p id="progress"></p>
-                                            <p> <b> Pregunta: </b> </p>
-                                            <h3 id="question"> </h3>
-                                            <p v-if="this.imagenesPregunta.length > 0"> <b> Imagenes: </b> </p>
-                                            <div class="row mt-3">
-                                                <div v-for="(img,i) in this.imagenesPregunta" :key="img"
-                                                    class="col-12 col-md-1" style="text-align: center;">
-                                                    <a @click="desplegarImagen(img, 'imagen ' + (i+1))"> <img class="ml-2 mr-2"
-                                                            :src="img" style="border: 0.5px solid black; width:100%;">
-                                                    </a>
-                                                    <p>
-                                                        Imagen {{i+1}}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <p id="noOpciones"> </p>
-                                            <div class="buttons" id="buttons" style="margin: 0px 0px 0px 0px"> </div>
-                                        </div>
-                                        <div class="row">
-                                            <center>
-                                                <button type="button" class="btn btn-primary btn-lg float-right "
-                                                    id="next">
-                                                    <i class="fas fa-chevron-right"></i> Siguiente
-                                                </button>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">    
-                        <img :src="this.imagenActual" style="width:100%;">
-                        <br>
-                        {{ this.imagenActualNombre }}
-                    </div>
-                </div>
-            </div>
-        </div>
-       <div class="row">
-            <div class="modal animated animate__bounceIn" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> Calculadora </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="campo_calculadora"
-                                    style="text-align:right;font-size:35px;">
-                            </div>
-                            <div class="form-group">
-                                <table style="table-layout: fixed; width: 100%;">
-                                    <tr>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('ac')"
-                                                style="width: 100%; height: 100%;">AC</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('(')"
-                                                style="width: 100%; height: 100%;">(</button> </td>
-                                        <td> <button class="btn btn-primary" v-on:click="botonesCalculadora(')')"
-                                                style="width: 100%; height: 100%;">)</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('/')"
-                                                style="width: 100%; height: 100%;">/</button> </td>
-                                    </tr>
-                                    <tr>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('7')"
-                                                style="width: 100%; height: 100%;">7</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('8')"
-                                                style="width: 100%; height: 100%;">8</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('9')"
-                                                style="width: 100%; height: 100%;">9</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('*')"
-                                                style="width: 100%; height: 100%;">*</button> </td>
-                                    </tr>
-                                    <tr>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('4')"
-                                                style="width: 100%; height: 100%;">4</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('5')"
-                                                style="width: 100%; height: 100%;">5</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('6')"
-                                                style="width: 100%; height: 100%;">6</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('+')"
-                                                style="width: 100%; height: 100%;">+</button> </td>
-                                    </tr>
-                                    <tr>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('1')"
-                                                style="width: 100%; height: 100%;">1</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('2')"
-                                                style="width: 100%; height: 100%;">2</button> </td>
-                                        <td> <button  class="btn btn-primary " v-on:click="botonesCalculadora('3')"
-                                                style="width: 100%; height: 100%;">3</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('-')"
-                                                style="width: 100%; height: 100%;">-</button> </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td> <button class="btn btn-primary " data-toggle="modal" data-target="#funciones"
-                                                style="width: 100%; height: 100%;">fun</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('0')"
-                                                style="width: 100%; height: 100%;">0</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('.')"
-                                                style="width: 100%; height: 100%;">.</button> </td>
-                                        <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('=')"
-                                                style="width: 100%; height: 100%;">=</button></td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog"
-                aria-labelledby="funcionesModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Funciones</h5>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="row">
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' abs (')">abs</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' acos (')">acos</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' acosh (')">acosh</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' asin (')">asin</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' asinh (')">asinh</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' atan (')">atan</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' atan2 (')">atan2</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' atanh (')">atanh</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' bindec (')">bindec</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' ceil (')">ceil</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' cos (')">cos</button></div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-1">
-                                    <div><button  class="btn btn-primary " v-on:click="botonesCalculadora(' cosh (')">cosh</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button  class="btn btn-primary " v-on:click="botonesCalculadora(' decbin (')">decbin</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button  class="btn btn-primary " v-on:click="botonesCalculadora(' decoct (')">decoct</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button  class="btn btn-primary " v-on:click="botonesCalculadora(' deg2rad (')">deg2rad</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button  class="btn btn-primary " v-on:click="botonesCalculadora(' exp (')">exp</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button  class="btn btn-primary " v-on:click="botonesCalculadora(' expm1 (')">expm1</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button  class="btn btn-primary " v-on:click="botonesCalculadora(' floor (')">floor</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary "  v-on:click="botonesCalculadora(' log10 (')">log10</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary "  v-on:click="botonesCalculadora(' log1p (')">log1p</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary "  v-on:click="botonesCalculadora(' log (')">log</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary "  v-on:click="botonesCalculadora(' max (')">max</button></div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' min (')">min</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' pi ( )')">pi</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' pow (')">pow</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' rad2deg (')">rad2deg</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' round (')">round</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' sin (')">sin</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' sinh (')">sinh</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' sqrt (')">sqrt</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' tan (')">tan</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' tanh (')">tanh</button></div>
-                                </div>
-                                <div class="col-1">
-                                    <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' ,')">,</button></div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button-->
-                    </div>
-
-                </div>
-            </div> 
-        </div>
+      </div>
     </div>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row ">
+          <div class="col-12">
+            <div class="card shadow">
+              <div class="card-header">
+                <h3 class="card-title mt-2"> <b> Cuestionario </b> </h3>
+                <div class="card-tools">
+                  <div class="" style="width: 150px;">
+                    <button type="button" class="btn btn-primary float-right " data-toggle="modal"
+                      data-target="#exampleModal">
+                      <i class="fas fa-calculator"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <div id="quiz">
+                      <p id="tag_topic"> <b> Tema: </b> </p>
+                      <p id="progress"></p>
+                                   <div>
+    <h5>Wolfram</h5>
+    <wolfram :mensaje="mensajeParaHijo"/></wolfram>
+    <!-- Puedes agregar más contenido aquí -->
+  </div>
+            
+
+                      <div id="contenedorDescripcion" hidden>
+                        <p> <b> Descripción: </b> </p>
+                        <h4 id="descrption"> </h4>
+                      </div>
+                      <p> <b> Pregunta: </b> </p>
+                      <h3 id="question"> </h3>
+                      <div id="contenedorSeptimoTipo" hidden>
+                        <div ref="preguntaMathquill" contenteditable="false" id="preguntaMathquill" hidden></div>
+                        <tool-bar-pregunta ref="hijoComponent" :dato="datoParaHijo"
+                           id="hijoComponent"></tool-bar-pregunta>
+                                                <button id="btnUpdCampo" @click="btnEditar($refs.hijoComponent.editarCampoMathquill())" hidden>
+                          BOTON FALSO 2</button>
+                        <button id="btnUpdCampoLimpiar" @click="btnEditar($refs.hijoComponent.editarCampoMathquill())" 
+                         hidden > BOTON FALSO LIMPIAR</button>
+                        <tool-bar ref="hijoComponente2" @mathquill-updated="handleMathquillUpdate2"
+                          id="hijoComponente2"></tool-bar>
+                        <button id="btnUpdCampoRespuesta" @click="btnEditar3()" hidden>BOTON FALSO 3</button>
+                      </div>
+                      <p v-if="this.imagenesPregunta.length > 0"> <b> Imagenes: </b> </p>
+                      <div class="row mt-3">
+                        <div v-for="(img, i) in this.imagenesPregunta" :key="img" class="col-12 col-md-1"
+                          style="text-align: center;">
+                          <a @click="desplegarImagen(img, 'imagen ' + (i + 1))"> <img class="ml-2 mr-2" :src="img"
+                              style="border: 0.5px solid black; width:100%;">
+                          </a>
+                          <p>Imagen {{ i + 1 }}</p>
+                        </div>
+                      </div>
+                      <p id="noOpciones"> </p>
+                      <div class="buttons" id="buttons" style="margin: 0px 0px 0px 0px"> </div>
+                    </div>
+                    <div class="row">
+                      <center>
+                        <button type="button" class="btn btn-primary btn-lg float-right " id="next">
+                          <i class="fas fa-chevron-right"></i> Siguiente
+                        </button>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="modal animated animate__bounceIn" id="modalParaVerImagenes" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img :src="this.imagenActual" style="width:100%;">
+            <br>
+            {{ this.imagenActualNombre }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="modal animated animate__bounceIn" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Calculadora </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="text" class="form-control" id="campo_calculadora" style="text-align:right;font-size:35px;">
+              </div>
+              <div class="form-group">
+                <table style="table-layout: fixed; width: 100%;">
+                  <tr>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('ac')"
+                        style="width: 100%; height: 100%;">AC</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('(')"
+                        style="width: 100%; height: 100%;">(</button> </td>
+                    <td> <button class="btn btn-primary" v-on:click="botonesCalculadora(')')"
+                        style="width: 100%; height: 100%;">)</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('/')"
+                        style="width: 100%; height: 100%;">/</button> </td>
+                  </tr>
+                  <tr>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('7')"
+                        style="width: 100%; height: 100%;">7</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('8')"
+                        style="width: 100%; height: 100%;">8</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('9')"
+                        style="width: 100%; height: 100%;">9</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('*')"
+                        style="width: 100%; height: 100%;">*</button> </td>
+                  </tr>
+                  <tr>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('4')"
+                        style="width: 100%; height: 100%;">4</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('5')"
+                        style="width: 100%; height: 100%;">5</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('6')"
+                        style="width: 100%; height: 100%;">6</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('+')"
+                        style="width: 100%; height: 100%;">+</button> </td>
+                  </tr>
+                  <tr>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('1')"
+                        style="width: 100%; height: 100%;">1</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('2')"
+                        style="width: 100%; height: 100%;">2</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('3')"
+                        style="width: 100%; height: 100%;">3</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('-')"
+                        style="width: 100%; height: 100%;">-</button> </td>
+                  </tr>
+
+                  <tr>
+                    <td> <button class="btn btn-primary " data-toggle="modal" data-target="#funciones"
+                        style="width: 100%; height: 100%;">fun</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('0')"
+                        style="width: 100%; height: 100%;">0</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('.')"
+                        style="width: 100%; height: 100%;">.</button> </td>
+                    <td> <button class="btn btn-primary " v-on:click="botonesCalculadora('=')"
+                        style="width: 100%; height: 100%;">=</button></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade bd-example-modal-lg" id="funciones" tabindex="-1" role="dialog"
+        aria-labelledby="funcionesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Funciones</h5>
+            </div>
+            <div class="modal-body">
+
+              <div class="row">
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' abs (')">abs</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' acos (')">acos</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' acosh (')">acosh</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' asin (')">asin</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' asinh (')">asinh</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' atan (')">atan</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' atan2 (')">atan2</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' atanh (')">atanh</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' bindec (')">bindec</button>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' ceil (')">ceil</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' cos (')">cos</button></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' cosh (')">cosh</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' decbin (')">decbin</button>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' decoct (')">decoct</button>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' deg2rad (')">deg2rad</button>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' exp (')">exp</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' expm1 (')">expm1</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' floor (')">floor</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' log10 (')">log10</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' log1p (')">log1p</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' log (')">log</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' max (')">max</button></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' min (')">min</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' pi ( )')">pi</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' pow (')">pow</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' rad2deg (')">rad2deg</button>
+                  </div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' round (')">round</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' sin (')">sin</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' sinh (')">sinh</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' sqrt (')">sqrt</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' tan (')">tan</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' tanh (')">tanh</button></div>
+                </div>
+                <div class="col-1">
+                  <div><button class="btn btn-primary " v-on:click="botonesCalculadora(' ,')">,</button></div>
+                </div>
+              </div>
+
+            </div>
+            <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <formulariopaso />
+  </div>
 </template>
 <script>
   import axios from "axios";
+  import Cargador from '@/components/subirImagenes';
+  import ToolBar from "./ToolBarRespuestaCuestionario.vue" //importar el archivo donde se encuentra el toolbar
+  import ToolBarPregunta from "./ToolbarExpresionCuestionario.vue"; //importar el archivo donde se encuentra el toolbar
+  import MathQuill from '@/components/mathquill/mathquill.js';
+  import '@/components/mathquill/mathquill.css'; // Importar estilos CSS de MathQuill
+  import FormularioPaso from "./FormularioPaso.vue";
+  import Wolfram from "./Wolfram.vue";
 
+    var cuestionarioTema;
+  /*var compa = '';
+  var respu = '';
+   var ata;*/
+   var apareceMen = false;
   export default {
+    components: {
+      //'tool-bar':ToolBar, //definir el componente que se va insertar, en este caso el toolbar
+      'tool-bar-pregunta': ToolBarPregunta,
+      'tool-bar': ToolBar,
+      'formulariopaso': FormularioPaso,
+      'wolfram': Wolfram,
+      Wolfram,
+    },
+    mounted() {
+      this.obtenerContenidoMathQuill();
+    },
+    updated() {
+
+      const inputElement = document.querySelector('div#contenedorSeptimoTipo');
+      if (!inputElement.hasAttribute("hidden")) {
+        const nextBtn = document.getElementById('next');
+        nextBtn.setAttribute('hidden', 'true');
+        //if (apareceMen == false) {
+          const textElement = document.createElement('p')
+          textElement.textContent = 'Para confirmar su respuesta y ver el botón "siguiente", presione la tecla "Enter"'
+          inputElement.appendChild(textElement)
+          //apareceMen = true;
+        //}
+      }
+    },
     data() {
+
       return {
         pregunta: [],
+        descripcion: '',
         pCalculadas: [],
         pCalculadasMultiples: [],
         opciones: [],
@@ -313,32 +378,134 @@
         datosEvaluacion: {},
         temasAEvaluar: [96, 26, 44, 91],
         temaAEvaluarActual: 0,
+        datoParaHijo: '',
+        datoParaRespuesta: '',
+        mathquillTextB: '',
+        descripcion2: '',
+        mensajeParaHijo: '',
+        compa: '',
+        ata: '',
+        respu: '',
       };
     },
     async created() {
       await this.obtenerConfiguracion();
-      await this.obtenerPonderaciones();  
+      await this.obtenerPonderaciones();
+
+      //it this.btnEditar($refs.hijoComponent.editarCampoMathquill());
+      //await this.$nextTick(); // Esperar a que Vue termine de actualizar el DOM
+
     },
     methods: {
+
+      obtenerContenidoMathQuill() {
+        var textoRespuestaExpresion = this.mathField.latex();
+        console.log("aaaaaaaaaa a " + textoRespuestaExpresion); // Obtener la expresión matemática en formato LaTeX
+      },
+      btnEditar(descripcion) {
+        // Toma la pregunta actual y no la descripción
+        this.datoParaHijo = document.getElementById("preguntaMathquill").innerHTML; // Se envía la sintaxis de la expresión al componente hijo
+      },
+      btnEditar3() {
+        this.$refs.hijoComponente2.insertEnter(); // Inserta un "Enter" en el campo de MathQuill
+        const mathquillText = this.mathquillTextB; // Obtiene el texto almacenado en mathquillTextB
+        console.log('Texto de tool-bar:', mathquillText);
+        this.updateInputRespuesta(mathquillText);
+      },
+      updateInputRespuesta(text) {
+        this.$refs.hijoComponente2.insertEnter();
+        var opc = document.getElementById("input_respuesta");
+        opc.value = text.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "$1/$2"); // Reemplaza los caracteres de escape de nueva línea por saltos de línea reales
+        console.log('texto de mathQuill en Componente A');
+
+      },
+
+      handleMathquillUpdate2(mathquillText) {
+        const textarea = document.querySelectorAll('#input2 textarea[autocapitalize="off"][autocomplete="off"][autocorrect="off"][spellcheck="false"][x-palm-disable-ste-all="true"]')[1];
+        console.log('texto de mathQuill en Componente B:', mathquillText);
+        //this.updateInputRespuesta(mathquillText);
+        this.mathquillTextB = mathquillText; // Almacena el texto de MathQuill en mathquillTextB
+        this.asignWolf(mathquillText);
+      },asignWolf(text) {
+
+         
+        //console.log("text a "+ata);
+        //this.mensajeParaHijo = ata;
+        this.compa = text.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "$1/$2");
+        //this.obtenerRespuestas();
+//         compa = '(' + compa + ')' + '==' + '(' + respu + ')';
+        console.log("Cromp " + this.compa);
+
+        this.mensajeParaHijo = this.compa;
+      },
+      handleInput(event) {
+        // Manejar la entrada en el campo de texto MathQuill si es necesario
+      },
+      obtenerRespuestas: async function() {
+
+        /*const btnRes = document.getElementById('btnUpdCampoRespuesta');
+        btnRes.click();*/
+
+        if (cuestionarioTema.getQuestionIndex().type == 7) {
+          var textoRespuestaExpresionparaWolfram = document.getElementById("input_respuesta").value;
+          console.log("eeeeee " + textoRespuestaExpresionparaWolfram);
+          //alert(textoRespuestaExpresionparaWolfram)
+        }
+
+        await axios({
+          method: 'get',
+          url: '/pregunta/respuestas/' + cuestionarioTema.getQuestionIndex().id
+        }).then(
+          result => {
+            var res = [];
+            var id_opcion_correcta = [];
+            for (var i = 0; i < result.data.length; i++) {
+              res.push(result.data[i].opcion);
+              id_opcion_correcta.push(result.data[i].id_opcion);
+            }
+
+            if (cuestionarioTema.getQuestionIndex().type == 5 || cuestionarioTema.getQuestionIndex().type ==
+              6) {
+              var power = Math.pow(10, cuestionarioTema.getQuestionIndex().decimales);
+              //console.log("Respuesta antes de la funcion "+res[0]);
+              res = [Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,
+                res[0], id_opcion_correcta[0]) * power) / power];
+              //label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
+            }
+
+            cuestionarioTema.getQuestionIndex().answer = res;
+          }, error => {
+            console.error(error)
+          }
+        )
+        var vala = 'x';
+        if (cuestionarioTema.guess(vala)) {}
+
+
+      },
       obtenerPonderaciones: async function() {
         await axios({
           method: 'get',
           url: "/obtenerPonderaciones/" + matricula
         }).then(async result => {
-          
+
           if (result.data == -1) {
             await this.obtenerPrimerTema();
+            await this.obtenerDescrpcion();
             await this.getopic();
             await this.getpreguntas();
-          } else if (result.data.detenerse === false ) {
-              this.ultimoTema = result.data.ultimo;
-              this.datosEvaluacion = result.data;
-              console.log("Otro tema evaluado");
-              console.log(result.data);
-              await this.getopic();
-              await this.getpreguntas();
-              
-          }else{
+            this.mensajeParaHijo = '';
+          } else if (result.data.detenerse === false) {
+            this.mensajeParaHijo = '';
+            this.ultimoTema = result.data.ultimo;
+            this.datosEvaluacion = result.data;
+            console.log("Otro tema evaluado");
+            console.log(result.data);
+            await this.getopic();
+            await this.getpreguntas();
+            await this.obtenerDescrpcion();
+
+          } else {
             console.log("Ya ha terminado el cuestionario");
             alert("Ya se ha terminado de evaluar");
           }
@@ -368,11 +535,11 @@
           url: "/arbol/caminosmodulo/" + parametros
         }).then(result => {
           this.ultimoTema = result.data.tema;
-          
+
         }, error => {
           console.error(error)
         })
-        
+
       },
       storeResult: async function(ponderacion) {
         this.pregunta = [];
@@ -393,7 +560,7 @@
       getopic: async function() {
         await axios({
           method: 'get',
-          url: 'topic/getopic/'+this.ultimoTema
+          url: 'topic/getopic/' + this.ultimoTema
         }).then(
           result => {
             this.topic = result.data[0];
@@ -401,7 +568,8 @@
             console.error(error)
           }
         )
-      },  /*-------------------------------------------------------configuración del número de preguntas-----------------------------*/
+      },
+      /*-------------------------------------------------------configuración del número de preguntas-----------------------------*/
       obtenerConfiguracion() {
         axios({
           method: 'get',
@@ -413,12 +581,12 @@
             console.log(this.configuracion);
           }, error => {
             console.error(error)
-          })/*-------------------------------------------------------Termina la configuración del número de preguntas-----------------------------*/
-      }, 
+          }) /*-------------------------------------------------------Termina la configuración del número de preguntas-----------------------------*/
+      },
       getpreguntas: async function() {
-        
-       console.log("Obtener preguntas del tema: " + this.ultimoTema );
-       return axios({
+
+        console.log("Obtener preguntas del tema: " + this.ultimoTema);
+        return axios({
           method: 'get',
           url: 'pregunta/showPreguntas/' + this.ultimoTema
         }).then(
@@ -447,9 +615,6 @@
               else if (this.pregunta[i].tipo == 6)
               this.pCalculadasMultiples[i] = this.pregunta[i].id_pregunta;
             await this.getComodines();
-
-
-
             return result.data;
           }, error => {
             console.error(error)
@@ -527,7 +692,6 @@
         }
         //}
         await this.cargarCuestionario(this.topic[0].nombre_tema, this.pregunta);
-
       },
       getopciones(id) {
         return axios({
@@ -546,15 +710,16 @@
         this.imagenActualNombre = nombre;
         $("#modalParaVerImagenes").modal();
       },
-      cargarCuestionario: async function(topic, prguntass) {
-        
+      cargarCuestionario: async function(topic, prguntass, descripcion) {
+
         //console.log("Se va a cargar el cuestionario con el tema " + topic);
-        
+
         var questions = [];
         for (var i = 0; i < prguntass.length; i++) {
           var pregunta = prguntass[i].pregunta
           var tipo = Number(prguntass[i].tipo);
           var id = prguntass[i].id_pregunta;
+          var descripcion = prguntass[i].descripcion;
           var up = 0;
           var down = 0;
           var value = 0;
@@ -570,8 +735,7 @@
             decimales = prguntass[i].decimales;
           }
 
-          questions.push(new Question(id, pregunta, [], [], tipo, up, down, value, decimales,
-            imagenesPregunta));
+          questions.push(new Question(id, pregunta, [], [], tipo, up, down, value, decimales, imagenesPregunta, descripcion));
 
         }
 
@@ -581,6 +745,7 @@
           this.score = 0;
           this.questions = questions;
           this.questionIndex = 0;
+
         }
         Quiz.prototype.getQuestionIndex = function() {
           return this.questions[this.questionIndex];
@@ -594,12 +759,15 @@
         Quiz.prototype.nextQuestion = function() {
           this.questionIndex++;
         }
+
         Quiz.prototype.getImages = function() {
           return this.getQuestionIndex().imagenes;
         }
-        function Question(id, text, choices, answer, type, up, down, value, decimales, imagenes) {
+
+        function Question(id, text, choices, answer, type, up, down, value, decimales, imagenes, descripcion) {
           this.id = id;
           this.text = text;
+          this.descripcion = descripcion;
           this.choices = choices;
           this.answer = answer;
           this.type = type;
@@ -608,10 +776,14 @@
           this.value = value;
           this.decimales = decimales;
           this.imagenes = imagenes;
+          //respu = this.answer[0];
         }
+
         Question.prototype.isCorrectAnswer = function(choice) {
+
           var correcta = false;
 
+          this.respu = this.answer[0].toString().toLowerCase();
           switch (this.type) {
             case 1:
               if (choice == this.answer[0].toString().toLowerCase())
@@ -620,26 +792,27 @@
             case 2:
               //validar que si entra una fracción tomarla como texto 
               var isfraccion = this.answer[0].search('/');
-              console.log("SI ES FRACCION "+isfraccion)
-                
-              if(isfraccion >= 0){
-                if(choice == this.answer[0].toString()){
+              console.log("SI ES FRACCION " + isfraccion)
+
+              if (isfraccion >= 0) {
+                if (choice == this.answer[0].toString()) {
                   correcta = true;
                 }
-                
-              }else{
-              
-              
-              this.answer[0] = Number(this.answer[0]);
-              var arriba = this.answer[0] + Math.abs(Number(this.answer[0] * this.value * this
-                .up))
-              var abajo = this.answer[0] - Math.abs(Number(this.answer[0] * this.value * this
-                .down))
 
-              if (choice >= abajo && choice <= arriba) {
-                correcta = true;
+              } else {
 
-              }}
+
+                this.answer[0] = Number(this.answer[0]);
+                var arriba = this.answer[0] + Math.abs(Number(this.answer[0] * this.value * this
+                  .up))
+                var abajo = this.answer[0] - Math.abs(Number(this.answer[0] * this.value * this
+                  .down))
+
+                if (choice >= abajo && choice <= arriba) {
+                  correcta = true;
+
+                }
+              }
 
 
               break;
@@ -672,22 +845,37 @@
                 if (choice == this.answer[i])
                   correcta = true;
               break;
+            case 7:
+              if (choice == this.answer[0].toString().toLowerCase())
+                correcta = true;
+              break;
           }
           return correcta;
         }
         var tipo = this.configuracion.ponde_estricta; //
-        var cuestionarioTema = new Quiz(questions);
-        
+        cuestionarioTema = new Quiz(questions);
+
         console.log(questions);
-       
+
         //Boton de siguiente pregunta
-        
+
         document.getElementById("next").addEventListener("click", async function() {
+
+
+          const btnRes = document.getElementById('btnUpdCampoRespuesta');
+          btnRes.click();
+
+          if (cuestionarioTema.getQuestionIndex().type == 7) {
+            var textoRespuestaExpresionparaWolfram = document.getElementById("input_respuesta").value
+            console.log("eeeeee " + textoRespuestaExpresionparaWolfram)
+            alert(textoRespuestaExpresionparaWolfram)
+          }
+
 
           console.log("Quizz");
           console.log(cuestionarioTema);
-          
-          //AQUI SE OBTIENE LA RESPUESTA A LA PREGUNTA
+
+
           await axios({
             method: 'get',
             url: '/pregunta/respuestas/' + cuestionarioTema.getQuestionIndex().id
@@ -744,7 +932,7 @@
               else
                 respuestas_incorretas++;
               break;
-/* Validación para la pregunta númerica */
+              /* Validación para la pregunta númerica */
             case 2:
               var opc = document.getElementById("input_respuesta");
 
@@ -898,9 +1086,35 @@
                   }
                 }
               }
-
               break;
+            case 7:
 
+              var opc = document.getElementById("input_respuesta");
+              var resp = opc.value.toString().toLowerCase();
+              resp = resp.trim();
+              resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
+              console.log("resp: " + resp);
+
+              if (resp == "") {
+                this.$swal.fire({
+                  position: 'center',
+                  icon: 'warning',
+                  title: 'Por favor ingresa una respuesta válida',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                return;
+              }
+              if (cuestionarioTema.guess(resp)) {
+                respuestas_correctas++;
+              } else {
+
+
+                //if();
+                respuestas_incorretas++;
+                //}
+              }
+              break;
           }
           if (respuestas_correctas == cuestionarioTema.getQuestionIndex().answer.length &&
             respuestas_incorretas == 0) {
@@ -926,7 +1140,6 @@
             })
           } else {
             //_this.$swal.fire('Incorrecta');
-
             _this.$swal.fire({
               position: 'top-end',
               icon: 'warning',
@@ -936,24 +1149,26 @@
             })
           }
 
+          this.mensajeParaHijo = '';
           cuestionarioTema.nextQuestion();
           populate();
+
         });
         let _this = this
         async function populate() {
-          
+
           if (cuestionarioTema.isEnded()) {
             if (cuestionarioTema.questions.length > 0) {
               var total = Math.round((cuestionarioTema.score / cuestionarioTema.questions.length) * 100);
-              
-              if ( ! _this.datosEvaluacion.detenerse ) {
+
+              if (!_this.datosEvaluacion.detenerse) {
                 cuestionarioTema = "";
                 questions = [];
-                
-                 _this.ponderacion = total;
-                 _this.enviarPonderacion();
-                 //_this.getpreguntas();
-                
+
+                _this.ponderacion = total;
+                _this.enviarPonderacion();
+                //_this.getpreguntas();
+
               } else {
                 showScores();
               }
@@ -961,8 +1176,47 @@
           } else {
 
             document.getElementById("buttons").innerHTML = "";
-            var element = document.getElementById("question").innerHTML = cuestionarioTema.getQuestionIndex()
-              .text;
+            const contenedor7 = document.getElementById('contenedorSeptimoTipo');
+            const contenedorDes = document.getElementById('contenedorDescripcion');
+
+
+            /*var element = document.getElementById("question").innerHTML = cuestionarioTema.getQuestionIndex()
+              .text;*/
+            if (cuestionarioTema.getQuestionIndex().type == 7) {
+              contenedor7.removeAttribute('hidden');
+              contenedorDes.removeAttribute('hidden');
+              var descripcionElement = document.getElementById("descrption");
+              descripcionElement.textContent = cuestionarioTema.getQuestionIndex().descripcion;
+
+              // Limpiar el contenido antes de asignar el nuevo texto
+              var preguntaMathquill = document.getElementById("preguntaMathquill");
+              preguntaMathquill.innerHTML = ''; // Limpiar el contenido
+
+              // Mostrar la pregunta en el campo de texto MathField
+              preguntaMathquill.innerHTML = cuestionarioTema.getQuestionIndex().text;
+
+              var questionElement = document.getElementById("question");
+              questionElement.innerHTML = '';
+
+              const btn = document.getElementById('btnUpdCampo');
+              btn.click(); // Supongo que este botón realiza alguna acción adicional
+
+
+            } else {
+              contenedor7.setAttribute('hidden', true);
+              contenedorDes.setAttribute('hidden', true);
+              var descripcionElement = document.getElementById("descrption");
+              descripcionElement.textContent = "";
+
+              // Limpiar el contenido si la pregunta no es del tipo 7
+              var preguntaMathquill = document.getElementById("preguntaMathquill");
+              preguntaMathquill.innerHTML = ''; // Limpiar el contenido
+
+              var questionElement = document.getElementById("question");
+              questionElement.innerHTML = cuestionarioTema.getQuestionIndex().text;
+            }
+
+
 
             let imgstr = "";
             _this.imagenesPregunta = [];
@@ -974,6 +1228,7 @@
             console.log(cuestionarioTema.getQuestionIndex().imagenes);
             var tema = document.getElementById("tag_topic");
             tema.innerHTML = " <b> Tema: </b> " + _this.topic[0].nombre_tema;
+
 
 
             if (cuestionarioTema.getQuestionIndex().type == 4) {
@@ -1112,6 +1367,14 @@
                   zona_botones.appendChild(label);
                 }
                 break;
+              case 7:
+                var input_respuesta = document.createElement("input");
+                input_respuesta.type = "text";
+                input_respuesta.id = "input_respuesta";
+                var zona_botones = document.getElementById("buttons");
+                zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
+                zona_botones.appendChild(input_respuesta);
+                break;
             }
             //showProgress();
           }
@@ -1185,6 +1448,11 @@
 
         };
         populate();
+
+        //if (this.dataWillFetch) {
+        // console.log("Se va a llamar el fetch");
+        //this.fetchWolframData()
+        // }
       },
       generarRespuesta(id, res, id_opcion_actual) {
         res = res.trim();
@@ -1512,7 +1780,6 @@
           }
           return salida;
         }
-
         if (esNumero(boton)) {
           //campo_calculadora.value = campo_calculadora.value + boton;
           if (campo_calculadora.value.length == 0) {
@@ -1534,10 +1801,7 @@
           } else if (boton = "=") {
             campo_calculadora.value = this.generarRespuesta(-1, campo_calculadora.value, 0);
           }
-
         }
-
-
       }
     }
   };
@@ -1693,4 +1957,3 @@
     width: 0%;
   }
 </style>
-

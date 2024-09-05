@@ -1,4 +1,3 @@
-
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')}*/
 const Route = use('Route')     
 const User = use('App/Models/User')
@@ -13,8 +12,7 @@ Route.get('/preguntas/nodo','PreguntaController.preguntanodo')
 Route.get('/saludar', 'SaludarController.metodoSaludar')
 
 
-
-
+Route.post('/wolfram-query', 'WolframController.query')
 
 
 Route.get('/arbol',({view})=> view.render('arbol'))
@@ -249,7 +247,6 @@ Route.group(()=>{
 Route.group(()=>{
 	Route.get('/pregunta/showPN','PreguntaController.showPreguntasNumericas')
  	Route.get('/pregunta/showPE','PreguntaController.showPreguntasExpresiones')
-  Route.get('/recurso/mostrarrecurso','controladorTema.mostrarRecursos')
 	Route.get('/pregunta/showPAB','PreguntaController.showPreguntasAbiertas')
 	Route.get('/preguntasNumericas', ({view}) =>  view.render('app'))
 }).middleware(['VerificadorAuthRole:1,2,3]'])
@@ -260,18 +257,10 @@ Route.group(()=>{
 
 //Grupo de solo los temas (nodos)
 Route.group(()=>{
- 
-  //---------------------- ALBA -------------------------------------------------------
- // Route.get('tema/Ejercicios/ordenEnsenanza','controladorTema.mostrartemas')
-  Route.post('ejercicio/anadir','controladorTema.agregarEjercicioUrl')
-  Route.get('tema/temas','controladorTema.mostrarTemas')
- //Route.post('/ejercicio/anadir', 'EjercicioController.agregarEjercicioUrl');
-  //-----------------------------------------------------------------------------------
 	Route.post('tema/deleteTema1/:id','TemaController.deleteTemaAndHijos')
 	Route.post('tema/deleteandcambiarPadre/:id','TemaController.deleteandcambiarPadre')//
 	Route.post('tema/deleteTema','TemaController.deleteTemaAndHijos')
-  Route.get('tema/all','controladorTema.mostrarTemas')
-	//Route.get('tema/all','TemaController.mostrarTemasConRelaciones')
+	Route.get('tema/all','TemaController.mostrarTemasConRelaciones')
 	Route.get('tema/preguntas','TemaController.mostrarPreguntasPorTema')
 	Route.get('tema/showTemasOnlyNombreID','TemaController.showTemasOnlyNombreID')
 	Route.post('tema/addTema','TemaController.registrar') //
@@ -333,14 +322,11 @@ Route.group(()=>{
 	Route.get('tema/editarNodo/:id:id2:nombre','TemaController.editarNodo')//
 	Route.get('temas/arbol','TemaController.arbol')//
 	Route.get('temas/:id','TemaController.show')//
-	Route.post('recurso/actualizarRecurso','controladorTema.updateRecurso')
-
-  
+	Route.post('pregunta/update','PreguntaController.updateAN')
 	Route.post('pregunta/updateAbierta','PreguntaController.updateAbierta')
 	Route.post('pregunta/updateExpresiones','PreguntaController.updateExpresiones')//para actualizar las preguntas expresiones (tipo 7)
 	
-  //Route.post('pregunta/add','PreguntaController.store')//
-  Route.post('recurso/anadirRecurso','controladorTema.almacenarRecurso')
+  Route.post('pregunta/add','PreguntaController.store')//
 	Route.post('preguntaOpcionMultiple/store','PreguntaController.storeMultiple')
 	Route.post('preguntaOpcionMultiple/update','PreguntaController.updateMultiple')
 	Route.get('/pregunta/showMultiples','PreguntaController.mostrarPreguntasOpcionMultiple')
@@ -379,7 +365,3 @@ Route.get('/*', 'UserController.verificarLogin');
 Route.get('/toolbar', async ({view}) =>{
 	return view.render('toolbar')	
 });
-
-
-
-

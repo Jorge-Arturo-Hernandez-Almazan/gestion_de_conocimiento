@@ -82,7 +82,7 @@
 										id="numeroPreguntasMultiples" class="form-control">
 								</div>
                 
-                								<div class="form-group">
+                <div class="form-group">
 									<label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas de expresiones:</label>
 									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_expresion"
 										id="numeroPreguntasExpresion" class="form-control">
@@ -172,6 +172,7 @@
 											<th>Multiple</th>
 											<th>Calculada</th>
 											<th>Calculada Multiple</th>
+                 			<th>Expresiones</th>
 										</thead>
 										<tbody slot="body" slot-scope="{displayData}">
 											<tr v-for="tema in displayData"
@@ -180,7 +181,8 @@
 												(tema.totalPreguntasBooleanas < configuraciones.num_preguntas_boleanas) ||
 												(tema.totalPreguntasMultiples < configuraciones.num_preguntas_multiples ) ||
 												(tema.totalPreguntasCalculadas < configuraciones.num_preguntas_calculadas ) || 
-												(tema.totalPreguntasCalculadasMultiples < configuraciones.num_preguntas_calculadas_multiples ) ">
+												(tema.totalPreguntasCalculadasMultiples < configuraciones.num_preguntas_calculadas_multiples )|| 
+                        (tema.totalPreguntasExpresiones < configuraciones.num_preguntas_expresion)">
 
 												<td>{{ tema.nombre_tema }}</td>
 												<td>
@@ -222,6 +224,13 @@
 													{{ tema.totalPreguntasCalculadasMultiples }}
 
 													<i v-if="tema.totalPreguntasCalculadasMultiples >= configuraciones.num_preguntas_calculadas_multiples"
+														class="fas fa-check-circle" style="color:green"></i>
+													<i v-else class="fas fa-times-circle" style="color:red"></i>
+												</td>
+                        <td>
+													{{ tema.totalPreguntasExpresiones }}
+
+													<i v-if="tema.totalPreguntasExpresiones >= configuraciones.num_preguntas_expresion"
 														class="fas fa-check-circle" style="color:green"></i>
 													<i v-else class="fas fa-times-circle" style="color:red"></i>
 												</td>
@@ -291,7 +300,7 @@
                     num_preguntas_calculadas: 0,
                     num_preguntas_abiertas: 0,
                     num_preguntas_calculadas_multiples: 0,
-                    num_preguntas_multiples: 0
+                    num_preguntas_expresion: 0
                 },
                 totalPreguntas: 0,
                 preguntasPorTema: [],
@@ -355,6 +364,8 @@
                 this.configuraciones.num_preguntas_calculadas_multiples = (this.configuraciones
                     .num_preguntas_calculadas_multiples === "") ? 0 : parseInt(this.configuraciones
                     .num_preguntas_calculadas_multiples);
+              this.configuraciones.num_preguntas_expresion = (this.configuraciones.num_preguntas_expresion === "") ?
+                    0 : parseInt(this.configuraciones.num_preguntas_expresion);
 
 
                 this.configuraciones.num_preguntas = parseInt(this.configuraciones.num_preguntas_numericas) +
@@ -362,7 +373,8 @@
                     parseInt(this.configuraciones.num_preguntas_boleanas) +
                     parseInt(this.configuraciones.num_preguntas_calculadas) +
                     parseInt(this.configuraciones.num_preguntas_abiertas) +
-                    parseInt(this.configuraciones.num_preguntas_calculadas_multiples)
+                    parseInt(this.configuraciones.num_preguntas_calculadas_multiples)+
+                  parseInt(this.configuraciones.num_preguntas_expresion)
 
             },
 
@@ -397,6 +409,7 @@
                             temas[i].totalPreguntasNumericas = 0;
                             temas[i].totalPreguntasBooleanas = 0;
                             temas[i].totalPreguntasCalculadasMultiples = 0;
+                            temas[i].totalPreguntasExpresiones = 0;
                         }
 
                         console.log(preguntas);
@@ -422,6 +435,10 @@
                                             break;
                                         case 6:
                                             temas[i].totalPreguntasCalculadasMultiples = preguntas[j]
+                                            .totalPreguntas;
+                                            break;
+                                        case 7:
+                                            temas[i].totalPreguntasExpresiones = preguntas[j]
                                             .totalPreguntas;
                                             break;
                                     }
@@ -465,6 +482,7 @@
                 var totalBooleanas = document.getElementById("numeroPreguntasBooleanas").value;
                 var totalMultiples = document.getElementById("numeroPreguntasMultiples").value;
                 var totalCalculadasMultiples = document.getElementById("numeroPreguntasCalculadasMultiples").value;
+                var totalExpresiones = document.getElementById("numeroPreguntasExpresion").value;
                 //var ponderacionEstricta = document.getElementById("ponderacionEstricta").value;
 
                 var checkEstricta = document.getElementById("ponderacionEstricta");
@@ -484,6 +502,7 @@
                         totalBooleanas: totalBooleanas,
                         totalMultiples: totalMultiples,
                         totalCalculadasMultiples: totalCalculadasMultiples,
+                        totalExpresiones: totalExpresiones,
                         ponderacionEstricta: ponderacionEstricta,
                     })
                     .then((res) => {
