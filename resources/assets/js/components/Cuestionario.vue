@@ -311,7 +311,6 @@
         </div>
       </div>
     </div>
-    <formulariopaso />
   </div>
 </template>
 <script>
@@ -321,7 +320,7 @@
   import ToolBarPregunta from "./ToolbarExpresionCuestionario.vue"; //importar el archivo donde se encuentra el toolbar
   import MathQuill from '@/components/mathquill/mathquill.js';
   import '@/components/mathquill/mathquill.css'; // Importar estilos CSS de MathQuill
-  import FormularioPaso from "./FormularioPaso.vue";
+ // import FormularioPaso from "./FormularioPaso.vue";
   import Wolfram from "./Wolfram.vue";
 
     var cuestionarioTema;
@@ -334,9 +333,8 @@
       //'tool-bar':ToolBar, //definir el componente que se va insertar, en este caso el toolbar
       'tool-bar-pregunta': ToolBarPregunta,
       'tool-bar': ToolBar,
-      'formulariopaso': FormularioPaso,
       'wolfram': Wolfram,
-      Wolfram,
+      
     },
     mounted() {
       this.obtenerContenidoMathQuill();

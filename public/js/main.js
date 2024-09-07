@@ -4981,8 +4981,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
  //importar el archivo donde se encuentra el toolbar
@@ -4991,8 +4989,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
  // Importar estilos CSS de MathQuill
+// import FormularioPaso from "./FormularioPaso.vue";
 
 
+var cuestionarioTema;
+/*var compa = '';
+var respu = '';
+ var ata;*/
+
+var apareceMen = false;
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     //'tool-bar':ToolBar, //definir el componente que se va insertar, en este caso el toolbar
@@ -5000,16 +5005,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     'tool-bar': _ToolBarRespuestaCuestionario_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     'wolfram': _Wolfram_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.obtenerContenidoMathQuill();
+  },
   updated: function updated() {
     var inputElement = document.querySelector('div#contenedorSeptimoTipo');
 
     if (!inputElement.hasAttribute("hidden")) {
       var nextBtn = document.getElementById('next');
-      nextBtn.setAttribute('hidden', 'true');
+      nextBtn.setAttribute('hidden', 'true'); //if (apareceMen == false) {
+
       var textElement = document.createElement('p');
       textElement.textContent = 'Para confirmar su respuesta y ver el botón "siguiente", presione la tecla "Enter"';
-      inputElement.appendChild(textElement);
+      inputElement.appendChild(textElement); //apareceMen = true;
+      //}
     }
   },
   data: function data() {
@@ -5038,10 +5047,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       datoParaRespuesta: '',
       mathquillTextB: '',
       descripcion2: '',
-      ///////////
-      query: '',
-      result: null,
-      appId: 'RKWAT3-H4Q6UG65UW'
+      mensajeParaHijo: '',
+      compa: '',
+      ata: '',
+      respu: ''
     };
   },
   created: function created() {
@@ -5072,7 +5081,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     obtenerContenidoMathQuill: function obtenerContenidoMathQuill() {
       var textoRespuestaExpresion = this.mathField.latex();
-      console.log(textoRespuestaExpresion); // Obtener la expresión matemática en formato LaTeX
+      console.log("aaaaaaaaaa a " + textoRespuestaExpresion); // Obtener la expresión matemática en formato LaTeX
     },
     btnEditar: function btnEditar(descripcion) {
       // Toma la pregunta actual y no la descripción
@@ -5090,25 +5099,98 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$refs.hijoComponente2.insertEnter();
       var opc = document.getElementById("input_respuesta");
       opc.value = text.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "$1/$2"); // Reemplaza los caracteres de escape de nueva línea por saltos de línea reales
+
+      console.log('texto de mathQuill en Componente A');
     },
     handleMathquillUpdate2: function handleMathquillUpdate2(mathquillText) {
       var textarea = document.querySelectorAll('#input2 textarea[autocapitalize="off"][autocomplete="off"][autocorrect="off"][spellcheck="false"][x-palm-disable-ste-all="true"]')[1];
-      console.log('texto de mathQuill en Componente B:', mathquillText);
+      console.log('texto de mathQuill en Componente B:', mathquillText); //this.updateInputRespuesta(mathquillText);
+
       this.mathquillTextB = mathquillText; // Almacena el texto de MathQuill en mathquillTextB
+
+      this.asignWolf(mathquillText);
+    },
+    asignWolf: function asignWolf(text) {
+      //console.log("text a "+ata);
+      //this.mensajeParaHijo = ata;
+      this.compa = text.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "$1/$2"); //this.obtenerRespuestas();
+      //         compa = '(' + compa + ')' + '==' + '(' + respu + ')';
+
+      console.log("Cromp " + this.compa);
+      this.mensajeParaHijo = this.compa;
     },
     handleInput: function handleInput(event) {// Manejar la entrada en el campo de texto MathQuill si es necesario
     },
+    obtenerRespuestas: function () {
+      var _obtenerRespuestas = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var textoRespuestaExpresionparaWolfram, vala;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                /*const btnRes = document.getElementById('btnUpdCampoRespuesta');
+                btnRes.click();*/
+                if (cuestionarioTema.getQuestionIndex().type == 7) {
+                  textoRespuestaExpresionparaWolfram = document.getElementById("input_respuesta").value;
+                  console.log("eeeeee " + textoRespuestaExpresionparaWolfram); //alert(textoRespuestaExpresionparaWolfram)
+                }
+
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  method: 'get',
+                  url: '/pregunta/respuestas/' + cuestionarioTema.getQuestionIndex().id
+                }).then(function (result) {
+                  var res = [];
+                  var id_opcion_correcta = [];
+
+                  for (var i = 0; i < result.data.length; i++) {
+                    res.push(result.data[i].opcion);
+                    id_opcion_correcta.push(result.data[i].id_opcion);
+                  }
+
+                  if (cuestionarioTema.getQuestionIndex().type == 5 || cuestionarioTema.getQuestionIndex().type == 6) {
+                    var power = Math.pow(10, cuestionarioTema.getQuestionIndex().decimales); //console.log("Respuesta antes de la funcion "+res[0]);
+
+                    res = [Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id, res[0], id_opcion_correcta[0]) * power) / power]; //label.innerHTML = Math.round(_this.generarRespuesta(cuestionarioTema.getQuestionIndex().id,choices[i], opcionesAux[i].id_opcion) * power) / power;
+                  }
+
+                  cuestionarioTema.getQuestionIndex().answer = res;
+                }, function (error) {
+                  console.error(error);
+                });
+
+              case 3:
+                vala = 'x';
+
+                if (cuestionarioTema.guess(vala)) {}
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function obtenerRespuestas() {
+        return _obtenerRespuestas.apply(this, arguments);
+      }
+
+      return obtenerRespuestas;
+    }(),
     obtenerPonderaciones: function () {
       var _obtenerPonderaciones = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var _this3 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context3.next = 2;
+                _context4.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: "/obtenerPonderaciones/" + matricula
@@ -5117,70 +5199,72 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 function () {
                   var _ref = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(result) {
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(result) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
                       while (1) {
-                        switch (_context2.prev = _context2.next) {
+                        switch (_context3.prev = _context3.next) {
                           case 0:
                             if (!(result.data == -1)) {
-                              _context2.next = 11;
+                              _context3.next = 12;
                               break;
                             }
 
-                            _context2.next = 3;
+                            _context3.next = 3;
                             return _this3.obtenerPrimerTema();
 
                           case 3:
-                            _context2.next = 5;
+                            _context3.next = 5;
                             return _this3.obtenerDescrpcion();
 
                           case 5:
-                            _context2.next = 7;
+                            _context3.next = 7;
                             return _this3.getopic();
 
                           case 7:
-                            _context2.next = 9;
+                            _context3.next = 9;
                             return _this3.getpreguntas();
 
                           case 9:
-                            _context2.next = 26;
+                            _this3.mensajeParaHijo = '';
+                            _context3.next = 28;
                             break;
 
-                          case 11:
+                          case 12:
                             if (!(result.data.detenerse === false)) {
-                              _context2.next = 24;
+                              _context3.next = 26;
                               break;
                             }
 
+                            _this3.mensajeParaHijo = '';
                             _this3.ultimoTema = result.data.ultimo;
                             _this3.datosEvaluacion = result.data;
                             console.log("Otro tema evaluado");
                             console.log(result.data);
-                            _context2.next = 18;
+                            _context3.next = 20;
                             return _this3.getopic();
 
-                          case 18:
-                            _context2.next = 20;
+                          case 20:
+                            _context3.next = 22;
                             return _this3.getpreguntas();
 
-                          case 20:
-                            _context2.next = 22;
+                          case 22:
+                            _context3.next = 24;
                             return _this3.obtenerDescrpcion();
 
-                          case 22:
-                            _context2.next = 26;
+                          case 24:
+                            _context3.next = 28;
                             break;
 
-                          case 24:
+                          case 26:
                             console.log("Ya ha terminado el cuestionario");
                             alert("Ya se ha terminado de evaluar");
 
-                          case 26:
+                          case 28:
                           case "end":
-                            return _context2.stop();
+                            return _context3.stop();
                         }
                       }
-                    }, _callee2);
+                    }, _callee3);
                   }));
 
                   return function (_x) {
@@ -5192,10 +5276,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3);
+        }, _callee4);
       }));
 
       function obtenerPonderaciones() {
@@ -5207,18 +5291,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     enviarPonderacion: function () {
       var _enviarPonderacion = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         var _this4 = this;
 
         var saltos, tema, parametros;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 saltos = 3;
                 tema = this.ultimoTema;
                 parametros = this.configuracion.rbm + "/" + matricula + "/" + saltos + "/" + tema + "/" + this.ponderacion;
-                _context4.next = 5;
+                _context5.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: "/obtenerTema/" + parametros
@@ -5230,10 +5314,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee5, this);
       }));
 
       function enviarPonderacion() {
@@ -5245,17 +5329,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     obtenerPrimerTema: function () {
       var _obtenerPrimerTema = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
         var _this5 = this;
 
         var parametros;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
                 parametros = this.configuracion.rbm + "/" + matricula;
                 console.log(parametros);
-                _context5.next = 4;
+                _context6.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: "/arbol/caminosmodulo/" + parametros
@@ -5267,10 +5351,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee6, this);
       }));
 
       function obtenerPrimerTema() {
@@ -5282,13 +5366,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     storeResult: function () {
       var _storeResult = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(ponderacion) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(ponderacion) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
                 this.pregunta = [];
-                _context6.next = 3;
+                _context7.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/score/add', {
                   id_tema: this.topic[0].id,
                   ponderacion: ponderacion,
@@ -5298,7 +5382,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
-                _context6.next = 5;
+                _context7.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: '/arbol/obtenerCaminos/' + this.topic[0].id
@@ -5308,10 +5392,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6, this);
+        }, _callee7, this);
       }));
 
       function storeResult(_x2) {
@@ -5323,14 +5407,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getopic: function () {
       var _getopic = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
         var _this6 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                _context7.next = 2;
+                _context8.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: 'topic/getopic/' + this.ultimoTema
@@ -5342,10 +5426,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context7.stop();
+                return _context8.stop();
             }
           }
-        }, _callee7, this);
+        }, _callee8, this);
       }));
 
       function getopic() {
@@ -5374,15 +5458,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getpreguntas: function () {
       var _getpreguntas = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
         var _this8 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
           while (1) {
-            switch (_context11.prev = _context11.next) {
+            switch (_context12.prev = _context12.next) {
               case 0:
                 console.log("Obtener preguntas del tema: " + this.ultimoTema);
-                return _context11.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                return _context12.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default()({
                   method: 'get',
                   url: 'pregunta/showPreguntas/' + this.ultimoTema
                 }).then(
@@ -5390,23 +5474,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 function () {
                   var _ref2 = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(result) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(result) {
                     var _loop, _i, i;
 
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context10) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context11) {
                       while (1) {
-                        switch (_context10.prev = _context10.next) {
+                        switch (_context11.prev = _context11.next) {
                           case 0:
                             _this8.pregunta = result.data.banco_preguntas;
                             _loop =
                             /*#__PURE__*/
                             _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _loop(_i) {
-                              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop$(_context9) {
+                              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _loop$(_context10) {
                                 while (1) {
-                                  switch (_context9.prev = _context9.next) {
+                                  switch (_context10.prev = _context10.next) {
                                     case 0:
                                       _this8.pregunta[_i].imagenes = [];
-                                      _context9.next = 3;
+                                      _context10.next = 3;
                                       return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                                         method: 'get',
                                         url: '/imagen/pregunta/' + _this8.pregunta[_i].id_pregunta
@@ -5415,19 +5499,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                                       function () {
                                         var _ref3 = _asyncToGenerator(
                                         /*#__PURE__*/
-                                        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(resultado) {
-                                          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+                                        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(resultado) {
+                                          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
                                             while (1) {
-                                              switch (_context8.prev = _context8.next) {
+                                              switch (_context9.prev = _context9.next) {
                                                 case 0:
                                                   _this8.pregunta[_i].imagenes = resultado.data.imagenes[0];
 
                                                 case 1:
                                                 case "end":
-                                                  return _context8.stop();
+                                                  return _context9.stop();
                                               }
                                             }
-                                          }, _callee8);
+                                          }, _callee9);
                                         }));
 
                                         return function (_x4) {
@@ -5439,7 +5523,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                                     case 3:
                                     case "end":
-                                      return _context9.stop();
+                                      return _context10.stop();
                                   }
                                 }
                               }, _loop);
@@ -5448,15 +5532,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 3:
                             if (!(_i < _this8.pregunta.length)) {
-                              _context10.next = 8;
+                              _context11.next = 8;
                               break;
                             }
 
-                            return _context10.delegateYield(_loop(_i), "t0", 5);
+                            return _context11.delegateYield(_loop(_i), "t0", 5);
 
                           case 5:
                             _i++;
-                            _context10.next = 3;
+                            _context11.next = 3;
                             break;
 
                           case 8:
@@ -5466,18 +5550,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               if (_this8.pregunta[i].tipo == 5) _this8.pCalculadas[i] = _this8.pregunta[i].id_pregunta;else if (_this8.pregunta[i].tipo == 6) _this8.pCalculadasMultiples[i] = _this8.pregunta[i].id_pregunta;
                             }
 
-                            _context10.next = 12;
+                            _context11.next = 12;
                             return _this8.getComodines();
 
                           case 12:
-                            return _context10.abrupt("return", result.data);
+                            return _context11.abrupt("return", result.data);
 
                           case 13:
                           case "end":
-                            return _context10.stop();
+                            return _context11.stop();
                         }
                       }
-                    }, _callee9);
+                    }, _callee10);
                   }));
 
                   return function (_x3) {
@@ -5489,10 +5573,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
           }
-        }, _callee10, this);
+        }, _callee11, this);
       }));
 
       function getpreguntas() {
@@ -5504,13 +5588,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getComodines: function () {
       var _getComodines = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
         var _this9 = this;
 
         var preguntasCalculadas;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context14) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
                 preguntasCalculadas = this.pCalculadas.concat(this.pCalculadasMultiples);
                 axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('pregunta/getComodines/', {
@@ -5520,21 +5604,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 function () {
                   var _ref4 = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(result) {
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context12) {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12(result) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context13) {
                       while (1) {
-                        switch (_context12.prev = _context12.next) {
+                        switch (_context13.prev = _context13.next) {
                           case 0:
                             _this9.comodines = result.data.comodines;
-                            _context12.next = 3;
+                            _context13.next = 3;
                             return _this9.convertirComodines();
 
                           case 3:
                           case "end":
-                            return _context12.stop();
+                            return _context13.stop();
                         }
                       }
-                    }, _callee11);
+                    }, _callee12);
                   }));
 
                   return function (_x5) {
@@ -5546,10 +5630,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
               case "end":
-                return _context13.stop();
+                return _context14.stop();
             }
           }
-        }, _callee12, this);
+        }, _callee13, this);
       }));
 
       function getComodines() {
@@ -5561,11 +5645,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     convertirComodines: function () {
       var _convertirComodines = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
         var i, valor, separado, random, j, power;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context14) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context15) {
           while (1) {
-            switch (_context14.prev = _context14.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
                 for (i = 0; i < this.comodines.length; i++) {
                   valor = this.comodines[i].valor;
@@ -5586,15 +5670,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-                _context14.next = 3;
+                _context15.next = 3;
                 return this.reemplazarComodinesEnPregunta();
 
               case 3:
               case "end":
-                return _context14.stop();
+                return _context15.stop();
             }
           }
-        }, _callee13, this);
+        }, _callee14, this);
       }));
 
       function convertirComodines() {
@@ -5606,11 +5690,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     reemplazarComodinesEnPregunta: function () {
       var _reemplazarComodinesEnPregunta = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15() {
         var i, comodinesPregunta, j, k;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context15) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context16) {
           while (1) {
-            switch (_context15.prev = _context15.next) {
+            switch (_context16.prev = _context16.next) {
               case 0:
                 for (i = 0; i < this.pregunta.length; i++) {
                   if (this.pregunta[i].tipo == 5) {
@@ -5646,15 +5730,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 } //}
 
 
-                _context15.next = 3;
+                _context16.next = 3;
                 return this.cargarCuestionario(this.topic[0].nombre_tema, this.pregunta);
 
               case 3:
               case "end":
-                return _context15.stop();
+                return _context16.stop();
             }
           }
-        }, _callee14, this);
+        }, _callee15, this);
       }));
 
       function reemplazarComodinesEnPregunta() {
@@ -5681,26 +5765,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     cargarCuestionario: function () {
       var _cargarCuestionario = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18(topic, prguntass, descripcion) {
-        var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, cuestionarioTema, _this, populate, _populate, guess, showScores, _showScores;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee19(topic, prguntass, descripcion) {
+        var questions, i, pregunta, tipo, id, up, down, value, decimales, imagenesPregunta, Quiz, Question, _this, populate, _populate, guess, showScores, _showScores;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee18$(_context19) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee19$(_context20) {
           while (1) {
-            switch (_context19.prev = _context19.next) {
+            switch (_context20.prev = _context20.next) {
               case 0:
                 _showScores = function _ref12() {
                   _showScores = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17() {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee18() {
                     var gameOverHTML, element;
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee17$(_context18) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee18$(_context19) {
                       while (1) {
-                        switch (_context18.prev = _context18.next) {
+                        switch (_context19.prev = _context19.next) {
                           case 0:
                             gameOverHTML = "<h1>Resultados</h1>";
                             gameOverHTML += "<center> <h4>Estos son tus resultados</h4> </center>";
                             gameOverHTML += "<center> <table><tr><th>Tema</th><th>Dominio</th></tr>";
-                            _context18.next = 5;
+                            _context19.next = 5;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/arbol/obtenerResultados').then(function (res) {
                               for (var i = 0; i < res.data.length; i++) {
                                 if (res.data[i].clasificacion == 1) {
@@ -5728,10 +5812,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 7:
                           case "end":
-                            return _context18.stop();
+                            return _context19.stop();
                         }
                       }
-                    }, _callee17);
+                    }, _callee18);
                   }));
                   return _showScores.apply(this, arguments);
                 };
@@ -5763,14 +5847,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _populate = function _ref9() {
                   _populate = _asyncToGenerator(
                   /*#__PURE__*/
-                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16() {
+                  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee17() {
                     var total, contenedor7, contenedorDes, descripcionElement, preguntaMathquill, questionElement, btn, imgstr, ii, tema, opcionesAux, choices, input_respuesta, zona_botones, div_verdadero, div_falso, label_verdadero, label_falso, input_verdadero, input_falso, i, label, span, button, power;
-                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context17) {
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee17$(_context18) {
                       while (1) {
-                        switch (_context17.prev = _context17.next) {
+                        switch (_context18.prev = _context18.next) {
                           case 0:
                             if (!cuestionarioTema.isEnded()) {
-                              _context17.next = 4;
+                              _context18.next = 4;
                               break;
                             }
 
@@ -5789,7 +5873,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               }
                             }
 
-                            _context17.next = 82;
+                            _context18.next = 82;
                             break;
 
                           case 4:
@@ -5843,11 +5927,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             tema.innerHTML = " <b> Tema: </b> " + _this.topic[0].nombre_tema;
 
                             if (!(cuestionarioTema.getQuestionIndex().type == 4)) {
-                              _context17.next = 17;
+                              _context18.next = 17;
                               break;
                             }
 
-                            _context17.next = 17;
+                            _context18.next = 17;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opciones/' + cuestionarioTema.getQuestionIndex().id
@@ -5867,11 +5951,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             opcionesAux = [];
 
                             if (!(cuestionarioTema.getQuestionIndex().type == 6)) {
-                              _context17.next = 21;
+                              _context18.next = 21;
                               break;
                             }
 
-                            _context17.next = 21;
+                            _context18.next = 21;
                             return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                               method: 'get',
                               url: '/pregunta/opcionescalculadasmultiples/' + cuestionarioTema.getQuestionIndex().id
@@ -5890,8 +5974,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                           case 21:
                             choices = cuestionarioTema.getQuestionIndex().choices;
-                            _context17.t0 = cuestionarioTema.getQuestionIndex().type;
-                            _context17.next = _context17.t0 === 1 ? 25 : _context17.t0 === 2 ? 32 : _context17.t0 === 3 ? 39 : _context17.t0 === 4 ? 62 : _context17.t0 === 5 ? 66 : _context17.t0 === 6 ? 73 : _context17.t0 === 7 ? 75 : 82;
+                            _context18.t0 = cuestionarioTema.getQuestionIndex().type;
+                            _context18.next = _context18.t0 === 1 ? 25 : _context18.t0 === 2 ? 32 : _context18.t0 === 3 ? 39 : _context18.t0 === 4 ? 62 : _context18.t0 === 5 ? 66 : _context18.t0 === 6 ? 73 : _context18.t0 === 7 ? 75 : 82;
                             break;
 
                           case 25:
@@ -5901,7 +5985,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 82);
+                            return _context18.abrupt("break", 82);
 
                           case 32:
                             input_respuesta = document.createElement("input");
@@ -5911,7 +5995,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 82);
+                            return _context18.abrupt("break", 82);
 
                           case 39:
                             div_verdadero = document.createElement("div");
@@ -5936,7 +6020,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(div_verdadero);
                             zona_botones.appendChild(div_falso);
-                            return _context17.abrupt("break", 82);
+                            return _context18.abrupt("break", 82);
 
                           case 62:
                             zona_botones = document.getElementById("buttons");
@@ -5959,7 +6043,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context17.abrupt("break", 82);
+                            return _context18.abrupt("break", 82);
 
                           case 66:
                             input_respuesta = document.createElement("input");
@@ -5968,7 +6052,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = "<b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 82);
+                            return _context18.abrupt("break", 82);
 
                           case 73:
                             for (i = 0; i < choices.length; i++) {
@@ -5992,7 +6076,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                               zona_botones.appendChild(label);
                             }
 
-                            return _context17.abrupt("break", 82);
+                            return _context18.abrupt("break", 82);
 
                           case 75:
                             input_respuesta = document.createElement("input");
@@ -6001,14 +6085,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             zona_botones = document.getElementById("buttons");
                             zona_botones.innerHTML = " <b> Respuesta: </b> <br>";
                             zona_botones.appendChild(input_respuesta);
-                            return _context17.abrupt("break", 82);
+                            return _context18.abrupt("break", 82);
 
                           case 82:
                           case "end":
-                            return _context17.stop();
+                            return _context18.stop();
                         }
                       }
-                    }, _callee16);
+                    }, _callee17);
                   }));
                   return _populate.apply(this, arguments);
                 };
@@ -6028,7 +6112,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   this.down = down;
                   this.value = value;
                   this.decimales = decimales;
-                  this.imagenes = imagenes;
+                  this.imagenes = imagenes; //respu = this.answer[0];
                 };
 
                 Quiz = function _ref6(questions) {
@@ -6088,6 +6172,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 Question.prototype.isCorrectAnswer = function (choice) {
                   var correcta = false;
+                  this.respu = this.answer[0].toString().toLowerCase();
 
                   switch (this.type) {
                     case 1:
@@ -6163,24 +6248,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 /*#__PURE__*/
                 _asyncToGenerator(
                 /*#__PURE__*/
-                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee15() {
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee16() {
                   var btnRes, textoRespuestaExpresionparaWolfram, respuestas_correctas, respuestas_incorretas, opc, resp, input_verdadero, input_falso, chequeada, i, lbl, opcion_text;
-                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee15$(_context16) {
+                  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee16$(_context17) {
                     while (1) {
-                      switch (_context16.prev = _context16.next) {
+                      switch (_context17.prev = _context17.next) {
                         case 0:
                           btnRes = document.getElementById('btnUpdCampoRespuesta');
                           btnRes.click();
 
                           if (cuestionarioTema.getQuestionIndex().type == 7) {
                             textoRespuestaExpresionparaWolfram = document.getElementById("input_respuesta").value;
-                            console.log(textoRespuestaExpresionparaWolfram);
+                            console.log("eeeeee " + textoRespuestaExpresionparaWolfram);
                             alert(textoRespuestaExpresionparaWolfram);
                           }
 
                           console.log("Quizz");
                           console.log(cuestionarioTema);
-                          _context16.next = 7;
+                          _context17.next = 7;
                           return axios__WEBPACK_IMPORTED_MODULE_1___default()({
                             method: 'get',
                             url: '/pregunta/respuestas/' + cuestionarioTema.getQuestionIndex().id
@@ -6207,8 +6292,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                         case 7:
                           respuestas_correctas = 0;
                           respuestas_incorretas = 0;
-                          _context16.t0 = cuestionarioTema.getQuestionIndex().type;
-                          _context16.next = _context16.t0 === 1 ? 12 : _context16.t0 === 2 ? 21 : _context16.t0 === 3 ? 27 : _context16.t0 === 4 ? 37 : _context16.t0 === 5 ? 44 : _context16.t0 === 6 ? 53 : _context16.t0 === 7 ? 60 : 70;
+                          _context17.t0 = cuestionarioTema.getQuestionIndex().type;
+                          _context17.next = _context17.t0 === 1 ? 12 : _context17.t0 === 2 ? 21 : _context17.t0 === 3 ? 27 : _context17.t0 === 4 ? 37 : _context17.t0 === 5 ? 44 : _context17.t0 === 6 ? 53 : _context17.t0 === 7 ? 60 : 70;
                           break;
 
                         case 12:
@@ -6218,7 +6303,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 
                           if (!(resp == "")) {
-                            _context16.next = 19;
+                            _context17.next = 19;
                             break;
                           }
 
@@ -6230,17 +6315,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context16.abrupt("return");
+                          return _context17.abrupt("return");
 
                         case 19:
                           if (cuestionarioTema.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 70);
+                          return _context17.abrupt("break", 70);
 
                         case 21:
                           opc = document.getElementById("input_respuesta");
 
                           if (!(opc.value == "")) {
-                            _context16.next = 25;
+                            _context17.next = 25;
                             break;
                           }
 
@@ -6253,11 +6338,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context16.abrupt("return");
+                          return _context17.abrupt("return");
 
                         case 25:
                           if (cuestionarioTema.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 70);
+                          return _context17.abrupt("break", 70);
 
                         case 27:
                           input_verdadero = document.getElementById("input_verdadero");
@@ -6267,7 +6352,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           if (input_falso.checked && !input_verdadero.checked) resp = "falso";
 
                           if (!(input_verdadero.checked === false && input_falso.checked === false)) {
-                            _context16.next = 35;
+                            _context17.next = 35;
                             break;
                           }
 
@@ -6280,11 +6365,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context16.abrupt("return");
+                          return _context17.abrupt("return");
 
                         case 35:
                           if (cuestionarioTema.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 70);
+                          return _context17.abrupt("break", 70);
 
                         case 37:
                           chequeada = false;
@@ -6298,7 +6383,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           }
 
                           if (chequeada) {
-                            _context16.next = 42;
+                            _context17.next = 42;
                             break;
                           }
 
@@ -6311,7 +6396,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context16.abrupt("return");
+                          return _context17.abrupt("return");
 
                         case 42:
                           for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
@@ -6329,7 +6414,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             }
                           }
 
-                          return _context16.abrupt("break", 70);
+                          return _context17.abrupt("break", 70);
 
                         case 44:
                           opc = document.getElementById("input_respuesta");
@@ -6338,7 +6423,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
 
                           if (!(resp == "")) {
-                            _context16.next = 51;
+                            _context17.next = 51;
                             break;
                           }
 
@@ -6351,11 +6436,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context16.abrupt("return");
+                          return _context17.abrupt("return");
 
                         case 51:
                           if (cuestionarioTema.guess(opc.value)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 70);
+                          return _context17.abrupt("break", 70);
 
                         case 53:
                           chequeada = false;
@@ -6369,7 +6454,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           }
 
                           if (chequeada) {
-                            _context16.next = 58;
+                            _context17.next = 58;
                             break;
                           }
 
@@ -6381,7 +6466,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             timer: 1500
                           });
 
-                          return _context16.abrupt("return");
+                          return _context17.abrupt("return");
 
                         case 58:
                           for (i = 0; i < cuestionarioTema.getQuestionIndex().choices.length; i++) {
@@ -6399,34 +6484,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             }
                           }
 
-                          return _context16.abrupt("break", 70);
+                          return _context17.abrupt("break", 70);
 
                         case 60:
-                          //var modifiedTee.log("Entré al caso 7");xt = mathquillText.replace(/{\\frac\{([^{}]+)\}\{([^{}]+)\}}/g, "$1/$2");
                           opc = document.getElementById("input_respuesta");
                           resp = opc.value.toString().toLowerCase();
                           resp = resp.trim();
                           resp = resp.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, "");
-                          console.log("cambios isra");
+                          console.log("resp: " + resp);
 
                           if (!(resp == "")) {
-                            _context16.next = 68;
+                            _context17.next = 68;
                             break;
                           }
 
-                          _this.$swal.fire({
+                          this.$swal.fire({
                             position: 'center',
                             icon: 'warning',
                             title: 'Por favor ingresa una respuesta válida',
                             showConfirmButton: false,
                             timer: 1500
                           });
-
-                          return _context16.abrupt("return");
+                          return _context17.abrupt("return");
 
                         case 68:
-                          if (cuestionarioTema.guess(resp)) respuestas_correctas++;else respuestas_incorretas++;
-                          return _context16.abrupt("break", 70);
+                          if (cuestionarioTema.guess(resp)) {
+                            respuestas_correctas++;
+                          } else {
+                            //if();
+                            respuestas_incorretas++; //}
+                          }
+
+                          return _context17.abrupt("break", 70);
 
                         case 70:
                           if (respuestas_correctas == cuestionarioTema.getQuestionIndex().answer.length && respuestas_incorretas == 0) {
@@ -6460,15 +6549,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                             });
                           }
 
+                          this.mensajeParaHijo = '';
                           cuestionarioTema.nextQuestion();
                           populate();
 
-                        case 73:
+                        case 74:
                         case "end":
-                          return _context16.stop();
+                          return _context17.stop();
                       }
                     }
-                  }, _callee15);
+                  }, _callee16, this);
                 })));
                 _this = this;
                 //showProgress();
@@ -6483,14 +6573,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 };*/
 
                 ;
-                populate();
+                populate(); //if (this.dataWillFetch) {
+                // console.log("Se va a llamar el fetch");
+                //this.fetchWolframData()
+                // }
 
               case 24:
               case "end":
-                return _context19.stop();
+                return _context20.stop();
             }
           }
-        }, _callee18, this);
+        }, _callee19, this);
       }));
 
       function cargarCuestionario(_x6, _x7, _x8) {
@@ -10811,6 +10904,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -18112,6 +18213,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 //axios es una biblioteca para hacer solicitudes HTTP desde el navegador o desde Node.js.  
  //Se importan los módulos que son dos archivos (subir_Imagenes.vue y PrevisualizarPreguntas.vue)
 
@@ -18296,7 +18398,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       axios__WEBPACK_IMPORTED_MODULE_1___default()({
         method: "GET",
-        url: "/tema/temas"
+        url: "/tema/all"
       }).then(function (result) {
         var temasApi = result.data[0];
 
@@ -20230,6 +20332,812 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20249,8 +21157,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ToolBarPregunta',
-  props: ['dato', 'banderaParaEdicion'],
+  name: 'ToolBar',
+  props: ['datoRespuesta', 'banderaParaEdicion'],
   // variable recibida desde el padre
   created: function created() {},
   data: function data() {
@@ -20287,33 +21195,241 @@ __webpack_require__.r(__webpack_exports__);
         console.log("tecla bloqueada");
       }
     });
-    this.datorecibido = this.dato;
-    this.mathField.write(this.dato);
-    console.log("soy dato hijo:", this.datorecibido);
+    this.datorecibido = this.datoRespuesta;
   },
   watch: {//console.log("dato anteriorrrr "+ this.oldVal)
   },
-  methods: {
-    TraducirLatex: function TraducirLatex() {
-      this.mathField.latex(''); // Limpia el contenido del campo MathQuill
+  methods: (_methods = {
+    toggleButtons: function toggleButtons() {
+      this.activeButton = this.selectedOption + '-buttons';
     },
-    handleInput: function handleInput() {
-      var mathquillText = this.mathField.latex();
-      console.log(mathquillText);
-      this.$emit('mathquill-updated', mathquillText);
+    insertLeftP: function insertLeftP() {
+      this.mathField.cmd('(');
     },
-    editarCampoMathquill: function editarCampoMathquill() {
-      var _this = this;
-
-      // Utiliza un temporizador para escribir el valor en MathQuill después de un breve retraso
-      setTimeout(function () {
-        _this.mathField.write(_this.dato);
-      }, 0);
+    insertRightP: function insertRightP() {
+      this.mathField.cmd(')');
     },
-    limpiarCampoMathquill: function limpiarCampoMathquill() {
-      this.mathField.latex(''); // Limpia el contenido del campo MathQuill
+    insertFrac: function insertFrac() {
+      this.mathField.cmd('\\frac'); //this.mathField.write('\\frac{}{}');
+    },
+    insertXExp: function insertXExp() {
+      this.mathField.cmd('^');
+    },
+    insertXSub: function insertXSub() {
+      this.mathField.cmd('_');
+    },
+    insertSqrt: function insertSqrt() {
+      this.mathField.cmd('\\sqrt');
+    },
+    insertNThroot: function insertNThroot() {
+      this.mathField.cmd('\\nthroot');
+    },
+    insertSuma: function insertSuma() {
+      this.mathField.cmd('+');
+    },
+    insertResta: function insertResta() {
+      this.mathField.cmd('-');
+    },
+    insertTimes: function insertTimes() {
+      this.mathField.cmd('\\times');
+    },
+    insertDiv: function insertDiv() {
+      this.mathField.cmd('\\div');
+    },
+    insertLn: function insertLn() {
+      this.mathField.write("\\ln\\left(\\right)");
+    },
+    insertExp: function insertExp() {
+      this.mathField.write("\\exp\\left(\\right)");
+    },
+    insertLeq: function insertLeq() {
+      this.mathField.write("\\left(\\right)\\leq\\left(\\right)");
+    },
+    insertGeq: function insertGeq() {
+      this.mathField.write("\\left(\\right)\\geq\\left(\\right)");
+    },
+    insertEqual: function insertEqual() {
+      //this.mathField.cmd('\\equal')
+      this.mathField.write("\\left(\\right)\\=\\left(\\right)");
+    },
+    insertderivadaY: function insertderivadaY() {
+      this.mathField.write("y'");
+    },
+    insertderivadasimple: function insertderivadasimple() {
+      this.mathField.write("(d/d)()");
+    },
+    insertderivadasegundoorden: function insertderivadasegundoorden() {
+      this.mathField.write("((d^2/d^2)()");
+    },
+    insertderivadaparcialsimple: function insertderivadaparcialsimple() {
+      this.mathField.write("(∂/∂)()");
+    },
+    insertderivadaparcialsegundoorden: function insertderivadaparcialsegundoorden() {
+      this.mathField.write("(∂^2/∂^2)()");
+    },
+    insertderivadaparcialmixta: function insertderivadaparcialmixta() {
+      this.mathField.write("(∂^2/∂∂)()");
+    },
+    insertintindeff: function insertintindeff() {
+      this.mathField.write("\\int()");
+    },
+    insertintintindef: function insertintintindef() {
+      this.mathField.write("\\int\\int()");
+    },
+    insertintintintindef: function insertintintintindef() {
+      this.mathField.write("\\int\\int\\int()");
+    },
+    insertlimite: function insertlimite() {
+      this.mathField.write("lim_{() -> ()}()");
+    },
+    insertlimiteizq: function insertlimiteizq() {
+      this.mathField.write("lim_{() -> ()^-} ()");
+    },
+    insertlimiteder: function insertlimiteder() {
+      this.mathField.write("lim_{()->()^+}()");
+    },
+    insertpasounitario: function insertpasounitario() {
+      this.mathField.write("UnitStep[]");
+    },
+    insertint: function insertint() {
+      this.mathField.write("\\int_{ }^{ } ()");
+    },
+    insertint2: function insertint2() {
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ } () ");
+    },
+    insertint3: function insertint3() {
+      this.mathField.write("\\int_{ }^{ }\\int_{ }^{ }\\int_{ }^{ } ()");
+    },
+    insertsigma: function insertsigma() {
+      this.mathField.write("\\sum_{ }^{ }");
+    },
+    insertprod: function insertprod() {
+      this.mathField.write("\\prod");
+    },
+    insertlaplace: function insertlaplace() {
+      this.mathField.write("LaplaceTransform[,,]");
+    },
+    insertlaplaceinv: function insertlaplaceinv() {
+      this.mathField.write("InverseLaplaceTransform[,,]");
+    },
+    insertfourier: function insertfourier() {
+      this.mathField.write("FourierTransform[,,]");
+    },
+    insertfourierinv: function insertfourierinv() {
+      this.mathField.write("InverseFourierTransform[,,]");
+    },
+    insertpi: function insertpi() {
+      this.mathField.write("\\pi");
+    },
+    insertcirc: function insertcirc() {
+      this.mathField.write("°");
+    },
+    insertsin: function insertsin() {
+      this.mathField.write("\\sin\\left(\\right)");
+    },
+    insertsec: function insertsec() {
+      this.mathField.write("\\sin\\left(\\right)");
+    },
+    insertcos: function insertcos() {
+      this.mathField.write("\\cos\\left(\\right)");
+    },
+    inserttan: function inserttan() {
+      this.mathField.write("\\tan\\left(\\right)");
     }
-  }
+  }, _defineProperty(_methods, "insertcos", function insertcos() {
+    this.mathField.write("\\cos\\left(\\right)");
+  }), _defineProperty(_methods, "insertcsc", function insertcsc() {
+    this.mathField.write("\\csc\\left(\\right)");
+  }), _defineProperty(_methods, "insertcot", function insertcot() {
+    this.mathField.write("\\cot\\left(\\right)");
+  }), _defineProperty(_methods, "insertarcsin", function insertarcsin() {
+    this.mathField.write("\\arcsin\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccos", function insertarccos() {
+    this.mathField.write("\\arccos\\left(\\right)");
+  }), _defineProperty(_methods, "insertarctan", function insertarctan() {
+    this.mathField.write("\\arctan\\left(\\right)");
+  }), _defineProperty(_methods, "insertsinh", function insertsinh() {
+    this.mathField.write("\\sinh\\left(\\right)");
+  }), _defineProperty(_methods, "insertcosh", function insertcosh() {
+    this.mathField.write("\\cosh\\left(\\right)");
+  }), _defineProperty(_methods, "inserttanh", function inserttanh() {
+    this.mathField.write("\\sin\\left(\\right)");
+  }), _defineProperty(_methods, "insertsech", function insertsech() {
+    this.mathField.write("\\sech\\left(\\right)");
+  }), _defineProperty(_methods, "insertcsch", function insertcsch() {
+    this.mathField.write("\\csch\\left(\\right)");
+  }), _defineProperty(_methods, "insertcoth", function insertcoth() {
+    this.mathField.write("\\coth\\left(\\right)");
+  }), _defineProperty(_methods, "insertarcsinh", function insertarcsinh() {
+    this.mathField.write("\\arcsinh\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccosh", function insertarccosh() {
+    this.mathField.write("\\arccosh\\left(\\right)");
+  }), _defineProperty(_methods, "insertarctanh", function insertarctanh() {
+    this.mathField.write("\\arctanh\\left(\\right)");
+  }), _defineProperty(_methods, "insertarcsech", function insertarcsech() {
+    this.mathField.write("\\arcsech\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccsch", function insertarccsch() {
+    this.mathField.write("\\arccsch\\left(\\right)");
+  }), _defineProperty(_methods, "insertarccoth", function insertarccoth() {
+    this.mathField.write("\\arccoth\\left(\\right)");
+  }), _defineProperty(_methods, "inserttheta", function inserttheta() {
+    this.mathField.write("\\theta");
+  }), _defineProperty(_methods, "insertinfinito", function insertinfinito() {
+    this.mathField.write("\\infty");
+  }), _defineProperty(_methods, "insertpm", function insertpm() {
+    this.mathField.write("\\pm");
+  }), _defineProperty(_methods, "insertalpha", function insertalpha() {
+    this.mathField.write("\\alpha");
+  }), _defineProperty(_methods, "insertpm", function insertpm() {
+    this.mathField.write("\\pm");
+  }), _defineProperty(_methods, "insertbeta", function insertbeta() {
+    this.mathField.write("\\beta");
+  }), _defineProperty(_methods, "insertgamma", function insertgamma() {
+    this.mathField.write("\\gamma");
+  }), _defineProperty(_methods, "insertdeltaMay", function insertdeltaMay() {
+    this.mathField.write("\\Delta");
+  }), _defineProperty(_methods, "insertin", function insertin() {
+    this.mathField.write("\\in");
+  }), _defineProperty(_methods, "insertnotin", function insertnotin() {
+    this.mathField.write("\\notin");
+  }), _defineProperty(_methods, "insertdelta", function insertdelta() {
+    this.mathField.write("\\delta");
+  }), _defineProperty(_methods, "insertlambda", function insertlambda() {
+    this.mathField.write("\\lambda");
+  }), _defineProperty(_methods, "insertsigma2", function insertsigma2() {
+    this.mathField.write("\\sigma");
+  }), _defineProperty(_methods, "insertipsilon", function insertipsilon() {
+    this.mathField.write("\\Upsilon");
+  }), _defineProperty(_methods, "insertthetaMay", function insertthetaMay() {
+    this.mathField.write("\\Theta");
+  }), _defineProperty(_methods, "insertParatodo", function insertParatodo() {
+    this.mathField.write("\\forall");
+  }), _defineProperty(_methods, "insertExist", function insertExist() {
+    this.mathField.write("\\exists");
+  }), _defineProperty(_methods, "insertUnion", function insertUnion() {
+    this.mathField.write("\\union");
+  }), _defineProperty(_methods, "insertIntersec", function insertIntersec() {
+    this.mathField.write("\\intersection");
+  }), _defineProperty(_methods, "insertZeta", function insertZeta() {
+    this.mathField.write("\\zeta");
+  }), _defineProperty(_methods, "insertEta", function insertEta() {
+    this.mathField.write("\\eta");
+  }), _defineProperty(_methods, "TraducirLatex", function TraducirLatex() {
+    this.mathField.latex(''); // Limpia el contenido del campo MathQuill
+  }), _defineProperty(_methods, "handleInput", function handleInput() {
+    var mathquillText = this.mathField.latex();
+    console.log(mathquillText);
+    this.$emit('mathquill-updated', mathquillText);
+  }), _defineProperty(_methods, "editarCampoMathquill", function editarCampoMathquill() {
+    var _this = this;
+
+    // Utiliza un temporizador para escribir el valor en MathQuill después de un breve retraso
+    setTimeout(function () {
+      _this.mathField.write(_this.datoRespuesta);
+    }, 0);
+  }), _defineProperty(_methods, "limpiarCampoMathquill", function limpiarCampoMathquill() {
+    this.mathField.latex(''); // Limpia el contenido del campo MathQuill
+  }), _methods)
 });
 
 /***/ }),
@@ -23851,7 +24967,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nbody {\n      font-family: Arial, sans-serif;\n}\n#container {\n      width: 600px;\n      height: 300px;\n      overflow: hidden;\n}\n#input2 {\n      width: 400px;\n      height: 90px;\n      margin: 20px;\n      padding: 10px;\n      font-size: 24px;\n      border: 1px solid #000000da;\n}\n.menu {\n      margin-bottom: 10px;\n}\n.menu select {\n      font-size: 18px;\n      padding: 5px;\n}\n.menu-buttons {\n      display: none;\n}\n.menu-buttons.active {\n      display: flex;\n      flex-wrap: wrap;\n}\nmenu-buttons .button-image {\n      width: 50px;\n      height: 50px;\n      padding: 5px;\n      background-color: #f1f1f1;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\n      transition: background-color 0.3s;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n}\n.menu-buttons .button-image img {\n      width: 100%;\n      height: 100%;\n      object-fit: contain;\n}\n.menu-buttons button:hover {\n      background-color: #e0e0e0;\n}\n.tooltip {\n      position: relative;\n      display: inline-block;\n      cursor: pointer;\n}\n.tooltip .tooltiptext {\n      visibility: hidden;\n      width: 120px;\n      background-color: #1485c9;\n      color: #fff;\n      text-align: center;\n      border-radius: 6px;\n      padding: 5px;\n      position: absolute;\n      z-index: 1;\n      bottom: 125%;\n      left: 50%;\n      margin-left: -60px;\n      opacity: 0;\n      transition: opacity 0.3s;\n}\n.tooltip:hover .tooltiptext {\n      visibility: visible;\n      opacity: 1;\n}\n#translate {\n      margin-top: 10px;\n      padding: 10px;\n      font-size: 18px;\n      background-color: #1485c9;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\n      transition: background-color 0.3s;\n}\n#translate:hover {\n      background-color: #1173a6;\n}\n.texto-emergente {\n      display: none;\n      position: absolute;\n      background-color: rgba(71, 180, 215, 0.56);\n      padding: 10px;\n      border-radius: 5px;\n      font-size: 12px;\n}\n.menu-buttons button img {\n      max-width: 140%;\n      max-height: 100%;\n}\n.menu-buttons.active {\n  display: grid;\n  grid-template-columns: repeat(8, 40px); \n  gap: 10px;\n}\n.menu-buttons button {\n  width: 40px;\n  height: 40px;\n  font-size: 16px;\n}\n.tooltip {\n  position: relative;\n}\n\n", ""]);
+exports.push([module.i, "\nbody {\n      font-family: Arial, sans-serif;\n}\n#container {\n      width: 600px;\n      height: 300px;\n      overflow: hidden;\n}\n#input2 {\n      width: 400px;\n      height: 90px;\n      margin: 20px;\n      padding: 10px;\n      font-size: 24px;\n      border: 1px solid #000000da;\n}\n.menu {\n      margin-bottom: 10px;\n}\n.menu select {\n      font-size: 18px;\n      padding: 5px;\n}\n.menu-buttons {\n      display: none;\n}\n.menu-buttons.active {\n      display: flex;\n      flex-wrap: wrap;\n}\nmenu-buttons .button-image {\n      width: 50px;\n      height: 50px;\n      padding: 5px;\n      background-color: #f1f1f1;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\n      transition: background-color 0.3s;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n}\n.menu-buttons .button-image img {\n      width: 100%;\n      height: 100%;\n      object-fit: contain;\n}\n.menu-buttons button:hover {\n      background-color: #e0e0e0;\n}\n.tooltip {\n      position: relative;\n      display: inline-block;\n      cursor: pointer;\n}\n.tooltip .tooltiptext {\n      visibility: hidden;\n      width: 120px;\n      background-color: #1485c9;\n      color: #fff;\n      text-align: center;\n      border-radius: 6px;\n      padding: 5px;\n      position: absolute;\n      z-index: 1;\n      bottom: 125%;\n      left: 50%;\n      margin-left: -60px;\n      opacity: 0;\n      transition: opacity 0.3s;\n}\n.tooltip:hover .tooltiptext {\n      visibility: visible;\n      opacity: 1;\n}\n#translate {\n      margin-top: 10px;\n      padding: 10px;\n      font-size: 18px;\n      background-color: #1485c9;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\n      transition: background-color 0.3s;\n}\n#translate:hover {\n      background-color: #1173a6;\n}\n.texto-emergente {\n      display: none;\n      position: absolute;\n      background-color: rgba(71, 180, 215, 0.56);\n      padding: 10px;\n      border-radius: 5px;\n      font-size: 12px;\n}\n.menu-buttons button img {\n      max-width: 140%;\n      max-height: 100%;\n}\n.menu-buttons.active {\n  display: grid;\n  grid-template-columns: repeat(8, 40px); \n  gap: 10px;\n}\n.menu-buttons button {\n  width: 40px;\n  height: 40px;\n  font-size: 16px;\n}\n.tooltip {\n  position: relative;\n}\n", ""]);
 
 // exports
 
@@ -60513,17 +61629,19 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { attrs: { id: "progress" } }),
                       _vm._v(" "),
-                      _vm._m(3),
-                      _vm._v(" "),
                       _c(
                         "div",
                         [
                           _c("h5", [_vm._v("Wolfram")]),
                           _vm._v(" "),
-                          _c("wolfram")
+                          _c("wolfram", {
+                            attrs: { mensaje: _vm.mensajeParaHijo }
+                          })
                         ],
                         1
                       ),
+                      _vm._v(" "),
+                      _vm._m(3),
                       _vm._v(" "),
                       _vm._m(4),
                       _vm._v(" "),
@@ -60547,9 +61665,6 @@ var render = function() {
                             attrs: {
                               dato: _vm.datoParaHijo,
                               id: "hijoComponent"
-                            },
-                            on: {
-                              "mathquill-updated": _vm.handleMathquillUpdate
                             }
                           }),
                           _vm._v(" "),
@@ -75171,6 +76286,58 @@ var render = function() {
       "div",
       { attrs: { id: "div1" } },
       [
+        _c("div", { staticClass: "menu" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selectedOption,
+                  expression: "selectedOption"
+                }
+              ],
+              attrs: { id: "menu-options" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedOption = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.toggleButtons
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "basic" } }, [
+                _vm._v("Matemáticas Básicas")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "logic" } }, [
+                _vm._v("Cálculo y Sumas")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "functions" } }, [
+                _vm._v("Trigonometria")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "symbols" } }, [
+                _vm._v("Símbolos")
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
         _c("div"),
         _vm._v(" "),
         _c("div", { attrs: { id: "mathquill-editor" } }),
@@ -75182,13 +76349,1862 @@ var render = function() {
         }),
         _vm._v(" "),
         _vm._l(_vm.buttonClasses, function(buttonClass) {
-          return _c("div", {
-            key: buttonClass,
-            class: [
-              "menu-buttons",
-              { active: buttonClass === _vm.activeButton }
+          return _c(
+            "div",
+            {
+              key: buttonClass,
+              class: [
+                "menu-buttons",
+                { active: buttonClass === _vm.activeButton }
+              ]
+            },
+            [
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "left-p", title: "paréntesis izquierdo" },
+                      on: {
+                        click: _vm.insertLeftP,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("(")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "right-p", title: "paréntesis derecho" },
+                      on: {
+                        click: _vm.insertRightP,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v(")")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "xexp", title: "potencia" },
+                      on: {
+                        click: _vm.insertXExp,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/^.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "xsub", title: "subíndice" },
+                      on: {
+                        click: _vm.insertXSub,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/_.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sqrt", title: "raíz cuadrada" },
+                      on: {
+                        click: _vm.insertSqrt,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sqrt.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sqrt3", title: "n-ésima raíz" },
+                      on: {
+                        click: _vm.insertNThroot,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sqrt3.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "frac", title: "fracción" },
+                      on: {
+                        click: _vm.insertFrac,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/frac.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "suma", title: "suma" },
+                      on: {
+                        click: _vm.insertSuma,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("+")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "resta", title: "resta" },
+                      on: {
+                        click: _vm.insertResta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("-")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "times", title: "multiplicación" },
+                      on: {
+                        click: _vm.insertTimes,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("×")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "div", title: "división" },
+                      on: {
+                        click: _vm.insertDiv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("÷")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "ln", title: "logaritmo natural" },
+                      on: {
+                        click: _vm.insertLn,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/log.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "exp", title: "función exponencial" },
+                      on: {
+                        click: _vm.insertExp,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/exp.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "leq", title: "menor o igual que" },
+                      on: {
+                        click: _vm.insertLeq,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("≤")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "geq", title: "mayor o igual que" },
+                      on: {
+                        click: _vm.insertGeq,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("≥")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "basic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "equal", title: "igual" },
+                      on: {
+                        click: _vm.insertEqual,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("=")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "derivadasimple", title: "derivada simple" },
+                      on: {
+                        click: _vm.insertderivadasimple,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/derivada.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "derivadaY", title: "Derivada Y" },
+                      on: {
+                        click: _vm.insertderivadaY,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivadaY.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadasegundoorden",
+                        title: "derivada segundo orden"
+                      },
+                      on: {
+                        click: _vm.insertderivadasegundoorden,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivada2orden.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadaparcialsimple",
+                        title: "derivada parcial simple"
+                      },
+                      on: {
+                        click: _vm.insertderivadaparcialsimple,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/parcial.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadaparcialsegundoorden",
+                        title: "derivada parcial segundo orden"
+                      },
+                      on: {
+                        click: _vm.insertderivadaparcialsegundoorden,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/parcial2orden.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "derivadaparcialmixta",
+                        title: "derivada parcial mixta"
+                      },
+                      on: {
+                        click: _vm.insertderivadaparcialmixta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/derivadamixta.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "intindeff", title: "integral indefinida" },
+                      on: {
+                        click: _vm.insertintindeff,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinida.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "intintindef",
+                        title: "integral doble indefinida"
+                      },
+                      on: {
+                        click: _vm.insertintintindef,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinidadoble.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "intintintindef",
+                        title: "integral triple indefinida"
+                      },
+                      on: {
+                        click: _vm.insertintintintindef,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/indefinidatriple.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "limite", title: "limite" },
+                      on: {
+                        click: _vm.insertlimite,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/lim.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "limiteizq",
+                        title: "limite por la izquierda"
+                      },
+                      on: {
+                        click: _vm.insertlimiteizq,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/limizq.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "limiteder",
+                        title: "limite por la derecha"
+                      },
+                      on: {
+                        click: _vm.insertlimiteder,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/limder.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pasounitario", title: "paso unitario" },
+                      on: {
+                        click: _vm.insertpasounitario,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/pasounit.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int", title: "integral definida" },
+                      on: {
+                        click: _vm.insertint,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/definida.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int2", title: "integral definida doble" },
+                      on: {
+                        click: _vm.insertint2,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/definidadoble.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "int3", title: "integral definida triple" },
+                      on: {
+                        click: _vm.insertint3,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/definidatriple.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sigma", title: "suma" },
+                      on: {
+                        click: _vm.insertsigma,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sigma.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "prod", title: "prod" },
+                      on: {
+                        click: _vm.insertprod,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/prod.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "laplace",
+                        title: "transformada de laplace"
+                      },
+                      on: {
+                        click: _vm.insertlaplace,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/laplace.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "laplaceinv",
+                        title: "transformada de laplace inversa"
+                      },
+                      on: {
+                        click: _vm.insertlaplaceinv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/laplaceinv.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "fourier",
+                        title: "transformada de fourier"
+                      },
+                      on: {
+                        click: _vm.insertfourier,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/fourier.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "logic-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: {
+                        id: "fourierinv",
+                        title: "transformada de fourier inverisa"
+                      },
+                      on: {
+                        click: _vm.insertfourierinv,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/imagenes/toolbar-buttons/fourierinv.png"
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pi", title: "pi" },
+                      on: {
+                        click: _vm.insertpi,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/pi.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "circ", title: "grados" },
+                      on: {
+                        click: _vm.insertcirc,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("°")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sin", title: "seno" },
+                      on: {
+                        click: _vm.insertsin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sin.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "cos", title: "cos" },
+                      on: {
+                        click: _vm.insertcos,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/cos.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "tan", title: "tangente" },
+                      on: {
+                        click: _vm.inserttan,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/tan.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sec", title: "secante" },
+                      on: {
+                        click: _vm.insertsec,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sec.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "csc", title: "cosecante" },
+                      on: {
+                        click: _vm.insertcsc,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/csc.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "cot", title: "cotangente" },
+                      on: {
+                        click: _vm.insertcot,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/cot.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "arcsin", title: "arcoseno" },
+                      on: {
+                        click: _vm.insertarcsin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/arcsin.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "arccos", title: "arcocoseno" },
+                      on: {
+                        click: _vm.insertarccos,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/arccos.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "arctan", title: "arcotangente" },
+                      on: {
+                        click: _vm.insertarctan,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/arctan.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sinh", title: "seno hiperbólico" },
+                      on: {
+                        click: _vm.insertsinh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sinh.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "cosh", title: "coseno hiperbólico" },
+                      on: {
+                        click: _vm.insertcosh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/cosh.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "tanh", title: "tangente hiperbólico" },
+                      on: {
+                        click: _vm.inserttanh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/tanh.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sech", title: "secante hiperbólico" },
+                      on: {
+                        click: _vm.insertsech,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/sech.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "csch", title: "cosecante hiperbólico" },
+                      on: {
+                        click: _vm.insertcsch,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/csch.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "cotangente hiperbólico" },
+                      on: {
+                        click: _vm.insertcoth,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcoseno hiperbólico" },
+                      on: {
+                        click: _vm.insertarcsinh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcocoseno hiperbólico" },
+                      on: {
+                        click: _vm.insertarccosh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcotangente hiperbólico" },
+                      on: {
+                        click: _vm.insertarctanh,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "arcosecante hiperbólico" },
+                      on: {
+                        click: _vm.insertarcsech,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "cosecante hiperbólico" },
+                      on: {
+                        click: _vm.insertarccsch,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "coth", title: "contangente hiperbólico" },
+                      on: {
+                        click: _vm.insertarccoth,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: { src: "/imagenes/toolbar-buttons/coth.png" }
+                      })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "theta", title: "theta" },
+                      on: {
+                        click: _vm.inserttheta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("θ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "infinito", title: "infinito" },
+                      on: {
+                        click: _vm.insertinfinito,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∞")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pm", title: "pm" },
+                      on: {
+                        click: _vm.insertpm,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("±")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "pi2", title: "pi" },
+                      on: {
+                        click: _vm.insertpi,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("π")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "alpha", title: "alpha" },
+                      on: {
+                        click: _vm.insertalpha,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("α")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "beta", title: "beta" },
+                      on: {
+                        click: _vm.insertbeta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("β")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "gamma", title: "gamma" },
+                      on: {
+                        click: _vm.insertgamma,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("γ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "functions-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "circ", title: "grados" },
+                      on: {
+                        click: _vm.insertcirc,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("°")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "deltaMay", title: "delta Mayúscula" },
+                      on: {
+                        click: _vm.insertdeltaMay,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("Δ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "delta", title: "delta" },
+                      on: {
+                        click: _vm.insertdelta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("δ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "in", title: "in" },
+                      on: {
+                        click: _vm.insertin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∈")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "notin", title: "notin" },
+                      on: {
+                        click: _vm.insertnotin,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∉")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "lambda", title: "lambda" },
+                      on: {
+                        click: _vm.insertlambda,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("λ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "sigma", title: "sigma" },
+                      on: {
+                        click: _vm.insertsigma2,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("σ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "ipsilon", title: "ipsilon" },
+                      on: {
+                        click: _vm.insertipsilon,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("ϒ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "thetaMay", title: "thetaMay" },
+                      on: {
+                        click: _vm.insertthetaMay,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("Θ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "paraTodo", title: "Para todo" },
+                      on: {
+                        click: _vm.insertParatodo,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∀")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "exist", title: "Existe" },
+                      on: {
+                        click: _vm.insertExist,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∃")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "union", title: "Unión" },
+                      on: {
+                        click: _vm.insertUnion,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∪")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "interseccion", title: "Intersección" },
+                      on: {
+                        click: _vm.insertIntersec,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("∩")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "zeta", title: "Zeta" },
+                      on: {
+                        click: _vm.insertZeta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("ζ")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              buttonClass === "symbols-buttons"
+                ? _c(
+                    "button",
+                    {
+                      attrs: { id: "eta", title: "Eta" },
+                      on: {
+                        click: _vm.insertEta,
+                        mouseover: function($event) {
+                          _vm.showEtiqueta = true
+                        },
+                        mouseleave: function($event) {
+                          _vm.showEtiqueta = false
+                        }
+                      }
+                    },
+                    [_vm._v("η")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "button",
+                { attrs: { id: "latex" }, on: { click: _vm.TraducirLatex } },
+                [_vm._v("Borrar")]
+              )
             ]
-          })
+          )
         })
       ],
       2

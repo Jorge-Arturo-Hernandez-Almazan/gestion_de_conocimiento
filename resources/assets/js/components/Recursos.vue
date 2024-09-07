@@ -99,9 +99,10 @@
                                 </div> 
                             </div>
                             <div class="card-footer">
+                             
                                 <div class="row">
                                     <div class="col-6">
-                                        <label> <b> Total: {{ temasOrdenEnsenanza.length }} registros </b> </label> 
+                                     <label> <b> Total: {{ temasOrdenEnsenanza.length }} registros </b> </label> 
                                     </div>
                                     <div class="col-6">
                                         <div class="float-right">
@@ -109,8 +110,8 @@
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -326,7 +327,7 @@
            getTemas() {
                 axios({
                     method: "GET",
-                  url: "/tema/temas"
+                    url: "/tema/all"
                 }).then(
                     result => {
                         let temasApi = result.data[0];
