@@ -1,3 +1,4 @@
+
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')}*/
 const Route = use('Route')     
 const User = use('App/Models/User')
@@ -13,6 +14,15 @@ Route.get('/saludar', 'SaludarController.metodoSaludar')
 
 
 Route.post('/wolfram-query', 'WolframController.query')
+
+//---------------------Rutas para la interfaz general del módulo de enseñanza--------------------$
+// Ruta para ejecutar script Python con la matrícula del usuario
+Route.post('/api/ejecutar-evaluacion', 'EvaluacionController2.ejecutarEvaluacion').middleware(['auth'])
+Route.post('/api/temas-no-dominados/:id/marcar-revisado', 'VistaGeneralCont.marcarRevisado').middleware(['auth']);
+Route.post('/api/temas-no-dominados/reset-progreso', 'VistaGeneralCont.resetProgreso').middleware(['auth']);
+Route.get('/api/temas-no-dominados/:ids', 'VistaGeneralCont.getTemas').middleware(['auth']);
+
+
 
 
 Route.get('/arbol',({view})=> view.render('arbol'))
@@ -119,9 +129,15 @@ Route.get('/obtenerPonderaciones/:matricula', 'PonderacionController.obtener_pon
 //Ruta para acceder al nuevo componente
 
 Route.get('/ejemplo', ({view}) =>  view.render('app') );
+//Se envia matrícula para la lectura del pickle
+Route.get('/obtenerMatricula/:matricula','AprenderController.obtener_matricula')
 
 
+Route.get('/Matricula/:matricula','EvaluacionController.obtener_matricula')
+Route.get('/reactivos/:rama/:tema', 'EvaluacionController.obtenerReactivosPorRama');
+Route.get('/temas-preguntas/:rama_id', 'EvaluacionController.obtenerTemasYPreguntasAleatorias');
 
+//----------------------------------------------------------------------------------------------
 
 Route.post('/temas/guardarProbabilidades', 'TemaController.storeProbabilidades');
 Route.get('/obtenerEvidencias', 'TemaController.obtenerEvidencias')
@@ -232,6 +248,7 @@ Route.group(()=>{
 	Route.get('/cuestionario/obtenerconfiguracion','PreguntaController.obtenerconfiguracion');
 	Route.get('/topic/getopic/:id','BayeController.NextTopic');
 	Route.post('/score/add','PreguntaController.addScore');
+  
 }).middleware(['AccessValidator:1']);
 
 //Rutas generales 
@@ -241,6 +258,10 @@ Route.group(()=>{
 	Route.get('/accesos/configuracion', ({view}) =>  view.render('app'));
 	Route.get('/accesos/:id','AccesosRutaController.obtenerAccesosRol')
 	Route.post('/guardarAccesoRutas', 'AccesosRutaController.guardarconfiguracion');
+  Route.get('/recursosvistaespecial/mostrarrecursosvistaespecial', 'ControladorRecursosEnsenanza.mostrarTemasPorRama')
+  
+ 
+  
 }).middleware(['VerificadorAuthRole:1,2,3,4'])
 
 //Rutas de Administrador, Experto, Profesor
@@ -248,6 +269,11 @@ Route.group(()=>{
 	Route.get('/pregunta/showPN','PreguntaController.showPreguntasNumericas')
  	Route.get('/pregunta/showPE','PreguntaController.showPreguntasExpresiones')
 	Route.get('/pregunta/showPAB','PreguntaController.showPreguntasAbiertas')
+  Route.get('/recurso/mostrarrecurso','controladorTema.mostrarRecursos')
+  //__________________________Mostrar temas por rama en el módulo de enseñanza______________________________
+  Route.get('/recurso/mostrarTemasPorRama', 'ControladorRecursosEnsenanza.mostrarTemasPorRama');
+ 
+  //______________________________________________________________________________
 	Route.get('/preguntasNumericas', ({view}) =>  view.render('app'))
 }).middleware(['VerificadorAuthRole:1,2,3]'])
 
@@ -270,6 +296,9 @@ Route.group(()=>{
 	Route.post('tema/editarNodo','TemaController.editarNodo') 
 	Route.get('tema/relacionesPrimarias','TemaController.verrelacion')	
 	Route.get('/historialexperto','AccesosRutaController.AbirArbol')
+  Route.get('tema/temas','controladorTema.mostrarTemas')
+  Route.post('ejercicio/anadir','controladorTema.agregarEjercicioUrl')
+  Route.post('recurso/actualizarRecurso','controladorTema.updateRecurso')
 	Route.get('temas',({view})=> view.render('app'))
 }).middleware(['AccessValidator:2'])
 
@@ -339,9 +368,8 @@ Route.group(()=>{
 	Route.get('obtenerTotalPorPregunta', 'ConfiguracionController.obtenerTotalPreguntas');
 	Route.post('guardarconfiguracion', 'ConfiguracionController.guardarconfiguracion');
   
-  // Se esta trabajando aqui para el módulo MOGRE
+ 
   Route.get('/obtenerrbs', 'CuestionarioController.obtenerrbs');
-  
   Route.get('/obtenerConfiguracionRedBayesiana', 'ParametrosController.obtenerConfiguracion');
   
   Route.post('/guardarConfiguracionRB', 'ParametrosController.guardarconfiguracion');
@@ -352,14 +380,26 @@ Route.group(()=>{
 
 Route.get('/obtenerPrimerTema/:matricula/:rbm', 'CuestionarioController.obtenerPrimerTema');
 
+Route.get('/obtenerPrimerTema/:matricula/:rbm', 'CuestionarioController.obtenerPrimerTema');
+Route.get('/obtenerResultadosTemaE/:matricula', 'EvaluacionController.obtenerResultadosTemas');
+Route.get('/obtenerTemas/:matricula/:rama', 'EvaluacionController.obtener_Temas');
+Route.get('/guardarEvaluacion/:matricula/:tema/:ponderacion/:grado', 'EvaluacionController.escribirDatos');
+Route.get('/obtenerPreguntasA/:matricula/:rama/:tema', 'EvaluacionController.obtener_datos');
+Route.get('/obtenerTemaE/:matricula/:rbm/:saltos/:tema/:ponderacion', 'PonderacionController.obtener_tema');
+Route.get('/obtenerPonderacionesE/:matricula', 'EvaluacionController.obtener_ponderaciones');
+Route.get('/arbol/caminosmoduloE/:matricula/:rbm', 'EvaluacionController.obtener_caminos_modulo');
 
 Route.get('/recuperarPass', async ({view}) =>{
 	return view.render('recuperarPass')	
 });
-
+Route.get('obtenerConfiguracionEvaluacion','ConfiguracionEvaluacionController.obtenerConfiguracionEvaluacion');
+Route.get('/obtenerTotalPreguntasPorTema','ConfiguracionEvaluacionController.obtenerTotalPreguntasTema');
 Route.get('/enviarCorreo', 'UserController.enviarCorreo');
+Route.post('guardarconfiguracionEvaluacion', 'ConfiguracionEvaluacionController.guardarConfiguracionEvaluacion');
 Route.get('/*', 'UserController.verificarLogin');
 
+  // Se esta trabajando aqui para el módulo MOGRE
+  //Route.get('/obtenerrbs', 'CuestionarioController.obtenerrbs');
 
 //Route.get('/toolbar', ({view})=> view.render('toolbar'))
 Route.get('/toolbar', async ({view}) =>{

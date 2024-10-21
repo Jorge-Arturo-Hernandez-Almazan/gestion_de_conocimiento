@@ -1,7 +1,7 @@
 <template>
     <div class="content-wrapper">
 
-		<div class="content-header">
+        <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -9,12 +9,12 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <span style="color: #bdb9bd">  
-                                <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i> 
-                            </span> 
-                            <span style="color: #bdb9bd">  
-                                Cuestionario <i class="fas fa-angle-right"></i> 
-                            </span> 
+                            <span style="color: #bdb9bd">
+                                <i class="fas fa-home"></i> <i class="fas fa-angle-right"></i>
+                            </span>
+                            <span style="color: #bdb9bd">
+                                Cuestionario <i class="fas fa-angle-right"></i>
+                            </span>
                             <b> Configuración </b>
                         </ol>
                     </div>
@@ -22,228 +22,200 @@
             </div>
         </div>
 
-		<section class="content">
+        <section class="content">
             <div class="container-fluid">
-				<div class="row">
-					<div class="col-12 col-md-5">
-						<div class="card shadow">
-							<div class="card-header">
-								<h3 class="card-title mt-2"> <b> Configurar cuestionario </b> </h3>
-								<div class="card-tools">
-									<div class="" style="width: 150px;">
-										
-										<!-- <button type="button" class="btn btn-primary float-right"  data-toggle="modal"
-													data-target="#modalDeInformacion">
-											<i class="fas fa-question-circle"></i> Más información
-										</button>  -->
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="form-group">
-									<label class="mb-2">Total de preguntas por tema:</label>
-									<input id="numeroPreguntas" type="number" class="form-control"
-										placeholder="# Preguntas" v-model="configuraciones.num_preguntas" disabled>
-								</div>
-
-								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect1">Cantidad de preguntas numericas: </label>
-									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_numericas"
-										id="numeroPreguntasNumericas" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect2">Cantidad de preguntas abiertas:</label>
-									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_abiertas"
-										id="numeroPreguntasBreves" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect2">Cantiodad de preguntas calculadas:</label>
-									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_calculadas"
-										id="numeroPreguntasCalculadas" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect2">Cantidad de preguntas calculadas multiples:</label>
-									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_calculadas_multiples"
-										id="numeroPreguntasCalculadasMultiples" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas verdadero / falso:</label>
-									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_boleanas"
-										id="numeroPreguntasBooleanas" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas opcion multiples:</label>
-									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_multiples"
-										id="numeroPreguntasMultiples" class="form-control">
-								</div>
-                
-                <div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas de expresiones:</label>
-									<input @keyup="totalPreg" v-model="configuraciones.num_preguntas_expresion"
-										id="numeroPreguntasExpresion" class="form-control">
-								</div>
-                
-								<div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect1">Rango de error por defecto:</label>
-									<input min="0" max="1" step="0.001" id="rangoPorDefecto" type="number"
-										class="form-control" placeholder="# Preguntas"
-										:value="configuraciones.rango_por_defecto">
-								</div>
-								<div class="form-group">
-									<label class="mb-2">Ponderación estricta en preguntas de opcion multiple: </label>
-									<label>
-                                        <input id="ponderacionEstricta" type="checkbox" value="first_checkbox"> Sí
-									</label>
-								</div>
-                                
+                <div class="row">
+                    <div class="col-12 col-md-5">
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <h3 class="card-title mt-2"><b> Configurar cuestionario </b></h3>
+                                <div class="card-tools">
+                                    <div style="width: 150px;">
+                                        <!-- <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                                                data-target="#modalDeInformacion">
+                                            <i class="fas fa-question-circle"></i> Más información
+                                        </button> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
                                 <div class="form-group">
-									<label class="mb-2" for="exampleFormControlSelect1">Versión de RBN:</label>
+                                    <label class="mb-2">Total de preguntas por tema:</label>
+                                    <input id="numeroPreguntas" type="number" class="form-control"
+                                        placeholder="# Preguntas" v-model="configuraciones.num_preguntas" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect1">Cantidad de preguntas numéricas:</label>
+                                    <input @keyup="totalPreg" v-model="configuraciones.num_preguntas_numericas"
+                                        id="numeroPreguntasNumericas" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect2">Cantidad de preguntas abiertas:</label>
+                                    <input @keyup="totalPreg" v-model="configuraciones.num_preguntas_abiertas"
+                                        id="numeroPreguntasBreves" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect2">Cantidad de preguntas calculadas:</label>
+                                    <input @keyup="totalPreg" v-model="configuraciones.num_preguntas_calculadas"
+                                        id="numeroPreguntasCalculadas" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect2">Cantidad de preguntas calculadas múltiples:</label>
+                                    <input @keyup="totalPreg" v-model="configuraciones.num_preguntas_calculadas_multiples"
+                                        id="numeroPreguntasCalculadasMultiples" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas verdadero / falso:</label>
+                                    <input @keyup="totalPreg" v-model="configuraciones.num_preguntas_boleanas"
+                                        id="numeroPreguntasBooleanas" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas opción múltiples:</label>
+                                    <input @keyup="totalPreg" v-model="configuraciones.num_preguntas_multiples"
+                                        id="numeroPreguntasMultiples" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect3">Cantidad de preguntas de expresiones:</label>
+                                    <input @keyup="totalPreg" v-model="configuraciones.num_preguntas_expresion"
+                                        id="numeroPreguntasExpresion" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect1">Rango de error por defecto:</label>
+                                    <input min="0" max="1" step="0.001" id="rangoPorDefecto" type="number"
+                                        class="form-control" placeholder="# Preguntas"
+                                        :value="configuraciones.rango_por_defecto">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2">Ponderación estricta en preguntas de opción múltiple:</label>
+                                    <label>
+                                        <input id="ponderacionEstricta" type="checkbox" value="first_checkbox"> Sí
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="mb-2" for="exampleFormControlSelect1">Versión de RBN:</label>
                                     <select class="form-control" id="exampleFormControlSelect1">
                                         <option v-for="rb in rbs" :value="rb.id">{{rb.nombre}}</option>
                                     </select>
-								</div>
-                                
-                                
-                                
-                                
-							</div>
-							<div class="card-footer">
-
+                                </div>
+                            </div>
+                            <div class="card-footer">
                                 <div class="row">
                                     <div class="col-6">
-                                        <label> <b> Total: {{ preguntasPorTema.length }} registros </b> </label>
+                                        <label><b>Total: {{ preguntasPorTema.length }} registros</b></label>
                                     </div>
                                     <div class="col-6">
                                         <div class="float-right">
-                                            <button type="button" @click="guardarConfiguracion" class="btn btn-primary"> 
+                                            <button type="button" @click="guardarConfiguracion" class="btn btn-primary">
                                                 <i class="fas fa-save" style="border-radius: 25px;"></i> Guardar
                                             </button>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-7">
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <h3 class="card-title mt-2"><b>Temas que no cumplen con la configuración establecida</b></h3>
+                                <div class="card-tools">
+                                    <div style="width: 150px;">
+                                        <!-- <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                                                data-target="#modalDeInformacion">
+                                            <i class="fas fa-plus"></i> Info
+                                        </button> -->
+                                    </div>
+                                </div>
+                            </div>
 
-								
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-7">
-						<div class="card shadow">
-							<div class="card-header">
-								<h3 class="card-title mt-2"> <b> Temas que no cumplen con la configuración establecida </b> </h3>
-								<div class="card-tools">
-									<div class="" style="width: 150px;">
-										
-										<!-- <button type="button" class="btn btn-primary float-right"  data-toggle="modal"
-													data-target="#modalDeInformacion">
-											<i class="fas fa-plus"></i> Info
-										</button>  -->
-									</div>
-								</div>
-							</div>
-
-							<div class="card-body">
-
-
-								<div class="row mb-2">
-                                    
-                                    <div class="col-12" >
-                                        <b> Término de busqueda: </b>
+                            <div class="card-body">
+                                <div class="row mb-2">
+                                    <div class="col-12">
+                                        <b>Término de búsqueda:</b>
                                         <input class="form-control" type="search" placeholder="Ej. tablas de multiplicar"
-											v-model="filters.nombre.value"
-											style="height: 37px; margin: 0px;" />
+                                            v-model="filters.nombre.value"
+                                            style="height: 37px; margin: 0px;" />
                                     </div>
                                 </div>
 
-								<div class="table-responsive">
+                                <div class="table-responsive">
+                                    <v-table :data="preguntasPorTema" :filters="filters" :currentPage.sync="currentPage"
+                                        :pageSize="10" @totalPagesChanged="totalPages = $event" style="width:100%"
+                                        class="table table-hover">
+                                        <thead slot="head">
+                                            <th>Tema:</th>
+                                            <th>Abiertas</th>
+                                            <th>Numérica</th>
+                                            <th>Booleana</th>
+                                            <th>Múltiple</th>
+                                            <th>Calculada</th>
+                                            <th>Calculada Múltiple</th>
+                                        </thead>
+                                        <tbody slot="body" slot-scope="{displayData}">
+                                            <tr v-for="tema in displayData"
+                                                v-if="(tema.totalPreguntasAbiertas < configuraciones.num_preguntas_abiertas) ||
+                                                    (tema.totalPreguntasNumericas < configuraciones.num_preguntas_numericas) ||
+                                                    (tema.totalPreguntasBooleanas < configuraciones.num_preguntas_boleanas) ||
+                                                    (tema.totalPreguntasMultiples < configuraciones.num_preguntas_multiples) ||
+                                                    (tema.totalPreguntasCalculadas < configuraciones.num_preguntas_calculadas) ||
+                                                    (tema.totalPreguntasCalculadasMultiples < configuraciones.num_preguntas_calculadas_multiples)">
+                                                <td>{{ tema.nombre_tema }}</td>
+                                                <td>
+                                                    {{ tema.totalPreguntasAbiertas }}
+                                                    <i v-if="tema.totalPreguntasAbiertas >= configuraciones.num_preguntas_abiertas"
+                                                       class="fas fa-check-circle" style="color:green"></i>
+                                                    <i v-else class="fas fa-times-circle" style="color:red"></i>
+                                                </td>
+                                                <td>
+                                                    {{ tema.totalPreguntasNumericas }}
+                                                    <i v-if="tema.totalPreguntasNumericas >= configuraciones.num_preguntas_numericas"
+                                                       class="fas fa-check-circle" style="color:green"></i>
+                                                    <i v-else class="fas fa-times-circle" style="color:red"></i>
+                                                </td>
+                                                <td>
+                                                    {{ tema.totalPreguntasBooleanas }}
+                                                    <i v-if="tema.totalPreguntasBooleanas >= configuraciones.num_preguntas_boleanas"
+                                                       class="fas fa-check-circle" style="color:green"></i>
+                                                    <i v-else class="fas fa-times-circle" style="color:red"></i>
+                                                </td>
+                                                <td>
+                                                    {{ tema.totalPreguntasMultiples }}
+                                                    <i v-if="tema.totalPreguntasMultiples >= configuraciones.num_preguntas_multiples"
+                                                       class="fas fa-check-circle" style="color:green"></i>
+                                                    <i v-else class="fas fa-times-circle" style="color:red"></i>
+                                                </td>
+                                                <td>
+                                                    {{ tema.totalPreguntasCalculadas }}
+                                                    <i v-if="tema.totalPreguntasCalculadas >= configuraciones.num_preguntas_calculadas"
+                                                       class="fas fa-check-circle" style="color:green"></i>
+                                                    <i v-else class="fas fa-times-circle" style="color:red"></i>
+                                                </td>
+                                                <td>
+                                                    {{ tema.totalPreguntasCalculadasMultiples }}
+                                                    <i v-if="tema.totalPreguntasCalculadasMultiples >= configuraciones.num_preguntas_calculadas_multiples"
+                                                       class="fas fa-check-circle" style="color:green"></i>
+                                                    <i v-else class="fas fa-times-circle" style="color:red"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </v-table>
+                                </div>
+                            </div>
 
-									<v-table :data="preguntasPorTema" :filters="filters" :currentPage.sync="currentPage"
-										:pageSize="10" @totalPagesChanged="totalPages = $event" style="width:100%"
-										class="table table-hover">
-										<thead slot="head">
-											<th>Tema: </th>
-											<th>Abiertas </th>
-											<th>Numerica </th>
-											<th>Booleana</th>
-											<th>Multiple</th>
-											<th>Calculada</th>
-											<th>Calculada Multiple</th>
-                 			<th>Expresiones</th>
-										</thead>
-										<tbody slot="body" slot-scope="{displayData}">
-											<tr v-for="tema in displayData"
-												v-if="(tema.totalPreguntasAbiertas < configuraciones.num_preguntas_abiertas ) ||
-												(tema.totalPreguntasNumericas < configuraciones.num_preguntas_numericas) ||
-												(tema.totalPreguntasBooleanas < configuraciones.num_preguntas_boleanas) ||
-												(tema.totalPreguntasMultiples < configuraciones.num_preguntas_multiples ) ||
-												(tema.totalPreguntasCalculadas < configuraciones.num_preguntas_calculadas ) || 
-												(tema.totalPreguntasCalculadasMultiples < configuraciones.num_preguntas_calculadas_multiples )|| 
-                        (tema.totalPreguntasExpresiones < configuraciones.num_preguntas_expresion)">
-
-												<td>{{ tema.nombre_tema }}</td>
-												<td>
-													{{ tema.totalPreguntasAbiertas }}
-
-													<i v-if="tema.totalPreguntasAbiertas >= configuraciones.num_preguntas_abiertas"
-														class="fas fa-check-circle" style="color:green"></i>
-													<i v-else class="fas fa-times-circle" style="color:red"></i>
-												</td>
-												<td>
-													{{ tema.totalPreguntasNumericas }}
-
-													<i v-if="tema.totalPreguntasNumericas >= configuraciones.num_preguntas_numericas"
-														class="fas fa-check-circle" style="color:green"></i>
-													<i v-else class="fas fa-times-circle" style="color:red"></i>
-												</td>
-												<td>
-													{{ tema.totalPreguntasBooleanas }}
-
-													<i v-if="tema.totalPreguntasBooleanas >= configuraciones.num_preguntas_boleanas"
-														class="fas fa-check-circle" style="color:green"></i>
-													<i v-else class="fas fa-times-circle" style="color:red"></i>
-												</td>
-												<td>
-													{{ tema.totalPreguntasMultiples }}
-
-													<i v-if="tema.totalPreguntasMultiples >= configuraciones.num_preguntas_multiples"
-														class="fas fa-check-circle" style="color:green"></i>
-													<i v-else class="fas fa-times-circle" style="color:red"></i>
-												</td>
-												<td>
-													{{ tema.totalPreguntasCalculadas }}
-
-													<i v-if="tema.totalPreguntasCalculadas >= configuraciones.num_preguntas_calculadas"
-														class="fas fa-check-circle" style="color:green"></i>
-													<i v-else class="fas fa-times-circle" style="color:red"></i>
-												</td>
-												<td>
-													{{ tema.totalPreguntasCalculadasMultiples }}
-
-													<i v-if="tema.totalPreguntasCalculadasMultiples >= configuraciones.num_preguntas_calculadas_multiples"
-														class="fas fa-check-circle" style="color:green"></i>
-													<i v-else class="fas fa-times-circle" style="color:red"></i>
-												</td>
-                        <td>
-													{{ tema.totalPreguntasExpresiones }}
-
-													<i v-if="tema.totalPreguntasExpresiones >= configuraciones.num_preguntas_expresion"
-														class="fas fa-check-circle" style="color:green"></i>
-													<i v-else class="fas fa-times-circle" style="color:red"></i>
-												</td>
-											</tr>
-										</tbody>
-									</v-table>
-								</div>
-							</div>
-
-							<div class="card-footer">
-								<div class="row">
+                            <div class="card-footer">
+                                <div class="row">
                                     <div class="col-6">
-                                        <label> <b> Total: {{ preguntasPorTema.length }} registros </b> </label>
+                                        <label><b>Total: {{ preguntasPorTema.length }} registros</b></label>
                                     </div>
                                     <div class="col-6">
                                         <div class="float-right">
@@ -251,39 +223,34 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-								
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="modal fade" id="modalDeInformacion" tabindex="-1" role="dialog"
-						aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-
-									<h5 class="modal-title" id="exampleModalLabel"> Información </h5>
-
-
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									Algo de información para el usuario
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
+                <div class="row">
+                    <div class="modal fade" id="modalDeInformacion" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"> Información </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Algo de información para el usuario
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
+
 
 <script>
     import axios from "axios";
@@ -300,7 +267,7 @@
                     num_preguntas_calculadas: 0,
                     num_preguntas_abiertas: 0,
                     num_preguntas_calculadas_multiples: 0,
-                    num_preguntas_expresion: 0
+                    num_preguntas_multiples: 0
                 },
                 totalPreguntas: 0,
                 preguntasPorTema: [],
@@ -364,8 +331,6 @@
                 this.configuraciones.num_preguntas_calculadas_multiples = (this.configuraciones
                     .num_preguntas_calculadas_multiples === "") ? 0 : parseInt(this.configuraciones
                     .num_preguntas_calculadas_multiples);
-              this.configuraciones.num_preguntas_expresion = (this.configuraciones.num_preguntas_expresion === "") ?
-                    0 : parseInt(this.configuraciones.num_preguntas_expresion);
 
 
                 this.configuraciones.num_preguntas = parseInt(this.configuraciones.num_preguntas_numericas) +
@@ -373,8 +338,7 @@
                     parseInt(this.configuraciones.num_preguntas_boleanas) +
                     parseInt(this.configuraciones.num_preguntas_calculadas) +
                     parseInt(this.configuraciones.num_preguntas_abiertas) +
-                    parseInt(this.configuraciones.num_preguntas_calculadas_multiples)+
-                  parseInt(this.configuraciones.num_preguntas_expresion)
+                    parseInt(this.configuraciones.num_preguntas_calculadas_multiples)
 
             },
 
@@ -409,7 +373,6 @@
                             temas[i].totalPreguntasNumericas = 0;
                             temas[i].totalPreguntasBooleanas = 0;
                             temas[i].totalPreguntasCalculadasMultiples = 0;
-                            temas[i].totalPreguntasExpresiones = 0;
                         }
 
                         console.log(preguntas);
@@ -435,10 +398,6 @@
                                             break;
                                         case 6:
                                             temas[i].totalPreguntasCalculadasMultiples = preguntas[j]
-                                            .totalPreguntas;
-                                            break;
-                                        case 7:
-                                            temas[i].totalPreguntasExpresiones = preguntas[j]
                                             .totalPreguntas;
                                             break;
                                     }
@@ -482,7 +441,6 @@
                 var totalBooleanas = document.getElementById("numeroPreguntasBooleanas").value;
                 var totalMultiples = document.getElementById("numeroPreguntasMultiples").value;
                 var totalCalculadasMultiples = document.getElementById("numeroPreguntasCalculadasMultiples").value;
-                var totalExpresiones = document.getElementById("numeroPreguntasExpresion").value;
                 //var ponderacionEstricta = document.getElementById("ponderacionEstricta").value;
 
                 var checkEstricta = document.getElementById("ponderacionEstricta");
@@ -502,7 +460,6 @@
                         totalBooleanas: totalBooleanas,
                         totalMultiples: totalMultiples,
                         totalCalculadasMultiples: totalCalculadasMultiples,
-                        totalExpresiones: totalExpresiones,
                         ponderacionEstricta: ponderacionEstricta,
                     })
                     .then((res) => {
