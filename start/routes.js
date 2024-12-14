@@ -131,7 +131,7 @@ Route.get('/obtenerPonderaciones/:matricula', 'PonderacionController.obtener_pon
 Route.get('/ejemplo', ({view}) =>  view.render('app') );
 //Se envia matrícula para la lectura del pickle
 Route.get('/obtenerMatricula/:matricula','AprenderController.obtener_matricula')
-
+//Route.get('/ObtenerMatricula/:matricula','CuestionarioController.Obtener_matricula')
 
 Route.get('/Matricula/:matricula','EvaluacionController.obtener_matricula')
 Route.get('/reactivos/:rama/:tema', 'EvaluacionController.obtenerReactivosPorRama');

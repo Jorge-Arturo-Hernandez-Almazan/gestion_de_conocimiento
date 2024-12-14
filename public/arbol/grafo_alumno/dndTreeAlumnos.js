@@ -1727,7 +1727,7 @@ async function draw_status_grafo(error, treeData) {
                 //r colores=["#031DFA","#051CE7","#0117CE","#0416AE","#020E74","#000A5C","#010846","#000528"]
                 //var colores = ["#FA0303", "#FAA403", "#FAFA03", "#55FA03", "#03FAA8", "#034EFA", "#8D03FA", "#FA03E7"]
                 //var colores=["#031DFA","#031DFA","#031DFA","#031DFA","#031DFA","#031DFA","#031DFA","#031DFA"]
-                color = "#FFFFFF"
+                color = "#8D03FA"
                 
                 return color
 
